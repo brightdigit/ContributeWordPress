@@ -27,5 +27,5 @@ build macos:
     - swift run swiftformat --lint .
     - swift run swiftlint
     - swift test --enable-test-discovery --enable-code-coverage
-    - xcrun llvm-cov export -format="lcov" .build/debug/HeartwitchKitPackageTests.xctest/Contents/MacOS/brightdigit-webPackageTests -instr-profile .build/debug/codecov/default.profdata > info.lcov
+    - xcrun llvm-cov export -format="lcov" .build/debug/brightdigit-webPackageTests.xctest/Contents/MacOS/brightdigit-webPackageTests -instr-profile .build/debug/codecov/default.profdata > info.lcov
     - bash <(curl https://codecov.io/bash) -F gitlab -F macOS -F swift5_3
