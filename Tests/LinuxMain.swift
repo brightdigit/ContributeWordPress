@@ -1,8 +1,8 @@
 import XCTest
 
-import brightdigit_webTests
+import brightdigitwgTests
 
 var tests = [XCTestCaseEntry]()
-tests += brightdigit_webTests.__allTests()
+tests += brightdigitwgTests.__allTests()
 
 XCTMain(tests)

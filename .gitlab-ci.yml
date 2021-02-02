@@ -15,7 +15,7 @@ build focal 5_3:
     - swift run swiftformat --lint .
     - swift run swiftlint
     - swift test --enable-test-discovery --enable-code-coverage    
-    - llvm-cov export -format="lcov" .build/${ARCH_PREFIX}-unknown-linux-gnu/debug/brightdigit-webPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lco
+    - llvm-cov export -format="lcov" .build/${ARCH_PREFIX}-unknown-linux-gnu/debug/BrightDigitPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lco
     - bash <(curl https://codecov.io/bash) -F gitlab -F focal -F swift5_3
 
 build macos:
@@ -27,5 +27,5 @@ build macos:
     - swift run swiftformat --lint .
     - swift run swiftlint
     - swift test --enable-test-discovery --enable-code-coverage
-    - xcrun llvm-cov export -format="lcov" .build/debug/brightdigit-webPackageTests.xctest/Contents/MacOS/brightdigit-webPackageTests -instr-profile .build/debug/codecov/default.profdata > info.lcov
+    - xcrun llvm-cov export -format="lcov" .build/debug/BrightDigitPackageTests.xctest/Contents/MacOS/BrightDigitPackageTests -instr-profile .build/debug/codecov/default.profdata > info.lcov
     - bash <(curl https://codecov.io/bash) -F gitlab -F macOS -F swift5_3
