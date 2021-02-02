@@ -1,4 +1,4 @@
-@testable import BrightdigitCom
+@testable import brightdigitwg
 import XCTest
 
 final class BrightdigitwebTests: XCTestCase {
@@ -6,10 +6,7 @@ final class BrightdigitwebTests: XCTestCase {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct
     // results.
+    XCTAssert(true)
     // XCTAssertEqual(brightdigit_web().text, "Hello, World!")
   }
-
-  static var allTests = [
-    ("testExample", testExample)
-  ]
 }

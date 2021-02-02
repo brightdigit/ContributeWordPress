@@ -7,11 +7,11 @@
 import PackageDescription
 
 let package = Package(
-  name: "brightdigit-web",
+  name: "BrightDigit",
   products: [
     .executable(
-      name: "BrightdigitCom",
-      targets: ["BrightdigitCom"]
+      name: "brightdigitwg",
+      targets: ["brightdigitwg"]
     )
   ],
   dependencies: [
@@ -28,12 +28,12 @@ let package = Package(
     // Targets are the basic building blocks of a package. A target can define a module or a test suite.
     // Targets can depend on other targets in this package, and on products in packages this package depends on.
     .target(
-      name: "BrightdigitCom",
+      name: "brightdigitwg",
       dependencies: ["Publish"]
     ),
     .testTarget(
-      name: "brightdigit-webTests",
-      dependencies: ["BrightdigitCom"]
+      name: "brightdigitwgTests",
+      dependencies: ["brightdigitwg"]
     )
   ]
 )
@@ -46,7 +46,7 @@ let package = Package(
     "komondor": [
       "pre-push": [
         "swift test --enable-code-coverage --enable-test-discovery",
-        "swift run swift-test-codecov .build/debug/codecov/brightdigit-web.json -v \(requiredCoverage)"
+        "swift run swift-test-codecov .build/debug/codecov/BrightDigit.json -v \(requiredCoverage)"
       ],
       "pre-commit": [
         "swift test --enable-code-coverage --enable-test-discovery --generate-linuxmain",
