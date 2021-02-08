@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Oxygen:wght@300;400;700&display=swap');
+@import url('flaticon.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body > header {
+  @apply p-2 mx-4;
+}
+
+body > header > nav {
+  @apply flex items-center;
+}
+
+body > header > nav > ol{
+  @apply flex;
+}
+
+body > header > nav > ol > li {
+  @apply flex;
+}
+
+body > header > nav > ol > li > a{
+  @apply p-2 m-2;
+}
+
+body > header > nav > ol.logo {
+  @apply flex-shrink-0;
+}
+
+body > header > nav > ol.logo img{
+  @apply h-10 mr-8;
+}
+body > header > nav > ol.more {
+  @apply flex lg:hidden;
+}
+body > header > nav > ol.menu {  
+  @apply hidden md:flex ;
+}
+body > header > nav > ol.menu ~ ol.menu{  
+  @apply hidden lg:flex flex-grow justify-end;
+}
+body .hero {
+  @apply h-96 w-full flex bg-cover bg-center justify-center content-center items-center text-white;
+  background-image: url(http://placeimg.com/1200/900/tech);
+}
+
+body .hero main{
+  @apply text-3xl text-center mx-36 p-8;
+  background-color: #00000033;
+}
+body h3 {
+  @apply font-serif text-sm;
+}
+body section > header {
+  @apply w-1/2 text-center;
+}
+body h2 {
+  @apply font-serif text-2xl uppercase my-4 border-b w-full;
+}
+body .services {
+  @apply container mx-auto flex flex-col items-center my-8;
+}
+body .services > ol{
+  @apply grid grid-cols-4 gap-8;
+}
+
+body .services > ol > li {
+  @apply flex flex-col p-4 items-center;
+}
+body .services > ol > li > header > h3 {
+  @apply text-center;
+}
+body .services > ol > li > header > img {
+  @apply w-36 m-8;
+}
+
+body #testimonials {
+  @apply mx-auto flex flex-col items-center bg-gray-900 text-white py-8;
+}
+body #testimonials > ol{
+  @apply grid grid-cols-3 gap-8 p-4 container;
+}
+body #testimonials blockquote {
+  @apply text-sm;
+}
+body #articles {
+  @apply mx-auto flex flex-col bg-gray-100 ;
+}
+body #articles > header {
+  @apply flex flex-1 w-full;
+}
+body #articles > ol {
+  @apply container;
+}
+body #articles > ol > li {
+  @apply p-4 bg-white rounded;
+}
+body #articles li > header ol{
+  @apply text-sm flex space-x-4;
+}
+body #articles li > header > h3 {
+  @apply my-2 h-4 font-sans font-bold overflow-hidden overflow-ellipsis;
+}
+body #articles li > header > .image {
+  @apply w-full object-contain lg:h-20 block bg-center bg-cover;
+}
+body #articles li > main {
+  @apply text-sm my-2 h-10 overflow-ellipsis overflow-hidden;
+}
+body #articles > ol {
+  @apply grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4 m-8;
+}
+body #articles li > footer {
+  @apply flex justify-between text-xs font-light;
+}
+body > footer {
+  @apply flex w-full font-sans text-white bg-black;
+}
+body > footer > main{
+  @apply container mx-auto p-8 flex items-center justify-between;
+}
+body > footer > main .social {
+  @apply flex;
+}

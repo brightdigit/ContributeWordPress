@@ -8,6 +8,7 @@ import PackageDescription
 
 let package = Package(
   name: "BrightDigit",
+  platforms: [.macOS(.v10_12)],
   products: [
     .executable(
       name: "brightdigitwg",
@@ -18,6 +19,7 @@ let package = Package(
     // Dependencies declare other packages that this package depends on.
     // .package(url: /* package url */, from: "1.0.0"),
     .package(name: "Publish", url: "https://github.com/johnsundell/publish.git", from: "0.6.0"),
+    .package(url: "https://github.com/lukaskubanek/LoremSwiftum.git", from: "2.2.1"),
     .package(url: "https://github.com/shibapm/Komondor", from: "1.0.6"), // dev
     .package(url: "https://github.com/eneko/SourceDocs", from: "1.2.1"), // dev
     .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.47.0"), // dev
@@ -29,7 +31,7 @@ let package = Package(
     // Targets can depend on other targets in this package, and on products in packages this package depends on.
     .target(
       name: "brightdigitwg",
-      dependencies: ["Publish"]
+      dependencies: ["Publish", "LoremSwiftum"]
     ),
     .testTarget(
       name: "brightdigitwgTests",
