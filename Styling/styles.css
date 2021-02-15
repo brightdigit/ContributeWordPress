@@ -50,13 +50,13 @@ body .hero main{
   @apply text-3xl text-center mx-36 p-8;
   background-color: #00000033;
 }
-body h3 {
+body section h3 {
   @apply font-serif text-sm;
 }
 body section > header {
   @apply w-1/2 text-center;
 }
-body h2 {
+body section h2 {
   @apply font-serif text-2xl uppercase my-4 border-b w-full;
 }
 body .services {
@@ -123,4 +123,25 @@ body > footer > main{
 }
 body > footer > main .social {
   @apply flex;
+}
+body > main > article {
+  @apply leading-relaxed;
+}
+body > main > article h1 {
+  @apply text-4xl mt-4 mb-8;
+}
+body > main > article h2 {
+  @apply text-2xl my-6;
+}
+body > main > article h3 {
+  @apply text-xl my-4;
+}
+body > main > article h4 {
+  @apply text-xl my-4;
+}
+body > main > article h5 {
+  @apply text-xl my-2;
+}
+body > main > article p {
+  @apply my-2;
 }

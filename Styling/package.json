@@ -11,7 +11,7 @@
   },
   "watch": {
     "dev": [
-      "site/*.*",
+      "site/**/*.*",
       "styles.css",
       "tailwind.config.js",
       "../Resources/*.*"
