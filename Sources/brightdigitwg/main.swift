@@ -1,11 +1,47 @@
 import ArgumentParser
 import Foundation
+import Ink
 import Kanna
 import MarkdownGenerator
 import Plot
 import Publish
 import ShellOut
+import Splash
 import Yams
+
+public extension Plugin {
+  static func splash(withClassPrefix classPrefix: String) -> Self {
+    Plugin(name: "Splash") { context in
+      context.markdownParser.addModifier(
+        .splashCodeBlocks(withFormat: HTMLOutputFormat(
+          classPrefix: classPrefix
+        ))
+      )
+    }
+  }
+}
+
+public extension Modifier {
+  static func splashCodeBlocks(withFormat format: HTMLOutputFormat = .init()) -> Self {
+    let highlighter = SyntaxHighlighter(format: format)
+
+    return Modifier(target: .codeBlocks) { html, markdown in
+      var markdown = markdown.dropFirst("```".count)
+
+      guard !markdown.hasPrefix("no-highlight") else {
+        return html
+      }
+
+      markdown = markdown
+        .drop(while: { !$0.isNewline })
+        .dropFirst()
+        .dropLast("\n```".count)
+
+      let highlighted = highlighter.highlight(String(markdown))
+      return "<pre><code>" + highlighted + "\n</code></pre>"
+    }
+  }
+}
 
 // swiftlint:disable:next cyclomatic_complexity
 func markdown(from element: Kanna.XMLElement) throws -> MarkdownConvertible? {
@@ -272,6 +308,7 @@ public extension BrightDigitSiteCommand {
     public func run() throws {
       try BrightDigit().publish(using: [
         .optional(.copyResources()),
+        .installPlugin(.splash(withClassPrefix: "")),
         .addMarkdownFiles(),
         .sortItems(by: \.date, order: .descending),
 
