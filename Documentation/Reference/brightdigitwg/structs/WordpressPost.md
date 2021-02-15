@@ -13,6 +13,12 @@ public struct WordpressPost
 public let name: String
 ```
 
+### `link`
+
+```swift
+public let link: URL
+```
+
 ### `title`
 
 ```swift

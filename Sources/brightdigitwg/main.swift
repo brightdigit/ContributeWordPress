@@ -121,7 +121,8 @@ public struct MarkdownItem {
 }
 
 public struct WordpressPost {
-  internal init(name: String, title: String, meta: [String: String], body: String, date: Date, tags: [String]?, categories: [String]?) {
+  internal init(name: String, title: String, link: URL, meta: [String: String], body: String, date: Date, tags: [String]?, categories: [String]?) {
+    self.link = link
     self.name = name
     self.title = title
     self.meta = meta
@@ -138,6 +139,7 @@ public struct WordpressPost {
   }()
 
   public let name: String
+  public let link: URL
   public let title: String
   public let meta: [String: String]
   public let body: String
@@ -164,6 +166,9 @@ public extension WordpressPost {
       return (domain, text)
     }.groupByKey()
 
+    guard let link = element.at_css("link")?.text.flatMap(URL.init(string:)) else {
+      return nil
+    }
     guard let title = element.at_css("title")?.content else {
       return nil
     }
@@ -190,7 +195,7 @@ public extension WordpressPost {
       return key.flatMap(and: value)
     }.uniqueByKey()
 
-    self.init(name: name, title: title, meta: meta, body: body, date: pubDate, tags: tacs["post_tag"], categories: tacs["category"])
+    self.init(name: name, title: title, link: link, meta: meta, body: body, date: pubDate, tags: tacs["post_tag"], categories: tacs["category"])
   }
 }
 
@@ -356,9 +361,21 @@ public extension BrightDigitSiteCommand {
       var tags = Set<String>()
 
       let contentPath = Path("/Users/leo/Documents/Projects/brightdigit.com/Content")
-      allPosts.map { args in
+      let redirects = allPosts.flatMap { (args) -> [(String, String)] in
+        let (dir, posts) = args
+        return posts.map { post in
+          (post.link.path, ["", dir, post.name].joined(separator: "/"))
+        }
+      }
+
+      // swiftlint:disable:next force_try
+      try! redirects.map { [$0.0, $0.1].joined(separator: "\t") }.joined(separator: "\n").write(toFile: contentPath.appendingComponent("_redirects").absoluteString, atomically: true, encoding: .utf8)
+      allPosts.forEach { args in
         let sectionPath = contentPath.appendingComponent(args.key)
-        args.value.map { post in
+        args.value.forEach { post in
+          guard !post.name.starts(with: "empowerapps-show") else {
+            return
+          }
           let section = args.key
           do {
             let html = try Kanna.HTML(html: post.body, encoding: .utf8)
