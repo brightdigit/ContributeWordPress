@@ -252,7 +252,7 @@ struct CompanyHTMLFactory: HTMLFactory {
         ),
         .link(
           .rel(.stylesheet),
-          .href("/css/style.css")
+          .href("/css/styles.css")
         )
       ),
       .body(
@@ -261,7 +261,7 @@ struct CompanyHTMLFactory: HTMLFactory {
     )
   }
 
-  func makeItemHTML(for _: Item<BrightDigit>, context _: PublishingContext<BrightDigit>) throws -> HTML {
+  func makeItemHTML(for item: Item<BrightDigit>, context _: PublishingContext<BrightDigit>) throws -> HTML {
     HTML(
       .head(
         .meta(
@@ -273,11 +273,33 @@ struct CompanyHTMLFactory: HTMLFactory {
         ),
         .link(
           .rel(.stylesheet),
-          .href("/css/style.css")
+          .href("/css/styles.css")
         )
       ),
       .body(
-        .text("makeItemHTML")
+        .headerNav(),
+        .main(
+          .article(
+            .div(
+              .class("content"),
+
+              .contentBody(item.body)
+            ),
+            .span("Tagged with: ")
+            // .tagList(for: item, on: context.site)
+          )
+        ),
+        .footer(
+          .div(
+            .class("address"),
+            .text("5859 W Saginaw #182 Lansing MI 48917")
+          ),
+          .div(
+            .class("copyright"),
+            .text("© Bright Digit, LLC "),
+            .year()
+          )
+        )
       )
     )
   }
@@ -294,7 +316,7 @@ struct CompanyHTMLFactory: HTMLFactory {
         ),
         .link(
           .rel(.stylesheet),
-          .href("/css/style.css")
+          .href("/css/styles.css")
         )
       ),
       .body(
@@ -315,7 +337,7 @@ struct CompanyHTMLFactory: HTMLFactory {
         ),
         .link(
           .rel(.stylesheet),
-          .href("/css/style.css")
+          .href("/css/styles.css")
         )
       ),
       .body(
@@ -336,7 +358,7 @@ struct CompanyHTMLFactory: HTMLFactory {
         ),
         .link(
           .rel(.stylesheet),
-          .href("/css/style.css")
+          .href("/css/styles.css")
         )
       ),
       .body(
