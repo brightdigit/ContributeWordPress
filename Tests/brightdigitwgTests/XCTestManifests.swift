@@ -11,7 +11,7 @@
   }
 
   public func __allTests() -> [XCTestCaseEntry] {
-    return [
+    [
       testCase(BrightdigitwebTests.__allTests__BrightdigitwebTests)
     ]
   }
