@@ -33,6 +33,12 @@ static func loremIpsumTestimonial() -> Node
 static func loremIpsumArticle() -> Node
 ```
 
+### `itemList(for:on:)`
+
+```swift
+static func itemList<T: Website>(for items: [Item<T>], on _: T) -> Node
+```
+
 ### `headerNav()`
 
 ```swift

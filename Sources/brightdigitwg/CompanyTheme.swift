@@ -62,6 +62,22 @@ public extension Node where Context == HTML.ListContext {
 }
 
 public extension Node where Context == HTML.BodyContext {
+  static func itemList<T: Website>(for items: [Item<T>], on _: T) -> Node {
+    .ul(
+      .class("item-list"),
+      .forEach(items) { item in
+        .li(.article(
+          .h1(.a(
+            .href(item.path),
+            .text(item.title)
+          )),
+          // .tagList(for: item, on: site),
+          .p(.text(item.description))
+        ))
+      }
+    )
+  }
+
   /// Add an `<li>` HTML element within the current context.
   /// - parameter nodes: The element's attributes and child elements.
   static func headerNav() -> Node {
@@ -240,7 +256,7 @@ struct CompanyHTMLFactory: HTMLFactory {
     )
   }
 
-  func makeSectionHTML(for _: Section<BrightDigit>, context _: PublishingContext<BrightDigit>) throws -> HTML {
+  func makeSectionHTML(for section: Section<BrightDigit>, context: PublishingContext<BrightDigit>) throws -> HTML {
     HTML(
       .head(
         .meta(
@@ -256,7 +272,8 @@ struct CompanyHTMLFactory: HTMLFactory {
         )
       ),
       .body(
-        .text("makeSectionHTML")
+        .h1(.text(section.title)),
+        .itemList(for: section.items, on: context.site)
       )
     )
   }
