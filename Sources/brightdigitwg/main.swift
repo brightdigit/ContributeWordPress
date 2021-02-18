@@ -396,17 +396,13 @@ public extension BrightDigitSiteCommand {
 
       // swiftlint:disable:next force_try
       try! redirects.map { [$0.0, $0.1].joined(separator: "\t") }.joined(separator: "\n").write(toFile: contentPath.appendingComponent("_redirects").absoluteString, atomically: true, encoding: .utf8)
-      let imageUrlsAray = allPosts.values.flatMap{$0}.compactMap{try? Kanna.HTML(html: $0.body, encoding: .utf8)}.compactMap {
-        $0.body
-      }.flatMap {
+      let imageUrlsAray = allPosts.values.flatMap { $0 }.compactMap { try? Kanna.HTML(html: $0.body, encoding: .utf8) }.compactMap(\.body).flatMap {
         $0.xpath("//img/@src")
-      }.compactMap{
-        $0.content
-      }.compactMap(URL.init(string:))
-      
+      }.compactMap(\.content).compactMap(URL.init(string:))
+
       let imageURLs = Set(imageUrlsAray)
-      
-      let imagePaths : [URL : String] = imageURLs.map{ (url) in
+
+      let imagePaths: [URL: String] = imageURLs.map { url in
         let directoryPrefix = url.host?.components(separatedBy: ".").first ?? "default"
         let path = ([directoryPrefix] + url.pathComponents.suffix(3)).joined(separator: "/")
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
@@ -418,12 +414,12 @@ public extension BrightDigitSiteCommand {
         }
         return (newURL, path)
       }.uniqueByKey()
-      
+
       let group = DispatchGroup()
-      
+
       for (url, path) in imagePaths {
         group.enter()
-        URLSession.shared.downloadTask(with: url) { (destination, _, error) in
+        URLSession.shared.downloadTask(with: url) { destination, _, error in
           if let error = error {
             print(url, path, error)
           } else if let sourceURL = destination {
@@ -433,15 +429,15 @@ public extension BrightDigitSiteCommand {
             do {
               try FileManager.default.copyItem(at: sourceURL, to: destinationURL)
             } catch {
-                print(url, path)
+              print(url, path)
             }
           }
           group.leave()
         }.resume()
       }
-      
+
       group.wait()
-      
+
       allPosts.forEach { args in
         let sectionPath = contentPath.appendingComponent(args.key)
         args.value.forEach { post in
@@ -451,8 +447,7 @@ public extension BrightDigitSiteCommand {
           let section = args.key
           do {
             let html = try Kanna.HTML(html: post.body, encoding: .utf8)
-            
-            
+
             html.body?.xpath("/*").map { element in
               tags.formUnion([element.tagName].compactMap { $0 })
             }
