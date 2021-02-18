@@ -372,18 +372,6 @@ public extension BrightDigitSiteCommand {
       for (name, doc) in dictionary {
         let elementsByType: [String: [Kanna.XMLElement]] =
           doc.xpath("/rss/channel/item").compactMap { element in
-            // print(element.tagName)
-            /*
-             public var title: String
-             public var description: String
-             public var body: Body
-             public var date: Date
-             public var lastModified: Date
-             public var imagePath: Path?
-             public var audio: Audio?
-             public var video: Video?
-             tags
-             */
 
             element.at_xpath("wp:post_type", namespaces: ["wp": "http://wordpress.org/export/1.2/"]).flatMap(\.content).map {
               ($0, element)
@@ -398,6 +386,7 @@ public extension BrightDigitSiteCommand {
       var tags = Set<String>()
 
       let contentPath = Path("/Users/leo/Documents/Projects/brightdigit.com/Content")
+      let resourceImagePath = Path("/Users/leo/Documents/Projects/brightdigit.com/Resources/media/images")
       let redirects = allPosts.flatMap { (args) -> [(String, String)] in
         let (dir, posts) = args
         return posts.map { post in
@@ -407,6 +396,52 @@ public extension BrightDigitSiteCommand {
 
       // swiftlint:disable:next force_try
       try! redirects.map { [$0.0, $0.1].joined(separator: "\t") }.joined(separator: "\n").write(toFile: contentPath.appendingComponent("_redirects").absoluteString, atomically: true, encoding: .utf8)
+      let imageUrlsAray = allPosts.values.flatMap{$0}.compactMap{try? Kanna.HTML(html: $0.body, encoding: .utf8)}.compactMap {
+        $0.body
+      }.flatMap {
+        $0.xpath("//img/@src")
+      }.compactMap{
+        $0.content
+      }.compactMap(URL.init(string:))
+      
+      let imageURLs = Set(imageUrlsAray)
+      
+      let imagePaths : [URL : String] = imageURLs.map{ (url) in
+        let directoryPrefix = url.host?.components(separatedBy: ".").first ?? "default"
+        let path = ([directoryPrefix] + url.pathComponents.suffix(3)).joined(separator: "/")
+        guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+          return (url, path)
+        }
+        components.query = nil
+        guard let newURL = components.url else {
+          return (url, path)
+        }
+        return (newURL, path)
+      }.uniqueByKey()
+      
+      let group = DispatchGroup()
+      
+      for (url, path) in imagePaths {
+        group.enter()
+        URLSession.shared.downloadTask(with: url) { (destination, _, error) in
+          if let error = error {
+            print(url, path, error)
+          } else if let sourceURL = destination {
+            let destinationPath = resourceImagePath.appendingComponent(path)
+            let destinationURL = URL(fileURLWithPath: destinationPath.string)
+            try? FileManager.default.createDirectory(at: destinationURL.deletingLastPathComponent(), withIntermediateDirectories: true, attributes: nil)
+            do {
+              try FileManager.default.copyItem(at: sourceURL, to: destinationURL)
+            } catch {
+                print(url, path)
+            }
+          }
+          group.leave()
+        }.resume()
+      }
+      
+      group.wait()
+      
       allPosts.forEach { args in
         let sectionPath = contentPath.appendingComponent(args.key)
         args.value.forEach { post in
@@ -416,6 +451,8 @@ public extension BrightDigitSiteCommand {
           let section = args.key
           do {
             let html = try Kanna.HTML(html: post.body, encoding: .utf8)
+            
+            
             html.body?.xpath("/*").map { element in
               tags.formUnion([element.tagName].compactMap { $0 })
             }
