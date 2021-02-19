@@ -1,0 +1,24 @@
+import ArgumentParser
+import Publish
+
+public extension BrightDigitSiteCommand {
+  struct PublishCommand: ParsableCommand {
+    public static var configuration = CommandConfiguration(commandName: "publish")
+    public init() {}
+
+    public func run() throws {
+      try BrightDigit().publish(using: [
+        .optional(.copyResources()),
+        .installPlugin(.splash(withClassPrefix: "")),
+        .addMarkdownFiles(),
+        .sortItems(by: \.date, order: .descending),
+
+        .generateHTML(withTheme: .company, indentation: .spaces(2)),
+        .generateSiteMap(),
+
+        .tailwindCSS,
+        .generateRSSFeed(including: [.articles, .tutorials])
+      ])
+    }
+  }
+}
