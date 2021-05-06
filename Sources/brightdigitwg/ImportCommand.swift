@@ -4,6 +4,7 @@ import Kanna
 import MarkdownGenerator
 import Publish
 import Yams
+import ShellOut
 
 public extension BrightDigitSiteCommand {
   struct ImportCommand: ParsableCommand {
@@ -125,21 +126,29 @@ public extension BrightDigitSiteCommand {
           }
           let section = args.key
           do {
-            let html = try Kanna.HTML(html: post.body, encoding: .utf8)
-
-            html.body?.xpath("/*").map { element in
-              tags.formUnion([element.tagName].compactMap { $0 })
-            }
-            let markdowns = try [MarkdownHeader(title: post.title)] + (html.body?.xpath("/*").compactMap(markdown(from:)) ?? []) ?? []
+            //let process = Process()
+            //let input = Pipe()
+            //process.standardInput = input
+            //input.fileHandleForReading.write(post.body.data(using: .utf8)!)
+            let temporaryDirURL = URL(fileURLWithPath: NSTemporaryDirectory(),  isDirectory: true)
+            let temporaryFileURL = temporaryDirURL.appendingPathComponent(UUID().uuidString)
+            try post.body.write(to: temporaryFileURL, atomically: true, encoding: .utf8)
+            let markdownText = try shellOut(to: "/usr/local/bin/pandoc", arguments: ["-f html -t markdown", temporaryFileURL.path])
+//            let html = try Kanna.HTML(html: post.body, encoding: .utf8)
+//
+//            html.body?.xpath("/*").map { element in
+//              tags.formUnion([element.tagName].compactMap { $0 })
+//            }
+//            let markdowns = try [MarkdownHeader(title: post.title)] + (html.body?.xpath("/*").compactMap(markdown(from:)) ?? []) ?? []
             let specs = Specs(fromPost: post)
             let encoder = YAMLEncoder()
 
             let frontMatter = try encoder.encode(specs).trimmingCharacters(in: .whitespacesAndNewlines)
-
-            let markdownText = markdowns.markdown.trimmingCharacters(in: .whitespacesAndNewlines)
-            let file = sectionPath.appendingComponent(post.name + ".md")
-            let text = ["---", frontMatter, "---", markdownText].joined(separator: "\n")
-
+//
+//            let markdownText = markdowns.markdown.trimmingCharacters(in: .whitespacesAndNewlines)
+              let file = sectionPath.appendingComponent(post.name + ".md")
+              let text = ["---", frontMatter, "---", markdownText].joined(separator: "\n")
+//
             // swiftlint:disable:next force_try
             try! text.write(toFile: file.absoluteString, atomically: true, encoding: .utf8)
           } catch {
