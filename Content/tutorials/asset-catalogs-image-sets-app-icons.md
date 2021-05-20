@@ -13,29 +13,7 @@ Sets, they contain several pieces of information.
 
 Here is a sample Image Set:
 
-    {
-      "images" : [
-        {
-          "idiom" : "universal",
-          "filename" : "apple-watch@1x.png",
-          "scale" : "1x"
-        },
-        {
-          "idiom" : "universal",
-          "filename" : "apple-watch@2x.png",
-          "scale" : "2x"
-        },
-        {
-          "idiom" : "universal",
-          "filename" : "apple-watch@3x.png",
-          "scale" : "3x"
-        }
-      ],
-      "info" : {
-        "version" : 1,
-        "author" : "xcode"
-      }
-    }
+    {   "images" : [     {       "idiom" : "universal",       "filename" : "apple-watch@1x.png",       "scale" : "1x"     },     {       "idiom" : "universal",       "filename" : "apple-watch@2x.png",       "scale" : "2x"     },     {       "idiom" : "universal",       "filename" : "apple-watch@3x.png",       "scale" : "3x"     }   ],   "info" : {     "version" : 1,     "author" : "xcode"   } } 
 
 First, we have a collection of images with the following properties:
 
@@ -82,15 +60,7 @@ Some idioms denote their purpose is for App Store:
 App Icons contain the same information as an Image Set with a few
 particular properties for app icons on certain devices:
 
-    ...
-    {
-      "size" : "24x24",
-      "idiom" : "watch",
-      "scale" : "2x",
-      "role" : "notificationCenter",
-      "subtype" : "38mm"
-    },
-    ...
+    ... {   "size" : "24x24",   "idiom" : "watch",   "scale" : "2x",   "role" : "notificationCenter",   "subtype" : "38mm" }, ... 
 
 -   `size` the size of the image file in points, this designates whether
     the image
