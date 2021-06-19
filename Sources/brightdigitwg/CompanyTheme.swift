@@ -62,7 +62,7 @@ public extension Node where Context == HTML.ListContext {
 }
 
 public extension Node where Context == HTML.BodyContext {
-  static func itemList<T: Website>(for items: [Item<T>], on _: T) -> Node {
+  static func itemList<T: Website>(for items: [Publish.Item<T>], on _: T) -> Node {
     .ul(
       .class("item-list"),
       .forEach(items) { item in
@@ -278,7 +278,7 @@ struct CompanyHTMLFactory: HTMLFactory {
     )
   }
 
-  func makeItemHTML(for item: Item<BrightDigit>, context _: PublishingContext<BrightDigit>) throws -> HTML {
+  func makeItemHTML(for item: Publish.Item<BrightDigit>, context _: PublishingContext<BrightDigit>) throws -> HTML {
     HTML(
       .head(
         .meta(

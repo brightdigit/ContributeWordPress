@@ -25,6 +25,7 @@ let package = Package(
     .package(url: "https://github.com/apple/swift-argument-parser", from: "0.3.0"),
     .package(url: "https://github.com/eneko/MarkdownGenerator.git", from: "0.4.0"),
     .package(url: "https://github.com/JohnSundell/Splash", from: "0.15.0"),
+    .package(url: "https://github.com/MaxDesiatov/XMLCoder.git", from: "0.12.0"),
     .package(url: "https://github.com/shibapm/Komondor", from: "1.0.6"), // dev
     .package(url: "https://github.com/eneko/SourceDocs", from: "1.2.1"), // dev
     .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.47.0"), // dev
@@ -36,7 +37,7 @@ let package = Package(
     // Targets can depend on other targets in this package, and on products in packages this package depends on.
     .target(
       name: "brightdigitwg",
-      dependencies: ["Publish", "Splash", "LoremSwiftum", "Kanna", "MarkdownGenerator", "Yams",
+      dependencies: ["Publish", "Splash", "LoremSwiftum", "Kanna", "MarkdownGenerator", "Yams", "XMLCoder",
                      .product(name: "ArgumentParser", package: "swift-argument-parser")]
     ),
     .testTarget(
