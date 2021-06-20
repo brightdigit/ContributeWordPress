@@ -108,6 +108,35 @@ public extension Result {
       self = .failure(otherwise())
     }
   }
+  
+  func flatMap<U>(_ transform: @escaping (Success) throws -> U) -> Result<U, Failure> where Failure == Error {
+      switch self {
+          case .success(let value):
+        return Result<U, Failure>{
+          return try transform(value)
+        }
+          case .failure(let error):
+        return .failure(error)
+      }
+  }
+  
+  func mapEach<NewItemType, ItemType>(_ transform: @escaping (ItemType) -> NewItemType ) -> Result<[NewItemType], Failure> where Success : Sequence, Success.Element == ItemType {
+    switch self {
+    case .success(let sequence):
+      return .success(sequence.map(transform))
+    case .failure(let error):
+      return .failure(error)
+    }
+  }
+  
+  func error () -> Failure? {
+    guard case let .failure(error) = self else {
+      return nil
+    }
+    
+    return error
+  }
+
 }
 
 public extension BrightDigitSiteCommand {
@@ -117,7 +146,7 @@ public extension BrightDigitSiteCommand {
     public var type: SiteImportType = .wordpress
 
     @Argument
-    public var directory: String
+    public var directory: String?
 
     public init() {}
 
@@ -132,10 +161,44 @@ public extension BrightDigitSiteCommand {
     }
     
     public func mailchimp() throws {
+      var error : Error?
+      let semaphore = DispatchSemaphore(value: 0)
+      mailchimp { caughtError in
+        error = caughtError
+        semaphore.signal()
+      }
+      semaphore.wait()
+      if let error = error {
+        throw error
+      }
+      return
+    }
+    
+    public func mailchimp(_ closure: @escaping (Error?) -> Void) {
+      let decoder = XMLDecoder(trimValueWhitespaces: true)
+      let encoder = YAMLEncoder()
+      let contentPath = Path("/Users/leo/Documents/Projects/brightdigit.com/Content").appendingComponent("newsletters")
       URLSession.shared.dataTask(with: URL(string : "https://us12.campaign-archive.com/feed?u=cb3bba007ed171091f55c47f0&id=584d0d5c40")!) { data, _, error in
         let dataResult = Result(success: data, failure: error, otherwise: BrightDigitError.unknown)
+        let rssFeed = dataResult.flatMap{ try decoder.decode(RSS.self, from: $0) }
+        let items = rssFeed.map{ $0.channel.items }
+        let posts = items.mapEach { item -> (String, Post) in
+          let spec = Specs(title: item.title ,date: item.date, description: item.description, tags: [])
+          let markdown = try? markdown(from: item.description)
+          let post = Post(frontmatter: spec, content: markdown ?? "")
+          return (item.link.lastPathComponent, post)
+        }.map(Dictionary.init(uniqueKeysWithValues:))
         
-      }
+        let error = posts.flatMap{ posts in
+          for (name, post) in posts {
+            let path = contentPath.appendingComponent(name)
+            try post.writeTo(path, using: encoder)
+          }
+        }.error()
+        
+        closure(error)
+        
+      }.resume()
     
     }
     
@@ -146,6 +209,9 @@ public extension BrightDigitSiteCommand {
       return try shellOut(to: "/usr/local/bin/pandoc", arguments: ["-f html -t markdown", temporaryFileURL.path])
     }
     public func wordpress() throws {
+      guard let directory = directory else {
+        return
+      }
       let directoryURL = URL(fileURLWithPath: directory)
 
       guard let enumerator = FileManager.default.enumerator(at: directoryURL, includingPropertiesForKeys: nil) else {
