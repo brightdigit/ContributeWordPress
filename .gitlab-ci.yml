@@ -4,14 +4,10 @@ stages:
 
 build focal 5_3:
   stage: build
-  tags: 
-    - focal
   image: swift:5.3-focal
   script:
     - export ARCH_PREFIX=$(uname -i)
-    - swift build -v
-    - swift run swiftformat --lint .
-    - swift run swiftlint
+    - swift build
     - swift test --enable-test-discovery --enable-code-coverage    
     - llvm-cov export -format="lcov" .build/${ARCH_PREFIX}-unknown-linux-gnu/debug/BrightDigitPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lco
     - bash <(curl https://codecov.io/bash) -F gitlab -F focal -F swift5_3

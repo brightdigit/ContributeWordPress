@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ol class="logo">
+          <li>
+            <a href="/">
+              <img src="/media/brightdigit-name.svg"/>
+            </a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/services">Services</a>
+          </li>
+          <li>
+            <a href="/products">Products</a>
+          </li>
+          <li>
+            <a href="/articles">Articles</a>
+          </li>
+          <li>
+            <a href="/development">Development</a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/podcast">Podcast</a>
+          </li>
+          <li>
+            <a href="/newsletters">Newsletters</a>
+          </li>
+          <li>
+            <a href="/sponsorship">Sponsorship</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ol>
+        <ol class="more">
+          <li>
+            <a href="/#menu">Menu</a>
+          </li>
+        </ol>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <div class="content"><p>Just as <a href="https://learningswift.brightdigit.com/swift-4-2-random-changes-wwdc-2018/">Swift 4.2 brought some interesting features</a>, the release of Swift 5.0 will bring several as well such as <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0200-raw-string-escaping.md">raw strings</a>, <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0216-dynamic-callable.md">dynamically callable types</a>, and <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0218-introduce-compact-map-values.md">compactMapValues for dictionaries</a>. Of course, the biggest feature of Swift 5.0 is <a href="https://swift.org/abi-stability/">ABI stability</a>.</p><p>The good news is you can try out these new features <strong>now</strong> by using the Swift 5.0 development branch.</p><h2>Using Custom Toolsets</h2><p>If you use the swift package manager, I highly recommend taking a look at the <a href="https://github.com/kylef/swiftenv/">swiftenv project</a> by Kyle Fuller. As a frequent user of <em>nvm</em> and <em>rbenv</em> and other tools, this is great. However, Xcode is particular about using different toolchains and development versions of Swift, so it takes a bit of tweaking to get it to work.</p><p>Here's how:</p><ol><li>Download and Install <a href="https://swift.org/download/#snapshots">the Swift 5.0 Development Branch Toolchain.</a></li><li>Create Your Project or Target in Xcode 10.1</li><li>Go to the Top Menu and Select ***Xcode...Toolchains... Swift 5.0 Snapshot...***</li></ol><p>::: {.wp-block-image} <img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/12/Xcode-Toolchain-Menu.png" alt="Xcode Toolchain Menu Item"/>{.wp-image-308} :::</p><p>If you try to compile you will get an error saying no <em>SWIFT</em>VERSION<em> is set. So you try to set the </em>SWIFT<em>VERSION,</em> but 5.0 is not available under <strong><em>Build Settings</em></strong> <strong>and</strong> even if you try to set it manually by editing the <em>.pbxproj, </em>Xcode will say 5.0 is not supported. So now what? Well, you have two options: <strong>Use the <em>Legacy Build System</em></strong> or <strong>hack Xcode program language support.</strong></p><h2>Option #1: Using the Legacy Build System for Swift 5.0</h2><p>To use the <em>Legacy Build System</em> which essentially ignores the <em>SWIFT</em>VERSION*:</p><p>::: {.wp-block-image} <img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/12/Xcode-ProjectSettings-Menu-e1545173707171.png" alt="Xcode Project Settings Menu Item"/>{.wp-image-309} :::</p><ol><li>Go to the Top Menu and Select <strong><em>File...Project Settings</em></strong></li><li>Under <em>Shared</em> <em>Project Settings</em> section select ***Legacy Build System<em>.</em>*</li></ol><p>::: {.wp-block-image} <img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/12/Xcode-ProjectSettings-Window-e1545173841972.png" alt="Xcode Project Settings Window"/>{.wp-image-310} :::</p><p>You should be good to go. However, if you wish to use the <strong><em>New Build System</em></strong>, you'll need to do a bit of tweaking of the Xcode application files.</p><h2>Option #2: Using the New Build System by Hacking Xcode</h2><p>If you wish to use the <strong><em>New Build System</em></strong>, you'll need to edit a <strong><em>.xcspec</em></strong> file inside the Xcode.app. Thanks to <a href="https://forums.swift.org/t/how-to-set-swift-version-5-for-recent-dev-snapshots-in-xcode-build-settings/18692/20">some help from the Swift team</a> here is how:</p><ol><li>In your favorite editor, open the file:</li></ol><pre><code>/<span class="type">Applications</span>/<span class="type">Xcode</span>.<span class="property">app</span>/<span class="type">Contents</span>/<span class="type">PlugIns</span>/<span class="type">Xcode3Core</span>.<span class="property">ideplugin</span>/<span class="type">Contents</span>/<span class="type">SharedSupport</span>/<span class="type">Developer</span>/<span class="type">Library</span>/<span class="type">Xcode</span>/<span class="type">Plug</span>-ins/<span class="type">XCLanguageSupport</span>.<span class="property">xcplugin</span>/<span class="type">Contents</span>/<span class="type">Resources</span>/<span class="type">Swift</span>.<span class="property">xcspec</span>
+</code></pre><ol start="2"><li>Find the section with SupportedLanguage</li></ol><pre><code>         <span class="type">SupportedLanguageVersions</span> = (
+ 
+            <span class="number">3.0</span>,
+            
+            <span class="number">4.0</span>,
+
+            <span class="number">4.2</span>
+        );
+        
+        <span class="type">LanguageVersionDisplayNames</span> = {
+            
+            <span class="number">3.0</span> = <span class="string">"Swift 3"</span>;
+            
+            <span class="number">4.0</span> = <span class="string">"Swift 4"</span>;
+            
+            <span class="number">4.2</span> = <span class="string">"Swift 4.2"</span>;
+        };
+</code></pre><ol start="3"><li>Add 5.0 as a <strong><em>SupportedLanguageVersions</em></strong> and add a label for it under <strong><em>LanguageVersionDisplayNames</em></strong> (such as "5.0-dev")</li></ol><pre><code>         <span class="type">SupportedLanguageVersions</span> = (
+ 
+            <span class="number">3.0</span>,
+            
+            <span class="number">4.0</span>,
+
+            <span class="number">4.2</span>,
+
+            <span class="number">5.0</span>
+        
+        );
+        
+        <span class="type">LanguageVersionDisplayNames</span> = {
+            
+            <span class="number">3.0</span> = <span class="string">"Swift 3"</span>;
+            
+            <span class="number">4.0</span> = <span class="string">"Swift 4"</span>;
+            
+            <span class="number">4.2</span> = <span class="string">"Swift 4.2"</span>;
+            
+            <span class="number">5.0</span> = <span class="string">"Swift 5.0-dev"</span>;
+        
+        };
+</code></pre><p>Now all you'll need to do is select the SWIFT<em>VERSION as the display name you have set up for Swift 5.0. Now you are using both the **</em>New Build System<strong>* and </strong>Swift 5.0.**</p><p>For more details on Swift 5.0 and its features, <a href="https://www.hackingwithswift.com/articles/126/whats-new-in-swift-5-0">check out this article from Paul Hudson</a> and stay tuned for more articles here on how to take advantage of Swift 5.0 and its new features.</p></div>
+        <span>Tagged with: </span>
+      </article>
+    </main>
+    <footer>
+      <div class="address">5859 W Saginaw #182 Lansing MI 48917</div>
+      <div class="copyright">© Bright Digit, LLC 2021</div>
+    </footer>
+  </body>
+</html>

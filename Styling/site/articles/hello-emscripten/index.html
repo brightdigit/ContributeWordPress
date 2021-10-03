@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ol class="logo">
+          <li>
+            <a href="/">
+              <img src="/media/brightdigit-name.svg"/>
+            </a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/services">Services</a>
+          </li>
+          <li>
+            <a href="/products">Products</a>
+          </li>
+          <li>
+            <a href="/articles">Articles</a>
+          </li>
+          <li>
+            <a href="/development">Development</a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/podcast">Podcast</a>
+          </li>
+          <li>
+            <a href="/newsletters">Newsletters</a>
+          </li>
+          <li>
+            <a href="/sponsorship">Sponsorship</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ol>
+        <ol class="more">
+          <li>
+            <a href="/#menu">Menu</a>
+          </li>
+        </ol>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <div class="content"><p>It has been often said JavaScript is the assembly language of the web, then I suppose that would make <a href="https://github.com/kripken/emscripten/wiki">emscripten</a> a compiler(or transcompiler). <a href="https://github.com/kripken/emscripten/wiki">Emscripten</a> is powerful tool which is able to take compiled c/c++ byte code and translate it to JavaScript. []{#more}[]{#more-758}Right now I am working on taking the <a href="https://code.google.com/p/game-music-emu/">game music emulator library</a> and <a href="https://github.com/leogdion/gmemujs">making a JavaScript library</a> to play <a href="http://en.wikipedia.org/wiki/NES_Sound_Format">nsf (NES Sound Format)</a>and other console music files playable on the browser. Let's take a basic look at how to compile a JavaScript library from c/c++ code with our old friend "hello world".</p><h1>Requirements and Components</h1><p>First let's look at the requirements:</p><h2>Requirements</h2><p><a href="http://nodejs.org/">NodeJS</a> : for building the project, this should be easy to install. Just follow the instructions on the website.</p><p><a href="https://github.com/kripken/emscripten">Emscripten</a> : for compiling the c+ code to JavaScript. On my mac using the portable installation this seemed to work fine. On windows, the nsis package worked well. Just make sure to add the paths to the binary executables (ie emcc) ::: {.well} On Windows XP, I had to install <a href="http://java.com/en/">Java</a> and the <a href="http://www.microsoft.com/en-us/download/details.aspx?id=5555">Visual C++ 2010 Redistributable Package</a>. You may need to install it for Windows Vista, 7, and 8. :::</p><p><a href="http://gruntjs.com/">Grunt</a></p><p>: once you've installed nodejs and npm, install the grunt command globally using npm</p><p>npm -g install grunt</p><h2>Components</h2><p>package.json : for what node modules that need to be installed</p><p>Gruntfile.js : the "make" file</p><p>public : web site with the sample</p><p>src/c/hello-emscripten.c : sample c code</p><p>src/js/hello-emscripten.js : sample js code to interface with the c code</p><h1>Transcompiling</h1><p>The c code in this case would be for a static library. In order to compile the c code to JavaScript, we simply run:</p><p>emcc src/c/hello-emscripten.c</p><p>This will give a map file and a usable JavaScript file. The JavaScript file a.out.js contains a global Module you can then access to call the c methods. However you need the expose the methods you would like to call. In this case we use:</p><p>emcc -s EXPORTED<em>FUNCTIONS=['</em>hello_world'] src/c/hello-emscripten.c</p><p>The other arguments which are passed include optimizations and cleaning warnings:</p><p>emcc -s EXPORTED<em>FUNCTIONS=['</em>hello_world'] -O2 -o tmp/hello-emscripten.js  -Wno-deprecated -Qunused-arguments -Wno-logical-op-parentheses src/c/hello-emscripten.c</p><p>For more details on options, look at the documentation <a href="https://github.com/kripken/emscripten/blob/master/src/settings.js">here:</a></p><https://github.com/kripken/emscripten/blob/master/src/settings.js>
+
+# Interfacing with the code
+
+The a.out.js gives you a variable called **Module**. All Modules have
+four methods which are mainly used:
+
+`ccall(functionName, jsReturnType, [jsparameterTypes], [args])`
+:   Calls the encapsulated c method. The JavaScript type is either
+    number or string.
+
+`cwrap(functionName, jsReturnType, [jsparameterTypes])`
+:   Creates a JavaScript method, which can be called directory. It is to
+    [bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
+    what ccall is to
+    [call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call).
+
+`getValue(ptr, type)`
+:   Gets the value based the pointer.
+
+`setValue(ptr, value, type)`
+:   Sets the value based on the pointer. The type must be one of
+    i8,i16,i32,i64,float,double or a pointer type like i8 *(or just* )
+
+With our c function looking like:
+
+    char* hello_world () {
+     return "hello world!";
+    }
+
+We\'ll just use cwrap to create an ordinary JavaScript to call and
+return a string.
+
+    return {
+      hello : Module.cwrap('hello_world', 'string', [])
+    };
+
+Now all we have to do is call `hello_emscripten.hello()` to return the
+string. Go [here](http://leogdion.github.io/hello-emscripten/) to look
+at the resulting demo. To build the project your self, install the node
+modules required and run grunt.
+
+    npm install
+    grunt
+
+# Conclusion
+
+Emscripten is powerful tool for taking complex c code and running it in
+the browser. There are already [hundreds of
+projects](https://github.com/kripken/emscripten/wiki#demos) doing the
+same thing. Next time I will show how to the
+[gmemujs](https://github.com/leogdion/gmemujs) works in playing old
+video game music using
+[emscripten](https://github.com/kripken/emscripten),
+[gmemu](https://code.google.com/p/game-music-emu/), and the [Web Audio
+API](https://developer.mozilla.org/en-US/docs/Web_Audio_API).</div>
+        <span>Tagged with: </span>
+      </article>
+    </main>
+    <footer>
+      <div class="address">5859 W Saginaw #182 Lansing MI 48917</div>
+      <div class="copyright">© Bright Digit, LLC 2021</div>
+    </footer>
+  </body>
+</html>

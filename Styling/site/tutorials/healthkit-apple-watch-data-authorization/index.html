@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ol class="logo">
+          <li>
+            <a href="/">
+              <img src="/media/brightdigit-name.svg"/>
+            </a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/services">Services</a>
+          </li>
+          <li>
+            <a href="/products">Products</a>
+          </li>
+          <li>
+            <a href="/articles">Articles</a>
+          </li>
+          <li>
+            <a href="/development">Development</a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/podcast">Podcast</a>
+          </li>
+          <li>
+            <a href="/newsletters">Newsletters</a>
+          </li>
+          <li>
+            <a href="/sponsorship">Sponsorship</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ol>
+        <ol class="more">
+          <li>
+            <a href="/#menu">Menu</a>
+          </li>
+        </ol>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <div class="content"><p>The Apple Watch has become the premier device for health, fitness, and workout tracking. So now that <a href="https://learningswift.brightdigit.com/healthkit-getting-started/">authorization is setup on the iPhone,</a> let's take a look at how get authorization setup on the Apple Watch.</p><h2>Authorization on the Apple Watch</h2><p>Just as on the iPhone, the code will be pretty much identical on the Apple Watch when it comes to asking for authorization:</p><p>if HKHealthStore.isHealthDataAvailable() { let healthStore = HKHealthStore() let heartRateQuantityType = HKObjectType.quantityType(forIdentifier: .heartRate)! let allTypes = Set([HKObjectType.workoutType(), heartRateQuantityType ]) healthStore.requestAuthorization(toShare: nil, read: allTypes) { (result, error) in if let error = error { // deal with the error return } guard result else { // deal with the failed request return } // begin any necessary work if needed } }</p><p><strong>However, the Apple Watch does not contain a way for the user to grant access.</strong> So what this method will do is prompt the user to go to their iPhone and grant access. This will be through the Health app as the user did previously on the iPhone example. <img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/06/Simulator-Screen-Shot-Apple-Watch-Series-3-38mm-2018-06-08-at-14.36.24.png"/>{.size-full .wp-image-76 .aligncenter width="272" height="486"} On the iPhone app, a method will need to be implemented in order to listen to this request and prompt the user with the authorization request. This is where</p><p><code>AppDelegate.applicationShouldRequestHealthAuthorization</code> comes in. On the <code>AppDelegate</code>. implement <a href="https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622998-applicationshouldrequesthealthau"><code>applicationShouldRequestHealthAuthorization</code></a> and call <a href="https://developer.apple.com/documentation/healthkit/hkhealthstore/1614153-handleauthorizationforextension"><code>HKHealthKit.handleAuthorizationForExtension</code></a>.</p><p>@UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {</p><p>...</p><p>func applicationShouldRequestHealthAuthorization(_ application: UIApplication) { let healthStore = HKHealthStore() healthStore.handleAuthorizationForExtension { (success, error) -&gt; Void in<br> } } }</p><p>Now whenever the request for authorization is made on the Apple Watch and with new <code>HKObjectType</code> or <code>HKSampleType</code> objects (such as the first time the app is run), the iPhone will prompt the user with the request. [caption id="attachment_89" align="aligncenter" width="640"]<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/06/ezgif.com-gif-maker.gif" alt="iPhone and Apple Watch Simulation of Health Data Authorization"/>{.wp-image-89 .size-full width="640" height="640"} this is what it should look like[/caption] After the prompt is completed by the user, the</p><p><code>requestAuthorization</code> callback on the Apple Watch will be called and from there, the usual code can begin.</p><h2>Conclusion</h2><p>The Apple Watch is a very powerful device for getting health data. To Apple's credit, they are protective of user's data and want to make sure that users are giving that authorization. Since the Apple Watch does not have the UI to grant that authorization, the API requires the Apple Watch to:</p><ul><li>let the user know they need to grant that permission on the iPhone</li><li>prompt the user with the Health authorization dialog on the iPhone</li><li>make the call once the authorization is complete on the iPhone</li><li>handle the result of the authorization from the iPhone on the Apple Watch</li></ul><p>Following these steps correctly and the app can implement a variety of powerful health, workout and fitness features.</p></div>
+        <span>Tagged with: </span>
+      </article>
+    </main>
+    <footer>
+      <div class="address">5859 W Saginaw #182 Lansing MI 48917</div>
+      <div class="copyright">© Bright Digit, LLC 2021</div>
+    </footer>
+  </body>
+</html>
