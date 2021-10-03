@@ -25,7 +25,13 @@ purge: {
       ],
       'serif': ['Cardo', 'ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
     },
-    extend: {},
+    extend: {
+      colors: {
+        bellow: {
+          500: '#f9ed32'
+        },
+      },
+    },
   },
   variants: {
     extend: {},

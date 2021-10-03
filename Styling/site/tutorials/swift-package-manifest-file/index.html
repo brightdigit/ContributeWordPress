@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ol class="logo">
+          <li>
+            <a href="/">
+              <img src="/media/brightdigit-name.svg"/>
+            </a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/services">Services</a>
+          </li>
+          <li>
+            <a href="/products">Products</a>
+          </li>
+          <li>
+            <a href="/articles">Articles</a>
+          </li>
+          <li>
+            <a href="/development">Development</a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/podcast">Podcast</a>
+          </li>
+          <li>
+            <a href="/newsletters">Newsletters</a>
+          </li>
+          <li>
+            <a href="/sponsorship">Sponsorship</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ol>
+        <ol class="more">
+          <li>
+            <a href="/#menu">Menu</a>
+          </li>
+        </ol>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <div class="content"><p><a href="https://learningswift.brightdigit.com/swift-dependency-management-spm/">In the previous article</a>, I talked about why Swift Package Manager has so many advantages over older package managers. In this article we'll talk about getting started:</p><ul><li>using a package in Xcode</li><li>creating a package in Xcode or with the <code>swift</code> command</li><li>how the manifest Package.swift file for your Swift Package works</li></ul><h2>Using a Package in Your App</h2><p>There are two ways to get started using Swift Package Manager for your project in Xcode.</p><img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2021/05/Untitled-17069-1-825x1024.gif"/><p>{.wp-image-1154}</p><img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2021/05/Screen-Shot-2020-10-19-17067-1006x1024.png"/><p>{.wp-image-1155}</p><p>First, you can simply drag the folder into your Xcode project. This is the ideal way, when you are planning on working on the Xcode project while working on its dependent Swift Package. Otherwise, you can add the package dependency within the file menu in Xcode.</p><h2>Creating a Package</h2><p>Xcode also allows you to create a new package. You can do this by going to file new and Swift package to create a package in Xcode.</p><img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2021/05/Screen-Shot-2020-11-02-at-5.23.03-PM-14359.png"/><p>{.wp-image-1157 width="274" height="353"}</p><p>Besides Xcode, you can also create one via the command line as well. Assuming you have Xcode or Swift installed on your machine, you could simply run:</p><pre><code>&gt; mkdir <span class="type">New</span>-<span class="type">Package</span>
+&gt; swift package <span class="keyword">init</span>
+</code></pre><p>By default, it'll use the directory name for the name of your package. Otherwise you can customize the name with the command line option</p><p><code>--name</code>. Additionally you can also specify the type of package you want with the option <code>--type</code>. By default it'll use the library package type. When it creates a library package, it'll create the Package.swift file, the sources directory as well as one for your tests. If you create an executable, it will create a main dot Swift for your executable to run.</p><p>Either Xcode or the Swift command line will create the necessary files and directories to get started.</p><p>In the end, you should have:</p><ul><li>Source directory for your main source code</li><li>Tests directory for your testing suite</li><li>Package.swift, the core of every Swift package</li></ul><h2>Package.swift - Anatomy of a Manifest File</h2><p>The main piece that specifies the configuration of your package is the Package. swift file. Let's take a look at the anatomy of this special file</p><h3>swift tools version</h3><p>At the very top, we see it specifies the Swift tools version this package requires. If you want to support some of the newer features like binary targets or newer operating systems, you're going to have to specify a newer version of Swift. Otherwise you can always use the minimum version required.</p><h3>A Package <em>Instance</em></h3><p>At its core, the <code>Package.swift</code> is a Swift file and therefore contains Swift code for describing the package. Therefore you need to import the PackageDescription module, which is built in.</p><p>From here we can begin to describe the package by creating an instance of a package object inside. The first required parameter for our package is the name followed by our package's dependencies.</p><h3>Defining Dependencies</h3><p>Now let's talk about how to dependencies are defined in a Package.swift file. Typically there 3 components:</p><ul><li>the name of the dependency</li><li>The git url or local path of the dependency - if you intend to work on the dependencies simultaneously you'll need to use a local path</li><li>the version number or some sort of git reference</li></ul><p>In all cases some sort version is required for all dependencies. There are multiple ways to specify the version you want. Most involve the semver numbering system.</p><p>::: {.wp-block-image} <img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2021/05/Untitled-2-1024x512.png" alt="Components of SemVer"/>{.wp-image-1160} :::</p><h4>How SemVer in Dependencies work</h4><p>There are typically three components: major, minor, and patch. For instance with the string "4.0.1":</p><ul><li>Major is 4</li><li>Minor is 0</li><li>Patch is 1</li></ul><p>In most cases, you'll want to just use the semver string which is automatically resolved up to the next major version based on the repository's available tags.</p><p>If you wish to be more specific about the version you wish to use, there are enumerations available to you to do just that.</p><ul><li><code>upToNextMajor</code> is which equivalent to just using a string will search for tags from the version to the next major version, so 4.0.1 resolves from 4.0.1 to 5.0.0 but not including</li><li><code>upToNextMinor</code> will search for tags from the version to the next minor version, so 4.0.1 resolves from 4.0.1 to 4.1.0 but not including</li><li><code>exact</code> will search for tags with the exact version number only</li></ul><p>Not only can use a semver string but you can specify a branch or revision hash as well. However in most cases, the practice is to use just the semver string which is equivalent to <code>upToNextMajor</code>.</p><h3>Targets and Products</h3><p>Targets are the building blocks of your Swift package. Your targets will reference a set of Swift files which will be compiled into a module or test suite. There are four targets you should know about:</p><ul><li><code>target</code> - a set of code to be used in a library (or main target in executable if swift-tools-version 5.3 or older)</li><li><code>testTarget</code> - a set of code to be used in a test suite</li><li><code>binaryTarget</code> - an compiled binary XCFramework</li><li><code>executableTarget</code> - a set of code to be used as the main target (i.e. <code>main</code> entry point) in a executable for swift tools version 5.4 and newer</li></ul><p>Targets can refers to other targets in the same package as dependencies. Additionally with our dependencies defined in this file, we can access their products as well. Specifically, we can refer to the products of those dependencies in our target's dependencies. Once that's done, we can access that dependency's API in our code. In most cases you can simply use a string referring to product name of the dependency. However in same instance you need to specify the source package using the static func <code>Target.Dependency.product</code>.</p><p>If we want our executable or library available outside of the package, we need to define products in our Package.swift file as well. In this case, there are only two types of products: executable or library. Both require parameters for name and targets it contains. Additionally with libraries you can specify whether your library should static or dynamically linked.</p><p>To clarify the differences between products and targets:</p><ul><li>Targets are internal; Products are external (i.e. available to anyone)</li><li>Targets can depend on other targets; products can contain multiple targets; targets can depend on dependency products</li></ul><p>Typically you'll have one product per target as well as a test target for your product. In more complex packages such as <a href="https://github.com/apple/swift-package-manager/blob/main/Package.swift">the SPM package itself</a>, you can see how multiple targets are organized and used.</p><h2>More Resources</h2><p>If you are interested in learning more about the <em>Package.swift</em> file, check these resources out:</p><ul><li><a href="https://theswiftdev.com/the-swift-package-manifest-file/"><strong>The Swift package manifest file</strong> - Tibor Bödecs</a></li><li><a href="https://github.com/apple/swift-package-manager/tree/main/Documentation"><strong>SPM Repo Documentation</strong></a></li><li><a href="https://swift.org/package-manager/"><strong>Swift.org SPM Documentation</strong></a></li><li><a href="https://developer.apple.com/documentation/swift_packages"><strong>Apple SPM Documentation</strong></a></li></ul><h2>Xcode Not Required</h2><p>One important thing to note is that you do not need to open Xcode to compile the Swift package. Obviously there are benefits to using Xcode for editing your Swift code. However you can use any text editor to create and edit your files. (Or use the terminal to create your file via</p><p><code>touch FileName.swift</code>. To compile the package you can simply type in the terminal: <code>swift build</code>.</p><p>As a matter of factor you don't even need a Mac. <a href="https://learningswift.brightdigit.com/swift-package-continuous-integration-guide/">In the next article, we'll talk about some ways to automate and verify your build with CI and git hook integration.</a></p></div>
+        <span>Tagged with: </span>
+      </article>
+    </main>
+    <footer>
+      <div class="address">5859 W Saginaw #182 Lansing MI 48917</div>
+      <div class="copyright">© Bright Digit, LLC 2021</div>
+    </footer>
+  </body>
+</html>

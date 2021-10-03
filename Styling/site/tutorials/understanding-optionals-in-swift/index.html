@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ol class="logo">
+          <li>
+            <a href="/">
+              <img src="/media/brightdigit-name.svg"/>
+            </a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/services">Services</a>
+          </li>
+          <li>
+            <a href="/products">Products</a>
+          </li>
+          <li>
+            <a href="/articles">Articles</a>
+          </li>
+          <li>
+            <a href="/development">Development</a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/podcast">Podcast</a>
+          </li>
+          <li>
+            <a href="/newsletters">Newsletters</a>
+          </li>
+          <li>
+            <a href="/sponsorship">Sponsorship</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ol>
+        <ol class="more">
+          <li>
+            <a href="/#menu">Menu</a>
+          </li>
+        </ol>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <div class="content"><p>Optionals are a fairly unique concept in Swift. While Objective-C used pointers which could be nil and C# had a Nullable generics type for value types, Swift has an inherent syntax for optionals as well as wrapping and unwrapping them.</p><h2>What is an Null?</h2><p>In Objective-C and classic C-style languages, we had pointers for complex data structures. A pointer is really a number pointing to a virtual address in memory. Where is that Foo object? Well your Foo pointer says its at 0x1A45612BE S. Main Street. Great! However sometimes the pointer call be nil or null or zero. And when you call a function or method, it is a way of answering a question and saying something does not exist as opposed to saying does exist and here is its information.</p><hr><p>Hey could you tell me about my iPhone? Yes it is a iPhone 8 Plus Black with 256 GB. <em>Or</em> You don't have one. Null!</p><hr><p>Now the question is, how do we do null or nil while abstracting away pointers in our programming language.</p><h2>What is Optional?</h2><p>By now, many programming languages have shifted away from using pointers and have simply abstracted them away. At this point, a programmer doesn't really care about what specific address a piece of information is stored at? Typically you want the actual info. The problem then is <strong>how can you signify null while still containing that information and not using pointers. </strong> Most languages assume all objects can be null and should be checked programmatically. However a language like C# doesn't do this with value types (Int, Float, Char, Structs, etc...). It assumes all value type objects are in fact not null and later created Nullable struct to contain value types as well as a boolean to tell whether the object is null or not. In many ways Swift is doing something similar and taking it to the next level. <strong>Swift assumes all objects are not nil and if anything could be it would contained in its own Optional (enumeration) container.</strong> This means any parameter, return value, property, etc... needs to be noted as Optional if that value could ever be nil. Just as C# has a syntax short hand for the Nullable type, Swift does as well using the question mark '?'. Additionally Swift also has a syntax for wrapping and unwrapping these variables as well.</p><h2>Optional Chaining</h2><p>In Swift, you can easily specify that a variable is optional by using the question mark: <code>let x: Foo?</code> In this case, <code>x</code> could contain a Foo or not. What this is called is <strong>wrapping</strong> your variable as optional. So let's say we create a struct for an iOS device:</p><p>struct Device {</p><p>let model: String</p><p>let storage: Int</p><p>let color: UIColor</p><p>}</p><p>Great! Now let's add a static property to get the device information.</p><p>extension struct Device {</p><p>static var current : Device? {</p><p>/// code here</p><p>/// could return nil if the device is not iOS</p><p>}</p><p>}</p><p>Notice this returns an <em>optional</em>. So if you run this code on your Mac or perhaps on Linux, you will get nil. Now, what is nice about Swift is that we have the ability to use optional chaining to get properties. <strong>By using the question mark suffix on a variable, we can safely pull properties from the optional.</strong> Since the variable is optional, that optional gets carried to its properties:</p><p>let model : String? = Device.current?.model</p><p>This optional chaining can be carried through as well. So if the model property were something like this:</p><p>struct Model {</p><p>let frontCameraResolution : CGSize?</p><p>//...</p><p>}</p><p>Then you would do something like this:</p><p>let frontCameraResolution : CGSize? = Device.current?.model?.frontCameraResolution</p><p>So whether you are on a Mac, using Linux, or on an old iPhone with not front-facing camera, your value would be nil. Now it can get tedious many times to use the question mark suffix and perhaps you just need the value if it is there because another method does not take an optional value. In this case you need to unwrap your optional value. <strong>This is where <code>if let</code> and <code>guard let … else</code> statements take over. These provide a safe way to convert your optional to an ordinary value and take care of cases where the optional is nil. This is called conditional unwrapping</strong> The other way and the less safe way is forcible unwrapping and using the exclamation mark.</p><h2>Forcibly Unwrapping</h2><p><strong>Most of the time, it is best to catch instances of nil values and through a better error rather than the default <code>unexpectedly found nil</code> error.</strong> However when you must just force an optional to not be an optional there is a way by using the exclamation mark.</p><p>let model : Model = Device.current!.model</p><p>Now we are using an exclamation mark to force the optional value to be just the value. So if we were to run this on a Mac or Linux, it will crash. <strong>This is typically not recommend. And even if you want it to crash, you may want to do something with that info and create a custom error for to display to the user.</strong></p><h2>Implicitly Unwrapped Optionals</h2><p>Just as a question mark is used for optional chaining, that is chaining an optional value to its properties, as well as declaring a variable to be optional, you can declare a variable as an <strong>Implicitly Unwrapped Optional.</strong> For instance:</p><p>let model : Model! = Device.current?.model // no crash here</p><p>let frontCameraResolution : CGSize = model.frontCameraResolution // will crash here if nil model</p><p>What this means is that <strong>the <code>model</code> variable will be treated as not optional and will not crash here but rather if <code>model</code> is nil and you access a property on it, it will crash.</strong> There is one main case where you will see this: properties which can't be set at initialization but will be set very soon after. The classic example for this is IBOutlets and subviews.</p><p>@IBOutlet weak var subview: UIView!</p><p>If you have a UIViewController which contains a subview property that you've linked in a storyboard and that property cannot be set at initialization but needs to be set afterwards in <code>.viewDidLoad()</code>. You can safely assume that variable will be setup since most of your code will be after <code>.viewDidLoad()</code>. So rather than accessing properties with</p><p><code>self.subview?.property</code> you can access the property by simply typing</p><p><code>self.subview.property</code>.</p><h2>Conclusion</h2><p>Swift emphasizes type-safety and Optional are a great example. Getting away from the pointers used in Objective-C, Swift uses optionals to signify whether a value could be nil. The question mark is used for optional chaining to ensure that an optional's properties remain type-safe and returns optional for those properties. Rarely you may want to assume that a optional is never nil, then you have the option to use the exclamation mark to forcible unwrap optionals. You can also treat optionals as unwrapped if they never be nil shortly after initialization such as storyboard linked subview. To do this give the property or variable a exclamation suffix on its type. Ultimately optionals provide a convenient way to keep your code both clean and efficient while being type-safe.</p></div>
+        <span>Tagged with: </span>
+      </article>
+    </main>
+    <footer>
+      <div class="address">5859 W Saginaw #182 Lansing MI 48917</div>
+      <div class="copyright">© Bright Digit, LLC 2021</div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ol class="logo">
+          <li>
+            <a href="/">
+              <img src="/media/brightdigit-name.svg"/>
+            </a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/services">Services</a>
+          </li>
+          <li>
+            <a href="/products">Products</a>
+          </li>
+          <li>
+            <a href="/articles">Articles</a>
+          </li>
+          <li>
+            <a href="/development">Development</a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/podcast">Podcast</a>
+          </li>
+          <li>
+            <a href="/newsletters">Newsletters</a>
+          </li>
+          <li>
+            <a href="/sponsorship">Sponsorship</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ol>
+        <ol class="more">
+          <li>
+            <a href="/#menu">Menu</a>
+          </li>
+        </ol>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <div class="content"><p>Asset Catalogs are the key component in Xcode project for storing colors, sprites, metadata, and of course graphics and managing those graphics can be a challenge. Today we are going to talk about using app icon templates in Sketch and Photoshop.</p><h2>Using App Icon Templates</h2><p>App Icon templates offer a simple and predictable way to create your assets while using graphics applications designers are familiar with. We are going to look at the top two graphic editors: <strong>Sketch</strong> and <strong>Photoshop</strong>.</p><h3>Sketch</h3><p>::: {.wp-block-embed_<em>wrapper} https://youtu.be/4Um</em>zRh4ENY :::</p><p>In the last few years, Sketch has grown to be one of the leading applications used by graphic designers especially in the area of mobile application development. Luckily they already supply an app icon template to use.</p><ol><li>Run your Sketch Application and the launching dialog should appear showing various templates built into Sketch.</li><li>Select the <strong>iOS App Icon</strong> template. Now, you should see the template with various sizes of the app icon.</li><li>Go ahead and edit the largest icon. As you edit the large icon, you changes should be reflected in your other app icon sizes.</li><li>When completed, go to the top menu and select <strong>Export</strong>. In the Export dialog, select all the sizes you wish to export and then choose the folder you wish to export to.</li></ol><p>If you go to that folder, you should see all your icon sizes. From there you can drag the files into your Asset catalog App Icon slots.</p><p>Sketch offers a very simple way to export the set of graphics. Obviously, each time an edit needs to be made, Sketch will need to be accessed and the multiple files will need to be updated in the repo.</p><h3>Photoshop</h3><p>::: {.wp-block-embed__wrapper} https://youtu.be/yr6KsuP5j5A :::</p><p>Photoshop has been a well established graphics editor for over two decades. However it isn't quite as targeted toward application development as Sketch so it isn't geared as much towards that purpose.</p><p>Kindly enough Apple offers us UI templates and widget for Photoshop (as well as constantly updated for Sketch) through their <a href="https://developer.apple.com/design/resources/">Apple Design Resources page</a>.</p><ol><li>Go to the <a href="https://developer.apple.com/design/resources/">Apple Design Resources page</a> and download the template for the OS you will be building for. In this case we will be using the iOS 12 version. **Please note - these downloads are quite large so make sure to do this ahead of time.**</li><li>Unzip the template collection, go to the <em>Production Templates</em> folder. We'll be using the standard <em>Template-AppIcons-iOS.psd</em> file. Open that psd file, opening Photoshop.</li><li>Make sure we are generating image assets on save. Go to File...Generate...Image Assets and make sure it is checked.</li><li>Go to your layers window and double click the layer named icon. This is the layer you will be editing directly and will be carried through to the other app icon sizes.</li><li>Go to the folder containing the psd file you have opened. You should see a folder with the same name but including the suffix <em>-assets</em>. In there you should see all the icon sizes exported from the template.</li></ol><p>Photoshop is the more established application but also less focused on UI and App Icon development. The templates can be quite large and even more cumbersome to open each time and edit can be made.</p><p>Ideally, we'd like to simply edit one file which can be included in our repo and automatically generated on the build. That's where building a bash script to run on the build would be helpful.</p></div>
+        <span>Tagged with: </span>
+      </article>
+    </main>
+    <footer>
+      <div class="address">5859 W Saginaw #182 Lansing MI 48917</div>
+      <div class="copyright">© Bright Digit, LLC 2021</div>
+    </footer>
+  </body>
+</html>

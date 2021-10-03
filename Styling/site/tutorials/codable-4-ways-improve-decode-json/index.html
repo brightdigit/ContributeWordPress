@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ol class="logo">
+          <li>
+            <a href="/">
+              <img src="/media/brightdigit-name.svg"/>
+            </a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/services">Services</a>
+          </li>
+          <li>
+            <a href="/products">Products</a>
+          </li>
+          <li>
+            <a href="/articles">Articles</a>
+          </li>
+          <li>
+            <a href="/development">Development</a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/podcast">Podcast</a>
+          </li>
+          <li>
+            <a href="/newsletters">Newsletters</a>
+          </li>
+          <li>
+            <a href="/sponsorship">Sponsorship</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ol>
+        <ol class="more">
+          <li>
+            <a href="/#menu">Menu</a>
+          </li>
+        </ol>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <div class="content"><p>Codable, introduced in Swift 4, provides a convenient and easy way to encode and decode JSON. <strong>However, not everything works out of the box.</strong></p><p>For instance, let's look at this <a href="https://github.com/brightdigit/advanced-swift-codable/blob/master/advanced-swift-codable.playground/Resources/twitter.json">JSON file from Twitter</a>. As a result of the way the JSON decoder works, we see:</p><ul><li>**Quoted and Standard Tweets use similar but not exactly the same fields.**</li><li>**Keys which get translated to property names don't follow Swift conventions.**</li><li><strong>Dates are not in the standard accepted format.</strong></li><li><strong>Colors are not in a format accepted by any Color class</strong> (UIColor, NSColor, etc...)</li></ul><p>As a result of this, we are going to learn how to setup your Codable types for some of those special cases. Specifically, we are going to look at:</p><ul><li><a href="#protocols-with-codable"><strong>Using Protocols with Codable types</strong></a></li><li><a href="#custom-property-names"><strong>Different Property Names and Keys</strong></a></li><li><a href="#custom-property-values"><strong>Dates in Property Values</strong></a></li><li><a href="#custom-decoding"><strong>Property Values for Custom Types</strong></a></li></ul><p>To follow along you can look at <a href="https://github.com/brightdigit/advanced-swift-codable">the Xcode playground for this article here at GitHub.</a></p><h2>How JSONDecoder works</h2><p>These are basic rules for how the JSONDecoder converts JSON into a structured type:</p><ol><li>Property names are converted as is.</li><li>Simple property values by default are converted to <code>String</code>, <code>Int</code>, or <code>Double</code></li><li>Property values which follow the correct format may be decoded into <code>URL</code>, <code>Data</code>, or <code>Date</code>.</li><li>Any property value may be assumed to be <code>Optional</code></li><li>Square bracket <code>[]</code> values are converted to <code>Array</code></li><li>Curly brackets <code>{}</code> values are convert to <code>Dictionary</code> or a custom type.</li><li>All types which need to be decoded need to implement the Decodable protocol. Likewise, types which need to be encoded need to implement the Encodable protocol. If the type needs to be both decoded and encoded can simply implement Codable.</li></ol><p>In this case, we'll be looking at the <a href="https://github.com/brightdigit/advanced-swift-codable/blob/master/advanced-swift-codable.playground/Resources/twitter.json">Twitter JSON data</a> returned for a tweet. Therefore, <strong>the first thing we are going to do is simply create some basic structures for each type of data returned</strong>. As a result, you can look at <a href="https://github.com/brightdigit/advanced-swift-codable/tree/step-1">the first step of working decoding here on this branch of the repo</a>.</p><p>Even if the data is similar, we create separate structs in order to allow more flexibility. However, that does not mean we can't use protocols in order simplify the consumption of those types in functions.</p><p>::: {.wp-block-image} <img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/02/401od83ke6o-1024x680.jpg"/>{.wp-image-458 width="512" height="340"} :::</p><h2>Using Protocols with Codable {#protocols-with-codable}</h2><p>For instance, in the Twitter API, the notion of a tweet is used throughout. As an example, their JSON has a main tweet as well as <em>quoted tweets</em>. Therefore, one might be inclined to use the same structure for both. However, a better approach is two separate structures:</p><pre><code><span class="keyword">public struct</span> Tweet : <span class="type">Codable</span> {
+      <span class="keyword">public let</span> created_at : <span class="type">Date</span>
+      <span class="keyword">public let</span> id : <span class="type">Int</span>
+      <span class="keyword">public let</span> full_text : <span class="type">String</span>
+      <span class="keyword">public let</span> display_text_range : [<span class="type">Int</span>]
+      <span class="keyword">public let</span> entities : <span class="type">TweetEntities</span>
+      <span class="keyword">public let</span> source : <span class="type">String</span>
+      <span class="keyword">public let</span> in_reply_to_status_id : <span class="type">Int</span>?
+      <span class="keyword">public let</span> in_reply_to_user_id : <span class="type">Int</span>?
+      <span class="keyword">public let</span> in_reply_to_screen_name : <span class="type">String</span>
+      <span class="keyword">public let</span> user : <span class="type">TweetUser</span>
+      <span class="keyword">public let</span> quoted_status : <span class="type">QuotedTweet</span>?
+      <span class="keyword">public let</span> is_quote_status : <span class="type">Bool</span>
+      <span class="keyword">public let</span> retweet_count : <span class="type">Int</span>
+      <span class="keyword">public let</span> favorite_count : <span class="type">Int</span>
+      <span class="keyword">public let</span> favorited : <span class="type">Bool</span>
+      <span class="keyword">public let</span> retweeted : <span class="type">Bool</span>
+      <span class="keyword">public let</span> possibly_sensitive : <span class="type">Bool</span>
+      <span class="keyword">public let</span> possibly_sensitive_appealable : <span class="type">Bool</span>
+      <span class="keyword">public let</span> lang : <span class="type">String</span>
+      }
+
+      <span class="keyword">public struct</span> QuotedTweet : <span class="type">Codable</span> {
+      <span class="keyword">public let</span> created_at : <span class="type">Date</span>
+      <span class="keyword">public let</span> id : <span class="type">Int</span>
+      <span class="keyword">public let</span> full_text : <span class="type">String</span>
+      <span class="keyword">public let</span> display_text_range : [<span class="type">Int</span>]
+      <span class="keyword">public let</span> entities : <span class="type">TweetEntities</span>
+      <span class="keyword">public let</span> user : <span class="type">TweetUser</span>
+      <span class="keyword">public let</span> source : <span class="type">String</span>
+      <span class="keyword">public let</span> extended_entities : <span class="type">TweetEntities</span>
+      <span class="keyword">public let</span> is_quote_status : <span class="type">Bool</span>
+      <span class="keyword">public let</span> retweet_count : <span class="type">Int</span>
+      <span class="keyword">public let</span> favorite_count : <span class="type">Int</span>
+      <span class="keyword">public let</span> favorited : <span class="type">Bool</span>
+      <span class="keyword">public let</span> retweeted : <span class="type">Bool</span>
+      <span class="keyword">public let</span> possibly_sensitive : <span class="type">Bool</span>
+      <span class="keyword">public let</span> possibly_sensitive_appealable : <span class="type">Bool</span>
+      <span class="keyword">public let</span> lang : <span class="type">String</span>
+      }
+</code></pre><p><strong>Therefore, this means duplicated fields. However, it also allows for better flexibility and easier JSON decoding</strong>. On the other hand, we can simplify these types when used as parameters in functions. For instance, let's say we need to print the tweet out:</p><pre><code><span class="keyword">func</span> printTweet (<span class="keyword">_</span> tweet: <span class="type">Tweet</span>) {
+      <span class="call">print</span>(tweet.<span class="property">full_text</span>)
+      <span class="keyword">if let</span> quoted_status = tweet.<span class="property">quoted_status</span> {
+      <span class="call">printTweet</span>(quoted_status)
+      }
+      }
+
+      <span class="keyword">func</span> printTweet (<span class="keyword">_</span> tweet: <span class="type">QuotedTweet</span>) {
+      <span class="call">print</span>(<span class="string">"&gt;"</span>,tweet.<span class="property">full_text</span>)
+      }
+</code></pre><p>However, using some basic <em>Protocol-Oriented Programming</em>, we can in fact be optimize this. Firstly, we stub a function which prints out the tweet based on a protocol regardless of whether it is a <em>quoted tweet</em> or not.</p><pre><code><span class="keyword">func</span> printTweet(<span class="keyword">_</span> tweet: <span class="type">TweetProtocol</span>, withQuoteLevel level: <span class="type">Int</span> = <span class="number">0</span>) {
+      <span class="call">print</span>(<span class="type">String</span>(repeating: <span class="string">"&gt;"</span>, count: level),tweet.<span class="property">full_text</span>)
+      <span class="keyword">if let</span> quotedTweet = tweet.<span class="property">quotedTweet</span> {
+      <span class="call">printTweet</span>(quotedTweet, withQuoteLevel: level+<span class="number">1</span>)
+      }
+      }
+</code></pre><p>Consequently, we create the protocol which has the properties we need for the function above.</p><pre><code><span class="keyword">public protocol</span> TweetProtocol {
+      <span class="keyword">var</span> full_text : <span class="type">String</span> { <span class="keyword">get</span> }
+      <span class="keyword">var</span> quotedTweet : <span class="type">TweetProtocol</span>? { <span class="keyword">get</span> }
+      }
+</code></pre><p>Lastly, we implement the protocol for the two types we'll use it for -</p><p><code>Tweet</code> and <code>QuotedTweet</code>:</p><pre><code><span class="keyword">extension</span> <span class="type">Tweet</span> : <span class="type">TweetProtocol</span> {
+      <span class="keyword">public var</span> quotedTweet: <span class="type">TweetProtocol</span>? {
+      <span class="keyword">return self</span>.<span class="property">quoted_status</span>
+      }
+      }
+
+      <span class="keyword">extension</span> <span class="type">QuotedTweet</span> : <span class="type">TweetProtocol</span> {
+      <span class="keyword">public var</span> quotedTweet: <span class="type">TweetProtocol</span>? {
+      <span class="keyword">return nil</span>
+      }
+      }
+</code></pre><p>Now <strong>we have better flexibility to work with Codable while at the same time adding similar functionality using <em>Protocols</em>.</strong> Next, let's cleanup the property names.</p><p>::: {.wp-block-image} <img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/02/hrtdxy5urbu.jpg"/>{width="400" height="267"} :::</p><h2>Custom Property Names</h2><p>One thing you notice about Twitter's JSON is that <strong>they use what's called</strong> <a href="https://en.wikipedia.org/wiki/Snake_case"><strong>snake-case</strong></a> <strong>for combining words in property names. As a result, underscores</strong> <code>_</code> <strong>are used for combining words in JSON keys.</strong> For instance, the property for the full text of a tweet is called <code>full_text</code>. However, <strong>the</strong> <a href="https://swift.org/documentation/api-design-guidelines/#general-conventions"><strong>Swift API design guidelines</strong></a> <strong>recommend using</strong> <a href="https://en.wikipedia.org/wiki/Camel_case"><strong>camel case.</strong></a> <strong>Camel case capitalizes each new word.</strong> Consequently, our property name would be in this case would be <code>fullText</code>. Therefore, we have two ways of fixing this: <strong>custom CodingKeys or using a KeyEncodingStrategy.</strong></p><p>Custom CodingKeys allows us the most flexibility by allowing us to provide a map from JSON keys to property names. However, in this case <strong>there is a consistent strategy for mapping all keys to property names.</strong> Therefore, in this case, we'll use <code>KeyDecodingStrategy</code> specifically <a href="https://developer.apple.com/documentation/foundation/jsondecoder/keydecodingstrategy/convertfromsnakecase"><code>KeyDecodingStrategy.convertFromSnakeCase</code></a>:</p><pre><code><span class="keyword">let</span> decoder = <span class="type">JSONDecoder</span>()
+      decoder.<span class="property">keyDecodingStrategy</span> = .<span class="dotAccess">convertFromSnakeCase</span>
+</code></pre><p>In addition, if <a href="https://developer.apple.com/documentation/foundation/jsondecoder/keydecodingstrategy/convertfromsnakecase"><code>KeyDecodingStrategy.convertFromSnakeCase</code></a> doesn't quite fit with your JSON keys, Swift does allow the use of <a href="https://developer.apple.com/documentation/foundation/jsondecoder/keydecodingstrategy/custom">custom strategies.</a> In other words, you can supply a closure for converting a CodingKey array to single CodingKey result.<br>Last but not least, if none of this strategies work for converting a key to a property name you can always supply a custom CodingKeys enumeration. <strong>In short, you want to use the simplest and most consistent strategy for mapping property names or JSON keys.</strong></p><p>::: {.wp-block-image} <img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/02/zmmxsrmsoi8.jpg"/>{width="400" height="281"} :::</p><h2>Custom Property Values</h2><p>Another quirk with Twitter's JSON data is how they format some of the property values. Let's take a look at the easiest to deal with which is dates.</p><h3>How to deal with Date</h3><p>By default, dates are serialized as a floating decimal specifically <a href="https://developer.apple.com/documentation/foundation/timeinterval">TimeInterval</a> (number of seconds) since the <em>reference date</em> of <a href="https://developer.apple.com/documentation/foundation/nsdate/1417376-timeintervalsincereferencedate">January 1st, 2001</a>. However, if the format from the JSON property value is different, you can use <a href="https://developer.apple.com/documentation/foundation/jsondecoder/datedecodingstrategy">one of the strategies available</a>:</p><ul><li><strong>iso8601</strong> - <a href="https://www.iso.org/iso-8601-date-and-time-format.html">a standard format</a> used throughout the web</li><li><strong>secondsSince1970</strong> - <a href="https://en.wikipedia.org/wiki/Unix_time">unix time</a> in seconds</li><li><strong>millisecondsSince1970</strong> - <a href="https://en.wikipedia.org/wiki/Unix_time">unix time</a> in milliseconds</li></ul><p>Consequently, <strong>if the date format does not follow any of these you need to provide either a closure to convert it or a</strong> <a href="https://developer.apple.com/documentation/foundation/dateformatter"><strong>DateFormatter</strong></a><strong>.</strong> The main way to specify the format in <a href="https://developer.apple.com/documentation/foundation/dateformatter">DateFormatter</a> is with the <a href="https://developer.apple.com/documentation/foundation/dateformatter/1413514-dateformat">dateFormat String property</a>. In other words, by using the <a href="http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns">Unicode provided codes</a>, we can create a <em>dateFormat</em> string to represent the format of dates and times provided by Twitter. As a result, from the date</p><p><code>Mon Mar 28 14:39:13 +0000 2016</code> in our JSON, we can infer the format to be: <code>eee MMM dd HH:mm:ss ZZZZ yyyy</code>. Therefore, we can create a <a href="https://developer.apple.com/documentation/foundation/dateformatter">DateFormatter</a> and set the strategy accordingly:</p><pre><code><span class="keyword">let</span> dateFormat = <span class="string">"eee MMM dd HH:mm:ss ZZZZ yyyy"</span>
+
+      <span class="keyword">let</span> dateFormatter = <span class="type">DateFormatter</span> ()
+      dateFormatter.<span class="property">dateFormat</span> = dateFormat
+
+      <span class="keyword">let</span> decoder = <span class="type">JSONDecoder</span>()
+      decoder.<span class="property">dateDecodingStrategy</span> = .<span class="call">formatted</span>(dateFormatter)
+      decoder.<span class="property">keyDecodingStrategy</span> = .<span class="dotAccess">convertFromSnakeCase</span>
+      <span class="keyword">return</span> decoder
+</code></pre><p>In conclusion, by customizing the DateFormatter, dates can be decoded as Date property values. However, colors will be slightly more challenging.</p><p>::: {.wp-block-image} <img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/02/f6xv0xs9jwg.jpg"/>{width="400" height="300"} :::</p><h3>Custom Decoding of Property Values {#custom-decoding}</h3><p>For colors such as the profile background color, we need to create a separate struct and implement the encoding and decoding ourselves to convert the hexidecimal string to a usable color structure:</p><pre><code><span class="keyword">import</span> Foundation
+      <span class="keyword">import</span> CoreGraphics
+
+      <span class="keyword">public struct</span> Color : <span class="type">Codable</span> {
+      <span class="keyword">public let</span> red : <span class="type">CGFloat</span>
+      <span class="keyword">public let</span> green : <span class="type">CGFloat</span>
+      <span class="keyword">public let</span> blue : <span class="type">CGFloat</span>
+      <span class="keyword">public let</span> alpha : <span class="type">CGFloat</span>
+
+      <span class="keyword">public init</span>(from decoder: <span class="type">Decoder</span>) <span class="keyword">throws</span> {
+      <span class="keyword">let</span> hexCode = <span class="keyword">try</span> decoder.<span class="call">singleValueContainer</span>().<span class="call">decode</span>(<span class="type">String</span>.<span class="keyword">self</span>)
+      <span class="keyword">let</span> scanner = <span class="type">Scanner</span>(string: hexCode)
+      <span class="keyword">var</span> hexint : <span class="type">UInt32</span> = <span class="number">0</span>
+      scanner.<span class="call">scanHexInt32</span>(&amp;hexint)
+
+      <span class="keyword">self</span>.<span class="property">red</span> = <span class="type">CGFloat</span>((hexint &amp; 0xff0000) &gt;&gt; <span class="number">16</span>) / <span class="number">255.0</span>
+      <span class="keyword">self</span>.<span class="property">green</span> = <span class="type">CGFloat</span>((hexint &amp; 0xff00) &gt;&gt; <span class="number">8</span>) / <span class="number">255.0</span>
+      <span class="keyword">self</span>.<span class="property">blue</span> = <span class="type">CGFloat</span>((hexint &amp; 0xff) &gt;&gt; <span class="number">0</span>) / <span class="number">255.0</span>
+      <span class="keyword">self</span>.<span class="property">alpha</span> = <span class="number">1</span>
+      }
+
+      <span class="keyword">public func</span> encode(to encoder: <span class="type">Encoder</span>) <span class="keyword">throws</span> {
+      <span class="keyword">let</span> string = <span class="type">String</span>(format: <span class="string">"%02lX%02lX%02lX"</span>, <span class="call">lroundf</span>(<span class="type">Float</span>(red * <span class="number">255.0</span>)), <span class="call">lroundf</span>(<span class="type">Float</span>(green * <span class="number">255.0</span>)), <span class="call">lroundf</span>(<span class="type">Float</span>(blue * <span class="number">255.0</span>)))
+      <span class="keyword">var</span> container = encoder.<span class="call">singleValueContainer</span>()
+      <span class="keyword">try</span> container.<span class="call">encode</span>(string)
+      }
+      }
+</code></pre><p>In this case, we override the init method and grab the string from the</p><p><code>singleValueContainer</code>. After that, we use a <a href="https://developer.apple.com/documentation/foundation/scanner">Scanner</a> to convert the color hexcode into a hexidecimal number. Then use a combination of bitwise and logical operations to grab each component value in between 0 and 255. Lastly, we use decimal division to calculate the value in between 0 and 1. (I have also included the encode method for completion sake.) As a result, we can easily convert a hexcode String to a Color struct.</p><p>Since we can't use the existing system color types, here is the code to convert from our custom Color struct to whatever the system's default UI color type is:</p><pre><code><span class="preprocessing">#if os(iOS) || os(watchOS) || os(tvOS)</span>
+      <span class="keyword">import</span> UIKit
+      <span class="keyword">public typealias</span> SystemColor = <span class="type">UIColor</span>
+      <span class="preprocessing">#elseif os(macOS)</span>
+      <span class="keyword">public typealias</span> SystemColor = <span class="type">NSColor</span>
+      <span class="preprocessing">#endif</span>
+
+      <span class="keyword">extension</span> <span class="type">Color</span> {
+      <span class="keyword">public var</span> systemColor : <span class="type">SystemColor</span> {
+      <span class="keyword">return</span> <span class="type">SystemColor</span>(red: <span class="keyword">self</span>.<span class="property">red</span>, green: <span class="keyword">self</span>.<span class="property">green</span>, blue: <span class="keyword">self</span>.<span class="property">blue</span>, alpha: <span class="keyword">self</span>.<span class="property">alpha</span>)
+      }
+      }
+</code></pre><p>::: {.wp-block-image} <img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/02/xde_p0expc8.jpg"/>{width="400" height="267"} :::</p><h2>Make Codable Work For Us</h2><p>Codable offers many layers of customability. However, in more case we want to use the least amount of customization with the most amount of consistency.</p><ul><li>For data used in similar ways **use separate types but implement the same protocol**</li><li>If property names with a consistent strategy, **use a KeyEncodingStrategy rather than custom CodingKeys**</li><li>For dates <strong>use dateDecodingStrategy, DateFormatter, or a closure</strong>.</li><li>For other custom types, **create a separate type and customize the decoding** (and encoding) there.</li></ul><p>If you have other issues you'd like me to look into, <a href="http://twitter.com/leogdion">reach me at twitter</a>. In addition, if you are interested in learning more about complex JSON decoding or encoding and other Swift topic, subscribe to my newsletter to stay up to date.</p><p>::: {#mc<em>embed</em>signup} ::: {#mc<em>embed</em>signup_scroll} ::: {.indicates-required} [*]{.asterisk} indicates required :::</p><p>::: {.mc-field-group} Email Address [*]{.asterisk} :::</p><p>::: {.mc-field-group} First Name :::</p><p>::: {.mc-field-group} Last Name :::</p><p>::: {#mce-responses .clear} ::: {#mce-error-response .response style="display:none"} :::</p><p>::: {#mce-success-response .response style="display:none"} ::: :::</p><p>::: {style="position: absolute; left: -5000px;" aria-hidden="true"} :::</p><p>::: {.clear} ::: ::: :::</p></div>
+        <span>Tagged with: </span>
+      </article>
+    </main>
+    <footer>
+      <div class="address">5859 W Saginaw #182 Lansing MI 48917</div>
+      <div class="copyright">© Bright Digit, LLC 2021</div>
+    </footer>
+  </body>
+</html>

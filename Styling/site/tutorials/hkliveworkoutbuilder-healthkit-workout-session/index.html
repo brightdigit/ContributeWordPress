@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/styles.css"/>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ol class="logo">
+          <li>
+            <a href="/">
+              <img src="/media/brightdigit-name.svg"/>
+            </a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/services">Services</a>
+          </li>
+          <li>
+            <a href="/products">Products</a>
+          </li>
+          <li>
+            <a href="/articles">Articles</a>
+          </li>
+          <li>
+            <a href="/development">Development</a>
+          </li>
+        </ol>
+        <ol class="menu">
+          <li>
+            <a href="/podcast">Podcast</a>
+          </li>
+          <li>
+            <a href="/newsletters">Newsletters</a>
+          </li>
+          <li>
+            <a href="/sponsorship">Sponsorship</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ol>
+        <ol class="more">
+          <li>
+            <a href="/#menu">Menu</a>
+          </li>
+        </ol>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <div class="content"><p>We have setup <a href="https://learningswift.brightdigit.com/healthkit-getting-started/">the iPhone to request authorization</a> and <a href="https://learningswift.brightdigit.com/healthkit-apple-watch-data-authorization/">the Apple Watch</a>. Let's begin a workout and track the user's heart rate with <code>HKLiveWorkoutBuilder</code>. In short, <a href="https://developer.apple.com/documentation/healthkit/hkliveworkoutbuilder?changes=_9">HKLiveWorkoutBuilder</a> simplifies the way we track health data during workouts.</p><h2>Starting a HKWorkoutSession</h2><p>To start a workout, you'll need the <a href="https://developer.apple.com/documentation/healthkit/hkhealthstore"><code>HKHealthStore</code></a>, which was <a href="https://learningswift.brightdigit.com/healthkit-getting-started/">instantiated in the first step</a>, as well as the <code>HKWorkoutConfiguration</code> which defines the <a href="https://developer.apple.com/documentation/healthkit/hkworkoutconfiguration/1649492-activitytype">activity type</a> and <a href="https://developer.apple.com/documentation/healthkit/hkworkoutconfiguration/1649491-locationtype">location type</a> of the workout you are doing. With those you can create the</p><p><code>HKWorkoutSession</code> with:</p><pre><code><span class="keyword">func</span> startWorkoutWithHealthStore(<span class="keyword">_</span> healthStore: <span class="type">HKHealthStore</span>,
+                                 andActivityType activityType: <span class="type">HKWorkoutActivityType</span>
+                                ) -&gt; <span class="type">HKWorkoutSession</span> {
+  <span class="keyword">let</span> configuration = <span class="type">HKWorkoutConfiguration</span>()
+  configuration.<span class="property">activityType</span> = activityType
+  
+  <span class="keyword">let</span> session : <span class="type">HKWorkoutSession</span>
+  <span class="keyword">do</span> {
+    session = <span class="keyword">try</span> <span class="type">HKWorkoutSession</span>(healthStore: healthStore, configuration: configuration)
+  } <span class="keyword">catch let</span> error {
+    <span class="comment">// let the user know about the error</span>
+    <span class="keyword">return</span>
+  }
+  
+  session.<span class="call">startActivity</span>(with: <span class="type">Date</span>())
+  <span class="keyword">self</span>.<span class="property">session</span> = session
+  <span class="keyword">self</span>.<span class="property">healthStore</span> = healthStore
+  <span class="keyword">return</span> session
+}
+</code></pre><p>Since this call can throw an error, be sure to catch and handle that error properly. When the workout is completed you simply call <a href="https://developer.apple.com/documentation/healthkit/hkhealthstore/1627957-end"><code>session.end()</code></a> to end the workout session.</p><p>To listen to workout state changes, implement the delegate <a href="https://developer.apple.com/documentation/healthkit/hkworkoutsessiondelegate"><code>HKWorkoutSessionDelegate</code></a> and the method <a href="https://developer.apple.com/documentation/healthkit/hkworkoutsessiondelegate/1627958-workoutsession"><code>workoutSession(HKWorkoutSession, didChangeTo: HKWorkoutSessionState, fromState: HKWorkoutSessionState, date: Date)</code></a>:</p><pre><code><span class="keyword">func</span> workoutSession(<span class="keyword">_</span> workoutSession: <span class="type">HKWorkoutSession</span>,
+    didChangeTo toState: <span class="type">HKWorkoutSessionState</span>,
+    from fromState: <span class="type">HKWorkoutSessionState</span>,
+    date: <span class="type">Date</span>) {
+
+    <span class="type">DispatchQueue</span>.<span class="property">main</span>.<span class="call">async</span> {
+      <span class="comment">// based on the change update the UI on the main thread</span>
+    }
+  }
+</code></pre><h2>Observing Changes</h2><p>To track health data, you are going to want to use one of the plethora of <a href="https://developer.apple.com/documentation/healthkit/hkquery"><code>HKQuery</code></a> types but most likely a combination of <a href="https://developer.apple.com/documentation/healthkit/hkobserverquery"><code>HKObserverQuery</code></a> and <a href="https://developer.apple.com/documentation/healthkit/hksamplequery"><code>HKSampleQuery</code></a>. The <a href="https://developer.apple.com/documentation/healthkit/hkobserverquery"><code>HKObserverQuery</code></a> will indicate when a change has been made. <a href="https://developer.apple.com/documentation/healthkit/hksamplequery"><code>HKSampleQuery</code></a> will query the actual values.</p><pre><code>   <span class="keyword">func</span> observerQuery(<span class="keyword">_</span> query: <span class="type">HKObserverQuery</span>,
+                     hasCompleted completed: <span class="type">HKObserverQueryCompletionHandler</span>,
+                     withError error: <span class="type">Error</span>?) {
+    <span class="keyword">guard let</span> healthStore = <span class="keyword">self</span>.<span class="property">healthStore</span> <span class="keyword">else</span> {
+      <span class="preprocessing">#warning</span>(<span class="string">"Throw Error Message to User if no healthStore available"</span>)
+      <span class="keyword">return</span>
+    }
+    <span class="keyword">guard let</span> sampleType = query.<span class="property">objectType</span> <span class="keyword">as</span>? <span class="type">HKSampleType</span> <span class="keyword">else</span> {
+      <span class="call">completed</span>()
+      <span class="keyword">return</span>
+    }
+    <span class="comment">// only query for the latest value</span>
+    <span class="keyword">let</span> sort = [
+      <span class="type">NSSortDescriptor</span>(key: <span class="type">HKSampleSortIdentifierStartDate</span>, ascending: <span class="keyword">false</span>)
+    ]
+    <span class="keyword">let</span> sampleQuery = <span class="type">HKSampleQuery</span>(sampleType: sampleType, predicate: <span class="keyword">nil</span>, limit: <span class="number">1</span>, sortDescriptors: sort, resultsHandler: <span class="keyword">self</span>.<span class="property">sampleQuery</span>)
+    
+    healthStore.<span class="call">execute</span>(sampleQuery)
+    
+  }
+  
+  <span class="keyword">func</span> sampleQuery(<span class="keyword">_</span> query: <span class="type">HKSampleQuery</span>,
+                   withSamples samples: [<span class="type">HKSample</span>]?,
+                   andError error: <span class="type">Error</span>?) {
+    <span class="keyword">guard let</span> quantityType = query.<span class="property">objectType</span> <span class="keyword">as</span>? <span class="type">HKQuantityType</span> <span class="keyword">else</span> {
+      <span class="keyword">return</span>
+    }
+    
+    <span class="keyword">if let</span> error = error {
+      <span class="preprocessing">#warning</span>(<span class="string">"Theres an error with the query"</span>)
+      <span class="keyword">return</span>
+    }
+    
+    <span class="keyword">guard let</span> sample = samples?.<span class="property">first</span> <span class="keyword">as</span>? <span class="type">HKQuantitySample</span> <span class="keyword">else</span> {
+      <span class="preprocessing">#warning</span>(<span class="string">"Theres no sample with the query."</span>)
+      <span class="keyword">return</span>
+    }
+    
+    <span class="type">DispatchQueue</span>.<span class="property">main</span>.<span class="call">async</span> {
+      <span class="comment">// update the UI here</span>
+    }
+  }  
+</code></pre><p>When the workout is started, we begin the set of <a href="https://developer.apple.com/documentation/healthkit/hkobserverquery"><code>HKObserverQueries</code></a>. In our callback,</p><p><code>observerQuery(HKObserverQuery, hasCompleted: HKObserverQueryCompletionHandler,                      withError: Error?)</code>, if the <a href="https://developer.apple.com/documentation/healthkit/hkquery/1614768-objecttype"><code>objectType</code></a> is a <a href="https://developer.apple.com/documentation/healthkit/hksampletype"><code>HKSampleType</code></a> then we create a <a href="https://developer.apple.com/documentation/healthkit/hksamplequery"><code>HKSampleQuery</code></a> for the latest sample from that data.</p><p>On the <a href="https://developer.apple.com/documentation/healthkit/hksamplequery"><code>HKSampleQuery</code></a> callback,</p><p><code>sampleQuery(HKSampleQuery, withSamples: [HKSample]?, andError: Error?)</code>, we get the quantity from the sample and update the UI on the main thread with that data .</p><h2>HKLiveWorkoutBuilder</h2><p>While the process, isn't the most complicated, the frequency of results its very often. Luckily, <code>HKLiveWorkoutBuilder</code> simplifies the process while giving the app more frequent data. In short, <a href="https://developer.apple.com/documentation/healthkit/hkworkoutbuilder"><code>HKWorkoutBuilder</code></a> and its watchOS specific version <a href="https://developer.apple.com/documentation/healthkit/hkliveworkoutbuilder?changes=_9"><code>HKLiveWorkoutBuilder</code></a> makes it easy to build workouts, start them, and track data during a workout.</p><p>From WWDC 2018, we see a few changes made in the API with how to create and start a <a href="https://developer.apple.com/documentation/healthkit/hkworkoutsession"><code>HKWorkoutSession</code></a>. However the main change is in how the we are creating a</p><p><code>HKLiveWorkoutBuilder</code>.</p><pre><code>   <span class="keyword">func</span> startWorkoutWithHealthStore(<span class="keyword">_</span> healthStore: <span class="type">HKHealthStore</span>, andActivityType activityType: <span class="type">HKWorkoutActivityType</span>, withSampleTypes sampleTypes: [<span class="type">HKSampleType</span>]) -&gt; <span class="type">HKWorkoutSession</span> {
+    <span class="keyword">let</span> configuration = <span class="type">HKWorkoutConfiguration</span>()
+    configuration.<span class="property">activityType</span> = activityType
+    
+    <span class="keyword">let</span> session : <span class="type">HKWorkoutSession</span>
+    <span class="keyword">do</span> {
+      session = <span class="keyword">try</span> <span class="type">HKWorkoutSession</span>(healthStore: healthStore, configuration: configuration)
+    } <span class="keyword">catch let</span> error {
+      <span class="comment">// let the user know about the error</span>
+      <span class="keyword">return</span>
+    }
+
+    <span class="keyword">let</span> builder = session.<span class="call">associatedWorkoutBuilder</span>()
+    builder.<span class="property">delegate</span> = <span class="keyword">self</span>
+    builder.<span class="property">dataSource</span> = <span class="type">HKLiveWorkoutDataSource</span>(healthStore: healthStore, workoutConfiguration: configuration)
+    session.<span class="property">delegate</span> = <span class="keyword">self
+
+    self</span>.<span class="property">builder</span> = builder
+    <span class="keyword">self</span>.<span class="property">session</span> = session
+    <span class="keyword">self</span>.<span class="property">healthStore</span> = healthStore
+
+    session.<span class="call">startActivity</span>(with: <span class="type">Date</span>())
+
+    builder.<span class="call">beginCollection</span>(withStart: <span class="type">Date</span>()) { (success, error) <span class="keyword">in</span>
+      <span class="comment">// do something when the data collection begins</span>
+    }
+
+    <span class="keyword">return</span> session
+  }
+</code></pre><p>As you can see we are passing a delegate to the <a href="https://developer.apple.com/documentation/healthkit/hkliveworkoutbuilder?changes=_9"><code>HKLiveWorkoutBuilder</code></a>. This is so we can collect health data as the workout progresses.</p><pre><code>   <span class="keyword">func</span> workoutBuilder(<span class="keyword">_</span> workoutBuilder: <span class="type">HKLiveWorkoutBuilder</span>,
+    didCollectDataOf collectedTypes: <span class="type">Set</span>&lt;<span class="type">HKSampleType</span>&gt;) {
+    
+    <span class="keyword">for</span> sampleType <span class="keyword">in</span> collectedTypes {
+      <span class="keyword">if let</span> quantityType = sampleType <span class="keyword">as</span>? <span class="type">HKQuantityType</span> {
+        <span class="keyword">guard let</span> statistic = workoutBuilder.<span class="call">statistics</span>(for: quantityType) <span class="keyword">else</span> {
+          <span class="keyword">continue</span>
+        }
+        <span class="keyword">guard let</span> quantity = statistic.<span class="call">mostRecentQuantity</span>() <span class="keyword">else</span> {
+          <span class="keyword">continue</span>
+        }
+        <span class="type">DispatchQueue</span>.<span class="property">main</span>.<span class="call">async</span> {
+          <span class="comment">// update the UI based on the most recent quantitiy</span>
+        }
+      } <span class="keyword">else</span> {
+        <span class="comment">// handle other HKSampleType subclasses</span>
+      }
+    }
+  }
+</code></pre><p>In the method <a href="https://developer.apple.com/documentation/healthkit/hkliveworkoutbuilderdelegate/2962897-workoutbuilder?changes=_9"><code>workoutBuilder(HKLiveWorkoutBuilder, didCollectDataOf: Set)</code></a>, you can update the UI based on the data collected. For <a href="https://developer.apple.com/documentation/healthkit/hkquantitytype"><code>HKQuantityType</code></a>, you can access the data by calling <a href="https://developer.apple.com/documentation/healthkit/hkworkoutbuilder/2962922-statistics"><code>HKWorkoutBuilder.statistics(for: HKQuantityType)</code></a>. An <a href="https://developer.apple.com/documentation/healthkit/hkstatistics"><code>HKStatistics</code></a> object contains a variety of statistical info and in watchOS 5 added the method <a href="https://developer.apple.com/documentation/healthkit/hkstatistics/2962900-mostrecentquantity"><code>HKStatistics.mostRecentQuantity()</code></a> which returns the most recent value. If you only need the most recent data, you can update your UI with that data on the main thread.</p><h2>Conclusion</h2><p>The ability to create, manage, and track workouts in watchOS is simpler with HKWorkoutBuilder</p><ul><li><a href="https://developer.apple.com/documentation/healthkit/hkworkoutsessiondelegate"><code>HKWorkoutSessionDelegate</code></a> allows you track the state of the workout session and update the UI accordingly.</li><li>You can track the health data using a combination of <a href="https://developer.apple.com/documentation/healthkit/hkobserverquery"><code>HKObserverQuery</code></a> and other <a href="https://developer.apple.com/documentation/healthkit/hkquery"><code>HKQuery</code></a> subclasses such as <a href="https://developer.apple.com/documentation/healthkit/hksamplequery"><code>HKSampleQuery</code></a> to query <code>HKSample</code> data.</li><li>However, <code>HKLiveWorkoutBuilder</code> allows you to collect the workout data more frequently without needing to use queries.</li></ul><p>If you are interested in learning more, watch <a href="https://developer.apple.com/videos/play/wwdc2018/707">the presentation, New Ways to Work with Workouts from WWDC 2018.</a> For more info on how to develop with HealthKit, take a look at our <a href="https://learningswift.brightdigit.com/category/healthkit/">recent posts here</a> and for <a href="https://mailchi.mp/29b439ff4ce6/learning-swift-newsletter">sign up for updates here.</a></p></div>
+        <span>Tagged with: </span>
+      </article>
+    </main>
+    <footer>
+      <div class="address">5859 W Saginaw #182 Lansing MI 48917</div>
+      <div class="copyright">© Bright Digit, LLC 2021</div>
+    </footer>
+  </body>
+</html>
