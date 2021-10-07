@@ -94,3 +94,20 @@ body > main .services li {
 body > main .services h3 {
   @apply text-lg text-center font-light;
 }
+
+
+body > main #testimonials  {
+  @apply m-6 border-t-2 py-6;
+}
+
+body > main #testimonials > header {
+  @apply mx-auto flex flex-col text-center pb-2;
+}
+
+body > main #testimonials > ol {
+  @apply text-center py-2;
+}
+
+body > main #testimonials > ol > li {
+  @apply py-4 border-t-2 border-gray-400 border-opacity-10;
+}
