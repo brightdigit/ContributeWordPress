@@ -124,6 +124,55 @@ body > main #contact-us > main > a {
   @apply bg-white text-black rounded-md p-4 font-bold flex ml-auto;
 }
 
-body > main #posts {
-  
+body > main #posts { 
+  @apply m-6;
+}
+
+body > main #posts > ol{
+}
+
+body > main #posts > ol > li{
+  @apply my-2 py-4 border-b-2 border-gray-400 border-opacity-10;
+}
+
+body > main #posts > ol > li:last-child {
+  @apply border-b-0;
+}
+
+body > main #posts > ol > li > header {
+  @apply w-full mb-2;
+}
+
+body > main #posts > ol > li > header > h3{
+  @apply text-xl py-1;
+}
+
+body > main #posts > ol > li > header > ol {
+  @apply flex space-x-1;
+}
+
+body > main #posts > ol > li > header > ol > li {
+  @apply flex text-sm;
+}
+
+body > main #posts > ol > li > header > img{
+  @apply object-cover w-full h-40;
+}
+
+body > main #posts > ol > li > main {
+  @apply my-1;
+}
+
+body > main #posts > ol > li > footer {
+  @apply text-sm flex font-light justify-between py-1;
+}
+
+body > footer {
+  @apply bg-black text-white py-4;
+}
+body > footer > footer {
+  @apply mx-6;
+}
+body > footer > footer section:last-child {
+  @apply flex justify-between text-xs;
 }

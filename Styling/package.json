@@ -3,23 +3,12 @@
   "version": "1.0.0",
   "dependencies": {
     "autoprefixer": "^10.2.4",
-    "npm-watch": "^0.7.0",
     "postcss": "^8.2.4",
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.0",
     "tailwindcss": "^2.0.2"
   },
-  "watch": {
-    "dev": [
-      "site/**/*.*",
-      "styles.css",
-      "tailwind.config.js",
-      "../Resources/*.*"
-    ]
-  },
   "scripts": {
-    "watch": "npm-watch",
-    "dev": "rm -R dist/*; mkdir -p dist; cp -a ../Resources/. dist; cp -a site/. dist; postcss styles.css -o dist/css/styles.css",
     "publish": "postcss styles.css"
   },
   "author": "",

@@ -1,5 +1,4 @@
 extension Sequence {
-  // @inlinable public init<S>(uniqueKeysWithValues keysAndValues: S) where S : Sequence, S.Element == (Key, Value)
   func uniqueByKey<Key: Hashable, Value>() -> [Key: Value] where Element == (Key, Value) {
     return Dictionary(uniqueKeysWithValues: self)
   }
