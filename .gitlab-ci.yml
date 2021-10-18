@@ -2,31 +2,27 @@ stages:
   - build
   - deploy
 
-build focal 5_3:
+build focal:
   stage: build
-  tags: 
-    - focal
-  image: swift:5.3-focal
+  image: brightdigit/publish-xml
   script:
     - export ARCH_PREFIX=$(uname -i)
-    - swift build -v
-    - swift run swiftformat --lint .
-    - swift run swiftlint
-    - swift test --enable-test-discovery --enable-code-coverage    
-    - llvm-cov export -format="lcov" .build/${ARCH_PREFIX}-unknown-linux-gnu/debug/BrightDigitPackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lco
-    - bash <(curl https://codecov.io/bash) -F gitlab -F focal -F swift5_3
+    - swift build
+    - swift test --enable-test-discovery --enable-code-coverage
+#    - swift run brightdigitwg import wordpress Import/Wordpress --export-resources-directory=Resources --export-markdown-directory=Content
 
 build macos:
   stage: build
   tags:
     - macos  
   script:
-    - swift build -v
+    - swift build
     - swift run swiftformat --lint .
     - swift run swiftlint
     - swift test --enable-test-discovery --enable-code-coverage
-    - xcrun llvm-cov export -format="lcov" .build/debug/BrightDigitPackageTests.xctest/Contents/MacOS/BrightDigitPackageTests -instr-profile .build/debug/codecov/default.profdata > info.lcov
-    - bash <(curl https://codecov.io/bash) -F gitlab -F macOS -F swift5_3
+    - swift run brightdigitwg import wordpress Import/Wordpress --export-resources-directory=Resources --export-markdown-directory=Content
+#    - xcrun llvm-cov export -format="lcov" .build/debug/BrightDigitPackageTests.xctest/Contents/MacOS/BrightDigitPackageTests -instr-profile .build/debug/codecov/default.profdata > info.lcov
+#    - bash <(curl https://codecov.io/bash) -F gitlab -F macOS -F swift5_4
 
 deploy:
   only:

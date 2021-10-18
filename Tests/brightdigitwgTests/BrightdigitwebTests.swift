@@ -1,4 +1,4 @@
-@testable import brightdigitwg
+@testable import BrightDigitKit
 import XCTest
 
 final class BrightdigitwebTests: XCTestCase {

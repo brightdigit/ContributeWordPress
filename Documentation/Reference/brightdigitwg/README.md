@@ -15,7 +15,9 @@
 
 ## Extensions
 
+-   [Modifier](extensions/Modifier.md)
 -   [Node](extensions/Node.md)
+-   [Plugin](extensions/Plugin.md)
 -   [Specs](extensions/Specs.md)
 -   [WordpressPost](extensions/WordpressPost.md)
 

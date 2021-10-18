@@ -1,7 +1,7 @@
 module.exports = {
 purge: {
            enabled: true,
-   content:  ['../Output/**/*.html']
+   content:  ['../Output/**/*.html', '../../dist/**/*.html']
 },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -25,7 +25,13 @@ purge: {
       ],
       'serif': ['Cardo', 'ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
     },
-    extend: {},
+    extend: {
+      colors: {
+        bellow: {
+          500: '#f9ed32'
+        },
+      },
+    },
   },
   variants: {
     extend: {},

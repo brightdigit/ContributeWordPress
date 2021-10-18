@@ -6,12 +6,13 @@
 @tailwind utilities;
 
 body > header {
-  @apply p-2 mx-4;
+  @apply p-2 xl:container mx-auto;
 }
 
 body > header > nav {
   @apply flex items-center;
 }
+
 
 body > header > nav > ol{
   @apply flex;
@@ -33,7 +34,7 @@ body > header > nav > ol.logo img{
   @apply h-10 mr-8;
 }
 body > header > nav > ol.more {
-  @apply flex lg:hidden;
+  @apply flex lg:hidden justify-end flex-grow;
 }
 body > header > nav > ol.menu {  
   @apply hidden md:flex ;
@@ -41,86 +42,137 @@ body > header > nav > ol.menu {
 body > header > nav > ol.menu ~ ol.menu{  
   @apply hidden lg:flex flex-grow justify-end;
 }
-body .hero {
-  @apply h-96 w-full flex bg-cover bg-center justify-center content-center items-center text-white;
-  background-image: url(http://placeimg.com/1200/900/tech);
+
+body > main {
+  @apply xl:container mx-auto;
 }
 
-body .hero main{
-  @apply text-3xl text-center mx-36 p-8;
-  background-color: #00000033;
-}
-body h3 {
-  @apply font-serif text-sm;
-}
-body section > header {
-  @apply w-1/2 text-center;
-}
-body h2 {
-  @apply font-serif text-2xl uppercase my-4 border-b w-full;
-}
-body .services {
-  @apply container mx-auto flex flex-col items-center my-8;
-}
-body .services > ol{
-  @apply grid grid-cols-4 gap-8;
+body > main > .hero  {
+  @apply mx-6;
 }
 
-body .services > ol > li {
-  @apply flex flex-col p-4 items-center;
-}
-body .services > ol > li > header > h3 {
-  @apply text-center;
-}
-body .services > ol > li > header > img {
-  @apply w-36 m-8;
+body > main > .hero > main {
+  @apply sm:flex sm:flex-row-reverse items-center;
 }
 
-body #testimonials {
-  @apply mx-auto flex flex-col items-center bg-gray-900 text-white py-8;
+body > main > .hero > main a {
+  @apply block;
 }
-body #testimonials > ol{
-  @apply grid grid-cols-3 gap-8 p-4 container;
+
+body > main > .hero img{
+  @apply my-4 sm:w-1/2 sm:my-0;
 }
-body #testimonials blockquote {
-  @apply text-sm;
+
+body > main > .hero .text{
+  @apply my-4 sm:my-0 mr-10 flex flex-col justify-between w-full;
 }
-body #articles {
-  @apply mx-auto flex flex-col bg-gray-100 ;
+
+body > main > .hero a {
+  @apply bg-bellow-500 p-4 rounded font-black flex-row place-self-center lg:place-self-end ml-2 mt-2;
 }
-body #articles > header {
-  @apply flex flex-1 w-full;
+
+body > main h2 {
+  @apply font-black text-xl;
 }
-body #articles > ol {
-  @apply container;
+
+body > main .services {
+  @apply m-6 border-t-2 py-6;
 }
-body #articles > ol > li {
-  @apply p-4 bg-white rounded;
+
+body > main .services > header {
+  @apply mx-auto flex flex-col text-center;
 }
-body #articles li > header ol{
-  @apply text-sm flex space-x-4;
+
+body > main .services img {
+  @apply w-20 mx-auto my-3;
 }
-body #articles li > header > h3 {
-  @apply my-2 h-4 font-sans font-bold overflow-hidden overflow-ellipsis;
+
+body > main .services li {
+  @apply my-4 py-2 border-t-2 border-gray-500 border-opacity-10;
 }
-body #articles li > header > .image {
-  @apply w-full object-contain lg:h-20 block bg-center bg-cover;
+
+body > main .services h3 {
+  @apply text-lg text-center font-light;
 }
-body #articles li > main {
-  @apply text-sm my-2 h-10 overflow-ellipsis overflow-hidden;
+
+
+body > main #testimonials  {
+  @apply m-6 border-t-2 py-6;
 }
-body #articles > ol {
-  @apply grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4 m-8;
+
+body > main #testimonials > header {
+  @apply mx-auto flex flex-col text-center pb-2;
 }
-body #articles li > footer {
-  @apply flex justify-between text-xs font-light;
+
+body > main #testimonials > ol {
+  @apply text-center py-2;
 }
+
+body > main #testimonials > ol > li {
+  @apply py-4 border-t-2 border-gray-400 border-opacity-10;
+}
+
+body > main #contact-us {
+  @apply bg-black text-white py-4 text-lg;
+}
+
+body > main #contact-us > main {
+  @apply m-8 flex flex-col;
+}
+
+body > main #contact-us > main > a {
+  @apply bg-white text-black rounded-md p-4 font-bold flex ml-auto;
+}
+
+body > main #posts { 
+  @apply m-6;
+}
+
+body > main #posts > ol{
+}
+
+body > main #posts > ol > li{
+  @apply my-2 py-4 border-b-2 border-gray-400 border-opacity-10;
+}
+
+body > main #posts > ol > li:last-child {
+  @apply border-b-0;
+}
+
+body > main #posts > ol > li > header {
+  @apply w-full mb-2;
+}
+
+body > main #posts > ol > li > header > h3{
+  @apply text-xl py-1;
+}
+
+body > main #posts > ol > li > header > ol {
+  @apply flex space-x-1;
+}
+
+body > main #posts > ol > li > header > ol > li {
+  @apply flex text-sm;
+}
+
+body > main #posts > ol > li > header > img{
+  @apply object-cover w-full h-40;
+}
+
+body > main #posts > ol > li > main {
+  @apply my-1;
+}
+
+body > main #posts > ol > li > footer {
+  @apply text-sm flex font-light justify-between py-1;
+}
+
 body > footer {
-  @apply flex w-full font-sans text-white bg-black;
+  @apply bg-black text-white py-4;
 }
-body > footer > main{
-  @apply container mx-auto p-8 flex items-center justify-between;
+body > footer > footer {
+  @apply mx-6;
 }
-body > footer > main .social {
-  @apply flex;
+body > footer > footer section:last-child {
+  @apply flex justify-between text-xs;
 }
