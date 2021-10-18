@@ -99,7 +99,7 @@ file. Typically there 3 components:
 
 In all cases some sort version is required for all dependencies. There
 are multiple ways to specify the version you want. Most involve the
-semver numbering system.
+[semver](https://semver.org) numbering system.
 
 ::: {.wp-block-image}
 ![Components of

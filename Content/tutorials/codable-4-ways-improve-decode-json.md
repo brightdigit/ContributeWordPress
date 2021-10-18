@@ -77,45 +77,45 @@ structures:
 
 ``` {.wp-block-code}
 public struct Tweet : Codable {
-      public let created_at : Date
-      public let id : Int
-      public let full_text : String
-      public let display_text_range : [Int]
-      public let entities : TweetEntities
-      public let source : String
-      public let in_reply_to_status_id : Int?
-      public let in_reply_to_user_id : Int?
-      public let in_reply_to_screen_name : String
-      public let user : TweetUser
-      public let quoted_status : QuotedTweet?
-      public let is_quote_status : Bool
-      public let retweet_count : Int
-      public let favorite_count : Int
-      public let favorited : Bool
-      public let retweeted : Bool
-      public let possibly_sensitive : Bool
-      public let possibly_sensitive_appealable : Bool
-      public let lang : String
-      }
+  public let created_at : Date
+  public let id : Int
+  public let full_text : String
+  public let display_text_range : [Int]
+  public let entities : TweetEntities
+  public let source : String
+  public let in_reply_to_status_id : Int?
+  public let in_reply_to_user_id : Int?
+  public let in_reply_to_screen_name : String
+  public let user : TweetUser
+  public let quoted_status : QuotedTweet?
+  public let is_quote_status : Bool
+  public let retweet_count : Int
+  public let favorite_count : Int
+  public let favorited : Bool
+  public let retweeted : Bool
+  public let possibly_sensitive : Bool
+  public let possibly_sensitive_appealable : Bool
+  public let lang : String
+}
 
-      public struct QuotedTweet : Codable {
-      public let created_at : Date
-      public let id : Int
-      public let full_text : String
-      public let display_text_range : [Int]
-      public let entities : TweetEntities
-      public let user : TweetUser
-      public let source : String
-      public let extended_entities : TweetEntities
-      public let is_quote_status : Bool
-      public let retweet_count : Int
-      public let favorite_count : Int
-      public let favorited : Bool
-      public let retweeted : Bool
-      public let possibly_sensitive : Bool
-      public let possibly_sensitive_appealable : Bool
-      public let lang : String
-      }
+public struct QuotedTweet : Codable {
+  public let created_at : Date
+  public let id : Int
+  public let full_text : String
+  public let display_text_range : [Int]
+  public let entities : TweetEntities
+  public let user : TweetUser
+  public let source : String
+  public let extended_entities : TweetEntities
+  public let is_quote_status : Bool
+  public let retweet_count : Int
+  public let favorite_count : Int
+  public let favorited : Bool
+  public let retweeted : Bool
+  public let possibly_sensitive : Bool
+  public let possibly_sensitive_appealable : Bool
+  public let lang : String
+}
 ```
 
 **Therefore, this means duplicated fields. However, it also allows for
@@ -125,15 +125,15 @@ let's say we need to print the tweet out:
 
 ``` {.wp-block-code}
 func printTweet (_ tweet: Tweet) {
-      print(tweet.full_text)
-      if let quoted_status = tweet.quoted_status {
-      printTweet(quoted_status)
-      }
-      }
+  print(tweet.full_text)
+  if let quoted_status = tweet.quoted_status {
+    printTweet(quoted_status)
+  }
+}
 
-      func printTweet (_ tweet: QuotedTweet) {
-      print(">",tweet.full_text)
-      }
+func printTweet (_ tweet: QuotedTweet) {
+  print(">",tweet.full_text)
+}
 ```
 
 However, using some basic *Protocol-Oriented Programming*, we can in
@@ -143,11 +143,11 @@ or not.
 
 ``` {.wp-block-code}
 func printTweet(_ tweet: TweetProtocol, withQuoteLevel level: Int = 0) {
-      print(String(repeating: ">", count: level),tweet.full_text)
-      if let quotedTweet = tweet.quotedTweet {
-      printTweet(quotedTweet, withQuoteLevel: level+1)
-      }
-      }
+  print(String(repeating: ">", count: level),tweet.full_text)
+  if let quotedTweet = tweet.quotedTweet {
+    printTweet(quotedTweet, withQuoteLevel: level+1)
+  }
+}
 ```
 
 Consequently, we create the protocol which has the properties we need
@@ -155,9 +155,9 @@ for the function above.
 
 ``` {.wp-block-code}
 public protocol TweetProtocol {
-      var full_text : String { get }
-      var quotedTweet : TweetProtocol? { get }
-      }
+  var full_text : String { get }
+  var quotedTweet : TweetProtocol? { get }
+}
 ```
 
 Lastly, we implement the protocol for the two types we'll use it for -
@@ -165,16 +165,16 @@ Lastly, we implement the protocol for the two types we'll use it for -
 
 ``` {.wp-block-code}
 extension Tweet : TweetProtocol {
-      public var quotedTweet: TweetProtocol? {
-      return self.quoted_status
-      }
-      }
+  public var quotedTweet: TweetProtocol? {
+    return self.quoted_status
+  }
+}
 
-      extension QuotedTweet : TweetProtocol {
-      public var quotedTweet: TweetProtocol? {
-      return nil
-      }
-      }
+extension QuotedTweet : TweetProtocol {
+  public var quotedTweet: TweetProtocol? {
+    return nil
+  }
+}
 ```
 
 Now **we have better flexibility to work with Codable while at the same
@@ -210,7 +210,7 @@ specifically
 
 ``` {.wp-block-code}
 let decoder = JSONDecoder()
-      decoder.keyDecodingStrategy = .convertFromSnakeCase
+decoder.keyDecodingStrategy = .convertFromSnakeCase
 ```
 
 In addition, if
@@ -273,13 +273,13 @@ and set the strategy accordingly:
 ``` {.wp-block-code}
 let dateFormat = "eee MMM dd HH:mm:ss ZZZZ yyyy"
 
-      let dateFormatter = DateFormatter ()
-      dateFormatter.dateFormat = dateFormat
+let dateFormatter = DateFormatter ()
+dateFormatter.dateFormat = dateFormat
 
-      let decoder = JSONDecoder()
-      decoder.dateDecodingStrategy = .formatted(dateFormatter)
-      decoder.keyDecodingStrategy = .convertFromSnakeCase
-      return decoder
+let decoder = JSONDecoder()
+decoder.dateDecodingStrategy = .formatted(dateFormatter)
+decoder.keyDecodingStrategy = .convertFromSnakeCase
+return decoder
 ```
 
 In conclusion, by customizing the DateFormatter, dates can be decoded as
@@ -298,32 +298,32 @@ convert the hexidecimal string to a usable color structure:
 
 ``` {.wp-block-code}
 import Foundation
-      import CoreGraphics
+import CoreGraphics
 
-      public struct Color : Codable {
-      public let red : CGFloat
-      public let green : CGFloat
-      public let blue : CGFloat
-      public let alpha : CGFloat
+public struct Color : Codable {
+  public let red : CGFloat
+  public let green : CGFloat
+  public let blue : CGFloat
+  public let alpha : CGFloat
 
-      public init(from decoder: Decoder) throws {
-      let hexCode = try decoder.singleValueContainer().decode(String.self)
-      let scanner = Scanner(string: hexCode)
-      var hexint : UInt32 = 0
-      scanner.scanHexInt32(&hexint)
+  public init(from decoder: Decoder) throws {
+    let hexCode = try decoder.singleValueContainer().decode(String.self)
+    let scanner = Scanner(string: hexCode)
+    var hexint : UInt32 = 0
+    scanner.scanHexInt32(&hexint)
 
-      self.red = CGFloat((hexint & 0xff0000) >> 16) / 255.0
-      self.green = CGFloat((hexint & 0xff00) >> 8) / 255.0
-      self.blue = CGFloat((hexint & 0xff) >> 0) / 255.0
-      self.alpha = 1
-      }
+    self.red = CGFloat((hexint & 0xff0000) >> 16) / 255.0
+    self.green = CGFloat((hexint & 0xff00) >> 8) / 255.0
+    self.blue = CGFloat((hexint & 0xff) >> 0) / 255.0
+    self.alpha = 1
+  }
 
-      public func encode(to encoder: Encoder) throws {
-      let string = String(format: "%02lX%02lX%02lX", lroundf(Float(red * 255.0)), lroundf(Float(green * 255.0)), lroundf(Float(blue * 255.0)))
-      var container = encoder.singleValueContainer()
-      try container.encode(string)
-      }
-      }
+  public func encode(to encoder: Encoder) throws {
+    let string = String(format: "%02lX%02lX%02lX", lroundf(Float(red * 255.0)), lroundf(Float(green * 255.0)), lroundf(Float(blue * 255.0)))
+    var container = encoder.singleValueContainer()
+    try container.encode(string)
+  }
+}
 ```
 
 In this case, we override the init method and grab the string from the
@@ -342,17 +342,17 @@ UI color type is:
 
 ``` {.wp-block-code}
 #if os(iOS) || os(watchOS) || os(tvOS)
-      import UIKit
-      public typealias SystemColor = UIColor
-      #elseif os(macOS)
-      public typealias SystemColor = NSColor
-      #endif
+import UIKit
+public typealias SystemColor = UIColor
+#elseif os(macOS)
+public typealias SystemColor = NSColor
+#endif
 
-      extension Color {
-      public var systemColor : SystemColor {
-      return SystemColor(red: self.red, green: self.green, blue: self.blue, alpha: self.alpha)
-      }
-      }
+extension Color {  
+  public var systemColor : SystemColor {
+    return SystemColor(red: self.red, green: self.green, blue: self.blue, alpha: self.alpha)
+  }
+}
 ```
 
 ::: {.wp-block-image}

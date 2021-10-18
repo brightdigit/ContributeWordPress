@@ -256,7 +256,7 @@ for lib in $deps; do
 
 ``` {.wp-block-code}
   dylib="`dirname $1`/Frameworks/`basename $lib`"
-  deps=`otool -L "$dylib" | grep "/opt\|Cellar" | awk -F' '
+  deps=`otool -L "$dylib" | grep "/opt\|Cellar" | awk -F' ' 
 ```
 
 5.  Use `otool -L` to look for each dependency of that dependency\

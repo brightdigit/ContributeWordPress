@@ -359,7 +359,8 @@ feature. This makes it easier to test the server application without
 having to run the Heartwitch app on my Apple Watch or via simulator.
 
 ![Faking a Watch App with a Command Line
-Tool](https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2021/05/hwmonitor-1024x495.gif){.wp-image-1165}
+Tool](https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2021/05/hwmonitor.gif){.wp-image-1165
+width="1732" height="838"}
 
 One of my favorite tools out there is [the Swift Argument Parser by the
 Swift team](https://github.com/apple/swift-argument-parser).

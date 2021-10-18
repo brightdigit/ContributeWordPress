@@ -20,7 +20,7 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
 
   fileprivate static func postsFromURL(_ url: URL, using decoder: WordPressDecoder) throws -> [WordPressPost]? {
     let data = try Data(contentsOf: url)
-    return try decoder.decodePosts(fromData: data)
+    return try decoder.decodePosts(fromData: data, allowInvalidCharacters: true)
   }
 
   public func posts(fromExportsAt directoryURL: URL) throws -> [String: [WordPressPost]] {

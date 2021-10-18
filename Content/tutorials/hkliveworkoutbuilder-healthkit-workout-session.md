@@ -27,7 +27,7 @@ of the workout you are doing. With those you can create the
 `HKWorkoutSession` with:
 
 ``` {.wp-block-code}
-func startWorkoutWithHealthStore(_ healthStore: HKHealthStore,
+func startWorkoutWithHealthStore(_ healthStore: HKHealthStore, 
                                  andActivityType activityType: HKWorkoutActivityType
                                 ) -> HKWorkoutSession {
   let configuration = HKWorkoutConfiguration()
@@ -44,7 +44,7 @@ func startWorkoutWithHealthStore(_ healthStore: HKHealthStore,
   session.startActivity(with: Date())
   self.session = session
   self.healthStore = healthStore
-  return session
+  return session  
 }
 ```
 
@@ -59,9 +59,9 @@ and the method
 [`workoutSession(HKWorkoutSession, didChangeTo: HKWorkoutSessionState, fromState: HKWorkoutSessionState, date: Date)`](https://developer.apple.com/documentation/healthkit/hkworkoutsessiondelegate/1627958-workoutsession):
 
 ``` {.wp-block-code}
-func workoutSession(_ workoutSession: HKWorkoutSession,
-    didChangeTo toState: HKWorkoutSessionState,
-    from fromState: HKWorkoutSessionState,
+func workoutSession(_ workoutSession: HKWorkoutSession, 
+    didChangeTo toState: HKWorkoutSessionState, 
+    from fromState: HKWorkoutSessionState, 
     date: Date) {
 
     DispatchQueue.main.async {
@@ -85,8 +85,8 @@ indicate when a change has been made.
 query the actual values.
 
 ``` {.wp-block-code}
-  func observerQuery(_ query: HKObserverQuery,
-                     hasCompleted completed: HKObserverQueryCompletionHandler,
+  func observerQuery(_ query: HKObserverQuery, 
+                     hasCompleted completed: HKObserverQueryCompletionHandler, 
                      withError error: Error?) {
     guard let healthStore = self.healthStore else {
       #warning("Throw Error Message to User if no healthStore available")
@@ -106,8 +106,8 @@ query the actual values.
     
   }
   
-  func sampleQuery(_ query: HKSampleQuery,
-                   withSamples samples: [HKSample]?,
+  func sampleQuery(_ query: HKSampleQuery, 
+                   withSamples samples: [HKSample]?, 
                    andError error: Error?) {
     guard let quantityType = query.objectType as? HKQuantityType else {
       return
@@ -180,7 +180,7 @@ However the main change is in how the we are creating a
 
     let builder = session.associatedWorkoutBuilder()
     builder.delegate = self
-    builder.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: configuration)
+    builder.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: configuration) 
     session.delegate = self
 
     self.builder = builder
@@ -193,7 +193,7 @@ However the main change is in how the we are creating a
       // do something when the data collection begins
     }
 
-    return session
+    return session  
   }
 ```
 
@@ -202,7 +202,7 @@ the [`HKLiveWorkoutBuilder`](https://developer.apple.com/documentation/healthki
 This is so we can collect health data as the workout progresses.
 
 ``` {.wp-block-code}
-  func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder,
+  func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, 
     didCollectDataOf collectedTypes: Set<HKSampleType>) {
     
     for sampleType in collectedTypes {

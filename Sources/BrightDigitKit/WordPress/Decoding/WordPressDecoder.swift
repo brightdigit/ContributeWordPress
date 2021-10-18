@@ -6,5 +6,5 @@ import SyndiKit
 #endif
 
 public protocol WordPressDecoder {
-  func decodePosts(fromData data: Data) throws -> [WordPressPost]?
+  func decodePosts(fromData data: Data, allowInvalidCharacters: Bool) throws -> [WordPressPost]?
 }

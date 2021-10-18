@@ -86,52 +86,34 @@ here is how:
 2.  Find the section with SupportedLanguage
 
 ``` {.wp-block-code}
-        SupportedLanguageVersions = (
- 
-            3.0,
-            
+        SupportedLanguageVersions = (  
+            3.0,             
             4.0,
-
-            4.2
-        );
-        
-        LanguageVersionDisplayNames = {
-            
-            3.0 = "Swift 3";
-            
-            4.0 = "Swift 4";
-            
-            4.2 = "Swift 4.2";
-        };
+             4.2      
+        );         
+        LanguageVersionDisplayNames = {             
+            3.0 = "Swift 3";             
+            4.0 = "Swift 4";             
+            4.2 = "Swift 4.2";       
+        }; 
 ```
 
 3.  Add 5.0 as a ***SupportedLanguageVersions*** and add a label for it
     under ***LanguageVersionDisplayNames*** (such as \"5.0-dev\")
 
 ``` {.wp-block-code}
-        SupportedLanguageVersions = (
- 
-            3.0,
-            
+        SupportedLanguageVersions = (  
+            3.0,             
             4.0,
-
-            4.2,
-
-            5.0
-        
-        );
-        
-        LanguageVersionDisplayNames = {
-            
-            3.0 = "Swift 3";
-            
-            4.0 = "Swift 4";
-            
-            4.2 = "Swift 4.2";
-            
-            5.0 = "Swift 5.0-dev";
-        
-        };
+             4.2,
+             5.0         
+        );         
+        LanguageVersionDisplayNames = {             
+            3.0 = "Swift 3";             
+            4.0 = "Swift 4";             
+            4.2 = "Swift 4.2";             
+            5.0 = "Swift 5.0-dev";         
+        }; 
 ```
 
 Now all you\'ll need to do is select the SWIFT_VERSION as the display

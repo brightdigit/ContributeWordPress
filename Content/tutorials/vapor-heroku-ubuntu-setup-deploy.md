@@ -640,7 +640,7 @@ should be call our application with `curl`:
 Hello, world!%
 > curl -X POST -H "Content-Type: application/json" -d '{"title": "example"}' http://damp-spire-56788.herokuapp.com/todos
 {"id":1,"title":"example"}%
-> curl http://damp-spire-56788.herokuapp.com/todos
+> curl http://damp-spire-56788.herokuapp.com/todos 
 [{"id":1,"title":"example"}]%
 ```
 
@@ -859,9 +859,9 @@ After that, paste this text into the configuration file:
 environment =
         DATABASE_PASSWORD="app_collection_pw",
 command=vapor run --port=3000 --env=production
-directory=/home/app_collection/app/
+directory=/home/app_collection/app/ 
 autorestart=true
-user=app_collection
+user=app_collection             
 stdout_logfile=/var/log/supervisor/%(program_name)-stdout.log
 stderr_logfile=/var/log/supervisor/%(program_name)-stderr.log
 ```
@@ -951,7 +951,7 @@ if testing the application out:
 Hello, world!%
 > curl -X POST -H "Content-Type: application/json" -d '{"title": "example"}' http://app_collection.local/todos
 {"id":1,"title":"example"}%
-> curl http://app_collection.local/todos
+> curl http://app_collection.local/todos 
 [{"id":1,"title":"example"}]%
 ```
 

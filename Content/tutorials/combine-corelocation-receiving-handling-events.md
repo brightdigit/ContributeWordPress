@@ -50,7 +50,7 @@ class CoreLocationObject: ObservableObject {
 
     let authorizationPublisher = publicist.authorizationPublisher()
     let locationPublisher = publicist.locationPublisher()
-  ...
+    ...
 ```
 
 Next, we can actually deal with receiving and handling events from our
@@ -112,7 +112,7 @@ class CoreLocationObject: ObservableObject {
     authorizationPublisher
       .sink(receiveValue: beginUpdates)
       .store(in: &cancellables)
-  ...
+    ...
 ```
 
 In this case, we are using `sink` and passing a reference to our new
@@ -139,7 +139,7 @@ updates are on the main `DispatchQueue`.
         // since this is used in the UI,
         //  it needs to be on the main DispatchQueue
         .receive(on: DispatchQueue.main)
-    ...
+        ...
 ```
 
 As far as assigning we have a few options, we can stick with `sink` to
@@ -151,7 +151,7 @@ assign our value the published property:
         // since this is used in the UI,
         //  it needs to be on the main DispatchQueue
         .receive(on: DispatchQueue.main)
-    .sink(receiveValue: {
+        .sink(receiveValue: {
           self.authorizationStatus = $0
         })
 ...

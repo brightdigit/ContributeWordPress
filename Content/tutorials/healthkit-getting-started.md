@@ -96,7 +96,7 @@ take a look at how to properly with request authorization.
           return
         }
         guard result else {
-          // deal with the failed request
+          // deal with the failed request 
           return
         }
         // begin any necessary work if needed

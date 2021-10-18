@@ -192,7 +192,7 @@ or doing presentations. Likewise with HealthKit workouts, I\'ve used the
 same pattern of creating publishers.
 
 ``` {.wp-block-code}
-...
+...   
     public let coalesce: CoalescePublicist
     public let failurePublisist: FailurePublicist
     public let fullIdentifier: FullIdentifierPublicist

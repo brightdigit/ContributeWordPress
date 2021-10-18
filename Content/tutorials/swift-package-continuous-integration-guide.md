@@ -69,7 +69,7 @@ Firstly, you can specify an operating system and version in the
 
 ``` {.wp-block-code}
 ...
-  platforms: [
+    platforms: [
         .macOS(.v10_15),
         .iOS(.v13),
         .watchOS(.v5),
@@ -361,7 +361,7 @@ name: macOS
 on: [push]
 
 jobs:
-  build:
+  build:  
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
@@ -659,7 +659,7 @@ variable for the Swift package name and maps the `CODECOV_TOKEN` secret
 to the uploader command environment variable:
 
 ``` {.wp-block-code}
-...
+...    
     - name: Run tests
       run: swift test --enable-code-coverage
     - name: Prepare Code Coverage
@@ -934,8 +934,8 @@ store them in an array. For instance, rather than:
 
 ``` {.wp-block-code}
 if a == 0 {
-  if b == 0 {
-  } ...
+    if b == 0 {
+    } ...
 ...
 } else if a == 1 {
 ...

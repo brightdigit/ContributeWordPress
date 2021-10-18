@@ -27,7 +27,7 @@ Apple Watch when it comes to asking for authorization:
           return
         }
         guard result else {
-          // deal with the failed request
+          // deal with the failed request 
           return
         }
         // begin any necessary work if needed

@@ -105,9 +105,9 @@ to pull contents from a url, Apple already provides an asynchronous
 method to do this:
 
 ``` {.wp-block-code}
-let url = URL(string:
+let url = URL(string: 
  "https://jaspervdj.be/lorem-markdownum/markdown.txt")!
-URLSession.shared.dataTask(with: url) {
+URLSession.shared.dataTask(with: url) { 
  (data, response, error) in
   ...
 }.resume()
@@ -404,7 +404,7 @@ something like this:
 8
 9
 10
-10 // 😱 Oh No! 😱
+10 // 😱 Oh No! 😱 
 11 // 😢
 11 // 😭
 ```
@@ -468,7 +468,7 @@ for index in (0..<count) {
   group.enter()
   DispatchQueue.global(qos: .background)
   .async {
-    markdownFiles[index] =
+    markdownFiles[index] = 
       try! String(contentsOf: url)
     group.leave()
     print(index)
@@ -664,8 +664,8 @@ let futureHTML = futureSite.flatMap{
 
 let sites: [Future<Site>]
 // flatten "flattens" [Future<String>] to Future<[String]>
-let siteNamesFuture = sites.map{ site in site.map{
-  $0.name
+let siteNamesFuture = sites.map{ site in site.map{ 
+  $0.name   
 }.flatten(using: eventLoop)
 
 let nameAndHTML : Future<(String, String)> = futureString.and(futureHTML)
@@ -706,8 +706,8 @@ related implementation. However, on the client, Google Promises might be
 amongst the best *Promise* APIs for Swift.
 
 ``` {.wp-block-code}
-public func setupSite(_ site: Site,
-  withTheme theme: Theme,
+public func setupSite(_ site: Site, 
+  withTheme theme: Theme, 
   on queue: DispatchQueue = .main) -> Promise<Site> {
   return Promise<Site>(on: queue) { success, failure in
     self.setupSite(site, withTheme: theme) { error in
@@ -745,8 +745,8 @@ let futureHTML = futureSite.then{
 let sites: [Promise<Site>]
 // `all` "flattens" [Promise<String>] to Future<[Promise]>
 let siteNamesFuture = all(sites.then{ site in
-  site.map{
-    $0.name
+  site.map{ 
+    $0.name   
   }
 )
 
@@ -794,7 +794,7 @@ Max Howell. PromiseKit uses a more English-like syntax then the previous
 examples.
 
 ``` {.wp-block-code}
-public func setupSite(_ site: Site,
+public func setupSite(_ site: Site, 
   withTheme theme: Theme) -> Promise<Site> {
   return Promise<Site>{ resolver in
     self.setupSite(site, withTheme: theme) { error in
@@ -832,8 +832,8 @@ let futureHTML = futureSite.then{
 let sites: [Promise<Site>]
 // `all` "flattens" [Promise<String>] to Future<[Promise]>
 let siteNamesFuture = when(sites.map{ site in
-  site.map{
-    $0.name
+  site.map{ 
+    $0.name   
   }
 )
 
@@ -1001,9 +1001,9 @@ proposal](https://gist.github.com/lattner/429b9070918248274f25b714dcfc7619).)
 Let's take a look at our earlier example:
 
 ``` {.wp-block-code}
-let url = URL(string:
+let url = URL(string: 
  "https://jaspervdj.be/lorem-markdownum/markdown.txt")!
-URLSession.shared.dataTask(with: url) {
+URLSession.shared.dataTask(with: url) { 
  (data, response, error) in
   …
 }.resume()
@@ -1013,7 +1013,7 @@ In this case, a closure is based as a parameter along with a task.
 However a Promise or Future might look something like this:
 
 ``` {.wp-block-code}
-let url = URL(string:
+let url = URL(string: 
  "https://jaspervdj.be/lorem-markdownum/markdown.txt")!
 let promise : Future<(Data?, HttpResponse?, Error?)> = URLSession.shared.data(with: url) 
 ```
@@ -1022,7 +1022,7 @@ With syntactic sugar like `async` and `await`, it become even cleaner
 with:
 
 ``` {.wp-block-code}
-let url = URL(string:
+let url = URL(string: 
  "https://jaspervdj.be/lorem-markdownum/markdown.txt")!
 let response = await URLSession.shared.data(with: url) 
 ```
