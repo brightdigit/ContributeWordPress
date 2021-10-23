@@ -5,6 +5,14 @@
 @tailwind components;
 @tailwind utilities;
 
+._button_normal {
+  @apply  text-gray-800 bg-bellow-500 p-2 rounded-lg;
+}
+
+._button {
+  @apply  font-bold _button_normal;
+}
+
 body > header {
   @apply p-2 xl:container mx-auto;
 }
@@ -48,7 +56,7 @@ body > main {
 }
 
 body > main > .hero  {
-  @apply mx-6;
+  @apply mx-6 xl:text-lg 2xl:text-xl;
 }
 
 body > main > .hero > main {
@@ -87,8 +95,12 @@ body > main .services img {
   @apply w-20 mx-auto my-3;
 }
 
+body > main .services ol {
+  @apply md:grid md:grid-cols-3 md:gap-x-8;
+}
+
 body > main .services li {
-  @apply my-4 py-2 border-t-2 border-gray-500 border-opacity-10;
+  @apply my-4 py-2 border-t-2 border-gray-500 border-opacity-10  md:border-t-0 md:mt-6;
 }
 
 body > main .services h3 {
@@ -101,19 +113,29 @@ body > main #testimonials  {
 }
 
 body > main #testimonials > header {
-  @apply mx-auto flex flex-col text-center pb-2;
+  @apply mx-auto flex flex-col text-center pb-2 md:py-4;
 }
 
 body > main #testimonials > ol {
-  @apply text-center py-2;
+  @apply text-center py-2 md:grid md:grid-cols-3 md:gap-x-8;
 }
 
 body > main #testimonials > ol > li {
-  @apply py-4 border-t-2 border-gray-400 border-opacity-10;
+  @apply py-4 border-t-2 border-gray-400 border-opacity-10 md:border-0;
+
+  & > figure {
+    @apply md:text-left md:text-sm;
+    & > blockquote {
+      @apply md:py-2;
+    }
+    & > figcaption {
+      @apply md:font-bold;
+    }
+  }
 }
 
 body > main #contact-us {
-  @apply bg-black text-white py-4 text-lg;
+  @apply bg-black text-white py-4 text-lg md:container md:mx-auto md:max-w-screen-md md:rounded-lg;
 }
 
 body > main #contact-us > main {
@@ -129,10 +151,11 @@ body > main #posts {
 }
 
 body > main #posts > ol{
+  @apply md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-8;
 }
 
 body > main #posts > ol > li{
-  @apply my-2 py-4 border-b-2 border-gray-400 border-opacity-10;
+  @apply my-2 py-4 border-b-2 border-gray-400 border-opacity-10 md:border-0;
 }
 
 body > main #posts > ol > li:last-child {
@@ -156,7 +179,7 @@ body > main #posts > ol > li > header > ol > li {
 }
 
 body > main #posts > ol > li > header > img{
-  @apply object-cover w-full h-40;
+  @apply object-cover w-full h-40 md:rounded-lg;
 }
 
 body > main #posts > ol > li > main {
@@ -169,10 +192,86 @@ body > main #posts > ol > li > footer {
 
 body > footer {
   @apply bg-black text-white py-4;
+  & > footer {
+    @apply xl:container xl:mx-auto;
+    & > header {
+      @apply mx-6;
+      img.logo {
+        @apply filter invert hue-rotate-180;  
+      }
+    }
+    & > ol.social {
+      @apply flex mx-4 text-lg;
+      li {
+        @apply p-2;
+      }
+    }
+    & > footer {
+      @apply flex justify-between text-xs lg:text-base lg:my-4 mx-6;
+    }
+  }
 }
-body > footer > footer {
-  @apply mx-6;
-}
-body > footer > footer section:last-child {
-  @apply flex justify-between text-xs;
+
+body#contact-us {
+  #calendar a {
+    @apply mt-2;
+  }
+  & > main {
+    @apply xl:container xl:mx-auto;
+    & > section {
+      @apply m-6;
+      & > main {
+        @apply bg-gray-100 p-6 rounded-lg sm:flex sm:flex-1;
+        & > header {
+          @apply mb-4 sm:flex sm:m-0 sm:flex-col sm:w-1/2 sm:flex-shrink-0;
+          img {
+            @apply object-cover sm:flex sm:flex-1;
+          }
+        }
+        & > main {
+          @apply sm:flex sm:ml-4 sm:flex-col md:place-self-center md:self-center md:flex-grow xl:mx-8;
+          p:first-child {
+            @apply sm:font-bold;
+          }
+          & > .button {
+            @apply text-center flex flex-col _button;
+          }
+          & > ol {
+            @apply flex flex-col mt-2 lg:mt-4 lg:grid lg:grid-cols-2 lg:gap-2 lg:-mx-2;
+            & > li {
+              @apply text-bellow-600 flex flex-col align-middle;
+              a {
+                @apply _button_normal flex my-2 align-middle lg:my-0 lg:text-sm xl:text-base lg:px-2;
+              }
+              i {
+                @apply text-xl align-middle mr-2;
+              }
+            }
+          }
+         form {
+            @apply w-full flex flex-col mt-4 border-t-2 pt-2  sm:flex-1;
+            button {
+              @apply _button;
+            }
+            textarea {
+              @apply p-2;
+            }
+            & > div {
+              @apply flex flex-row my-2 -mx-2;
+              & > div {
+                @apply flex flex-col flex-grow mx-2;
+                input {
+                  @apply flex flex-row flex-grow w-full p-2;
+                }
+                label {
+                  @apply text-xs flex px-2 py-1;
+                }
+              }
+            }
+          }
+        }
+       
+      }
+    }
+  }
 }
