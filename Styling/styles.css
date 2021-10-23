@@ -223,7 +223,7 @@ body#contact-us {
       & > main {
         @apply bg-gray-100 p-6 rounded-lg sm:flex sm:flex-1;
         & > header {
-          @apply mb-4 sm:flex sm:m-0 sm:flex-col sm:w-1/2 sm:flex-none;
+          @apply mb-4 sm:flex sm:m-0 sm:w-1/2 sm:flex-none;
           img {
             @apply object-cover sm:flex sm:flex-1;
           }
