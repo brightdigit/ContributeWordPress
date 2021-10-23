@@ -1,7 +1,11 @@
 module.exports = {
 purge: {
-           enabled: true,
-   content:  ['../Output/**/*.html', '../../dist/**/*.html']
+  enabled: true,
+  content:  [
+    '../Output/**/*.html', 
+    '../../public/**/*.html', 
+    '../../.tmp/**/*.html'
+  ]
 },
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -28,7 +32,10 @@ purge: {
     extend: {
       colors: {
         bellow: {
-          500: '#f9ed32'
+          600: '#958e1e',
+          500: '#f9ed32',
+          400: '#fbf484',
+          300: '#fdf8ad'
         },
       },
     },
