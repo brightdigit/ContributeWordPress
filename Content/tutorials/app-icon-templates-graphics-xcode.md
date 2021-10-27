@@ -1,7 +1,9 @@
 ---
+title: App Icon Templates - Building Graphics For Xcode
 date: 2018-10-29 08:22
 description: Asset Catalogs are the key component in Xcode. Today we are going to
   talk about using app icon templates in Sketch and Photoshop.
+featuredImage: /media/images/learningswift/2018/10/templates-export.jpg
 ---
 Asset Catalogs are the key component in Xcode project for storing
 colors, sprites, metadata, and of course graphics and managing those
@@ -17,9 +19,7 @@ are going to look at the top two graphic editors: **Sketch** and
 
 ### Sketch
 
-::: {.wp-block-embed__wrapper}
-https://youtu.be/4Um_zRh4ENY
-:::
+https://youtu.be/4Um\_zRh4ENY
 
 In the last few years, Sketch has grown to be one of the leading
 applications used by graphic designers especially in the area of mobile
@@ -45,13 +45,11 @@ accessed and the multiple files will need to be updated in the repo.
 
 ### Photoshop
 
-::: {.wp-block-embed__wrapper}
 https://youtu.be/yr6KsuP5j5A
-:::
 
 Photoshop has been a well established graphics editor for over two
-decades. However it isn't quite as targeted toward application
-development as Sketch so it isn't geared as much towards that purpose.
+decades. However it isn’t quite as targeted toward application
+development as Sketch so it isn’t geared as much towards that purpose.
 
 Kindly enough Apple offers us UI templates and widget for Photoshop (as
 well as constantly updated for Sketch) through their [Apple Design
@@ -63,10 +61,10 @@ Resources page](https://developer.apple.com/design/resources/).
     will be using the iOS 12 version. **Please note - these downloads
     are quite large so make sure to do this ahead of time.**
 2.  Unzip the template collection, go to the *Production Templates*
-    folder. We'll be using the standard *Template-AppIcons-iOS.psd*
+    folder. We’ll be using the standard *Template-AppIcons-iOS.psd*
     file. Open that psd file, opening Photoshop.
 3.  Make sure we are generating image assets on save. Go to
-    File\...Generate\...Image Assets and make sure it is checked.
+    File...Generate...Image Assets and make sure it is checked.
 4.  Go to your layers window and double click the layer named icon. This
     is the layer you will be editing directly and will be carried
     through to the other app icon sizes.
@@ -79,6 +77,6 @@ Photoshop is the more established application but also less focused on
 UI and App Icon development. The templates can be quite large and even
 more cumbersome to open each time and edit can be made.
 
-Ideally, we'd like to simply edit one file which can be included in our
-repo and automatically generated on the build. That's where building a
+Ideally, we’d like to simply edit one file which can be included in our
+repo and automatically generated on the build. That’s where building a
 bash script to run on the build would be helpful.

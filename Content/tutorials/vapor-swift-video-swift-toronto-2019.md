@@ -1,13 +1,17 @@
 ---
+title: Get Started Developing Server Side Swift with Vapor
 date: 2019-09-16 06:10
 tags: vapor
+featuredImage: /media/images/learningswift/2019/09/img_0039.jpg
 ---
 Last month I spoke at [SwiftTO in Toronto](https://www.swiftconf.to/), a
 great conference with some great speakers. If you get a chance, check
 out [all the talks here.](https://vimeo.com/swiftto) My topic of choice
 was Vapor and how to get started.
 
-![](https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/09/img_0040.jpg){.wp-image-647}
+<figure>
+<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/09/img_0040.jpg" class="wp-image-647" />
+</figure>
 
 Here is the talk description:
 
@@ -20,11 +24,9 @@ Here is the talk description:
 > server. We talk about managing multiple process in Swift-NIO, the
 > Fluent ORM, serialization of data, and the setting up of routes and
 > authentication. If you are interested in taking a deep dive into
-> Vapor, you'll want to check out this talk.
+> Vapor, you’ll want to check out this talk.
 
-::: {.wp-block-embed__wrapper}
 https://vimeo.com/354555100
-:::
 
 If you are interested in learning more, check out [my other posts on
 Vapor here](https://learningswift.brightdigit.com/category/vapor/) as

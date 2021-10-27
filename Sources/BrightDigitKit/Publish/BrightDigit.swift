@@ -3,23 +3,25 @@ import Plot
 import Publish
 
 // This type acts as the configuration for your website.
-struct BrightDigit: Website {
-  enum SectionID: String, WebsiteSectionID {
+public struct BrightDigit: Website {
+  public enum SectionID: String, WebsiteSectionID {
     // Add the sections that you want your website to contain here:
     case articles
     case episodes
     case videos
     case tutorials
+    case newsletters
   }
 
-  struct ItemMetadata: WebsiteItemMetadata {
+  public struct ItemMetadata: WebsiteItemMetadata {
     // Add any site-specific metadata that you want to use here.
+    var featuredImage: String?
   }
 
   // Update these properties to configure your website:
-  var url = URL(string: "https://brightdigit.com")!
-  var name = "BrightDigit"
-  var description = "A description of BrightdigitCom"
-  var language: Language { .english }
-  var imagePath: Path? { nil }
+  public var url = URL(string: "https://brightdigit.com")!
+  public var name = "BrightDigit"
+  public var description = "A description of BrightdigitCom"
+  public var language: Language { .english }
+  public var imagePath: Path? { nil }
 }

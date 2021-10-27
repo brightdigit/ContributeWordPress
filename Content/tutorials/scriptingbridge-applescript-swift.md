@@ -1,13 +1,15 @@
 ---
+title: "ScriptingBridge - Communicating with Swift\u200A and AppleScript"
 date: 2017-07-15 06:34
 description: "You may want to\_build an app in Xcode with the power of AppleScript
   and without the need for scripts - particularly using Swift with ScriptingBridge."
+featuredImage: /media/images/learningswift/2018/11/0nrlPZlDopn4aHLy6.png
 ---
 **AppleScript **is a great technology on macOS for both developers and
 power users. With **AppleScript, **users can create automated processes
 which work other apps. As a developer though, sometimes you want
 a **build an app in Xcode with the power of AppleScript** without the
-need to have separate script files. That\'s where ScriptingBridge comes
+need to have separate script files. That's where ScriptingBridge comes
 in. To work with AppleScript in any app, there are two options to do
 this:
 
@@ -47,20 +49,18 @@ here](https://majestysoftware.wordpress.com/2015/03/31/swift-scripting-part-1/).
 
 ## ScriptingBridge with Safari
 
-Now let's try doing this **by writing **[**an app which pulls the tab
+Now let’s try doing this **by writing **[**an app which pulls the tab
 urls out of a Safari
 window**](https://github.com/brightdigit/jURLnal)**. **The repo for this
 app can be found [here](https://github.com/brightdigit/jURLnal).
 Building the Swift Code from AppleScript Definition Download the python
 scripting tools from the [SwiftScripting repo on
-GitHub](https://github.com/tingraldi/SwiftScripting). From the repo's
+GitHub](https://github.com/tingraldi/SwiftScripting). From the repo’s
 directory, run the following commands:
 
-``` {.wp-block-code}
-pip install clangsdef /Applications/Safari.app > Safari.sdefsdp -fh --basename Safari Safari.sdef./sbhc.py Safari.h./sbsc.py Safari.sdef
-```
+    pip install clangsdef /Applications/Safari.app > Safari.sdefsdp -fh --basename Safari Safari.sdef./sbhc.py Safari.h./sbsc.py Safari.sdef
 
-Let's break this down:
+Let’s break this down:
 
 1.  `pip install clang`- ensures clang is installed for python
 2.  `sdef /Applications/Safari.app > Safari.sdef`- gets the scripting
@@ -74,12 +74,12 @@ Let's break this down:
 
 Now you should have 4 new files:
 
--   **Safari.sdef** --- the scripting definition file
--   **Safari.h** --- the objective-c header file, which we would use if
-    we were doing objective-c directly or using objective-c bridging
--   **Safari.swift** --- the primary file containing the main
+-   **Safari.sdef** — the scripting definition file
+-   **Safari.h** — the objective-c header file, which we would use if we
+    were doing objective-c directly or using objective-c bridging
+-   **Safari.swift** — the primary file containing the main
     ScriptingBridge API to the application
--   **SafariScripting.swift** --- the necessary enums needed by the
+-   **SafariScripting.swift** — the necessary enums needed by the
     ScriptingBridge API for the application
 
 Since we are using only Swift code, we will only need the two Swift
@@ -91,22 +91,18 @@ can talk to Safari.
 
 To pull the all Safari windows currently open:
 
-``` {.wp-block-code}
-if let application = SBApplication(bundleIdentifier: "com.apple.Safari") {  let safariApplication = application as SafariApplication  let safariWindows = safariApplication.windows?().flatMap({ $0 as? SafariWindow })  ...}
-```
+    if let application = SBApplication(bundleIdentifier: "com.apple.Safari") {  let safariApplication = application as SafariApplication  let safariWindows = safariApplication.windows?().flatMap({ $0 as? SafariWindow })  ...}
 
 We call the `SBApplication`constructor using the bundle identifier. If
 an object is returned, we cast as the `SafariApplication`protocol and
 get all the windows. The `windows`property only returns
 a `SBElementArray`, so we need to cast those elements to
 a `SafariWindow`. Therefore by using the SafariWindow, we can get the
-window's set of tabs:
+window’s set of tabs:
 
-``` {.wp-block-code}
-let safariWindow = safariWindows?.firstlet safariTab = safariWindow?.tabs?().firstObject as? SafariTablet url = safariTab?.URL
-```
+    let safariWindow = safariWindows?.firstlet safariTab = safariWindow?.tabs?().firstObject as? SafariTablet url = safariTab?.URL
 
-So, let's break this down:
+So, let’s break this down:
 
 1.  `let safariWindow = safariWindows?.first`- get the first Safari
     window
@@ -123,7 +119,7 @@ which copies the URLs to the clipboard.
 So as you can see -
 
 1.  We have used the standard ScriptingBridge tools to build the
-    standard definition and Objective-C header file of Safari's
+    standard definition and Objective-C header file of Safari’s
     AppleScript API.
 2.  By using [a set of python
     scripts](https://github.com/tingraldi/SwiftScripting) from Tony

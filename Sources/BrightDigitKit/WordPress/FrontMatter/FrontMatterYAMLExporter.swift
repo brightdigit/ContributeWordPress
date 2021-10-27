@@ -14,8 +14,8 @@ public struct FrontMatterYAMLExporter<FrontMatterTranslatorType: FrontMatterTran
   let translator: FrontMatterTranslatorType
   let formatter: FrontMatterFormatter = YAMLEncoder()
 
-  public func frontMatterText(fromWordPressPost post: WordPressPost) throws -> String {
-    let specs = translator.frontMatter(fromWordpresPost: post)
+  public func frontMatterText(fromWordPressPost post: WordPressPost, withFeaturedImage featuredImage: String?) throws -> String {
+    let specs = translator.frontMatter(fromWordpresPost: post, withFeaturedImage: featuredImage)
     let frontMatterText = try formatter.format(specs)
     return frontMatterText
   }

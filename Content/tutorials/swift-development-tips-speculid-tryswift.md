@@ -1,14 +1,16 @@
 ---
+title: Swift Development Tips - Speculid & Try!Swift NYC 2018
 date: 2018-11-19 04:30
 description: "On October 11, I spoke at Ann Arbor Cocoaheads at ArborMoon and gave
   some swift development tips. Specifically developing Speculid and\_Try!Swift New
   York."
+featuredImage: /media/images/learningswift/2018/11/title-card.jpg
 ---
-[﻿]{.mce_SELRES_start
+<span class="mce_SELRES_start"
 style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;"
-mce-type="bookmark"}[﻿]{.mce_SELRES_start
+mce-type="bookmark">﻿</span><span class="mce_SELRES_start"
 style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;"
-mce-type="bookmark"}
+mce-type="bookmark">﻿</span>
 
 [On October
 11,](https://learningswift.brightdigit.com/speaking-a2-speculid-tryswiftnyc/)
@@ -22,7 +24,7 @@ York.](https://learningswift.brightdigit.com/swift-thoughts-tryswift-nyc-2018/)
 
 > Leo will share some thoughts on the challenges in building Speculid,
 > such as using C++ libraries in a Swift app, continuous integration
-> (Travis-Ci) and more. He'll also be freshly back from TrySwift in NYC
+> (Travis-Ci) and more. He’ll also be freshly back from TrySwift in NYC
 > and will share some of his observations on the Swift community.
 
 If you are interested in the videos from Try!SwiftNYC 2018, they [are

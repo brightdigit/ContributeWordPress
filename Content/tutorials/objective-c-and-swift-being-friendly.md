@@ -1,10 +1,12 @@
 ---
+title: Objective-C and Swift - Being Friendly
 date: 2018-11-14 05:23
 description: Objective-C is still necessary for Swift development. With the introduction
   of C++ libraries in version 2.0 of Speculid, Objective-C became necessary.
+featuredImage: /media/images/learningswift/2018/11/2m411z.jpg
 ---
 There are times where Objective-C is still necessary for Swift
-development. For instance, with one such app I\'ve built in Swift,
+development. For instance, with one such app I've built in Swift,
 [Speculid](https://speculid.com/?utm_source=web&utm_medium=blog-post&utm_campaign=building-speculid),
 I needed to bring Objective-C code in. With the introduction of C++
 libraries in version 2.0, Objective-C became necessary. Luckily there
@@ -40,7 +42,7 @@ Not only do I have experience with Objective-C, but Objective-C has a
 strong integration with the Apple ecosystem; despite the simplicity of
 C. While I am using Objective-C, I want to keep the bulk of the code in
 Swift. Objective-C will only serve to interface with the C++ libraries
-as needed. Swift will interact with the user, manage jobs, etc\...
+as needed. Swift will interact with the user, manage jobs, etc...
 Objective-C will call the C++ libraries to build the actual graphics.
 The Swift code will be completely unaware of the code actually used
 to read, manipulate, and write the resulting files. Here is a brief
@@ -82,9 +84,9 @@ the *Cairo* library and takes an *ImageSpecificationProtocol* and an
 
 *ImageHandle* is another Protocol which the Objective-C framework will
 use containing the painting surface needed by Cairo. However, the Swift
-framework doesn't need to know anything about Cairo. So how does Swift
+framework doesn’t need to know anything about Cairo. So how does Swift
 create an *ImageHandle* without having access to the Cairo surface
-reference? That\'s where the other method comes in. We provide a
+reference? That's where the other method comes in. We provide a
 builder/factory class in the Objective-C class which takes parameters
 available in Swift:
 
@@ -120,10 +122,10 @@ and how the information is painted:
     @property (readonly) id<CairoColorProtocol> backgroundColor;
     @end
 
-Let's look at each of these properties excluding ImageFileProtocol which
-we already talked about\...
+Let’s look at each of these properties excluding ImageFileProtocol which
+we already talked about...
 
--   *removeAlphaChannel* which is a boolean value and that's transferred
+-   *removeAlphaChannel* which is a boolean value and that’s transferred
     between languages easily.
 -   *geometry is* *GeometryDimension,* a C struct which contains
     information about which dimension to scale based on (width, height
@@ -147,9 +149,9 @@ Here is how the protocol for *CairoColorProtocol* looks in Objective-C:
     @property (readonly) double blue;
     @end
 
-In this case rather [then]{.ul} creating a new class to implement this
-in Swift we can extend existing class: NSColor. Here the [simple]{.ul}
-implementation [as a Swift extension]{.ul}:
+In this case rather <u>then</u> creating a new class to implement this
+in Swift we can extend existing class: NSColor. Here the <u>simple</u>
+implementation <u>as a Swift extension</u>:
 
     extension NSColor: CairoColorProtocol {
       public var red: Double {
@@ -173,15 +175,15 @@ to make it even better for Swift.
 
 Since day one of Swift, working with Objective-C has been a requirement
 in some way. As the years have passed, Objective-C has added attributes
-to make it friendly to paradigms in Swift. There are two main ways we'll
+to make it friendly to paradigms in Swift. There are two main ways we’ll
 look at: **error handling** and **optionals**.
 
 ### Error Handling
 
-Since the inclusion of try statements in Swift 2.0, we've replaced the
+Since the inclusion of try statements in Swift 2.0, we’ve replaced the
 need for NSError pointers as parameters in Swift. However, if you follow
 the standard NSError paradigms in Objective-C, Swift will see that
-method as though it could throw an Error. Here's an example from the
+method as though it could throw an Error. Here’s an example from the
 CairoInterface class:
 
     @interface CairoInterface : NSObject
@@ -201,7 +203,7 @@ function:
     failure
 -   an NSError pointer parameter specifically named error
 
-Let's take a look again at the ImageHandleBuilder method:
+Let’s take a look again at the ImageHandleBuilder method:
 
     @interface ImageHandleBuilder : NSObject
     @property (class, nonatomic, assign, readonly) ImageHandleBuilder*  shared;
@@ -215,9 +217,9 @@ we still have an NSError pointer parameter named error.
         func imageHandleFromFile(_ file: ImageFileProtocol!) throws -> ImageHandle!
     }
 
-By following this standard, we've made error handling much cleaner and
+By following this standard, we’ve made error handling much cleaner and
 easier between languages. However, we still have annoying implicit
-optionals. Luckily there's a way to fix that as well.
+optionals. Luckily there’s a way to fix that as well.
 
 ### Optionals and Objective-C
 
@@ -230,7 +232,7 @@ here.](https://learningswift.brightdigit.com/understanding-optionals-in-swift/)
 Luckily, there are Objective-C attributes which can help clarify
 optionals better. Objective-C has two attributes to signify to Swift
 whether a parameter, property, or return value is optional or not:
-`_Nonnull` and `_Nullable`. Let's look again at *ImageHandleBuilder*:
+`_Nonnull` and `_Nullable`. Let’s look again at *ImageHandleBuilder*:
 
     @interface ImageHandleBuilder : NSObject
     @property (class, nonatomic, assign, readonly) ImageHandleBuilder*  shared;
@@ -258,7 +260,7 @@ So now rather than Swift seeing:
         func imageHandleFromFile(_ file: ImageFileProtocol!) throws -> ImageHandle!
     }
 
-We'll see:
+We’ll see:
 
     class ImageHandleBuilder : NSObject {
         class var shared : ImageHandleBuilder { get }
@@ -283,13 +285,13 @@ things you can do:
 -   In Objective-C, if your function can throw an Error, **use the
     standard paradigm in so Swift interprets your code correctly**
 -   **Mark your Objective-C generously** with attributes to note whether
-    a parameter, return type, etc\... is nullable or not.
+    a parameter, return type, etc... is nullable or not.
 
-Next, we\'ll be talking about using those C++ libraries in a framework.
+Next, we'll be talking about using those C++ libraries in a framework.
 If you want to stay up-to-date, [fill out the
 form](http://eepurl.com/c5uqxP) so I can let you know when the article
 is posted. In the meantime, feel free to checkout
 [Speculid](https://speculid.com) or [the open-source
-repo](https://github.com/brightdigit/Speculid), as well as [Apple\'s
+repo](https://github.com/brightdigit/Speculid), as well as [Apple's
 documentation on migrating from Objective-C to
 Swift](https://developer.apple.com/documentation/swift/migrating_your_objective-c_code_to_swift).

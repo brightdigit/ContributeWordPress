@@ -1,13 +1,17 @@
 ---
+title: Businesses and WWDC 2018 - Top 4 Changes to Know
 date: 2018-08-09 03:17
 description: This wasn't the "flashiest" year for the WWDC but some important changes
   came up for businesses to know about. It appears that Apple is taking these concerns
   over the year seriously and is doing some house cleaning. These behind the scenes
   concepts might not grab the headlines but they make a big difference for users.
+featuredImage: /media/images/brightdigit/2018/08/img_4492d8beee0b-1.jpg
 ---
-![](https://brightdigit.com/wp-content/uploads/2018/08/1280px-San_Jose_Convention_Center_plaza_WWDC18.jpg){.wp-image-1294}
+<figure>
+<img src="https://brightdigit.com/wp-content/uploads/2018/08/1280px-San_Jose_Convention_Center_plaza_WWDC18.jpg" class="wp-image-1294" />
+</figure>
 
-This wasn\'t the \"flashiest\" year for WWDC but some important changes
+This wasn't the "flashiest" year for WWDC but some important changes
 were mentioned that affect businesses. It appears that Apple is
 addressing concerns from the past year and doing some behind the scenes
 house cleaning. These behind the scenes improvements might not grab the
@@ -64,7 +68,9 @@ rates of iOS 12 and little reason to support iOS 11 for much longer.**
 
 # Mac App Store Improvements
 
-![](https://brightdigit.com/wp-content/uploads/2018/08/Screen-Shot-2018-08-07-at-7.39.18-AM-1024x810.jpg){.wp-image-1295}
+<figure>
+<img src="https://brightdigit.com/wp-content/uploads/2018/08/Screen-Shot-2018-08-07-at-7.39.18-AM-1024x810.jpg" class="wp-image-1295" />
+</figure>
 
 The Mac App Store has received its fair share of criticism. Compared
 with its iOS counterpart, it has seemed neglected and insufficient for
@@ -78,49 +84,49 @@ over to the Mac but there are changes to the restrictions on apps and
 their business model.
 
 Recently, Apple has included a better subscription model. And now they
-are including something like a \"Free Trial\" offering available from
-the Mac App Store. There will also be improvements to how sandboxing
-works. Sandboxing is a way to isolate the app and the files it uses from
-the rest of the data on your computer. [This improvement to sandboxing
-has allowed Mac developers at Panic to publish their app Transmit to the
-App
+are including something like a "Free Trial" offering available from the
+Mac App Store. There will also be improvements to how sandboxing works.
+Sandboxing is a way to isolate the app and the files it uses from the
+rest of the data on your computer. [This improvement to sandboxing has
+allowed Mac developers at Panic to publish their app Transmit to the App
 Store.](https://twitter.com/panic/status/1003767077256089600?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1003767077256089600&ref_url=https%3A%2F%2F9to5mac.com%2F2018%2F06%2F04%2Fnew-sandboxing-improvements-bring-transmit-back-to-the-mac-app-store%2F) As
 far as their pricing model, Panic will be doing a subscription model on
-the App Store and allowing a one-time purchase on their website.\
+the App Store and allowing a one-time purchase on their website.  
 
 > The Mac App Store is already home to some of the best apps in the
-> world. But there\'s plenty of room for more 😉\
-> \
+> world. But there's plenty of room for more 😉  
+>   
 > Here are just a few of the awesome developers coming to the all-new
 > Mac App Store.
 > [\#WWDC18](https://twitter.com/hashtag/WWDC18?src=hash&ref_src=twsrc%5Etfw)
 > [pic.twitter.com/UmWZVVDV8U](https://t.co/UmWZVVDV8U)
 >
-> --- App Store (\@AppStore) [June 4,
+> — App Store (@AppStore) [June 4,
 > 2018](https://twitter.com/AppStore/status/1003774653985370112?ref_src=twsrc%5Etfw)
 
-\
+  
 There are also other big software companies moving to the App Store,
 such as Microsoft and Adobe.
 
-If you\'re interested in learning more about macOS development, check
-out our article on [macOS development for iOS
+If you're interested in learning more about macOS development, check out
+our article on [macOS development for iOS
 developers](https://brightdigit.com/blog/2018/02/16/macos-development-ios-developers/).
 Now is a good time to at least consider publishing your app to the mac.
 
 # Using Social to Showcase AR
 
 Since the release of the iPhone X and AR Kit, Apple has continued to
-showcase it\'s AR features with Animoji and now Memoji. Animoji would
-use a set of cute animated characters which mimic your facial
-expressions using iPhone X technology. With iOS 12, Memoji allows a user
-to create an animated version of themselves. It\'s easy to view this as
-a bit of a gimmick. However, we must keep in mind what is going on
-\"under the hood.\" Memoji is a way to demo the exciting new AR and
-machine learning technology behind it. 
+showcase it's AR features with Animoji and now Memoji. Animoji would use
+a set of cute animated characters which mimic your facial expressions
+using iPhone X technology. With iOS 12, Memoji allows a user to create
+an animated version of themselves. It's easy to view this as a bit of a
+gimmick. However, we must keep in mind what is going on "under the
+hood." Memoji is a way to demo the exciting new AR and machine learning
+technology behind it. 
 
-![Screen Time in iOS
-12](https://brightdigit.com/wp-content/uploads/2018/08/img_4492d8beee0b-1-169x300.jpg){.wp-image-1301}
+<figure>
+<img src="https://brightdigit.com/wp-content/uploads/2018/08/img_4492d8beee0b-1-169x300.jpg" class="wp-image-1301" alt="Screen Time in iOS 12" /><figcaption aria-hidden="true">Screen Time in iOS 12</figcaption>
+</figure>
 
 Businesses should continue to watch trends in ARKit and CoreML and
 consider how these tools may help their business.
@@ -132,9 +138,8 @@ Apple is doing the same on iOS 12 with Screen Time. Screen Time allows
 users (and parents) to limit app and overall phone usage.
 
 Users can always avoid following through on these limitations by
-overriding them with a pass code. However, it\'s important for
-businesses to keep in mind that users can place these limits on their
-apps.
+overriding them with a pass code. However, it's important for businesses
+to keep in mind that users can place these limits on their apps.
 
 # Plenty For Businesses to Prepare
 

@@ -4,5 +4,5 @@ import Foundation
   import FoundationNetworking
 #endif
 public protocol URLDownloader {
-  func download(from fromURL: URL, to toURL: URL, _ completion: @escaping (Error?) -> Void)
+  func download(from fromURL: URL, to toURL: URL, allowOverwrite: Bool, _ completion: @escaping (Error?) -> Void)
 }

@@ -12,7 +12,7 @@ public struct FileURLDownloader: URLDownloader {
   let session: URLSession
   let fileManager: FileManager
 
-  public func download(from fromURL: URL, to toURL: URL, _ completion: @escaping (Error?) -> Void) {
+  public func download(from fromURL: URL, to toURL: URL, allowOverwrite: Bool, _ completion: @escaping (Error?) -> Void) {
     let task = session.downloadTask(with: fromURL) { destination, _, error in
       var resultError: Error?
       if let error = error {
@@ -20,7 +20,13 @@ public struct FileURLDownloader: URLDownloader {
       } else if let sourceURL = destination {
         do {
           try self.fileManager.createDirectory(at: toURL.deletingLastPathComponent(), withIntermediateDirectories: true, attributes: nil)
-          try self.fileManager.copyItem(at: sourceURL, to: toURL)
+          if self.fileManager.fileExists(atPath: toURL.path) {
+            if allowOverwrite {
+              _ = try self.fileManager.replaceItemAt(toURL, withItemAt: sourceURL)
+            }
+          } else {
+            try self.fileManager.copyItem(at: sourceURL, to: toURL)
+          }
         } catch {
           resultError = error
         }

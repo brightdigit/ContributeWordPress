@@ -1,4 +1,5 @@
 ---
+title: WWDC 2018 - Swift 4.2 and  "Random" Changes
 date: 2018-06-04 22:07
 description: With WWDC 2018, Swift 4.2 has introduced new ways to generate random
   values and access random values from a collection. Included with Xcode 10, there
@@ -9,7 +10,7 @@ With WWDC 2018, Swift 4.2 [has
 introduced](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md) new
 ways to generate and access random values from a collection. Often
 times, app developers will do this when building games or creating test
-data. Let\'s take a look at the old way and the new way to access random
+data. Let's take a look at the old way and the new way to access random
 items.
 
 ## Random Access and Legacy APIs
@@ -68,6 +69,6 @@ generated. Also like RandomKit, a random element can be selected with
 It seems like a majority of the improvements which were needed for
 random generation and access have been implemented. There is still room
 for more complex libraries like RandomKit and the hope is that they
-implement these new APIs in the future. In the future it\'s best to use
+implement these new APIs in the future. In the future it's best to use
 the new APIs and avoid needed the legacy APIs for random number
 generation in your app or tests.

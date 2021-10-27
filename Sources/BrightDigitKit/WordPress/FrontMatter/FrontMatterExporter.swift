@@ -7,7 +7,7 @@ import Yams
 #endif
 
 public protocol FrontMatterExporter {
-  func frontMatterText(fromWordPressPost post: WordPressPost) throws -> String
+  func frontMatterText(fromWordPressPost post: WordPressPost, withFeaturedImage featuredImage: String?) throws -> String
 }
 
 extension YAMLEncoder: FrontMatterFormatter {
