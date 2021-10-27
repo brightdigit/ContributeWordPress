@@ -346,3 +346,96 @@ body#articles {
     }
   }
 }
+
+body#services {
+  h1 {
+    @apply text-2xl mb-4;
+  }
+  h2{ 
+    @apply text-lg font-normal mb-4;
+  }
+  & > main {
+    @apply xl:container xl:mx-auto;
+    & > section {
+      @apply m-6 pb-4;     
+       & > img:first-child {
+         @apply mb-4;
+       }
+       & > main {
+         & > header {
+           @apply flex;
+           & > img:first-child {
+             @apply flex-grow-0 flex-shrink h-8 mr-2;
+           }
+           & > h2 {
+             @apply flex-grow;
+           }
+         }
+         & > p {
+          @apply text-sm font-light;
+         }
+       }
+       &#hero {
+         @apply bg-gray-100 p-6 rounded-lg;
+         h1 {
+           @apply border-b-2 pb-2 border-gray-200;
+         }
+       }
+    }
+    & > section.cta {
+      @apply m-6;
+      & > main {
+        @apply bg-gray-100 p-6 rounded-lg sm:flex sm:flex-1;
+        & > header {
+          @apply mb-4 sm:flex sm:m-0 sm:w-1/2 sm:flex-none;
+          img {
+            @apply object-cover sm:flex sm:flex-1;
+          }
+        }
+        & > main {
+          @apply sm:flex sm:ml-4 sm:flex-col md:place-self-center md:self-center md:flex-grow xl:mx-8;
+          p:first-child {
+            @apply sm:font-bold;
+          }
+          & > .button {
+            @apply text-center flex flex-col _button;
+          }
+          & > ol {
+            @apply flex flex-col mt-2 lg:mt-4 lg:grid lg:grid-cols-2 lg:gap-2 lg:-mx-2;
+            & > li {
+              @apply text-bellow-600 flex flex-col align-middle;
+              a {
+                @apply _button_normal flex my-2 align-middle lg:my-0 lg:text-sm xl:text-base lg:px-2;
+              }
+              i {
+                @apply text-xl align-middle mr-2;
+              }
+            }
+          }
+         form {
+            @apply w-full flex flex-col mt-4 border-t-2 pt-2  sm:flex-1;
+            button {
+              @apply _button;
+            }
+            textarea {
+              @apply p-2;
+            }
+            & > div {
+              @apply flex flex-row my-2 -mx-2;
+              & > div {
+                @apply flex flex-col flex-grow mx-2;
+                input {
+                  @apply flex flex-row flex-grow w-full p-2;
+                }
+                label {
+                  @apply text-xs flex px-2 py-1;
+                }
+              }
+            }
+          }
+        }
+       
+      }
+    }
+  }
+}
