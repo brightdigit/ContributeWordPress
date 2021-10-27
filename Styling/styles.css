@@ -357,8 +357,23 @@ body#services {
   & > main {
     @apply xl:container xl:mx-auto;
     & > section {
-      @apply m-6 pb-4;     
-       & > img:first-child {
+      @apply m-6 pb-4;    
+      &.service {
+        @apply sm:flex sm:items-stretch md:items-center lg:border-2 lg:border-gray-50 lg:shadow-xl lg:rounded-lg lg:p-12;
+        & >  header {
+          @apply mr-4 lg:mr-8 sm:mb-0 sm:w-5/12 justify-self-center flex-grow-0 flex-shrink sm:flex;
+          img {
+            @apply object-cover sm:h-full sm:w-full;
+          }
+        }
+        & > main {
+          @apply flex-1;
+          p {
+            @apply lg:text-base;
+          }
+        }
+      } 
+       & > header {
          @apply mb-4;
        }
        & > main {
@@ -383,7 +398,7 @@ body#services {
        }
     }
     & > section.cta {
-      @apply m-6;
+      @apply m-6 ;
       & > main {
         @apply bg-gray-100 p-6 rounded-lg sm:flex sm:flex-1;
         & > header {
