@@ -30,6 +30,6 @@ public struct PandocMarkdownGenerator: MarkdownGenerator {
 
   public func markdown(fromHTML htmlString: String) throws -> String {
     let temporaryFileURL = try temporaryFile(htmlString)
-    return try shellOut(pandocPath, ["-f html -t markdown", temporaryFileURL.path])
+    return try shellOut(pandocPath, ["-f html -t markdown_strict", temporaryFileURL.path])
   }
 }

@@ -1,15 +1,16 @@
 ---
+title: Asset Catalogs, Image Sets, and App Icons
 date: 2018-11-07 02:55
 description: In Xcode, Asset Catalogs are an important part of that process and the
   primary way they are used is through Image Sets and App Icons.
+featuredImage: /media/images/learningswift/2018/10/AppIcons.jpg
 ---
 Asset catalogs are collections of specialized files (such as graphics
 files) as well as JSON files containing metadata. The metadata from the
 JSON files are used for organizing the specialized files and denoting
 their purpose within the set. In the case of graphic sets like Image
 Sets, they contain several pieces of information.
-![](https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/10/AppIcons.jpg){.alignnone
-.size-full .wp-image-186 width="1920" height="903"}
+<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/10/AppIcons.jpg" class="alignnone size-full wp-image-186" width="1920" height="903" />
 
 ## Image Sets
 
@@ -85,7 +86,7 @@ particular properties for app icons on certain devices:
 -   -   `longLook` - An image used for a long look notification
 
 With all these properties an App Icon set can contain as many as 41
-individual files. That's why it is best to use an automated method
+individual files. That’s why it is best to use an automated method
 to render these files. Check out our [series of blog posts on automating
 that process for more
 details.](https://learningswift.brightdigit.com/category/building-icons-and-image-sets/)

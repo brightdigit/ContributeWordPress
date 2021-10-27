@@ -1,23 +1,26 @@
 ---
+title: How to Set a Realistic Project Budget for Your iOS App
 date: 2019-08-19 02:28
 description: "Our guide to setting a project budget for building a mobile app for
   iOS, including time and costs of different parts of app development\_ | Bright Digit
   LLC"
 ---
 If you are contemplating building an app for the first time, or maybe
-you're looking to get an existing one ported to iOS or another mobile
+you’re looking to get an existing one ported to iOS or another mobile
 platform, it may be difficult to figure out how much it will cost and
 what a realistic project budget for it looks like. A quick look in the
 App Store might convince you that everyone has one and they are easy to
 make. However, creating a good-quality app is usually a lot of work.
 
-![](https://brightdigit.com/wp-content/uploads/2019/08/przemyslaw-marczynski-oCfkSnqZ0SI-unsplash-e1565882465407-1024x512.jpg){.wp-image-1702}
+<figure>
+<img src="https://brightdigit.com/wp-content/uploads/2019/08/przemyslaw-marczynski-oCfkSnqZ0SI-unsplash-e1565882465407-1024x512.jpg" class="wp-image-1702" />
+</figure>
 
 That said, with a little knowledge about how an app is created, creating
-a budget doesn't need to be daunting. I've got some tips to help you
+a budget doesn’t need to be daunting. I’ve got some tips to help you
 with what to consider in developing an app for your business.
 
-I'll be covering how to figure out both the time and cost of coding,
+I’ll be covering how to figure out both the time and cost of coding,
 designing and delivering an app to your customers and what kinds of
 things you should be talking to your developer about before work gets
 started. 
@@ -25,8 +28,8 @@ started. 
 ## What does your app need to do?
 
 If you approach any good developer with a proposal to have an app built,
-the first thing they are going to ask is "What do you need the app to
-do?" An app, at its most basic level, is a set of functions that allow
+the first thing they are going to ask is “What do you need the app to
+do?” An app, at its most basic level, is a set of functions that allow
 specific actions to be taken: for example, if you run a consultancy, you
 may want an app with a function that allows customers to book meetings
 with you. If you have a restaurant that delivers, you probably want a
@@ -43,9 +46,9 @@ a higher quote.
 
 ## Has somebody already done it?
 
-I'm always surprised how many times people come with a great idea for an
-app, but haven't checked the App Store to see if something like it
-already exists. Not only is this is easy to do, but it's also a simple
+I’m always surprised how many times people come with a great idea for an
+app, but haven’t checked the App Store to see if something like it
+already exists. Not only is this is easy to do, but it’s also a simple
 way to find out how well, or how difficult, an app idea could be to
 build and deliver. It can also reveal issues you may not have initially
 thought of, like how the app handles edge cases or exceptions. This
@@ -57,14 +60,14 @@ covered certification requirements for different States. This, while it
 might seem simple, turned out to be complex to create, because many
 users needed ways of tracking their certification training credits in
 two or more States and credits for each requirement needed to be tracked
-separately. It certainly wasn't something the client thought was going
-to be needed, and while many of the app's users didn't need it, it ended
+separately. It certainly wasn’t something the client thought was going
+to be needed, and while many of the app’s users didn’t need it, it ended
 up being a necessary feature.
 
 ## How well do you need it done?
 
 Another factor to consider is the level of quality you need for your
-app. Assuming you've hired a reputable developer, the more time and
+app. Assuming you’ve hired a reputable developer, the more time and
 money you can provide them, the higher quality the app will be: things
 like a more attractive and easy-to-use user interface, fewer bugs and a
 way to handle them, or whether you can use the app offline.
@@ -80,7 +83,7 @@ necessary. 
 
 Levels of build quality are one of the biggest differentiators between
 developers. It is possible to get significantly different quotes for the
-same app depending on how well it's made. While there are many factors
+same app depending on how well it’s made. While there are many factors
 that might have bearing on this, the main one is how the app is coded:
 
 #### Native
@@ -97,7 +100,7 @@ Some developers might save time and money on app development by using
 app templates. Effectively, these use premade designs that allow you to
 add and arrange common app functions. These often have little room for
 customization or being able to change things later, making them a poor
-choice if you're looking for a good long-term investment in an app. 
+choice if you’re looking for a good long-term investment in an app. 
 
 #### Cross-Platform Tools
 
@@ -111,7 +114,7 @@ some limits on what you can build into the app.
 Another way is to use a web development wrappers. With this method, you
 create a web page and have it display as if it were an app. There are
 some considerable limitations to what you can do with this method
-though, and shouldn't be used for anything but the simplest of needs.
+though, and shouldn’t be used for anything but the simplest of needs.
 
 ## How will your app be delivered to your customers?
 
@@ -125,7 +128,9 @@ stores. By planning ahead and knowing the requirements of the store
 before work gets started, you can save yourself significant time and
 money later on.
 
-![](https://brightdigit.com/wp-content/uploads/2019/08/kaleidico-26MJGnCM0Wc-unsplash-e1565882532230-1024x512.jpg){.wp-image-1703}
+<figure>
+<img src="https://brightdigit.com/wp-content/uploads/2019/08/kaleidico-26MJGnCM0Wc-unsplash-e1565882532230-1024x512.jpg" class="wp-image-1703" />
+</figure>
 
 ## Things to Keep in Mind
 
@@ -137,19 +142,19 @@ realistic project budget:
 -   Build quality
 -   Form of delivery
 
-\...and that's only scratching the surface. There are also factors like
-testing to consider, which we'll cover in a different post. However, the
+...and that’s only scratching the surface. There are also factors like
+testing to consider, which we’ll cover in a different post. However, the
 above is a good starting point for putting together a realistic project
 budget and having an effective discussion with a prospective developer.
 
 ## Do you want a well-designed app that delights your customers?
 
 When we work with clients to help them build apps, we want to make sure
-they can stay within their budget and don't end up with unnecessary
+they can stay within their budget and don’t end up with unnecessary
 features. Often with new clients, we suggest building a proof of concept
 of their app idea, so they can quickly put it in front of their
 customers and discover what features they actually need. Then, when
-they're ready, we help them build the full-fledged app.
+they’re ready, we help them build the full-fledged app.
 
 If that sounds like the experience you want to have in developing a
 successful app, **[contact us here](https://brightdigit.com/contact/)**

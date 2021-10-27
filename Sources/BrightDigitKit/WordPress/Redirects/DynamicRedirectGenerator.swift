@@ -1,8 +1,17 @@
 import SyndiKit
 
 public struct DynamicRedirectGenerator: RedirectListGenerator {
-  let postFilter: (WordPressPost) -> Bool = Self.defaultFilter(post:)
-  let urlPathGenerate: (String, WordPressPost) -> String = Self.defaultURLPath(fromName:wordpressPost:)
+  internal init(postFilter: @escaping (WordPressPost) -> Bool = Self.defaultFilter(post:), urlPathGenerate: @escaping (String, WordPressPost) -> String = Self.defaultURLPath(fromName:wordpressPost:)) {
+    self.postFilter = postFilter
+    self.urlPathGenerate = urlPathGenerate
+  }
+
+  init(postFilters: [PostFilter]) {
+    self.init(postFilter: postFilters.postSatisfiesAll)
+  }
+
+  let postFilter: (WordPressPost) -> Bool
+  let urlPathGenerate: (String, WordPressPost) -> String
 
   static func defaultFilter(post: WordPressPost) -> Bool {
     post.type == "post" && post.link.path != "/" && post.status == "publish"

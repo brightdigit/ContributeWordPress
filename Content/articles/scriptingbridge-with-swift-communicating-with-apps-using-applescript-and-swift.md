@@ -1,13 +1,16 @@
 ---
+title: ScriptingBridge with Swift - Communicating with Apps using AppleScript and
+  Swift
 date: 2017-06-09 16:38
+featuredImage: /media/images/brightdigit/2017/06/scriptingbridge-with-swift-communicating-with-apps-using-applescript-and-swift.png
 ---
-![](https://www.brightdigit.com/wp-content/uploads/2017/06/scriptingbridge-with-swift-communicating-with-apps-using-applescript-and-swift-300x105.png){.alignnone
-.size-medium .wp-image-276 width="300" height="105"} **AppleScript** is
-a great technology on macOS for both developers and power users. It
-allows users to create automated processes which work other apps. As a
-developer though, sometimes you want a **build an app in Xcode with the
-power of AppleScript**without the need to have separate script files. To
-work with AppleScript in any app, there are two options to do this:
+<img src="https://www.brightdigit.com/wp-content/uploads/2017/06/scriptingbridge-with-swift-communicating-with-apps-using-applescript-and-swift-300x105.png" class="alignnone size-medium wp-image-276" width="300" height="105" />
+**AppleScript** is a great technology on macOS for both developers and
+power users. It allows users to create automated processes which work
+other apps. As a developer though, sometimes you want a **build an app
+in Xcode with the power of AppleScript**without the need to have
+separate script files. To work with AppleScript in any app, there are
+two options to do this:
 
 1.  **Write a separate AppleScript file** and use the [*NSAppleScript
     API*](https://developer.apple.com/documentation/foundation/scripting_support)
@@ -45,7 +48,7 @@ here](https://majestysoftware.wordpress.com/2015/03/31/swift-scripting-part-1/).
 
 #### ScriptBridging with Safari
 
-Now let\'s try doing this **by writing [an app which pulls the tab urls
+Now let's try doing this **by writing [an app which pulls the tab urls
 out of a Safari window](https://github.com/brightdigit/jURLnal).** The
 repo for this app can be found
 [here](https://github.com/brightdigit/jURLnal).
@@ -53,7 +56,7 @@ repo for this app can be found
 ##### Building the Swift Code from AppleScript Definition
 
 Download the python scripting tools from the [SwiftScripting repo on
-GitHub](https://github.com/tingraldi/SwiftScripting). From the repo\'s
+GitHub](https://github.com/tingraldi/SwiftScripting). From the repo's
 directory, run the following commands:
 
     pip install clang
@@ -62,7 +65,7 @@ directory, run the following commands:
     ./sbhc.py Safari.h
     ./sbsc.py Safari.sdef
 
-Let\'s break this down:
+Let's break this down:
 
 1.  `pip install clang` - ensures clang is installed for python
 2.  `sdef /Applications/Safari.app > Safari.sdef` - gets the scripting
@@ -107,13 +110,13 @@ cast as the `SafariApplication` protocol and get all the windows. The
 `windows` property only returns a
 [`SBElementArray`](https://developer.apple.com/documentation/scriptingbridge/sbelementarray),
 so we need to cast those elements to a `SafariWindow`. From there we can
-get the window\'s set of tabs:
+get the window's set of tabs:
 
     let safariWindow = safariWindows?.first
     let safariTab = safariWindow?.tabs?().firstObject as? SafariTab
     let url = safariTab?.URL
 
-Let\'s break this down:
+Let's break this down:
 
 1.  `let safariWindow = safariWindows?.first` - get the first Safari
     window
@@ -131,7 +134,7 @@ to the clipboard.
 So as you can see -
 
 1.  We have used the standard ScriptBridging tools to build the standard
-    definition and Objective-C header file of Safari's AppleScript API.
+    definition and Objective-C header file of Safari’s AppleScript API.
 2.  We used [a set of python
     scripts](https://github.com/tingraldi/SwiftScripting) from Tony
     Ingraldi of [Majesty Software](http://majestysoftware.com/) to

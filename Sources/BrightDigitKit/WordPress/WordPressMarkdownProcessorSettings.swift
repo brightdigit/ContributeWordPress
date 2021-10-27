@@ -5,4 +5,6 @@ public protocol WordPressMarkdownProcessorSettings {
   var resourcesPathURL: URL { get }
   var directoryURL: URL { get }
   var resourceImagePathURL: URL { get }
+  var overwriteImages: Bool { get }
+  var skipDownload: Bool { get }
 }

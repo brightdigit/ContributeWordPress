@@ -1,5 +1,7 @@
 ---
+title: Vapor &#8211; Swift Choice For the Back End
 date: 2019-03-19 06:10
+featuredImage: /media/images/brightdigit/2019/03/jared-murray-974070-unsplash-e1552938232840.jpg
 ---
 Back in February, I did [an episode of my podcast where I gave an
 overview of different backend options when developing a mobile
@@ -12,19 +14,21 @@ dive](https://learningswift.brightdigit.com/vapor-heroku-ubuntu-setup-deploy/?ut
 into [Vapor](https://vapor.codes) and whether it is really a viable
 choice.
 
-![](https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/jared-murray-974070-unsplash-e1552938209336-1024x512.jpg){.wp-image-1590}
+<figure>
+<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/jared-murray-974070-unsplash-e1552938209336-1024x512.jpg" class="wp-image-1590" />
+</figure>
 
 ## A Plethora Of Choices
 
 Looking at the landscape of back end choices can be rather confusing. In
-the end, **it really depends on team's skillset**. For instance, if
-you're using JavaScript to build your web and mobile applications,
+the end, **it really depends on team’s skillset**. For instance, if
+you’re using JavaScript to build your web and mobile applications,
 Node.JS makes sense. On the other hand, if you are .Net developer team,
 Web API makes sense. Moreover, if you are particularly skilled with PHP,
-Python, Ruby, Go, etc\..., you should stay within your comfort zone.
+Python, Ruby, Go, etc..., you should stay within your comfort zone.
 
 However for single developers and developer teams (such as me) which
-focus on Apple products, there isn't a dedicated framework for
+focus on Apple products, there isn’t a dedicated framework for
 server-side applications. Therefore, the closest option is
 [CloudKit](https://developer.apple.com/icloud/cloudkit/), which is good
 for data storage but lacks options such as:
@@ -36,7 +40,9 @@ for data storage but lacks options such as:
 
 However there are other options to remain developing in Swift on server.
 
-![](https://brightdigit.com/wp-content/uploads/2019/03/wordmark-horizontal-1024x271.png){.wp-image-1553}
+<figure>
+<img src="https://brightdigit.com/wp-content/uploads/2019/03/wordmark-horizontal-1024x271.png" class="wp-image-1553" />
+</figure>
 
 ## Vapor - Swift for the Server
 
@@ -52,11 +58,13 @@ In this article, I will review Vapor and cover:
 -   **[Database Support](#database-support)**
 -   **[Event-Driven Async API](#event-driven)**
 
-Therefore, let's begin by talking about how easy it is to get started.
+Therefore, let’s begin by talking about how easy it is to get started.
 
-![](https://i1.wp.com/learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/getting-things-setup.jpg?fit=1024%2C512&ssl=1){.wp-image-1555}
+<figure>
+<img src="https://i1.wp.com/learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/getting-things-setup.jpg?fit=1024%2C512&amp;ssl=1" class="wp-image-1555" />
+</figure>
 
-## Getting Started with Vapor {#getting-started}
+## Getting Started with Vapor
 
 [In this article I recently published, I showed how to get started by
 installing Vapor on your Mac and Ubuntu as well as services like
@@ -82,9 +90,11 @@ article which deep dives into Vapor and setting up for macOS, Heroku,
 and
 Ubuntu.](https://learningswift.brightdigit.com/vapor-heroku-ubuntu-setup-deploy/?utm_medium=web&utm_source=learning-swift)**
 
-![](https://brightdigit.com/wp-content/uploads/2019/03/developer-tools-1024x512.jpg){.wp-image-1557}
+<figure>
+<img src="https://brightdigit.com/wp-content/uploads/2019/03/developer-tools-1024x512.jpg" class="wp-image-1557" />
+</figure>
 
-## Developing with Vapor {#developing}
+## Developing with Vapor
 
 Having installed Vapor, the next part of the procedure is developing the
 app. As a result, the IDE is very important.
@@ -108,12 +118,12 @@ Generally speaking, the Swift Package Manager or SPM has been slowly
 adapted as the premier dependency manager. In the long run while
 Cocoapods and Carthage still reign in the area of iOS development, **it
 is inevitable that SPM will dominate in the future**. Having discussed
-outside support for Vapor, let's discuss what Vapor (and its package
+outside support for Vapor, let’s discuss what Vapor (and its package
 support currently).
 
-### Database Support and Fluent ORM {#database-support}
+### Database Support and Fluent ORM
 
-My experience working with various ORMs are varied. Being that I've
+My experience working with various ORMs are varied. Being that I’ve
 worked with Entity Framework in C\# and Sequelize for Node.Js, I have
 some experience. Having said that, **what makes these work so well is
 the ability to use lambdas and implement many functional programming
@@ -136,37 +146,37 @@ but its support for those databases is fairly deep.
 
 For instance, I ran into an issue where I was searching for objects by
 title - a fairly simple keyword search for a REST API list operation.
-However, what I didn't realize was that many titles have
+However, what I didn’t realize was that many titles have
 [*diacritcs*](https://en.wikipedia.org/wiki/Diacritic), specifically
 accents. In other words if a user searches for something with an *e* if
-a title has an *é*, that result won't show up. In spite of this, there
+a title has an *é*, that result won’t show up. In spite of this, there
 is code in PostgreSQL to *unaccent* a string, such as there is a way to
 do lower or upper case transformation. Having adding the necessary
-functions, I am able to call the function with Fluent's API:
+functions, I am able to call the function with Fluent’s API:
 
-``` {.wp-block-code}
-let columnId = PostgreSQLColumnIdentifier.column("Game", "title")
-let column = PostgreSQLExpression.column(columnId)
-let arg = GenericSQLFunctionArgument<PostgreSQLExpression>.expression(column)
-let args : [GenericSQLFunctionArgument<PostgreSQLExpression>] = [arg]
-let expression = PostgreSQLExpression.function("unaccent", args)
-```
+    let columnId = PostgreSQLColumnIdentifier.column("Game", "title")
+    let column = PostgreSQLExpression.column(columnId)
+    let arg = GenericSQLFunctionArgument<PostgreSQLExpression>.expression(column)
+    let args : [GenericSQLFunctionArgument<PostgreSQLExpression>] = [arg]
+    let expression = PostgreSQLExpression.function("unaccent", args)
 
 As shown above, this may not be ideal, but it works. In addition, you
 always have access to lower level, direct SQL code using the Database
 Kit API. However what truly makes Fluent ORM so robust is the use of
 SwiftNIO async API.
 
-![](https://brightdigit.com/wp-content/uploads/2019/03/futures-and-promises-1024x512.jpg){.wp-image-1559}
+<figure>
+<img src="https://brightdigit.com/wp-content/uploads/2019/03/futures-and-promises-1024x512.jpg" class="wp-image-1559" />
+</figure>
 
-### The *Future* of Programming {#event-driven}
+### The *Future* of Programming
 
 In short, [SwiftNIO](https://github.com/apple/swift-nio), the
 event-driven network application framework started by Apple, provides a
 set of types for handling callback-based asynchronous APIs such as
 database queries.
 
-[]{#Xcode-issues}
+<span id="Xcode-issues"></span>
 
 In addition, Vapor provides a set of functionality which make complex
 queries accessible in code. That is to say **SwiftNIO and Vapor provides
@@ -193,7 +203,9 @@ not be much extra effort in creating a robust REST API. However, if you
 do need to customize your type to use Codable, I highly recommend my
 post on improving how you decode JSON.
 
-![](https://i0.wp.com/learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/swift-vapor-choice.jpg?fit=1024%2C512&ssl=1){.wp-image-1561}
+<figure>
+<img src="https://i0.wp.com/learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/swift-vapor-choice.jpg?fit=1024%2C512&amp;ssl=1" class="wp-image-1561" />
+</figure>
 
 ## Vaporware or Swift-ly Switch?
 
@@ -202,11 +214,11 @@ server-side application**. However, I would never recommend anyone
 rewrite their whole application in this.
 
 Overall, **if you are already Swift team and you are looking to move
-some if not all your code to a new framework, I'd highly recommend
+some if not all your code to a new framework, I’d highly recommend
 taking a look Vapor as your first choice.** Not to mention, if you are
 using a web framework that is becoming a burden and **enjoy the
 versatility of Swift, going with Vapor would be good fit**. (Besides
-that, the only caveat I'd make is that if you are building for the
+that, the only caveat I’d make is that if you are building for the
 enterprise I would look into [Kitura](https://www.kitura.io), the IBM
 team has plenty of experience in that space and
 [Kitura](https://www.kitura.io) seems more focused in those regards.)

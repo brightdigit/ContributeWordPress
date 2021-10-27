@@ -1,4 +1,5 @@
 ---
+title: Introducing the Empower Apps Show
 date: 2018-08-25 11:59
 ---
 Today we are launching a new podcast for businesses in the Apple space:

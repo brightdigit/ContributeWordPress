@@ -27,7 +27,7 @@ let package = Package(
     .package(url: "https://github.com/eneko/MarkdownGenerator.git", from: "0.4.0"),
 
     .package(url: "https://github.com/JohnSundell/Splash", from: "0.15.0"),
-    .package(url: "https://github.com/BrightDigit/SyndiKit", from: "0.1.1"),
+    .package(url: "https://github.com/BrightDigit/SyndiKit", from: "0.1.2"),
     .package(url: "https://github.com/shibapm/Komondor", from: "1.1.1"), // dev
     .package(url: "https://github.com/eneko/SourceDocs", from: "1.2.1"), // dev
     .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.47.0"), // dev

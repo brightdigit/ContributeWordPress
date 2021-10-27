@@ -1,15 +1,17 @@
 ---
+title: What makes a good iOS team manager?
 date: 2020-11-17 04:36
 description: "Traditional management and iOS development don't work well together.
   How can we fix this? What I\u2019ve found is the best iOS team managers share a
   few traits."
 tags: iOS, swiftui
+featuredImage: /media/images/brightdigit/2020/10/cytonn-photography-n95VMLxqM2I-unsplash-scaled.jpg
 ---
 In any organization, you have a hierarchy. The opinions or comments of
 executives and managers carry authority employees will feel compelled to
-respond to. And this is a problem if that organization's business is iOS
+respond to. And this is a problem if that organization’s business is iOS
 development. Traditional methods of business management and current
-methods of iOS development don't work very well together. A good iOS
+methods of iOS development don’t work very well together. A good iOS
 team manager does things differently.
 
 ## iOS Development is unpredictable
@@ -21,23 +23,23 @@ start a project with not much more than:
 -   a list of feature requirements,
 -   and what problem the app needs to solve for the user.
 
-**No one can accurately predict what the app will be like when it's
+**No one can accurately predict what the app will be like when it’s
 *done.***
 
 There will be obstacles that arise that you only discover when you start
-publishing the app. Additionally, it's likely the client will change
+publishing the app. Additionally, it’s likely the client will change
 their requirements. Moreover, there could be a major change to a library
 halfway through the project. As a result, your team will need to rethink
 the app going forward.
 
-::: {.wp-block-image}
-![](https://brightdigit.com/wp-content/uploads/2020/10/cytonn-photography-n95VMLxqM2I-unsplash-1024x684.jpg){.wp-image-2227}
-:::
+<figure>
+<img src="https://brightdigit.com/wp-content/uploads/2020/10/cytonn-photography-n95VMLxqM2I-unsplash-1024x684.jpg" class="wp-image-2227" />
+</figure>
 
 ### Tried and True iOS Team Management?
 
 This is fundamentally different from older, more established kinds of
-work. For instance, with accounting, we've been managing money for the
+work. For instance, with accounting, we’ve been managing money for the
 entire history of human civilization. The work is governed by
 well-established rules, regulations, and best practices. For this
 reason, there is generally an established way to achieve a desired
@@ -58,7 +60,7 @@ collaborative. Members need to be able to:
     problem.
 
 This goes beyond building the app. It is not unusual for an unforeseen
-change in the codebase, user behavior, or the client's business to
+change in the codebase, user behavior, or the client’s business to
 destabilize an app. Most likely this will result in needing an update or
 additional maintenance.
 
@@ -69,14 +71,14 @@ leader might know about software or how well-meaning they might be.
 
 ### Encouraging Your Team
 
-Managers aren't going to go away -- they almost always serve a key role
+Managers aren’t going to go away – they almost always serve a key role
 in their organizations. The question is then: **How can we reconcile
 management and iOS development?** How might a manager work with a team,
 guiding and supporting their collaborative capacity? At the same time,
-how can a manager avoid tilting the team's decisions with their
+how can a manager avoid tilting the team’s decisions with their
 influence?
 
-What I've found is that the best iOS managers share a few traits. These
+What I’ve found is that the best iOS managers share a few traits. These
 traits:
 
 -   help them build up and support their teams,
@@ -84,32 +86,32 @@ traits:
 -   and balance the unpredictability of development work with the
     stability most businesses and organizations need.
 
-**What follows are three traits that the most amazing iOS managers I\'ve
+**What follows are three traits that the most amazing iOS managers I've
 worked with have shared.**
 
 ## They Are Great Listeners
 
-There's a tactic I've seen some managers use: when the team is working
+There’s a tactic I’ve seen some managers use: when the team is working
 through something together, **they make sure they are always the last
-one to speak**. **They don't want to influence the opinions of the team
-before they've had a chance to hear each other**. As Peter Witham noted
+one to speak**. **They don’t want to influence the opinions of the team
+before they’ve had a chance to hear each other**. As Peter Witham noted
 in my recent interview with him on my EmpowerApps.Show, it also gives
 the manager time to carefully listen and consider how the team thinks
 and feels before they weigh in.
 
-How Peter Witham gets feedback as a manager from\
+How Peter Witham gets feedback as a manager from  
 [Episode 29 of Empower Apps](https://share.transistor.fm/s/4011273d)
 
-It really can't be underestimated how powerful it is to listen to the
+It really can’t be underestimated how powerful it is to listen to the
 people you manage while resisting the urge to intervene, even if you
 feel strongly about the best way forward. Rather than an emphasis on
-control, assigning responsibility, and motivating the team -- valued by
-traditional management -- **a good iOS manager sits back and listens.**
+control, assigning responsibility, and motivating the team – valued by
+traditional management – **a good iOS manager sits back and listens.**
 
 ### Listening to your team
 
 Along with a bit of empathy, this can do wonders. Not only for your
-team's ability to organize its work and deliver it, but it also boosts
+team’s ability to organize its work and deliver it, but it also boosts
 the confidence of team members. **As a result, this will encourage them
 to take on difficult challenges. Additionally, they are free to learn
 from those challenges, knowing they are supported by their boss.**
@@ -148,13 +150,12 @@ and screw up as anyone.
 
 The goal is to make team members feel safe expressing themselves.
 Especially if they challenge the opinions, ideas, and decisions of their
-manager. And critically, when they feel the manager\'s opinions aren't
+manager. And critically, when they feel the manager's opinions aren’t
 serving the best interests of the team or the project.
 
-::: {.wp-block-image}
-![](https://brightdigit.com/wp-content/uploads/2020/10/n-RFId0_7kep4-unsplash-1024x683.jpg){.wp-image-2230
-width="1024" height="683"}
-:::
+<figure>
+<img src="https://brightdigit.com/wp-content/uploads/2020/10/n-RFId0_7kep4-unsplash-1024x683.jpg" class="wp-image-2230" width="1024" height="683" />
+</figure>
 
 ## Understanding Your Options
 
@@ -186,7 +187,7 @@ One of the features of iOS development is how quickly everything
 changes. That is to say, what your iOS development team knows now could
 be less important in five years.
 
-### Building For Now\... and For The Future
+### Building For Now... and For The Future
 
 As an example, we have seen over the last five years the replacement of
 Objective-C with Swift as the preeminent language for native iOS
@@ -212,164 +213,99 @@ showcase them to demonstrate the potential of new approaches. **Over
 time, it helps the team adapt faster as new things come out and the
 nature of apps changes.**
 
-::: {.iframe}
-::: {#embed-app episodes="[{\"id\":126648,\"title\":\"Managing iOS Development with Peter Witham\",\"episode_type\":\"full\",\"number\":29,\"season\":1,\"formatted_published_at\":\"November 24, 2019\",\"duration\":2607,\"duration_in_minutes\":43,\"duration_in_mmss\":\"43:27\",\"trackable_media_url\":\"https://pdcn.co/e/media.transistor.fm/4011273d/af01051c.mp3\",\"share_url\":\"https://share.transistor.fm/s/4011273d\",\"transcript_url\":null,\"artwork\":\"https://images.transistor.fm/file/transistor/images/show/122/thumb_1533929410-artwork.jpg\",\"author\":\"Leo Dion, Principal CEO and Swift Developer at BrightDigit \",\"formatted_summary\":\"In this episode, Leo talks with Peter Witham of the CompileSwift podcast about managing iOS development teams and dealing with new technologies.\",\"embed_html\":\"\\u003ciframe width=\\\"100%\\\" height=\\\"180\\\" frameborder=\\\"no\\\" scrolling=\\\"no\\\" seamless src=\\\"https://share.transistor.fm/e/4011273d\\\"\\u003e\\u003c/iframe\\u003e\"}]" show="{\"id\":122,\"title\":\"Empower Apps\",\"website\":\"https://www.empowerapps.show\",\"multiple_seasons\":false,\"playlist_limit\":7,\"feed_url\":\"https://feeds.transistor.fm/empowerapps-show\",\"private_feed\":false,\"disable_feed\":false,\"disable_downloads\":false,\"apple_podcasts_url\":\"https://itunes.apple.com/us/podcast/empower-apps/id1437435392?mt=2\",\"spotify\":\"https://open.spotify.com/show/0TGuZyeXPPyxYe1JApM6Z5\",\"overcast\":\"https://overcast.fm/itunes1437435392/empower-apps\",\"stitcher\":\"https://www.stitcher.com/s?fid=240018\\u0026refid=stpr\",\"pocket_casts\":\"https://pca.st/9n7e\",\"castro\":\"https://castro.fm/itunes/1437435392\",\"podcast_addict\":\"https://podcastaddict.com/podcast/2393954\",\"deezer\":\"\",\"google_podcasts\":\"https://www.google.com/podcasts?feed=aHR0cHM6Ly9mZWVkcy50cmFuc2lzdG9yLmZtL2VtcG93ZXJhcHBzLXNob3c%3D\",\"radioPublic\":\"https://radiopublic.com/empower-apps-WezKN2\",\"breaker\":\"https://www.breaker.audio/empower-apps\",\"tuneIn\":\"http://tun.in/pjaZJ\",\"castbox\":\"https://castbox.fm/ch/1453575\",\"pandora\":\"https://www.pandora.com/podcast/empower-apps/PC:21228\",\"iHeartRadio\":\"https://iheart.com/podcast/78369923/\",\"soundcloud\":\"\",\"amazon_music\":\"https://music.amazon.com/podcasts/0e053161-686d-47e6-91a1-31d55b121423/Empower-Apps\",\"player_FM\":\"https://player.fm/series/empower-apps\"}"}
-::: {#embed-player .player-large .player-light :class="{ 'player-playlist': isPlaylist }" aria-label="Audio Player for Empower Apps" tabindex="1"}
-::: {.player-main}
-::: {.player-artwork tabindex="-1"}
-[]{.play-btn .icon-play-circle v-show="!playing" title="Play"
-aria-hidden="true" focusable="false"} []{.pause-btn .icon-pause-circle
-v-show="playing" title="Pause" aria-hidden="true" focusable="false"}
+<span class="play-btn icon-play-circle" v-show="!playing" title="Play"
+aria-hidden="true" focusable="false"></span> <span
+class="pause-btn icon-pause-circle" v-show="playing" title="Pause"
+aria-hidden="true" focusable="false"></span>
 
-::: {.loader-ring v-show="loading"}
-:::
-:::
+**{{ show.title }}** • <span
+v-if="selectedEpisode.episode_type === 'trailer'">Trailer</span> <span
+v-if="selectedEpisode.episode_type === 'bonus'">Bonus</span> <span
+v-if="selectedEpisode.number">Episode {{ selectedEpisode.number
+}}</span> • Season {{ selectedEpisode.season }}
 
-::: {.player}
-::: {.playback-progress}
-::: {.currently-playing}
-::: {.show-title}
-**{{ show.title }}** •
-[Trailer]{v-if="selectedEpisode.episode_type === 'trailer'"}
-[Bonus]{v-if="selectedEpisode.episode_type === 'bonus'"} [Episode {{
-selectedEpisode.number }}]{v-if="selectedEpisode.number"} • Season {{
-selectedEpisode.season }}
-:::
-
-::: {.title}
 {{ selectedEpisode.title }}
-:::
-:::
 
-::: {.play-progress}
-[]{.play-btn .icon-play-circle v-show="!playing" title="Play"
-aria-hidden="true" focusable="false"} []{.pause-btn .icon-pause-circle
-v-show="playing" title="Pause" aria-hidden="true" focusable="false"}
+<span class="play-btn icon-play-circle" v-show="!playing" title="Play"
+aria-hidden="true" focusable="false"></span> <span
+class="pause-btn icon-pause-circle" v-show="playing" title="Pause"
+aria-hidden="true" focusable="false"></span>
 
-::: {.loader-ring v-show="loading"}
-:::
+<span id="progress" :style="{ left: '-'+ progressBar + '%' }"></span>
 
-::: {#progressBar title="Seek" @click="seekTo" aria-label="Seek within Episode"}
-[]{#progress :style="{ left: '-'+ progressBar + '%' }"}
-:::
-:::
+{{ currentTimer }}|{{ currentDuration }}
 
-::: {.playback-controls}
-::: {.playback-duration}
-{{ currentTimer }}\|{{ currentDuration }}
-:::
-
-::: {.volume-speed-controls}
 {{ displaySpeed }}x
-:::
-:::
-:::
 
-[Subscribe]{#subscribeBtn} [Share]{#shareBtn} [More Info]{#infoBtn}
-:::
+<span id="subscribeBtn">Subscribe</span> <span
+id="shareBtn">Share</span> <span id="infoBtn">More Info</span>
 
-::: {.subscribe .panel :class="{ expanded: expandedPanel === 'subscribe' }"}
-[]{.close-btn .icon-cancel-circle @click.prevent="closePanel"}
+<span class="close-btn icon-cancel-circle"
+@click.prevent="closePanel"></span>
 
-::: {.title}
 Subscribe
-:::
 
-::: {.copyable-input v-if="!show.private_feed && !show.disable_feed"}
-RSS Feed []{.copy-btn .icon-copy v-clipboard:copy="feed_url"
+RSS Feed <span class="copy-btn icon-copy" v-clipboard:copy="feed_url"
 v-clipboard:success="onCopy" title="Copy to clipboard"
-aria-label="Copy RSS Feed URL to clipboard"}
-:::
+aria-label="Copy RSS Feed URL to clipboard"></span>
 
-::: {.social-links}
 Apple Podcasts Google Podcasts Spotify Pocket Casts Overcast Castro
 Amazon Music Breaker Stitcher RadioPublic Pandora CastBox iHeartRadio
 TuneIn Player FM SoundCloud Deezer Podcast Addict
-:::
-:::
 
-::: {.sharing .panel :class="{ expanded: expandedPanel === 'sharing' }"}
-[]{.close-btn .icon-cancel-circle @click.prevent="closePanel"}
+<span class="close-btn icon-cancel-circle"
+@click.prevent="closePanel"></span>
 
-::: {.title}
 Share
-:::
 
-::: {.copyable-input}
-Embed []{.copy-btn .icon-copy v-clipboard:copy="embed_html"
+Embed <span class="copy-btn icon-copy" v-clipboard:copy="embed_html"
 v-clipboard:success="onCopy" title="Copy to clipboard"
-aria-label="Copy Embed code to clipboard"}
-:::
+aria-label="Copy Embed code to clipboard"></span>
 
-::: {.copyable-input v-if="!show.private_feed"}
-Share []{.copy-btn .icon-copy v-clipboard:copy="share_url"
+Share <span class="copy-btn icon-copy" v-clipboard:copy="share_url"
 v-clipboard:success="onCopy" title="Copy to clipboard"
-aria-label="Copy Share URL to clipboard"}
-:::
+aria-label="Copy Share URL to clipboard"></span>
 
-::: {.share-links}
-[]{.twitter .icon-twitter-circle} []{.facebook .icon-facebook-circle}
-[]{.download .icon-download-circle}
-:::
-:::
+<span class="twitter icon-twitter-circle"></span> <span
+class="facebook icon-facebook-circle"></span> <span
+class="download icon-download-circle"></span>
 
-::: {.details .panel :class="{ expanded: expandedPanel === 'more' }"}
-[]{.close-btn .icon-cancel-circle @click.prevent="closePanel"} **{{
-selectedEpisode.formatted_published_at }}** •
-[Trailer]{v-if="selectedEpisode.episode_type === 'trailer'"}
-[Bonus]{v-if="selectedEpisode.episode_type === 'bonus'"} [Episode {{
-selectedEpisode.number }}]{v-if="selectedEpisode.number"} • Season {{
-selectedEpisode.season }}
+<span class="close-btn icon-cancel-circle"
+@click.prevent="closePanel"></span> **{{
+selectedEpisode.formatted\_published\_at }}** • <span
+v-if="selectedEpisode.episode_type === 'trailer'">Trailer</span> <span
+v-if="selectedEpisode.episode_type === 'bonus'">Bonus</span> <span
+v-if="selectedEpisode.number">Episode {{ selectedEpisode.number
+}}</span> • Season {{ selectedEpisode.season }}
 
-::: {.details-title}
 {{ selectedEpisode.title }}
-:::
 
-::: {.details-author}
 By {{ selectedEpisode.author }} • Full Transcript • View the Website
-:::
 
-::: {.details-summary v-html="selectedEpisode.formatted_summary"}
-:::
-:::
+<span class="powered-by"> [**Broadcast by**
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNTQ3cHgiIGhlaWdodD0iMTQ0cHgiIHZpZXdib3g9IjAgMCA1NDcgMTQ0IiB2ZXJzaW9uPSIxLjEiIGNsYXNzPSJ0cmFuc2lzdG9yLWxvZ28iPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9InRyYW5zaXN0b3JfaG9yaXpvbnRhbCIgZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSIjRkZGRkZGIj4KICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTEuMDAwMDAwLCA0Mi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJTaGFwZSIgcG9pbnRzPSIwLjcgMTAuNCAwLjcgMS44IDM4LjYgMS44IDM4LjYgMTAuNCAyNC41IDEwLjQgMjQuNSA1OC4zIDE0LjcgNTguMyAxNC43IDEwLjQiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik02My4zLDI2LjIgQzYyLjEsMjYgNjAuNywyNS44IDU4LjcsMjUuOCBDNTIuNCwyNS44IDQ4LjcsMjkuOSA0OC43LDM4LjIgTDQ4LjcsNTguMiBMMzkuNCw1OC4yIEwzOS40LDE4LjYgTDQ4LjUsMTguNiBMNDguNSwyNC4yIEw0OC43LDI0LjIgQzUwLjUsMjAuOCA1NC41LDE3LjMgNTkuOCwxNy4zIEM2MS4zLDE3LjMgNjIuMywxNy40IDYzLjMsMTcuNSBMNjMuMywyNi4yIEw2My4zLDI2LjIgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTA3LjgsNTguMiBMOTguOCw1OC4yIEw5OC44LDUzLjIgTDk4LjYsNTMuMiBDOTUuOSw1Ni42IDkxLjYsNTkuNyA4NSw1OS43IEM3Ni4xLDU5LjcgNjYsNTIuNiA2NiwzOC40IEM2NiwyNS44IDc0LjksMTcuNCA4NS43LDE3LjQgQzkyLjMsMTcuNCA5Ni4zLDIwLjkgOTguNywyNCBMOTguOSwyNCBMOTguOSwxOC42IEwxMDcuOSwxOC42IEwxMDcuOSw1OC4yIEwxMDcuOCw1OC4yIFogTTg3LjQsNTEuNSBDOTMuNSw1MS41IDk5LjIsNDYuMiA5OS4yLDM4LjYgQzk5LjIsMzAuNiA5NCwyNS4zIDg3LjUsMjUuMyBDNzkuMywyNS4zIDc1LjQsMzEuOSA3NS40LDM4LjQgQzc1LjQsNDUgNzkuMiw1MS41IDg3LjQsNTEuNSBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMTguNiwxOC42IEwxMjcuOCwxOC42IEwxMjcuOCwyMy42IEwxMjgsMjMuNiBDMTMxLjEsMTkuMSAxMzUuNywxNy4zIDE0MC4xLDE3LjMgQzE0OC4zLDE3LjMgMTU1LjUsMjIuNyAxNTUuNSwzNS40IEwxNTUuNSw1OC4yIEwxNDYuMiw1OC4yIEwxNDYuMiwzNS45IEMxNDYuMiwyOS4xIDE0MywyNS41IDEzNy43LDI1LjUgQzEzMS45LDI1LjUgMTI3LjksMjkuNiAxMjcuOSwzNy4zIEwxMjcuOSw1OC4zIEwxMTguNiw1OC4zIEwxMTguNiwxOC42IEwxMTguNiwxOC42IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTE4My42LDI4LjggQzE4My4yLDI1LjkgMTgxLDI0IDE3OC4zLDI0IEMxNzUuMSwyNCAxNzMuMywyNiAxNzMuMywyOC4yIEMxNzMuMywzMC42IDE3NC41LDMyLjMgMTgxLjQsMzQuNiBDMTg5LjksMzcuMyAxOTIuOSw0MS43IDE5Mi45LDQ3LjMgQzE5Mi45LDU0LjYgMTg3LjQsNTkuNyAxNzguMyw1OS43IEMxNjguOCw1OS43IDE2NC4xLDU0LjUgMTYzLjQsNDcuMSBMMTcyLDQ3LjEgQzE3Mi40LDUwLjQgMTc0LjQsNTIuOSAxNzguNSw1Mi45IEMxODIsNTIuOSAxODQsNTAuNyAxODQsNDggQzE4NCw0NSAxODIuMyw0My4xIDE3NS43LDQwLjkgQzE2OC4zLDM4LjUgMTY0LjUsMzQuOCAxNjQuNSwyOC42IEMxNjQuNSwyMi4xIDE2OS42LDE3LjMgMTc4LDE3LjMgQzE4Ni41LDE3LjMgMTkxLDIyLjMgMTkyLDI4LjggTDE4My42LDI4LjggTDE4My42LDI4LjggWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMjAxLDAuNCBMMjExLjMsMC40IEwyMTEuMyw5LjggTDIwMSw5LjggTDIwMSwwLjQgWiBNMjAxLjUsMTguNiBMMjEwLjgsMTguNiBMMjEwLjgsNTguMyBMMjAxLjUsNTguMyBMMjAxLjUsMTguNiBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMzkuNSwyOC44IEMyMzkuMSwyNS45IDIzNi45LDI0IDIzNC4yLDI0IEMyMzEsMjQgMjI5LjIsMjYgMjI5LjIsMjguMiBDMjI5LjIsMzAuNiAyMzAuNCwzMi4zIDIzNy4zLDM0LjYgQzI0NS44LDM3LjMgMjQ4LjgsNDEuNyAyNDguOCw0Ny4zIEMyNDguOCw1NC42IDI0My4zLDU5LjcgMjM0LjIsNTkuNyBDMjI0LjcsNTkuNyAyMjAsNTQuNSAyMTkuMyw0Ny4xIEwyMjcuOSw0Ny4xIEMyMjguMyw1MC40IDIzMC4zLDUyLjkgMjM0LjQsNTIuOSBDMjM3LjksNTIuOSAyMzkuOSw1MC43IDIzOS45LDQ4IEMyMzkuOSw0NSAyMzguMiw0My4xIDIzMS42LDQwLjkgQzIyNC4yLDM4LjUgMjIwLjQsMzQuOCAyMjAuNCwyOC42IEMyMjAuNCwyMi4xIDIyNS41LDE3LjMgMjMzLjksMTcuMyBDMjQyLjQsMTcuMyAyNDYuOSwyMi4zIDI0Ny45LDI4LjggTDIzOS41LDI4LjggTDIzOS41LDI4LjggWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMjUyLjgsMTguNiBMMjU3LjgsMTguNiBMMjU3LjgsNS45IEwyNjcuMSw1LjkgTDI2Ny4xLDE4LjYgTDI3NywxOC42IEwyNzcsMjYuNCBMMjY3LDI2LjQgTDI2Nyw0NC4xIEMyNjcsNDkuNSAyNjguNyw1MSAyNzIuNSw1MSBDMjc0LjEsNTEgMjc1LjksNTAuNyAyNzcuMyw1MC4zIEwyNzcuMyw1Ny44IEMyNzUuMiw1OC40IDI3Mi42LDU4LjcgMjcwLjMsNTguNyBDMjYwLjQsNTguNyAyNTcuOCw1Mi43IDI1Ny44LDQ0LjYgTDI1Ny44LDI2LjQgTDI1Mi44LDI2LjQgTDI1Mi44LDE4LjYgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMzAyLjMsMTcuMyBDMzE0LjcsMTcuMyAzMjMuNSwyNi40IDMyMy41LDM4LjQgQzMyMy41LDUwLjEgMzE0LjYsNTkuNyAzMDIuMyw1OS43IEMyOTAuMiw1OS43IDI4MS4xLDUwLjQgMjgxLjEsMzguNCBDMjgxLjEsMjYuMSAyOTAuMywxNy4zIDMwMi4zLDE3LjMgWiBNMzAyLjMsNTEuNCBDMzA5LjMsNTEuNCAzMTQuMSw0NS44IDMxNC4xLDM4LjQgQzMxNC4xLDMxLjQgMzA5LjYsMjUuNSAzMDIuMywyNS41IEMyOTUuMiwyNS41IDI5MC41LDMxIDI5MC41LDM4LjQgQzI5MC41LDQ2IDI5NS45LDUxLjQgMzAyLjMsNTEuNCBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNTAuOSwyNS44IEMzNDQuNiwyNS44IDM0MC45LDI5LjkgMzQwLjksMzguMiBMMzQwLjksNTguMiBMMzMxLjYsNTguMiBMMzMxLjYsMTguNiBMMzQwLjcsMTguNiBMMzQwLjcsMjQuMiBMMzQwLjksMjQuMiBDMzQyLjcsMjAuOCAzNDYuNywxNy4zIDM1MiwxNy4zIEMzNTMuNSwxNy4zIDM1NC41LDE3LjQgMzU1LjUsMTcuNSBMMzU1LjUsMjYuMiBDMzU0LjMsMjYgMzUyLjksMjUuOCAzNTAuOSwyNS44IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cCI+CiAgICAgICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNC4wMDAwMDAsIDI0LjAwMDAwMCkiIGlkPSJTaGFwZSI+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTQ4LDk1LjkgQzQ1LjQsOTUuOSA0My4yLDkzLjggNDMuMiw5MS4xIEw0My4yLDQuOSBDNDMuMiwyLjMgNDUuMywwLjEgNDgsMC4xIEM1MC42LDAuMSA1Mi44LDIuMiA1Mi44LDQuOSBMNTIuOCw5MS4xIEM1Mi44LDkzLjcgNTAuNiw5NS45IDQ4LDk1LjkgWiI+PC9wYXRoPgogICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0yOCw1Mi44IEw1LDUyLjggQzIuNCw1Mi44IDAuMiw1MC43IDAuMiw0OCBDMC4yLDQ1LjMgMi4zLDQzLjIgNSw0My4yIEwyOCw0My4yIEMzMC42LDQzLjIgMzIuOCw0NS4zIDMyLjgsNDggQzMyLjgsNTAuNyAzMC42LDUyLjggMjgsNTIuOCBaIj48L3BhdGg+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTkxLjEsNTIuOCBMNjgsNTIuOCBDNjUuNCw1Mi44IDYzLjIsNTAuNyA2My4yLDQ4IEM2My4yLDQ1LjMgNjUuMyw0My4yIDY4LDQzLjIgTDkxLDQzLjIgQzkzLjYsNDMuMiA5NS44LDQ1LjMgOTUuOCw0OCBDOTUuOCw1MC43IDkzLjcsNTIuOCA5MS4xLDUyLjggWiI+PC9wYXRoPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTcyLDE0NCBDMzIuMywxNDQgMCwxMTEuNyAwLDcyIEMwLDMyLjMgMzIuMywwIDcyLDAgQzExMS43LDAgMTQ0LDMyLjMgMTQ0LDcyIEMxNDQsMTExLjcgMTExLjcsMTQ0IDcyLDE0NCBaIE03Miw5LjYgQzM3LjYsOS42IDkuNiwzNy42IDkuNiw3MiBDOS42LDEwNi40IDM3LjYsMTM0LjQgNzIsMTM0LjQgQzEwNi40LDEzNC40IDEzNC40LDEwNi40IDEzNC40LDcyIEMxMzQuNCwzNy42IDEwNi40LDkuNiA3Miw5LjYgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" class="transistor-logo" />](https://transistor.fm "Broadcast by Transistor.fm")
+</span>
 
-[ [**Broadcast by**
-![](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNTQ3cHgiIGhlaWdodD0iMTQ0cHgiIHZpZXdib3g9IjAgMCA1NDcgMTQ0IiB2ZXJzaW9uPSIxLjEiIGNsYXNzPSJ0cmFuc2lzdG9yLWxvZ28iPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9InRyYW5zaXN0b3JfaG9yaXpvbnRhbCIgZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSIjRkZGRkZGIj4KICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOTEuMDAwMDAwLCA0Mi4wMDAwMDApIj4KICAgICAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJTaGFwZSIgcG9pbnRzPSIwLjcgMTAuNCAwLjcgMS44IDM4LjYgMS44IDM4LjYgMTAuNCAyNC41IDEwLjQgMjQuNSA1OC4zIDE0LjcgNTguMyAxNC43IDEwLjQiPjwvcG9seWdvbj4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik02My4zLDI2LjIgQzYyLjEsMjYgNjAuNywyNS44IDU4LjcsMjUuOCBDNTIuNCwyNS44IDQ4LjcsMjkuOSA0OC43LDM4LjIgTDQ4LjcsNTguMiBMMzkuNCw1OC4yIEwzOS40LDE4LjYgTDQ4LjUsMTguNiBMNDguNSwyNC4yIEw0OC43LDI0LjIgQzUwLjUsMjAuOCA1NC41LDE3LjMgNTkuOCwxNy4zIEM2MS4zLDE3LjMgNjIuMywxNy40IDYzLjMsMTcuNSBMNjMuMywyNi4yIEw2My4zLDI2LjIgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTA3LjgsNTguMiBMOTguOCw1OC4yIEw5OC44LDUzLjIgTDk4LjYsNTMuMiBDOTUuOSw1Ni42IDkxLjYsNTkuNyA4NSw1OS43IEM3Ni4xLDU5LjcgNjYsNTIuNiA2NiwzOC40IEM2NiwyNS44IDc0LjksMTcuNCA4NS43LDE3LjQgQzkyLjMsMTcuNCA5Ni4zLDIwLjkgOTguNywyNCBMOTguOSwyNCBMOTguOSwxOC42IEwxMDcuOSwxOC42IEwxMDcuOSw1OC4yIEwxMDcuOCw1OC4yIFogTTg3LjQsNTEuNSBDOTMuNSw1MS41IDk5LjIsNDYuMiA5OS4yLDM4LjYgQzk5LjIsMzAuNiA5NCwyNS4zIDg3LjUsMjUuMyBDNzkuMywyNS4zIDc1LjQsMzEuOSA3NS40LDM4LjQgQzc1LjQsNDUgNzkuMiw1MS41IDg3LjQsNTEuNSBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0xMTguNiwxOC42IEwxMjcuOCwxOC42IEwxMjcuOCwyMy42IEwxMjgsMjMuNiBDMTMxLjEsMTkuMSAxMzUuNywxNy4zIDE0MC4xLDE3LjMgQzE0OC4zLDE3LjMgMTU1LjUsMjIuNyAxNTUuNSwzNS40IEwxNTUuNSw1OC4yIEwxNDYuMiw1OC4yIEwxNDYuMiwzNS45IEMxNDYuMiwyOS4xIDE0MywyNS41IDEzNy43LDI1LjUgQzEzMS45LDI1LjUgMTI3LjksMjkuNiAxMjcuOSwzNy4zIEwxMjcuOSw1OC4zIEwxMTguNiw1OC4zIEwxMTguNiwxOC42IEwxMTguNiwxOC42IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTE4My42LDI4LjggQzE4My4yLDI1LjkgMTgxLDI0IDE3OC4zLDI0IEMxNzUuMSwyNCAxNzMuMywyNiAxNzMuMywyOC4yIEMxNzMuMywzMC42IDE3NC41LDMyLjMgMTgxLjQsMzQuNiBDMTg5LjksMzcuMyAxOTIuOSw0MS43IDE5Mi45LDQ3LjMgQzE5Mi45LDU0LjYgMTg3LjQsNTkuNyAxNzguMyw1OS43IEMxNjguOCw1OS43IDE2NC4xLDU0LjUgMTYzLjQsNDcuMSBMMTcyLDQ3LjEgQzE3Mi40LDUwLjQgMTc0LjQsNTIuOSAxNzguNSw1Mi45IEMxODIsNTIuOSAxODQsNTAuNyAxODQsNDggQzE4NCw0NSAxODIuMyw0My4xIDE3NS43LDQwLjkgQzE2OC4zLDM4LjUgMTY0LjUsMzQuOCAxNjQuNSwyOC42IEMxNjQuNSwyMi4xIDE2OS42LDE3LjMgMTc4LDE3LjMgQzE4Ni41LDE3LjMgMTkxLDIyLjMgMTkyLDI4LjggTDE4My42LDI4LjggTDE4My42LDI4LjggWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMjAxLDAuNCBMMjExLjMsMC40IEwyMTEuMyw5LjggTDIwMSw5LjggTDIwMSwwLjQgWiBNMjAxLjUsMTguNiBMMjEwLjgsMTguNiBMMjEwLjgsNTguMyBMMjAxLjUsNTguMyBMMjAxLjUsMTguNiBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0yMzkuNSwyOC44IEMyMzkuMSwyNS45IDIzNi45LDI0IDIzNC4yLDI0IEMyMzEsMjQgMjI5LjIsMjYgMjI5LjIsMjguMiBDMjI5LjIsMzAuNiAyMzAuNCwzMi4zIDIzNy4zLDM0LjYgQzI0NS44LDM3LjMgMjQ4LjgsNDEuNyAyNDguOCw0Ny4zIEMyNDguOCw1NC42IDI0My4zLDU5LjcgMjM0LjIsNTkuNyBDMjI0LjcsNTkuNyAyMjAsNTQuNSAyMTkuMyw0Ny4xIEwyMjcuOSw0Ny4xIEMyMjguMyw1MC40IDIzMC4zLDUyLjkgMjM0LjQsNTIuOSBDMjM3LjksNTIuOSAyMzkuOSw1MC43IDIzOS45LDQ4IEMyMzkuOSw0NSAyMzguMiw0My4xIDIzMS42LDQwLjkgQzIyNC4yLDM4LjUgMjIwLjQsMzQuOCAyMjAuNCwyOC42IEMyMjAuNCwyMi4xIDIyNS41LDE3LjMgMjMzLjksMTcuMyBDMjQyLjQsMTcuMyAyNDYuOSwyMi4zIDI0Ny45LDI4LjggTDIzOS41LDI4LjggTDIzOS41LDI4LjggWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMjUyLjgsMTguNiBMMjU3LjgsMTguNiBMMjU3LjgsNS45IEwyNjcuMSw1LjkgTDI2Ny4xLDE4LjYgTDI3NywxOC42IEwyNzcsMjYuNCBMMjY3LDI2LjQgTDI2Nyw0NC4xIEMyNjcsNDkuNSAyNjguNyw1MSAyNzIuNSw1MSBDMjc0LjEsNTEgMjc1LjksNTAuNyAyNzcuMyw1MC4zIEwyNzcuMyw1Ny44IEMyNzUuMiw1OC40IDI3Mi42LDU4LjcgMjcwLjMsNTguNyBDMjYwLjQsNTguNyAyNTcuOCw1Mi43IDI1Ny44LDQ0LjYgTDI1Ny44LDI2LjQgTDI1Mi44LDI2LjQgTDI1Mi44LDE4LjYgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMzAyLjMsMTcuMyBDMzE0LjcsMTcuMyAzMjMuNSwyNi40IDMyMy41LDM4LjQgQzMyMy41LDUwLjEgMzE0LjYsNTkuNyAzMDIuMyw1OS43IEMyOTAuMiw1OS43IDI4MS4xLDUwLjQgMjgxLjEsMzguNCBDMjgxLjEsMjYuMSAyOTAuMywxNy4zIDMwMi4zLDE3LjMgWiBNMzAyLjMsNTEuNCBDMzA5LjMsNTEuNCAzMTQuMSw0NS44IDMxNC4xLDM4LjQgQzMxNC4xLDMxLjQgMzA5LjYsMjUuNSAzMDIuMywyNS41IEMyOTUuMiwyNS41IDI5MC41LDMxIDI5MC41LDM4LjQgQzI5MC41LDQ2IDI5NS45LDUxLjQgMzAyLjMsNTEuNCBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0zNTAuOSwyNS44IEMzNDQuNiwyNS44IDM0MC45LDI5LjkgMzQwLjksMzguMiBMMzQwLjksNTguMiBMMzMxLjYsNTguMiBMMzMxLjYsMTguNiBMMzQwLjcsMTguNiBMMzQwLjcsMjQuMiBMMzQwLjksMjQuMiBDMzQyLjcsMjAuOCAzNDYuNywxNy4zIDM1MiwxNy4zIEMzNTMuNSwxNy4zIDM1NC41LDE3LjQgMzU1LjUsMTcuNSBMMzU1LjUsMjYuMiBDMzU0LjMsMjYgMzUyLjksMjUuOCAzNTAuOSwyNS44IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDxnIGlkPSJHcm91cCI+CiAgICAgICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNC4wMDAwMDAsIDI0LjAwMDAwMCkiIGlkPSJTaGFwZSI+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTQ4LDk1LjkgQzQ1LjQsOTUuOSA0My4yLDkzLjggNDMuMiw5MS4xIEw0My4yLDQuOSBDNDMuMiwyLjMgNDUuMywwLjEgNDgsMC4xIEM1MC42LDAuMSA1Mi44LDIuMiA1Mi44LDQuOSBMNTIuOCw5MS4xIEM1Mi44LDkzLjcgNTAuNiw5NS45IDQ4LDk1LjkgWiI+PC9wYXRoPgogICAgICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik0yOCw1Mi44IEw1LDUyLjggQzIuNCw1Mi44IDAuMiw1MC43IDAuMiw0OCBDMC4yLDQ1LjMgMi4zLDQzLjIgNSw0My4yIEwyOCw0My4yIEMzMC42LDQzLjIgMzIuOCw0NS4zIDMyLjgsNDggQzMyLjgsNTAuNyAzMC42LDUyLjggMjgsNTIuOCBaIj48L3BhdGg+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTkxLjEsNTIuOCBMNjgsNTIuOCBDNjUuNCw1Mi44IDYzLjIsNTAuNyA2My4yLDQ4IEM2My4yLDQ1LjMgNjUuMyw0My4yIDY4LDQzLjIgTDkxLDQzLjIgQzkzLjYsNDMuMiA5NS44LDQ1LjMgOTUuOCw0OCBDOTUuOCw1MC43IDkzLjcsNTIuOCA5MS4xLDUyLjggWiI+PC9wYXRoPgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTcyLDE0NCBDMzIuMywxNDQgMCwxMTEuNyAwLDcyIEMwLDMyLjMgMzIuMywwIDcyLDAgQzExMS43LDAgMTQ0LDMyLjMgMTQ0LDcyIEMxNDQsMTExLjcgMTExLjcsMTQ0IDcyLDE0NCBaIE03Miw5LjYgQzM3LjYsOS42IDkuNiwzNy42IDkuNiw3MiBDOS42LDEwNi40IDM3LjYsMTM0LjQgNzIsMTM0LjQgQzEwNi40LDEzNC40IDEzNC40LDEwNi40IDEzNC40LDcyIEMxMzQuNCwzNy42IDEwNi40LDkuNiA3Miw5LjYgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==){.transistor-logo}](https://transistor.fm "Broadcast by Transistor.fm")
-]{.powered-by}
-:::
+{{ episodes.length}} {{ show.playlist\_limit ? 'latest' : '' }} episodes
 
-::: {.break}
-:::
-
-::: {.playlist-header}
-{{ episodes.length}} {{ show.playlist_limit ? \'latest\' : \'\' }}
-episodes
-:::
-
-::: {.break}
-:::
-
-1.  []{.icon-play-circle
-    v-show="!playing || (playing &&  selectedEpisodeIndex != index)"}
-    []{.icon-pause-circle
-    v-show="playing && selectedEpisodeIndex === index"} [{{
-    episode.title }}]{.playlist-title} {{ episode.duration_in_minutes }}
-    min
-:::
-:::
-:::
+1.  <span class="icon-play-circle"
+    v-show="!playing || (playing &amp;&amp;  selectedEpisodeIndex != index)"></span>
+    <span class="icon-pause-circle"
+    v-show="playing &amp;&amp; selectedEpisodeIndex === index"></span>
+    <span class="playlist-title">{{ episode.title }}</span> {{
+    episode.duration\_in\_minutes }} min
 
 ## I want to help people build better iOS apps
 
-I hope the above is helpful for you if you're managing an iOS team and
+I hope the above is helpful for you if you’re managing an iOS team and
 want to help them become more effective and valuable to your business.
-You don't need to change your entire management style overnight.
+You don’t need to change your entire management style overnight.
 However, I think if you can work on any of these traits, the results
 will speak for themselves. **You will end up with a happier, more
 effective team that makes better apps that delight customers.**
 
-While you're here, I'd like to invite you to [sign up for my
+While you’re here, I’d like to invite you to [sign up for my
 newsletter](https://brightdigit.com/subscribe/), where I share advice
-and tips like what you've just read to help businesses and agencies
+and tips like what you’ve just read to help businesses and agencies
 improve the quality of their iOS development. [Just click here and leave
 me your name and email.](https://brightdigit.com/subscribe/) Thanks!

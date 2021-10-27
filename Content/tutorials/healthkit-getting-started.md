@@ -1,9 +1,11 @@
 ---
+title: HealthKit - Getting Started - HKObjectType and Authorization
 date: 2018-05-25 04:05
 description: HealthKit is the most important API when it comes to building health,
   fitness and workout apps. HealthKit also has many intricacies and details which
   need introduction when getting started such as HKObjectType and HKHealthStore.
 tags: Smart Intensity
+featuredImage: /media/images/learningswift/2018/05/diagram.png
 ---
 HealthKit is the most important API when it comes to building health,
 fitness and workout apps. HealthKit also has many intricacies and
@@ -23,21 +25,20 @@ stimulated. In order to make the most of my time, I started looking into
 training](https://en.m.wikipedia.org/wiki/High-intensity_interval_training)**.
 **High-intensity interval training** has many benefits but the main
 strategy is to switch between breif periods of high levels and low
-levels for an extended period of time. For instance, I've started
+levels for an extended period of time. For instance, I’ve started
 exercising on the stair stepper for 30 minutes. In that period of time,
-I'll alternative the speed on the machine to get my heart rate to
+I’ll alternative the speed on the machine to get my heart rate to
 fluctuate between  150 and 125 beats per minute - for 15 - 30 seconds
 each. Right now I use the built-in Workout app on my Apple Watch and
 check my heart rate throughout my exercise. \[caption
-id=\"attachment_33\" align=\"alignnone\"
-width=\"1024\"\]![](https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/05/IMG_208F0706D0D0-1-1024x534.jpeg){.wp-image-33
-.size-large width="1024" height="534"} An example of one of my workouts.
-Notice how fluctuate my heart rate with the intensity of the
-workout.\[/caption\] However **a custom app which could notify me of
-when I reach certain heart rates for a period of time would be better.**
-As an Apple Watch owner, who has built his fair share of apps for the
-Apple Watch since day one, this presents itself as a great opportunity
-to learn more about HealthKit.
+id="attachment\_33" align="alignnone"
+width="1024"\]<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/05/IMG_208F0706D0D0-1-1024x534.jpeg" class="wp-image-33 size-large" width="1024" height="534" />
+An example of one of my workouts. Notice how fluctuate my heart rate
+with the intensity of the workout.\[/caption\] However **a custom app
+which could notify me of when I reach certain heart rates for a period
+of time would be better.** As an Apple Watch owner, who has built his
+fair share of apps for the Apple Watch since day one, this presents
+itself as a great opportunity to learn more about HealthKit.
 
 ## HealthKit Structure - QuantityTypes and WorkoutTypes
 
@@ -50,12 +51,12 @@ the correct `HKQuantityTypeIdentifier` . For instance to get the heart
 rate `HKQuantityType`:
 `HKObjectType.quantityType(forIdentifier: .heartRate)`Another
 `HKObjectType` is `HKWorkoutType`, which is accessed by calling
-`HKObjectType.workoutType()`. \[caption id=\"attachment_41\"
-align=\"aligncenter\"
-width=\"800\"\]![](https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/05/diagram.png){.wp-image-41
-.size-full width="800" height="275"} HKObjectType Hierarchy\[/caption\]
-The first thing we are going to use with these types is request
-permission from the user to read and write to HealthKit.
+`HKObjectType.workoutType()`. \[caption id="attachment\_41"
+align="aligncenter"
+width="800"\]<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/05/diagram.png" class="wp-image-41 size-full" width="800" height="275" />
+HKObjectType Hierarchy\[/caption\] The first thing we are going to use
+with these types is request permission from the user to read and write
+to HealthKit.
 
 ## Requesting Authorization in HealthKit
 
@@ -72,17 +73,17 @@ instantiate an object to use throughout your app. With the
 `.requestAuthoriation(toShare:, read:, completion:)` method. The
 `toShare` and `read` parameters take an optional `Set` of `HKSampleType`
 (`HKObjectType` subclass for data samples) to write and an optional
-`Set` of `HKObjectType` to read from. \[caption id=\"attachment_42\"
-align=\"aligncenter\"
-width=\"505\"\]![](https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/05/Artboard-1-253x300.png){.wp-image-42
-width="505" height="600"} Diagram of Requesting
-Authorization\[/caption\] **Whenever this method with new**
-`HKObjectType` **or** `HKSampleType` **objects (such as the first time
-the app is run), the permission screen is shown.** `requestAuthoriation`
-is an asynchronous method, which means the `completion` is called once
-the request has been completed. The `completion`  closure is where
-you\'d begin to interact with the user and begin queries for data. Let's
-take a look at how to properly with request authorization.
+`Set` of `HKObjectType` to read from. \[caption id="attachment\_42"
+align="aligncenter"
+width="505"\]<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/05/Artboard-1-253x300.png" class="wp-image-42" width="505" height="600" />
+Diagram of Requesting Authorization\[/caption\] **Whenever this method
+with new** `HKObjectType` **or** `HKSampleType` **objects (such as the
+first time the app is run), the permission screen is shown.**
+`requestAuthoriation` is an asynchronous method, which means the
+`completion` is called once the request has been completed. The
+`completion`  closure is where you'd begin to interact with the user and
+begin queries for data. Let’s take a look at how to properly with
+request authorization.
 
     if HKHealthStore.isHealthDataAvailable() {
       let healthStore = HKHealthStore()

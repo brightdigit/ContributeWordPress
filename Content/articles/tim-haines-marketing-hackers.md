@@ -1,12 +1,13 @@
 ---
+title: Interview with Tim Haines - October Lansing Marketing Hackers
 date: 2018-09-04 05:25
 description: Tim Haines of Symposia Labs in Holland is presenting for our Lansing
   Marketing Hackers October 10th event at WLNS on Facebook and Instagram Advertising.
+featuredImage: /media/images/brightdigit/2018/08/DSC_0579.jpg
 ---
-::: {.wp-block-image}
-![Tim Haines of Symposia
-Labs](https://brightdigit.com/wp-content/uploads/2018/08/DSC_0579.jpg){.wp-image-1339}
-:::
+<figure>
+<img src="https://brightdigit.com/wp-content/uploads/2018/08/DSC_0579.jpg" class="wp-image-1339" alt="Tim Haines of Symposia Labs" /><figcaption aria-hidden="true">Tim Haines of Symposia Labs</figcaption>
+</figure>
 
 [Lansing Marketing
 Hackers](https://www.meetup.com/Lansing-Marketing-Hackers/) was a great
@@ -38,24 +39,24 @@ lots of stops and starts. I did event marketing for three years with a
 free-tax filing program sponsored by the United Way. After that, **I
 went into marketing and started freelancing and found West Michigan to
 be a place that encouraged a startup mindset.** One by one, I found
-others to join my team and that's how Symposia was born.
+others to join my team and that’s how Symposia was born.
 
 ## What have you seen change over your time in the marketing space?
 
 Almost everything. **Social media advertising has become a key part of
-most digital strategies. That's why advertisers continue to offer new
+most digital strategies. That’s why advertisers continue to offer new
 and innovated products that allow for more precise targeting than ever
 before.** New channels (such as Snapchat) have entered the landscape.
 Old platforms (remember MySpace?) have died.
 
-\[bctt tweet=\"Social media advertising has become a key part of most
-digital strategies. That's why advertisers continue to offer new and
+\[bctt tweet="Social media advertising has become a key part of most
+digital strategies. That’s why advertisers continue to offer new and
 innovated products that allow for more precise targeting than ever
-before. \@TimothyTHaines\" username=\"\@brightdigit\"\]
+before. @TimothyTHaines" username="@brightdigit"\]
 
 ## What common mistakes do you see people make?
 
-Assuming that their working with an expert\...
+Assuming that their working with an expert...
 
 1.  Putting a bunch of work into something **without an actual
     strategy**.
@@ -74,7 +75,7 @@ users want to see.
 
 ## How do the changes in 2018 change FB advertising? (FB clamping down on advertisers procuring user data, etc.)
 
-The changes in 2018 don't have a dramatic impact on advertisers.
+The changes in 2018 don’t have a dramatic impact on advertisers.
 Depending on the target audience, some advertisers have had to shift
 their strategies. However, similar changes have happened before. For
 example, Facebook removed the ability to target by profession last year.
@@ -91,28 +92,28 @@ on Facebook will not necessarily perform well on Instagram. Having said
 that, many of the ad units are similar and the targeting itself is the
 same (the Facebook ads marketplace is used to run ads on both channels).
 
-\[bctt tweet=\"To keep winning with Facebook ads, it is important to
+\[bctt tweet="To keep winning with Facebook ads, it is important to
 handle data responsibly, create high-quality ads, and to send users to
-high-quality websites. \@TimothyTHaines\" username=\"\@brightdigit\"\]
+high-quality websites. @TimothyTHaines" username="@brightdigit"\]
 
-## How does one decide which best suits one's business?
+## How does one decide which best suits one’s business?
 
 You must have a digital marketing and content strategy that includes
 detailed personas then you can worry about content distribution and
 which channels to focus on. **The strategy should always guide
 distribution and channels.**
 
-\[bctt tweet=\"The strategy should always guide distribution and
-channels. \@TimothyTHaines\" username=\"\@brightdigit\"\]
+\[bctt tweet="The strategy should always guide distribution and
+channels. @TimothyTHaines" username="@brightdigit"\]
 
-## If I have no interest in social media at all, is it worth doing half-heartedly? Or should I just not do it if I'm not convinced of the value?
+## If I have no interest in social media at all, is it worth doing half-heartedly? Or should I just not do it if I’m not convinced of the value?
 
-It's wise to outsource or delegate to another team member if you're not
+It’s wise to outsource or delegate to another team member if you’re not
 interested in it. **Quality is more important than quantity. Remember
-that your potential lack of interest doesn't negate the potential return
-on investment.** For example: I'm not interested much in PR. I just
-never "fell in love" with it the way that I have fallen in love with
-digital marketing. My lack of interest in PR doesn't negate the fact
+that your potential lack of interest doesn’t negate the potential return
+on investment.** For example: I’m not interested much in PR. I just
+never “fell in love” with it the way that I have fallen in love with
+digital marketing. My lack of interest in PR doesn’t negate the fact
 that it constantly has a positive impact on my business when I do it
 well.
 
@@ -143,5 +144,5 @@ join our group on
 [FaceBook](http://facebook.com/LansingMarketingHackers) and
 [Meetup](https://www.meetup.com/Lansing-Marketing-Hackers/).
 
-We look forward to seeing you [at Tim\'s presentation on October
+We look forward to seeing you [at Tim's presentation on October
 10th.](https://www.meetup.com/Lansing-Marketing-Hackers/events/253375863/)

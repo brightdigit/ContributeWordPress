@@ -1,7 +1,9 @@
 ---
+title: Understanding Optionals in Swift
 date: 2018-01-04 14:14
 description: "Optionals are a fairly unique concept in Swift. While Objective-C used
   pointers, Swift has an inherent syntax for optionals\u2026"
+featuredImage: /media/images/brightdigit/2018/01/2000px-Question_Mark.svg_.png
 ---
 Optionals are a fairly unique concept in Swift. While Objective-C used
 pointers which could be nil and C\# had a Nullable generics type for
@@ -21,7 +23,7 @@ not exist as opposed to saying does exist and here is its information.
 ------------------------------------------------------------------------
 
 Hey could you tell me about my iPhone? Yes it is a iPhone 8 Plus Black
-with 256 GB. *Or* You don't have one. Null!
+with 256 GB. *Or* You don’t have one. Null!
 
 ------------------------------------------------------------------------
 
@@ -32,29 +34,29 @@ pointers in our programming language.
 
 By now, many programming languages have shifted away from using pointers
 and have simply abstracted them away. At this point, a programmer
-doesn\'t really care about what specific address a piece of information
+doesn't really care about what specific address a piece of information
 is stored at? Typically you want the actual info. The problem then is
 **how can you signify null while still containing that information and
 not using pointers. ** Most languages assume all objects can be null and
-should be checked programmatically. However a language like C\# doesn't
-do this with value types (Int, Float, Char, Structs, etc...). It assumes
+should be checked programmatically. However a language like C\# doesn’t
+do this with value types (Int, Float, Char, Structs, etc…). It assumes
 all value type objects are in fact not null and later created Nullable
 struct to contain value types as well as a boolean to tell whether the
 object is null or not. In many ways Swift is doing something similar and
 taking it to the next level. **Swift assumes all objects are not nil and
 if anything could be it would contained in its own Optional
 (enumeration) container.** This means any parameter, return value,
-property, etc... needs to be noted as Optional if that value could ever
-be nil. Just as C\# has a syntax short hand for the Nullable type, Swift
-does as well using the question mark \'?\'. Additionally Swift also has
-a syntax for wrapping and unwrapping these variables as well.
+property, etc… needs to be noted as Optional if that value could ever be
+nil. Just as C\# has a syntax short hand for the Nullable type, Swift
+does as well using the question mark '?'. Additionally Swift also has a
+syntax for wrapping and unwrapping these variables as well.
 
 ## Optional Chaining
 
 In Swift, you can easily specify that a variable is optional by using
 the question mark: `let x: Foo?` In this case, `x` could contain a Foo
 or not. What this is called is **wrapping** your variable as optional.
-So let's say we create a struct for an iOS device:
+So let’s say we create a struct for an iOS device:
 
 
     struct Device {
@@ -67,7 +69,7 @@ So let's say we create a struct for an iOS device:
 
     }
 
-Great! Now let's add a static property to get the device information.
+Great! Now let’s add a static property to get the device information.
 
     extension struct Device {
 
@@ -145,14 +147,14 @@ Optional.** For instance:
 What this means is that **the `model` variable will be treated as not
 optional and will not crash here but rather if `model` is nil and you
 access a property on it, it will crash.** There is one main case where
-you will see this: properties which can't be set at initialization but
+you will see this: properties which can’t be set at initialization but
 will be set very soon after. The classic example for this is IBOutlets
 and subviews.
 
     @IBOutlet weak var subview: UIView!
 
 If you have a UIViewController which contains a subview property that
-you've linked in a storyboard and that property cannot be set at
+you’ve linked in a storyboard and that property cannot be set at
 initialization but needs to be set afterwards in `.viewDidLoad()`. You
 can safely assume that variable will be setup since most of your code
 will be after `.viewDidLoad()`. So rather than accessing properties with
@@ -164,7 +166,7 @@ will be after `.viewDidLoad()`. So rather than accessing properties with
 Swift emphasizes type-safety and Optional are a great example. Getting
 away from the pointers used in Objective-C, Swift uses optionals to
 signify whether a value could be nil. The question mark is used for
-optional chaining to ensure that an optional's properties remain
+optional chaining to ensure that an optional’s properties remain
 type-safe and returns optional for those properties. Rarely you may want
 to assume that a optional is never nil, then you have the option to use
 the exclamation mark to forcible unwrap optionals. You can also treat

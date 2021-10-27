@@ -62,17 +62,32 @@ public extension Node where Context == HTML.ListContext {
 }
 
 public extension Node where Context == HTML.BodyContext {
-  static func itemList<T: Website>(for items: [Item<T>], on _: T) -> Node {
+  static func itemList(for items: [Item<BrightDigit>], on _: BrightDigit) -> Node {
     .ul(
       .class("item-list"),
       .forEach(items) { item in
         .li(.article(
-          .h1(.a(
+          .img(.src(item.metadata.featuredImage ?? "http://placeimg.com/800/450/tech/\(UUID().uuidString)")),
+          .h2(.a(
             .href(item.path),
             .text(item.title)
           )),
-          // .tagList(for: item, on: site),
-          .p(.text(item.description))
+          .ol(
+            .group(
+              (1 ... Int.random(in: 1 ... 3)).map { _ in Lorem.word }.map { .text($0) }.map { .li(.a($0, .href("/"))) }
+            )
+          ),
+          .p(.text(item.description)),
+          .footer(
+            .div(
+              .class("publishedAt"),
+              .text("Feb 2, 2021") // Date(timeIntervalSinceNow: .random(in: 1.365) * 86400.0)
+            ),
+            .div(
+              .class("readTime"),
+              .text("4 mins read") // Date(timeIntervalSinceNow: .random(in: 1.365) * 86400.0)
+            )
+          )
         ))
       }
     )
@@ -387,144 +402,6 @@ struct CompanyHTMLFactory: HTMLFactory {
   typealias Site = BrightDigit
 }
 
-//
-// struct CompanyHTMLFactory : HTMLFactory {
-//  func makeIndexHTML(for index: Index,
-//                     context: PublishingContext<Site>) throws -> HTML {
-//      HTML(
-//          .lang(context.site.language),
-//          .head(for: index, on: context.site),
-//          .body(
-//              .header(for: context, selectedSection: nil),
-//                  .h1(.text(index.title)),
-//                  .p(
-//                      .class("description"),
-//                      .text(context.site.description)
-//                  ),
-//                  .h2("Latest content"),
-//                  .itemList(
-//                      for: context.allItems(
-//                          sortedBy: \.date,
-//                          order: .descending
-//                      ),
-//                      on: context.site
-//                  ),
-//              .footer(for: context.site)
-//          )
-//      )
-//  }
-//
-//  func makeSectionHTML(for section: Section<Site>,
-//                       context: PublishingContext<Site>) throws -> HTML {
-//      HTML(
-//          .lang(context.site.language),
-//          .head(for: section, on: context.site),
-//          .body(
-//              .header(for: context, selectedSection: section.id),
-//
-//              .footer(for: context.site)
-//          )
-//      )
-//  }
-//
-//  func makeItemHTML(for item: Item<Site>,
-//                    context: PublishingContext<Site>) throws -> HTML {
-//      HTML(
-//          .lang(context.site.language),
-//          .head(for: item, on: context.site),
-//          .body(
-//              .class("item-page"),
-//              .header(for: context, selectedSection: item.sectionID),
-//              .wrapper(
-//                  .article(
-//                      .div(
-//                          .class("content"),
-//                          .contentBody(item.body)
-//                      ),
-//                      .span("Tagged with: "),
-//                      .tagList(for: item, on: context.site)
-//                  )
-//              ),
-//              .footer(for: context.site)
-//          )
-//      )
-//  }
-//
-//  func makePageHTML(for page: Page,
-//                    context: PublishingContext<Site>) throws -> HTML {
-//      HTML(
-//          .lang(context.site.language),
-//          .head(for: page, on: context.site),
-//          .body(
-//              .header(for: context, selectedSection: nil),
-//              .wrapper(.contentBody(page.body)),
-//              .footer(for: context.site)
-//          )
-//      )
-//  }
-//
-//  func makeTagListHTML(for page: TagListPage,
-//                       context: PublishingContext<Site>) throws -> HTML? {
-//      HTML(
-//          .lang(context.site.language),
-//          .head(for: page, on: context.site),
-//          .body(
-//              .header(for: context, selectedSection: nil),
-//              .wrapper(
-//                  .h1("Browse all tags"),
-//                  .ul(
-//                      .class("all-tags"),
-//                      .forEach(page.tags.sorted()) { tag in
-//                          .li(
-//                              .class("tag"),
-//                              .a(
-//                                  .href(context.site.path(for: tag)),
-//                                  .text(tag.string)
-//                              )
-//                          )
-//                      }
-//                  )
-//              ),
-//              .footer(for: context.site)
-//          )
-//      )
-//  }
-//
-//  func makeTagDetailsHTML(for page: TagDetailsPage,
-//                          context: PublishingContext<Site>) throws -> HTML? {
-//      HTML(
-//          .lang(context.site.language),
-//          .head(for: page, on: context.site),
-//          .body(
-//              .header(for: context, selectedSection: nil),
-//              .wrapper(
-//                  .h1(
-//                      "Tagged with ",
-//                      .span(.class("tag"), .text(page.tag.string))
-//                  ),
-//                  .a(
-//                      .class("browse-all"),
-//                      .text("Browse all tags"),
-//                      .href(context.site.tagListPath)
-//                  ),
-//                  .itemList(
-//                      for: context.items(
-//                          taggedWith: page.tag,
-//                          sortedBy: \.date,
-//                          order: .descending
-//                      ),
-//                      on: context.site
-//                  )
-//              ),
-//              .footer(for: context.site)
-//          )
-//      )
-//  }
-//
-//  typealias Site = BrightDigit
-//
-//
-// }
 extension Theme where Site == BrightDigit {
   static var company: Self {
     Theme(htmlFactory: CompanyHTMLFactory())

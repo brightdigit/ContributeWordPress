@@ -7,5 +7,5 @@ import SyndiKit
 
 public protocol FrontMatterTranslator {
   associatedtype FrontMatterType: Encodable
-  func frontMatter(fromWordpresPost post: WordPressPost) -> FrontMatterType
+  func frontMatter(fromWordpresPost post: WordPressPost, withFeaturedImage featuredImage: String?) -> FrontMatterType
 }

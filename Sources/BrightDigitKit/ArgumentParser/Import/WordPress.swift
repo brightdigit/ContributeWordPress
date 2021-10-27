@@ -25,6 +25,12 @@ public extension BrightDigitSiteCommand.ImportCommand {
     @Option(help: "Path to Save Images Relative to Resources.")
     public var imageRelativePath = "media/images"
 
+    @Flag(help: "Overwrite Downloaded Images.")
+    public var overwriteImages: Bool = false
+
+    @Flag(help: "Skip Downloading Images.")
+    public var skipDownload: Bool = false
+
     public init() {}
 
     public func run() throws {

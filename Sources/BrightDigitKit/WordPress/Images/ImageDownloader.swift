@@ -23,28 +23,25 @@ public struct ImageDownloader: Downloader {
     return components.url
   }
 
-  public func download(fromPosts posts: [WordPressPost], to resourceImagePath: URL) throws {
-    let imageURLs: Set<URL> = Set(posts.filter {
-      $0.type == "attachment"
-    }.compactMap(\.attachmentURL)
-    )
+  public func download(fromPosts posts: [WordPressPost], to resourceImagePath: URL, dryRun: Bool, allowsOverwrites: Bool) throws -> [WordPressImageImport] {
+    let imagePosts = Set(posts.compactMap { post in
+      WordPressImageImport(post: post, pathFromURL: self.downloadPathFromURL, urlFromURL: self.downloadURLFromURL)
+    })
 
-    let imagePaths: [URL: String] = imageURLs.map { url in
-      let path = self.downloadPathFromURL(url)
-      let url = self.downloadURLFromURL(url) ?? url
-      return (url, path)
-    }.uniqueByKey()
+    guard !dryRun else {
+      return .init(imagePosts)
+    }
 
     let group = DispatchGroup()
 
     var errors = [URL: Error]()
 
-    for (url, path) in imagePaths {
+    for image in imagePosts {
       group.enter()
-      let destinationURL = resourceImagePath.appendingPathComponent(path)
-      urlDownloader.download(from: url, to: destinationURL) { error in
+      let destinationURL = resourceImagePath.appendingPathComponent(image.newPath)
+      urlDownloader.download(from: image.oldURL, to: destinationURL, allowOverwrite: allowsOverwrites) { error in
         if let error = error {
-          errors[url] = error
+          errors[image.oldURL] = error
         }
         group.leave()
       }
@@ -55,5 +52,7 @@ public struct ImageDownloader: Downloader {
     guard errors.isEmpty else {
       throw ImportError.imageDownloads(errors)
     }
+
+    return .init(imagePosts)
   }
 }
