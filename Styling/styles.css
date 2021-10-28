@@ -280,7 +280,7 @@ body#articles {
   & > main {
     @apply mx-6 xl:container xl:mx-auto;
     & > header {
-      @apply pb-4 border-b-2 mb-4;
+      @apply pb-4 border-b-2 mb-4 xl:mx-6;
       & > nav {
         @apply text-lg flex justify-between bg-gray-200 p-2 mb-2 rounded-lg;
         h1 {
@@ -316,6 +316,7 @@ body#articles {
       }
     }
     & > main {
+      @apply  xl:mx-6;
       & > ul {
         @apply md:grid md:grid-cols-3 md:gap-4 lg:gap-6;
         & > li {
@@ -391,10 +392,25 @@ body#services {
          }
        }
        &#hero {
-         @apply bg-gray-100 p-6 rounded-lg;
+         @apply bg-gray-100 flex-row p-6 rounded-lg lg:flex lg:items-center lg:justify-center flex-initial xl:items-center md:p-12 lg:px-20;
          h1 {
            @apply border-b-2 pb-2 border-gray-200;
          }
+         p {
+           @apply text-base;
+         } 
+         & > div {
+          @apply flex-initial;
+         }
+         & > div:first-child {
+           @apply mr-8 lg:mr-12 max-w-2xl lg:flex flex-1 bg-red-400 lg:max-h-40 ;
+           img {
+             @apply hidden lg:flex object-scale-down;
+           }
+         }
+         & > div:last-child {
+           @apply lg:max-w-2xl bg-green-300 lg:max-h-40 ;
+         }      
        }
     }
     & > section.cta {
