@@ -470,3 +470,36 @@ body#services {
     }
   }
 }
+
+body#about-us {
+  section#leo {
+    @apply p-6;
+    & > main {
+      & > header {
+        & > .salutation {
+          @apply font-light text-sm;
+        }
+        & > main {
+          @apply flex flex-row my-4;
+          & > img {
+            @apply rounded-full w-1/3 mr-4;
+          }
+          & > .info {
+            & > .name {
+              @apply text-lg font-bold;
+            }
+            & > .position {
+              @apply text-sm;
+            }
+          }
+        }
+      }
+      & > main {
+        @apply -my-2;
+        & > p {
+          @apply py-2 text-sm tracking-tight;
+        }
+      }
+    }
+  }
+}
