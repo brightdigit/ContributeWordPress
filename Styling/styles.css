@@ -480,22 +480,30 @@ body#about-us {
           @apply font-light text-sm md:text-base md:mb-8;
         }
         & > main {
-          @apply flex flex-row my-4;
-          & > img {
-            @apply rounded-full w-1/3 md:w-1/4 mr-4 md:mr-8;
-            max-width: 12em;
+          @apply flex flex-row my-4 items-center justify-center;
+          & > .profile-photo {
+            & > img {
+              @apply rounded-full object-scale-down h-32 mr-4 md:mr-8 lg:h-48 lg:mr-12 xl:mr-16;
+              max-width: 12em;
+            }
           }
           & > .info {
             & > .name {
-              @apply text-lg font-bold md:text-3xl;
+              @apply text-lg font-bold md:text-3xl xl:text-5xl;
             }
             & > .position {
               @apply text-sm md:text-base;
             }
             & > .social {
-              @apply flex  md:flex-col md:m-0 -m-2 md:text-lg;
+              @apply flex lg:flex-col lg:m-0 -m-2 md:text-lg xl:text-xl mt-0;
               & > li {
-                @apply p-2 md:p-0;
+                @apply p-2 lg:px-0 align-text-top;
+                span.name {
+                  @apply hidden;
+                }
+                span.handle {
+                  @apply text-sm;
+                }
               }
             }
           }
