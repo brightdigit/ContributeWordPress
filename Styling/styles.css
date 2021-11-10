@@ -475,6 +475,7 @@ body#about-us {
   section#leo {
     @apply p-6;
     & > main {
+      @apply max-w-screen-md mx-auto;
       & > header {
         & > .salutation {
           @apply font-light text-sm md:text-base md:mb-8;
@@ -489,20 +490,20 @@ body#about-us {
           }
           & > .info {
             & > .name {
-              @apply text-lg font-bold md:text-3xl xl:text-5xl;
+              @apply text-lg font-bold sm:text-xl md:text-3xl lg:text-5xl;
             }
             & > .position {
-              @apply text-sm md:text-base;
+              @apply text-sm md:text-base font-light;
             }
             & > .social {
-              @apply flex lg:flex-col lg:m-0 -m-2 md:text-lg xl:text-xl mt-0;
+              @apply flex lg:flex-col lg:m-0 -m-2 md:text-xl lg:text-3xl mt-0;
               & > li {
-                @apply p-2 lg:px-0 align-text-top;
+                @apply p-2 lg:px-0;
                 span.name {
                   @apply hidden;
                 }
                 span.handle {
-                  @apply text-sm;
+                  font-size: 0.6em;
                 }
               }
             }
@@ -512,7 +513,7 @@ body#about-us {
       & > main {
         @apply -my-2;
         & > p {
-          @apply py-2 text-sm tracking-tight;
+          @apply py-2 text-sm tracking-tight md:tracking-normal sm:text-base font-light;
         }
       }
     }
