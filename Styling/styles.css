@@ -392,25 +392,30 @@ body#services {
          }
        }
        &#hero {
-         @apply bg-gray-100 flex-row p-6 rounded-lg lg:flex lg:items-center lg:justify-center flex-initial xl:items-center md:p-12 lg:px-20;
+         @apply bg-gray-100 rounded-lg;
          h1 {
            @apply border-b-2 pb-2 border-gray-200;
          }
          p {
            @apply text-base;
          } 
-         & > div {
-          @apply flex-initial;
-         }
-         & > div:first-child {
-           @apply mr-8 lg:mr-12 max-w-2xl lg:flex flex-1 bg-red-400 lg:max-h-40 ;
-           img {
-             @apply hidden lg:flex object-scale-down;
-           }
-         }
-         & > div:last-child {
-           @apply lg:max-w-2xl bg-green-300 lg:max-h-40 ;
-         }      
+         & > main {
+           @apply flex md:max-w-lg lg:max-w-4xl xl:max-w-full items-center xl:items-stretch justify-center p-6 md:mx-auto xl:mx-0;
+            & > div {
+            }
+            & > div:first-child {
+              @apply lg:mr-12 hidden lg:flex justify-items-end lg:w-1/2 xl:w-1/4;
+              img {
+                @apply lg:flex;
+              }
+            }
+            & > div:last-child {
+              @apply hidden xl:flex ml-12;
+              img {
+                @apply object-cover;
+              }
+            }   
+        }   
        }
     }
     & > section.cta {
@@ -475,7 +480,7 @@ body#about-us {
   section#leo {
     @apply p-6;
     & > main {
-      @apply max-w-screen-md mx-auto;
+      @apply md:max-w-screen-sm lg:max-w-screen-md mx-auto;
       & > header {
         & > .salutation {
           @apply font-light text-sm md:text-base md:mb-8;
@@ -490,20 +495,24 @@ body#about-us {
           }
           & > .info {
             & > .name {
-              @apply text-lg font-bold sm:text-xl md:text-3xl lg:text-5xl;
+              @apply text-lg font-bold sm:text-xl md:text-3xl lg:text-5xl xl:text-8xl;
             }
             & > .position {
-              @apply text-sm md:text-base font-light;
+              @apply text-sm md:text-base font-light xl:text-xl;
             }
             & > .social {
-              @apply flex lg:flex-col lg:m-0 -m-2 md:text-xl lg:text-3xl mt-0;
+              @apply flex lg:flex-col lg:m-0 -m-2 md:text-xl lg:text-3xl mt-0 xl:text-5xl;
               & > li {
-                @apply p-2 lg:px-0;
-                span.name {
-                  @apply hidden;
-                }
-                span.handle {
-                  font-size: 0.6em;
+                & > a {
+                  @apply p-2 lg:px-0 xl:py-4 flex items-center;
+                  span {
+                    @apply font-light ml-0.5 lg:ml-2 xl:ml-4;
+                    font-size: 0.6em;                
+                  }
+                  span.name {
+                    @apply hidden;
+                  }
+
                 }
               }
             }
@@ -511,9 +520,9 @@ body#about-us {
         }
       }
       & > main {
-        @apply -my-2;
+        @apply -my-2 lg:my-0;
         & > p {
-          @apply py-2 text-sm tracking-tight md:tracking-normal sm:text-base font-light;
+          @apply py-2 text-sm tracking-tight md:tracking-normal sm:text-base lg:text-xl font-light lg:py-4;
         }
       }
     }
