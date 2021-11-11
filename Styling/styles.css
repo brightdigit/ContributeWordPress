@@ -528,3 +528,28 @@ body#about-us {
     }
   }
 }
+
+body#products {
+  & > main {
+    & > ol {
+      & > li {
+        @apply m-6;
+        & > section {
+          @apply bg-gray-100 p-6 rounded-xl shadow-lg border-2 border-white; 
+          & > header {
+            & > a:first-child {
+
+              @apply flex items-center mb-4;
+              & > img {
+                @apply w-16 h-16 mr-4 object-contain;
+              }
+              & > h3 {
+                @apply text-5xl font-light;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
