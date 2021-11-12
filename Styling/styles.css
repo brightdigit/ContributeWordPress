@@ -543,14 +543,29 @@ body#products {
           @apply bg-gray-100 p-6 lg:p-10 xl:p-12 rounded-xl shadow-lg border-2 border-white; 
           & > main {
             @apply py-4 border-t-2 border-b-2 md:border-0 font-thin text-lg xl:text-xl;
+            
             & > ol {
-              @apply my-4;
+              @apply my-2;
               &.press-coverage {
-                @apply flex-col;
+                @apply flex-col md:flex-row md:justify-between -mt-2;
                 & > li {
-                  blockquote {
-                    @apply italic py-2 text-lg font-light text-justify;
+                  &:first-child {
+                    @apply border-none;
                   }
+                  @apply border-t-2 border-gray-200 md:border-0 py-4;
+                  figure {
+                    @apply flex flex-col;
+                    blockquote {
+                      @apply italic py-2 text-lg font-light text-justify;
+                    }
+                    figcaption {
+                      @apply flex justify-between;
+                      .name {
+                        @apply font-black;
+                      }
+                    }
+                  }
+                  
                 }
               }
               & > li {
