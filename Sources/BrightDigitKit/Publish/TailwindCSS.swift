@@ -7,7 +7,7 @@ extension Plugin {
     Plugin(name: "Tailwind") { context in
       let folder = try context.folder(at: "Content/styling")
       let cssFile = try context.createOutputFile(at: "css/styles.css")
-      try shellOut(to: "npm run publish -- -o \(cssFile.url.absoluteString)", at: folder.path)
+      try shellOut(to: "npm run publish -- -o \"\(cssFile.url.absoluteString)\"", at: folder.path)
     }
   }
 }
@@ -18,7 +18,7 @@ extension PublishingStep {
       let folder = try context.folder(at: "Styling")
       let cssFile = try context.createOutputFile(at: "css/styles.css")
 
-      try shellOut(to: "npm install; npm run publish -- -o \(cssFile.path)", at: folder.path)
+      try shellOut(to: "npm install; npm run publish -- -o \"\(cssFile.path)\"", at: folder.path)
     }
   }
 }
