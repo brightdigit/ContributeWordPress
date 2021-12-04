@@ -280,7 +280,7 @@ body#articles {
   & > main {
     @apply mx-6 xl:container xl:mx-auto;
     & > header {
-      @apply pb-4 border-b-2 mb-4;
+      @apply pb-4 border-b-2 mb-4 xl:mx-6;
       & > nav {
         @apply text-lg flex justify-between bg-gray-200 p-2 mb-2 rounded-lg;
         h1 {
@@ -316,6 +316,7 @@ body#articles {
       }
     }
     & > main {
+      @apply  xl:mx-6;
       & > ul {
         @apply md:grid md:grid-cols-3 md:gap-4 lg:gap-6;
         & > li {
@@ -339,6 +340,336 @@ body#articles {
             }
             & > footer {
               @apply flex justify-between text-xs lg:text-base lg:my-4;            
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+body#services {
+  h1 {
+    @apply text-2xl mb-4;
+  }
+  h2{ 
+    @apply text-lg font-normal mb-4;
+  }
+  & > main {
+    @apply xl:container xl:mx-auto;
+    & > section {
+      @apply m-6 pb-4;    
+      &.service {
+        @apply sm:flex sm:items-stretch md:items-center lg:border-2 lg:border-gray-50 lg:shadow-xl lg:rounded-lg lg:p-12;
+        & >  header {
+          @apply mr-4 lg:mr-8 sm:mb-0 sm:w-5/12 justify-self-center flex-grow-0 flex-shrink sm:flex;
+          img {
+            @apply object-cover sm:h-full sm:w-full;
+          }
+        }
+        & > main {
+          @apply flex-1;
+          p {
+            @apply lg:text-base;
+          }
+        }
+      } 
+       & > header {
+         @apply mb-4;
+       }
+       & > main {
+         & > header {
+           @apply flex;
+           & > img:first-child {
+             @apply flex-grow-0 flex-shrink h-8 mr-2;
+           }
+           & > h2 {
+             @apply flex-grow;
+           }
+         }
+         & > p {
+          @apply text-sm font-light;
+         }
+       }
+       &#hero {
+         @apply bg-gray-100 rounded-lg;
+         h1 {
+           @apply border-b-2 pb-2 border-gray-200;
+         }
+         p {
+           @apply text-base;
+         } 
+         & > main {
+           @apply flex md:max-w-lg lg:max-w-4xl xl:max-w-full items-center xl:items-stretch justify-center p-6 md:mx-auto xl:mx-0;
+            & > div {
+            }
+            & > div:first-child {
+              @apply lg:mr-12 hidden lg:flex justify-items-end lg:w-1/2 xl:w-1/4;
+              img {
+                @apply lg:flex;
+              }
+            }
+            & > div:last-child {
+              @apply hidden xl:flex ml-12;
+              img {
+                @apply object-cover;
+              }
+            }   
+        }   
+       }
+    }
+    & > section.cta {
+      @apply m-6 ;
+      & > main {
+        @apply bg-gray-100 p-6 rounded-lg sm:flex sm:flex-1;
+        & > header {
+          @apply mb-4 sm:flex sm:m-0 sm:w-1/2 sm:flex-none;
+          img {
+            @apply object-cover sm:flex sm:flex-1;
+          }
+        }
+        & > main {
+          @apply sm:flex sm:ml-4 sm:flex-col md:place-self-center md:self-center md:flex-grow xl:mx-8;
+          p:first-child {
+            @apply sm:font-bold;
+          }
+          & > .button {
+            @apply text-center flex flex-col _button;
+          }
+          & > ol {
+            @apply flex flex-col mt-2 lg:mt-4 lg:grid lg:grid-cols-2 lg:gap-2 lg:-mx-2;
+            & > li {
+              @apply text-bellow-600 flex flex-col align-middle;
+              a {
+                @apply _button_normal flex my-2 align-middle lg:my-0 lg:text-sm xl:text-base lg:px-2;
+              }
+              i {
+                @apply text-xl align-middle mr-2;
+              }
+            }
+          }
+         form {
+            @apply w-full flex flex-col mt-4 border-t-2 pt-2  sm:flex-1;
+            button {
+              @apply _button;
+            }
+            textarea {
+              @apply p-2;
+            }
+            & > div {
+              @apply flex flex-row my-2 -mx-2;
+              & > div {
+                @apply flex flex-col flex-grow mx-2;
+                input {
+                  @apply flex flex-row flex-grow w-full p-2;
+                }
+                label {
+                  @apply text-xs flex px-2 py-1;
+                }
+              }
+            }
+          }
+        }
+       
+      }
+    }
+  }
+}
+
+body#about-us {
+  section#leo {
+    @apply p-6;
+    & > main {
+      @apply md:max-w-screen-sm lg:max-w-screen-md mx-auto;
+      & > header {
+        & > .salutation {
+          @apply font-light text-sm md:text-base md:mb-8;
+        }
+        & > main {
+          @apply flex flex-row my-4 items-center justify-center;
+          & > .profile-photo {
+            & > img {
+              @apply rounded-full object-scale-down h-32 mr-4 md:mr-8 lg:h-48 lg:mr-12 xl:mr-16;
+              max-width: 12em;
+            }
+          }
+          & > .info {
+            & > .name {
+              @apply text-lg font-bold sm:text-xl md:text-3xl lg:text-5xl xl:text-8xl;
+            }
+            & > .position {
+              @apply text-sm md:text-base font-light xl:text-xl;
+            }
+            & > .social {
+              @apply flex lg:flex-col lg:m-0 -m-2 md:text-xl lg:text-3xl mt-0 xl:text-5xl;
+              & > li {
+                & > a {
+                  @apply p-2 lg:px-0 xl:py-4 flex items-center;
+                  span {
+                    @apply font-light ml-0.5 lg:ml-2 xl:ml-4;
+                    font-size: 0.6em;                
+                  }
+                  span.name {
+                    @apply hidden;
+                  }
+
+                }
+              }
+            }
+          }
+        }
+      }
+      & > main {
+        @apply -my-2 lg:my-0;
+        & > p {
+          @apply py-2 text-sm tracking-tight md:tracking-normal sm:text-base lg:text-xl font-light lg:py-4;
+        }
+      }
+    }
+  }
+}
+
+body#products {
+  & > main {
+    & > ol {
+      & > li {
+        @apply m-6 lg:mb-8 xl:mb-16;
+        &.open-source {
+          & > section {
+            @apply bg-bellow-300 border-bellow-400;
+          }
+        }
+        & > section {
+          @apply bg-gray-100 p-6 lg:p-10 xl:p-12 rounded-xl shadow-lg border-2 border-white; 
+          & > main {
+            @apply py-4 border-t-2 border-b-2 md:border-0 font-thin text-lg xl:text-xl;
+            
+            & > ol {
+              @apply my-2;
+              &.press-coverage {
+                @apply flex-col md:flex-row md:justify-around -mt-2;
+                & > li {
+                  &:first-child {
+                    @apply border-none;
+                  }
+                  @apply border-t-2 border-gray-200 md:border-0 py-4;
+                  figure {
+                    @apply flex flex-col;
+                    blockquote {
+                      @apply italic py-2 text-lg font-light text-justify;
+                    }
+                    figcaption {
+                      @apply flex justify-between;
+                      .name {
+                        @apply font-black;
+                      }
+                    }
+                  }
+                  
+                }
+              }
+              & > li {
+                @apply hidden;
+                & > img {
+                  @apply rounded-lg opacity-90 border-2 border-gray-400;
+                  &:hover {
+                    @apply opacity-100 transition-opacity duration-300 ease-in-out  border-gray-200;
+                  } 
+                }
+              }
+              & > li:first-child {
+                @apply flex;
+              }
+
+              & > li:nth-child(2) {
+                @apply flex;
+              }
+
+              & > li:nth-child(3) {
+                @apply lg:flex;
+              }
+              &.screenshots.square {
+                & > li {
+
+                  & > img {
+
+                  }
+                }
+              }
+
+              &.screenshots.portrait {
+                @apply justify-between;
+                & > li:nth-child(3) {
+                  @apply flex;
+                }
+                & > li:nth-child(4) {
+                  @apply md:flex;
+                }
+                & > li:nth-child(5) {
+                  @apply md:flex;
+                }
+                & > li {
+                  @apply h-60 w-28 flex-shrink-0;
+                  @apply md:w-32 md:h-72;
+                  @apply lg:w-36 lg:h-80;
+                  @apply xl:w-44 xl:h-96;
+                  & > img {
+                    @apply object-cover;
+                  }
+                }
+              }
+              &.screenshots.square {
+                @apply justify-between;
+                & > li:nth-child(3) {
+                  @apply flex;
+                }
+                & > li:nth-child(4) {
+                  @apply md:flex;
+                }
+                & > li:nth-child(5) {
+                  @apply md:flex;
+                }
+                & > li {
+                  @apply h-28 w-28 flex-shrink-0;
+                  @apply md:w-32 md:h-32;
+                  @apply lg:w-36 lg:h-36;
+                  @apply xl:w-44 xl:h-44;
+                  & > img {
+                    @apply object-cover;
+                  }
+                }
+              }
+            }
+          }
+          ol {
+            @apply flex text-sm -mx-2;
+            & > li {
+              @apply p-2 text-gray-600;
+              & > a{
+                @apply text-black;
+                &:hover {
+                  @apply underline;
+                }
+              }
+            }
+          }
+          & > header {
+            & > a:first-child {
+              @apply flex items-center mb-4 underline lg:no-underline lg:border-b-2 lg:pb-2;
+              & > img {
+                @apply w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 mr-4 object-contain rounded-full;
+              }
+              & > h3 {
+                @apply text-6xl font-light md:text-7xl lg:text-8xl;
+              }
+            }
+          }
+          & > footer {
+            @apply mt-4 md:mt-0;
+            & > section {
+              & > h4 {
+                @apply text-xs font-light;
+              }
             }
           }
         }
