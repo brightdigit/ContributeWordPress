@@ -14,53 +14,6 @@ public extension Node where Context == HTML.ListContext {
       )
     )
   }
-
-  // MARK: - LoremIpsum
-
-  static func loremIpsumTestimonial() -> Node {
-    .li(
-      .element(named: "figure", nodes: [.blockquote(
-        .p(
-          .text(Lorem.sentences(2))
-        )
-      ), .element(named: "figcaption", nodes: [
-        .text("-"),
-        .text(Lorem.fullName),
-        .text(", "),
-        .element(named: "cite", nodes: [.text(Lorem.title)])
-      ])])
-    )
-  }
-
-  static func loremIpsumArticle() -> Node {
-    .li(
-      .header(
-        .img(.src("http://placeimg.com/200/150/tech/\(UUID().uuidString)")),
-        .h3(.text(Lorem.title)),
-        .ol(
-          .li(.text(Lorem.word))
-        ),
-        .ol(
-          .group(
-            (1 ... Int.random(in: 1 ... 3)).map { _ in Lorem.word }.map { .text($0) }.map { .li($0) }
-          )
-        )
-      ),
-      .main(
-        .p(.text(Lorem.sentences(2)))
-      ),
-      .footer(
-        .div(
-          .class("publishedAt"),
-          .text("Feb 2, 2021") // Date(timeIntervalSinceNow: .random(in: 1.365) * 86400.0)
-        ),
-        .div(
-          .class("readTime"),
-          .text("4 mins read") // Date(timeIntervalSinceNow: .random(in: 1.365) * 86400.0)
-        )
-      )
-    )
-  }
 }
 
 // MARK: - ItemList
@@ -118,7 +71,7 @@ public extension Node where Context == HTML.BodyContext {
           .li(for: "Services"),
           .li(for: "Products"),
           .li(for: "Articles"),
-          .li(for: "Development")
+          .li(for: "Tutorials")
         ),
         .ol(
           .class("menu"),
@@ -128,87 +81,15 @@ public extension Node where Context == HTML.BodyContext {
           .li(for: "About")
         ),
         .ol(
+          .class("menu"),
+          .li(
+            .a(.href("/contact-us"),
+               .text("Contact Us"))
+          )
+        ),
+        .ol(
           .class("more"),
           .li(for: "Menu", at: "#menu")
-        )
-      )
-    )
-  }
-}
-
-// MARK: - Testimonials
-
-public extension Node where Context == HTML.BodyContext {
-  static func sectionForTestimonials() -> Node {
-    .section(
-      .id("testimonials"),
-      .header(
-        .h2("Testimonials")
-      ),
-      .ol(
-        .loremIpsumTestimonial(),
-        .loremIpsumTestimonial(),
-        .loremIpsumTestimonial(),
-        .loremIpsumTestimonial(),
-        .loremIpsumTestimonial(),
-        .loremIpsumTestimonial()
-      )
-    )
-  }
-
-  static func sectionForHero() -> Node {
-    .section(
-      .class("hero"),
-      .main(
-        .text("Understanding complex large projects with the thorough knowledge of iOS app development")
-      )
-    )
-  }
-
-  // MARK: - sectionForServices
-
-  static func sectionForServices() -> Node {
-    .section(
-      .class("services"),
-      .header(
-        .h2("Services")
-      ),
-      .ol(
-        .li(
-          .header(
-            .h3(.text("iPhone and iPad")),
-            .img(.src("/media/services/003-iphone.svg"))
-          ),
-          .main(
-            .p(.text(Lorem.sentences(2)))
-          )
-        ),
-        .li(
-          .header(
-            .h3(.text("Apple Watch")),
-            .img(.src("/media/services/002-smartwatch-app.svg"))
-          ),
-          .main(
-            .p(.text(Lorem.sentences(2)))
-          )
-        ),
-        .li(
-          .header(
-            .h3(.text("Swift")),
-            .img(.src("/media/services/001-swift.svg"))
-          ),
-          .main(
-            .p(.text(Lorem.sentences(2)))
-          )
-        ),
-        .li(
-          .header(
-            .h3(.text("Cloud and Server")),
-            .img(.src("/media/services/004-cloud.svg"))
-          ),
-          .main(
-            .p(.text(Lorem.sentences(2)))
-          )
         )
       )
     )
@@ -246,6 +127,8 @@ public extension Node where Context == HTML.DocumentContext {
     )
   }
 }
+
+// MARK: - makeFooter
 
 public extension Node where Context == HTML.BodyContext {
   static func makeFooter() -> Node {
@@ -315,22 +198,8 @@ struct CompanyHTMLFactory: HTMLFactory {
           .sectionForHero(),
           .sectionForServices(),
           .sectionForTestimonials(),
-          .section(
-            .id("articles"),
-            .header(
-              .h2("Latest Articles")
-            ),
-            .ol(
-              .loremIpsumArticle(),
-              .loremIpsumArticle(),
-              .loremIpsumArticle(),
-              .loremIpsumArticle(),
-              .loremIpsumArticle(),
-              .loremIpsumArticle(),
-              .loremIpsumArticle(),
-              .loremIpsumArticle()
-            )
-          )
+          .sectionForContactUs(),
+          .sectionForLatestArticles()
         ),
         .makeFooter()
       )
@@ -402,6 +271,8 @@ struct CompanyHTMLFactory: HTMLFactory {
 
   // MARK: - makeTagListHTML
 
+  // MARK: - makeTagListHTML
+
   func makeTagListHTML(for _: TagListPage, context _: PublishingContext<BrightDigit>) throws -> HTML? {
     HTML(
       .makeHead(forPage: MockPage()),
@@ -410,6 +281,8 @@ struct CompanyHTMLFactory: HTMLFactory {
       )
     )
   }
+
+  // MARK: - makeTagDetailsHTML
 
   // MARK: - makeTagDetailsHTML
 
