@@ -8,7 +8,12 @@ import PackageDescription
 
 let package = Package(
   name: "BrightDigit",
-  platforms: [.macOS(.v10_12)],
+  platforms: [
+    .macOS(.v10_15),
+    .iOS(.v10),
+    .tvOS(.v10),
+    .watchOS(.v3)
+  ],
   products: [
     .executable(
       name: "brightdigitwg",
@@ -25,9 +30,10 @@ let package = Package(
 
     .package(url: "https://github.com/tid-kijyun/Kanna.git", from: "5.2.2"),
     .package(url: "https://github.com/eneko/MarkdownGenerator.git", from: "0.4.0"),
+    .package(url: "https://github.com/brightdigit/SwiftTube.git", from: "0.1.0"),
 
     .package(url: "https://github.com/JohnSundell/Splash", from: "0.15.0"),
-    .package(url: "https://github.com/BrightDigit/SyndiKit", from: "0.1.2"),
+    .package(url: "https://github.com/BrightDigit/SyndiKit", from: "0.2.0"),
     .package(url: "https://github.com/shibapm/Komondor", from: "1.1.1"), // dev
     .package(url: "https://github.com/eneko/SourceDocs", from: "1.2.1"), // dev
     .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.47.0"), // dev
@@ -43,6 +49,7 @@ let package = Package(
     ),
     .target(name: "BrightDigitKit",
             dependencies: ["SyndiKit", "Publish", "Splash", "LoremSwiftum", "Kanna", "MarkdownGenerator", "Yams",
+                           "SwiftTube",
                            .product(name: "ArgumentParser", package: "swift-argument-parser")]),
     .testTarget(
       name: "brightdigitwgTests",

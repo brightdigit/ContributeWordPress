@@ -19,11 +19,6 @@ extension URL {
     let destComponents = standardized.pathComponents
     let baseComponents = base.standardized.pathComponents
 
-    // Find number of common path components:
-//    var i = 0
-//    while i < destComponents.count, i < baseComponents.count, destComponents[i] == baseComponents[i] {
-//      i += 1
-    // }
     let index = (zip(baseComponents, destComponents).enumerated().first { element in
       element.element.0 != element.element.1
     }?.offset ?? min(baseComponents.count, destComponents.count))
@@ -35,31 +30,39 @@ extension URL {
   }
 }
 
-public struct WordpressMarkdownProcessor {
-  internal init(postFilters: [PostFilter]) {
+public struct WordpressMarkdownProcessor<
+  ContentURLGeneratorType: ContentURLGenerator,
+  MarkdownContentBuilderType: MarkdownContentBuilder
+>
+  where
+  ContentURLGeneratorType.SourceType == WordPressSource,
+  MarkdownContentBuilderType.SourceType == WordPressSource {
+  internal init(redirectListGenerator: RedirectListGenerator, destinationURLGenerator: ContentURLGeneratorType, contentBuilder: MarkdownContentBuilderType, postFilters: [PostFilter]) {
+    self.redirectListGenerator = redirectListGenerator
+    self.destinationURLGenerator = destinationURLGenerator
+    self.contentBuilder = contentBuilder
     self.postFilters = postFilters
-    redirectListGenerator = DynamicRedirectGenerator(postFilters: postFilters)
   }
 
   let redirectListGenerator: RedirectListGenerator
   let redirectFromatter: RedirectFormatter = NetlifyRedirectFormatter()
   let downloader: Downloader = ImageDownloader()
   let exportDecoder: PostsExportDecoder = PostsExportSynDecoder()
-  let destinationURLGenerator: ContentURLGenerator = SectionContentURLGenerator()
-  let contentBuilder: MarkdownContentBuilder = MarkdownContentYAMLBuilder()
+  let destinationURLGenerator: ContentURLGeneratorType
+  let contentBuilder: MarkdownContentBuilderType
   let postFilters: [PostFilter]
 
   private func writeAllPosts(_ allPosts: [String: [WordPressPost]], withImages images: [WordPressImageImport], atImageRoot imageRoot: String, to contentPathURL: URL) throws {
     try allPosts.forEach { args in
-      let fileName = args.key
-      return try args.value
+
+      try args.value
         .filter(self.postFilters.postSatisfiesAll)
         .forEach { post in
           let featuredImagePath = images.first(where: { $0.parentID == post.ID }).map {
             ["", imageRoot, $0.newPath].joined(separator: "/")
           }
 
-          try self.contentBuilder.writePost(post, withFeaturedImage: featuredImagePath, fromFileName: fileName, atContentPathURL: contentPathURL, basedOn: self.destinationURLGenerator)
+          try self.contentBuilder.write(from: .init(sectionName: args.key, post: post, featuredImage: featuredImagePath), atContentPathURL: contentPathURL, basedOn: self.destinationURLGenerator)
         }
     }
   }
@@ -71,5 +74,19 @@ public struct WordpressMarkdownProcessor {
     let imageImports = try downloader.download(fromPosts: allPosts.flatMap(\.value), to: settings.resourceImagePathURL, dryRun: settings.skipDownload, allowsOverwrites: settings.overwriteImages)
     let imageRoot = settings.resourceImagePathURL.relativePath(from: settings.resourcesPathURL) ?? settings.resourcesPathURL.path
     try writeAllPosts(allPosts, withImages: imageImports, atImageRoot: imageRoot, to: settings.contentPathURL)
+  }
+}
+
+extension WordpressMarkdownProcessor {
+  init(postFilters: [PostFilter]) where ContentURLGeneratorType == SectionContentURLGenerator, MarkdownContentBuilderType == MarkdownContentYAMLBuilder<WordPressSource, FilteredHTMLMarkdownExtractor<WordPressSource>, FrontMatterYAMLExporter<WordPressSource, SpecFrontMatterTranslator>> {
+    self.init(
+      redirectListGenerator: DynamicRedirectGenerator(postFilters: postFilters),
+      destinationURLGenerator: .init(),
+      contentBuilder: .init(
+        frontMatterExporter: FrontMatterYAMLExporter<WordPressSource, SpecFrontMatterTranslator>(translator: SpecFrontMatterTranslator()),
+        markdownExtractor: FilteredHTMLMarkdownExtractor<WordPressSource>(markdownGenerator: PandocMarkdownGenerator())
+      ),
+      postFilters: postFilters
+    )
   }
 }

@@ -2,3 +2,4 @@
 --header strip
 --commas inline
 --exclude .build, DerivedData
+--disable wrapMultilineStatementBraces

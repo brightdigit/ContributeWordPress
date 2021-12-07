@@ -6,8 +6,10 @@ import SyndiKit
 #endif
 
 public struct SectionContentURLGenerator: ContentURLGenerator {
-  public func destinationURL(basedOnPost post: WordPressPost, fromFileName fileName: String, atContentPathURL contentPathURL: URL) -> URL {
-    let sectionPath = contentPathURL.appendingPathComponent(fileName)
-    return sectionPath.appendingPathComponent(post.name + ".md")
+  public typealias SourceType = WordPressSource
+
+  public func destinationURL(basedOn source: WordPressSource, atContentPathURL contentPathURL: URL) -> URL {
+    let sectionPath = contentPathURL.appendingPathComponent(source.sectionName)
+    return sectionPath.appendingPathComponent(source.post.name + ".md")
   }
 }

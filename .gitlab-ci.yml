@@ -1,8 +1,10 @@
 stages:
   - build
   - deploy
-
+  
 build focal:
+  except:
+    - /.*WIP$/
   stage: build
   image: brightdigit/publish-xml
   script:
@@ -12,6 +14,8 @@ build focal:
 #    - swift run brightdigitwg import wordpress Import/Wordpress --export-resources-directory=Resources --export-markdown-directory=Content
 
 build macos:
+  except:
+    - /.*WIP$/
   stage: build
   tags:
     - macos  

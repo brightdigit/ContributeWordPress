@@ -7,8 +7,9 @@ import SyndiKit
 
 public struct SpecFrontMatterTranslator: FrontMatterTranslator {
   public typealias FrontMatterType = Specs
+  public typealias SourceType = WordPressSource
 
-  public func frontMatter(fromWordpresPost post: WordPressPost, withFeaturedImage featuredImage: String?) -> Specs {
-    Specs(fromPost: post, withFeaturedImage: featuredImage)
+  public func frontMatter(from source: WordPressSource) -> Specs {
+    Specs(from: source)
   }
 }
