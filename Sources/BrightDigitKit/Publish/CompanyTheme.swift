@@ -259,6 +259,16 @@ struct CompanyHTMLFactory: HTMLFactory {
           .makeFooter()
         )
       )
+    case "contact-us":
+      return HTML(
+        .makeHead(forPage: MockPage()),
+        .body(
+          .id("contact-us"),
+          .headerNav(),
+          .makeContactUsBody(),
+          .makeFooter()
+        )
+      )
     default:
       return HTML(
         .makeHead(forPage: MockPage()),
