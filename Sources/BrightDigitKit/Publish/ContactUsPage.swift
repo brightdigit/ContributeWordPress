@@ -2,12 +2,16 @@ import Plot
 import Publish
 
 public extension Node where Context == HTML.BodyContext {
+  // MARK: - makeContactUsBody
+
   static func makeContactUsBody() -> Node {
     .main(
       .makeContactUsFormWithPicture(),
       .makeSocialMediaSection()
     )
   }
+
+  // MARK: - makeContactUsFormWithPicture
 
   static func makeContactUsFormWithPicture() -> Node {
     .section(
@@ -54,6 +58,8 @@ public extension Node where Context == HTML.BodyContext {
     )
   }
 
+  // MARK: - makeSocialMediaSection
+
   static func makeSocialMediaSection() -> Node {
     .section(
       .id("social-media"),
@@ -80,6 +86,8 @@ public extension Node where Context == HTML.BodyContext {
     )
   }
 }
+
+// MARK: - makeIconWithText
 
 public extension Node where Context == HTML.ListContext {
   static func makeIconWithText(_ text: String, href: String, flatIcon: String) -> Node {

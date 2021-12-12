@@ -2,6 +2,8 @@ import Plot
 import Publish
 
 public extension Node where Context == HTML.BodyContext {
+  // MARK: - makeServicesSectionBody
+
   static func makeServicesSectionBody() -> Node {
     .main(
       .makeHeroSection(),
@@ -34,6 +36,8 @@ public extension Node where Context == HTML.BodyContext {
                        paragraph: Strings.Services.appleDevelopment)
     )
   }
+
+  // MARK: - makeHeroSection
 
   static func makeHeroSection() -> Node {
     .section(
@@ -81,6 +85,8 @@ public extension Node where Context == HTML.BodyContext {
       )
     )
   }
+
+  // MARK: - makeContactUsForm
 
   static func makeContactUsForm() -> Node {
     .section(
@@ -132,6 +138,8 @@ public extension Node where Context == HTML.BodyContext {
       )
     )
   }
+
+  // MARK: - makeSubscribeForm
 
   static func makeSubscribeForm() -> Node {
     .section(

@@ -281,8 +281,6 @@ struct CompanyHTMLFactory: HTMLFactory {
 
   // MARK: - makeTagListHTML
 
-  // MARK: - makeTagListHTML
-
   func makeTagListHTML(for _: TagListPage, context _: PublishingContext<BrightDigit>) throws -> HTML? {
     HTML(
       .makeHead(forPage: MockPage()),
@@ -291,8 +289,6 @@ struct CompanyHTMLFactory: HTMLFactory {
       )
     )
   }
-
-  // MARK: - makeTagDetailsHTML
 
   // MARK: - makeTagDetailsHTML
 
