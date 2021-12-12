@@ -78,10 +78,6 @@ public extension Node where Context == HTML.BodyContext {
         .loremIpsumArticle(),
         .loremIpsumArticle(),
         .loremIpsumArticle(),
-        .loremIpsumArticle(),
-        .loremIpsumArticle(),
-        .loremIpsumArticle(),
-        .loremIpsumArticle(),
         .loremIpsumArticle()
       )
     )
@@ -92,7 +88,7 @@ public extension Node where Context == HTML.BodyContext {
       .id("contact-us"),
       .main(
         .div(
-          .p("Learn more about what we do.")
+          .p("Want to know what’s what when it comes to the latest with Swift and Apple. Join our free newsletter and we’ll keep you updated with news, tips, and advice.")
         ),
         .a(
           .href("/contact-us"),
