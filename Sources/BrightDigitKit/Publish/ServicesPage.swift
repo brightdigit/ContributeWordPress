@@ -13,7 +13,7 @@ public extension Node where Context == HTML.BodyContext {
         id: "iPhone-service",
         bigImageSrc: "http://placeimg.com/800/450/tech/CF994871-96B0-4257-A9F8-73FFDF87C015",
         smallImageSrc: "/media/services/003-iphone.svg",
-        title: "10 years of iPhone app development experience",
+        title: "New App Development",
         paragraph: Strings.Services.iOSDevelopment
       ),
 
@@ -23,7 +23,7 @@ public extension Node where Context == HTML.BodyContext {
                        id: "swift-service",
                        bigImageSrc: "http://placeimg.com/800/450/tech/CF994871-96B0-4257-A9F8-73FFDF87C015",
                        smallImageSrc: "/media/services/001-swift.svg",
-                       title: "Experts in Swift",
+                       title: "Upgrade Your Existing App",
                        paragraph: Strings.Services.consulting),
 
       .makeSubscribeForm(),
@@ -32,7 +32,7 @@ public extension Node where Context == HTML.BodyContext {
                        id: "apple-service",
                        bigImageSrc: "http://placeimg.com/800/450/tech/CF994871-96B0-4257-A9F8-73FFDF87C015",
                        smallImageSrc: "/media/services/002-smartwatch-app.svg",
-                       title: "Understanding the Appple Ecosystem",
+                       title: "Port Your App to Apple Platforms",
                        paragraph: Strings.Services.appleDevelopment)
     )
   }
