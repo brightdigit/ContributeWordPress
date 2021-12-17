@@ -196,9 +196,9 @@ struct CompanyHTMLFactory: HTMLFactory {
         .headerNav(),
         .main(
           .sectionForHero(),
+          .sectionForContactUs(),
           .sectionForServices(),
           .sectionForTestimonials(),
-          .sectionForContactUs(),
           .sectionForLatestArticles()
         ),
         .makeFooter()
