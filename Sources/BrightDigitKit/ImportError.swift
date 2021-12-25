@@ -25,6 +25,14 @@ public enum ImportError: Error {
     case imageHref
   }
 
+  public enum NewsletterField {
+    case id
+    case longArchiveURL
+    case title
+    case subjectLine
+    case sendTime
+  }
+
   case directory(URL)
   case imageDownloads([URL: Error])
   case invalidPodcastEpisodeFromRSSItem(RSSItem)
@@ -36,4 +44,7 @@ public enum ImportError: Error {
   case missingVideoForEpisode(RSSItem)
   case missingFieldFromPodcastEpisode(PodcastEpisode, EpisodeField)
   case duplicateTitle(String, forVideos: [EpisodeVideo])
+  case invalidMailchimp
+  case newsletterMissingField(NewsletterField)
+  case missingHTMLForCampaignID(String)
 }
