@@ -12,7 +12,7 @@ public extension BrightDigitSiteCommand {
     public static var configuration = CommandConfiguration(
       commandName: "import",
       abstract: "Command for import into the BrightDigit site.",
-      subcommands: [WordPress.self, Podcast.self]
+      subcommands: [WordPress.self, Podcast.self, Mailchimp.self]
     )
   }
 }
