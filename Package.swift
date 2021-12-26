@@ -31,7 +31,7 @@ let package = Package(
     .package(url: "https://github.com/tid-kijyun/Kanna.git", from: "5.2.2"),
     .package(url: "https://github.com/eneko/MarkdownGenerator.git", from: "0.4.0"),
     .package(url: "https://github.com/brightdigit/SwiftTube.git", from: "0.1.0"),
-    .package(path: "Packages/Spinetail"),
+    .package(url: "https://github.com/brightdigit/Spinetail.git", from: "0.1.1"),
     .package(url: "https://github.com/JohnSundell/Splash", from: "0.15.0"),
     .package(url: "https://github.com/BrightDigit/SyndiKit", from: "0.2.0"),
     .package(url: "https://github.com/shibapm/Komondor", from: "1.1.2"), // dev

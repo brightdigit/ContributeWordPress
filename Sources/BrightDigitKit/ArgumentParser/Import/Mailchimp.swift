@@ -9,6 +9,10 @@ import Foundation
 import Prch
 import Spinetail
 
+#if canImport(FoundationNetworking)
+  import FoundationNetworking
+#endif
+
 public struct NewsletterMarkdownContentURLGenerator: ContentURLGenerator {
   public func destinationURL(basedOn source: Newsletter, atContentPathURL contentPathURL: URL) -> URL {
     contentPathURL.appendingPathComponent("\(source.issueNo.description.padLeft(totalWidth: 3, byString: "0")).\(source.slug)").appendingPathExtension("md")

@@ -146,6 +146,15 @@
         }
       },
       {
+        "package": "Spinetail",
+        "repositoryURL": "https://github.com/brightdigit/Spinetail.git",
+        "state": {
+          "branch": null,
+          "revision": "f6c1e17c453c0350409d020547fd29ab8f92fbe6",
+          "version": "0.1.1"
+        }
+      },
+      {
         "package": "Splash",
         "repositoryURL": "https://github.com/JohnSundell/Splash",
         "state": {

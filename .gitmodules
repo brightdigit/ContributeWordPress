@@ -1,4 +1,0 @@
-[submodule "Packages/Spinetail"]
-	path = Packages/Spinetail
-	url = git@github.com:brightdigit/Spinetail.git
-	branch = feature/brightdigit.com
