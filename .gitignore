@@ -165,6 +165,5 @@ xcuserdata
 Pods
 *.lcov
 Brewfile.lock.json
-Package.resolved
 Output
 .publish
