@@ -196,9 +196,9 @@ struct CompanyHTMLFactory: HTMLFactory {
         .headerNav(),
         .main(
           .sectionForHero(),
+          .sectionForContactUs(),
           .sectionForServices(),
           .sectionForTestimonials(),
-          .sectionForContactUs(),
           .sectionForLatestArticles()
         ),
         .makeFooter()
@@ -259,6 +259,16 @@ struct CompanyHTMLFactory: HTMLFactory {
           .makeFooter()
         )
       )
+    case "contact-us":
+      return HTML(
+        .makeHead(forPage: MockPage()),
+        .body(
+          .id("contact-us"),
+          .headerNav(),
+          .makeContactUsBody(),
+          .makeFooter()
+        )
+      )
     default:
       return HTML(
         .makeHead(forPage: MockPage()),
@@ -271,8 +281,6 @@ struct CompanyHTMLFactory: HTMLFactory {
 
   // MARK: - makeTagListHTML
 
-  // MARK: - makeTagListHTML
-
   func makeTagListHTML(for _: TagListPage, context _: PublishingContext<BrightDigit>) throws -> HTML? {
     HTML(
       .makeHead(forPage: MockPage()),
@@ -281,8 +289,6 @@ struct CompanyHTMLFactory: HTMLFactory {
       )
     )
   }
-
-  // MARK: - makeTagDetailsHTML
 
   // MARK: - makeTagDetailsHTML
 

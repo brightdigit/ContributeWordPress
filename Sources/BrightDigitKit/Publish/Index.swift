@@ -16,9 +16,15 @@ public extension Node where Context == HTML.BodyContext {
         .section(
           .class("text"),
           .main(
-            .text("Your one-stop-shop to build great apps with Swift")
+            .text("Your one-stop-shop to build great apps with Swift.")
           ),
-          .a(.href("/contact-us"), .text("Get Started"))
+          .main(
+            .text("Join our newsletter to be the first to know when we have availability, plus advice on what's new with Apple apps and products.")
+          ),
+          .main(
+            .text("Founded in 2021, BrightDigit aims to provide you with teh very best in Swift-based development for the Apple ecosystem.")
+          ),
+          .a(.href("/contact-us"), .text("Learn more about us"))
         )
       )
     )
@@ -78,10 +84,6 @@ public extension Node where Context == HTML.BodyContext {
         .loremIpsumArticle(),
         .loremIpsumArticle(),
         .loremIpsumArticle(),
-        .loremIpsumArticle(),
-        .loremIpsumArticle(),
-        .loremIpsumArticle(),
-        .loremIpsumArticle(),
         .loremIpsumArticle()
       )
     )
@@ -92,7 +94,7 @@ public extension Node where Context == HTML.BodyContext {
       .id("contact-us"),
       .main(
         .div(
-          .p("Learn more about what we do.")
+          .p("Want to know what’s what when it comes to the latest with Swift and Apple. Join our free newsletter and we’ll keep you updated with news, tips, and advice.")
         ),
         .a(
           .href("/contact-us"),
