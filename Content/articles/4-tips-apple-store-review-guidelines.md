@@ -1,5 +1,6 @@
 ---
 date: 2021-05-04 10:12
+featuredImage: /media/images/brightdigit/2021/05/copyright.png
 description: Building an iOS app is a complex process. One of the last things you
   have to do is pass an App Store Review. Here are 4 tips for success.
 ---

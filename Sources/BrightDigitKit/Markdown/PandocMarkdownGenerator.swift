@@ -2,7 +2,7 @@ import Foundation
 import ShellOut
 
 public struct PandocMarkdownGenerator: MarkdownGenerator {
-  internal init(
+  public init(
     shellOut: @escaping (String, [String]) throws -> String = defaultShellOut,
     temporaryFile: @escaping (String) throws -> URL = Temporary.file(fromContent:)
   ) {
@@ -10,7 +10,7 @@ public struct PandocMarkdownGenerator: MarkdownGenerator {
     self.temporaryFile = temporaryFile
   }
 
-  static func defaultShellOut(to command: String, arguments: [String]) throws -> String {
+  public static func defaultShellOut(to command: String, arguments: [String]) throws -> String {
     try ShellOut.shellOut(to: command, arguments: arguments)
   }
 
@@ -18,10 +18,10 @@ public struct PandocMarkdownGenerator: MarkdownGenerator {
   let temporaryFile: (String) throws -> URL
   let pandocPath = "/usr/local/bin/pandoc"
 
-  enum Temporary {
+  public enum Temporary {
     static let temporaryDirURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
 
-    static func file(fromContent content: String) throws -> URL {
+    public static func file(fromContent content: String) throws -> URL {
       let temporaryFileURL = temporaryDirURL.appendingPathComponent(UUID().uuidString)
       try content.write(to: temporaryFileURL, atomically: true, encoding: .utf8)
       return temporaryFileURL
