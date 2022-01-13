@@ -7,7 +7,7 @@ public extension BrightDigitSiteCommand {
     public init() {}
 
     public func run() throws {
-      try BrightDigit().publish(using: [
+      try BrightDigitSite().publish(using: [
         .optional(.copyResources()),
         .installPlugin(.splash(withClassPrefix: "")),
         .addMarkdownFiles(),

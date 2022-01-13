@@ -7,5 +7,6 @@ import SyndiKit
 
 public protocol ContentURLGenerator {
   associatedtype SourceType
+  init()
   func destinationURL(basedOn source: SourceType, atContentPathURL contentPathURL: URL) -> URL
 }

@@ -3,6 +3,7 @@ title: Apple September Event - iPhone and Apple Watch
 date: 2018-09-06 08:00
 description: What new goodies await us at the 2018 Apple September Event? Dig in to
   the rumored iPhone, Apple Watch, iPad, and laptop releases with Bright Digit.
+featuredImage: /media/images/brightdigit/2018/09/0a6ef07b-2d53-4092-b582-b7a535fb78e6.png
 ---
 Every year, developers and consumers alike eagerly await the **Apple
 September event.** Why are they feeling so much anticipation for

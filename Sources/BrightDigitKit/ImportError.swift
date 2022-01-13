@@ -42,8 +42,8 @@ public enum ImportError: Error {
   case unknownError(Error)
   case missingFieldForVideo(SwiftTube.Video, VideoField)
   case missingVideoForEpisode(RSSItem)
-  case missingFieldFromPodcastEpisode(PodcastEpisode, EpisodeField)
-  case duplicateTitle(String, forVideos: [EpisodeVideo])
+  case missingFieldFromPodcastEpisode(SyndiKit.PodcastEpisode, EpisodeField)
+  case duplicateTitle(String, forVideos: [Podcast.Source.Video])
   case invalidMailchimp
   case newsletterMissingField(NewsletterField)
   case missingHTMLForCampaignID(String)

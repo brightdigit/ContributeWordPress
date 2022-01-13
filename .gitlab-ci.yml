@@ -31,11 +31,14 @@ build macos:
 deploy:
   only:
     - main
+    - /^feature\/*/
   stage: deploy
   image: brightdigit/publish-xml
   environment:
     name: beta
     url: https://beta.brightdigit.com
   script:
+    - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then SITE_ID=$NETLIFY_SITE_ID; else SITE_ID=$NETLIFY_FEATURE_SITE_ID; fi
+    - echo $SITE_ID
     - swift run
-    - netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+    - netlify deploy --site $SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod

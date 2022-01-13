@@ -5,6 +5,7 @@ description: With WWDC 2018, Swift 4.2 has introduced new ways to generate rando
   values and access random values from a collection. Included with Xcode 10, there
   is access to generating random numbers of various types and accessing items from
   collections.
+featuredImage: /media/images/learningswift/2018/06/a6n685qlshq.jpg
 ---
 With WWDC 2018, Swift 4.2 [has
 introduced](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md) new
