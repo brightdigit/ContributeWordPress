@@ -4,6 +4,7 @@ date: 2019-08-19 02:28
 description: "Our guide to setting a project budget for building a mobile app for
   iOS, including time and costs of different parts of app development\_ | Bright Digit
   LLC"
+featuredImage: /media/images/brightdigit/2019/08/przemyslaw-marczynski-oCfkSnqZ0SI-unsplash-e1565882478907.jpg
 ---
 If you are contemplating building an app for the first time, or maybe
 you’re looking to get an existing one ported to iOS or another mobile

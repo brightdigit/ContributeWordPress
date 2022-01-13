@@ -1,6 +1,14 @@
 import Foundation
 
 public struct FilteredHTMLMarkdownExtractor<SourceType: HTMLSource>: MarkdownExtractor {
+  public init() {
+    self.init(markdownGenerator: PandocMarkdownGenerator())
+  }
+
+  public init(markdownGenerator: MarkdownGenerator) {
+    self.markdownGenerator = markdownGenerator
+  }
+
   public func markdown(from source: SourceType) throws -> String {
     let body = try preFilters.reduce(source.html) { try $1($0) }
     let rawMarkdown = try markdownGenerator.markdown(fromHTML: body)

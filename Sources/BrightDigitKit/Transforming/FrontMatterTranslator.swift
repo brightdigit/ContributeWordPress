@@ -8,5 +8,6 @@ import SyndiKit
 public protocol FrontMatterTranslator {
   associatedtype FrontMatterType: Encodable
   associatedtype SourceType
+  init()
   func frontMatter(from source: SourceType) -> FrontMatterType
 }

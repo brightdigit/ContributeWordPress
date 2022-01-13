@@ -1,5 +1,6 @@
 ---
 title: 4 Things To Keep Your Eye on for Apple in 2020
+featuredImage: /media/images/brightdigit/2021/05/copyright.png
 date: 2019-12-16 03:00
 description: Apple held a Special Event to announce the iPhone 11 and other products.
   The event told us a lot about their direction for 2020.

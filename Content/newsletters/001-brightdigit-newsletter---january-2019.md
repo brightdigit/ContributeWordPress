@@ -1,0 +1,313 @@
+---
+issueNo: 1
+campaignID: 5610c42826
+featuredImage: https://gallery.mailchimp.com/cb3bba007ed171091f55c47f0/images/aef0b614-f83b-48e0-bacf-bccad5d32bcb.jpeg
+longArchiveURL: https://us12.campaign-archive.com/?u=cb3bba007ed171091f55c47f0&id=5610c42826
+newsletterTitle: BrightDigit Newsletter - January 2019
+title: 'BrightDigit Newsletter #1 - January 2019'
+date: 2019-01-05 12:08
+description: Happy New Year! We have a podcast episode on project estimation coming
+  out Tuesday and there's a lot going on with Apple and China.
+---
+<span class="mcnPreviewText"
+style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Happy
+New Year! We have a podcast episode on project estimation coming out
+Tuesday and there's a lot going on with Apple and China.</span>
+
+<table class="mcnImageBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnImageBlockOuter">
+<tr class="odd">
+<td class="mcnImageBlockInner" data-valign="top" style="padding: 9px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnImageContentContainer" data-align="left" width="100%" data-border="0" data-cellpadding="0" data-cellspacing="0" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;" class="mcnImageContent" data-valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><img src="https://gallery.mailchimp.com/cb3bba007ed171091f55c47f0/images/4bb553ec-5f5a-409a-a775-85cc0011b379.png" class="mcnImage" width="145" /></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnTextBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnTextBlockOuter">
+<tr class="odd">
+<td class="mcnTextBlockInner" data-valign="top" style="padding-top: 9px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnTextContentContainer" data-align="left" data-border="0" data-cellpadding="0" data-cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;" class="mcnTextContent" data-valign="top" style="padding-top: 0; padding-right: 18px; padding-bottom: 9px; padding-left: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: break-word; color: #202020; font-family: Helvetica; font-size: 16px; line-height: 150%"><h4 id="brightdigit-newsletter-january-2019" class="null" style="text-align: center;display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 18px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;"><span style="font-size:12px">BrightDigit Newsletter<br />
+January 2019</span></h4></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnTextBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnTextBlockOuter">
+<tr class="odd">
+<td class="mcnTextBlockInner" data-valign="top" style="padding-top: 9px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnTextContentContainer" data-align="left" data-border="0" data-cellpadding="0" data-cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;" class="mcnTextContent" data-valign="top" style="padding-top: 0; padding-right: 18px; padding-bottom: 9px; padding-left: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: break-word; color: #202020; font-family: Helvetica; font-size: 16px; line-height: 150%"><h2 id="project-estimation-apple-and-china-democamp-lansing" class="null" style="text-align: center;display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 22px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;"><span style="font-size:15px">Project Estimation, Apple and China, Democamp Lansing</span></h2></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnTextBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnTextBlockOuter">
+<tr class="odd">
+<td class="mcnTextBlockInner" data-valign="top" style="padding-top: 9px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnTextContentContainer" data-align="left" data-border="0" data-cellpadding="0" data-cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;" class="mcnTextContent" data-valign="top" style="padding-top: 0; padding-right: 18px; padding-bottom: 9px; padding-left: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: break-word; color: #202020; font-family: Helvetica; font-size: 16px; line-height: 150%">Happy New Year &lt;&lt;First Name&gt;&gt;!<br />
+<br />
+I hope your holidays went well. I am still <strong>putting together my year-in-review 2018</strong> which I am hoping to talk about in our next episode of <a href="https://okproductive.com">okproductive</a>. However <strong>I did just finish editing <a href="https://www.youtube.com/playlist?list=PLmpJxPaZbSnArSZvWzaY15wdsZ6amrk0o">our podcast episode on estimating projects</a></strong> - specifically developing iOS apps. <br />
+<br />
+You can <strong>get a preview of the episode <a href="https://www.youtube.com/playlist?list=PLmpJxPaZbSnArSZvWzaY15wdsZ6amrk0o">here</a>:</strong><br />
+<a href="https://www.youtube.com/playlist?list=PLmpJxPaZbSnArSZvWzaY15wdsZ6amrk0o">https://www.youtube.com/playlist?list=PLmpJxPaZbSnArSZvWzaY15wdsZ6amrk0o</a><br />
+<br />
+In this episode, Theresa and I talk about <strong>how the process of going from a customer's idea to a proposal happens. </strong><br />
+These also include: <br />
+* <strong>what features to consider</strong><br />
+* <strong>how much involvement might be needed to get a proposal</strong><br />
+* <strong>budgets, timelines and more...</strong><br />
+<br />
+What are some tips, tricks, or pitfalls you've run into with estimating a project? <strong><a href="mailto:leogdion@brightdigit.com?subject=What%20I&#39;ve%20learned%20estimating%20projects...">Send me a reply</a> - I'd love to hear your thoughts.</strong></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnDividerBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnDividerBlockOuter">
+<tr class="odd">
+<td class="mcnDividerBlockInner" style="min-width: 100%; padding: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnDividerContent" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-top-width: 2px;border-top-style: solid;border-top-color: #EAEAEA;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<tbody>
+<tr class="odd">
+<td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><span></span></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnBoxedTextContentContainer" data-align="left" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="padding-top: 9px; padding-left: 18px; padding-bottom: 9px; padding-right: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnTextContentContainer" data-border="0" data-cellspacing="0" width="100%" style="min-width: 100% !important;background-color: #404040;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;" class="mcnTextContent" data-valign="top" style="padding: 18px; color: #F2F2F2; font-family: Helvetica; font-size: 14px; font-weight: normal; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: break-word; line-height: 150%">What are some major challenges with running your business? How are you using your Apple devices? Are they helping or slowing you down?<br />
+<strong>I’d love to hear from you. Send me a reply today.</strong></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnDividerBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnDividerBlockOuter">
+<tr class="odd">
+<td class="mcnDividerBlockInner" style="min-width: 100%; padding: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnDividerContent" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-top-width: 2px;border-top-style: solid;border-top-color: #EAEAEA;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<tbody>
+<tr class="odd">
+<td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><span></span></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnTextBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnTextBlockOuter">
+<tr class="odd">
+<td class="mcnTextBlockInner" data-valign="top" style="padding-top: 9px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnTextContentContainer" data-align="left" data-border="0" data-cellpadding="0" data-cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;" class="mcnTextContent" data-valign="top" style="padding-top: 0; padding-right: 18px; padding-bottom: 9px; padding-left: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: break-word; color: #202020; font-family: Helvetica; font-size: 16px; line-height: 150%"><h3 id="apple-and-china..." class="null" style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 20px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">Apple and China...</h3>
+Meanwhile a lot of people have been talking about the recent news about <strong>Apple and China</strong>. In case you need to catch up, <strong><a href="https://www.apple.com/newsroom/2019/01/letter-from-tim-cook-to-apple-investors/">here is the letter Tim Cook sent to investors.</a></strong> I don't want to get into it too much now but overall this might be a sign of <strong>economic problems with China</strong>, but also <strong>smartphone tech maturity</strong>, and the <strong>limits people are willing to pay when it comes to price vs features</strong>. Here are some articles to shed light on it: 
+<ul>
+<li><a href="https://stratechery.com/2017/apples-china-problem/">Apple's China Problem - Strechery</a></li>
+<li><a href="https://500ish.com/apples-precarious-and-pivotal-2019-f4f8cea3993a">Apple’s Precarious and Pivotal 2019 - M.G. Siegler</a></li>
+<li><a href="https://overcast.fm/+CdQfKRJo/37:31">Apple Revises Guidance - Accidental Tech Podcast</a></li>
+</ul>
+Let me know your thoughts on this and stay tuned for more from us...</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnDividerBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnDividerBlockOuter">
+<tr class="odd">
+<td class="mcnDividerBlockInner" style="min-width: 100%; padding: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnDividerContent" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-top-width: 2px;border-top-style: solid;border-top-color: #EAEAEA;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<tbody>
+<tr class="odd">
+<td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><span></span></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnBoxedTextContentContainer" data-align="left" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="padding-top: 9px; padding-left: 18px; padding-bottom: 9px; padding-right: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnTextContentContainer" data-border="0" data-cellspacing="0" width="100%" style="min-width: 100% !important;background-color: #404040;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;" class="mcnTextContent" data-valign="top" style="padding: 18px; color: #F2F2F2; font-family: Helvetica; font-size: 14px; font-weight: normal; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: break-word; line-height: 150%"><strong>We are available for new projects.</strong><br />
+Do you need help with a custom solution for the iPhone, iPad, Mac, or Apple Watch? Send me a reply and let me know how I can help.</td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnDividerBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnDividerBlockOuter">
+<tr class="odd">
+<td class="mcnDividerBlockInner" style="min-width: 100%; padding: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnDividerContent" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-top-width: 2px;border-top-style: solid;border-top-color: #EAEAEA;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<tbody>
+<tr class="odd">
+<td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><span></span></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnTextBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnTextBlockOuter">
+<tr class="odd">
+<td class="mcnTextBlockInner" data-valign="top" style="padding-top: 9px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnTextContentContainer" data-align="left" data-border="0" data-cellpadding="0" data-cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;" class="mcnTextContent" data-valign="top" style="padding-top: 0; padding-right: 18px; padding-bottom: 9px; padding-left: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: break-word; color: #202020; font-family: Helvetica; font-size: 16px; line-height: 150%"><h3 id="democamp-lansing-is-happening..." class="null" style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 20px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">DemoCamp Lansing is happening...</h3>
+<a href="http://www.democamplansing.com"><strong>DemoCamp Lansing is happening this February 20th at the Michigan Historical Museum.</strong></a> DemoCamp Lansing is an un-conference style event where the public gets to present on <strong>new businesses they are launching, new product ideas, community projects and much more</strong>. <br />
+We could your help in several ways:
+<ul>
+<li><strong>We need presenters.</strong> Do you have a topic to present on? <a href="http://www.democamplansing.com/index.cfm/call-for-speakers/">Fill out our call for speakers</a> by January 20th to be considered. It's a great way to let people know and get considerate and helpful feedback.</li>
+<li><strong>We need sponsors. </strong>Sponsorship not only helps make this event possible, but helps support the Lansing Tech Community. <a href="http://goo.gl/forms/i2NAz2hgro">Sign up on our sponsorship form if you are intestered.</a></li>
+<li><strong>Spread the word.</strong> I will be sending more details soon when registration open but please help spread the word on the event and our search for great speakers and sponsors.</li>
+</ul></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnDividerBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnDividerBlockOuter">
+<tr class="odd">
+<td class="mcnDividerBlockInner" style="min-width: 100%; padding: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnDividerContent" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-top-width: 2px;border-top-style: solid;border-top-color: #EAEAEA;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<tbody>
+<tr class="odd">
+<td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><span></span></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+
+<table class="mcnTextBlock" data-border="0" data-cellpadding="0" data-cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody class="mcnTextBlockOuter">
+<tr class="odd">
+<td class="mcnTextBlockInner" data-valign="top" style="padding-top: 9px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%"><table class="mcnTextContentContainer" data-align="left" data-border="0" data-cellpadding="0" data-cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;" class="mcnTextContent" data-valign="top" style="padding-top: 0; padding-right: 18px; padding-bottom: 9px; padding-left: 18px; mso-line-height-rule: exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: break-word; color: #202020; font-family: Helvetica; font-size: 12px; line-height: 150%"><em>Copyright © 2019 BrightDigit, All rights reserved.</em><br />
+<br />
+<br />
+Want to change how you receive these emails?<br />
+You can <a href="https://brightdigit.us12.list-manage.com/profile?u=cb3bba007ed171091f55c47f0&amp;id=584d0d5c40&amp;e=%5BUNIQID%5D&amp;c=5610c42826">update your preferences</a> or <a href="https://brightdigit.us12.list-manage.com/unsubscribe?u=cb3bba007ed171091f55c47f0&amp;id=584d0d5c40&amp;e=%5BUNIQID%5D&amp;c=5610c42826">unsubscribe from this list</a>.<br />
+<br />
+<a href="http://www.mailchimp.com/email-referral/?utm_source=freemium_newsletter&amp;utm_medium=email&amp;utm_campaign=referral_marketing&amp;aid=cb3bba007ed171091f55c47f0&amp;afl=1"><img src="https://cdn-images.mailchimp.com/monkey_rewards/MC_MonkeyReward_26.png" title="Mailchimp Email Marketing" width="214" height="56" alt="Email Marketing Powered by Mailchimp" /></a></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
