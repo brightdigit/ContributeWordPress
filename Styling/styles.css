@@ -677,3 +677,125 @@ body#products {
     }
   }
 }
+
+body {
+  & > main.section {
+    @apply my-6;
+    & > header {
+      @apply mb-8 mx-6 border-b-2 border-bellow-500;
+      & > section {
+        h1 {
+          @apply text-6xl leading-normal font-bold;
+        }
+        p {
+          @apply text-lg mt-4;
+        }
+      }
+      
+      & > .hero{
+        @apply flex flex-col sm:grid sm:grid-cols-2 sm:gap-4 mb-8 lg:flex-row;
+        & > form {
+          @apply w-full flex flex-col mt-4 pt-2  sm:flex-1;
+          button {
+            @apply _button;
+          }
+          & > div {
+            @apply flex flex-row my-2 -mx-2;
+            & > div {
+              @apply flex flex-col flex-grow mx-2;
+              input {
+                @apply flex flex-row flex-grow w-full p-2 rounded border-2;
+              }
+              label {
+                @apply text-xs flex px-2 py-1;
+              }
+            }
+            &.message {
+              @apply pt-4;
+              h3 {
+                @apply text-bellow-600 font-bold mb-4;
+              }
+              ol {
+                @apply list-disc ml-4 text-sm ;
+              }
+            }
+          }
+        }
+      }
+    }
+    header > .hero > .featured, & > section > ol > li {
+      @apply p-8 mb-8 sm:mb-0 bg-gray-100 rounded-lg shadow-lg;
+     
+      & > header {
+        @apply sm:flex flex-col;
+        h2 {
+          @apply my-4 sm:mt-2 text-base font-normal font-bold;
+        }
+      }
+      & > main {
+        @apply my-4 sm:mt-0 text-sm;
+      }
+      & > footer {
+        @apply text-xs;
+      }
+    }
+    & > section {
+      @apply mx-6;
+      & > ol {
+        @apply sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-3;  
+        & > li {
+          & > header {
+            
+            & > img {
+              @apply sm:flex sm:h-48 lg:h-60 object-cover;
+            }
+          }
+        }
+      }
+      
+    }
+    header > .hero:only-child {
+      @apply sm:flex;
+    }
+    header > .hero {
+      & > .featured {
+        
+        @apply bg-bellow-200 mb-4 sm:mt-4 lg:max-w-sm;
+        & > header {
+          & > h3 {
+            @apply font-light text-xs mb-4 border-b-2 border-bellow-500;
+          }
+          & > img {
+            @apply object-cover md:max-h-60 lg:max-h-full;
+          }
+        }
+        &:only-child {
+          @apply sm:flex sm:w-full lg:max-w-full;
+          & > header {
+            @apply sm:w-full sm:mr-4  lg:w-1/2;
+            & > img {
+              @apply sm:rounded-lg h-full object-cover;
+            }
+          }
+          h2 {
+            @apply mb-4 lg:text-xl xl:text-2xl;
+          }
+          & > footer {
+            @apply sm:hidden;
+          }
+          & > main {
+            @apply sm:flex-col sm:flex sm:mb-0;
+            & > main {
+              @apply sm:flex lg:text-base lg:font-thin xl:text-lg xl:leading-relaxed xl:tracking-wide mb-4 flex-grow;  
+            }
+            & > footer {
+              & > a:first-child {
+                @apply hidden;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
