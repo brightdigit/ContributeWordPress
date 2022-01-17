@@ -23,6 +23,13 @@ struct NewsletterItem: SectionItem {
       ),
       .main(
         .text(description)
+      ),
+      .footer(
+        .text("published on"),
+        .span(
+          .class("published-date"),
+          .text(PiHTMLFactory.itemFormatter.string(from: publishedDate))
+        )
       )
     ]
   }
@@ -41,7 +48,9 @@ struct NewsletterItem: SectionItem {
         .text(description)
       ),
       .footer(
-        .a(
+        .text("published on"),
+        .span(
+          .class("published-date"),
           .text(PiHTMLFactory.itemFormatter.string(from: publishedDate))
         )
       )

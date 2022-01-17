@@ -15,6 +15,7 @@ struct SectionContent<SectionBuilderType: SectionBuilderProtocol>: PageContent {
 
   var main: [Node<HTML.BodyContext>] {
     [
+      .class("section"),
       .section(
         .class("featured"),
         .forEach(builder.featuredItem.featuredItemContent) { $0 }
