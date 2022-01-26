@@ -633,7 +633,7 @@ body#products {
               & > li {
                 @apply hidden;
                 & > img {
-                  @apply rounded-lg opacity-90 border-2 border-gray-400;
+                  @apply rounded-lg opacity-90 border-2 border-gray-400 object-cover;
                   &:hover {
                     @apply opacity-100 transition-opacity duration-300 ease-in-out  border-gray-200;
                   } 
@@ -649,14 +649,6 @@ body#products {
 
               & > li:nth-child(3) {
                 @apply lg:flex;
-              }
-              &.screenshots.square {
-                & > li {
-
-                  & > img {
-
-                  }
-                }
               }
 
               &.screenshots.portrait {
