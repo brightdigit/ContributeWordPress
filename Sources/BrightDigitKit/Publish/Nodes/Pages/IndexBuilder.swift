@@ -8,7 +8,7 @@ import Publish
 struct IndexBuilder: ContentBuilder {
   func main(forLocation _: Index, withContext _: PublishingContext<BrightDigitSite>) -> [Node<HTML.BodyContext>] {
     [
-      .sectionForHero(),
+      .mainHeader(),
       .sectionForContactUs(),
       .sectionForServices(),
       .sectionForTestimonials(),
@@ -20,28 +20,54 @@ struct IndexBuilder: ContentBuilder {
 }
 
 public extension Node where Context == HTML.BodyContext {
+  
+  // MARK: - Main Header
+  static func mainHeader() -> Node {
+    .header(
+      .main(
+        .header(
+          .h1("Your Experts in Swift App Development")
+        ),
+        .sectionForHero()
+      )
+    )
+  }
+  
   // MARK: - sectionForHero
-
+  
   static func sectionForHero() -> Node {
     .section(
       .class("hero"),
       .main(
-        .img(.src("https://via.placeholder.com/1920x1080.png")),
         .section(
           .class("text"),
-          .main(
-            .text("Your one-stop-shop to build great apps with Swift.")
-          ),
-          .main(
-            .text("Join our newsletter to be the first to know when we have availability, plus advice on what's new with Apple apps and products.")
-          ),
-          .main(
-            .text("Founded in 2021, BrightDigit aims to provide you with teh very best in Swift-based development for the Apple ecosystem.")
-          ),
-          .a(.href("/contact-us"), .text("Learn more about us"))
+          .main("Join our newsletter to be the first to know when we have availability, plus advice on what's new with Apple apps and products.")
+        ),
+        .footer(
+          .a(.href("/newsletters"), .text("Subscribe Now"))
         )
       )
     )
+//      .section(
+//        .class("hero"),
+//        .header(
+//          .img(.src("https://via.placeholder.com/1920x1080.png"))
+//        ),
+//        .main(
+//          .section(
+//            .class("text"),
+//            .main(
+//              .text("Founded in 2021, BrightDigit aims to provide you with the very best in Swift-based development for the Apple ecosystem.")
+//            )
+//          ),
+//          .footer(
+//            .a(.href("/about-us"), .text("Learn more about us"))
+//          )
+//        ),
+//        .footer(
+//          .img(.src("https://via.placeholder.com/1920x1080.png"))
+//        )
+//      )
   }
 
   // MARK: - sectionForServices
