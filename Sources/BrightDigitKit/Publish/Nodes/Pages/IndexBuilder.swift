@@ -28,14 +28,15 @@ public extension Node where Context == HTML.BodyContext {
         .header(
           .h1("Your Experts in Swift App Development")
         ),
-        .sectionForHero()
+        .sectionForHero1(),
+        .sectionForHero2()
       )
     )
   }
   
   // MARK: - sectionForHero
   
-  static func sectionForHero() -> Node {
+  static func sectionForHero1() -> Node {
     .section(
       .class("hero"),
       .main(
@@ -48,26 +49,24 @@ public extension Node where Context == HTML.BodyContext {
         )
       )
     )
-//      .section(
-//        .class("hero"),
-//        .header(
-//          .img(.src("https://via.placeholder.com/1920x1080.png"))
-//        ),
-//        .main(
-//          .section(
-//            .class("text"),
-//            .main(
-//              .text("Founded in 2021, BrightDigit aims to provide you with the very best in Swift-based development for the Apple ecosystem.")
-//            )
-//          ),
-//          .footer(
-//            .a(.href("/about-us"), .text("Learn more about us"))
-//          )
-//        ),
-//        .footer(
-//          .img(.src("https://via.placeholder.com/1920x1080.png"))
-//        )
-//      )
+  }
+  
+  static func sectionForHero2() -> Node {
+    .section(
+      .class("hero"),
+      .header(
+        .img(.src("https://via.placeholder.com/1920x1080.png"))
+      ),
+      .main(
+        .section(
+          .class("text"),
+          .main("Founded in 2021, BrightDigit aims to provide you with the very best in Swift-based development for the Apple ecosystem.")
+        ),
+        .footer(
+          .a(.href("/about-us"), .text("Learn more about us"))
+        )
+      )
+    )
   }
 
   // MARK: - sectionForServices
