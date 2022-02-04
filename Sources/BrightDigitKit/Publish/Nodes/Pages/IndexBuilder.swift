@@ -20,8 +20,8 @@ struct IndexBuilder: ContentBuilder {
 }
 
 public extension Node where Context == HTML.BodyContext {
-  
   // MARK: - Main Header
+
   static func mainHeader() -> Node {
     .header(
       .main(
@@ -30,12 +30,15 @@ public extension Node where Context == HTML.BodyContext {
         ),
         .sectionForHero1(),
         .sectionForHero2()
+      ),
+      .footer(
+        .img(.src("https://via.placeholder.com/1920x1080.png"))
       )
     )
   }
-  
+
   // MARK: - sectionForHero
-  
+
   static func sectionForHero1() -> Node {
     .section(
       .class("hero"),
@@ -50,7 +53,7 @@ public extension Node where Context == HTML.BodyContext {
       )
     )
   }
-  
+
   static func sectionForHero2() -> Node {
     .section(
       .class("hero"),
