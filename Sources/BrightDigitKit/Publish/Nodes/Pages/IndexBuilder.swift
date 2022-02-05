@@ -130,9 +130,9 @@ public extension Node where Context == HTML.BodyContext {
       )
     )
   }
-  
+
   // MARK: - sectionForNewsletterCTA
-  
+
   static func sectionForNewsletterCTA() -> Node {
     .section(
       .class("newsletter-cta"),
