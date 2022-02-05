@@ -9,10 +9,10 @@ struct IndexBuilder: ContentBuilder {
   func main(forLocation _: Index, withContext _: PublishingContext<BrightDigitSite>) -> [Node<HTML.BodyContext>] {
     [
       .mainHeader(),
-      .sectionForContactUs(),
       .sectionForServices(),
       .sectionForTestimonials(),
-      .sectionForLatestArticles()
+      .sectionForLatestArticles(),
+      .sectionForNewsletterCTA()
     ]
   }
 
@@ -130,18 +130,20 @@ public extension Node where Context == HTML.BodyContext {
       )
     )
   }
-
-  static func sectionForContactUs() -> Node {
+  
+  // MARK: - sectionForNewsletterCTA
+  
+  static func sectionForNewsletterCTA() -> Node {
     .section(
-      .id("contact-us"),
+      .class("newsletter-cta"),
+      .header(
+        .h2(.text("Don't Let Your App "), .em("Fall Behind"))
+      ),
       .main(
-        .div(
-          .p("Want to know what’s what when it comes to the latest with Swift and Apple. Join our free newsletter and we’ll keep you updated with news, tips, and advice.")
-        ),
-        .a(
-          .href("/contact-us"),
-          .text("Contact Us")
-        )
+        .p("Stay informed about the latest developments in the world of Swift App Development and what they could mean for your business.")
+      ),
+      .footer(
+        .a(.href("/newsletters"), .text("Subscribe Now"))
       )
     )
   }
