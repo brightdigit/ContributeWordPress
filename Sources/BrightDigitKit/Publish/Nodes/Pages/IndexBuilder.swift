@@ -8,11 +8,11 @@ import Publish
 struct IndexBuilder: ContentBuilder {
   func main(forLocation _: Index, withContext _: PublishingContext<BrightDigitSite>) -> [Node<HTML.BodyContext>] {
     [
-      .sectionForHero(),
-      .sectionForContactUs(),
+      .mainHeader(),
       .sectionForServices(),
       .sectionForTestimonials(),
-      .sectionForLatestArticles()
+      .sectionForLatestArticles(),
+      .sectionForNewsletterCTA()
     ]
   }
 
@@ -20,25 +20,53 @@ struct IndexBuilder: ContentBuilder {
 }
 
 public extension Node where Context == HTML.BodyContext {
+  // MARK: - Main Header
+
+  static func mainHeader() -> Node {
+    .header(
+      .main(
+        .header(
+          .h1("Your Experts in Swift App Development")
+        ),
+        .sectionForHero1(),
+        .sectionForHero2()
+      ),
+      .footer(
+        .img(.src("https://via.placeholder.com/1920x1080.png"))
+      )
+    )
+  }
+
   // MARK: - sectionForHero
 
-  static func sectionForHero() -> Node {
+  static func sectionForHero1() -> Node {
     .section(
       .class("hero"),
       .main(
-        .img(.src("https://via.placeholder.com/1920x1080.png")),
         .section(
           .class("text"),
-          .main(
-            .text("Your one-stop-shop to build great apps with Swift.")
-          ),
-          .main(
-            .text("Join our newsletter to be the first to know when we have availability, plus advice on what's new with Apple apps and products.")
-          ),
-          .main(
-            .text("Founded in 2021, BrightDigit aims to provide you with teh very best in Swift-based development for the Apple ecosystem.")
-          ),
-          .a(.href("/contact-us"), .text("Learn more about us"))
+          .main("Join our newsletter to be the first to know when we have availability, plus advice on what's new with Apple apps and products.")
+        ),
+        .footer(
+          .a(.href("/newsletters"), .text("Subscribe Now"))
+        )
+      )
+    )
+  }
+
+  static func sectionForHero2() -> Node {
+    .section(
+      .class("hero"),
+      .header(
+        .img(.src("https://via.placeholder.com/1920x1080.png"))
+      ),
+      .main(
+        .section(
+          .class("text"),
+          .main("Founded in 2021, BrightDigit aims to provide you with the very best in Swift-based development for the Apple ecosystem.")
+        ),
+        .footer(
+          .a(.href("/about-us"), .text("Learn more about us"))
         )
       )
     )
@@ -103,17 +131,19 @@ public extension Node where Context == HTML.BodyContext {
     )
   }
 
-  static func sectionForContactUs() -> Node {
+  // MARK: - sectionForNewsletterCTA
+
+  static func sectionForNewsletterCTA() -> Node {
     .section(
-      .id("contact-us"),
+      .class("newsletter-cta"),
+      .header(
+        .h2(.text("Don't Let Your App "), .em("Fall Behind"))
+      ),
       .main(
-        .div(
-          .p("Want to know what’s what when it comes to the latest with Swift and Apple. Join our free newsletter and we’ll keep you updated with news, tips, and advice.")
-        ),
-        .a(
-          .href("/contact-us"),
-          .text("Contact Us")
-        )
+        .p("Stay informed about the latest developments in the world of Swift App Development and what they could mean for your business.")
+      ),
+      .footer(
+        .a(.href("/newsletters"), .text("Subscribe Now"))
       )
     )
   }
