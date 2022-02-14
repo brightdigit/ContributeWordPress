@@ -57,21 +57,14 @@ let package = Package(
     )
   ]
 )
+
 #if canImport(PackageConfig)
   import PackageConfig
-
-//  let requiredCoverage: Int = 0
-
   let config = PackageConfiguration([
     "komondor": [
-      "pre-push": [
-        "swift test --enable-code-coverage --enable-test-discovery"
-      ],
       "pre-commit": [
-        "swift test --enable-code-coverage --enable-test-discovery --generate-linuxmain",
         "swift run swiftformat .",
         "swift run swiftlint autocorrect",
-//        "swift run sourcedocs generate build --clean --reproducible-docs --all-modules",
         "git add .",
         "swift run swiftformat --lint .",
         "swift run swiftlint"
