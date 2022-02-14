@@ -77,8 +77,10 @@ public extension Node where Context == HTML.BodyContext {
           .class("menu"),
           .li(for: "Podcast"),
           .li(for: "Newsletters"),
-          .li(for: "Sponsorship"),
-          .li(for: "About")
+          .li(
+            .a(.href("/about-us"),
+               .text("About"))
+          )
         ),
         .ol(
           .class("menu"),
@@ -139,12 +141,12 @@ public extension Node where Context == HTML.BodyContext {
         ),
         .ol(
           .class("social"),
-          .makeIcon(href: "/", flatIcon: "twitter"),
-          .makeIcon(href: "/", flatIcon: "github"),
-          .makeIcon(href: "/", flatIcon: "podcast"),
-          .makeIcon(href: "/", flatIcon: "youtube"),
-          .makeIcon(href: "/", flatIcon: "newsletter"),
-          .makeIcon(href: "/", flatIcon: "rss")
+          .footerItem(href: "/", flatIcon: "twitter"),
+          .footerItem(href: "/", flatIcon: "github"),
+          .footerItem(href: "/", flatIcon: "podcast"),
+          .footerItem(href: "/", flatIcon: "youtube"),
+          .footerItem(href: "/", flatIcon: "newsletter"),
+          .footerItem(href: "/", flatIcon: "rss")
         ),
         .footer(
           .div(
@@ -163,7 +165,7 @@ public extension Node where Context == HTML.BodyContext {
 }
 
 public extension Node where Context == HTML.ListContext {
-  static func makeIcon(href: String, flatIcon: String) -> Node {
+  static func footerItem(href: String, flatIcon: String) -> Node {
     .li(
       .a(
         .href(href),

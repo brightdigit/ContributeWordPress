@@ -125,7 +125,7 @@ fastlane/test_output
 VCS.swift
 
 iOSInjectionProject/
-Products
+/Products
 
 
 ### SwiftPackageManager ###

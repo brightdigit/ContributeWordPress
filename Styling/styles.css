@@ -21,7 +21,6 @@ body > header > nav {
   @apply flex items-center;
 }
 
-
 body > header > nav > ol{
   @apply flex;
 }
@@ -53,31 +52,52 @@ body > header > nav > ol.menu ~ ol.menu{
 
 body > main {
   @apply xl:container mx-auto;
+  & > header {
+    @apply lg:flex mx-6 ;
+   & > main {
+     @apply  lg:w-1/2 flex-none xl:items-stretch;
+     & > header {
+       @apply w-1/2 flex sm:w-full  self-start md:py-4;
+       
+       & > h1 {
+         @apply text-5xl md:text-6xl xl:text-8xl xl:w-full font-black leading-normal md:leading-snug tracking-tight flex sm:w-1/2;
+       }
+     } 
+     & > .hero  {
+       @apply flex flex-col sm:flex-row xl:text-lg 2xl:text-xl mb-12  lg:flex-col lg:max-w-screen-md;
+       & > header {
+         @apply my-4 sm:w-3/4 sm:my-0 flex sm:mr-4;
+         img{
+           
+         }
+       }
+       & > main {
+         @apply flex flex-col items-center sm:text-lg md:text-xl  md:justify-between lg:my-4;
+         
+       
+         & > footer {
+           @apply flex w-full mt-4;
+           & > a {
+             @apply _button w-full text-center;
+           }
+         }
+       }
+       .text{
+         @apply my-4 sm:my-0 flex flex-col justify-between font-thin;
+       }
+     }
+   }
+   & > footer {
+     @apply hidden lg:flex flex-shrink m-4;
+     img {
+       @apply flex object-cover;
+     }
+   }
+  }
 }
 
-body > main > .hero  {
-  @apply mx-6 xl:text-lg 2xl:text-xl;
-}
 
-body > main > .hero > main {
-  @apply sm:flex sm:flex-row-reverse items-center;
-}
 
-body > main > .hero > main a {
-  @apply block;
-}
-
-body > main > .hero img{
-  @apply my-4 sm:w-1/2 sm:my-0;
-}
-
-body > main > .hero .text{
-  @apply my-4 sm:my-0 mr-10 flex flex-col justify-between w-full;
-}
-
-body > main > .hero a {
-  @apply bg-bellow-500 p-4 rounded font-black flex-row place-self-center lg:place-self-end ml-2 mt-2;
-}
 
 body > main h2 {
   @apply font-black text-xl;
@@ -100,7 +120,7 @@ body > main .services ol {
 }
 
 body > main .services li {
-  @apply my-4 py-2 border-t-2 border-gray-500 border-opacity-10  md:border-t-0 md:mt-6;
+  @apply my-4 py-4 md:border-t-0 md:mt-6;
 }
 
 body > main .services h3 {
@@ -188,6 +208,23 @@ body > main #posts > ol > li > main {
 
 body > main #posts > ol > li > footer {
   @apply text-sm flex font-light justify-between py-1;
+}
+
+body > main > .newsletter-cta {
+  @apply flex-col m-6 p-8 bg-black text-white rounded-lg;
+  h2 {
+    @apply text-3xl;
+  }
+  & > header {
+    @apply mb-4 flex;
+  }
+  & > footer {
+    @apply mt-4 flex w-full; 
+    a {
+      @apply _button w-full text-center;
+    }
+  }
+  
 }
 
 body > footer {
@@ -349,18 +386,41 @@ body#articles {
 }
 
 body#services {
-  h1 {
-    @apply text-2xl mb-4;
-  }
+
   h2{ 
     @apply text-lg font-normal mb-4;
   }
   & > main {
     @apply xl:container xl:mx-auto;
+    & > header {
+      @apply m-6 pb-4 font-light text-lg tracking-tight leading-relaxed;    
+      h1 {
+        @apply text-5xl leading-tight font-bold tracking-tighter mt-4;
+      }
+    }
     & > section {
       @apply m-6 pb-4;    
+      &:last-child {
+        @apply border-b-0;
+      }
+      
+      &.products-cta {
+        @apply flex bg-black text-white rounded-lg pb-0 lg:max-w-screen-md lg:mx-auto;
+        & > main {
+          @apply flex flex-col md:flex-row md:justify-between md:items-stretch p-6 text-2xl w-full;
+          footer {
+            @apply flex w-full md:w-auto justify-end;
+          }
+          h2 {
+            @apply font-extralight md:my-0 text-3xl leading-tight tracking-tighter;
+          }
+        }
+        a.button {
+          @apply _button px-6;
+        }
+      }
       &.service {
-        @apply sm:flex sm:items-stretch md:items-center lg:border-2 lg:border-gray-50 lg:shadow-xl lg:rounded-lg lg:p-12;
+        @apply sm:flex sm:items-stretch md:items-center lg:border-2 border-b-2 border-gray-50 lg:shadow-xl lg:rounded-lg lg:p-12;
         & >  header {
           @apply mr-4 lg:mr-8 sm:mb-0 sm:w-5/12 justify-self-center flex-grow-0 flex-shrink sm:flex;
           img {
@@ -368,9 +428,21 @@ body#services {
           }
         }
         & > main {
-          @apply flex-1;
+          @apply flex-1 sm:flex-col justify-between items-stretch content-between;
           p {
             @apply lg:text-base;
+          }
+          & > footer {
+           @apply hidden sm:flex w-full justify-end mt-4; 
+           a.button {
+             @apply _button_normal;
+           }
+          }
+        }
+        & > footer {
+          @apply flex w-full mt-4 justify-items-stretch items-stretch sm:hidden;
+          a.button {
+            @apply _button w-full text-center;
           }
         }
       } 
@@ -477,56 +549,46 @@ body#services {
 }
 
 body#about-us {
-  section#leo {
-    @apply p-6;
-    & > main {
-      @apply md:max-w-screen-sm lg:max-w-screen-md mx-auto;
+  & > main  {
+   & > header {
+     @apply m-6;
+     & > h1 {
+       @apply text-5xl font-bold md:text-6xl lg:text-8xl;
+     }
+   }
+   
+    & > section {
+      @apply m-6 sm:my-12 flex flex-col md:flex md:flex-row sm:grid grid-cols-2 gap-4 place-items-stretch md:justify-items-stretch  md:items-stretch;
+      &:nth-of-type(even) {
+        @apply md:flex-row-reverse;
+      }
       & > header {
-        & > .salutation {
-          @apply font-light text-sm md:text-base md:mb-8;
-        }
-        & > main {
-          @apply flex flex-row my-4 items-center justify-center;
-          & > .profile-photo {
-            & > img {
-              @apply rounded-full object-scale-down h-32 mr-4 md:mr-8 lg:h-48 lg:mr-12 xl:mr-16;
-              max-width: 12em;
-            }
-          }
-          & > .info {
-            & > .name {
-              @apply text-lg font-bold sm:text-xl md:text-3xl lg:text-5xl xl:text-8xl;
-            }
-            & > .position {
-              @apply text-sm md:text-base font-light xl:text-xl;
-            }
-            & > .social {
-              @apply flex lg:flex-col lg:m-0 -m-2 md:text-xl lg:text-3xl mt-0 xl:text-5xl;
-              & > li {
-                & > a {
-                  @apply p-2 lg:px-0 xl:py-4 flex items-center;
-                  span {
-                    @apply font-light ml-0.5 lg:ml-2 xl:ml-4;
-                    font-size: 0.6em;                
-                  }
-                  span.name {
-                    @apply hidden;
-                  }
-
-                }
-              }
-            }
-          }
+        @apply w-full flex-shrink  justify-center md:flex flex-1 lg:w-1/3;
+        img {
+        @apply sm:h-full object-cover place-self-stretch rounded-lg w-full h-full md:flex md:h-full;  
         }
       }
       & > main {
-        @apply -my-2 lg:my-0;
-        & > p {
-          @apply py-2 text-sm tracking-tight md:tracking-normal sm:text-base lg:text-xl font-light lg:py-4;
+        @apply mt-4 sm:mt-0 place-self-center flex-1 lg:w-auto md:w-1/2 md:h-full flex-grow;
+
+        & > main {
+          @apply mt-2 font-thin lg:text-xl flex flex-col;
+          &:only-child {
+            @apply mt-0 text-xl lg:text-2xl;
+          }
+          p {
+            @apply my-2;
+          }
+          a.button {
+            @apply _button my-2 w-full text-center;
+          }
+          hr {
+            @apply my-2;
+          }
         }
       }
     }
-  }
+ }
 }
 
 body#products {
@@ -571,7 +633,7 @@ body#products {
               & > li {
                 @apply hidden;
                 & > img {
-                  @apply rounded-lg opacity-90 border-2 border-gray-400;
+                  @apply rounded-lg opacity-90 border-2 border-gray-400 object-cover;
                   &:hover {
                     @apply opacity-100 transition-opacity duration-300 ease-in-out  border-gray-200;
                   } 
@@ -587,14 +649,6 @@ body#products {
 
               & > li:nth-child(3) {
                 @apply lg:flex;
-              }
-              &.screenshots.square {
-                & > li {
-
-                  & > img {
-
-                  }
-                }
               }
 
               &.screenshots.portrait {
@@ -669,6 +723,128 @@ body#products {
             & > section {
               & > h4 {
                 @apply text-xs font-light;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  & > main.section {
+    @apply my-6;
+    & > header {
+      @apply mb-8 mx-6 border-b-2 border-bellow-500;
+      & > section {
+        h1 {
+          @apply text-6xl leading-normal font-bold;
+        }
+        p {
+          @apply text-lg mt-4;
+        }
+      }
+      
+      & > .hero{
+        @apply flex flex-col sm:grid sm:grid-cols-2 sm:gap-4 mb-8 lg:flex-row;
+        & > form {
+          @apply w-full flex flex-col mt-4 pt-2  sm:flex-1;
+          button {
+            @apply _button;
+          }
+          & > div {
+            @apply flex flex-row my-2 -mx-2;
+            & > div {
+              @apply flex flex-col flex-grow mx-2;
+              input {
+                @apply flex flex-row flex-grow w-full p-2 rounded border-2;
+              }
+              label {
+                @apply text-xs flex px-2 py-1;
+              }
+            }
+            &.message {
+              @apply pt-4;
+              h3 {
+                @apply text-bellow-600 font-bold mb-4;
+              }
+              ol {
+                @apply list-disc ml-4 text-sm ;
+              }
+            }
+          }
+        }
+      }
+    }
+    header > .hero > .featured, & > section > ol > li {
+      @apply p-8 mb-8 sm:mb-0 bg-gray-100 rounded-lg shadow-lg;
+     
+      & > header {
+        @apply sm:flex flex-col;
+        h2 {
+          @apply my-4 sm:mt-2 text-base font-normal font-bold;
+        }
+      }
+      & > main {
+        @apply my-4 sm:mt-0 text-sm;
+      }
+      & > footer {
+        @apply text-xs;
+      }
+    }
+    & > section {
+      @apply mx-6;
+      & > ol {
+        @apply sm:grid sm:grid-cols-2 sm:gap-4 lg:grid-cols-3;  
+        & > li {
+          & > header {
+            
+            & > img {
+              @apply sm:flex sm:h-48 lg:h-60 object-cover;
+            }
+          }
+        }
+      }
+      
+    }
+    header > .hero:only-child {
+      @apply sm:flex;
+    }
+    header > .hero {
+      & > .featured {
+        
+        @apply bg-bellow-200 mb-4 sm:mt-4 lg:max-w-sm;
+        & > header {
+          & > h3 {
+            @apply font-light text-xs mb-4 border-b-2 border-bellow-500;
+          }
+          & > img {
+            @apply object-cover md:max-h-60 lg:max-h-full;
+          }
+        }
+        &:only-child {
+          @apply sm:flex sm:w-full lg:max-w-full;
+          & > header {
+            @apply sm:w-full sm:mr-4  lg:w-1/2;
+            & > img {
+              @apply sm:rounded-lg h-full object-cover;
+            }
+          }
+          h2 {
+            @apply mb-4 lg:text-xl xl:text-2xl;
+          }
+          & > footer {
+            @apply sm:hidden;
+          }
+          & > main {
+            @apply sm:flex-col sm:flex sm:mb-0;
+            & > main {
+              @apply sm:flex lg:text-base lg:font-thin xl:text-lg xl:leading-relaxed xl:tracking-wide mb-4 flex-grow;  
+            }
+            & > footer {
+              & > a:first-child {
+                @apply hidden;
               }
             }
           }
