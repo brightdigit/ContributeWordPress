@@ -10,14 +10,13 @@ import SwiftTube
 public typealias MailchimpCampaign = Campaigns.GetCampaigns.Response.Status200.Campaigns
 typealias NewsletterCampaign = Newsletter.Source.Campaign
 
-extension Prch.APIClient {
+extension Client where APIType == Mailchimp.API {
   func campaigns(fromRequest request: MailchimpCampaignRequest) throws -> [MailchimpCampaign] {
     let semaphore = DispatchSemaphore(value: 0)
     var campaignsResult: Result<[Campaigns.GetCampaigns.Response.Status200.Campaigns], Error>!
-    self.request(Campaigns.GetCampaigns.Request(fields: nil, count: 1000, offset: nil, type: nil, status: .sent, beforeSendTime: nil, sinceSendTime: nil, beforeCreateTime: nil, sinceCreateTime: nil, listId: request.listID, folderId: nil, memberId: nil, sortField: .sendTime, sortDir: .desc)) { result in
-      campaignsResult = result.map {
-        $0.success?.campaigns
-      }.mapError { $0 as Error }.unwrap(orError: ImportError.invalidMailchimp)
+    self.request(Campaigns.GetCampaigns.Request(fields: nil, count: 1000, offset: nil, type: nil, status: .sent, beforeSendTime: nil, sinceSendTime: nil, beforeCreateTime: nil, sinceCreateTime: nil, listId: request.listID, folderId: nil, memberId: nil, sortField: .sendTime, sortDir: .desc)) { response in
+      let result = Result(response: response)
+      campaignsResult = result.map(\.campaigns).mapError { $0 as Error }.unwrap(orError: ImportError.invalidMailchimp)
       semaphore.signal()
     }
     semaphore.wait()
@@ -27,8 +26,9 @@ extension Prch.APIClient {
   func htmlFromCampaign(withID campaignID: String) throws -> String {
     var result: Result<String, Error>!
     let semaphore = DispatchSemaphore(value: 1)
-    request(Campaigns.GetCampaignsIdContent.Request(fields: nil, excludeFields: nil, campaignId: campaignID)) { apiResult in
-      result = apiResult.map { $0.success?.archiveHtml }.mapError { $0 as Error }.unwrap(orError: ImportError.missingHTMLForCampaignID(campaignID))
+    request(Campaigns.GetCampaignsIdContent.Request(fields: nil, excludeFields: nil, campaignId: campaignID)) { response in
+      let apiResult = Result(response: response)
+      result = apiResult.map(\.archiveHtml).mapError { $0 as Error }.unwrap(orError: ImportError.missingHTMLForCampaignID(campaignID))
       semaphore.signal()
     }
     semaphore.wait()
