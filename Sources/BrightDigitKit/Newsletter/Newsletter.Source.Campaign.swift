@@ -50,7 +50,7 @@ public extension Newsletter.Source.Campaign {
     }
     let previewText = campaign.settings?.previewText
 
-    guard case let DateTime.some(sendTime) = campaign.sendTime else {
+    guard let sendTime = campaign.sendTime else {
       throw ImportError.newsletterMissingField(.sendTime)
     }
 

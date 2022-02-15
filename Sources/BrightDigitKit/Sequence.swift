@@ -27,6 +27,19 @@ extension Sequence {
     return result
   }
 
+  func cumulate<ValueType, SuccessType>(_ map: @escaping (ValueType?) throws -> [SuccessType]) -> Result<[SuccessType], Error> where Element == Result<ValueType, Error>? {
+    do {
+      let videos = try reduce([SuccessType].init()) { partialResult, result in
+        let value = try result?.get()
+        let items = try map(value)
+        return partialResult + items
+      }
+      return .success(videos)
+    } catch {
+      return .failure(error)
+    }
+  }
+
   func uniqueByKey<Key: Hashable, Value>() -> [Key: Value] where Element == (Key, Value) {
     return Dictionary(uniqueKeysWithValues: self)
   }

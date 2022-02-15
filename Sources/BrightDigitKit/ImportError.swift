@@ -37,7 +37,7 @@ public enum ImportError: Error {
   case imageDownloads([URL: Error])
   case invalidPodcastEpisodeFromRSSItem(RSSItem)
   case invalidRSS(URL)
-  case apiError(APIClientError)
+  case apiError(ClientError)
   case missingResponseFromPlaylistID(String, ResponseComponent)
   case unknownError(Error)
   case missingFieldForVideo(SwiftTube.Video, VideoField)

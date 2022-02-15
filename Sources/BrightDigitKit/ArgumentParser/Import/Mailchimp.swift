@@ -37,8 +37,8 @@ public extension BrightDigitSiteCommand.ImportCommand {
     public var includeMissingPrevious: Bool = false
 
     public func run() throws {
-      let api = MailchimpAPI(apiKey: mailchimpAPIKey)!
-      let mailchimp = APIClient(api: api, session: URLSession.shared)
+      let api = Spinetail.Mailchimp.API(apiKey: mailchimpAPIKey)!
+      let mailchimp = Client(api: api, session: URLSession.shared)
       let markdownProcessing = PandocMarkdownGenerator()
 
       let campaigns = try mailchimp.campaigns(fromRequest: .init(listID: mailchimpListID))
