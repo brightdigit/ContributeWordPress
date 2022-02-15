@@ -60,7 +60,7 @@ extension Product {
           )
         ),
         .main(
-          .p(.text(product.description)),
+          .markdown(product.description),
           .ol(
             .class("screenshots \(product.style.rawValue)"),
             .forEach(product.screenshots) { screenshotURL in

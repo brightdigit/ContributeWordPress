@@ -34,8 +34,8 @@ let package = Package(
     .package(url: "https://github.com/brightdigit/Spinetail.git", from: "0.1.1"),
     .package(url: "https://github.com/JohnSundell/Splash", from: "0.15.0"),
     .package(url: "https://github.com/BrightDigit/SyndiKit", from: "0.2.0"),
+    .package(url: "https://github.com/BrightDigit/Options.git", from: "0.2.0"),
     .package(url: "https://github.com/shibapm/Komondor", from: "1.1.2"), // dev
-    .package(url: "https://github.com/eneko/SourceDocs", from: "1.2.1"), // dev
     .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.47.0"), // dev
     .package(url: "https://github.com/realm/SwiftLint", from: "0.43.0"), // dev
     .package(url: "https://github.com/brightdigit/swift-test-codecov", from: "1.0.0") // dev
@@ -49,7 +49,7 @@ let package = Package(
     ),
     .target(name: "BrightDigitKit",
             dependencies: ["SyndiKit", "Publish", "Splash", "LoremSwiftum", "Kanna", "MarkdownGenerator", "Yams",
-                           "SwiftTube", "Spinetail",
+                           "SwiftTube", "Spinetail", "Options",
                            .product(name: "ArgumentParser", package: "swift-argument-parser")]),
     .testTarget(
       name: "brightdigitwgTests",
