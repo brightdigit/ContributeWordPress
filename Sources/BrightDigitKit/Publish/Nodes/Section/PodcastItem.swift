@@ -23,6 +23,18 @@ struct PodcastItem: SectionItem {
     return Self.youtubeImageBaseURL.appendingPathComponent(youtubeID).appendingPathComponent("maxresdefault.jpg")
   }
 
+  static let baseYoutubeImageURL = URL(string: "https://img.youtube.com/vi/")!
+  static let maxresdefault = "maxresdefault.jpg"
+
+  var youtubeImage: URL? {
+    guard episodeNo > 86 else {
+      return nil
+    }
+    return youtubeID.map {
+      Self.baseYoutubeImageURL.appendingPathComponent($0).appendingPathComponent(Self.maxresdefault)
+    }
+  }
+
   var featuredItemContent: [Node<HTML.BodyContext>] {
     [
       .id("episode-\(episodeNo)"),
@@ -55,9 +67,17 @@ struct PodcastItem: SectionItem {
         .text(description)
       ),
       .footer(
-        .a(
-          .text(PiHTMLFactory.itemFormatter.string(from: publishedDate))
-        )
+        .div(.class("published-date"), .text(PiHTMLFactory.dateFormatter.string(from: publishedDate))),
+
+        .div(.class("audio-length"), .text(
+          PiHTMLFactory.formatTimeInterval(audioDuration)
+        )),
+
+        .unwrap(videoDuration) { videoDuration in
+          .div(.class("video-length"), .text(
+            PiHTMLFactory.formatTimeInterval(videoDuration)
+          ))
+        }
       )
     ]
   }
@@ -94,9 +114,17 @@ struct PodcastItem: SectionItem {
         .text(description)
       ),
       .footer(
-        .a(
-          .text(PiHTMLFactory.itemFormatter.string(from: publishedDate))
-        )
+        .div(.class("published-date"), .text(PiHTMLFactory.dateFormatter.string(from: publishedDate))),
+
+        .div(.class("audio-length"), .text(
+          PiHTMLFactory.formatTimeInterval(audioDuration)
+        )),
+
+        .unwrap(videoDuration) { videoDuration in
+          .div(.class("video-length"), .text(
+            PiHTMLFactory.formatTimeInterval(videoDuration)
+          ))
+        }
       )
     ]
   }
