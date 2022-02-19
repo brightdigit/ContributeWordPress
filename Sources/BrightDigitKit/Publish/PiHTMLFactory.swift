@@ -21,6 +21,22 @@ struct PiHTMLFactory: HTMLFactory {
     return formatter
   }()
 
+  static let formatTimeIntervalSufficies = ["h", "m"]
+
+  static func formatTimeInterval(_ timeInterval: TimeInterval) -> String {
+    let hoursDouble = floor(timeInterval / 60.0 / 60.0)
+    let minutesDouble = (timeInterval - (hoursDouble * 60.0 * 60.0)) / 60.0
+    return [hoursDouble, minutesDouble]
+      .map(Int.init)
+      .enumerated()
+      .compactMap { index, value in
+        guard value > 0 else {
+          return nil
+        }
+        return ["\(value)", formatTimeIntervalSufficies[index]].joined(separator: "")
+      }.joined(separator: " ")
+  }
+
   // MARK: - makeIndexHTML
 
   func makeIndexHTML(for index: Index, context: PublishingContext<BrightDigitSite>) throws -> HTML {
@@ -40,36 +56,25 @@ struct PiHTMLFactory: HTMLFactory {
   func makeSectionHTML(for section: Section<BrightDigitSite>, context: PublishingContext<BrightDigitSite>) throws -> HTML {
     let content = try Pages.content(forSection: section, withContext: context)
 
-    switch section.id {
-    default:
-      return HTML(
-        .makeHead(forPage: content),
-        .body(
-          .headerNav(),
-          content.mainElement,
-          .makeFooter()
-        )
+    return HTML(
+      .makeHead(forPage: content),
+      .body(
+        .headerNav(),
+        content.mainElement,
+        .makeFooter()
       )
-    }
+    )
   }
 
   // MARK: - makeItemHTML
 
-  func makeItemHTML(for item: Item<BrightDigitSite>, context _: PublishingContext<BrightDigitSite>) throws -> HTML {
-    HTML(
-      .makeHead(forPage: MockContent()),
+  func makeItemHTML(for item: Item<BrightDigitSite>, context: PublishingContext<BrightDigitSite>) throws -> HTML {
+    let content = try Pages.content(forItem: item, withContext: context)
+    return HTML(
+      .makeHead(forPage: content),
       .body(
         .headerNav(),
-        .main(
-          .article(
-            .div(
-              .class("content"),
-              .contentBody(item.body)
-            ),
-            .span("Tagged with: ")
-            // .tagList(for: item, on: context.site)
-          )
-        ),
+        content.mainElement,
         .makeFooter()
       )
     )

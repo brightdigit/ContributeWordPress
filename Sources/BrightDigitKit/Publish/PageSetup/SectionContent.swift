@@ -28,7 +28,7 @@ struct SectionContent<SectionBuilderType: SectionBuilderProtocol>: PageContent {
       .section(
         .ol(
           .forEach(builder.children) { .li(
-            .forEach($0.itemContent) { $0 }
+            .forEach($0.sectionItemContent) { $0 }
           ) }
         )
       )

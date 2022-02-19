@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: pDlGiCD4fuA
 audioDuration: 1622
 videoDuration: 1648
+transistorID: d746d2ff
 ---
 <p><strong>Previous Episode</strong></p><ul><li>
 <a href="https://share.transistor.fm/s/00603d96">Episode 6 - Project Estimation</a> </li></ul><p><b>Guest: Jaim Zuber of Sharp Five Software </b></p><p><a href="https://sharpfivesoftware.com">Sharp Five Software</a></p><p><a href="https://jaimzuber.com">Jaim Zuber Blog</a></p><p><b>March 25 Apple Event</b></p><ul>
@@ -21,5 +22,5 @@ videoDuration: 1648
 </ul><p><b>What is the best way to know you have a good developer?</b></p><ul>
 <li>How about “cheaper” developers?</li>
 <li>What are other gotchas with developers?</li>
-</ul><p>Follow Jaim at <a href="https://jaimzuber.com">jaimzuber.com</a></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p>Follow Jaim at <a href="https://jaimzuber.com">jaimzuber.com</a></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

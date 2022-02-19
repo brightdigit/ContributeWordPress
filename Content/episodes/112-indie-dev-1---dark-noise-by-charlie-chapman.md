@@ -3,10 +3,11 @@ title: 'Indie Dev #1 - Dark Noise by Charlie Chapman'
 date: 2022-01-04 00:00
 description: In the first episode of our series on indie development, we chat with
   Charlie Chapman, indie dev behind Dark Noise and host of Launched.fm.
-featuredImage: https://images.transistor.fm/file/transistor/images/episode/761374/full_1640439943-artwork.jpg
+featuredImage: https://images.transistor.fm/file/transistor/images/episode/761374/full_1644188258-artwork.jpg
 youtubeID: UXvCBj6SAEA
 audioDuration: 2529
 videoDuration: 2657
+transistorID: '7462e031'
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://charliemchapman.com/about/"><strong>Charlie Chapman</strong> (Blog)</a><ul>
@@ -47,5 +48,5 @@ videoDuration: 2657
 <li>What features to prioritize?</li>
 <li>Why having a story for your app is important?</li>
 <li>What skills have transferred to a day time job?</li>
-</ul><p><b>Social Media</b></p><p><strong>Email</strong><br>leo@brightdigit.com<br><a href="https://github.com/brightdigit">GitHub - @brightdigit</a></p><p><a href="https://twitter.com/brightdigit"><strong>Twitter </strong><br>BrightDigit - @brightdigit</a><br><a href="https://twitter.com/leogdion">Leo - @leogdion</a></p><p><a href="https://www.reddit.com/user/leogdion"><strong>Reddit</strong><br>Leo - /u/leogdion</a></p><p><a href="https://www.linkedin.com/company/bright-digit"><strong>LinkedIn</strong><br>BrightDigit</a><br><a href="https://www.linkedin.com/in/leogdion/">Leo</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><b>Credits</b></p><p><a href="https://filmmusic.io/">Music from https://filmmusic.io</a><br><a href="https://incompetech.com/">"Blippy Trance" by Kevin MacLeod (https://incompetech.com)</a><br><a href="http://creativecommons.org/licenses/by/4.0/">License: CC BY (http://creativecommons.org/licenses/by/4.0/)</a></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><b>Social Media</b></p><p><strong>Email</strong><br>leo@brightdigit.com<br><a href="https://github.com/brightdigit">GitHub - @brightdigit</a></p><p><a href="https://twitter.com/brightdigit"><strong>Twitter </strong><br>BrightDigit - @brightdigit</a><br><a href="https://twitter.com/leogdion">Leo - @leogdion</a></p><p><a href="https://www.reddit.com/user/leogdion"><strong>Reddit</strong><br>Leo - /u/leogdion</a></p><p><a href="https://www.linkedin.com/company/bright-digit"><strong>LinkedIn</strong><br>BrightDigit</a><br><a href="https://www.linkedin.com/in/leogdion/">Leo</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><b>Credits</b></p><p><a href="https://filmmusic.io/">Music from https://filmmusic.io</a><br><a href="https://incompetech.com/">"Blippy Trance" by Kevin MacLeod (https://incompetech.com)</a><br><a href="http://creativecommons.org/licenses/by/4.0/">License: CC BY (http://creativecommons.org/licenses/by/4.0/)</a></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

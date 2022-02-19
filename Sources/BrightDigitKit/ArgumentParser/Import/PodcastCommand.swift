@@ -21,7 +21,7 @@ public extension BrightDigitSiteCommand.ImportCommand {
     public init() {}
 
     @Option
-    public var playlistID: String
+    public var playlistID: String = "PLmpJxPaZbSnBvpnEdaX78wSM1d9BVvMfI"
 
     @Option
     public var youtubeAPIKey: String

@@ -9,6 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: AjckH6a-Kgg
 audioDuration: 1081
 videoDuration: 1082
+transistorID: a19efbf9
 ---
 <p><b>Previous Episodes</b></p><ul><li><a href="https://share.transistor.fm/s/a34307ee">Episode 9 - iPad Apps for Businesses and Pros</a></li></ul><p><b>Reddit Threads</b></p><ul>
 <li><a href="https://www.reddit.com/r/macsysadmin/comments/av17s3/business_owners_and_admins_what_are_some_mac_apps/">r/macsysadmin</a></li>
@@ -74,5 +75,5 @@ videoDuration: 1082
 <a href="https://www.waveapps.com?ref=empowerapps">Wave</a> - Business Accounting</li>
 <li>
 <a href="https://www.paypal.com">Paypal</a> - Transfer Money</li>
-</ul><p>Music by <a href="https://icons8.com/music/author/bimbotronic">Bimbotronic</a> from <a href="https://icons8.com/music">Fugue</a></p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p>Music by <a href="https://icons8.com/music/author/bimbotronic">Bimbotronic</a> from <a href="https://icons8.com/music">Fugue</a></p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

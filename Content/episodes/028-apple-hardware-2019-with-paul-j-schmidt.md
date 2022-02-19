@@ -8,6 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: w7PFFq6skpw
 audioDuration: 1985
 videoDuration: 1987
+transistorID: '19292615'
 ---
 <p><b>Guest</b></p><ul><li> Paul J Schmidt - <a href="https://www.unodeuce.com/">UnoDeuce Multimedia</a><ul>
 <li><a href="https://www.youtube.com/user/1dpmultimedia?feature=results_main">Youtube</a></li>
@@ -41,5 +42,5 @@ videoDuration: 1987
 <li>Is there a need to upgrade for non-developers?</li>
 <li>When will iOS 13 be ready?</li>
 <li>Issues with 64-bit only on Catalina</li>
-</ul><p>Social Media</p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p>Social Media</p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

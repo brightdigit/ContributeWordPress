@@ -10,6 +10,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: QWzc4DgRdDU
 audioDuration: 1703
 videoDuration: 1726
+transistorID: '82709349'
 ---
 <ul>
 <li><a href="https://www.reddit.com/r/apple/comments/9fkb3t/im_an_emergency_physician_and_wanted_to_talk/">I'm an Emergency Physician and wanted to talk about Apple Watch's new ECG</a></li>
@@ -30,5 +31,5 @@ videoDuration: 1726
 <li><a href="https://developer.apple.com/videos/play/tech-talks/803/">Designing for Subscription Success</a></li>
 </ul>
 </li>
-</ul><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: IuoJrX7pucw
 audioDuration: 2607
 videoDuration: 2609
+transistorID: 4011273d
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://Peterwitham.com">Peter Witham</a> - <a href="https://Compileswift.com">Compileswift.com</a> - <a href="https://twitter.com/CompileSwift">Twitter</a>
@@ -46,5 +47,5 @@ videoDuration: 2609
 <li>Using <a href="https://gitolite.com/gitolite/index.html">Gitolite</a> for Local Hosted Git</li>
 <li>Introducing New Technologies With Tomorrow in Mind</li>
 <li>Realizing the Soft in Software</li>
-</ul><p><strong>Social Media</strong></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><strong>Social Media</strong></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

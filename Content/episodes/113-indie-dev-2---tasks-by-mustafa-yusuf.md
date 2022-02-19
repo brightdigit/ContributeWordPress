@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/76487
 youtubeID: u_7Ow5dN0lc
 audioDuration: 2271
 videoDuration: 2234
+transistorID: 995f0297
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/mufasaYC"><strong>Mustafa Yusuf (@mufasaYC)</strong></a><ul><li><a href="https://apps.apple.com/in/app/tasks-stay-ahead/id1502903102"><strong>Tasks App</strong></a></li></ul>

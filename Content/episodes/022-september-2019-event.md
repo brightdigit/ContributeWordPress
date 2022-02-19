@@ -10,6 +10,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: 5Qn22CN3hAA
 audioDuration: 1127
 videoDuration: 1127
+transistorID: 7966a039
 ---
 <p><b>Full Video</b></p><p><a href="https://youtu.be/5Qn22CN3hAA"><strong>Youtube Video - https://youtu.be/5Qn22CN3hAA</strong></a></p><p><b>Sponsors</b></p><p><a href="https://brightdigit.com/"><strong>BrightDigit</strong></a></p><ul>
 <li>Specialize in helping businesses build apps for iPhone, iPad, Mac and Apple Watch</li>
@@ -28,5 +29,5 @@ videoDuration: 1127
 <li>A continuing trend of maturity in the smartphone market?</li>
 <li>Is the iPhone a phone or a camera?</li>
 </ul><p><b>iOS 13</b></p><ul><li>
-<a href="https://twitter.com/tonydehnke/status/1171891500969410560">Thoughts on if Apple bit off too much on the OS upgrades to deliver everything on time?</a> - @tonydehnke</li></ul><p><b>Social Media</b></p><p><a href="https://www.youtube.com/channel/UCnl3jF6GHAvlj1MZyb6Ka9g?view_as=subscriber"><strong>Youtube - BrightDigit</strong></a><br><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+<a href="https://twitter.com/tonydehnke/status/1171891500969410560">Thoughts on if Apple bit off too much on the OS upgrades to deliver everything on time?</a> - @tonydehnke</li></ul><p><b>Social Media</b></p><p><a href="https://www.youtube.com/channel/UCnl3jF6GHAvlj1MZyb6Ka9g?view_as=subscriber"><strong>Youtube - BrightDigit</strong></a><br><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

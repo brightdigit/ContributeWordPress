@@ -1,6 +1,10 @@
 import Foundation
 import ShellOut
 
+#if canImport(FoundationNetworking)
+  import FoundationNetworking
+#endif
+
 public struct PandocMarkdownGenerator: MarkdownGenerator {
   public init(
     shellOut: @escaping (String, [String]) throws -> String = defaultShellOut,
