@@ -8,6 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: IaTgg3AljHg
 audioDuration: 3195
 videoDuration: 3221
+transistorID: 3498c82f
 ---
 <p><b>Guest</b></p><ul><li> <a href="https://manton.org">Manton Reece</a><ul>
 <li><a href="https://micro.blog/">Micro.blog</a></li>
@@ -50,5 +51,5 @@ videoDuration: 3221
 <li>Maturity of the iPhone</li>
 <li>Emphasis on Photography with third lens</li>
 <li>Independence of the Watch App</li>
-</ul><p><b>Social Media</b></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><b>Social Media</b></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

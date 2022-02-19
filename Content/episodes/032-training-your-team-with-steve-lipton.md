@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: ZXiCVpgTAWc
 audioDuration: 2222
 videoDuration: 2224
+transistorID: eaeed04a
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/steve_lipton"><strong>Steve Lipton- Twitter @Steve_Lipton</strong></a><ul>
@@ -58,5 +59,5 @@ videoDuration: 2224
 <li>Understand updates are part of the workflow</li>
 <li>Patterns are more stable then APIs (i.e. Reactive Programming vs Combine)</li>
 <li><strong><em>Apple's Character Arcs</em></strong></li>
-</ul><p><strong>Social Media</strong></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><strong>Social Media</strong></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

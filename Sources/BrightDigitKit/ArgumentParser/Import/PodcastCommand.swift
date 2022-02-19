@@ -21,7 +21,7 @@ public extension BrightDigitSiteCommand.ImportCommand {
     public init() {}
 
     @Option
-    public var playlistID: String
+    public var playlistID: String = "PLmpJxPaZbSnBvpnEdaX78wSM1d9BVvMfI"
 
     @Option
     public var youtubeAPIKey: String
@@ -53,7 +53,7 @@ public extension BrightDigitSiteCommand.ImportCommand {
     }
 
     public func run() throws {
-      let youtubeClient = Prch.APIClient(api: YouTube.API(), session: URLSession.shared)
+      let youtubeClient = Prch.Client(api: YouTube.API(), session: URLSession.shared)
       let videos = try youtubeClient.videos(fromRequest: .init(apiKey: youtubeAPIKey, playlistID: playlistID))
       let videoDurations = try PodcastEpisodeVideo.dictionaryBasedOn(videos: videos)
       let rssItems = try Self.rssItemsFrom(rss)

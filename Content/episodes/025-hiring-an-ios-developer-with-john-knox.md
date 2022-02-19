@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: 6Dnha5n3-w4
 audioDuration: 2026
 videoDuration: 2028
+transistorID: 382a5473
 ---
 <p><b>Guest</b></p><ul><li> <a href="https://pyrus.io/"><strong>J</strong></a><strong>ohn Knox  - </strong><a href="https://twitter.com/windaddict"><strong>Twitter @windaddict</strong></a><strong> - </strong><a href="https://www.linkedin.com/in/johnmpknox/"><strong>LinkedIn</strong></a><ul><li>
 <a href="https://www.hireappdeveloper.org"><strong>Hiring An App Developer</strong></a> - <a href="https://twitter.com/hireanappdev">Twitter @hireanappdev</a>
@@ -34,5 +35,5 @@ videoDuration: 2028
 <li>Finding Coding Style</li>
 <li>Have Little to No Complex Dependencies</li>
 <li>Seeing Actual Experience </li>
-</ul><p><b>Social Media</b></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><br></p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><b>Social Media</b></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><br></p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

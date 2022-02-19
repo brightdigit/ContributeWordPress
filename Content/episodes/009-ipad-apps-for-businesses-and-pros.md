@@ -9,6 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: WtC0hGUh0NQ
 audioDuration: 1979
 videoDuration: 2005
+transistorID: a34307ee
 ---
 <p><b><strong>Apple March Event</strong></b></p><ul>
 <li><a href="https://share.transistor.fm/s/3ee56c45"><strong>Apple makes moves towards services (Previous Episode - Apple in 2019)</strong></a></li>
@@ -41,5 +42,5 @@ videoDuration: 2005
 <li>
 <a href="https://www.recode.net/2019/1/30/18203231/apple-banning-facebook-research-app"><strong>How did Facebook abuse Enterprise Licensing? (Recode Article)</strong></a><strong> </strong>
 </li>
-</ul><p><b><br></b></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><b><br></b></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

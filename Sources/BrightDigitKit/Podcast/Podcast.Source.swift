@@ -6,7 +6,7 @@ import SyndiKit
 #endif
 public extension Podcast {
   struct Source {
-    public init(episodeNo: Int, slug: String, title: String, date: Date, summary: String, content: String, audioURL: URL, imageURL: URL, duration: TimeInterval, video: Video) {
+    public init(episodeNo: Int, slug: String, title: String, date: Date, summary: String, content: String, audioURL: URL, imageURL: URL, duration: TimeInterval, transistorID: String, video: Video) {
       self.episodeNo = episodeNo
       self.slug = slug
       self.title = title
@@ -17,6 +17,7 @@ public extension Podcast {
       self.imageURL = imageURL
       self.duration = duration
       self.video = video
+      self.transistorID = transistorID
     }
 
     public let episodeNo: Int
@@ -29,6 +30,7 @@ public extension Podcast {
     public let imageURL: URL
     public let duration: TimeInterval
     public let video: Video
+    public let transistorID: String
   }
 }
 
@@ -36,6 +38,10 @@ public extension Podcast.Source {
   init(item: RSSItem, video: Video) throws {
     let content = item.contentEncoded?.value ?? item.description.value
 
+    guard item.link.host == "share.transistor.fm" else {
+      throw BrightDigitKit.ImportError.invalidPodcastEpisodeFromRSSItem(item)
+    }
+    let transistorID = item.link.lastPathComponent
     guard let date = item.published else {
       throw BrightDigitKit.ImportError.invalidPodcastEpisodeFromRSSItem(item)
     }
@@ -66,7 +72,7 @@ public extension Podcast.Source {
 
     let slug = try title.convertedToSlug()
 
-    self.init(episodeNo: episodeNo, slug: slug, title: title, date: date, summary: summary, content: content, audioURL: imageURL, imageURL: imageURL, duration: duration, video: video)
+    self.init(episodeNo: episodeNo, slug: slug, title: title, date: date, summary: summary, content: content, audioURL: imageURL, imageURL: imageURL, duration: duration, transistorID: transistorID, video: video)
   }
 
   static func episodesBasedOn(rssItems: [RSSItem], withVideos videos: [String: Video]) throws -> [Podcast.Source] {

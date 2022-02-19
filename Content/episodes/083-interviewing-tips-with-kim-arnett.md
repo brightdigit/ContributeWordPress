@@ -8,6 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/48993
 youtubeID: UpUQY7sD9g4
 audioDuration: 2080
 videoDuration: 2083
+transistorID: 38ce32c5
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://kimarnett.com/"><strong>Kim Arnett (kimarnett.com)</strong></a><ul>
@@ -33,5 +34,5 @@ videoDuration: 2083
 <li>How's their Diversity</li>
 <li>What's their Day-to-Day Schedule</li>
 <li>What's their priority for Mobile Development and iOS</li>
-</ul><p><b>Social Media</b></p><p><strong>Email</strong><br>leo@brightdigit.com</p><p><a href="https://twitter.com/brightdigit"><strong>Twitter </strong><br>BrightDigit - @brightdigit</a><br><a href="https://twitter.com/leogdion">Leo - @leogdion</a></p><p><a href="https://www.linkedin.com/company/bright-digit"><strong>LinkedIn</strong><br>BrightDigit</a><br><a href="https://www.linkedin.com/in/leogdion/">Leo</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><b>Credits</b></p><p>Music from https://filmmusic.io<br>"Blippy Trance" by Kevin MacLeod (https://incompetech.com)<br>License: CC BY (http://creativecommons.org/licenses/by/4.0/)</p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><b>Social Media</b></p><p><strong>Email</strong><br>leo@brightdigit.com</p><p><a href="https://twitter.com/brightdigit"><strong>Twitter </strong><br>BrightDigit - @brightdigit</a><br><a href="https://twitter.com/leogdion">Leo - @leogdion</a></p><p><a href="https://www.linkedin.com/company/bright-digit"><strong>LinkedIn</strong><br>BrightDigit</a><br><a href="https://www.linkedin.com/in/leogdion/">Leo</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><b>Credits</b></p><p>Music from https://filmmusic.io<br>"Blippy Trance" by Kevin MacLeod (https://incompetech.com)<br>License: CC BY (http://creativecommons.org/licenses/by/4.0/)</p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

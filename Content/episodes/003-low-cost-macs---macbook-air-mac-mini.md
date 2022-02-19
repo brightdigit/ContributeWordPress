@@ -9,6 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: q-2pCv86TmY
 audioDuration: 922
 videoDuration: 945
+transistorID: 4f13fa7b
 ---
 <ul>
 <li><a href="https://itunes.apple.com/us/podcast/apple-special-event-september-2015-1080p/id509310064?i=1000352406900&amp;mt=2">Apple September Event 2015  </a></li>
@@ -22,5 +23,5 @@ videoDuration: 945
 </li>
 <li><a href="https://www.plex.tv">Plex</a></li>
 <li><a href="https://buyersguide.macrumors.com">MacRumors Buyers Guide</a></li>
-</ul><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

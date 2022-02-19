@@ -8,24 +8,37 @@ struct ArticleItem: SectionItem {
   let featuredImageURL: URL
   let title: String
   let publishedDate: Date
+  let source: Item<BrightDigitSite>
 
   let isFeatured: Bool
 
   var featuredItemContent: [Node<HTML.BodyContext>] {
     [
       .header(
-        .img(.src(featuredImageURL)),
-        .a(
-          .h2(.text(title))
-        )
+        .img(.src(featuredImageURL))
       ),
       .main(
-        .text(description)
+        .header(
+          .a(
+            .h2(.text(title)),
+            .href(slug)
+          )
+        ),
+        .main(
+          .text(description)
+        ),
+        .footer(
+          " published on ",
+          .span(
+            .class("published-date"),
+            .text(PiHTMLFactory.itemFormatter.string(from: publishedDate))
+          )
+        )
       )
     ]
   }
 
-  var itemContent: [Node<HTML.BodyContext>] {
+  var sectionItemContent: [Node<HTML.BodyContext>] {
     [
       .id("post-\(slug)"),
       .header(
@@ -45,7 +58,20 @@ struct ArticleItem: SectionItem {
     ]
   }
 
+  var pageTitle: String {
+    title
+  }
+
+  var pageBodyID: String? {
+    nil
+  }
+
+  var pageMainContent: [Node<HTML.BodyContext>] {
+    [.contentBody(source.body)]
+  }
+
   init(item: Item<BrightDigitSite>) throws {
+    source = item
     let featuredImageURL = item.metadata.featuredImage.flatMap(URL.init(string:))
     let isFeatured = item.metadata.featured ?? false
 

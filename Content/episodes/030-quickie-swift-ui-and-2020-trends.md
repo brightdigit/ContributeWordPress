@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: PzaoBmb6PjM
 audioDuration: 479
 videoDuration: 480
+transistorID: 2f12eb02
 ---
 <p><a href="https://youtu.be/PzaoBmb6PjM"><strong>Youtube Video</strong></a></p><p><b>Related Episodes</b></p><ul>
 <li><a href="https://share.transistor.fm/s/7966a039"><strong>Episode 22 - September 2019 Event</strong></a></li>
@@ -35,5 +36,5 @@ videoDuration: 480
 <li>First Swift-only API (no Objective-C compatibility)</li>
 <li>Maybe not be ideal for some companies with different design patterns but it’s a better starting place then Storyboards and UIKit</li>
 <li>Cross-Platform compatible with iOS, watchOS, tvOS, and macOS</li>
-</ul><p>Social Media</p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p>Social Media</p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

@@ -96,8 +96,8 @@
         "repositoryURL": "https://github.com/brightdigit/Prch.git",
         "state": {
           "branch": null,
-          "revision": "0bfc77657088fdacc995c0368a767c2ba18b94f2",
-          "version": "0.1.1"
+          "revision": "74513ceb865358b457a656290ded54ed67de1702",
+          "version": "0.2.0-beta.1"
         }
       },
       {
@@ -129,11 +129,11 @@
       },
       {
         "package": "Spinetail",
-        "repositoryURL": "https://github.com/brightdigit/Spinetail.git",
+        "repositoryURL": "https://github.com/BrightDigit/Spinetail.git",
         "state": {
           "branch": null,
-          "revision": "65cf21a0209136001098aa80c2819e2bc7d0e10a",
-          "version": "0.1.2"
+          "revision": "6b3b52d63620e217ebbf01a492f946392e21a91b",
+          "version": "0.2.0-beta.1"
         }
       },
       {
@@ -164,15 +164,6 @@
         }
       },
       {
-        "package": "swift-test-codecov",
-        "repositoryURL": "https://github.com/brightdigit/swift-test-codecov",
-        "state": {
-          "branch": null,
-          "revision": "8ca50588a72d1869cc6edafdee5f1e7fa9783b7b",
-          "version": "1.0.0"
-        }
-      },
-      {
         "package": "SwiftFormat",
         "repositoryURL": "https://github.com/nicklockwood/SwiftFormat",
         "state": {
@@ -192,11 +183,11 @@
       },
       {
         "package": "SwiftTube",
-        "repositoryURL": "https://github.com/brightdigit/SwiftTube.git",
+        "repositoryURL": "https://github.com/BrightDigit/SwiftTube.git",
         "state": {
           "branch": null,
-          "revision": "64f0f1a5f524beb94cb31e6074dfabd98364e318",
-          "version": "0.1.0"
+          "revision": "b48cbc49386e888fbc7c16146b5ad8db07024b2b",
+          "version": "0.2.0-beta.1"
         }
       },
       {

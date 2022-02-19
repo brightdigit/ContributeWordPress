@@ -9,6 +9,7 @@ struct NewsletterItem: SectionItem {
   let archiveURL: URL
   let title: String
   let publishedDate: Date
+  let source: Item<BrightDigitSite>
 
   let isFeatured: Bool
 
@@ -34,7 +35,7 @@ struct NewsletterItem: SectionItem {
     ]
   }
 
-  var itemContent: [Node<HTML.BodyContext>] {
+  var sectionItemContent: [Node<HTML.BodyContext>] {
     [
       .id("issue-\(issueNo)"),
       .header(
@@ -57,7 +58,20 @@ struct NewsletterItem: SectionItem {
     ]
   }
 
+  var pageTitle: String {
+    title
+  }
+
+  var pageBodyID: String? {
+    nil
+  }
+
+  var pageMainContent: [Node<HTML.BodyContext>] {
+    [.contentBody(source.body)]
+  }
+
   init(item: Item<BrightDigitSite>) throws {
+    source = item
     let featuredImageURL = item.metadata.featuredImage.flatMap(URL.init(string:))
     let archiveURL = item.metadata.longArchiveURL.flatMap(URL.init(string:))
     let isFeatured = item.metadata.featured ?? false
