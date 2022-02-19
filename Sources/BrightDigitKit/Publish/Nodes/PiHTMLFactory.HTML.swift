@@ -75,7 +75,7 @@ public extension Node where Context == HTML.BodyContext {
         ),
         .ol(
           .class("menu"),
-          .li(for: "Podcast"),
+          .li(for: "Podcast", at: "episodes"),
           .li(for: "Newsletters"),
           .li(
             .a(.href("/about-us"),

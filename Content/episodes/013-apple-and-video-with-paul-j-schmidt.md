@@ -9,6 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: ivHsDRHRty0
 audioDuration: 2452
 videoDuration: 2478
+transistorID: 6321c757
 ---
 <p><b>UnoDeuce Multimedia and Storytelling</b></p><ul>
 <li><a href="https://www.unodeuce.com">UnoDeuce Multimedia</a></li>
@@ -57,5 +58,5 @@ videoDuration: 2478
 </ul><p><b>WWDC</b></p><ul>
 <li><em>New Mac Pro?</em></li>
 <li><em>Pro App Updates</em></li>
-</ul><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

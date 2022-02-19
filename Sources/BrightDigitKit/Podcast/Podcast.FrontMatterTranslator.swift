@@ -18,6 +18,7 @@ public extension Podcast {
       let youtubeID: String
       let audioDuration: Int
       let videoDuration: Int
+      let transistorID: String
 
       public init(episode: Source) {
         date = YAML.dateFormatter.string(from: episode.date)
@@ -27,6 +28,7 @@ public extension Podcast {
         videoDuration = Int(episode.video.duration)
         featuredImage = episode.imageURL
         youtubeID = episode.video.youtubeID
+        transistorID = episode.transistorID
       }
     }
   }

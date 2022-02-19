@@ -1,3 +1,7 @@
+#if canImport(FoundationNetworking)
+  import FoundationNetworking
+#endif
+
 public extension Newsletter {
   struct FrontMatterTranslator: BrightDigitKit.FrontMatterTranslator {
     public init() {}

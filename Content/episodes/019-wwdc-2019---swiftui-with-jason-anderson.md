@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: lmZbx3nxr2o
 audioDuration: 1358
 videoDuration: 1384
+transistorID: '03051561'
 ---
 <p><b>Guest</b></p><ul><li> Jason Anderson <ul>
 <li><a href="https://twitter.com/_jasonranderson">(@_jasonranderson) | Twitter</a></li>
@@ -36,5 +37,5 @@ videoDuration: 1384
 <li>Not Best for New Recent Releases</li>
 <li>Do Need To Use It Now</li>
 <li><a href="https://www.youtube.com/watch?v=e5EzQgKx2Es&amp;t=2051s">Leo’s Swift UI Stream</a></li>
-</ul><p><b>Social Media</b></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><b>Social Media</b></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

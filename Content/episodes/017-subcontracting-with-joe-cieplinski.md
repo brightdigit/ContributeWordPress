@@ -8,6 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: hl-a_dcqhIw
 audioDuration: 2465
 videoDuration: 2491
+transistorID: b059197f
 ---
 <p><b>Guest</b></p><ul><li> <a href="https://joec.design">Joe Cieplinski</a> <ul>
 <li><a href="https://twitter.com/jcieplinski">jcieplinski (@jcieplinski) - Twitter</a></li>
@@ -58,5 +59,5 @@ videoDuration: 2491
 </ul><p><strong>Speaking at 360|iDev</strong></p><ul>
 <li><a href="https://360idev.com/sessions/when-a-simple-algorithm-will-do/">Joe’s Talk - <strong>When a Simple Algorithm will Do</strong></a></li>
 <li><a href="https://360idev.com/sessions/the-multi-threaded-asynchronous-parallel-world-of-swift/">Leo’s Talk - <strong>The Multi-Threaded Asynchronous Parallel World of Swift</strong></a></li>
-</ul><p><strong>Social Media</strong></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a>  <br><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a> </p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a> </p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a> </p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><strong>Social Media</strong></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a>  <br><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a> </p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a> </p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a> </p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

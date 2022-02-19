@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: 0JG7_ovqqL0
 audioDuration: 3890
 videoDuration: 3916
+transistorID: 4f8b37d3
 ---
 <p><b>Guest</b></p><ul><li> Daniel Jalkut<ul>
 <li><a href="https://red-sweater.com">Red Sweater - Software Company</a></li>
@@ -66,5 +67,5 @@ videoDuration: 3916
 <a href="https://saas.transistor.fm/episodes/did-we-solve-our-bandwidth-cost-crisis">Build Your Saas - Hosting Costs</a> </li>
 <li><a href="https://stratechery.com/2019/apples-audacity/">Stratechery - The First Post-iPhone Keynote</a></li>
 <li>Find Where the Market Is</li>
-</ul><p><b>Social Media</b></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><b>Social Media</b></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

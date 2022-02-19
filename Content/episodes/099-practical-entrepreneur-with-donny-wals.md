@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/60172
 youtubeID: L6U5Wm8_G74
 audioDuration: 2967
 videoDuration: 3016
+transistorID: c2946999
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://www.donnywals.com/"><strong>Donny Wals - donnywals.com</strong></a><ul>
@@ -33,5 +34,5 @@ videoDuration: 3016
 <li>What's the best way to find clients for your business?</li>
 <li>What are the biggest time vacuums for your business?</li>
 <li>How to be prepared to leave your employer</li>
-</ul><p><b>Social Media</b></p><p><strong>Email</strong><br>leo@brightdigit.com</p><p><a href="https://twitter.com/brightdigit"><strong>Twitter </strong><br>BrightDigit - @brightdigit</a><br><a href="https://twitter.com/leogdion">Leo - @leogdion</a></p><p><a href="https://www.linkedin.com/company/bright-digit"><strong>LinkedIn</strong><br>BrightDigit</a><br><a href="https://www.linkedin.com/in/leogdion/">Leo</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><b>Credits</b></p><p>Music from https://filmmusic.io<br>"Blippy Trance" by Kevin MacLeod (https://incompetech.com)<br>License: CC BY (http://creativecommons.org/licenses/by/4.0/)</p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><b>Social Media</b></p><p><strong>Email</strong><br>leo@brightdigit.com</p><p><a href="https://twitter.com/brightdigit"><strong>Twitter </strong><br>BrightDigit - @brightdigit</a><br><a href="https://twitter.com/leogdion">Leo - @leogdion</a></p><p><a href="https://www.linkedin.com/company/bright-digit"><strong>LinkedIn</strong><br>BrightDigit</a><br><a href="https://www.linkedin.com/in/leogdion/">Leo</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><b>Credits</b></p><p>Music from https://filmmusic.io<br>"Blippy Trance" by Kevin MacLeod (https://incompetech.com)<br>License: CC BY (http://creativecommons.org/licenses/by/4.0/)</p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

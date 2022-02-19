@@ -8,6 +8,7 @@ struct TutorialItem: SectionItem {
   let featuredImageURL: URL
   let title: String
   let publishedDate: Date
+  let source: Item<BrightDigitSite>
 
   let isFeatured: Bool
 
@@ -25,7 +26,7 @@ struct TutorialItem: SectionItem {
     ]
   }
 
-  var itemContent: [Node<HTML.BodyContext>] {
+  var sectionItemContent: [Node<HTML.BodyContext>] {
     [
       .id("post-\(slug)"),
       .header(
@@ -45,7 +46,20 @@ struct TutorialItem: SectionItem {
     ]
   }
 
+  var pageTitle: String {
+    title
+  }
+
+  var pageBodyID: String? {
+    nil
+  }
+
+  var pageMainContent: [Node<HTML.BodyContext>] {
+    [.contentBody(source.body)]
+  }
+
   init(item: Item<BrightDigitSite>) throws {
+    source = item
     let featuredImageURL = item.metadata.featuredImage.flatMap(URL.init(string:))
     let isFeatured = item.metadata.featured ?? false
 

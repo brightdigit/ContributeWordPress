@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/19893
 youtubeID: eS6S_zXPPnE
 audioDuration: 1868
 videoDuration: 1870
+transistorID: 0aedd602
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://kimarnett.com"><strong>Kim Arnett (kimarnett.com)</strong></a><ul>
@@ -43,5 +44,5 @@ videoDuration: 1870
 <li>The importance of diversity in your team</li>
 <li>Practice using the app without sight and only screen readers</li>
 <li>Using iPhone Accessibility settings to test your app</li>
-</ul><p><b>Social Media</b></p><p><strong>Email</strong><br>leo@brightdigit.com</p><p><a href="https://twitter.com/brightdigit"><strong>Twitter </strong><br>BrightDigit - @brightdigit</a><br><a href="https://twitter.com/leogdion">Leo - @leogdion</a></p><p><a href="https://www.linkedin.com/company/bright-digit"><strong>LinkedIn</strong><br>BrightDigit</a><br><a href="https://www.linkedin.com/in/leogdion/">Leo</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><b>Credits</b></p><p>Music from https://filmmusic.io<br>"Blippy Trance" by Kevin MacLeod (https://incompetech.com)<br>License: CC BY (http://creativecommons.org/licenses/by/4.0/)</p><p><br></p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><b>Social Media</b></p><p><strong>Email</strong><br>leo@brightdigit.com</p><p><a href="https://twitter.com/brightdigit"><strong>Twitter </strong><br>BrightDigit - @brightdigit</a><br><a href="https://twitter.com/leogdion">Leo - @leogdion</a></p><p><a href="https://www.linkedin.com/company/bright-digit"><strong>LinkedIn</strong><br>BrightDigit</a><br><a href="https://www.linkedin.com/in/leogdion/">Leo</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><b>Credits</b></p><p>Music from https://filmmusic.io<br>"Blippy Trance" by Kevin MacLeod (https://incompetech.com)<br>License: CC BY (http://creativecommons.org/licenses/by/4.0/)</p><p><br></p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

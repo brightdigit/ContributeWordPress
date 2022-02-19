@@ -10,6 +10,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: U8n8vJlMLzY
 audioDuration: 2495
 videoDuration: 2518
+transistorID: b358d0a4
 ---
 <ul>
 <li><a href="http://www.empowerapps.show/episodes/low-cost-macs-macbook-air-mac-mini">Episode 3 - Low-Cost Macs</a></li>
@@ -17,5 +18,5 @@ videoDuration: 2518
 <li><a href="https://stratechery.com/2018/the-iphone-franchise/">Stratechery - The iPhone Franchise</a></li>
 <li><a href="https://learningswift.brightdigit.com/swift-thoughts-tryswift-nyc-2018/">Swift Thoughts on try!Swift NYC 2018</a></li>
 <li><a href="https://developer.apple.com/videos/play/tech-talks/207/">Building Apps for iPhone XS, iPhone XS Max, and iPhone XR</a></li>
-</ul><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

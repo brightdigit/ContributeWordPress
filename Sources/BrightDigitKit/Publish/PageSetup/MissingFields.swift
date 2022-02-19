@@ -16,6 +16,7 @@ enum MissingFields {
     case featuredImageURL
     case episodeNo
     case audioDuration
+    case transistorID
     static let typeName: String = "PodcastEpisode"
     var fieldName: String {
       rawValue

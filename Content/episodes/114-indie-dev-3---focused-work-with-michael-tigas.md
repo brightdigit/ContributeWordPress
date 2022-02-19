@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/78360
 youtubeID: HwC2_dETDFs
 audioDuration: 4164
 videoDuration: 4572
+transistorID: 3191b2bf
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/michael_tigas">Michael Tigas (@michael_tigas)</a><ul>

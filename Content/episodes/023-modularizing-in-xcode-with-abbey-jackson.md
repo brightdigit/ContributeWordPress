@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: BTG7e_60zN8
 audioDuration: 3163
 videoDuration: 3165
+transistorID: c8f9aa41
 ---
 <p><b>Guest</b></p><ul><li> <a href="https://abbeyjackson.ca"><strong>Abbey Jackson</strong></a><strong> - (</strong><a href="https://twitter.com/earthabbey"><strong>Twitter @earthabbey</strong></a><strong>)</strong><ul><li><a href="https://vimeo.com/showcase/6225806/video/354783100">Modularize All the Things - Abbey Jackson</a></li></ul>
 </li></ul><p><b>Sponsors</b></p><p><a href="https://brightdigit.com/"><strong>BrightDigit</strong></a></p><ul>
@@ -46,5 +47,5 @@ videoDuration: 3165
 <li>Apple Watch Series 5</li>
 <li>iTunes vs App Store Gift Cards</li>
 <li><a href="https://www.amazon.com/Lavolta-Carrying-Case-Apple-27-inch/dp/B01DYHDQNI">iMac Backpack</a></li>
-</ul><p><b>Social Media</b></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><b>Social Media</b></p><p><a href="https://twitter.com/brightdigit">Twitter - @brightdigit</a></p><p><a href="http://facebook.com/brightdigit">Facebook - BrightDigit</a></p><p><a href="https://www.linkedin.com/company/bright-digit">LinkedIn - BrightDigit</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><br></p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       

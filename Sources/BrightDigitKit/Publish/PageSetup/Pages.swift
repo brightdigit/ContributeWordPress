@@ -3,8 +3,6 @@ import Plot
 import Publish
 
 enum Pages {
-  typealias SectionContentFactory = (Section<BrightDigitSite>, PublishingContext<BrightDigitSite>) throws -> PageContent
-
   fileprivate static let pageBuilders: [String: AnyPageMainBuilder] = [
     "services": ServicesBuilder(),
     "contact-us": ContactBuilder(),
@@ -12,11 +10,11 @@ enum Pages {
     "about-us": AboutBuilder()
   ]
 
-  fileprivate static let sectionFactories: [String: SectionContentFactory] = [
-    "newsletters": NewsletterItem.content,
-    "articles": ArticleItem.content,
-    "episodes": PodcastItem.content,
-    "tutorials": TutorialItem.content
+  fileprivate static let sectionFactories: [String: SectionContentFactory.Type] = [
+    "newsletters": NewsletterItem.self,
+    "articles": ArticleItem.self,
+    "episodes": PodcastItem.self,
+    "tutorials": TutorialItem.self
   ]
 
   static func page(forIndex index: Index, withContext context: PublishingContext<BrightDigitSite>) -> PageContent {
@@ -31,11 +29,21 @@ enum Pages {
     return builder.pageSetup(forPage: page, withContext: context)
   }
 
-  static func content(forSection section: Section<BrightDigitSite>, withContext context: PublishingContext<BrightDigitSite>) throws -> PageContent {
-    guard let factory = sectionFactories[section.id.rawValue] else {
-      throw PiError.missingContentFor(section)
+  static func sectionFactory(basedOn location: SectionLocation) throws -> SectionContentFactory.Type {
+    guard let factory = sectionFactories[location.sectionID.rawValue] else {
+      throw PiError.missingContentFor(location)
     }
 
-    return try factory(section, context)
+    return factory
+  }
+
+  static func content(forSection section: Section<BrightDigitSite>, withContext context: PublishingContext<BrightDigitSite>) throws -> PageContent {
+    try sectionFactory(basedOn: section)
+      .content(forSection: section, withContext: context)
+  }
+
+  static func content(forItem item: Item<BrightDigitSite>, withContext context: PublishingContext<BrightDigitSite>) throws -> PageContent {
+    try sectionFactory(basedOn: item)
+      .content(forItem: item, withContext: context)
   }
 }

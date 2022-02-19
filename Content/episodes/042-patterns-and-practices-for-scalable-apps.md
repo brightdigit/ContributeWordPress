@@ -7,6 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/21799
 youtubeID: TQpRYibmyvQ
 audioDuration: 1210
 videoDuration: 1211
+transistorID: 4eba2003
 ---
 <p><b>Video</b></p><ul><li><a href="https://youtu.be/TQpRYibmyvQ"><strong>Youtube Video</strong> - https://youtu.be/TQpRYibmyvQ</a></li></ul><p><b>Related Episodes</b></p><ul>
 <li><a href="https://share.transistor.fm/s/99f236b1"><strong>Episode 39: Managing Code Quality with Anne Cahalan</strong></a></li>
@@ -54,5 +55,5 @@ videoDuration: 1211
 <li>Consistent Styling makes version control and team management easier</li>
 <li>Code Reviews Help get an additional set of eyes even though they may be your own.</li>
 <li>Continuous Integration of components and apps are the best way to ensure quality code</li>
-</ul><p><b>Social Media</b></p><p><strong>Email</strong><br>leo@brightdigit.com</p><p><a href="https://twitter.com/brightdigit"><strong>Twitter </strong><br>BrightDigit - @brightdigit</a><br><a href="https://twitter.com/leogdion">Leo - @leogdion</a></p><p><a href="https://www.linkedin.com/company/bright-digit"><strong>LinkedIn</strong><br>BrightDigit</a><br><a href="https://www.linkedin.com/in/leogdion/">Leo</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><b>Credits</b></p><p><a href="https://filmmusic.io/">Music from https://filmmusic.io</a><br><a href="https://incompetech.com/">"Blippy Trance" by Kevin MacLeod (https://incompetech.com)</a><br><a href="http://creativecommons.org/licenses/by/4.0/">License: CC BY (http://creativecommons.org/licenses/by/4.0/)</a></p><p><br></p><p><strong><a rel="payment" title="★ Support this podcast on Patreon ★" href="https://www.patreon.com/empowerappsshow">★ Support this podcast on Patreon ★</a></strong></p>
+</ul><p><b>Social Media</b></p><p><strong>Email</strong><br>leo@brightdigit.com</p><p><a href="https://twitter.com/brightdigit"><strong>Twitter </strong><br>BrightDigit - @brightdigit</a><br><a href="https://twitter.com/leogdion">Leo - @leogdion</a></p><p><a href="https://www.linkedin.com/company/bright-digit"><strong>LinkedIn</strong><br>BrightDigit</a><br><a href="https://www.linkedin.com/in/leogdion/">Leo</a></p><p><a href="https://www.instagram.com/brightdigit/">Instagram - @brightdigit</a><br><a href="https://www.patreon.com/empowerappsshow">Patreon - empowerappshow</a></p><p><b>Credits</b></p><p><a href="https://filmmusic.io/">Music from https://filmmusic.io</a><br><a href="https://incompetech.com/">"Blippy Trance" by Kevin MacLeod (https://incompetech.com)</a><br><a href="http://creativecommons.org/licenses/by/4.0/">License: CC BY (http://creativecommons.org/licenses/by/4.0/)</a></p><p><br></p><p><strong><a href="https://www.patreon.com/empowerappsshow" rel="payment" title="★ Support this podcast on Patreon ★">★ Support this podcast on Patreon ★</a></strong></p>
       
