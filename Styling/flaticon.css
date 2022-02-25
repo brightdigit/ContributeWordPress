@@ -1,10 +1,10 @@
 @font-face {
     font-family: "flaticon";
-    src: url("./Flaticon.ttf?53ec3372f28287715735ed3530328f66") format("truetype"),
-url("./Flaticon.woff?53ec3372f28287715735ed3530328f66") format("woff"),
-url("./Flaticon.woff2?53ec3372f28287715735ed3530328f66") format("woff2"),
-url("./Flaticon.eot?53ec3372f28287715735ed3530328f66#iefix") format("embedded-opentype"),
-url("./Flaticon.svg?53ec3372f28287715735ed3530328f66#flaticon") format("svg");
+    src: url("./Flaticon.ttf?90e8adddc49b0bf928093867d7563694") format("truetype"),
+url("./Flaticon.woff?90e8adddc49b0bf928093867d7563694") format("woff"),
+url("./Flaticon.woff2?90e8adddc49b0bf928093867d7563694") format("woff2"),
+url("./Flaticon.eot?90e8adddc49b0bf928093867d7563694#iefix") format("embedded-opentype"),
+url("./Flaticon.svg?90e8adddc49b0bf928093867d7563694#flaticon") format("svg");
 }
 
 i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
@@ -35,4 +35,13 @@ i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
 }
 .flaticon-newsletter:before {
     content: "\f106";
+}
+.flaticon-calendar:before {
+    content: "\f107";
+}
+.flaticon-announcement:before {
+    content: "\f108";
+}
+.flaticon-share:before {
+    content: "\f109";
 }
