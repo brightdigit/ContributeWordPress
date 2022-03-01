@@ -91,7 +91,14 @@ public extension Node where Context == HTML.BodyContext {
         ),
         .ol(
           .class("more"),
-          .li(for: "Menu", at: "#menu")
+          .li(
+            .button(
+              .id("menu"),
+              .img(
+                .src("/media/list.svg")
+              )
+            )
+          )
         )
       )
     )
@@ -115,9 +122,8 @@ public extension Node where Context == HTML.DocumentContext {
         .name("viewport"),
         .content("width=device-width, initial-scale=1.0")
       ),
-      .link(
-        .rel(.stylesheet),
-        .href("/css/styles.css")
+      .script(
+        .src("/js/main.js")
       )
     )
   }

@@ -5,6 +5,7 @@ stages:
 build focal:
   except:
     - /.*WIP$/
+    - /styling\/.*$/
   stage: build
   image: brightdigit/publish-xml
   script:
@@ -16,6 +17,7 @@ build focal:
 build macos:
   except:
     - /.*WIP$/
+    - /styling\/.*$/
   stage: build
   tags:
     - macos  
