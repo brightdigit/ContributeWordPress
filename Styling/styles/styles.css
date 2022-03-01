@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Oxygen:wght@300;400;700&display=swap');
-@import url('flaticon.css');
+@import url('./flaticon.css');
 
 @tailwind base;
 @tailwind components;
@@ -18,7 +18,9 @@ body > header {
 }
 
 body > header > nav {
-  @apply flex items-center;
+  @apply flex items-center duration-1000 z-50;
+  top: -100%;
+  transition-property: top;
 }
 
 body > header > nav > ol{
@@ -40,8 +42,47 @@ body > header > nav > ol.logo {
 body > header > nav > ol.logo img{
   @apply h-10 mr-8;
 }
+body.more-active {
+  &.end-active > header > nav {
+    top: calc(-125%);
+  }
+  & > main {
+    @apply relative z-0;
+  }
+  & > header > nav {
+    @apply bg-white w-screen absolute top-0 left-0 right-0 p-2 flex flex-col items-stretch bg-opacity-90 z-50 duration-1000;
+    transition-property: top;
+    @apply shadow-lg;
+    & > ol.more {
+      #menu {
+        @apply absolute h-auto w-6 right-2;
+        img {
+          @apply h-auto w-full;
+        }
+      }
+    }
+    & > ol.menu, & > ol.menu ~ ol.menu {
+      @apply contents;
+      & > li > a {
+        @apply flex flex-col text-xl w-full py-2 my-2 sm:text-4xl sm:py-4 sm:my-4;
+      }
+    }
+    .logo {
+      @apply mr-12 w-full;
+      img {
+        @apply w-full h-auto;
+      }
+    }  
+  }
+} 
 body > header > nav > ol.more {
   @apply flex lg:hidden justify-end flex-grow;
+  #menu {
+    @apply z-50 top-8 mr-4;
+    img {
+      @apply h-6;
+    }
+  }
 }
 body > header > nav > ol.menu {  
   @apply hidden md:flex ;

@@ -2,6 +2,7 @@ import Publish
 import ShellOut
 
 extension Plugin {
+  @available(*, deprecated)
   @available(OSX 10.12, *)
   static var tailwindCss: Self {
     Plugin(name: "Tailwind") { context in
@@ -13,6 +14,7 @@ extension Plugin {
 }
 
 extension PublishingStep {
+  @available(*, deprecated)
   static var tailwindCSS: Self {
     .step(named: "Create CSS From TailwindCSS") { context in
       let folder = try context.folder(at: "Styling")

@@ -16,7 +16,7 @@ public extension BrightDigitSiteCommand {
         .generateHTML(withTheme: .company, indentation: .spaces(2)),
         .generateSiteMap(),
 
-        .tailwindCSS,
+        .webpack,
         .generateRSSFeed(including: [.articles, .tutorials])
       ])
     }
