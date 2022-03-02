@@ -1,5 +1,6 @@
 import ArgumentParser
 import Publish
+import ReadingTimePublishPlugin
 
 public extension BrightDigitSiteCommand {
   struct PublishCommand: ParsableCommand {
@@ -11,6 +12,7 @@ public extension BrightDigitSiteCommand {
         .optional(.copyResources()),
         .installPlugin(.splash(withClassPrefix: "")),
         .addMarkdownFiles(),
+        .installPlugin(.readingTime()),
         .sortItems(by: \.date, order: .descending),
 
         .generateHTML(withTheme: .company, indentation: .spaces(2)),

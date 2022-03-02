@@ -25,6 +25,7 @@ let package = Package(
     // .package(url: /* package url */, from: "1.0.0"),
     .package(name: "Publish", url: "https://github.com/johnsundell/publish.git", from: "0.6.0"),
     .package(url: "https://github.com/JohnSundell/Splash", from: "0.15.0"),
+    .package(name: "ReadingTimePublishPlugin", url: "https://github.com/alexito4/ReadingTimePublishPlugin", from: "0.2.0"),
 
     .package(url: "https://github.com/BrightDigit/SwiftTube.git", from: "0.2.0-beta.1"),
     .package(url: "https://github.com/BrightDigit/Spinetail.git", from: "0.2.0-beta.1"),
@@ -32,7 +33,6 @@ let package = Package(
     .package(url: "https://github.com/BrightDigit/Options.git", from: "0.2.0"),
 
     .package(url: "https://github.com/jpsim/Yams.git", from: "4.0.4"),
-    .package(url: "https://github.com/lukaskubanek/LoremSwiftum.git", from: "2.2.1"),
     .package(url: "https://github.com/apple/swift-argument-parser", from: "0.3.0"),
     .package(url: "https://github.com/tid-kijyun/Kanna.git", from: "5.2.2"),
     .package(url: "https://github.com/eneko/MarkdownGenerator.git", from: "0.4.0"),
@@ -49,7 +49,8 @@ let package = Package(
       dependencies: ["BrightDigitKit"]
     ),
     .target(name: "BrightDigitKit",
-            dependencies: ["SyndiKit", "Publish", "Splash", "LoremSwiftum", "Kanna", "MarkdownGenerator", "Yams",
+            dependencies: ["SyndiKit", "Publish", "Splash", "Kanna", "MarkdownGenerator", "Yams",
+                           "ReadingTimePublishPlugin",
                            "SwiftTube", "Spinetail", "Options",
                            .product(name: "ArgumentParser", package: "swift-argument-parser")]),
     .testTarget(

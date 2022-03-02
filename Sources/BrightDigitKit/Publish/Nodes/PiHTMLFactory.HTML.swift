@@ -1,5 +1,4 @@
 import Foundation
-import LoremSwiftum
 import Plot
 import Publish
 
@@ -19,37 +18,6 @@ public extension Node where Context == HTML.ListContext {
 // MARK: - ItemList
 
 public extension Node where Context == HTML.BodyContext {
-  static func itemList(for items: [Item<BrightDigitSite>], on _: BrightDigitSite) -> Node {
-    .ul(
-      .class("item-list"),
-      .forEach(items) { item in
-        .li(.article(
-          .img(.src(item.metadata.featuredImage ?? "http://placeimg.com/800/450/tech/\(UUID().uuidString)")),
-          .h2(.a(
-            .href(item.path),
-            .text(item.title)
-          )),
-          .ol(
-            .group(
-              (1 ... Int.random(in: 1 ... 3)).map { _ in Lorem.word }.map { .text($0) }.map { .li(.a($0, .href("/"))) }
-            )
-          ),
-          .p(.text(item.description)),
-          .footer(
-            .div(
-              .class("publishedAt"),
-              .text("Feb 2, 2021") // Date(timeIntervalSinceNow: .random(in: 1.365) * 86400.0)
-            ),
-            .div(
-              .class("readTime"),
-              .text("4 mins read") // Date(timeIntervalSinceNow: .random(in: 1.365) * 86400.0)
-            )
-          )
-        ))
-      }
-    )
-  }
-
   // MARK: - HeaderNav
 
   /// Add an `<li>` HTML element within the current context.

@@ -47,15 +47,6 @@
         }
       },
       {
-        "package": "LoremSwiftum",
-        "repositoryURL": "https://github.com/lukaskubanek/LoremSwiftum.git",
-        "state": {
-          "branch": null,
-          "revision": "8942e732e50458cde5dccf9996afa16f29372853",
-          "version": "2.2.2"
-        }
-      },
-      {
         "package": "MarkdownGenerator",
         "repositoryURL": "https://github.com/eneko/MarkdownGenerator.git",
         "state": {
@@ -107,6 +98,15 @@
           "branch": null,
           "revision": "1402af3cbe18df03fb6df701fdcf51471f98d0ff",
           "version": "0.8.0"
+        }
+      },
+      {
+        "package": "ReadingTimePublishPlugin",
+        "repositoryURL": "https://github.com/alexito4/ReadingTimePublishPlugin",
+        "state": {
+          "branch": null,
+          "revision": "7b917d0ee13184c2f0f8afca503dbbdcad6cda21",
+          "version": "0.2.0"
         }
       },
       {

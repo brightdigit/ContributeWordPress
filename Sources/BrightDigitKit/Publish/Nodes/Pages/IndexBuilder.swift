@@ -1,17 +1,16 @@
 import Foundation
-import LoremSwiftum
 import Plot
 import Publish
 
 // MARK: - BodyContext
 
 struct IndexBuilder: ContentBuilder {
-  func main(forLocation _: Index, withContext _: PublishingContext<BrightDigitSite>) -> [Node<HTML.BodyContext>] {
+  func main(forLocation _: Index, withContext context: PublishingContext<BrightDigitSite>) -> [Node<HTML.BodyContext>] {
     [
       .mainHeader(),
       .sectionForServices(),
       .sectionForTestimonials(),
-      .sectionForLatestArticles(),
+      .sectionForLatestArticles(basedOn: context),
       .sectionForNewsletterCTA()
     ]
   }
@@ -32,7 +31,19 @@ public extension Node where Context == HTML.BodyContext {
         .sectionForHero2()
       ),
       .footer(
-        .img(.src("https://via.placeholder.com/1920x1080.png"))
+        .video(
+          .attribute(named: "autoplay"),
+          .attribute(named: "muted"),
+          .attribute(named: "loop"),
+          .source(
+            .src("/media/iPhone.mov"),
+            .attribute(named: "type", value: "video/quicktime")
+          ),
+          .source(
+            .src("/media/iPhone.webm"),
+            .type(.webM)
+          )
+        )
       )
     )
   }
@@ -58,7 +69,7 @@ public extension Node where Context == HTML.BodyContext {
     .section(
       .class("hero"),
       .header(
-        .img(.src("https://via.placeholder.com/1920x1080.png"))
+        .img(.src("/media/swift-heroes.jpg"))
       ),
       .main(
         .section(
@@ -104,29 +115,25 @@ public extension Node where Context == HTML.BodyContext {
         .h2("Testimonials")
       ),
       .ol(
-        .loremIpsumTestimonial(),
-        .loremIpsumTestimonial(),
-        .loremIpsumTestimonial(),
-        .loremIpsumTestimonial(),
-        .loremIpsumTestimonial(),
-        .loremIpsumTestimonial()
+        .forEach(Testimonial.all, Testimonial.listItem)
       )
     )
   }
 
   // MARK: - Latest Articles
 
-  static func sectionForLatestArticles() -> Node {
-    .section(
+  static func sectionForLatestArticles(basedOn context: PublishingContext<BrightDigitSite>) -> Node {
+    let latestArticles = context.sections.compactMap(\.items.first)
+
+    return .section(
       .id("posts"),
       .header(
         .h2("Latest")
       ),
       .ol(
-        .loremIpsumArticle(),
-        .loremIpsumArticle(),
-        .loremIpsumArticle(),
-        .loremIpsumArticle()
+        .forEach(latestArticles) { article in
+          .latestArticle(article)
+        }
       )
     )
   }
@@ -164,46 +171,36 @@ public extension Node where Context == HTML.ListContext {
     )
   }
 
-  static func loremIpsumTestimonial() -> Node {
-    .li(
-      .element(named: "figure", nodes: [.blockquote(
-        .p(
-          .text(Lorem.sentences(2))
-        )
-      ), .element(named: "figcaption", nodes: [
-        .text("-"),
-        .text(Lorem.fullName),
-        .text(", "),
-        .element(named: "cite", nodes: [.text(Lorem.title)])
-      ])])
-    )
-  }
-
-  static func loremIpsumArticle() -> Node {
+  static func latestArticle(_ article: IndexArticle) -> Node {
     .li(
       .header(
-        .img(.src("http://placeimg.com/200/150/tech/\(UUID().uuidString)")),
-        .h3(.text(Lorem.title)),
-        .ol(
-          .li(.text(Lorem.word))
+        .a(
+          .href(article.url),
+          .img(.src(article.featuredImageURL)),
+          .h3(.text(article.title))
         ),
         .ol(
-          .group(
-            (1 ... Int.random(in: 1 ... 3)).map { _ in Lorem.word }.map { .text($0) }.map { .li($0) }
-          )
+          .forEach(article.tags) { tag in
+            .li(.text(tag.string))
+          }
         )
       ),
       .main(
-        .p(.text(Lorem.sentences(2)))
+        .p(.text(article.description))
       ),
       .footer(
-        .div(
-          .class("publishedAt"),
-          .text("Feb 2, 2021") // Date(timeIntervalSinceNow: .random(in: 1.365) * 86400.0)
-        ),
-        .div(
-          .class("readTime"),
-          .text("4 mins read") // Date(timeIntervalSinceNow: .random(in: 1.365) * 86400.0)
+        .a(
+          .href(article.url),
+          .div(
+            .class("publishedAt"),
+            .text(
+              PiHTMLFactory.itemFormatter.string(from: article.publishedAt)
+            )
+          ),
+          .div(
+            .class("readTime"),
+            .text("\(article.lengthInMinutes) mins")
+          )
         )
       )
     )
