@@ -72,12 +72,8 @@ struct ArticleItem: SectionItem {
 
   init(item: Item<BrightDigitSite>) throws {
     source = item
-    let featuredImageURL = item.metadata.featuredImage.flatMap(URL.init(string:))
+    let featuredImageURL = item.featuredImageURL
     let isFeatured = item.metadata.featured ?? false
-
-    guard let featuredImageURL = featuredImageURL else {
-      throw PiError.missingField(MissingFields.ArticleField.featuredImageURL, item)
-    }
 
     slug = item.path.string
     title = item.title

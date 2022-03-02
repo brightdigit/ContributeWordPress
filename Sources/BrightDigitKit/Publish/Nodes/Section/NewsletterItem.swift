@@ -72,14 +72,10 @@ struct NewsletterItem: SectionItem {
 
   init(item: Item<BrightDigitSite>) throws {
     source = item
-    let featuredImageURL = item.metadata.featuredImage.flatMap(URL.init(string:))
+    let featuredImageURL = item.featuredImageURL
     let archiveURL = item.metadata.longArchiveURL.flatMap(URL.init(string:))
     let isFeatured = item.metadata.featured ?? false
     let issueNo = item.metadata.issueNo.flatMap(Int.init)
-
-    guard let featuredImageURL = featuredImageURL else {
-      throw PiError.missingField(MissingFields.NewsletterField.featuredImageURL, item)
-    }
 
     guard let archiveURL = archiveURL else {
       throw PiError.missingField(MissingFields.NewsletterField.archiveURL, item)
