@@ -248,14 +248,10 @@ struct PodcastItem: SectionItem {
 
   init(item: Item<BrightDigitSite>) throws {
     source = item
-    let featuredImageURL = item.metadata.featuredImage.flatMap(URL.init(string:))
+    let featuredImageURL = item.featuredImageURL
     let isFeatured = item.metadata.featured ?? false
 
     let episodeNo = item.path.absoluteString.components(separatedBy: "/").last?.components(separatedBy: .decimalDigits.inverted).first.flatMap(Int.init)
-
-    guard let featuredImageURL = featuredImageURL else {
-      throw PiError.missingField(MissingFields.PodcastField.featuredImageURL, item)
-    }
 
     guard let episodeNo = episodeNo else {
       throw PiError.missingField(MissingFields.PodcastField.episodeNo, item)

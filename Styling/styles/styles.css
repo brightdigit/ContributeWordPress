@@ -105,11 +105,11 @@ body > main {
        }
      } 
      & > .hero  {
-       @apply flex flex-col sm:flex-row xl:text-lg 2xl:text-xl mb-12  lg:flex-col lg:max-w-screen-md;
+       @apply flex flex-col sm:flex-row xl:text-lg 2xl:text-xl mb-12  lg:flex-col lg:max-w-screen-md items-stretch;
        & > header {
-         @apply my-4 sm:w-3/4 sm:my-0 flex sm:mr-4;
+         @apply my-4 sm:w-3/4 sm:my-0 flex sm:mr-4 lg:w-full;
          img{
-           
+           @apply object-cover rounded-lg;
          }
        }
        & > main {
@@ -129,9 +129,9 @@ body > main {
      }
    }
    & > footer {
-     @apply hidden lg:flex flex-shrink m-4;
-     img {
-       @apply flex object-cover;
+     @apply hidden lg:flex flex-grow flex-1 flex-shrink m-4;
+     video {
+       @apply flex object-cover w-full;
      }
    }
   }
@@ -212,11 +212,11 @@ body > main #posts {
 }
 
 body > main #posts > ol{
-  @apply md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-8;
+  @apply md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-8 md:justify-items-stretch;
 }
 
 body > main #posts > ol > li{
-  @apply my-2 py-4 border-b-2 border-gray-400 border-opacity-10 md:border-0;
+  @apply my-2 py-4 border-b-2 border-gray-400 border-opacity-10 md:border-0 md:flex md:flex-col;
 }
 
 body > main #posts > ol > li:last-child {
@@ -227,7 +227,7 @@ body > main #posts > ol > li > header {
   @apply w-full mb-2;
 }
 
-body > main #posts > ol > li > header > h3{
+body > main #posts > ol > li > header h3{
   @apply text-xl py-1;
 }
 
@@ -239,7 +239,7 @@ body > main #posts > ol > li > header > ol > li {
   @apply flex text-sm;
 }
 
-body > main #posts > ol > li > header > img{
+body > main #posts > ol > li > header img{
   @apply object-cover w-full h-40 md:rounded-lg;
 }
 
@@ -248,6 +248,10 @@ body > main #posts > ol > li > main {
 }
 
 body > main #posts > ol > li > footer {
+  @apply flex-1 flex-grow flex flex-col justify-end;
+}
+
+body > main #posts > ol > li > footer > a {
   @apply text-sm flex font-light justify-between py-1;
 }
 

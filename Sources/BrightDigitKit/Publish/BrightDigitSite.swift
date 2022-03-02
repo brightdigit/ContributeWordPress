@@ -14,7 +14,7 @@ public struct BrightDigitSite: Website {
 
   public struct ItemMetadata: WebsiteItemMetadata {
     // Add any site-specific metadata that you want to use here.
-    var featuredImage: String?
+    var featuredImage: String
     var date: Date
     var longArchiveURL: String?
     var featured: Bool?
