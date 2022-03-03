@@ -1,7 +1,7 @@
 ---
 title: Understanding Optionals in Swift
 date: 2017-11-27 13:38
-featuredImage: /media/images/learningswift/2018/06/a6n685qlshq.jpg
+featuredImage: /media/wp-images/learningswift/2019/03/deep-dive-into-vapor.jpg
 ---
 Optionals are a fairly unique concept in Swift. While Objective-C used
 pointers which could be nil and C\# had a Nullable generics type for

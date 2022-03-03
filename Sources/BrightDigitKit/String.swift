@@ -1,8 +1,58 @@
 import Foundation
 
 extension String {
-  enum SlugConversionError: Error {
-    case failedToConvert
+  private static let quotes = ["\"", "'"]
+
+  private static let slugSafeCharacters = CharacterSet(charactersIn: "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-")
+
+  // swiftlint:disable:next force_try
+  private static let escUnicodeRegex = try! NSRegularExpression(
+    pattern: "\\\\U([0-9a-f]{8})",
+    options: [.caseInsensitive]
+  )
+
+  func fixUnicodeEscape() -> String {
+    replacingOccurrences(of: "’", with: "'")
+  }
+
+  func fixEmojiis() -> String {
+    let matches = Self.escUnicodeRegex.matches(
+      in: self,
+      range: .init(location: 0, length: count)
+    ).reversed()
+    var result = self
+    for match in matches {
+      guard let range = Range(match.range, in: result) else {
+        continue
+      }
+      guard let codeRange = Range(match.range(at: 1), in: result) else {
+        continue
+      }
+      let codeString = self[codeRange]
+      guard let value = Int(codeString, radix: 16) else {
+        continue
+      }
+      guard let scalar = UnicodeScalar(value) else {
+        continue
+      }
+      result.replaceSubrange(range, with: String(scalar))
+    }
+    return result
+  }
+
+  func dequote() -> String {
+    let trimmedString = trimmingCharacters(in: .whitespacesAndNewlines)
+    guard let first = trimmedString.first.map(String.init), let last = trimmedString.last.map(String.init), trimmedString.count > 1, last == first else {
+      return trimmedString
+    }
+
+    guard Self.quotes.contains(first) else {
+      return trimmedString
+    }
+    let startIndex = trimmedString.index(after: trimmedString.startIndex)
+    let endIndex = trimmedString.index(before: trimmedString.endIndex)
+
+    return String(trimmedString[startIndex ..< endIndex])
   }
 
   func padLeft(totalWidth: Int, byString: String) -> String {
@@ -13,8 +63,6 @@ extension String {
 
     return "".padding(toLength: toPad, withPad: byString, startingAt: 0) + self
   }
-
-  private static let slugSafeCharacters = CharacterSet(charactersIn: "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-")
 
   private func convertedToSlugBackCompat() -> String? {
     // On Linux StringTransform doesn't exist and CFStringTransform causes all sorts
@@ -31,7 +79,7 @@ extension String {
     return nil
   }
 
-  public func convertedToSlug() throws -> String {
+  public func convertedToSlug() -> String {
     var result: String?
 
     #if os(Linux)
@@ -47,12 +95,17 @@ extension String {
       }
     #endif
 
-    if let result = result {
-      if result.count > 0 {
-        return result
-      }
+    guard var result = result, result.count > 0 else {
+      return self
     }
 
-    throw SlugConversionError.failedToConvert
+    var previous = result
+
+    repeat {
+      previous = result
+      result = previous.replacingOccurrences(of: "--", with: "-")
+    } while previous != result
+
+    return result
   }
 }

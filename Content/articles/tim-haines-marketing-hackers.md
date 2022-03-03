@@ -3,7 +3,7 @@ title: Interview with Tim Haines - October Lansing Marketing Hackers
 date: 2018-09-04 05:25
 description: Tim Haines of Symposia Labs in Holland is presenting for our Lansing
   Marketing Hackers October 10th event at WLNS on Facebook and Instagram Advertising.
-featuredImage: /media/images/brightdigit/2018/08/DSC_0579.jpg
+featuredImage: /media/wp-images/brightdigit/2018/08/DSC_0579.jpg
 ---
 <figure>
 <img src="https://brightdigit.com/wp-content/uploads/2018/08/DSC_0579.jpg" class="wp-image-1339" alt="Tim Haines of Symposia Labs" /><figcaption aria-hidden="true">Tim Haines of Symposia Labs</figcaption>

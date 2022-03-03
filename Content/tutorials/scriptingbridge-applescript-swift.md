@@ -1,9 +1,9 @@
 ---
-title: "ScriptingBridge - Communicating with Swift\u200A and AppleScript"
+title: ScriptingBridge - Communicating with Swift  and AppleScript
 date: 2017-07-15 06:34
-description: "You may want to\_build an app in Xcode with the power of AppleScript
-  and without the need for scripts - particularly using Swift with ScriptingBridge."
-featuredImage: /media/images/learningswift/2018/11/0nrlPZlDopn4aHLy6.png
+description: You may want to build an app in Xcode with the power of AppleScript and
+  without the need for scripts - particularly using Swift with ScriptingBridge.
+featuredImage: /media/wp-images/learningswift/2018/11/0nrlPZlDopn4aHLy6.png
 ---
 **AppleScript **is a great technology on macOS for both developers and
 power users. With **AppleScript, **users can create automated processes

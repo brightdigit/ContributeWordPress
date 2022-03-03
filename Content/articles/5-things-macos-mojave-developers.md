@@ -3,7 +3,7 @@ title: 5 Things to Know About macOS Mojave for Developers
 date: 2018-08-27 03:42
 description: With all the new features in the Mojave MacOS update for developers,
   Apple has given us a roadmap for the first time.
-featuredImage: /media/images/brightdigit/2018/07/Screen-Shot-2018-08-06-at-4.35.30-PM-e1533587827702.png
+featuredImage: /media/wp-images/brightdigit/2018/07/Screen-Shot-2018-08-06-at-4.35.30-PM-e1533587827702.png
 ---
 <span style=";">**Apple just announced the upcoming macOS update called
 Mojave for developers (version 10.14).** The final release date will

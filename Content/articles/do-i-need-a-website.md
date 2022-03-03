@@ -4,7 +4,7 @@ date: 2018-05-24 00:12
 description: Having an updated, easy to navigate website makes a huge difference.
   It doesn't need to be fancy but it does need to easily present the basic information
   about your business.
-featuredImage: /media/images/brightdigit/2018/05/handshake_1526582521.jpg
+featuredImage: /media/wp-images/brightdigit/2018/05/tuazpj1uazs.jpg
 ---
 <img src="https://brightdigit.com/wp-content/uploads/2018/05/frustration_1526581460.jpg" class="size-full wp-image-1144 aligncenter" width="1280" height="854" />
 It is incredibly difficult for a business in this day and age to succeed

@@ -4,7 +4,7 @@ date: 2020-04-07 10:20
 description: It seems there's some confusion when it comes to flatMap and Optionals.
   In the end, using flatMap correctly will make your code easier to read.
 tags: functional programming, optionals
-featuredImage: /media/images/learningswift/2020/04/Untitled.png
+featuredImage: /media/wp-images/learningswift/2020/04/Untitled.png
 ---
 A while ago [I did an article on the basics of
 **Optionals**](https://learningswift.brightdigit.com/understanding-optionals-in-swift/)

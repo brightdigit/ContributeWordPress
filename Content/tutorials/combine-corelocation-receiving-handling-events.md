@@ -4,7 +4,7 @@ date: 2020-08-23 20:31
 description: In our previous post, we talked about how to build a Publisher Factory.
   Here, we'll talk about how to use the factory for receiving and handling events.
 tags: combine, functional programming, GCD
-featuredImage: /media/images/learningswift/2020/08/Combine-ing-the-Old-with-the-New.001.png
+featuredImage: /media/wp-images/learningswift/2020/08/Combine-ing-the-Old-with-the-New.001.png
 ---
 [In our previous
 post,](https://learningswift.brightdigit.com/combine-corelocation-publishers-delegates/)

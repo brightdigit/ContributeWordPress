@@ -3,7 +3,7 @@ title: Swift Thoughts on try!Swift NYC 2018
 date: 2018-09-06 10:46
 description: I had a great time at try!Swift New York this year and there were some
   interesting trends in Swift programming with the topics presented this year.
-featuredImage: /media/images/learningswift/2018/09/DmXeGNdXsAAx6UG.jpg-large.jpeg
+featuredImage: /media/wp-images/learningswift/2018/09/DmXeGNdXsAAx6UG.jpg-large.jpeg
 ---
 I have to say I had a great time at [try!Swift New
 York](https://www.tryswift.co/events/2018/nyc/) this year. I have been

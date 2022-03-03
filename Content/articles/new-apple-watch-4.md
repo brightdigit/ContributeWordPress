@@ -3,7 +3,7 @@ title: What Does The New Apple Watch Mean 4 Your Business?
 date: 2018-10-11 03:26
 description: The new Apple Watch 4 brings new health functionality and updated hardware.
   Does this make it time for your business to publish a watch app?
-featuredImage: /media/images/brightdigit/2018/10/44627295292_5f3b861bfa_h.jpg
+featuredImage: /media/wp-images/brightdigit/2018/10/44627295292_5f3b861bfa_h.jpg
 ---
 Of everything announced at Apple's September Event, the new Apple Watch
 Series 4 took the biggest leap forward in Apple's product lineup. With a

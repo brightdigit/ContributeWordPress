@@ -2,7 +2,7 @@
 title: Get Started Developing Server Side Swift with Vapor
 date: 2019-09-16 06:10
 tags: vapor
-featuredImage: /media/images/learningswift/2019/09/img_0039.jpg
+featuredImage: /media/wp-images/learningswift/2019/09/img_0040.jpg
 ---
 Last month I spoke at [SwiftTO in Toronto](https://www.swiftconf.to/), a
 great conference with some great speakers. If you get a chance, check

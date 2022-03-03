@@ -27,7 +27,7 @@ public extension Newsletter {
       featuredImageURL = campaign.featuredImageURL
       title = campaign.title
       subjectLine = campaign.subjectLine
-      previewText = campaign.previewText
+      previewText = campaign.previewText?.dequote().fixUnicodeEscape()
       sendTime = campaign.sendTime
       self.html = html
       self.markdown = markdown

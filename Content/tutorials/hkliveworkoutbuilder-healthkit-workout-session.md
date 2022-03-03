@@ -4,7 +4,7 @@ date: 2018-06-18 07:23
 description: HKLiveWorkoutBuilder simplifies the way we track health data during workouts.
   Let's begin a workout and track the user's heart rate.
 tags: Smart Intensity
-featuredImage: /media/images/learningswift/2018/05/h4l3ezdpwzc-e1529095698138.jpg
+featuredImage: /media/wp-images/learningswift/2018/05/h4l3ezdpwzc-e1529095698138.jpg
 ---
 We have setup [the iPhone to request
 authorization](https://learningswift.brightdigit.com/healthkit-getting-started/)

@@ -2,7 +2,7 @@
 title: ScriptingBridge with Swift - Communicating with Apps using AppleScript and
   Swift
 date: 2017-06-09 16:38
-featuredImage: /media/images/brightdigit/2017/06/scriptingbridge-with-swift-communicating-with-apps-using-applescript-and-swift.png
+featuredImage: /media/wp-images/brightdigit/2017/06/scriptingbridge-with-swift-communicating-with-apps-using-applescript-and-swift.png
 ---
 <img src="https://www.brightdigit.com/wp-content/uploads/2017/06/scriptingbridge-with-swift-communicating-with-apps-using-applescript-and-swift-300x105.png" class="alignnone size-medium wp-image-276" width="300" height="105" />
 **AppleScript** is a great technology on macOS for both developers and

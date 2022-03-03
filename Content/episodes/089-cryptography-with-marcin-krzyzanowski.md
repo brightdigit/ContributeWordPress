@@ -1,9 +1,8 @@
 ---
-title: "Cryptography with Marcin Krzy\u017Canowski"
+title: Cryptography with Marcin Krzyżanowski
 date: 2021-05-04 00:00
-description: "In this episode, Leo talks with Marcin Krzy\u017Canowski creator of
-  CryptoSwift, Swift Studio and the Online Swift Playground about Cryptography and
-  WWDC 2021."
+description: In this episode, Leo talks with Marcin Krzyżanowski creator of CryptoSwift,
+  Swift Studio and the Online Swift Playground about Cryptography and WWDC 2021.
 featuredImage: https://images.transistor.fm/file/transistor/images/episode/523867/full_1619383026-artwork.jpg
 youtubeID: eigMjltZlP8
 audioDuration: 2401

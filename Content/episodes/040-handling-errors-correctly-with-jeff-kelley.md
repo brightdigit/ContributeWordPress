@@ -1,8 +1,8 @@
 ---
 title: Handling Errors Correctly with Jeff Kelley
 date: 2020-03-15 00:00
-description: 'In this episode, Leo talks with Jeff Kelley from Detroit Labs about
-  handing, tracking and test errors and when they can happen. '
+description: In this episode, Leo talks with Jeff Kelley from Detroit Labs about handing,
+  tracking and test errors and when they can happen.
 featuredImage: https://images.transistor.fm/file/transistor/images/episode/199013/full_1582327124-artwork.jpg
 youtubeID: m9VouX_K2Uo
 audioDuration: 2991

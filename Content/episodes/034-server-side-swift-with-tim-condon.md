@@ -1,9 +1,9 @@
 ---
 title: Server-Side Swift with Tim Condon
 date: 2020-01-12 00:00
-description: "In this episode, Leo talks with Tim Condon about Server-Side Swift and
+description: 'In this episode, Leo talks with Tim Condon about Server-Side Swift and
   the Vapor Web Framework: how it fits into the development of an application now,
-  why you\u2019d choose it, and what it takes to get started."
+  why you''d choose it, and what it takes to get started.'
 featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full_1533929410-artwork.jpg
 youtubeID: _q_emkWO0AY
 audioDuration: 3155

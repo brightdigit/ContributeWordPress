@@ -3,7 +3,7 @@ title: Vapor - Swift Choice For the Back End
 date: 2019-03-19 03:44
 description: For Swift developers, Vapor has become an increasingly apt choice for
   a mobile backend. I decided to deep dive into Vapor and see if it is a viable choice.
-featuredImage: /media/images/learningswift/2019/03/javier-allegue-barros-761133-unsplash.jpg
+featuredImage: /media/wp-images/learningswift/2019/03/swift-vapor-choice.jpg
 ---
 Back in February, I did [an episode of my podcast where I gave an
 overview of different backend options when developing a mobile

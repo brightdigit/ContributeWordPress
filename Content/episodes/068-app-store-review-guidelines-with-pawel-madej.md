@@ -1,11 +1,11 @@
 ---
-title: "App Store Review Guidelines with Pawe\u0142 Madej"
+title: App Store Review Guidelines with Paweł Madej
 date: 2020-11-07 00:00
-description: "In this episode, Leo chats with Pawe\u0142 Madej, pharmacist turned
-  iOS developer on his learning experience and what pitfalls devs should know about
-  App Store reviews. We talk about what he learned during the submission process of
-  his app CodeConf, as well as the major App Store stories of the year: Hey, Wordpress,
-  xCloud and of course Fortnite. "
+description: 'In this episode, Leo chats with Paweł Madej, pharmacist turned iOS developer
+  on his learning experience and what pitfalls devs should know about App Store reviews.
+  We talk about what he learned during the submission process of his app CodeConf,
+  as well as the major App Store stories of the year: Hey, Wordpress, xCloud and of
+  course Fortnite.'
 featuredImage: https://images.transistor.fm/file/transistor/images/episode/393606/full_1604511329-artwork.jpg
 youtubeID: NmFHkLlxhL8
 audioDuration: 3022

@@ -5,7 +5,7 @@ description: This wasn't the "flashiest" year for the WWDC but some important ch
   came up for businesses to know about. It appears that Apple is taking these concerns
   over the year seriously and is doing some house cleaning. These behind the scenes
   concepts might not grab the headlines but they make a big difference for users.
-featuredImage: /media/images/brightdigit/2018/08/img_4492d8beee0b-1.jpg
+featuredImage: /media/wp-images/brightdigit/2018/08/img_4492d8beee0b-1.jpg
 ---
 <figure>
 <img src="https://brightdigit.com/wp-content/uploads/2018/08/1280px-San_Jose_Convention_Center_plaza_WWDC18.jpg" class="wp-image-1294" />

@@ -1,9 +1,9 @@
 ---
 title: Understanding Optionals in Swift
 date: 2018-01-04 14:14
-description: "Optionals are a fairly unique concept in Swift. While Objective-C used
-  pointers, Swift has an inherent syntax for optionals\u2026"
-featuredImage: /media/images/brightdigit/2018/01/2000px-Question_Mark.svg_.png
+description: Optionals are a fairly unique concept in Swift. While Objective-C used
+  pointers, Swift has an inherent syntax for optionals…
+featuredImage: /media/wp-images/brightdigit/2018/01/2000px-Question_Mark.svg_.png
 ---
 Optionals are a fairly unique concept in Swift. While Objective-C used
 pointers which could be nil and C\# had a Nullable generics type for
