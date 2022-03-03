@@ -1,8 +1,8 @@
 ---
 title: Upgrading Your Skills in 2020 with Paul Hudson
 date: 2020-02-02 00:00
-description: "In this episode, Leo is joined by Paul Hudson of hackingwithswift.com
-  about how to upgrade your skills and your team\u2019s skills in 2020."
+description: In this episode, Leo is joined by Paul Hudson of hackingwithswift.com
+  about how to upgrade your skills and your team's skills in 2020.
 featuredImage: https://images.transistor.fm/file/transistor/images/episode/184230/full_1579876427-artwork.jpg
 youtubeID: Xe2X-mXhfI0
 audioDuration: 4199

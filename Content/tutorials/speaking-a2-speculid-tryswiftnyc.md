@@ -3,7 +3,7 @@ title: Speaking at A2 Cocoaheads on Speculid and Try!Swift
 date: 2018-10-01 10:53
 description: Next Thursday on October 11, I'll be speaking at the Ann Arbor Cocoaheads
   at ArborMoon on developing Speculid as well as Try!Swift New York.
-featuredImage: /media/images/learningswift/2018/10/Artboard-1.png
+featuredImage: /media/wp-images/learningswift/2018/10/Artboard-1.png
 ---
 [Next Thursday on October
 11,](https://www.meetup.com/A2-CocoaHeads/events/254589885/) I'll be

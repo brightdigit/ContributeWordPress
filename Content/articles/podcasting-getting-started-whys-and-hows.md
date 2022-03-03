@@ -1,7 +1,7 @@
 ---
-title: "Podcasting \u2013 Getting Started \u2013 Whys and Hows"
+title: Podcasting – Getting Started – Whys and Hows
 date: 2019-07-08 11:00
-featuredImage: /media/images/brightdigit/2019/06/Add-a-heading.jpg
+featuredImage: /media/wp-images/brightdigit/2019/06/thomas-le-705214-unsplash-694-e1560428799770.jpeg
 ---
 Leo Dion recently did a talk at Lansing Marketing Hackers on podcasting
 on how to get started.

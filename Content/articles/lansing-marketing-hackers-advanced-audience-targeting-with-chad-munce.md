@@ -1,7 +1,7 @@
 ---
 title: Lansing Marketing Hackers - Advanced Audience Targeting with Chad Munce
 date: 2019-10-01 07:39
-featuredImage: /media/images/brightdigit/2019/09/neonbrand-1-aA2Fadydc-unsplash.jpg
+featuredImage: /media/wp-images/brightdigit/2019/09/neonbrand-1-aA2Fadydc-unsplash.jpg
 ---
 We are happy to have [](http://meetu.ps/e/G7PrB/g7Z24/f) [**Chad
 Munce**, Digital Sales Manager for Nexstar Media Group speak on

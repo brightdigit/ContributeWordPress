@@ -4,7 +4,7 @@ date: 2021-05-11 06:05
 description: We'll talk about using a package in Xcode, creating a package in Xcode
   or with the swift command as well as how the manifest Package.swift works.
 tags: swift-package, swift-package-manager
-featuredImage: /media/images/learningswift/2021/04/DraggedImage-2.png
+featuredImage: /media/wp-images/learningswift/2021/05/Screen-Shot-2020-11-02-at-5.23.03-PM-14359.png
 ---
 [In the previous
 article](https://learningswift.brightdigit.com/swift-dependency-management-spm/),

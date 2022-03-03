@@ -3,7 +3,7 @@ title: Swift on ARM - Supporting ARM in Swift Package CI
 date: 2020-06-13 14:01
 description: In this article, I'm going to go over how to setup your CI and install
   Swift in Travis-CI and GitHub Actions for ARM architectures.
-featuredImage: /media/images/learningswift/2020/06/1000px-ARM_CPU_icon.svg_-1.png
+featuredImage: /media/wp-images/learningswift/2020/06/1000px-ARM_CPU_icon.svg_.png
 ---
 In [a previous
 post,](https://learningswift.brightdigit.com/swift-package-continuous-integration-guide/)

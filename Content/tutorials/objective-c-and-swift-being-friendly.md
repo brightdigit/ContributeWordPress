@@ -3,7 +3,7 @@ title: Objective-C and Swift - Being Friendly
 date: 2018-11-14 05:23
 description: Objective-C is still necessary for Swift development. With the introduction
   of C++ libraries in version 2.0 of Speculid, Objective-C became necessary.
-featuredImage: /media/images/learningswift/2018/11/2m411z.jpg
+featuredImage: /media/wp-images/learningswift/2018/11/2m411z.jpg
 ---
 There are times where Objective-C is still necessary for Swift
 development. For instance, with one such app I've built in Swift,

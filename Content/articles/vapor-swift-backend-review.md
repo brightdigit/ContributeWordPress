@@ -1,7 +1,7 @@
 ---
 title: Vapor &#8211; Swift Choice For the Back End
 date: 2019-03-19 06:10
-featuredImage: /media/images/brightdigit/2019/03/jared-murray-974070-unsplash-e1552938232840.jpg
+featuredImage: /media/wp-images/brightdigit/2019/03/swift-vapor-choice.jpg
 ---
 Back in February, I did [an episode of my podcast where I gave an
 overview of different backend options when developing a mobile

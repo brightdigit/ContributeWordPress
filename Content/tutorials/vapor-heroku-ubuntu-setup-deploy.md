@@ -3,7 +3,7 @@ title: Vapor - Deep Dive Guide into Setup and Deployment for Heroku and Ubuntu
 date: 2019-03-19 03:51
 description: Vapor is a really great choice and fairly easy to work with. In this
   article I am going to cover how to get started and deployed to the web.
-featuredImage: /media/images/learningswift/2019/03/deep-dive-into-vapor.jpg
+featuredImage: /media/wp-images/learningswift/2019/03/macos_xcode_run.jpg
 ---
 It can be a real challenge [picking the right back
 end](https://share.transistor.fm/s/ffcb9fc1?utm_source=learning-swift&utm_medium=web)

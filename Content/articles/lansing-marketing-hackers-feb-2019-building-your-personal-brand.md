@@ -3,7 +3,7 @@ title: Lansing Marketing Hackers -  Building Your Personal Brand
 date: 2019-02-08 10:53
 description: We are happy to have Courtney Larvadain from Glow Social Media come and
   speak on Building Your Personal Brand at WLNS on Wednesday, February 13 at Noon.
-featuredImage: /media/images/brightdigit/2019/02/highres_476886987.jpeg
+featuredImage: /media/wp-images/brightdigit/2019/02/highres_476886987.jpeg
 ---
 We are happy to have [**Courtney Larvadain** from **Glow Social Media**
 come and speak on **Building Your Personal Brand** at

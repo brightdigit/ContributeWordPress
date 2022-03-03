@@ -1,10 +1,10 @@
 ---
-title: "iOS App Architecture with Ren\xE9 Cacheaux and Josh Berlin"
+title: iOS App Architecture with René Cacheaux and Josh Berlin
 date: 2019-06-02 00:00
-description: "In this episode, we talk with Ren\xE9 Cacheaux and Josh Berlin, authors
+description: 'In this episode, we talk with René Cacheaux and Josh Berlin, authors
   of Advanced iOS App Architecture. In this episode, we talk about: how a company
-  can foster healthy iOS Architectures with their iOS developers\nand what makes good
-  architectures."
+  can foster healthy iOS Architectures with their iOS developers
+  and what makes good architectures.'
 featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full_1533929410-artwork.jpg
 youtubeID: 19wNH6krSz4
 audioDuration: 2137

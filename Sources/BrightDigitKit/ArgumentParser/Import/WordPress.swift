@@ -23,7 +23,7 @@ public extension BrightDigitSiteCommand.ImportCommand {
     public var exportMarkdownDirectory: String
 
     @Option(help: "Path to Save Images Relative to Resources.")
-    public var imageRelativePath = "media/images"
+    public var imageRelativePath = "media/wp-images"
 
     @Flag(help: "Overwrite Downloaded Images.")
     public var overwriteImages: Bool = false

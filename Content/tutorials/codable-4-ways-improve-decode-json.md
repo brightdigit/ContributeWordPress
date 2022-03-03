@@ -3,7 +3,7 @@ title: Codable  - 4 Ways to Improve How You Decode JSON
 date: 2019-02-20 22:17
 description: Codable, introduced in Swift 4, provides a convenient and easy way to
   encode and decode JSON. However not everything works out of the box.
-featuredImage: /media/images/learningswift/2019/02/codable_image.png
+featuredImage: /media/wp-images/learningswift/2019/02/codable_image.png
 ---
 Codable, introduced in Swift 4, provides a convenient and easy way to
 encode and decode JSON. **However, not everything works out of the

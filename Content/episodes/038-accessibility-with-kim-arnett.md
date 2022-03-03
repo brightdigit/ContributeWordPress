@@ -1,8 +1,8 @@
 ---
 title: Accessibility with Kim Arnett
 date: 2020-02-23 00:00
-description: "In this episode, Leo talks with Kim Arnett of Expedia, about the importance
-  of accessibility and how to make it part of your team\u2019s development process."
+description: In this episode, Leo talks with Kim Arnett of Expedia, about the importance
+  of accessibility and how to make it part of your team's development process.
 featuredImage: https://images.transistor.fm/file/transistor/images/episode/198935/full_1582298678-artwork.jpg
 youtubeID: eS6S_zXPPnE
 audioDuration: 1868

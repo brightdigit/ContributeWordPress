@@ -3,7 +3,7 @@ title: Swift 5.0 and XCode 10.1 - Using a Custom Toolchain
 date: 2018-12-19 03:05
 description: You can try the features of Swift 5.0 using the development branch toolchain
   now. However with Xcode 10.1, it takes a bit of tweaking to get it to work.
-featuredImage: /media/images/learningswift/2018/12/Xcode-ProjectSettings-Window-e1545173841972.png
+featuredImage: /media/wp-images/learningswift/2018/12/Xcode-Toolchain-Menu.png
 ---
 Just as [Swift 4.2 brought some interesting
 features](https://learningswift.brightdigit.com/swift-4-2-random-changes-wwdc-2018/),

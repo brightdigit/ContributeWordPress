@@ -1,9 +1,9 @@
 ---
 title: Navigating DocC with Ellen Shapiro
 date: 2021-09-28 06:50
-description: 'In this episode, Leo chats with Ellen Shapiro of Apollo GraphQL about
+description: In this episode, Leo chats with Ellen Shapiro of Apollo GraphQL about
   DocC how to get started, how to do Tutorials and Articles, where it falls short,
-  and what open-sourcing might mean. Also there was an Apple event or something? '
+  and what open-sourcing might mean. Also there was an Apple event or something?
 featuredImage: https://images.transistor.fm/file/transistor/images/episode/646569/full_1632753243-artwork.jpg
 youtubeID: KhIg2u0J_wQ
 audioDuration: 2729

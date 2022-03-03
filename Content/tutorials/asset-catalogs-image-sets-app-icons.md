@@ -3,7 +3,7 @@ title: Asset Catalogs, Image Sets, and App Icons
 date: 2018-11-07 02:55
 description: In Xcode, Asset Catalogs are an important part of that process and the
   primary way they are used is through Image Sets and App Icons.
-featuredImage: /media/images/learningswift/2018/10/AppIcons.jpg
+featuredImage: /media/wp-images/learningswift/2018/10/AppIcons.jpg
 ---
 Asset catalogs are collections of specialized files (such as graphics
 files) as well as JSON files containing metadata. The metadata from the

@@ -4,7 +4,7 @@ date: 2020-08-18 20:31
 description: Many APIs from Apple come from an era of Objective-C and Delegate Patterns.
   How do we adapt those APIs for SwiftUI and create Publishers from delegates?
 tags: combine, functional programming, GCD
-featuredImage: /media/images/learningswift/2020/08/CoreLocation-AppPreview.jpg
+featuredImage: /media/wp-images/learningswift/2020/08/Combine-ing-the-Old-with-the-New-360iDev-August-2020.001-2.png
 ---
 Most of the APIs from Apple come from an era of Objective-C and the
 Delegation Pattern. With this in mind, the challenge is figuring how to
