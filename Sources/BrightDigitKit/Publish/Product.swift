@@ -62,7 +62,7 @@ struct Product {
       self.init(path: path)
     }
 
-    static let basePath = "/media/images/products"
+    static let basePath = "/media/products"
     let path: String
 
     func string(basedOnSlug slug: String) -> String {
