@@ -59,6 +59,8 @@ struct PiHTMLFactory: HTMLFactory {
     return HTML(
       .makeHead(forPage: content),
       .body(
+        .unwrap(content.bodyID, Node.id),
+        .unwrap(content.bodyClassValue, Node.class),
         .headerNav(),
         content.mainElement,
         .makeFooter()
@@ -83,7 +85,7 @@ struct PiHTMLFactory: HTMLFactory {
   // MARK: - makePageHTML
 
   func makePageHTML(for page: Page, context: PublishingContext<BrightDigitSite>) throws -> HTML {
-    let content = (try? Pages.content(basedOnPage: page, withContext: context)) ?? MockContent()
+    let content = try Pages.content(basedOnPage: page, withContext: context)
     return HTML(
       .makeHead(forPage: content),
       .body(
@@ -98,23 +100,13 @@ struct PiHTMLFactory: HTMLFactory {
   // MARK: - makeTagListHTML
 
   func makeTagListHTML(for _: TagListPage, context _: PublishingContext<BrightDigitSite>) throws -> HTML? {
-    HTML(
-      .makeHead(forPage: MockContent()),
-      .body(
-        .text("makeTagListHTML")
-      )
-    )
+    nil
   }
 
   // MARK: - makeTagDetailsHTML
 
   func makeTagDetailsHTML(for _: TagDetailsPage, context _: PublishingContext<BrightDigitSite>) throws -> HTML? {
-    HTML(
-      .makeHead(forPage: MockContent()),
-      .body(
-        .text("makeTagDetailsHTML")
-      )
-    )
+    nil
   }
 
   typealias Site = BrightDigitSite

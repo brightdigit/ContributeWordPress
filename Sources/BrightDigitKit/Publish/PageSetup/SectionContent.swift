@@ -9,6 +9,10 @@ struct SectionContent<SectionBuilderType: SectionBuilderProtocol>: PageContent {
     builder.section.title
   }
 
+  var bodyClasses: [String] {
+    []
+  }
+
   var bodyID: String? {
     builder.section.id.rawValue
   }
