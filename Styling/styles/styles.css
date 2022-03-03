@@ -1102,7 +1102,7 @@ body {
 
 }
 
-body.podcast-episode {
+body.episodes {
   & > main {
     & > header {
       @apply sm:flex sm:flex-row-reverse sm:mb-4;
