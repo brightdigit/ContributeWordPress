@@ -4,7 +4,7 @@ date: 2019-09-25 06:00
 description: From the Mac Pro to the Apple Watch developers need to design thier applications
   to best take advantage of multiple cores in Swift using asynchronous methods.
 tags: combine, GCD, promises, swiftui
-featuredImage: /media/images/learningswift/2019/09/The-Multi-Threaded-Asynchronous-Parallel-World-of-Swift-360iDev-copy.001.jpeg
+featuredImage: /media/wp-images/learningswift/2019/09/Screen-Shot-2019-09-23-at-5.30.47-PM.png
 ---
 Over the last 15 years, CPU clock rate has plateaued due to thermal
 limitations in processors. As a result, CPU manufactures have instead

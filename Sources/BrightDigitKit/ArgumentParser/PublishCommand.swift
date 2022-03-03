@@ -8,19 +8,7 @@ public extension BrightDigitSiteCommand {
     public init() {}
 
     public func run() throws {
-      try BrightDigitSite().publish(using: [
-        .optional(.copyResources()),
-        .installPlugin(.splash(withClassPrefix: "")),
-        .addMarkdownFiles(),
-        .installPlugin(.readingTime()),
-        .sortItems(by: \.date, order: .descending),
-
-        .generateHTML(withTheme: .company, indentation: .spaces(2)),
-        .generateSiteMap(),
-
-        .webpack,
-        .generateRSSFeed(including: [.articles, .tutorials])
-      ])
+      try BrightDigitSite().publish()
     }
   }
 }

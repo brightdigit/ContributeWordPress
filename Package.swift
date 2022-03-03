@@ -65,6 +65,7 @@ let package = Package(
   let config = PackageConfiguration([
     "komondor": [
       "pre-commit": [
+        "swift test --enable-code-coverage --enable-test-discovery --generate-linuxmain",
         "swift run swiftformat .",
         "swift run swiftlint autocorrect",
         "git add .",

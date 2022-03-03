@@ -1,9 +1,9 @@
 ---
-title: "4 Little-Known Tips For Getting Your App Through Apple\u2019s Store Review"
+title: 4 Little-Known Tips For Getting Your App Through Apple's Store Review
 date: 2021-05-04 10:12
 description: Building an iOS app is a complex process. One of the last things you
   have to do is pass an App Store Review. Here are 4 tips for success...
-featuredImage: /media/images/brightdigit/2021/05/Screen-Shot-2021-05-01-at-10.22.45-AM.png
+featuredImage: /media/wp-images/brightdigit/2021/05/Screen-Shot-2021-05-01-at-10.22.45-AM.png
 ---
 Building and publishing an app is a complex process. One of the last
 things you have to do before your app can go live on the App Store is

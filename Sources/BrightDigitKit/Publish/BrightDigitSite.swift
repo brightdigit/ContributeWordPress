@@ -31,4 +31,25 @@ public struct BrightDigitSite: Website {
   public var description = "A description of BrightdigitCom"
   public var language: Language { .english }
   public var imagePath: Path? { nil }
+
+  static let defaultSteps: [PublishingStep<BrightDigitSite>] = [
+    .optional(.copyResources()),
+    .installPlugin(.splash(withClassPrefix: "")),
+    .addMarkdownFiles(),
+    .yamlStringFix,
+    .installPlugin(.readingTime()),
+    .sortItems(by: \.date, order: .descending),
+
+    .generateHTML(withTheme: .company, indentation: .spaces(2)),
+    .generateSiteMap(),
+
+    .webpack,
+    .generateRSSFeed(including: [.articles, .tutorials])
+  ]
+}
+
+extension BrightDigitSite {
+  func publish() throws {
+    try publish(using: Self.defaultSteps)
+  }
 }

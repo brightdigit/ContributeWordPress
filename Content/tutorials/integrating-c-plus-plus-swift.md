@@ -1,9 +1,9 @@
 ---
-title: "Integrating \u200B\u200B\u200BC++ Libraries with Swift - How Speculid Is Built"
+title: Integrating ​​​C++ Libraries with Swift - How Speculid Is Built
 date: 2019-01-16 05:00
 description: Previously, I discussed using Objective-C to integrate C++ with Swift
   in Speculid. Today, I'm going to talk about the challenges of using C++.
-featuredImage: /media/images/learningswift/2018/11/500px-Cairo_banner_1.svg_-e1541095276942.png
+featuredImage: /media/wp-images/learningswift/2018/10/pixman_example.png
 ---
 In the article [Objective-C and Swift - Being
 Friendly](https://learningswift.brightdigit.com/objective-c-and-swift-being-friendly/),

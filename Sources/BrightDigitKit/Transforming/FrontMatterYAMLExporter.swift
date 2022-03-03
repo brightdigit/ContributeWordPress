@@ -17,7 +17,11 @@ public struct FrontMatterYAMLExporter<
   }
 
   let translator: FrontMatterTranslatorType
-  let formatter: FrontMatterFormatter = YAMLEncoder()
+  let formatter: FrontMatterFormatter = {
+    let encoder = YAMLEncoder()
+    encoder.options = .init(width: -1, allowUnicode: true)
+    return encoder
+  }()
 
   public func frontMatterText(from source: SourceType) throws -> String {
     let specs = translator.frontMatter(from: source)

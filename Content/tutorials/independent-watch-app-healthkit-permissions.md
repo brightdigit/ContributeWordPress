@@ -4,7 +4,7 @@ date: 2019-09-17 10:45
 description: In the development of my latest app which is an Independent Watch App
   and uses HealthKit, I ran into an issue with App Store Connect.
 tags: apple-watch
-featuredImage: /media/images/learningswift/2019/09/Screen-Shot-2019-09-17-at-2.32.21-PM.png
+featuredImage: /media/wp-images/learningswift/2019/09/Simulator-Screen-Shot-Apple-Watch-Series-5-40mm-2019-09-17-at-14.45.17.png
 ---
 In the development of my latest app which is an Independent Watch App
 that uses

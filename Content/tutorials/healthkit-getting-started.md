@@ -5,7 +5,7 @@ description: HealthKit is the most important API when it comes to building healt
   fitness and workout apps. HealthKit also has many intricacies and details which
   need introduction when getting started such as HKObjectType and HKHealthStore.
 tags: Smart Intensity
-featuredImage: /media/images/learningswift/2018/05/diagram.png
+featuredImage: /media/wp-images/learningswift/2018/05/Artboard-1.png
 ---
 HealthKit is the most important API when it comes to building health,
 fitness and workout apps. HealthKit also has many intricacies and

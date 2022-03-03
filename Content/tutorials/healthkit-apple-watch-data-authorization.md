@@ -1,11 +1,11 @@
 ---
-title: "HealthKit \u2013 Apple Watch \u2013 Data and Authorization"
+title: HealthKit – Apple Watch – Data and Authorization
 date: 2018-06-11 05:34
-description: "The Apple Watch has become the premier device for health monitoring.
-  So now that authorization is setup on the iPhone,\_let's take a look at how get
-  authorization setup on the Apple Watch."
+description: The Apple Watch has become the premier device for health monitoring.
+  So now that authorization is setup on the iPhone, let's take a look at how get authorization
+  setup on the Apple Watch.
 tags: Smart Intensity
-featuredImage: /media/images/learningswift/2018/06/Simulator-Screen-Shot-Apple-Watch-Series-3-38mm-2018-06-08-at-14.36.24.png
+featuredImage: /media/wp-images/learningswift/2018/06/ezgif.com-gif-maker.gif
 ---
 The Apple Watch has become the premier device for health, fitness, and
 workout tracking. So now that [authorization is setup on the

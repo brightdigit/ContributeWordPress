@@ -1,7 +1,7 @@
 ---
 title: Lansing Marketing Hackers -  Getting Started Podcasting
 date: 2019-05-29 05:04
-featuredImage: /media/images/brightdigit/2019/05/highres_480059173.jpeg.png
+featuredImage: /media/wp-images/brightdigit/2019/05/highres_480059173.jpeg.png
 ---
 This June, [BrightDigit's own Leo Dion will present on Getting Started
 Podcasting at MSUFCU

@@ -52,9 +52,17 @@ public struct WordpressMarkdownProcessor<
   let contentBuilder: MarkdownContentBuilderType
   let postFilters: [PostFilter]
 
+  fileprivate func createDirectory(withName directoryName: String, in contentPathURL: URL) throws {
+    let directoryURL = contentPathURL.appendingPathComponent(directoryName, isDirectory: true)
+
+    if !FileManager.default.fileExists(atPath: directoryURL.path) {
+      try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true)
+    }
+  }
+
   private func writeAllPosts(_ allPosts: [String: [WordPressPost]], withImages images: [WordPressImageImport], atImageRoot imageRoot: String, to contentPathURL: URL) throws {
     try allPosts.forEach { args in
-
+      try createDirectory(withName: args.key, in: contentPathURL)
       try args.value
         .filter(self.postFilters.postSatisfiesAll)
         .forEach { post in
@@ -62,7 +70,7 @@ public struct WordpressMarkdownProcessor<
             ["", imageRoot, $0.newPath].joined(separator: "/")
           }
 
-          try self.contentBuilder.write(from: .init(sectionName: args.key, post: post, featuredImage: featuredImagePath), atContentPathURL: contentPathURL, basedOn: self.destinationURLGenerator)
+          _ = try self.contentBuilder.write(from: .init(sectionName: args.key, post: post, featuredImage: featuredImagePath), atContentPathURL: contentPathURL, basedOn: self.destinationURLGenerator)
         }
     }
   }

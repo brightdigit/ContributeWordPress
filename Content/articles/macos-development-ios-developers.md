@@ -4,7 +4,7 @@ date: 2018-02-16 05:00
 description: There are good reasons to get into Mac development if you are already
   an iOS developer.
 tags: apple-development
-featuredImage: /media/images/brightdigit/2018/02/equality-2-399.png
+featuredImage: /media/wp-images/brightdigit/2018/02/list-394.png
 ---
 There has been a recent rumor about Apple allowing developers to create
 multi-platform apps for macOS and iOS. The hope is that iOS developers

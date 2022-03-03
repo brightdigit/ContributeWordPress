@@ -1,10 +1,10 @@
 ---
-title: "Chips, Clips &amp; Widgets \u2013 Big changes from Virtual WWDC 2020"
+title: Chips, Clips &amp; Widgets – Big changes from Virtual WWDC 2020
 date: 2020-08-21 05:24
-description: "Apple announced at a virtual WWDC 2020 lot of things that have the potential
-  to really shift the way we create software. Here\u2019s what you need to know..."
+description: Apple announced at a virtual WWDC 2020 lot of things that have the potential
+  to really shift the way we create software. Here's what you need to know...
 tags: iOS 14, macOS Big Sur, swiftui, WWDC 2020
-featuredImage: /media/images/brightdigit/2020/08/IMG_0091.png
+featuredImage: /media/wp-images/brightdigit/2020/08/IOS_14_Homescreen.png
 ---
 For those of us heavily invested in iOS development, it was unfortunate
 to have to miss this year’s Apple Worldwide Developers Conference 2020

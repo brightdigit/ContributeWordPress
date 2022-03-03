@@ -3,7 +3,7 @@ title: Freelancing - How to Prepare and Get Started
 date: 2018-12-10 07:58
 description: Last week I spoke at the LaDev in Ann Arbor on what it takes to go out
   on your own as a freelancing software developer and entrepreneur.
-featuredImage: /media/images/learningswift/2018/12/Screen-Shot-2018-12-10-at-12.55.30-PM.png
+featuredImage: /media/wp-images/learningswift/2018/12/Screen-Shot-2018-12-10-at-12.55.30-PM.png
 ---
 Last week I spoke at the [LaDev in Ann
 Arbor](https://www.meetup.com/ladevmi/events/256221529/) on what it
