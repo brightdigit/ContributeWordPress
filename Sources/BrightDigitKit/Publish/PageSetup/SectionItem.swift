@@ -44,6 +44,10 @@ struct ItemContent<ItemType: SectionItem>: PageContent {
     item.pageBodyID
   }
 
+  var bodyClasses: [String] {
+    [item.source.sectionID.rawValue]
+  }
+
   var main: [Node<HTML.BodyContext>] {
     item.pageMainContent
   }

@@ -24,4 +24,8 @@ struct DynamicPageContent<BuilderType: ContentBuilder>: PageContent {
   var bodyID: String? {
     location.path.string
   }
+
+  var bodyClasses: [String] {
+    []
+  }
 }
