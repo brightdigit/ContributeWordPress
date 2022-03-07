@@ -81,7 +81,7 @@ public extension Node where Context == HTML.BodyContext {
       .makeServicesBox(
         classStr: "service",
         id: "iPhone-service",
-        bigImageSrc: "http://placeimg.com/800/450/tech/CF994871-96B0-4257-A9F8-73FFDF87C015",
+        bigImageSrc: "/media/services/new2-12.png",
         smallImageSrc: "/media/services/003-iphone.svg",
         title: "New App Development",
         paragraph: Strings.Services.iOSDevelopment
@@ -89,14 +89,14 @@ public extension Node where Context == HTML.BodyContext {
 
       .makeServicesBox(classStr: "service",
                        id: "swift-service",
-                       bigImageSrc: "http://placeimg.com/800/450/tech/CF994871-96B0-4257-A9F8-73FFDF87C015",
+                       bigImageSrc: "/media/services/12-agustus-outline-02.png",
                        smallImageSrc: "/media/services/001-swift.svg",
                        title: "Upgrade Your Existing App",
                        paragraph: Strings.Services.consulting),
 
       .makeServicesBox(classStr: "service",
                        id: "apple-service",
-                       bigImageSrc: "http://placeimg.com/800/450/tech/CF994871-96B0-4257-A9F8-73FFDF87C015",
+                       bigImageSrc: "/media/services/mar6-outline-07.png",
                        smallImageSrc: "/media/services/002-smartwatch-app.svg",
                        title: "Port Your App to Apple Platforms",
                        paragraph: Strings.Services.appleDevelopment),
