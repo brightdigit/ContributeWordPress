@@ -3,7 +3,7 @@ import Foundation
 extension Product {
   static let heartwitch: Product =
     .init(title: "Heartwitch", description: """
-      ## Livestream Your Health Stats Straight From Your Apple Watch
+      ### Livestream Your Health Stats Straight From Your Apple Watch
 
       Heartwitch is a combination Apple Watch and Web App for sharing your health data online.
 
