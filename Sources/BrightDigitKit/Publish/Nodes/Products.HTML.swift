@@ -30,7 +30,7 @@ extension Product {
             .href(product.productURL),
             .target(.blank),
             .img(.src(product.logo)),
-            .h3(.text(product.title))
+            .h2(.text(product.title))
           ),
           .ol(
             .class("links"),
