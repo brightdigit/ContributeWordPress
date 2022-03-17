@@ -1,10 +1,10 @@
 ---
-title: "Chips, Clips &amp; Widgets \u2013 Big changes from Virtual WWDC 2020"
+title: Chips, Clips &amp; Widgets – Big changes from Virtual WWDC 2020
 date: 2020-08-21 05:24
-description: "Apple announced at a virtual WWDC 2020 lot of things that have the potential
-  to really shift the way we create software. Here\u2019s what you need to know..."
+description: Apple announced at a virtual WWDC 2020 lot of things that have the potential
+  to really shift the way we create software. Here's what you need to know...
 tags: iOS 14, macOS Big Sur, swiftui, WWDC 2020
-featuredImage: /media/images/brightdigit/2020/08/IMG_0091.png
+featuredImage: /media/wp-images/brightdigit/2020/08/IOS_14_Homescreen.png
 ---
 For those of us heavily invested in iOS development, it was unfortunate
 to have to miss this year’s Apple Worldwide Developers Conference 2020
@@ -19,7 +19,7 @@ Here’s you need to know about what Apple revealed to us about what
 they’ve been working on.
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2020/08/IMG_0091-577x1024.png" class="wp-image-2154" width="289" height="512" />
+<img src="/media/wp-images/brightdigit/2020/08/IMG_0091-577x1024.png" class="wp-image-2154" width="289" height="512" />
 </figure>
 
 ## iOS 14 gives us a lot more smart, a little bit less phone
@@ -41,7 +41,7 @@ things that will be familiar to Android users: widgets, app clips, and
 default app selection.
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2020/08/IOS_14_Homescreen.png" class="wp-image-2153" />
+<img src="/media/wp-images/brightdigit/2020/08/IOS_14_Homescreen.png" class="wp-image-2153" />
 </figure>
 
 ### Widgets
@@ -97,7 +97,7 @@ iOS 14, and that can only be a good thing, for developers and consumers
 alike.
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2020/08/macOS-Big-Sur-1024x576.jpg" class="wp-image-2163" />
+<img src="/media/wp-images/brightdigit/2020/08/macOS-Big-Sur-1024x576.jpg" class="wp-image-2163" />
 </figure>
 
 ## Apple Silicon: New chips for a new era for the Mac

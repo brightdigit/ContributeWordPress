@@ -10,14 +10,17 @@ public struct FrontMatterYAMLExporter<
   SourceType,
   FrontMatterTranslatorType: FrontMatterTranslator
 >: FrontMatterExporter where
-  FrontMatterTranslatorType.SourceType == SourceType
-{
+  FrontMatterTranslatorType.SourceType == SourceType {
   init(translator: FrontMatterTranslatorType) {
     self.translator = translator
   }
 
   let translator: FrontMatterTranslatorType
-  let formatter: FrontMatterFormatter = YAMLEncoder()
+  let formatter: FrontMatterFormatter = {
+    let encoder = YAMLEncoder()
+    encoder.options = .init(width: -1, allowUnicode: true)
+    return encoder
+  }()
 
   public func frontMatterText(from source: SourceType) throws -> String {
     let specs = translator.frontMatter(from: source)

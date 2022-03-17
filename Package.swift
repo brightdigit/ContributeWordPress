@@ -24,7 +24,9 @@ let package = Package(
     // Dependencies declare other packages that this package depends on.
     // .package(url: /* package url */, from: "1.0.0"),
     .package(name: "Publish", url: "https://github.com/johnsundell/publish.git", from: "0.6.0"),
-    .package(url: "https://github.com/JohnSundell/Splash", from: "0.15.0"),
+    .package(name: "SplashPublishPlugin", url: "https://github.com/johnsundell/splashpublishplugin", from: "0.1.0"),
+    .package(name: "YoutubePublishPlugin", url: "https://github.com/tanabe1478/YoutubePublishPlugin.git", from: "0.1.0"),
+
     .package(name: "ReadingTimePublishPlugin", url: "https://github.com/alexito4/ReadingTimePublishPlugin", from: "0.2.0"),
 
     .package(url: "https://github.com/BrightDigit/SwiftTube.git", from: "0.2.0-beta.1"),
@@ -49,7 +51,8 @@ let package = Package(
       dependencies: ["BrightDigitKit"]
     ),
     .target(name: "BrightDigitKit",
-            dependencies: ["SyndiKit", "Publish", "Splash", "Kanna", "MarkdownGenerator", "Yams",
+            dependencies: ["SyndiKit", "Publish",
+                           "SplashPublishPlugin", "YoutubePublishPlugin", "Kanna", "MarkdownGenerator", "Yams",
                            "ReadingTimePublishPlugin",
                            "SwiftTube", "Spinetail", "Options",
                            .product(name: "ArgumentParser", package: "swift-argument-parser")]),
@@ -65,6 +68,7 @@ let package = Package(
   let config = PackageConfiguration([
     "komondor": [
       "pre-commit": [
+        "swift test --enable-code-coverage --enable-test-discovery --generate-linuxmain",
         "swift run swiftformat .",
         "swift run swiftlint autocorrect",
         "git add .",

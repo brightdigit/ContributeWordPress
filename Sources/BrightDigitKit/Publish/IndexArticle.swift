@@ -8,12 +8,16 @@ public protocol IndexArticle {
   var publishedAt: Date { get }
   var lengthInMinutes: Int { get }
   var featuredImageURL: URL { get }
-  var url: URL { get }
+  var rootRelativeURL: URL { get }
 }
 
 extension Item: IndexArticle where Site == BrightDigitSite {
-  public var url: URL {
+  public var rootRelativeURL: URL {
     URL(staticString: "/\(path)")
+  }
+
+  func absoluteURL(forSite site: Site) -> URL {
+    site.url(for: path)
   }
 
   public var publishedAt: Date {

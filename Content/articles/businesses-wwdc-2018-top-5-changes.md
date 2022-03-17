@@ -5,10 +5,10 @@ description: This wasn't the "flashiest" year for the WWDC but some important ch
   came up for businesses to know about. It appears that Apple is taking these concerns
   over the year seriously and is doing some house cleaning. These behind the scenes
   concepts might not grab the headlines but they make a big difference for users.
-featuredImage: /media/images/brightdigit/2018/08/img_4492d8beee0b-1.jpg
+featuredImage: /media/wp-images/brightdigit/2018/08/img_4492d8beee0b-1.jpg
 ---
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2018/08/1280px-San_Jose_Convention_Center_plaza_WWDC18.jpg" class="wp-image-1294" />
+<img src="/media/wp-images/brightdigit/2018/08/1280px-San_Jose_Convention_Center_plaza_WWDC18.jpg" class="wp-image-1294" />
 </figure>
 
 This wasn't the "flashiest" year for WWDC but some important changes
@@ -69,7 +69,7 @@ rates of iOS 12 and little reason to support iOS 11 for much longer.**
 # Mac App Store Improvements
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2018/08/Screen-Shot-2018-08-07-at-7.39.18-AM-1024x810.jpg" class="wp-image-1295" />
+<img src="/media/wp-images/brightdigit/2018/08/Screen-Shot-2018-08-07-at-7.39.18-AM-1024x810.jpg" class="wp-image-1295" />
 </figure>
 
 The Mac App Store has received its fair share of criticism. Compared
@@ -125,7 +125,7 @@ hood." Memoji is a way to demo the exciting new AR and machine learning
 technology behind it. 
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2018/08/img_4492d8beee0b-1-169x300.jpg" class="wp-image-1301" alt="Screen Time in iOS 12" /><figcaption aria-hidden="true">Screen Time in iOS 12</figcaption>
+<img src="/media/wp-images/brightdigit/2018/08/img_4492d8beee0b-1-169x300.jpg" class="wp-image-1301" alt="Screen Time in iOS 12" /><figcaption aria-hidden="true">Screen Time in iOS 12</figcaption>
 </figure>
 
 Businesses should continue to watch trends in ARKit and CoreML and

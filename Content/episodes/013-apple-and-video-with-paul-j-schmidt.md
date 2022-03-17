@@ -2,9 +2,9 @@
 title: Apple and Video with Paul J Schmidt
 date: 2019-05-19 01:00
 description: "In this episode, we talk with Paul J Schmidt, Creative Video Strategist
-  for Uno Deuce Multimedia. In this episode, we talk about:\n- Apple\u2019s positioning
+  for Uno Deuce Multimedia. In this episode, we talk about:\n- Apple's positioning
   in the streaming market, \n- Get started with Video using iPhones, iPads, and Macs\n-
-  Running a video production company\n"
+  Running a video production company"
 featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full_1533929410-artwork.jpg
 youtubeID: ivHsDRHRty0
 audioDuration: 2452

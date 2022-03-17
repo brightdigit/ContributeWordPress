@@ -1,8 +1,8 @@
 ---
 title: Training Your Team with Steve Lipton
 date: 2019-12-22 00:00
-description: "In this episode, Leo talks with Steve Lipton of MakeAppPie about how
-  to maintain your staff\u2019s skill level when it comes to iOS Development and Swift."
+description: In this episode, Leo talks with Steve Lipton of MakeAppPie about how
+  to maintain your staff's skill level when it comes to iOS Development and Swift.
 featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full_1533929410-artwork.jpg
 youtubeID: ZXiCVpgTAWc
 audioDuration: 2222

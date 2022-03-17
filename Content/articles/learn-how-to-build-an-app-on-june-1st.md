@@ -1,7 +1,7 @@
 ---
 title: Learn How To Build An App on June 1st
 date: 2019-05-15 04:24
-featuredImage: /media/images/brightdigit/2019/05/https-cdn.evbuc_.com-images-61653137-35408818760-1-original.20190503-160209.jpeg
+featuredImage: /media/wp-images/brightdigit/2019/05/https-cdn.evbuc_.com-images-61653137-35408818760-1-original.20190503-160209.jpeg
 ---
 On June 1st, [we will be hosting a Swift Workshop at The Fledge in
 Lansing.](https://www.eventbrite.com/e/swift-workshop-developing-your-first-iphone-app-and-more-tickets-61102713862?utm-medium=discovery&utm-campaign=social&utm-content=attendeeshare&aff=escb&utm-source=brightdgit&utm-term=listing)

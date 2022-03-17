@@ -62,7 +62,7 @@ struct Product {
       self.init(path: path)
     }
 
-    static let basePath = "/media/images/products"
+    static let basePath = "/media/products"
     let path: String
 
     func string(basedOnSlug slug: String) -> String {
@@ -80,7 +80,7 @@ struct Product {
 
   // swiftlint:disable force_try
   internal init(title: String, description: String, logo: Image = .logo(withName: nil), style: Product.ScreenshotStyle = .default, screenshots: [Image] = [], pressCoverage: [Product.PressCoverage] = [], platforms: [Product.Platform], technologies: [Product.Technology], productURL: String, githubRepoName: String? = nil) {
-    let slug = try! title.convertedToSlug()
+    let slug = title.convertedToSlug()
     try! self.init(
       title: title,
       description: description,

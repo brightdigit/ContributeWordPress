@@ -1,11 +1,11 @@
 ---
-title: "HealthKit \u2013 Apple Watch \u2013 Data and Authorization"
+title: HealthKit – Apple Watch – Data and Authorization
 date: 2018-06-11 05:34
-description: "The Apple Watch has become the premier device for health monitoring.
-  So now that authorization is setup on the iPhone,\_let's take a look at how get
-  authorization setup on the Apple Watch."
+description: The Apple Watch has become the premier device for health monitoring.
+  So now that authorization is setup on the iPhone, let's take a look at how get authorization
+  setup on the Apple Watch.
 tags: Smart Intensity
-featuredImage: /media/images/learningswift/2018/06/Simulator-Screen-Shot-Apple-Watch-Series-3-38mm-2018-06-08-at-14.36.24.png
+featuredImage: /media/wp-images/learningswift/2018/06/andres-urena-438712-unsplash-e1528485621309.jpg
 ---
 The Apple Watch has become the premier device for health, fitness, and
 workout tracking. So now that [authorization is setup on the
@@ -16,31 +16,34 @@ take a look at how get authorization setup on the Apple Watch.
 
 Just as on the iPhone, the code will be pretty much identical on the
 Apple Watch when it comes to asking for authorization:
-
-    if HKHealthStore.isHealthDataAvailable() {
-      let healthStore = HKHealthStore()
-      let heartRateQuantityType = HKObjectType.quantityType(forIdentifier: .heartRate)!
-      let allTypes = Set([HKObjectType.workoutType(),
-                          heartRateQuantityType
-        ])
-      healthStore.requestAuthorization(toShare: nil, read: allTypes) { (result, error) in
-        if let error = error {
-          // deal with the error
-          return
-        }
-        guard result else {
-          // deal with the failed request 
-          return
-        }
-        // begin any necessary work if needed
-      }
+```
+if HKHealthStore.isHealthDataAvailable() {
+  let healthStore = HKHealthStore()
+  let heartRateQuantityType = HKObjectType.quantityType(forIdentifier: .heartRate)!
+  let allTypes = Set([HKObjectType.workoutType(),
+                      heartRateQuantityType
+    ])
+  healthStore.requestAuthorization(toShare: nil, read: allTypes) { (result, error) in
+    if let error = error {
+      // deal with the error
+      return
     }
+    guard result else {
+      // deal with the failed request 
+      return
+    }
+    // begin any necessary work if needed
+  }
+}
+```
 
 **However, the Apple Watch does not contain a way for the user to grant
 access.** So what this method will do is prompt the user to go to their
 iPhone and grant access. This will be through the Health app as the user
 did previously on the iPhone example.
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/06/Simulator-Screen-Shot-Apple-Watch-Series-3-38mm-2018-06-08-at-14.36.24.png" class="size-full wp-image-76 aligncenter" width="272" height="486" />
+
+<img src="/media/wp-images/learningswift/2018/06/Simulator-Screen-Shot-Apple-Watch-Series-3-38mm-2018-06-08-at-14.36.24.png" class="full-size" width="272" height="486" />
+
 On the iPhone app, a method will need to be implemented in order to
 listen to this request and prompt the user with the authorization
 request. This is where
@@ -49,25 +52,27 @@ the `AppDelegate`. implement
 [`applicationShouldRequestHealthAuthorization`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622998-applicationshouldrequesthealthau)
 and call
 [`HKHealthKit.handleAuthorizationForExtension`](https://developer.apple.com/documentation/healthkit/hkhealthstore/1614153-handleauthorizationforextension).
+```
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    @UIApplicationMain
-    class AppDelegate: UIResponder, UIApplicationDelegate {
+  ...
 
-      ...
-
-      func applicationShouldRequestHealthAuthorization(_ application: UIApplication) {
-        let healthStore = HKHealthStore()
-        healthStore.handleAuthorizationForExtension { (success, error) -> Void in
-          
-        }
-      }
+  func applicationShouldRequestHealthAuthorization(_ application: UIApplication) {
+    let healthStore = HKHealthStore()
+    healthStore.handleAuthorizationForExtension { (success, error) -> Void in
+      
     }
+  }
+}
+```
 
 Now whenever the request for authorization is made on the Apple Watch
 and with new `HKObjectType` or `HKSampleType` objects (such as the first
 time the app is run), the iPhone will prompt the user with the request.
-\[caption id="attachment\_89" align="aligncenter"
-width="640"\]<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/06/ezgif.com-gif-maker.gif" class="wp-image-89 size-full" width="640" height="640" alt="iPhone and Apple Watch Simulation of Health Data Authorization" />
+
+<img src="/media/wp-images/learningswift/2018/06/ezgif.com-gif-maker.gif" class="full-size" width="640" height="640" alt="iPhone and Apple Watch Simulation of Health Data Authorization" />
+
 this is what it should look like\[/caption\] After the prompt is
 completed by the user, the `requestAuthorization` callback on the Apple
 Watch will be called and from there, the usual code can begin.
@@ -84,7 +89,7 @@ Watch to:
 -   prompt the user with the Health authorization dialog on the iPhone
 -   make the call once the authorization is complete on the iPhone
 -   handle the result of the authorization from the iPhone on the Apple
-    Watch
+Watch
 
 Following these steps correctly and the app can implement a variety of
 powerful health, workout and fitness features.

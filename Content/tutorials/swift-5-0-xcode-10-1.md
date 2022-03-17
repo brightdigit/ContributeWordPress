@@ -3,7 +3,7 @@ title: Swift 5.0 and XCode 10.1 - Using a Custom Toolchain
 date: 2018-12-19 03:05
 description: You can try the features of Swift 5.0 using the development branch toolchain
   now. However with Xcode 10.1, it takes a bit of tweaking to get it to work.
-featuredImage: /media/images/learningswift/2018/12/Xcode-ProjectSettings-Window-e1545173841972.png
+featuredImage: /media/wp-images/learningswift/2018/12/Xcode-Toolchain-Menu.png
 ---
 Just as [Swift 4.2 brought some interesting
 features](https://learningswift.brightdigit.com/swift-4-2-random-changes-wwdc-2018/),
@@ -37,7 +37,7 @@ Here's how:
     Snapshot...***
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/12/Xcode-Toolchain-Menu.png" class="wp-image-308" alt="Xcode Toolchain Menu Item" /><figcaption aria-hidden="true">Xcode Toolchain Menu Item</figcaption>
+<img src="/media/wp-images/learningswift/2018/12/Xcode-Toolchain-Menu.png" class="wp-image-308" alt="Xcode Toolchain Menu Item" /><figcaption aria-hidden="true">Xcode Toolchain Menu Item</figcaption>
 </figure>
 
 If you try to compile you will get an error saying no *SWIFT\_VERSION*
@@ -53,7 +53,7 @@ To use the *Legacy Build System* which essentially ignores
 the *SWIFT\_VERSION*:
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/12/Xcode-ProjectSettings-Menu-e1545173707171.png" class="wp-image-309" alt="Xcode Project Settings Menu Item" /><figcaption aria-hidden="true">Xcode Project Settings Menu Item</figcaption>
+<img src="/media/wp-images/learningswift/2018/12/Xcode-ProjectSettings-Menu-e1545173707171.png" class="wp-image-309" alt="Xcode Project Settings Menu Item" /><figcaption aria-hidden="true">Xcode Project Settings Menu Item</figcaption>
 </figure>
 
 1.  Go to the Top Menu and Select ***File...Project Settings***
@@ -61,7 +61,7 @@ the *SWIFT\_VERSION*:
     System*.** 
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/12/Xcode-ProjectSettings-Window-e1545173841972.png" class="wp-image-310" alt="Xcode Project Settings Window" /><figcaption aria-hidden="true">Xcode Project Settings Window</figcaption>
+<img src="/media/wp-images/learningswift/2018/12/Xcode-ProjectSettings-Window-e1545173841972.png" class="wp-image-310" alt="Xcode Project Settings Window" /><figcaption aria-hidden="true">Xcode Project Settings Window</figcaption>
 </figure>
 
 You should be good to go. However, if you wish to use the ***New Build
@@ -79,41 +79,24 @@ here is how:
 1.  In your favorite editor, open the file: 
 
 <!-- -->
-
+```
     /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Xcode/Plug-ins/XCLanguageSupport.xcplugin/Contents/Resources/Swift.xcspec
+```
 
 1.  Find the section with SupportedLanguage
 
 <!-- -->
-
-            SupportedLanguageVersions = (  
-                3.0,             
-                4.0,
-                 4.2      
-            );         
-            LanguageVersionDisplayNames = {             
-                3.0 = "Swift 3";             
-                4.0 = "Swift 4";             
-                4.2 = "Swift 4.2";       
-            }; 
+```
+            SupportedLanguageVersions = (
+```
 
 1.  Add 5.0 as a ***SupportedLanguageVersions*** and add a label for it
     under ***LanguageVersionDisplayNames*** (such as "5.0-dev")
 
 <!-- -->
-
-            SupportedLanguageVersions = (  
-                3.0,             
-                4.0,
-                 4.2,
-                 5.0         
-            );         
-            LanguageVersionDisplayNames = {             
-                3.0 = "Swift 3";             
-                4.0 = "Swift 4";             
-                4.2 = "Swift 4.2";             
-                5.0 = "Swift 5.0-dev";         
-            }; 
+```
+            SupportedLanguageVersions = (
+```
 
 Now all you'll need to do is select the SWIFT\_VERSION as the display
 name you have set up for Swift 5.0. Now you are using both the ***New

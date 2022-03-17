@@ -79,21 +79,53 @@ public extension Node where Context == HTML.BodyContext {
   }
 }
 
+// MARK: - makeHead
+
 public extension Node where Context == HTML.DocumentContext {
-  static func makeHead(forPage page: PageContent) -> Node {
+  static func makeHead(forPage page: PageContent, item: Item<BrightDigitSite>? = nil) -> Node {
     .head(
       .meta(
         .charset(.utf8)
       ),
+      .newsletterRedirect(forPage: page, item: item),
       .title(page.title),
       .meta(
         .name("viewport"),
         .content("width=device-width, initial-scale=1.0")
       ),
+
+      .link(.rel(.icon), .href("/favicon.ico"), .sizes("any"), .type("image/svg+xml")),
+      .link(.rel(.icon), .href("/favicon.svg"), .type("image/svg+xml")),
+
+      .link(.rel(.manifest), .href("/site.webmanifest?v=2022")),
+      .link(.id("mask-icon"), .rel(.maskIcon), .href("/safari-pinned-tab.svg?v=2022"), .color("#000000")),
+      .link(.id("apple-dark-mode-icon"), .rel(.alternate), .href("/dark-mode-mask.svg?v=2022")),
+      .link(.id("apple-light-mode-icon"), .rel(.alternate), .href("/safari-pinned-tab.svg?v=2022")),
+
+//      <meta name="apple-mobile-web-app-title" content="BrightDigit">
+//      <meta name="application-name" content="BrightDigit">
+
       .script(
         .src("/js/main.js")
+      ),
+      .script(
+        .async(),
+        .src("https://www.googletagmanager.com/gtag/js?id=G-K3MSJ0CTMJ")
       )
     )
+  }
+}
+
+public extension Node where Context == HTML.HeadContext {
+  static func newsletterRedirect(forPage _: PageContent, item: Item<BrightDigitSite>? = nil) -> Node {
+    if item?.metadata.longArchiveURL != nil {
+      return .meta(
+        .attribute(named: "http-equiv", value: "refresh"),
+        .attribute(named: "content", value: "0; url=\(item!.metadata.longArchiveURL!)")
+      )
+    } else {
+      return .empty
+    }
   }
 }
 

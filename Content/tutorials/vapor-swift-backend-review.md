@@ -3,7 +3,7 @@ title: Vapor - Swift Choice For the Back End
 date: 2019-03-19 03:44
 description: For Swift developers, Vapor has become an increasingly apt choice for
   a mobile backend. I decided to deep dive into Vapor and see if it is a viable choice.
-featuredImage: /media/images/learningswift/2019/03/javier-allegue-barros-761133-unsplash.jpg
+featuredImage: /media/wp-images/learningswift/2019/03/swift-vapor-choice.jpg
 ---
 Back in February, I did [an episode of my podcast where I gave an
 overview of different backend options when developing a mobile
@@ -17,7 +17,7 @@ into [Vapor](https://vapor.codes) and whether it is really a viable
 choice.
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/jared-murray-974070-unsplash-e1552938209336-1024x512.jpg" class="wp-image-551" />
+<img src="/media/wp-images/learningswift/2019/03/jared-murray-974070-unsplash-e1552938209336-1024x512.jpg" class="wp-image-551" />
 </figure>
 
 ## A Plethora Of Choices
@@ -43,7 +43,7 @@ for data storage but lacks options such as:
 However there are other options to remain developing in Swift on server.
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/wordmark-horizontal-1024x271.png" class="wp-image-554" />
+<img src="/media/wp-images/learningswift/2019/03/wordmark-horizontal-1024x271.png" class="wp-image-554" />
 </figure>
 
 ## Vapor - Swift for the Server
@@ -63,7 +63,7 @@ In this article, I will review Vapor and cover:
 Therefore, let’s begin by talking about how easy it is to get started.
 
 <figure>
-<img src="https://i1.wp.com/learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/getting-things-setup.jpg?fit=1024%2C512&amp;ssl=1" class="wp-image-555" />
+<img src="/media/wp-images/learningswift/sites/2/2019/03/getting-things-setup.jpg?fit=1024%2C512&amp;ssl=1" class="wp-image-555" />
 </figure>
 
 ## Getting Started with Vapor
@@ -93,7 +93,7 @@ and
 Ubuntu.](https://learningswift.brightdigit.com/vapor-heroku-ubuntu-setup-deploy/?utm_medium=web&utm_source=learning-swift)**
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/developer-tools-1024x512.jpg" class="wp-image-558" />
+<img src="/media/wp-images/learningswift/2019/03/developer-tools-1024x512.jpg" class="wp-image-558" />
 </figure>
 
 ## Developing with Vapor
@@ -155,12 +155,13 @@ a title has an *é*, that result won’t show up. In spite of this, there
 is code in PostgreSQL to *unaccent* a string, such as there is a way to
 do lower or upper case transformation. Having adding the necessary
 functions, I am able to call the function with Fluent’s API:
-
-    let columnId = PostgreSQLColumnIdentifier.column("Game", "title")
-    let column = PostgreSQLExpression.column(columnId)
-    let arg = GenericSQLFunctionArgument<PostgreSQLExpression>.expression(column)
-    let args : [GenericSQLFunctionArgument<PostgreSQLExpression>] = [arg]
-    let expression = PostgreSQLExpression.function("unaccent", args)
+```
+let columnId = PostgreSQLColumnIdentifier.column("Game", "title")
+let column = PostgreSQLExpression.column(columnId)
+let arg = GenericSQLFunctionArgument<PostgreSQLExpression>.expression(column)
+let args : [GenericSQLFunctionArgument<PostgreSQLExpression>] = [arg]
+let expression = PostgreSQLExpression.function("unaccent", args)
+```
 
 As shown above, this may not be ideal, but it works. In addition, you
 always have access to lower level, direct SQL code using the Database
@@ -168,7 +169,7 @@ Kit API. However what truly makes Fluent ORM so robust is the use of
 SwiftNIO async API.
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/futures-and-promises-1024x512.jpg" class="wp-image-559" />
+<img src="/media/wp-images/learningswift/2019/03/futures-and-promises-1024x512.jpg" class="wp-image-559" />
 </figure>
 
 ### The *Future* of Programming
@@ -206,7 +207,7 @@ do need to customize your type to use Codable, I highly recommend my
 post on improving how you decode JSON.
 
 <figure>
-<img src="https://i0.wp.com/learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/swift-vapor-choice.jpg?fit=1024%2C512&amp;ssl=1" class="wp-image-560" />
+<img src="/media/wp-images/learningswift/sites/2/2019/03/swift-vapor-choice.jpg?fit=1024%2C512&amp;ssl=1" class="wp-image-560" />
 </figure>
 
 ## Vaporware or Swift-ly Switch?

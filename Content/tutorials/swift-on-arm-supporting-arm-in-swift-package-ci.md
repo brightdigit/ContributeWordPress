@@ -3,7 +3,7 @@ title: Swift on ARM - Supporting ARM in Swift Package CI
 date: 2020-06-13 14:01
 description: In this article, I'm going to go over how to setup your CI and install
   Swift in Travis-CI and GitHub Actions for ARM architectures.
-featuredImage: /media/images/learningswift/2020/06/1000px-ARM_CPU_icon.svg_-1.png
+featuredImage: /media/wp-images/learningswift/2020/06/1000px-ARM_CPU_icon.svg_.png
 ---
 In [a previous
 post,](https://learningswift.brightdigit.com/swift-package-continuous-integration-guide/)
@@ -20,30 +20,32 @@ alpha stage. However it is fairly easy to setup. Within your
 `travis-ci.yml` file, simply specify your CPU architecture. For
 instance, if you'd like to test on both with a build matrix, you can
 start your file with:
-
-    arch:
-      - amd64
-      - arm64
-    os: linux  # different CPU architectures are only supported on Linux
+```
+arch:
+  - amd64
+  - arm64
+os: linux  # different CPU architectures are only supported on Linux
+```
 
 As you can see we are using the default version of Linux supported by
 Travis-CI. If you wish to expand your matrix, and specify different
 versions of Ubuntu, you can by:
-
-    jobs:
-      include:
-        - os: linux
-          dist: bionic
-          arch: amd64
-        - os: linux
-          dist: focal
-          arch: amd64
-        - os: linux
-          dist: bionic
-          arch: arm64
-        - os: linux
-          dist: focal
-          arch: arm64
+```
+jobs:
+  include:
+    - os: linux
+      dist: bionic
+      arch: amd64
+    - os: linux
+      dist: focal
+      arch: amd64
+    - os: linux
+      dist: bionic
+      arch: arm64
+    - os: linux
+      dist: focal
+      arch: arm64
+```
 
 This will allow us to test on four VMs each using Ubuntu 18.04 and
 Ubuntu 20.04 while testing both x86/AMD64 and 64-bit ARM.
@@ -64,32 +66,33 @@ ARM, which we'll need to follow. Therefore, it's best to keep a separate
 workflow file for arm as opposed to standard x86.
 
 Inside the workflow file `arm.yml`, I start off with:
+```
+name: arm
 
-    name: arm
+on: [push]
 
-    on: [push]
+jobs:
+  build:
+    env:
+      PACKAGE_NAME: {{ Insert Package Name Here }}
+      SWIFT_VER: 5.2.4
 
-    jobs:
-      build:
-        env:
-          PACKAGE_NAME: {{ Insert Package Name Here }}
-          SWIFT_VER: 5.2.4
-
-        strategy:
-          matrix:
-            architecture:  [aarch64]
-            distribution: [ubuntu16.04,ubuntu18.04,ubuntu20.04]
-        steps:
-        - uses: actions/checkout@v2
-        - name: Build with Swift on arm
-          uses: uraimo/run-on-arch-action@master
-          env:
-             {{ any environment keys here }}
-          with:
-            architecture: ${{ matrix.architecture }}
-            distribution: ${{ matrix.distribution }}
-            run: |
-    ...
+    strategy:
+      matrix:
+        architecture:  [aarch64]
+        distribution: [ubuntu16.04,ubuntu18.04,ubuntu20.04]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build with Swift on arm
+      uses: uraimo/run-on-arch-action@master
+      env:
+         {{ any environment keys here }}
+      with:
+        architecture: ${{ matrix.architecture }}
+        distribution: ${{ matrix.distribution }}
+        run: |
+...
+```
 
 Now we have the beginning of the setup for Travis-CI and GitHub for ARM
 on Linux. However, the challenge will be installing Swift.
@@ -114,25 +117,26 @@ requirements:
 
 -   `curl`, `sudo` which are need for installation are not included
 -   `tzdata` which is required for installing Swift requires the time
-    zone be set beforehand. Otherwise, the installation will stall on a
-    terminal dialog.
+zone be set beforehand. Otherwise, the installation will stall on a
+terminal dialog.
 -   In order dynamically install prerequisites based on Linux
-    distribution, we need `lsb_release` installing to do some logic in
-    our script.
+distribution, we need `lsb_release` installing to do some logic in
+our script.
 
 Therefore before installing our prerequisites we need to do this:
-
-    # tell the installation this is non-interactive
-              export DEBIAN_FRONTEND=noninteractive
-    # set your time zone here
-              ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
-    # install sudo, curl, lab-release, and clang
-              apt update
-              apt install -y curl lsb-release sudo clang
-    # grab the release name, number in dot (18.04) and non-dot (1804 format
-              RELEASE_DOT=$(lsb_release -sr)
-              RELEASE_NUM=${RELEASE_DOT//[-._]/}
-              RELEASE_NAME=$(lsb_release -sc)
+```
+# tell the installation this is non-interactive
+          export DEBIAN_FRONTEND=noninteractive
+# set your time zone here
+          ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
+# install sudo, curl, lab-release, and clang
+          apt update
+          apt install -y curl lsb-release sudo clang
+# grab the release name, number in dot (18.04) and non-dot (1804 format
+          RELEASE_DOT=$(lsb_release -sr)
+          RELEASE_NUM=${RELEASE_DOT//[-._]/}
+          RELEASE_NAME=$(lsb_release -sc)
+```
 
 ### Installing Swift Prerequisites
 
@@ -141,30 +145,32 @@ team,](https://swift.org/getting-started/#installing-swift) we can
 simply check the Ubuntu version and install our prerequisites. Here's a
 snippet which checks for Ubuntu Focal Fossa 20.04, and installs the
 required packages:
-
-              if [[ $RELEASE_DOT == "20.04" ]]; then
-                sudo apt-get -y install \
-                        binutils \
-                        git \
-                        gnupg2 \
-                        libc6-dev \
-                        libcurl4 \
-                        libedit2 \
-                        libgcc-9-dev \
-                        libpython2.7 \
-                        libsqlite3-0 \
-                        libstdc++-9-dev \
-                        libxml2 \
-                        libz3-dev \
-                        pkg-config \
-                        tzdata \
-                        zlib1g-dev
-                elif [[ $RELEASE_DOT == "16.04" ]]; then
-    ...
+```
+          if [[ $RELEASE_DOT == "20.04" ]]; then
+            sudo apt-get -y install \
+                    binutils \
+                    git \
+                    gnupg2 \
+                    libc6-dev \
+                    libcurl4 \
+                    libedit2 \
+                    libgcc-9-dev \
+                    libpython2.7 \
+                    libsqlite3-0 \
+                    libstdc++-9-dev \
+                    libxml2 \
+                    libz3-dev \
+                    pkg-config \
+                    tzdata \
+                    zlib1g-dev
+            elif [[ $RELEASE_DOT == "16.04" ]]; then
+...
+```
 
 On GitHub, after installing `tzdata` make sure run:
-
-    dpkg-reconfigure --frontend noninteractive tzdata
+```
+dpkg-reconfigure --frontend noninteractive tzdata
+```
 
 Now we can move forward with actually installing Swift.
 
@@ -172,9 +178,10 @@ Now we can move forward with actually installing Swift.
 
 Installing Swift on ARM will simply need adding the repository and
 installing via `apt`:
-
-    curl -s https://packagecloud.io/install/repositories/swift-arm/release/script.deb.sh | sudo bash
-    apt-get install -y swift5
+```
+curl -s https://packagecloud.io/install/repositories/swift-arm/release/script.deb.sh | sudo bash
+apt-get install -y swift5
+```
 
 While typically, you may need to add the `PATH`, since we are using
 `apt-get install` `swift` is already added to our path.
@@ -182,14 +189,15 @@ While typically, you may need to add the `PATH`, since we are using
 If you are using a single script on Travis-CI for both amd64 and arm64,
 you can use some logic to differentiate the installation process using
 the `TRAVIS_CPU_ARCH` variable:
-
-      if [[ $TRAVIS_CPU_ARCH == "arm64" ]]; then
-        curl -s https://packagecloud.io/install/repositories/swift-arm/release/script.deb.sh | sudo bash
-        sudo apt-get install swift5
-      else 
-         wget https://swift.org/builds/swift-${SWIFT_VER}-release/ubuntu${RELEASE_NUM}/swift-${SWIFT_VER}-RELEASE/swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}.tar.gz
-         tar xzf swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}.tar.gz
-      fi 
+```
+  if [[ $TRAVIS_CPU_ARCH == "arm64" ]]; then
+    curl -s https://packagecloud.io/install/repositories/swift-arm/release/script.deb.sh | sudo bash
+    sudo apt-get install swift5
+  else 
+     wget https://swift.org/builds/swift-${SWIFT_VER}-release/ubuntu${RELEASE_NUM}/swift-${SWIFT_VER}-RELEASE/swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}.tar.gz
+     tar xzf swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}.tar.gz
+  fi 
+```
 
 For this point, you can run `swift build` or `swift test` easily in your
 CI's build process.

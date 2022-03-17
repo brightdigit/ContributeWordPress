@@ -19,6 +19,11 @@ public struct Specs: Codable {
 
 public extension Specs {
   init(from source: WordPressSource) {
-    self.init(title: source.post.title, date: source.post.postDate, description: source.post.meta["_yoast_wpseo_metadesc"], tags: source.post.tags, featuredImage: source.featuredImage)
+    self.init(
+      title: source.post.title.fixUnicodeEscape().dequote(),
+      date: source.post.postDate,
+      description: source.post.meta["_yoast_wpseo_metadesc"]?.fixUnicodeEscape().dequote(),
+      tags: source.post.tags, featuredImage: source.featuredImage
+    )
   }
 }

@@ -1,9 +1,9 @@
 ---
-title: "Vapor 4 with Tibor B\xF6decs"
+title: Vapor 4 with Tibor Bödecs
 date: 2020-05-20 00:00
-description: "In this episode, Leo talks with Tibor B\xF6decs about Vapor 4 and his
-  new book Practical Server-Side Swift. We talk about why someone may choose Vapor
-  and the updates made in Vapor 4 from the Database Models and OS Support."
+description: In this episode, Leo talks with Tibor Bödecs about Vapor 4 and his new
+  book Practical Server-Side Swift. We talk about why someone may choose Vapor and
+  the updates made in Vapor 4 from the Database Models and OS Support.
 featuredImage: https://images.transistor.fm/file/transistor/images/episode/251313/full_1589892290-artwork.jpg
 youtubeID: KIYDue87wZw
 audioDuration: 2956

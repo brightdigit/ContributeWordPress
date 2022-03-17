@@ -1,10 +1,9 @@
 ---
 title: How to Set a Realistic Project Budget for Your iOS App
 date: 2019-08-19 02:28
-description: "Our guide to setting a project budget for building a mobile app for
-  iOS, including time and costs of different parts of app development\_ | Bright Digit
-  LLC"
-featuredImage: /media/images/brightdigit/2019/08/przemyslaw-marczynski-oCfkSnqZ0SI-unsplash-e1565882478907.jpg
+description: Our guide to setting a project budget for building a mobile app for iOS,
+  including time and costs of different parts of app development  | Bright Digit LLC
+featuredImage: media/wp-images/brightdigit/2019/08/przemyslaw-marczynski-oCfkSnqZ0SI-unsplash-e1565882478907.jpg
 ---
 If you are contemplating building an app for the first time, or maybe
 you’re looking to get an existing one ported to iOS or another mobile
@@ -14,7 +13,7 @@ App Store might convince you that everyone has one and they are easy to
 make. However, creating a good-quality app is usually a lot of work.
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/08/przemyslaw-marczynski-oCfkSnqZ0SI-unsplash-e1565882465407-1024x512.jpg" class="wp-image-1702" />
+<img src="/media/wp-images/brightdigit/2019/08/przemyslaw-marczynski-oCfkSnqZ0SI-unsplash-e1565882465407-1024x512.jpg" class="wp-image-1702" />
 </figure>
 
 That said, with a little knowledge about how an app is created, creating
@@ -130,7 +129,7 @@ before work gets started, you can save yourself significant time and
 money later on.
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/08/kaleidico-26MJGnCM0Wc-unsplash-e1565882532230-1024x512.jpg" class="wp-image-1703" />
+<img src="/media/wp-images/brightdigit/2019/08/kaleidico-26MJGnCM0Wc-unsplash-e1565882532230-1024x512.jpg" class="wp-image-1703" />
 </figure>
 
 ## Things to Keep in Mind

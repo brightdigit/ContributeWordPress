@@ -6,22 +6,22 @@ struct AboutBuilder: PageBuilder {
   func main(forLocation _: LocationType, withContext _: PublishingContext<BrightDigitSite>) -> [Node<HTML.BodyContext>] {
     [
       .aboutHeader(),
-      .leftImageWithRightTextNoHeader(imageSrc: "https://via.placeholder.com/1920x1080.png",
+      .leftImageWithRightTextNoHeader(imageSrc: "/media/about-us/graphic-attract.webm",
                                       text: Strings.About.section1),
 
-      .leftTextWithHeaderRightImage(imageSrc: "https://via.placeholder.com/1920x1080.png",
+      .leftTextWithHeaderRightImage(imageSrc: "/media/about-us/opportunities.webm",
                                     header: Strings.About.whoWeAreTitle,
                                     p1: Strings.About.whoWeAreP1,
                                     p2: Strings.About.whoWeAreP2,
                                     p3: Strings.About.whoWeAreP3),
 
-      .leftImageRightTextWithHeader(imageSrc: "https://via.placeholder.com/1920x1080.png",
+      .leftImageRightTextWithHeader(imageSrc: "/media/about-us/communication.webm",
                                     header: Strings.About.workWithUsTitle,
                                     p1: Strings.About.workWithusP1,
                                     p2: Strings.About.workWithusP2,
                                     p3: Strings.About.workWithusP3),
 
-      .leftTextWithHeaderRightImage(imageSrc: "https://via.placeholder.com/1920x1080.png",
+      .leftTextWithHeaderRightImage(imageSrc: "/media/about-us/podcast.webm",
                                     header: Strings.About.helpingOthersTitle,
                                     p1: Strings.About.helpingOthersP1,
                                     p2: Strings.About.helpingOthersP2,
@@ -30,6 +30,8 @@ struct AboutBuilder: PageBuilder {
       .aboutCTA()
     ]
   }
+
+  var bodyClasses: [String] { [] }
 }
 
 public extension Node where Context == HTML.BodyContext {
@@ -42,7 +44,11 @@ public extension Node where Context == HTML.BodyContext {
   static func leftImageWithRightTextNoHeader(imageSrc: String, text: String) -> Node {
     .section(
       .header(
-        .img(.src(imageSrc))
+        .video(
+          .attribute(named: "autoplay"),
+          .attribute(named: "muted"),
+          .source(.src(imageSrc), .type(.webM))
+        )
       ),
       .main(
         .main(
@@ -55,16 +61,21 @@ public extension Node where Context == HTML.BodyContext {
   static func leftTextWithHeaderRightImage(imageSrc: String, header: String, p1: String, p2: String, p3: String) -> Node {
     .section(
       .header(
-        .img(.src(imageSrc))
+        .video(
+          .attribute(named: "autoplay"),
+          .attribute(named: "muted"),
+          .attribute(named: "loop"),
+          .source(.src(imageSrc), .type(.webM))
+        )
       ),
       .main(
         .header(
           .h2("\(header)")
         ),
         .main(
-          .p("\(p1)"),
-          .p("\(p2)"),
-          .p("\(p3)")
+          .markdown(p1),
+          .markdown(p2),
+          .markdown(p3)
         )
       )
     )
@@ -73,16 +84,21 @@ public extension Node where Context == HTML.BodyContext {
   static func leftImageRightTextWithHeader(imageSrc: String, header: String, p1: String, p2: String, p3: String) -> Node {
     .section(
       .header(
-        .img(.src(imageSrc))
+        .video(
+          .attribute(named: "autoplay"),
+          .attribute(named: "muted"),
+          .attribute(named: "loop"),
+          .source(.src(imageSrc), .type(.webM))
+        )
       ),
       .main(
         .header(
           .h2("\(header)")
         ),
         .main(
-          .p("\(p1)"),
-          .p("\(p2)"),
-          .p("\(p3)")
+          .markdown(p1),
+          .markdown(p2),
+          .markdown(p3)
         )
       )
     )
@@ -91,7 +107,12 @@ public extension Node where Context == HTML.BodyContext {
   static func aboutCTA() -> Node {
     .section(
       .header(
-        .img(.src("https://via.placeholder.com/1920x1080.png"))
+        .video(
+          .attribute(named: "autoplay"),
+          .attribute(named: "muted"),
+          .attribute(named: "loop"),
+          .source(.src("/media/about-us/am-try.webm"), .type(.webM))
+        )
       ),
       .main(
         .header(

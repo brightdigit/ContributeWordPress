@@ -4,7 +4,7 @@ date: 2019-10-18 05:59
 description: For a more optimal user experience and easier maintenance, there are
   important reasons to consider native app development.
 tags: Coding, Native iOS development, Programming, Software
-featuredImage: /media/images/brightdigit/2019/10/003-experience.png
+featuredImage: /media/wp-images/brightdigit/2019/10/featured_image.png
 ---
 While cross-platform mobile development has become a trend when it comes
 to making apps, people still ask us regularly when it is worth getting
@@ -14,7 +14,7 @@ a more optimal user experience and easier maintenance, there are
 important reasons to consider native app development.**
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/10/featured_image-1024x512.png" class="wp-image-1753" width="1024" height="512" />
+<img src="/media/wp-images/brightdigit/2019/10/featured_image-1024x512.png" class="wp-image-1753" width="1024" height="512" />
 </figure>
 
 In this post, we’ll cover the major reasons about when and why it’s
@@ -88,7 +88,7 @@ the principles we cover here apply equally in the context of Android or
 any other device platform.*
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/10/003-experience-300x300.png" class="wp-image-1757" />
+<img src="/media/wp-images/brightdigit/2019/10/003-experience-300x300.png" class="wp-image-1757" />
 </figure>
 
 ### Native User Experience
@@ -141,7 +141,7 @@ could present bugs or unexpected behavior in the app, which leads to the
 next area...
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/10/004-speedometer-300x300.png" class="wp-image-1755" />
+<img src="/media/wp-images/brightdigit/2019/10/004-speedometer-300x300.png" class="wp-image-1755" />
 </figure>
 
 ### Performance
@@ -168,7 +168,7 @@ mean you will have cleaner code for your app that is easier to read and
 more consistent, both of which are important when considering... 
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/10/005-settings-300x300.png" class="wp-image-1756" />
+<img src="/media/wp-images/brightdigit/2019/10/005-settings-300x300.png" class="wp-image-1756" />
 </figure>
 
 ### Native App Maintainability

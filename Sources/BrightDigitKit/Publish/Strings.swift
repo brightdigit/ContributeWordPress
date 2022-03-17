@@ -41,8 +41,8 @@ enum Strings {
     // MARK: - About, Helping Others
 
     static let helpingOthersTitle = "We also love helping people learn and grow as developers"
-    static let helpingOthersP1 = "There are so many great people doing cool things with Swift, and we like to help them find the best patterns and practices to build the best possible software."
-    static let helpingOthersP2 = "You learn more about coding and best practices for Swift development through our podcast, videos, and online resources"
+    static let helpingOthersP1 = "There are so many great people doing cool things with Swift, and we like to help them find the [best patterns](/articles) and [practices](/tutorials) to build the best possible software."
+    static let helpingOthersP2 = "You learn more about [coding](/tutorial) and [best practices](/articles) for Swift development through our [podcast, videos,](/podcast) and [online resources.](/tutorials)"
 
     // MARK: - About, CTA
 
@@ -50,5 +50,9 @@ enum Strings {
     static let ctaP1 = "We work with businesses large and small, helping them create, redesign, and port apps that delight customers."
     static let ctaP2 = "If this is what you’re looking for, get in touch with us today."
     static let ctaP3 = "If you’re interested in our community support, Leo regularly speaks at conferences, on podcasts, and gives workshops on life, development work, and, of course, Swift."
+  }
+
+  enum Newsletter {
+    static let featuredParagraph = "Stay informed about the latest developments in the world of Swift App Development and what they could mean for your business."
   }
 }

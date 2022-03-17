@@ -1,10 +1,10 @@
 ---
 title: MicroConf and building an app for the Apple Watch on iPhreaks
 date: 2018-06-20 17:26
-description: "Leo Dion from BrightDigit was recently a guest on the podcast iPhreaks
+description: Leo Dion from BrightDigit was recently a guest on the podcast iPhreaks
   discussing MicroConf, customer discovery, info products, meetups, and building an
-  exercise app for the Apple Watch.\_"
-featuredImage: /media/images/learningswift/2018/06/iPhreaks-thumb.jpg
+  exercise app for the Apple Watch.
+featuredImage: /media/wp-images/learningswift/2018/06/iPhreaks-thumb.jpg
 ---
 Leo Dion from BrightDigit was recently a guest on the [podcast
 iPhreaks](https://devchat.tv/iphreaks/ips-244-microconf-writing-health-apps-for-apple-watch)

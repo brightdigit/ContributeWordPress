@@ -3,7 +3,7 @@ title: Objective-C and Swift - Being Friendly
 date: 2018-11-14 05:23
 description: Objective-C is still necessary for Swift development. With the introduction
   of C++ libraries in version 2.0 of Speculid, Objective-C became necessary.
-featuredImage: /media/images/learningswift/2018/11/2m411z.jpg
+featuredImage: /media/wp-images/learningswift/2018/11/2m411z.jpg
 ---
 There are times where Objective-C is still necessary for Swift
 development. For instance, with one such app I've built in Swift,
@@ -50,15 +50,15 @@ rundown of the process:
 
 -   **Main** - instantiate and run NSApplication
 -   **SpeculidApplication** - looks for the *speculid* file and parses
-    the file using *Codable*
-    -   Finds the source graphic file (PNG or SVG)
-    -   Parses the [Asset
-        Catalog](https://learningswift.brightdigit.com/asset-catalogs-image-sets-app-icons/)
-        file
-    -   Parses the specifications in the *speculid* file
-    -   Creates the specifications to be passed to the Objective-C code
+the file using *Codable*
+-   Finds the source graphic file (PNG or SVG)
+-   Parses the [Asset
+    Catalog](https://learningswift.brightdigit.com/asset-catalogs-image-sets-app-icons/)
+    file
+-   Parses the specifications in the *speculid* file
+-   Creates the specifications to be passed to the Objective-C code
 -   **In Objective-C**, use the specifications passed to call the C++
-    functions to write out the target graphic files (PNG or PDF)
+functions to write out the target graphic files (PNG or PDF)
 
 ## Writing Swift-Friendly Code in Objective-C
 
@@ -75,10 +75,11 @@ to Swift what is required. In our Objective-C framework, there are two
 methods available to Swift. The main method which calls
 the *Cairo* library and takes an *ImageSpecificationProtocol* and an
 *ImageHandle* object:
-
-    @interface CairoInterface : NSObject
-    +  (BOOL)exportImage:(id<ImageHandle>) sourceHandle withSpecification: (id<ImageSpecificationProtocol>) specification error: (NSError **) error;
-    @end
+```
+@interface CairoInterface : NSObject
++  (BOOL)exportImage:(id<ImageHandle>) sourceHandle withSpecification: (id<ImageSpecificationProtocol>) specification error: (NSError **) error;
+@end
+```
 
 #### Abstracting with Protocols
 
@@ -89,18 +90,20 @@ create an *ImageHandle* without having access to the Cairo surface
 reference? That's where the other method comes in. We provide a
 builder/factory class in the Objective-C class which takes parameters
 available in Swift:
-
-    @interface ImageHandleBuilder : NSObject
-    @property (class, nonatomic, assign, readonly) ImageHandleBuilder*  shared;
-    - (id<ImageHandle>) imageHandleFromFile: (id<ImageFileProtocol>) file error:(NSError**) error;
-    @end
+```
+@interface ImageHandleBuilder : NSObject
+@property (class, nonatomic, assign, readonly) ImageHandleBuilder*  shared;
+- (id<ImageHandle>) imageHandleFromFile: (id<ImageFileProtocol>) file error:(NSError**) error;
+@end
+```
 
 The *ImageFileProtocol* protocol looks this:
-
-    @protocol ImageFileProtocol <NSObject>
-    @property (readonly) NSURL * _Nonnull url;
-    @property (readonly) ImageFileFormat format;
-    @end
+```
+@protocol ImageFileProtocol <NSObject>
+@property (readonly) NSURL * _Nonnull url;
+@property (readonly) ImageFileFormat format;
+@end
+```
 
 #### Protocols as Guidance
 
@@ -114,26 +117,27 @@ for *ImageSpecificationProtocol*
 in`CairoInterace.exportImage:withSpecification:error:`.
 ImageSpecificationProtocol contains the information needed to know what
 and how the information is painted:
-
-    @protocol ImageSpecificationProtocol <NSObject>
-    @property (readonly) id<ImageFileProtocol> file;
-    @property (readonly) GeometryDimension geometry;
-    @property (readonly) BOOL removeAlphaChannel;
-    @property (readonly) id<CairoColorProtocol> backgroundColor;
-    @end
+```
+@protocol ImageSpecificationProtocol <NSObject>
+@property (readonly) id<ImageFileProtocol> file;
+@property (readonly) GeometryDimension geometry;
+@property (readonly) BOOL removeAlphaChannel;
+@property (readonly) id<CairoColorProtocol> backgroundColor;
+@end
+```
 
 Let’s look at each of these properties excluding ImageFileProtocol which
 we already talked about...
 
 -   *removeAlphaChannel* which is a boolean value and that’s transferred
-    between languages easily.
+between languages easily.
 -   *geometry is* *GeometryDimension,* a C struct which contains
-    information about which dimension to scale based on (width, height
-    or scale) and the size. ``
+information about which dimension to scale based on (width, height
+or scale) and the size. ``
 -   *backgroundColor is* *CairoColorProtocol* which contains information
-    about the background color in case you need an image without a
-    transparency and your source image has a transparency (i.e. App
-    Icons).
+about the background color in case you need an image without a
+transparency and your source image has a transparency (i.e. App
+Icons).
 
 With the *CairoColorProtocol,* we could simply create a new class
 that contains the info that is needed. However, in Swift, we could
@@ -142,30 +146,32 @@ minimize new code by simply using an Extension on an existing class.
 ### Using Extensions to Add Functionality to Existing Classes
 
 Here is how the protocol for *CairoColorProtocol* looks in Objective-C:
-
-    @protocol CairoColorProtocol <NSObject>
-    @property (readonly) double red;
-    @property (readonly) double green;
-    @property (readonly) double blue;
-    @end
+```
+@protocol CairoColorProtocol <NSObject>
+@property (readonly) double red;
+@property (readonly) double green;
+@property (readonly) double blue;
+@end
+```
 
 In this case rather <u>then</u> creating a new class to implement this
 in Swift we can extend existing class: NSColor. Here the <u>simple</u>
 implementation <u>as a Swift extension</u>:
+```
+extension NSColor: CairoColorProtocol {
+  public var red: Double {
+    return Double(redComponent)
+  }
 
-    extension NSColor: CairoColorProtocol {
-      public var red: Double {
-        return Double(redComponent)
-      }
+  public var green: Double {
+    return Double(greenComponent)
+  }
 
-      public var green: Double {
-        return Double(greenComponent)
-      }
-
-      public var blue: Double {
-        return Double(blueComponent)
-      }
-    }
+  public var blue: Double {
+    return Double(blueComponent)
+  }
+}
+```
 
 Now we can easily communicate between Swift and Objective-C. However,
 there are a couple of improvements we could make to our Objective-C code
@@ -185,37 +191,41 @@ need for NSError pointers as parameters in Swift. However, if you follow
 the standard NSError paradigms in Objective-C, Swift will see that
 method as though it could throw an Error. Here’s an example from the
 CairoInterface class:
-
-    @interface CairoInterface : NSObject
-    +  (BOOL)exportImage:(id<ImageHandle>) sourceHandle withSpecification: (id<ImageSpecificationProtocol>) specification error: (NSError **) error;
-    @end
+```
+@interface CairoInterface : NSObject
++  (BOOL)exportImage:(id<ImageHandle>) sourceHandle withSpecification: (id<ImageSpecificationProtocol>) specification error: (NSError **) error;
+@end
+```
 
 Swift will see this as:
-
-    class CairoInterface : NSObject {
-        static func exportImage(_ sourceHandle: ImageHandle!, withSpecification specification: ImageSpecificationProtocol!) throws
-    }
+```
+class CairoInterface : NSObject {
+    static func exportImage(_ sourceHandle: ImageHandle!, withSpecification specification: ImageSpecificationProtocol!) throws
+}
+```
 
 Two things are required for the translation to an error throwing
 function:
 
 -   the return is a boolean which indicates true for success, false for
-    failure
+failure
 -   an NSError pointer parameter specifically named error
 
 Let’s take a look again at the ImageHandleBuilder method:
-
-    @interface ImageHandleBuilder : NSObject
-    @property (class, nonatomic, assign, readonly) ImageHandleBuilder*  shared;
-    - (id<ImageHandle>) imageHandleFromFile: (id<ImageFileProtocol>) file error:(NSError**) error;
-    @end
+```
+@interface ImageHandleBuilder : NSObject
+@property (class, nonatomic, assign, readonly) ImageHandleBuilder*  shared;
+- (id<ImageHandle>) imageHandleFromFile: (id<ImageFileProtocol>) file error:(NSError**) error;
+@end
+```
 
 The difference is that it returns an actual value possibly. Otherwise,
 we still have an NSError pointer parameter named error.
-
-    class ImageHandleBuilder : NSObject {
-        func imageHandleFromFile(_ file: ImageFileProtocol!) throws -> ImageHandle!
-    }
+```
+class ImageHandleBuilder : NSObject {
+    func imageHandleFromFile(_ file: ImageFileProtocol!) throws -> ImageHandle!
+}
+```
 
 By following this standard, we’ve made error handling much cleaner and
 easier between languages. However, we still have annoying implicit
@@ -233,11 +243,12 @@ Luckily, there are Objective-C attributes which can help clarify
 optionals better. Objective-C has two attributes to signify to Swift
 whether a parameter, property, or return value is optional or not:
 `_Nonnull` and `_Nullable`. Let’s look again at *ImageHandleBuilder*:
-
-    @interface ImageHandleBuilder : NSObject
-    @property (class, nonatomic, assign, readonly) ImageHandleBuilder*  shared;
-    - (id<ImageHandle>) imageHandleFromFile: (id<ImageFileProtocol>) file error:(NSError**) error;
-    @end
+```
+@interface ImageHandleBuilder : NSObject
+@property (class, nonatomic, assign, readonly) ImageHandleBuilder*  shared;
+- (id<ImageHandle>) imageHandleFromFile: (id<ImageFileProtocol>) file error:(NSError**) error;
+@end
+```
 
 We have a singleton, `shared` which must exist and we have a function
 `imageHandleFromFile:error:` which needs an ImageFileProtocol and may
@@ -247,25 +258,28 @@ be  `_Nonnull``` and the `file` parameter in
 `imageHandleFromFile:error:` can fail and throw an error, the return
 type must be optional so we mark that we the `_Nullable` attribute. Here
 is the result:
-
-    @interface ImageHandleBuilder : NSObject
-    @property (class, nonatomic, assign, readonly) ImageHandleBuilder* _Nonnull shared;
-    - (id<ImageHandle> _Nullable) imageHandleFromFile: (id<ImageFileProtocol> _Nonnull) file error:(NSError**) error;
-    @end
+```
+@interface ImageHandleBuilder : NSObject
+@property (class, nonatomic, assign, readonly) ImageHandleBuilder* _Nonnull shared;
+- (id<ImageHandle> _Nullable) imageHandleFromFile: (id<ImageFileProtocol> _Nonnull) file error:(NSError**) error;
+@end
+```
 
 So now rather than Swift seeing:
-
-    class ImageHandleBuilder : NSObject {
-        class var shared : ImageHandleBuilder! { get }
-        func imageHandleFromFile(_ file: ImageFileProtocol!) throws -> ImageHandle!
-    }
+```
+class ImageHandleBuilder : NSObject {
+    class var shared : ImageHandleBuilder! { get }
+    func imageHandleFromFile(_ file: ImageFileProtocol!) throws -> ImageHandle!
+}
+```
 
 We’ll see:
-
-    class ImageHandleBuilder : NSObject {
-        class var shared : ImageHandleBuilder { get }
-        func imageHandleFromFile(_ file: ImageFileProtocol) throws -> ImageHandle?
-    }
+```
+class ImageHandleBuilder : NSObject {
+    class var shared : ImageHandleBuilder { get }
+    func imageHandleFromFile(_ file: ImageFileProtocol) throws -> ImageHandle?
+}
+```
 
 This makes the API much more understandable in Swift and easier to
 interface with.
@@ -277,15 +291,15 @@ process of migrating Objective-C code over to Swift. There are a few
 things you can do:
 
 -   If you can to keep as much as code in Swift as possible, **write
-    Protocols in Objective-C and implementation (i.e. Classes) in
-    Swift**
+Protocols in Objective-C and implementation (i.e. Classes) in
+Swift**
 -   **Use Protocol to guide the API for other frameworks and libraries**
 -   **Use Extensions to avoid duplicating types** and reuse existing
-    types.
+types.
 -   In Objective-C, if your function can throw an Error, **use the
-    standard paradigm in so Swift interprets your code correctly**
+standard paradigm in so Swift interprets your code correctly**
 -   **Mark your Objective-C generously** with attributes to note whether
-    a parameter, return type, etc... is nullable or not.
+a parameter, return type, etc... is nullable or not.
 
 Next, we'll be talking about using those C++ libraries in a framework.
 If you want to stay up-to-date, [fill out the

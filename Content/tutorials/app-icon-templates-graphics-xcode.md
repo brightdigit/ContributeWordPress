@@ -3,7 +3,7 @@ title: App Icon Templates - Building Graphics For Xcode
 date: 2018-10-29 08:22
 description: Asset Catalogs are the key component in Xcode. Today we are going to
   talk about using app icon templates in Sketch and Photoshop.
-featuredImage: /media/images/learningswift/2018/10/templates-export.jpg
+featuredImage: /media/wp-images/learningswift/2018/10/templates-export.jpg
 ---
 Asset Catalogs are the key component in Xcode project for storing
 colors, sprites, metadata, and of course graphics and managing those
@@ -19,7 +19,7 @@ are going to look at the top two graphic editors: **Sketch** and
 
 ### Sketch
 
-https://youtu.be/4Um\_zRh4ENY
+https://youtu.be/4UmzRh4ENY
 
 In the last few years, Sketch has grown to be one of the leading
 applications used by graphic designers especially in the area of mobile

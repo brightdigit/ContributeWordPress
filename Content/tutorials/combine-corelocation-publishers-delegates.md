@@ -4,7 +4,8 @@ date: 2020-08-18 20:31
 description: Many APIs from Apple come from an era of Objective-C and Delegate Patterns.
   How do we adapt those APIs for SwiftUI and create Publishers from delegates?
 tags: combine, functional programming, GCD
-featuredImage: /media/images/learningswift/2020/08/CoreLocation-AppPreview.jpg
+featuredImage: /media/wp-images/learningswift/2020/08/Combine-ing-the-Old-with-the-New-360iDev-August-2020.001-2.png
+subscriptionCTA: Notify me when the next post is out
 ---
 Most of the APIs from Apple come from an era of Objective-C and the
 Delegation Pattern. With this in mind, the challenge is figuring how to
@@ -28,13 +29,11 @@ and longitude with CoreLocation.** This includes:
 
 -   Creating Publishers from Delegates
 -   [Using Function Reactive Programming to Transform Values
-    (Part 2)](https://learningswift.brightdigit.com/combine-corelocation-receiving-handling-events/)
+(Part 2)](https://learningswift.brightdigit.com/combine-corelocation-receiving-handling-events/)
 -   [Understanding FlatMap and Built-In Publishers
-    (Part 3)](https://learningswift.brightdigit.com/combine-corelocation-swiftui-delegates/)
+(Part 3)](https://learningswift.brightdigit.com/combine-corelocation-swiftui-delegates/)
 
-For this part, we'll be getting into how to create a `Protocol` and
-`Class` which will act as a go-between for the *Delegation Pattern* and
-the *Reactive Functional Programming* of **SwiftUI** and **Combine**.
+For this part, we'll be getting into how to create a `Protocol` and `Class` which will act as a go-between for the *Delegation Pattern* and the *Reactive Functional Programming* of **SwiftUI** and **Combine**.
 
 ## Gonna Delegate Like It’s 2009
 
@@ -48,30 +47,32 @@ This is where it becomes necessary to make a delegate respond in such a
 way that SwiftUI can handle updates.
 
 With Apple’s older APIs, we typically see this:
-
-    protocol NSDelegate : NSObjectProtocol {
-      func manager(_ manager: NSManager, doneWith data: AnyObject)
-      func manager(_ manager: NSManager, grantedPermission: Bool)
-    }
-    class NSManager : NSObject {
-      weak var delegate : NSDelegate?
-      
-      func requestAuthorization() {}
-      func doThing () {}
-    }
+```
+protocol NSDelegate : NSObjectProtocol {
+  func manager(_ manager: NSManager, doneWith data: AnyObject)
+  func manager(_ manager: NSManager, grantedPermission: Bool)
+}
+class NSManager : NSObject {
+  weak var delegate : NSDelegate?
+  
+  func requestAuthorization() {}
+  func doThing () {}
+}
+```
 
 In the case of **CoreLocation** we see this:
-
-    protocol CLLocationManagerDelegate : NSObjectProtocol {
-      func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation])
-      func locationManager(_: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
-    }
-    class CLLocationManager : NSObject {
-      weak var delegate : CLLocationManagerDelegate?
-      
-      func requestWhenInUseAuthorization() {}
-      func startUpdatingLocation () {}
-    }
+```
+protocol CLLocationManagerDelegate : NSObjectProtocol {
+  func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation])
+  func locationManager(_: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
+}
+class CLLocationManager : NSObject {
+  weak var delegate : CLLocationManagerDelegate?
+  
+  func requestWhenInUseAuthorization() {}
+  func startUpdatingLocation () {}
+}
+```
 
 In other words, we’ll need to create Combine *Publishers* which our
 `ObservableObject` can listen or react to. Once the `ObservableObject`
@@ -79,7 +80,7 @@ reacts properly, then the `View` will update accordingly. In the end, we
 should see this in our application:
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2020/08/CoreLocation-AppPreview-300x125.jpg" class="wp-image-1036" />
+<img src="/media/wp-images/learningswift/2020/08/CoreLocation-AppPreview-300x125.jpg" class="full-size" />
 </figure>
 
 Before we setup our publishers, let's scaffold our `View` and
@@ -89,71 +90,75 @@ Before we setup our publishers, let's scaffold our `View` and
 
 Let's first start by building our SwiftUI View. In this case, we'll be
 creating a SwiftUI view along with an `ObservableObject`.
-
-    struct LocationView: View {
-      // CLLocationManager is basically a singleton so an EnvironmentObject ObservableObject makes sense
-      @EnvironmentObject var locationObject: CoreLocationObject
-      var body: some View {
-        VStack {
-          // use our extension method to display a description of the status
-          Text("\(locationObject.authorizationStatus.description)")
-            .onTapGesture {
-              self.locationObject.authorize()
-            }
-          // use Optional.map to hide the Text if there's no location
-          self.locationObject.location.map {
-            Text($0.description)
-          }
+```
+struct LocationView: View {
+  // CLLocationManager is basically a singleton so an EnvironmentObject ObservableObject makes sense
+  @EnvironmentObject var locationObject: CoreLocationObject
+  var body: some View {
+    VStack {
+      // use our extension method to display a description of the status
+      Text("\(locationObject.authorizationStatus.description)")
+        .onTapGesture {
+          self.locationObject.authorize()
         }
+      // use Optional.map to hide the Text if there's no location
+      self.locationObject.location.map {
+        Text($0.description)
       }
     }
+  }
+}
+```
 
 This `LocationView` will simply display one line with a description of
 the location with a line describing the `CLAuthorizationStatus` using
 this extension:
-
-    extension CLAuthorizationStatus: CustomStringConvertible {
-      public var description: String {
-        switch self {
-        case .authorizedAlways:
-          return "Always Authorized"
-        case .authorizedWhenInUse:
-          return "Authorized When In Use"
-        case .denied:
-          return "Denied"
-        case .notDetermined:
-          return "Not Determined"
-        case .restricted:
-          return "Restricted"
-        @unknown default:
-          return "🤷‍♂️"
-        }
-      }
+```
+extension CLAuthorizationStatus: CustomStringConvertible {
+  public var description: String {
+    switch self {
+    case .authorizedAlways:
+      return "Always Authorized"
+    case .authorizedWhenInUse:
+      return "Authorized When In Use"
+    case .denied:
+      return "Denied"
+    case .notDetermined:
+      return "Not Determined"
+    case .restricted:
+      return "Restricted"
+    @unknown default:
+      return "🤷‍♂️"
     }
+  }
+}
+```
 
 Now let's go ahead and define our `ObservableObject`, named
 `CoreLocationObject`:
-
-    import Combine
-    import CoreLocation
-    import SwiftUI
-    class CoreLocationObject: ObservableObject {
-      @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
-      @Published var location: CLLocation?
-      init() { }
-    }
+```
+import Combine
+import CoreLocation
+import SwiftUI
+class CoreLocationObject: ObservableObject {
+  @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
+  @Published var location: CLLocation?
+  init() { }
+}
+```
 
 Lastly, make sure that you set the `EnvironmentObject` in your
 application using:
-
-    LocationView().environmentObject(CoreLocationObject())
+```
+LocationView().environmentObject(CoreLocationObject())
+```
 
 Now, we have our scaffolding setup, let's plug-in *CoreLocation*.
 
 ## Extending Delegates into Combine Publishers
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2020/08/Combine-ing-the-Old-with-the-New-360iDev-August-2020.001-2-1024x538.png" class="wp-image-1040" />
+<img src="/media/wp-images/learningswift/2020/08/Combine-ing-the-Old-with-the-New-360iDev-August-2020.001-2-1024x538.png" class="full-size" />
 </figure>
 
 With the Delegation Pattern, the Delegate (in this case
@@ -164,41 +169,43 @@ In order for our `ObservableObject` to react to *CoreLocation* changes,
 the delegate will have to create *Publishers* for us. With this in mind,
 I have extended to delegate to be a ***Publicist***. That is to say the
 *Delegate* will also be a *Publisher Factory*.
-
-    protocol CLLocationManagerCombineDelegate: CLLocationManagerDelegate {
-      func authorizationPublisher() -> AnyPublisher<CLAuthorizationStatus, Never>
-      func locationPublisher() -> AnyPublisher<[CLLocation], Never>
-    }
+```
+protocol CLLocationManagerCombineDelegate: CLLocationManagerDelegate {
+  func authorizationPublisher() -> AnyPublisher<CLAuthorizationStatus, Never>
+  func locationPublisher() -> AnyPublisher<[CLLocation], Never>
+}
+```
 
 In the case of our application, we are displaying the authorization
 status of *Core Location* as well as the latitude and longitude.
 Therefore, we only need two methods implemented for our publishers.
 
 Here is the implementation of our new protocol:
-
-    class CLLocationManagerPublicist: NSObject, CLLocationManagerCombineDelegate {
-      let authorizationSubject = PassthroughSubject<CLAuthorizationStatus, Never>()
-      let locationSubject = PassthroughSubject<[CLLocation], Never>()
-      func authorizationPublisher() -> AnyPublisher<CLAuthorizationStatus, Never> {
-        return Just(CLLocationManager.authorizationStatus())
-          .merge(with:
-            authorizationSubject.compactMap { $0 }
-          ).eraseToAnyPublisher()
-      }
-      func locationPublisher() -> AnyPublisher<[CLLocation], Never> {
-        return locationSubject.eraseToAnyPublisher()
-      }
-      func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationSubject.send(locations)
-      }
-      func locationManager(_: CLLocationManager, didFailWithError _: Error) {
-        // Implement to avoid crashes
-        // Extra Credit: Create a publisher for errors :/
-      }
-      func locationManager(_: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        authorizationSubject.send(status)
-      }
-    }
+```
+class CLLocationManagerPublicist: NSObject, CLLocationManagerCombineDelegate {
+  let authorizationSubject = PassthroughSubject<CLAuthorizationStatus, Never>()
+  let locationSubject = PassthroughSubject<[CLLocation], Never>()
+  func authorizationPublisher() -> AnyPublisher<CLAuthorizationStatus, Never> {
+    return Just(CLLocationManager.authorizationStatus())
+      .merge(with:
+        authorizationSubject.compactMap { $0 }
+      ).eraseToAnyPublisher()
+  }
+  func locationPublisher() -> AnyPublisher<[CLLocation], Never> {
+    return locationSubject.eraseToAnyPublisher()
+  }
+  func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    locationSubject.send(locations)
+  }
+  func locationManager(_: CLLocationManager, didFailWithError _: Error) {
+    // Implement to avoid crashes
+    // Extra Credit: Create a publisher for errors :/
+  }
+  func locationManager(_: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    authorizationSubject.send(status)
+  }
+}
+```
 
 Let’s breakdown how this class works.
 
@@ -215,39 +222,43 @@ With the `PassthroughSubject` properties in place, our delegate can send
 the values received from the delegate methods to the subjects.
 
 Creating our first *publisher* for `CLLocation` is fairly simple:
-
-    class CLLocationManagerPublicist: NSObject, CLLocationManagerCombineDelegate {
-    ...
-      let locationSubject = PassthroughSubject<[CLLocation], Never>()
-      func locationPublisher() -> AnyPublisher<[CLLocation], Never> {
-        return locationSubject.eraseToAnyPublisher()
-      }
-      func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationSubject.send(locations)
-      }
-    ...
-    }
+```
+class CLLocationManagerPublicist: NSObject, CLLocationManagerCombineDelegate {
+...
+  let locationSubject = PassthroughSubject<[CLLocation], Never>()
+  func locationPublisher() -> AnyPublisher<[CLLocation], Never> {
+    return locationSubject.eraseToAnyPublisher()
+  }
+  func locationManager(_: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    locationSubject.send(locations)
+  }
+...
+}
+```
 
 What’s important to realize is that we need to implement type erasure
 using `eraseToAnyPublisher`. The introduction of SwiftUI and Combine
 included improvements to Swift. These improvement allow for powerful
 transformations which can result in fairly complex Generic Types. For
 instance our `authorizationPublisher` has a return type `AnyPublisher`:
-
-      func authorizationPublisher() -> AnyPublisher<CLAuthorizationStatus, Never> {
-        return Just(CLLocationManager.authorizationStatus())
-          .merge(with:
-            authorizationSubject.compactMap { $0 }
-          ).eraseToAnyPublisher()
-      }
+```
+  func authorizationPublisher() -> AnyPublisher<CLAuthorizationStatus, Never> {
+    return Just(CLLocationManager.authorizationStatus())
+      .merge(with:
+        authorizationSubject.compactMap { $0 }
+      ).eraseToAnyPublisher()
+  }
+```
 
 Without `eraseToAnyPublisher`, the return type would be:
-
-    Publishers.Merge<Just<CLAuthorizationStatus>, Publishers.CompactMap<PassthroughSubject<CLAuthorizationStatus, Never>, CLAuthorizationStatus>>
+```
+Publishers.Merge<Just<CLAuthorizationStatus>, Publishers.CompactMap<PassthroughSubject<CLAuthorizationStatus, Never>, CLAuthorizationStatus>>
+```
 
 Likewise with the `locationPublisher`, the return type would be:
-
-    PassthroughSubject<[CLLocation], Never>
+```
+PassthroughSubject<[CLLocation], Never>
+```
 
 In the end, this makes creating Protocols and Return Types fairly
 complex. **As far as the `ObservableObject` is concerned, it doesn’t
@@ -269,13 +280,14 @@ While our `locationSubject` reflects the values from *CoreLocation*, the
 *CoreLocation*’s status. For this reason, we’ll need to write some code
 include the initial status along with whatever the `PassthroughSubject`
 receives.
-
-      func authorizationPublisher() -> AnyPublisher<CLAuthorizationStatus, Never> {
-        return Just(CLLocationManager.authorizationStatus())
-          .merge(with:
-            authorizationSubject
-          ).eraseToAnyPublisher()
-      }
+```
+  func authorizationPublisher() -> AnyPublisher<CLAuthorizationStatus, Never> {
+    return Just(CLLocationManager.authorizationStatus())
+      .merge(with:
+        authorizationSubject
+      ).eraseToAnyPublisher()
+  }
+```
 
 While `CoreLocationManagerDelegate` sends updates to
 `authorizationStatus`, we need to have access to the initial status via
@@ -288,7 +300,7 @@ reason, we can use `merge` to join the intial value with the result from
 the our `authorizationSubject`:
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2020/08/optimized.gif" class="wp-image-1044" />
+<img src="/media/wp-images/learningswift/2020/08/optimized.gif" class="full-size" />
 </figure>
 
 We have the publisher factories setup now!

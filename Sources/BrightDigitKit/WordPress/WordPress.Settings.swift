@@ -8,15 +8,15 @@ import ArgumentParser
 
 public extension BrightDigitSiteCommand.ImportCommand.WordPress {
   var contentPathURL: URL {
-    URL(fileURLWithPath: exportMarkdownDirectory)
+    URL(fileURLWithPath: exportMarkdownDirectory, relativeTo: FileManager.default.currentDirectoryURL)
   }
 
   var resourcesPathURL: URL {
-    URL(fileURLWithPath: exportResourcesDirectory)
+    URL(fileURLWithPath: exportResourcesDirectory, relativeTo: FileManager.default.currentDirectoryURL)
   }
 
   var directoryURL: URL {
-    URL(fileURLWithPath: wordpressExportsDirectory)
+    URL(fileURLWithPath: wordpressExportsDirectory, relativeTo: FileManager.default.currentDirectoryURL)
   }
 
   var resourceImagePathURL: URL {

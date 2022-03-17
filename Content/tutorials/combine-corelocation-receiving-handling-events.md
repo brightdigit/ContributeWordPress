@@ -4,7 +4,7 @@ date: 2020-08-23 20:31
 description: In our previous post, we talked about how to build a Publisher Factory.
   Here, we'll talk about how to use the factory for receiving and handling events.
 tags: combine, functional programming, GCD
-featuredImage: /media/images/learningswift/2020/08/Combine-ing-the-Old-with-the-New.001.png
+featuredImage: /media/wp-images/learningswift/2020/08/Combine-ing-the-Old-with-the-New.001.png
 ---
 [In our previous
 post,](https://learningswift.brightdigit.com/combine-corelocation-publishers-delegates/)
@@ -13,10 +13,10 @@ post, we'll talk about how receiving and handling Events in our
 ObservableObject from our new Publicist class.
 
 -   [Creating Publishers from
-    Delegates](https://learningswift.brightdigit.com/combine-corelocation-publishers-delegates/)
+Delegates](https://learningswift.brightdigit.com/combine-corelocation-publishers-delegates/)
 -   **Using Function Reactive Programming to Transform Values**
 -   [Understanding flatMap and Built-In Publishers
-    (Part 3)](https://learningswift.brightdigit.com/combine-corelocation-swiftui-delegates/)
+(Part 3)](https://learningswift.brightdigit.com/combine-corelocation-swiftui-delegates/)
 
 ## Receiving and Handling Events in our ObservableObject
 
@@ -30,28 +30,29 @@ we need to:
 4.  Create our Authorization Status and Location Publishers
 
 With this in mind, here is how that looks:
+```
+class CoreLocationObject: ObservableObject {
+  @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
+  @Published var location: CLLocation?
 
-    class CoreLocationObject: ObservableObject {
-      @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
-      @Published var location: CLLocation?
+  let manager: CLLocationManager
+  let publicist: CLLocationManagerCombineDelegate
 
-      let manager: CLLocationManager
-      let publicist: CLLocationManagerCombineDelegate
+  var cancellables = [AnyCancellable]()
 
-      var cancellables = [AnyCancellable]()
+  init() {
+    let manager = CLLocationManager()
+    let publicist = CLLocationManagerPublicist()
 
-      init() {
-        let manager = CLLocationManager()
-        let publicist = CLLocationManagerPublicist()
+    manager.delegate = publicist
 
-        manager.delegate = publicist
+    self.manager = manager
+    self.publicist = publicist
 
-        self.manager = manager
-        self.publicist = publicist
-
-        let authorizationPublisher = publicist.authorizationPublisher()
-        let locationPublisher = publicist.locationPublisher()
-        ...
+    let authorizationPublisher = publicist.authorizationPublisher()
+    let locationPublisher = publicist.locationPublisher()
+    ...
+```
 
 Next, we can actually deal with receiving and handling events from our
 Publishers. Firstly, let’s deal with the `CLAuthorizationStatus`.
@@ -63,27 +64,28 @@ when the authorization status changes:
 
 -   Trigger Location Update when `CLAuthorizationStatus` is valid
 -   Assign the `CLAuthorizationStatus` to our
-    `@Published CLAuthorizationStatus` Property `authorizationStatus`
+`@Published CLAuthorizationStatus` Property `authorizationStatus`
 
 ### Using Sink For Calling Methods
 
 Let’s first deal with triggering location updates by creating a method
 to begin those updates:
+```
+class CoreLocationObject: ObservableObject {
+  @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
+  @Published var location: CLLocation?
 
-    class CoreLocationObject: ObservableObject {
-      @Published var authorizationStatus = CLAuthorizationStatus.notDetermined
-      @Published var location: CLLocation?
+  let manager: CLLocationManager
 
-      let manager: CLLocationManager
+...
 
-    ...
-
-      func beginUpdates(_ authorizationStatus: CLAuthorizationStatus) {
-        if authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse {
-          manager.startUpdatingLocation()
-        }
-      }
+  func beginUpdates(_ authorizationStatus: CLAuthorizationStatus) {
+    if authorizationStatus == .authorizedAlways || authorizationStatus == .authorizedWhenInUse {
+      manager.startUpdatingLocation()
     }
+  }
+}
+```
 
 Our `beginUpdate` method will take in the `CLAuthorizedStatus` as it
 comes in from the `Publisher`. As a result, **if the status allows for
@@ -92,24 +94,25 @@ location update then it calls `startUpdatingLocation` on the
 
 With this in mind, let’s connect the `authorizationPublisher` to the
 `beginUpdates` method:
+```
+class CoreLocationObject: ObservableObject {
 
-    class CoreLocationObject: ObservableObject {
+  ...
+  var cancellables = [AnyCancellable]()
 
-      ...
-      var cancellables = [AnyCancellable]()
+  init() {
+    let publicist = CLLocationManagerPublicist()
+   
+    ...
+    
+    let authorizationPublisher = publicist.authorizationPublisher()
 
-      init() {
-        let publicist = CLLocationManagerPublicist()
-       
-        ...
-        
-        let authorizationPublisher = publicist.authorizationPublisher()
-
-        // trigger an update when authorization changes
-        authorizationPublisher
-          .sink(receiveValue: beginUpdates)
-          .store(in: &cancellables)
-        ...
+    // trigger an update when authorization changes
+    authorizationPublisher
+      .sink(receiveValue: beginUpdates)
+      .store(in: &cancellables)
+    ...
+```
 
 In this case, we are using `sink` and passing a reference to our new
 method. `sink` returns a `Cancellable` which we’ll need to make sure is
@@ -128,37 +131,40 @@ other words, failure to do this results in incorrect UI updates or even
 crashing your app. Likewise, in SwiftUI, you need to specify UI updates
 on the main dispatch queue. Therefore we can use `receive` to ensure
 updates are on the main `DispatchQueue`.
-
-    ...
-          authorizationPublisher
-            // since this is used in the UI,
-            //  it needs to be on the main DispatchQueue
-            .receive(on: DispatchQueue.main)
-            ...
+```
+...
+      authorizationPublisher
+        // since this is used in the UI,
+        //  it needs to be on the main DispatchQueue
+        .receive(on: DispatchQueue.main)
+        ...
+```
 
 As far as assigning we have a few options, we can stick with `sink` to
 assign our value the published property:
-
-    ...
-          authorizationPublisher
-            // since this is used in the UI,
-            //  it needs to be on the main DispatchQueue
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {
-              self.authorizationStatus = $0
-            })
-    ...
+```
+...
+      authorizationPublisher
+        // since this is used in the UI,
+        //  it needs to be on the main DispatchQueue
+        .receive(on: DispatchQueue.main)
+        .sink(receiveValue: {
+          self.authorizationStatus = $0
+        })
+...
+```
 
 However, we could simplify this with `assign`:
-
-    ...
-          authorizationPublisher
-            // since this is used in the UI,
-            //  it needs to be on the main DispatchQueue
-            .receive(on: DispatchQueue.main)
-            // store the value in the authorizationStatus property
-            .assign(to: &$authorizationStatus)
-    ...
+```
+...
+      authorizationPublisher
+        // since this is used in the UI,
+        //  it needs to be on the main DispatchQueue
+        .receive(on: DispatchQueue.main)
+        // store the value in the authorizationStatus property
+        .assign(to: &$authorizationStatus)
+...
+```
 
 [This new assign available in all the new 2020 OSes (iOS 14, macOS 11,
 watchOS 7,
@@ -172,24 +178,24 @@ stored.
 ## Sink vs Assign when Receiving and Handling Events
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2020/08/Combine-ing-the-Old-with-the-New.001-1024x204.png" class="wp-image-1062" />
+<img src="/media/wp-images/learningswift/2020/08/Combine-ing-the-Old-with-the-New.001-1024x204.png" class="wp-image-1062" />
 </figure>
 
 Choosing the correct method can be difficult but here's some guidelines:
 
 -   If you are doing some additional logic besides just assigning a
-    value, use `sink`
+value, use `sink`
 -   For just assigning a value, use `assign`
 -   When assigning a value which is being used directly by the UI (i.e.
-    UIKit View or SwiftUI View), use
-    [`.receive(on: DispatchQueue.main)`](https://developer.apple.com/documentation/combine/publisher/receive(on:options:))
+UIKit View or SwiftUI View), use
+[`.receive(on: DispatchQueue.main)`](https://developer.apple.com/documentation/combine/publisher/receive(on:options:))
 -   Make sure when using `sink` or the [2019 version of
-    `assign`](https://developer.apple.com/documentation/combine/publisher/assign(to:on:))
-    (i.e. `assign(to:on:)`), save the resulting `Cancellable` by [using
-    `.store`](https://developer.apple.com/documentation/combine/anycancellable/store(in:)-6cr9i)
+`assign`](https://developer.apple.com/documentation/combine/publisher/assign(to:on:))
+(i.e. `assign(to:on:)`), save the resulting `Cancellable` by [using
+`.store`](https://developer.apple.com/documentation/combine/anycancellable/store(in:)-6cr9i)
 -   When there's more than one `AnyCancellable` property, consider using
-    a [`Set` or `Array` for storing the
-    `Cancellables`](https://developer.apple.com/documentation/combine/anycancellable/store(in:)-3hyxs)
+a [`Set` or `Array` for storing the
+`Cancellables`](https://developer.apple.com/documentation/combine/anycancellable/store(in:)-3hyxs)
 
 In the next blog post, I'll cover some more advance functional
 programming techniques in Combine when we transform our `CLLocation` to

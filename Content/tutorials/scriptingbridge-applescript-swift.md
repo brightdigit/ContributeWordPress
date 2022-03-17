@@ -1,9 +1,9 @@
 ---
-title: "ScriptingBridge - Communicating with Swift\u200A and AppleScript"
+title: ScriptingBridge - Communicating with Swift  and AppleScript
 date: 2017-07-15 06:34
-description: "You may want to\_build an app in Xcode with the power of AppleScript
-  and without the need for scripts - particularly using Swift with ScriptingBridge."
-featuredImage: /media/images/learningswift/2018/11/0nrlPZlDopn4aHLy6.png
+description: You may want to build an app in Xcode with the power of AppleScript and
+  without the need for scripts - particularly using Swift with ScriptingBridge.
+featuredImage: /media/wp-images/learningswift/2018/11/0nrlPZlDopn4aHLy6.png
 ---
 **AppleScript **is a great technology on macOS for both developers and
 power users. With **AppleScript, **users can create automated processes
@@ -57,8 +57,9 @@ Building the Swift Code from AppleScript Definition Download the python
 scripting tools from the [SwiftScripting repo on
 GitHub](https://github.com/tingraldi/SwiftScripting). From the repo’s
 directory, run the following commands:
-
+```
     pip install clangsdef /Applications/Safari.app > Safari.sdefsdp -fh --basename Safari Safari.sdef./sbhc.py Safari.h./sbsc.py Safari.sdef
+```
 
 Let’s break this down:
 
@@ -90,8 +91,9 @@ can talk to Safari.
 ## Using the ScriptingBridge API for Safari
 
 To pull the all Safari windows currently open:
-
+```
     if let application = SBApplication(bundleIdentifier: "com.apple.Safari") {  let safariApplication = application as SafariApplication  let safariWindows = safariApplication.windows?().flatMap({ $0 as? SafariWindow })  ...}
+```
 
 We call the `SBApplication`constructor using the bundle identifier. If
 an object is returned, we cast as the `SafariApplication`protocol and
@@ -99,8 +101,9 @@ get all the windows. The `windows`property only returns
 a `SBElementArray`, so we need to cast those elements to
 a `SafariWindow`. Therefore by using the SafariWindow, we can get the
 window’s set of tabs:
-
+```
     let safariWindow = safariWindows?.firstlet safariTab = safariWindow?.tabs?().firstObject as? SafariTablet url = safariTab?.URL
+```
 
 So, let’s break this down:
 

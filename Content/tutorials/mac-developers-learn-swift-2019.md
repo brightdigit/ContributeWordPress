@@ -4,7 +4,7 @@ date: 2019-06-18 11:48
 description: With learning Swift and iOS development, it can be a challenge to find
   the right Mac for developers. Here are some guidelines depending on experience and
   budget.
-featuredImage: /media/images/brightdigit/2019/06/vzjdyl5jvxy.jpg
+featuredImage: /media/wp-images/learningswift/2019/06/vzjdyl5jvxy.jpg
 ---
 For beginners learning Swift, it can be a challenge to find the right
 Mac for developers. As with many things, I strongly believe you

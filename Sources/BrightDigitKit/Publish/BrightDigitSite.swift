@@ -1,6 +1,8 @@
 import Foundation
 import Plot
 import Publish
+import SplashPublishPlugin
+import YoutubePublishPlugin
 
 // This type acts as the configuration for your website.
 public struct BrightDigitSite: Website {
@@ -23,6 +25,7 @@ public struct BrightDigitSite: Website {
     var audioDuration: TimeInterval?
     var videoDuration: TimeInterval?
     var transistorID: String?
+    var subscriptionCTA: String?
   }
 
   // Update these properties to configure your website:
@@ -31,4 +34,27 @@ public struct BrightDigitSite: Website {
   public var description = "A description of BrightdigitCom"
   public var language: Language { .english }
   public var imagePath: Path? { nil }
+
+  static let defaultSteps: [PublishingStep<BrightDigitSite>] = [
+    .optional(.copyResources()),
+    .installPlugin(.transistor()),
+    .installPlugin(.youtube()),
+    .installPlugin(.splash(withClassPrefix: "")),
+    .addMarkdownFiles(),
+    .yamlStringFix,
+    .installPlugin(.readingTime()),
+    .sortItems(by: \.date, order: .descending),
+
+    .generateHTML(withTheme: .company, indentation: .spaces(2)),
+    .generateSiteMap(),
+
+    .webpack,
+    .generateRSSFeed(including: [.articles, .tutorials])
+  ]
+}
+
+extension BrightDigitSite {
+  func publish() throws {
+    try publish(using: Self.defaultSteps)
+  }
 }

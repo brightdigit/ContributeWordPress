@@ -5,7 +5,7 @@ description: HealthKit is the most important API when it comes to building healt
   fitness and workout apps. HealthKit also has many intricacies and details which
   need introduction when getting started such as HKObjectType and HKHealthStore.
 tags: Smart Intensity
-featuredImage: /media/images/learningswift/2018/05/diagram.png
+featuredImage: /media/wp-images/learningswift/2018/05/Artboard-1.png
 ---
 HealthKit is the most important API when it comes to building health,
 fitness and workout apps. HealthKit also has many intricacies and
@@ -32,7 +32,7 @@ fluctuate between  150 and 125 beats per minute - for 15 - 30 seconds
 each. Right now I use the built-in Workout app on my Apple Watch and
 check my heart rate throughout my exercise. \[caption
 id="attachment\_33" align="alignnone"
-width="1024"\]<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/05/IMG_208F0706D0D0-1-1024x534.jpeg" class="wp-image-33 size-large" width="1024" height="534" />
+width="1024"\]<img src="/media/wp-images/learningswift/2018/05/IMG_208F0706D0D0-1-1024x534.jpeg" class="wp-image-33 size-large" width="1024" height="534" />
 An example of one of my workouts. Notice how fluctuate my heart rate
 with the intensity of the workout.\[/caption\] However **a custom app
 which could notify me of when I reach certain heart rates for a period
@@ -53,7 +53,7 @@ rate `HKQuantityType`:
 `HKObjectType` is `HKWorkoutType`, which is accessed by calling
 `HKObjectType.workoutType()`. \[caption id="attachment\_41"
 align="aligncenter"
-width="800"\]<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/05/diagram.png" class="wp-image-41 size-full" width="800" height="275" />
+width="800"\]<img src="/media/wp-images/learningswift/2018/05/diagram.png" class="wp-image-41 size-full" width="800" height="275" />
 HKObjectType Hierarchy\[/caption\] The first thing we are going to use
 with these types is request permission from the user to read and write
 to HealthKit.
@@ -75,7 +75,7 @@ instantiate an object to use throughout your app. With the
 (`HKObjectType` subclass for data samples) to write and an optional
 `Set` of `HKObjectType` to read from. \[caption id="attachment\_42"
 align="aligncenter"
-width="505"\]<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2018/05/Artboard-1-253x300.png" class="wp-image-42" width="505" height="600" />
+width="505"\]<img src="/media/wp-images/learningswift/2018/05/Artboard-1-253x300.png" class="wp-image-42" width="505" height="600" />
 Diagram of Requesting Authorization\[/caption\] **Whenever this method
 with new** `HKObjectType` **or** `HKSampleType` **objects (such as the
 first time the app is run), the permission screen is shown.**
@@ -84,25 +84,26 @@ first time the app is run), the permission screen is shown.**
 `completion`  closure is where you'd begin to interact with the user and
 begin queries for data. Let’s take a look at how to properly with
 request authorization.
-
-    if HKHealthStore.isHealthDataAvailable() {
-      let healthStore = HKHealthStore()
-      let heartRateQuantityType = HKObjectType.quantityType(forIdentifier: .heartRate)!
-      let allTypes = Set([HKObjectType.workoutType(),
-                          heartRateQuantityType
-        ])
-      healthStore.requestAuthorization(toShare: nil, read: allTypes) { (result, error) in
-        if let error = error {
-          // deal with the error
-          return
-        }
-        guard result else {
-          // deal with the failed request 
-          return
-        }
-        // begin any necessary work if needed
-      }
+```
+if HKHealthStore.isHealthDataAvailable() {
+  let healthStore = HKHealthStore()
+  let heartRateQuantityType = HKObjectType.quantityType(forIdentifier: .heartRate)!
+  let allTypes = Set([HKObjectType.workoutType(),
+                      heartRateQuantityType
+    ])
+  healthStore.requestAuthorization(toShare: nil, read: allTypes) { (result, error) in
+    if let error = error {
+      // deal with the error
+      return
     }
+    guard result else {
+      // deal with the failed request 
+      return
+    }
+    // begin any necessary work if needed
+  }
+}
+```
 
 ## Conclusion
 
@@ -111,9 +112,9 @@ and health app.
 
 -   `HKObjectType` - the base class for HealthKit data.
 -   `HKHealthStore` - the access point for requesting authorization to
-    read and data.
+read and data.
 -   `.requestAuthoriation(toShare:, read:, completion:)` - requests
-    authorization of what data to read and write on a `HKHealthStore`
-    object.
+authorization of what data to read and write on a `HKHealthStore`
+object.
 -   When any change is made to the authorization requested, the
-    permission sheet will show.
+permission sheet will show.

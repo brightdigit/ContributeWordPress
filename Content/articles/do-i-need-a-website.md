@@ -4,15 +4,15 @@ date: 2018-05-24 00:12
 description: Having an updated, easy to navigate website makes a huge difference.
   It doesn't need to be fancy but it does need to easily present the basic information
   about your business.
-featuredImage: /media/images/brightdigit/2018/05/handshake_1526582521.jpg
+featuredImage: /media/wp-images/brightdigit/2018/05/tuazpj1uazs.jpg
 ---
-<img src="https://brightdigit.com/wp-content/uploads/2018/05/frustration_1526581460.jpg" class="size-full wp-image-1144 aligncenter" width="1280" height="854" />
+<img src="/media/wp-images/brightdigit/2018/05/frustration_1526581460.jpg" class="size-full wp-image-1144 aligncenter" width="1280" height="854" />
 It is incredibly difficult for a business in this day and age to succeed
 without having a good website. Customers expect to be able to find you
 online, see your hours and find ways to contact you.  **When your
 customers lack information; they are confused, frustrated and are
 inclined to look elsewhere.**
-<img src="https://brightdigit.com/wp-content/uploads/2018/05/jenga_1526581849.jpg" class="aligncenter size-full wp-image-1145" width="1280" height="850" alt="Child playing Jenga" />
+<img src="/media/wp-images/brightdigit/2018/05/jenga_1526581849.jpg" class="aligncenter size-full wp-image-1145" width="1280" height="850" alt="Child playing Jenga" />
 
 ## Why have a website?
 
@@ -29,7 +29,7 @@ tweet="Customers expect to be able to find you online, see your hours
 and find ways to contact you.  When your customers lack information;
 they are confused, frustrated and are inclined to look elsewhere."
 username="brightdigit"\]
-<img src="https://brightdigit.com/wp-content/uploads/2018/05/tuazpj1uazs.jpg" class="aligncenter size-full wp-image-1146" width="1600" height="900" />
+<img src="/media/wp-images/brightdigit/2018/05/tuazpj1uazs.jpg" class="aligncenter size-full wp-image-1146" width="1600" height="900" />
 
 ## What can you do next?
 
@@ -58,7 +58,7 @@ tweet="If the foundation isn't done correctly, everything else will
 slowly fall apart and have problems. Having a bad website will frustrate
 your customers and will be worse than not having a site at all!"
 username="brightdigit"\]
-<img src="https://brightdigit.com/wp-content/uploads/2018/05/handshake_1526582521.jpg" class="aligncenter size-full wp-image-1147" width="1280" height="853" alt="Making the Deal" />
+<img src="/media/wp-images/brightdigit/2018/05/handshake_1526582521.jpg" class="aligncenter size-full wp-image-1147" width="1280" height="853" alt="Making the Deal" />
 
 ## Finding the Right Web Designer
 

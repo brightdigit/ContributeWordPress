@@ -1,10 +1,10 @@
 ---
 title: Swift Development Tips - Speculid & Try!Swift NYC 2018
 date: 2018-11-19 04:30
-description: "On October 11, I spoke at Ann Arbor Cocoaheads at ArborMoon and gave
-  some swift development tips. Specifically developing Speculid and\_Try!Swift New
-  York."
-featuredImage: /media/images/learningswift/2018/11/title-card.jpg
+description: On October 11, I spoke at Ann Arbor Cocoaheads at ArborMoon and gave
+  some swift development tips. Specifically developing Speculid and Try!Swift New
+  York.
+featuredImage: /media/wp-images/learningswift/2018/11/title-card.jpg
 ---
 <span class="mce_SELRES_start"
 style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;"
