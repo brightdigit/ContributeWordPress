@@ -73,7 +73,7 @@ struct PiHTMLFactory: HTMLFactory {
   func makeItemHTML(for item: Item<BrightDigitSite>, context: PublishingContext<BrightDigitSite>) throws -> HTML {
     let content = try Pages.content(forItem: item, withContext: context)
     return HTML(
-      .makeHead(forPage: content),
+      .makeHead(forPage: content, item: item),
       .body(
         .headerNav(),
         content.mainElement,

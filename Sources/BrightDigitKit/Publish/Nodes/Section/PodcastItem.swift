@@ -35,8 +35,8 @@ struct PodcastItem: SectionItem {
     }
   }
 
-  var featuredItemContent: [Node<HTML.BodyContext>] {
-    [
+  var featuredItemContent: Node<HTML.BodyContext> {
+    .header(
       .id("episode-\(episodeNo)"),
       .header(
         .img(.src(imageURL)),
@@ -79,7 +79,7 @@ struct PodcastItem: SectionItem {
           ))
         }
       )
-    ]
+    )
   }
 
   var sectionItemContent: [Node<HTML.BodyContext>] {

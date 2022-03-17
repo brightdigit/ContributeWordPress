@@ -51,4 +51,8 @@ enum Strings {
     static let ctaP2 = "If this is what you’re looking for, get in touch with us today."
     static let ctaP3 = "If you’re interested in our community support, Leo regularly speaks at conferences, on podcasts, and gives workshops on life, development work, and, of course, Swift."
   }
+
+  enum Newsletter {
+    static let featuredParagraph = "Stay informed about the latest developments in the world of Swift App Development and what they could mean for your business."
+  }
 }
