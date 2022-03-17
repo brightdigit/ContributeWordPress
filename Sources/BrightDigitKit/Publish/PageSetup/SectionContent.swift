@@ -20,15 +20,9 @@ struct SectionContent<SectionBuilderType: SectionBuilderProtocol>: PageContent {
   var main: [Node<HTML.BodyContext>] {
     [
       .class("section"),
-      .header(
-        .section(
-          .class("hero"),
-          .section(
-            .class("featured"),
-            .forEach(builder.featuredItem.featuredItemContent) { $0 }
-          )
-        )
-      ),
+
+      featuredNode,
+
       .section(
         .ol(
           .forEach(builder.children) { .li(
@@ -37,5 +31,9 @@ struct SectionContent<SectionBuilderType: SectionBuilderProtocol>: PageContent {
         )
       )
     ]
+  }
+
+  var featuredNode: Node<HTML.BodyContext> {
+    builder.featuredItem.featuredItemContent
   }
 }

@@ -3,7 +3,7 @@ import Plot
 import Publish
 
 protocol SectionItem: SectionContentFactory {
-  var featuredItemContent: [Node<HTML.BodyContext>] { get }
+  var featuredItemContent: Node<HTML.BodyContext> { get }
   var sectionItemContent: [Node<HTML.BodyContext>] { get }
   var isFeatured: Bool { get }
   var source: Item<BrightDigitSite> { get }
