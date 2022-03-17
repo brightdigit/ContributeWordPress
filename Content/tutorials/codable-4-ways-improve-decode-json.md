@@ -14,12 +14,12 @@ file from Twitter](https://github.com/brightdigit/advanced-swift-codable/blob/
 As a result of the way the JSON decoder works, we see:
 
 -   **Quoted and Standard Tweets use similar but not exactly the same
-    fields.**
+fields.**
 -   **Keys which get translated to property names don't follow Swift
-    conventions.**
+conventions.**
 -   **Dates are not in the standard accepted format.**
 -   **Colors are not in a format accepted by any Color class** (UIColor,
-    NSColor, etc...)
+NSColor, etc...)
 
 As a result of this, we are going to learn how to setup your Codable
 types for some of those special cases. Specifically, we are going to
@@ -40,17 +40,17 @@ structured type:
 
 1.  Property names are converted as is.
 2.  Simple property values by default are converted to `String`, `Int`,
-    or `Double`
+or `Double`
 3.  Property values which follow the correct format may be decoded into
-    `URL`, `Data`, or `Date`.
+`URL`, `Data`, or `Date`.
 4.  Any property value may be assumed to be `Optional`
 5.  Square bracket `[]` values are converted to `Array`
 6.  Curly brackets `{}` values are convert to `Dictionary` or a custom
-    type.
+type.
 7.  All types which need to be decoded need to implement the Decodable
-    protocol. Likewise, types which need to be encoded need to implement
-    the Encodable protocol. If the type needs to be both decoded and
-    encoded can simply implement Codable.
+protocol. Likewise, types which need to be encoded need to implement
+the Encodable protocol. If the type needs to be both decoded and
+encoded can simply implement Codable.
 
 In this case, we’ll be looking at the [Twitter JSON
 data](https://github.com/brightdigit/advanced-swift-codable/blob/master/advanced-swift-codable.playground/Resources/twitter.json)
@@ -65,7 +65,7 @@ allow more flexibility. However, that does not mean we can’t use
 protocols in order simplify the consumption of those types in functions.
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/02/401od83ke6o-1024x680.jpg" class="wp-image-458" width="512" height="340" />
+<img src="/media/wp-images/learningswift/2019/02/401od83ke6o-1024x680.jpg" class="wp-image-458" width="512" height="340" />
 </figure>
 
 ## Using Protocols with Codable
@@ -75,105 +75,110 @@ throughout. As an example, their JSON has a main tweet as well as
 *quoted tweets*. Therefore, one might be inclined to use the same
 structure for both. However, a better approach is two separate
 structures:
+```
+public struct Tweet : Codable {
+  public let created_at : Date
+  public let id : Int
+  public let full_text : String
+  public let display_text_range : [Int]
+  public let entities : TweetEntities
+  public let source : String
+  public let in_reply_to_status_id : Int?
+  public let in_reply_to_user_id : Int?
+  public let in_reply_to_screen_name : String
+  public let user : TweetUser
+  public let quoted_status : QuotedTweet?
+  public let is_quote_status : Bool
+  public let retweet_count : Int
+  public let favorite_count : Int
+  public let favorited : Bool
+  public let retweeted : Bool
+  public let possibly_sensitive : Bool
+  public let possibly_sensitive_appealable : Bool
+  public let lang : String
+}
 
-    public struct Tweet : Codable {
-      public let created_at : Date
-      public let id : Int
-      public let full_text : String
-      public let display_text_range : [Int]
-      public let entities : TweetEntities
-      public let source : String
-      public let in_reply_to_status_id : Int?
-      public let in_reply_to_user_id : Int?
-      public let in_reply_to_screen_name : String
-      public let user : TweetUser
-      public let quoted_status : QuotedTweet?
-      public let is_quote_status : Bool
-      public let retweet_count : Int
-      public let favorite_count : Int
-      public let favorited : Bool
-      public let retweeted : Bool
-      public let possibly_sensitive : Bool
-      public let possibly_sensitive_appealable : Bool
-      public let lang : String
-    }
-
-    public struct QuotedTweet : Codable {
-      public let created_at : Date
-      public let id : Int
-      public let full_text : String
-      public let display_text_range : [Int]
-      public let entities : TweetEntities
-      public let user : TweetUser
-      public let source : String
-      public let extended_entities : TweetEntities
-      public let is_quote_status : Bool
-      public let retweet_count : Int
-      public let favorite_count : Int
-      public let favorited : Bool
-      public let retweeted : Bool
-      public let possibly_sensitive : Bool
-      public let possibly_sensitive_appealable : Bool
-      public let lang : String
-    }
+public struct QuotedTweet : Codable {
+  public let created_at : Date
+  public let id : Int
+  public let full_text : String
+  public let display_text_range : [Int]
+  public let entities : TweetEntities
+  public let user : TweetUser
+  public let source : String
+  public let extended_entities : TweetEntities
+  public let is_quote_status : Bool
+  public let retweet_count : Int
+  public let favorite_count : Int
+  public let favorited : Bool
+  public let retweeted : Bool
+  public let possibly_sensitive : Bool
+  public let possibly_sensitive_appealable : Bool
+  public let lang : String
+}
+```
 
 **Therefore, this means duplicated fields. However, it also allows for
 better flexibility and easier JSON decoding**. On the other hand, we can
 simplify these types when used as parameters in functions. For instance,
 let’s say we need to print the tweet out:
+```
+func printTweet (_ tweet: Tweet) {
+  print(tweet.full_text)
+  if let quoted_status = tweet.quoted_status {
+    printTweet(quoted_status)
+  }
+}
 
-    func printTweet (_ tweet: Tweet) {
-      print(tweet.full_text)
-      if let quoted_status = tweet.quoted_status {
-        printTweet(quoted_status)
-      }
-    }
-
-    func printTweet (_ tweet: QuotedTweet) {
-      print(">",tweet.full_text)
-    }
+func printTweet (_ tweet: QuotedTweet) {
+  print(">",tweet.full_text)
+}
+```
 
 However, using some basic *Protocol-Oriented Programming*, we can in
 fact be optimize this. Firstly, we stub a function which prints out the
 tweet based on a protocol regardless of whether it is a *quoted tweet*
 or not.
-
-    func printTweet(_ tweet: TweetProtocol, withQuoteLevel level: Int = 0) {
-      print(String(repeating: ">", count: level),tweet.full_text)
-      if let quotedTweet = tweet.quotedTweet {
-        printTweet(quotedTweet, withQuoteLevel: level+1)
-      }
-    }
+```
+func printTweet(_ tweet: TweetProtocol, withQuoteLevel level: Int = 0) {
+  print(String(repeating: ">", count: level),tweet.full_text)
+  if let quotedTweet = tweet.quotedTweet {
+    printTweet(quotedTweet, withQuoteLevel: level+1)
+  }
+}
+```
 
 Consequently, we create the protocol which has the properties we need
 for the function above.
-
-    public protocol TweetProtocol {
-      var full_text : String { get }
-      var quotedTweet : TweetProtocol? { get }
-    }
+```
+public protocol TweetProtocol {
+  var full_text : String { get }
+  var quotedTweet : TweetProtocol? { get }
+}
+```
 
 Lastly, we implement the protocol for the two types we’ll use it for -
 `Tweet` and `QuotedTweet`:
+```
+extension Tweet : TweetProtocol {
+  public var quotedTweet: TweetProtocol? {
+    return self.quoted_status
+  }
+}
 
-    extension Tweet : TweetProtocol {
-      public var quotedTweet: TweetProtocol? {
-        return self.quoted_status
-      }
-    }
-
-    extension QuotedTweet : TweetProtocol {
-      public var quotedTweet: TweetProtocol? {
-        return nil
-      }
-    }
+extension QuotedTweet : TweetProtocol {
+  public var quotedTweet: TweetProtocol? {
+    return nil
+  }
+}
+```
 
 Now **we have better flexibility to work with Codable while at the same
 time adding similar functionality using *Protocols*.** Next, let's
 cleanup the property names.
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/02/hrtdxy5urbu.jpg" width="400" height="267" />
+<img src="/media/wp-images/learningswift/2019/02/hrtdxy5urbu.jpg" width="400" height="267" />
 </figure>
 
 ## Custom Property Names
@@ -197,9 +202,10 @@ provide a map from JSON keys to property names. However, in this case
 names.** Therefore, in this case, we'll use `KeyDecodingStrategy`
 specifically
 [`KeyDecodingStrategy.convertFromSnakeCase`](https://developer.apple.com/documentation/foundation/jsondecoder/keydecodingstrategy/convertfromsnakecase):
-
-    let decoder = JSONDecoder()
-    decoder.keyDecodingStrategy = .convertFromSnakeCase
+```
+let decoder = JSONDecoder()
+decoder.keyDecodingStrategy = .convertFromSnakeCase
+```
 
 In addition, if
 [`KeyDecodingStrategy.convertFromSnakeCase`](https://developer.apple.com/documentation/foundation/jsondecoder/keydecodingstrategy/convertfromsnakecase)
@@ -214,7 +220,7 @@ enumeration. **In short, you want to use the simplest and most
 consistent strategy for mapping property names or JSON keys.**
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/02/zmmxsrmsoi8.jpg" width="400" height="281" />
+<img src="/media/wp-images/learningswift/2019/02/zmmxsrmsoi8.jpg" width="400" height="281" />
 </figure>
 
 ## Custom Property Values
@@ -234,12 +240,12 @@ can use [one of the strategies
 available](https://developer.apple.com/documentation/foundation/jsondecoder/datedecodingstrategy):
 
 -   **iso8601** - [a standard
-    format](https://www.iso.org/iso-8601-date-and-time-format.html) used
-    throughout the web
+format](https://www.iso.org/iso-8601-date-and-time-format.html) used
+throughout the web
 -   **secondsSince1970** - [unix
-    time](https://en.wikipedia.org/wiki/Unix_time) in seconds
+time](https://en.wikipedia.org/wiki/Unix_time) in seconds
 -   **millisecondsSince1970** - [unix
-    time](https://en.wikipedia.org/wiki/Unix_time) in milliseconds
+time](https://en.wikipedia.org/wiki/Unix_time) in milliseconds
 
 Consequently, **if the date format does not follow any of these you need
 to provide either a closure to convert it or a**
@@ -256,22 +262,23 @@ times provided by Twitter. As a result, from the date
 be: `eee MMM dd HH:mm:ss ZZZZ yyyy`. Therefore, we can create a
 [DateFormatter](https://developer.apple.com/documentation/foundation/dateformatter)
 and set the strategy accordingly:
+```
+let dateFormat = "eee MMM dd HH:mm:ss ZZZZ yyyy"
 
-    let dateFormat = "eee MMM dd HH:mm:ss ZZZZ yyyy"
+let dateFormatter = DateFormatter ()
+dateFormatter.dateFormat = dateFormat
 
-    let dateFormatter = DateFormatter ()
-    dateFormatter.dateFormat = dateFormat
-
-    let decoder = JSONDecoder()
-    decoder.dateDecodingStrategy = .formatted(dateFormatter)
-    decoder.keyDecodingStrategy = .convertFromSnakeCase
-    return decoder
+let decoder = JSONDecoder()
+decoder.dateDecodingStrategy = .formatted(dateFormatter)
+decoder.keyDecodingStrategy = .convertFromSnakeCase
+return decoder
+```
 
 In conclusion, by customizing the DateFormatter, dates can be decoded as
 Date property values. However, colors will be slightly more challenging.
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/02/f6xv0xs9jwg.jpg" width="400" height="300" />
+<img src="/media/wp-images/learningswift/2019/02/f6xv0xs9jwg.jpg" width="400" height="300" />
 </figure>
 
 ### Custom Decoding of Property Values
@@ -279,34 +286,35 @@ Date property values. However, colors will be slightly more challenging.
 For colors such as the profile background color, we need to create a
 separate struct and implement the encoding and decoding ourselves to
 convert the hexidecimal string to a usable color structure:
+```
+import Foundation
+import CoreGraphics
 
-    import Foundation
-    import CoreGraphics
+public struct Color : Codable {
+  public let red : CGFloat
+  public let green : CGFloat
+  public let blue : CGFloat
+  public let alpha : CGFloat
 
-    public struct Color : Codable {
-      public let red : CGFloat
-      public let green : CGFloat
-      public let blue : CGFloat
-      public let alpha : CGFloat
+  public init(from decoder: Decoder) throws {
+    let hexCode = try decoder.singleValueContainer().decode(String.self)
+    let scanner = Scanner(string: hexCode)
+    var hexint : UInt32 = 0
+    scanner.scanHexInt32(&hexint)
 
-      public init(from decoder: Decoder) throws {
-        let hexCode = try decoder.singleValueContainer().decode(String.self)
-        let scanner = Scanner(string: hexCode)
-        var hexint : UInt32 = 0
-        scanner.scanHexInt32(&hexint)
+    self.red = CGFloat((hexint & 0xff0000) >> 16) / 255.0
+    self.green = CGFloat((hexint & 0xff00) >> 8) / 255.0
+    self.blue = CGFloat((hexint & 0xff) >> 0) / 255.0
+    self.alpha = 1
+  }
 
-        self.red = CGFloat((hexint & 0xff0000) >> 16) / 255.0
-        self.green = CGFloat((hexint & 0xff00) >> 8) / 255.0
-        self.blue = CGFloat((hexint & 0xff) >> 0) / 255.0
-        self.alpha = 1
-      }
-
-      public func encode(to encoder: Encoder) throws {
-        let string = String(format: "%02lX%02lX%02lX", lroundf(Float(red * 255.0)), lroundf(Float(green * 255.0)), lroundf(Float(blue * 255.0)))
-        var container = encoder.singleValueContainer()
-        try container.encode(string)
-      }
-    }
+  public func encode(to encoder: Encoder) throws {
+    let string = String(format: "%02lX%02lX%02lX", lroundf(Float(red * 255.0)), lroundf(Float(green * 255.0)), lroundf(Float(blue * 255.0)))
+    var container = encoder.singleValueContainer()
+    try container.encode(string)
+  }
+}
+```
 
 In this case, we override the init method and grab the string from the
 `singleValueContainer`. After that, we use a
@@ -321,22 +329,23 @@ String to a Color struct.
 Since we can't use the existing system color types, here is the code to
 convert from our custom Color struct to whatever the system's default UI
 color type is:
+```
+#if os(iOS) || os(watchOS) || os(tvOS)
+import UIKit
+public typealias SystemColor = UIColor
+#elseif os(macOS)
+public typealias SystemColor = NSColor
+#endif
 
-    #if os(iOS) || os(watchOS) || os(tvOS)
-    import UIKit
-    public typealias SystemColor = UIColor
-    #elseif os(macOS)
-    public typealias SystemColor = NSColor
-    #endif
-
-    extension Color {  
-      public var systemColor : SystemColor {
-        return SystemColor(red: self.red, green: self.green, blue: self.blue, alpha: self.alpha)
-      }
-    }
+extension Color {  
+  public var systemColor : SystemColor {
+    return SystemColor(red: self.red, green: self.green, blue: self.blue, alpha: self.alpha)
+  }
+}
+```
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/02/xde_p0expc8.jpg" width="400" height="267" />
+<img src="/media/wp-images/learningswift/2019/02/xde_p0expc8.jpg" width="400" height="267" />
 </figure>
 
 ## Make Codable Work For Us
@@ -346,12 +355,12 @@ want to use the least amount of customization with the most amount of
 consistency.
 
 -   For data used in similar ways **use separate types but implement the
-    same protocol**
+same protocol**
 -   If property names with a consistent strategy, **use a
-    KeyEncodingStrategy rather than custom CodingKeys**
+KeyEncodingStrategy rather than custom CodingKeys**
 -   For dates **use dateDecodingStrategy, DateFormatter, or a closure**.
 -   For other custom types, **create a separate type and customize the
-    decoding** (and encoding) there.
+decoding** (and encoding) there.
 
 If you have other issues you'd like me to look into, [reach me at
 twitter](http://twitter.com/leogdion). In addition, if you are

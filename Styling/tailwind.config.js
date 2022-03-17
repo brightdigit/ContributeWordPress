@@ -27,7 +27,12 @@ purge: {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
-      'serif': ['Cardo', 'ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+      'serif': [
+        'Cardo', 'ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'
+      ],
+      'mono': [
+        'Oxygen Mono', 'monospace'
+      ]
     },
     extend: {
       colors: {

@@ -15,7 +15,7 @@ devices. And beforehand, everyone loves to guess what will happen.
 **What are the best guesses and leaks?**
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2018/09/0a6ef07b-2d53-4092-b582-b7a535fb78e6.png" class="wp-image-1414" alt="Size and Feature Comparison of the 2018 Apple September Event iPhones" /><figcaption aria-hidden="true">Size and Feature Comparison of the 2018 Apple September Event iPhones</figcaption>
+<img src="/media/wp-images/brightdigit/2018/09/0a6ef07b-2d53-4092-b582-b7a535fb78e6.png" class="wp-image-1414" alt="Size and Feature Comparison of the 2018 Apple September Event iPhones" /><figcaption aria-hidden="true">Size and Feature Comparison of the 2018 Apple September Event iPhones</figcaption>
 </figure>
 
 Everyone is convinced that we will see three new iPhones: **an improved

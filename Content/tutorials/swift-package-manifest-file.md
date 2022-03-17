@@ -22,16 +22,18 @@ There are two ways to get started using Swift Package Manager for your
 project in Xcode.
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2021/05/Untitled-17069-1-825x1024.gif" class="wp-image-1154" />
-</figure>
-
-<figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2021/05/Screen-Shot-2020-10-19-17067-1006x1024.png" class="wp-image-1155" />
+<img src="/media/wp-images/learningswift/2021/05/Untitled-17069-1-825x1024.gif" class="full-size" />
 </figure>
 
 First, you can simply drag the folder into your Xcode project. This is
 the ideal way, when you are planning on working on the Xcode project
-while working on its dependent Swift Package. Otherwise, you can add the
+while working on its dependent Swift Package. 
+
+<figure>
+<img src="/media/wp-images/learningswift/2021/05/Screen-Shot-2020-10-19-17067-1006x1024.png" class="full-size" />
+</figure>
+
+Otherwise, you can add the
 package dependency within the file menu in Xcode.
 
 ## Creating a Package
@@ -40,15 +42,16 @@ Xcode also allows you to create a new package. You can do this by going
 to file new and Swift package to create a package in Xcode.
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2021/05/Screen-Shot-2020-11-02-at-5.23.03-PM-14359.png" class="wp-image-1157" width="274" height="353" />
+<img src="/media/wp-images/learningswift/2021/05/Screen-Shot-2020-11-02-at-5.23.03-PM-14359.png" class="full-size" width="274" height="353" />
 </figure>
 
 Besides Xcode, you can also create one via the command line as well.
 Assuming you have Xcode or Swift installed on your machine, you could
 simply run:
-
+```
     > mkdir New-Package
     > swift package init
+```
 
 By default, it'll use the directory name for the name of your package.
 Otherwise you can customize the name with the command line option
@@ -106,7 +109,7 @@ are multiple ways to specify the version you want. Most involve the
 [semver](https://semver.org) numbering system.
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2021/05/Untitled-2-1024x512.png" class="wp-image-1160" alt="Components of SemVer" /><figcaption aria-hidden="true">Components of SemVer</figcaption>
+<img src="/media/wp-images/learningswift/2021/05/Untitled-2-1024x512.png" class="full-size" alt="Components of SemVer" /><figcaption aria-hidden="true">Components of SemVer</figcaption>
 </figure>
 
 #### How SemVer in Dependencies work

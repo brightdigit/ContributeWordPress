@@ -10,7 +10,7 @@ out [all the talks here.](https://vimeo.com/swiftto) My topic of choice
 was Vapor and how to get started.
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/09/img_0040.jpg" class="wp-image-647" />
+<img src="/media/wp-images/learningswift/2019/09/img_0040.jpg" class="wp-image-647" />
 </figure>
 
 Here is the talk description:

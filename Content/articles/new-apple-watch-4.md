@@ -11,7 +11,7 @@ truckload of new health functionality and bigger screens, is now the
 time to bring a watch app to market?
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2018/10/44627298022_6298cab03c_k.jpg" class="wp-image-1465" alt="A new Apple Watch 4 is ready to take an electrocardiogram." /><figcaption aria-hidden="true">A new Apple Watch 4 is ready to take an electrocardiogram.</figcaption>
+<img src="/media/wp-images/brightdigit/2018/10/44627298022_6298cab03c_k.jpg" class="wp-image-1465" alt="A new Apple Watch 4 is ready to take an electrocardiogram." /><figcaption aria-hidden="true">A new Apple Watch 4 is ready to take an electrocardiogram.</figcaption>
 </figure>
 
 ## Health Features
@@ -101,5 +101,5 @@ BrightDigit](https://brightdigit.com/contact/). We'll point you in the
 right direction.
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2018/10/44627295292_5f3b861bfa_h.jpg" class="wp-image-1466" alt="A blue Apple Watch 4, courtesy toolstotal.com" /><figcaption aria-hidden="true">A blue Apple Watch 4, courtesy <a href="https://toolstotal.com/">toolstotal.com</a></figcaption>
+<img src="/media/wp-images/brightdigit/2018/10/44627295292_5f3b861bfa_h.jpg" class="wp-image-1466" alt="A blue Apple Watch 4, courtesy toolstotal.com" /><figcaption aria-hidden="true">A blue Apple Watch 4, courtesy <a href="https://toolstotal.com/">toolstotal.com</a></figcaption>
 </figure>
