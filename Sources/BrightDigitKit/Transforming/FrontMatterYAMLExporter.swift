@@ -10,8 +10,7 @@ public struct FrontMatterYAMLExporter<
   SourceType,
   FrontMatterTranslatorType: FrontMatterTranslator
 >: FrontMatterExporter where
-  FrontMatterTranslatorType.SourceType == SourceType
-{
+  FrontMatterTranslatorType.SourceType == SourceType {
   init(translator: FrontMatterTranslatorType) {
     self.translator = translator
   }

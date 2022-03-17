@@ -95,13 +95,16 @@ public extension Node where Context == HTML.BodyContext {
       .ol(
         .makeService(title: "Is your app still at the idea stage?",
                      imageSrc: "/media/services/003-iphone.svg",
-                     paragraph: "We provide consulting servcies to make sure you can deliver the best user experience from the ground up."),
+                     paragraph: "We provide consulting servcies to make sure you can deliver the best user experience from the ground up.",
+                     linkID: "iPhone-service"),
         .makeService(title: "Have you started development and need specialist support?",
                      imageSrc: "/media/services/002-smartwatch-app.svg",
-                     paragraph: "We specialize in Swift development for apps, large and small. If you've run into development trouble, we can help get back on track"),
+                     paragraph: "We specialize in Swift development for apps, large and small. If you've run into development trouble, we can help get back on track",
+                     linkID: "swift-service"),
         .makeService(title: "Do you have an existing app but want to go bigger, better or port to an Apple platform?",
                      imageSrc: "/media/services/004-cloud.svg",
-                     paragraph: "We belive that platform-native development is almost always best. If you have an app for Android we can help you make a twin app that works seamlessly on iOS.")
+                     paragraph: "We belive that platform-native development is almost always best. If you have an app for Android we can help you make a twin app that works seamlessly on iOS.",
+                     linkID: "apple-service")
       )
     )
   }
@@ -159,10 +162,12 @@ public extension Node where Context == HTML.BodyContext {
 // MARK: - ListContext
 
 public extension Node where Context == HTML.ListContext {
-  private static func makeService(title: String, imageSrc: String, paragraph: String) -> Node {
+  private static func makeService(title: String, imageSrc: String, paragraph: String, linkID: String) -> Node {
     .li(
       .header(
-        .h3(.text(title)),
+        .h3(
+          .a(.href("/services#\(linkID)"), .text(title))
+        ),
         .img(.src(imageSrc))
       ),
       .main(

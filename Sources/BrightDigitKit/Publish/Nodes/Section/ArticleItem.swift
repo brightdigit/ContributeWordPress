@@ -12,30 +12,35 @@ struct ArticleItem: SectionItem {
 
   let isFeatured: Bool
 
-  var featuredItemContent: [Node<HTML.BodyContext>] {
-    [
-      .header(
-        .img(.src(featuredImageURL))
-      ),
-      .main(
-        .header(
-          .a(
-            .h2(.text(title)),
-            .href(slug)
-          )
-        ),
-        .main(
-          .text(description)
-        ),
-        .footer(
-          " published on ",
-          .span(
-            .class("published-date"),
-            .text(PiHTMLFactory.itemFormatter.string(from: publishedDate))
+  var featuredItemContent: Node<HTML.BodyContext> {
+    .header(
+      .section(
+        .class("hero"),
+        .section(
+          .class("featured"),
+          .header(
+            .img(.src(featuredImageURL))
+          ),
+          .main(
+            .header(
+              .a(
+                .h2(.text(title))
+              )
+            ),
+            .main(
+              .text(description)
+            ),
+            .footer(
+              " published on ",
+              .span(
+                .class("published-date"),
+                .text(PiHTMLFactory.itemFormatter.string(from: publishedDate))
+              )
+            )
           )
         )
       )
-    ]
+    )
   }
 
   var sectionItemContent: [Node<HTML.BodyContext>] {
