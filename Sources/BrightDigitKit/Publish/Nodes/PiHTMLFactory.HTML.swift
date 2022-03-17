@@ -93,8 +93,24 @@ public extension Node where Context == HTML.DocumentContext {
         .name("viewport"),
         .content("width=device-width, initial-scale=1.0")
       ),
+
+      .link(.rel(.icon), .href("/favicon.ico"), .sizes("any"), .type("image/svg+xml")),
+      .link(.rel(.icon), .href("/favicon.svg"), .type("image/svg+xml")),
+
+      .link(.rel(.manifest), .href("/site.webmanifest?v=2022")),
+      .link(.id("mask-icon"), .rel(.maskIcon), .href("/safari-pinned-tab.svg?v=2022"), .color("#000000")),
+      .link(.id("apple-dark-mode-icon"), .rel(.alternate), .href("/dark-mode-mask.svg?v=2022")),
+      .link(.id("apple-light-mode-icon"), .rel(.alternate), .href("/safari-pinned-tab.svg?v=2022")),
+
+//      <meta name="apple-mobile-web-app-title" content="BrightDigit">
+//      <meta name="application-name" content="BrightDigit">
+
       .script(
         .src("/js/main.js")
+      ),
+      .script(
+        .async(),
+        .src("https://www.googletagmanager.com/gtag/js?id=G-K3MSJ0CTMJ")
       )
     )
   }

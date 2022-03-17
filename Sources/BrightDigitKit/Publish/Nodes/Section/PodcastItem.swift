@@ -246,7 +246,7 @@ struct PodcastItem: SectionItem {
   // swiftlint:disable:next force_try
   static let regex = try! NSRegularExpression(pattern: "^\\d+", options: [])
 
-  init(item: Item<BrightDigitSite>) throws {
+  init(item: Item<BrightDigitSite>, site _: BrightDigitSite) throws {
     source = item
     let featuredImageURL = item.featuredImageURL
     let isFeatured = item.metadata.featured ?? false

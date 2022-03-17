@@ -19,7 +19,7 @@ where it’s not clear which rules might apply.
 might come up in a Store Review.**
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2021/05/Screen-Shot-2021-05-01-at-10.22.45-AM-1024x277.png" class="wp-image-2306" alt="An Example of In-App Purchases" /><figcaption aria-hidden="true">An Example of In-App Purchases</figcaption>
+<img src="/media/wp-images/brightdigit/2021/05/Screen-Shot-2021-05-01-at-10.22.45-AM-1024x277.png" class="wp-image-2306" alt="An Example of In-App Purchases" /><figcaption aria-hidden="true">An Example of In-App Purchases</figcaption>
 </figure>
 
 ## Set Up Your In-App Purchases
@@ -56,7 +56,7 @@ users should be able to access it without needing to perform additional
 tasks (i.e. they don’t need to download anything, rate the app, etc.).
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2021/05/copyright.png" class="wp-image-2307" />
+<img src="/media/wp-images/brightdigit/2021/05/copyright.png" class="wp-image-2307" />
 </figure>
 
 ## Be Careful About Your Use of Copyrighted Content
@@ -92,7 +92,7 @@ consult with a lawyer if you have questions or aren’t sure about
 something.
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2021/05/apple_ios-update_privacy-controls_04262021.jpg" class="wp-image-2308" alt="New Privacy Controls in iOS 14.5" /><figcaption aria-hidden="true">New Privacy Controls in iOS 14.5</figcaption>
+<img src="/media/wp-images/brightdigit/2021/05/apple_ios-update_privacy-controls_04262021.jpg" class="wp-image-2308" alt="New Privacy Controls in iOS 14.5" /><figcaption aria-hidden="true">New Privacy Controls in iOS 14.5</figcaption>
 </figure>
 
 ## Make Sure You’re Using the “Right” 3rd-Party Plugins & Libraries

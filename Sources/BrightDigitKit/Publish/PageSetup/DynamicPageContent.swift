@@ -26,6 +26,6 @@ struct DynamicPageContent<BuilderType: ContentBuilder>: PageContent {
   }
 
   var bodyClasses: [String] {
-    []
+    builder.bodyClasses
   }
 }

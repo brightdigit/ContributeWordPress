@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Oxygen:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Oxygen+Mono&family=Oxygen:wght@300;400;700&display=swap');
 @import url('./flaticon.css');
 
 @tailwind base;
@@ -94,7 +94,7 @@ body > header > nav > ol.menu ~ ol.menu{
 body > main {
   @apply xl:container mx-auto;
   & > header {
-    @apply lg:flex mx-6 ;
+    @apply lg:flex mx-6;
    & > main {
      @apply  lg:w-1/2 flex-none xl:items-stretch;
      & > header {
@@ -307,7 +307,7 @@ body#contact-us {
         & > header {
           @apply mb-4 sm:flex sm:m-0 sm:w-1/2 sm:flex-none;
           img {
-            @apply object-cover sm:flex sm:flex-1;
+            @apply object-cover sm:flex sm:flex-1 drop-shadow-xl filter;
           }
         }
         & > main {
@@ -1213,6 +1213,198 @@ body.episodes {
           
         }
       }
+    }
+  }
+}
+
+body.articles, body.tutorials {
+  h1 {
+    @apply text-2xl font-bold py-2;
+  }
+  & > main {
+    @apply  xl:container xl:mx-auto;
+
+  a {
+    @apply text-bellow-600 font-semibold;
+  }
+    & > header {
+      @apply py-2 mx-6 md:flex-col md:mx-0 md:h-80 md:relative md:mb-4;
+      & > header {
+        & > img {
+          @apply h-40 md:h-80 w-full object-cover md:absolute md:z-0;
+        }
+        h1 {
+          @apply z-50 md:relative md:mx-6 md:backdrop-grayscale md:backdrop-blur md:backdrop-brightness-50 md:backdrop-filter md:p-8 top-4 md:text-white md:text-6xl lg:mr-48 xl:mr-96 lg:tracking-tight lg:leading-none;
+        }
+      }
+      & > footer {
+        @apply flex m-0 justify-between items-baseline md:absolute md:text-white md:z-50 md:bottom-2 md:backdrop-grayscale md:backdrop-blur md:backdrop-brightness-50 md:backdrop-filter md:left-6;
+        & > ol {
+          @apply flex -ml-2 md:ml-0;
+          & > li {
+            @apply contents;
+            & > a {
+              @apply text-xl p-2  md:text-white md:flex md:items-baseline md:bg-bellow-500 md:bg-opacity-50 md:px-2 md:mr-2;
+              span {
+                @apply hidden md:inline md:text-xs md:mr-1 md:opacity-50;
+                &.name {
+                  @apply md:opacity-100 lg:text-base;
+                }
+              }
+            }
+          }
+        }
+        & > .readtime {
+          @apply font-extralight text-gray-600 md:text-white md:px-2;
+        }
+      }
+    }
+    & > main {
+      @apply leading-tight border-t-2 border-gray-200 py-2 mx-6 md:border-0 lg:text-lg;
+      h2 {
+        @apply text-xl py-2 md:text-2xl lg:text-4xl xl:text-6xl xl:mt-8 xl:py-8 md:py-4 md:mt-4 md:tracking-tight;
+      }
+      h3 {
+        @apply text-lg font-semibold py-1 xl:text-4xl xl:py-4 md:mt-4 xl:tracking-tight;
+      }
+      h4 {
+        @apply text-base font-semibold py-1 xl:text-2xl xl:py-2 md:mt-2;
+      }
+      h5 {
+        @apply text-base font-semibold py-1 text-gray-700 xl:text-black xl:text-xl;
+      }
+      p {
+        @apply py-2;
+      }
+      blockquote {
+        @apply ml-8 tracking-tight italic;
+      }
+      ol, ul {
+        @apply list-disc list-inside;
+      }
+      li {
+        @apply ml-4;
+      }
+      img {
+        @apply w-full mt-4 h-40 object-cover sm:h-48 md:h-64 lg:h-80 xl:h-96;
+        &.full-size {
+          @apply w-auto h-auto;
+          @apply xl:max-w-2xl xl:mx-auto;
+        }
+        &.thumbnail-inline {
+          @apply h-6 w-auto inline-block my-auto;
+        }
+      }
+      iframe {
+        @apply w-full h-auto my-2;
+        aspect-ratio: 16/9;
+        @apply xl:max-w-2xl xl:mx-auto;
+        &[src^="https://share.transistor.fm"]  {
+          @apply xl:max-w-none;
+          height: 180px;
+        }
+      }
+      code {
+        color: #9B2393;
+
+      }
+      figure {
+        @apply my-2;
+      }
+      figcaption {
+        @apply text-sm italic text-center;
+      }
+      pre code {
+        @apply whitespace-pre-wrap text-xs font-extralight p-4 bg-gray-900 text-white block my-4 lg:text-base lg:p-8;      
+
+        .keyword {
+          @apply font-bold;
+          color: #FC5FA3;
+
+        }
+
+        .type {
+          color: #9EF1DD;
+        }
+
+        .call {
+          color: #67B7A4 ;
+        }
+
+        .property {
+          color: #21ab9d;
+        }
+
+        .number {
+          color: #db6f57;
+        }
+
+        .string {
+          color: #fa641e;
+        }
+
+        .comment {
+          color: #6b8a94;
+        }
+
+        .dotAccess {
+          color: #92b300;
+        }
+
+        .preprocessing {
+          color: #b68a00;
+        }
+
+      }
+    }
+    & > footer {
+      @apply flex flex-col mx-6;
+      & > ol {
+        @apply border-b-2 border-t-2 border-gray-200 py-2 text-2xl sm:text-3xl md:justify-start mb-2 -ml-2 items-stretch justify-between flex lg:py-6;
+        & > li {
+          @apply contents;
+          & > a {
+            @apply text-xl p-2 text-bellow-600 md:text-black flex items-baseline mr-1 md:mr-4 md:text-2xl md:bg-bellow-500 md:p-4 md:px-4 md:rounded-lg text-black;
+            span {
+              @apply text-base mr-1 md:text-lg;
+              &.action {
+                @apply hidden sm:inline text-xs text-gray-400 flex-1 flex-grow flex-shrink-0 mr-0 md:mr-1;
+              }
+            }
+          }
+        }
+      }
+      & > main {
+        @apply mt-2 md:flex md:flex-row md:items-center;
+        h2 {
+          @apply my-2;
+        }
+        p {
+          @apply my-2;
+        }
+        & > main {
+          @apply md:flex-1 md:mr-4 md:mb-4;
+        }
+        & > form {
+          @apply w-full flex flex-col my-4 pt-2 md:flex-1 lg:w-1/3 lg:flex-grow-0 lg:flex-none;
+          button {
+            @apply _button;
+          }
+          & > div {
+            @apply flex flex-row my-2 -mx-2;
+            & > div {
+              @apply flex flex-col flex-grow mx-2;
+              input {
+                @apply flex flex-row flex-grow w-full p-2 rounded border-2;
+              }
+              label {
+                @apply text-xs flex px-2 py-1;
+              }
+            }
+          }
+        }
+      }
+      
     }
   }
 }

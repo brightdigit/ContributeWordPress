@@ -9,7 +9,7 @@ extension PublishingStep {
       let folder = try context.folder(at: "Styling")
       let cssFile = try context.createOutputFile(at: "js/main.js")
       let path = "../\(cssFile.url.relativePath(from: folder.url)!)"
-      try shellOut(to: "\(npmPath) install; \(npmPath) run publish -- --output-filename \"\(path)\"", at: folder.path)
+      try shellOut(to: "\(npmPath) ci; \(npmPath) run publish -- --output-filename \"\(path)\"", at: folder.path)
     }
   }
 }

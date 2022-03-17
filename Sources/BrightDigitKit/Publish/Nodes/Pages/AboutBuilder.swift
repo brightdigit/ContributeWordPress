@@ -30,6 +30,8 @@ struct AboutBuilder: PageBuilder {
       .aboutCTA()
     ]
   }
+
+  var bodyClasses: [String] { [] }
 }
 
 public extension Node where Context == HTML.BodyContext {

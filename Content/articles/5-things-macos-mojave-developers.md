@@ -10,7 +10,7 @@ Mojave for developers (version 10.14).** The final release date will
 probably be some time in September or October and it's already creating
 buzz in the tech world. Here are 5 ways this could affect those with
 macOS apps already out there:</span>
-<img src="https://brightdigit.com/wp-content/uploads/2018/08/macOS-Mojave-Screenshot.jpg" class="aligncenter size-full wp-image-1289" width="1280" height="800" alt="desktop screenshot of Mojave for developers" />
+<img src="/media/wp-images/brightdigit/2018/08/macOS-Mojave-Screenshot.jpg" class="aligncenter size-full wp-image-1289" width="1280" height="800" alt="desktop screenshot of Mojave for developers" />
 
 # Phasing Out 32 Bit Support for Applications
 
@@ -25,7 +25,7 @@ developers, **you have one year to get ready and update your build** for
 
 # Enhanced App Permissions in Mojave for Developers
 
-<img src="https://brightdigit.com/wp-content/uploads/2018/07/Screen-Shot-2018-07-13-at-2.57.43-PM.png" class="aligncenter size-full wp-image-1257" width="1560" height="1370" />
+<img src="/media/wp-images/brightdigit/2018/07/Screen-Shot-2018-07-13-at-2.57.43-PM.png" class="aligncenter size-full wp-image-1257" width="1560" height="1370" />
 macOS Mojave now requires your apps to request permission when using the
 **camera, microphone, or any automation** (i.e. AppleScript and Apple
 Events). This means if your app uses any of those functionalities,
@@ -56,7 +56,7 @@ interactions for your site.</span>
 # UIKit Coming to the Mac
 
 \[caption id="attachment\_1285" align="aligncenter"
-width="896"\]<img src="https://brightdigit.com/wp-content/uploads/2018/07/Screen-Shot-2018-08-06-at-4.35.30-PM-e1533587827702.png" class="size-full wp-image-1285" width="896" height="700" alt="example of &quot;Marzipan&quot; in action on Mojave" />
+width="896"\]<img src="/media/wp-images/brightdigit/2018/07/Screen-Shot-2018-08-06-at-4.35.30-PM-e1533587827702.png" class="size-full wp-image-1285" width="896" height="700" alt="example of &quot;Marzipan&quot; in action on Mojave" />
 example of "Marzipan" in action on Mojave with the Stocks
 app\[/caption\] <span style=";">UIKit is the framework for developing
 the user interface of iPhone and iPad apps. There have been rumors of

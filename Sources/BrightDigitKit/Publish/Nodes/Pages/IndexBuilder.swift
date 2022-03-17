@@ -15,6 +15,8 @@ struct IndexBuilder: ContentBuilder {
     ]
   }
 
+  var bodyClasses: [String] { [] }
+
   typealias LocationType = Index
 }
 
@@ -118,7 +120,7 @@ public extension Node where Context == HTML.BodyContext {
         .h2("Testimonials")
       ),
       .ol(
-        .forEach(Testimonial.all, Testimonial.listItem)
+        .forEach(Testimonial.all.sorted(), Testimonial.listItem)
       )
     )
   }
@@ -180,7 +182,7 @@ public extension Node where Context == HTML.ListContext {
     .li(
       .header(
         .a(
-          .href(article.url),
+          .href(article.rootRelativeURL),
           .img(.src(article.featuredImageURL)),
           .h3(.text(article.title))
         ),
@@ -195,7 +197,7 @@ public extension Node where Context == HTML.ListContext {
       ),
       .footer(
         .a(
-          .href(article.url),
+          .href(article.rootRelativeURL),
           .div(
             .class("publishedAt"),
             .text(

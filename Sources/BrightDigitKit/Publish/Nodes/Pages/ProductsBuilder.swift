@@ -15,4 +15,6 @@ struct ProductsBuilder: PageBuilder {
       )
     ]
   }
+
+  var bodyClasses: [String] { [] }
 }

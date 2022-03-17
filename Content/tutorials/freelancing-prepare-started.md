@@ -21,7 +21,7 @@ I have posted [the
 slides](https://www.dropbox.com/s/co7wh1xiqh5q94y/181205-Prepare%20and%20Get%20Started.zip?dl=0)
 as well as the video of the event which you can check out. 
 
-https://www.youtube.com/watch?v=WVXvIso24Sc
+> youtube https://www.youtube.com/watch?v=WVXvIso24Sc
 
 What questions do you have? What challenges have you faced along the
 way? [Let me know on Twitter](https://twitter.com/leogdion) what are

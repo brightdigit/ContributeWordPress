@@ -7,7 +7,7 @@ Leo Dion recently did a talk at Lansing Marketing Hackers on podcasting
 on how to get started.
 
 <figure>
-<img src="https://i2.wp.com/brightdigit.com/wp-content/uploads/2019/06/Add-a-heading.jpg?fit=640%2C360&amp;ssl=1" class="wp-image-1651" width="640" height="360" />
+<img src="/media/wp-images/brightdigit/2019/06/Add-a-heading.jpg?fit=640%2C360&amp;ssl=1" class="wp-image-1651" width="640" height="360" />
 </figure>
 
 In the talk, Leo covers the production of a podcast but also the

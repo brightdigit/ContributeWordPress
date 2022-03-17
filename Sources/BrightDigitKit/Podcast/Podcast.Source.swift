@@ -70,7 +70,7 @@ public extension Podcast.Source {
       throw BrightDigitKit.ImportError.missingFieldFromPodcastEpisode(episode, .imageHref)
     }
 
-    let slug = try title.convertedToSlug()
+    let slug = title.convertedToSlug()
 
     self.init(episodeNo: episodeNo, slug: slug, title: title, date: date, summary: summary, content: content, audioURL: imageURL, imageURL: imageURL, duration: duration, transistorID: transistorID, video: video)
   }

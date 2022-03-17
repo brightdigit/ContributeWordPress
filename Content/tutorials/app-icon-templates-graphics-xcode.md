@@ -19,7 +19,7 @@ are going to look at the top two graphic editors: **Sketch** and
 
 ### Sketch
 
-https://youtu.be/4Um\_zRh4ENY
+https://youtu.be/4UmzRh4ENY
 
 In the last few years, Sketch has grown to be one of the leading
 applications used by graphic designers especially in the area of mobile
