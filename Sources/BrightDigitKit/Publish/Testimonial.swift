@@ -1,10 +1,14 @@
 import Foundation
 import Plot
 
-public struct Testimonial: Hashable {
+public struct Testimonial: Hashable, Comparable {
   static var lastID = 0
   public static func == (lhs: Testimonial, rhs: Testimonial) -> Bool {
     lhs.id == rhs.id
+  }
+
+  public static func < (lhs: Testimonial, rhs: Testimonial) -> Bool {
+    lhs.id < rhs.id
   }
 
   static let all: Set<Self> = .init([

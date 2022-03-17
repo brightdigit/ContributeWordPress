@@ -75,6 +75,8 @@ struct PiHTMLFactory: HTMLFactory {
     return HTML(
       .makeHead(forPage: content, item: item),
       .body(
+        .unwrap(content.bodyID, Node.id),
+        .unwrap(content.bodyClassValue, Node.class),
         .headerNav(),
         content.mainElement,
         .makeFooter()

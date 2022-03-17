@@ -78,8 +78,8 @@
         "repositoryURL": "https://github.com/johnsundell/plot.git",
         "state": {
           "branch": null,
-          "revision": "c27f6857deeb4c4623db294172a8ec572790a9be",
-          "version": "0.10.0"
+          "revision": "b358860fe565eb53e98b1f5807eb5939c8124547",
+          "version": "0.11.0"
         }
       },
       {
@@ -138,11 +138,20 @@
       },
       {
         "package": "Splash",
-        "repositoryURL": "https://github.com/JohnSundell/Splash",
+        "repositoryURL": "https://github.com/johnsundell/splash.git",
         "state": {
           "branch": null,
           "revision": "7f4df436eb78fe64fe2c32c58006e9949fa28ad8",
           "version": "0.16.0"
+        }
+      },
+      {
+        "package": "SplashPublishPlugin",
+        "repositoryURL": "https://github.com/johnsundell/splashpublishplugin",
+        "state": {
+          "branch": null,
+          "revision": "34bb50bd83b2a40c63afc35f090c76619dc149ce",
+          "version": "0.1.0"
         }
       },
       {
@@ -233,6 +242,15 @@
           "branch": null,
           "revision": "9ff1cc9327586db4e0c8f46f064b6a82ec1566fa",
           "version": "4.0.6"
+        }
+      },
+      {
+        "package": "YoutubePublishPlugin",
+        "repositoryURL": "https://github.com/tanabe1478/YoutubePublishPlugin.git",
+        "state": {
+          "branch": null,
+          "revision": "9117188d760cad6f7cd7603caae32b92cd76705e",
+          "version": "0.1.0"
         }
       }
     ]

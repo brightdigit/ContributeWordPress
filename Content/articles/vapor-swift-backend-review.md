@@ -41,7 +41,7 @@ for data storage but lacks options such as:
 However there are other options to remain developing in Swift on server.
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/03/wordmark-horizontal-1024x271.png" class="wp-image-1553" />
+<img src="/media/wp-images/brightdigit/2019/03/wordmark-horizontal-1024x271.png" class="wp-image-1553" />
 </figure>
 
 ## Vapor - Swift for the Server
@@ -61,7 +61,7 @@ In this article, I will review Vapor and cover:
 Therefore, let’s begin by talking about how easy it is to get started.
 
 <figure>
-<img src="https://i1.wp.com/learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/getting-things-setup.jpg?fit=1024%2C512&amp;ssl=1" class="wp-image-1555" />
+<img src="/media/wp-images/learningswift/sites/2/2019/03/getting-things-setup.jpg?fit=1024%2C512&amp;ssl=1" class="wp-image-1555" />
 </figure>
 
 ## Getting Started with Vapor
@@ -91,7 +91,7 @@ and
 Ubuntu.](https://learningswift.brightdigit.com/vapor-heroku-ubuntu-setup-deploy/?utm_medium=web&utm_source=learning-swift)**
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/03/developer-tools-1024x512.jpg" class="wp-image-1557" />
+<img src="/media/wp-images/brightdigit/2019/03/developer-tools-1024x512.jpg" class="wp-image-1557" />
 </figure>
 
 ## Developing with Vapor
@@ -166,7 +166,7 @@ Kit API. However what truly makes Fluent ORM so robust is the use of
 SwiftNIO async API.
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/03/futures-and-promises-1024x512.jpg" class="wp-image-1559" />
+<img src="/media/wp-images/brightdigit/2019/03/futures-and-promises-1024x512.jpg" class="wp-image-1559" />
 </figure>
 
 ### The *Future* of Programming
@@ -204,7 +204,7 @@ do need to customize your type to use Codable, I highly recommend my
 post on improving how you decode JSON.
 
 <figure>
-<img src="https://i0.wp.com/learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/swift-vapor-choice.jpg?fit=1024%2C512&amp;ssl=1" class="wp-image-1561" />
+<img src="/media/wp-images/learningswift/sites/2/2019/03/swift-vapor-choice.jpg?fit=1024%2C512&amp;ssl=1" class="wp-image-1561" />
 </figure>
 
 ## Vaporware or Swift-ly Switch?

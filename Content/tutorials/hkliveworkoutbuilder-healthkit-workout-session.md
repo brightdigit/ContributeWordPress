@@ -27,26 +27,27 @@ and [location
 type](https://developer.apple.com/documentation/healthkit/hkworkoutconfiguration/1649491-locationtype)
 of the workout you are doing. With those you can create the
 `HKWorkoutSession` with:
-
-    func startWorkoutWithHealthStore(_ healthStore: HKHealthStore, 
-                                     andActivityType activityType: HKWorkoutActivityType
-                                    ) -> HKWorkoutSession {
-      let configuration = HKWorkoutConfiguration()
-      configuration.activityType = activityType
-      
-      let session : HKWorkoutSession
-      do {
-        session = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)
-      } catch let error {
-        // let the user know about the error
-        return
-      }
-      
-      session.startActivity(with: Date())
-      self.session = session
-      self.healthStore = healthStore
-      return session  
-    }
+```
+func startWorkoutWithHealthStore(_ healthStore: HKHealthStore, 
+                                 andActivityType activityType: HKWorkoutActivityType
+                                ) -> HKWorkoutSession {
+  let configuration = HKWorkoutConfiguration()
+  configuration.activityType = activityType
+  
+  let session : HKWorkoutSession
+  do {
+    session = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)
+  } catch let error {
+    // let the user know about the error
+    return
+  }
+  
+  session.startActivity(with: Date())
+  self.session = session
+  self.healthStore = healthStore
+  return session  
+}
+```
 
 Since this call can throw an error, be sure to catch and handle that
 error properly. When the workout is completed you simply call
@@ -57,16 +58,17 @@ To listen to workout state changes, implement the delegate
 [`HKWorkoutSessionDelegate`](https://developer.apple.com/documentation/healthkit/hkworkoutsessiondelegate)
 and the method
 [`workoutSession(HKWorkoutSession, didChangeTo: HKWorkoutSessionState, fromState: HKWorkoutSessionState, date: Date)`](https://developer.apple.com/documentation/healthkit/hkworkoutsessiondelegate/1627958-workoutsession):
+```
+func workoutSession(_ workoutSession: HKWorkoutSession, 
+    didChangeTo toState: HKWorkoutSessionState, 
+    from fromState: HKWorkoutSessionState, 
+    date: Date) {
 
-    func workoutSession(_ workoutSession: HKWorkoutSession, 
-        didChangeTo toState: HKWorkoutSessionState, 
-        from fromState: HKWorkoutSessionState, 
-        date: Date) {
-
-        DispatchQueue.main.async {
-          // based on the change update the UI on the main thread
-        }
-      }
+    DispatchQueue.main.async {
+      // based on the change update the UI on the main thread
+    }
+  }
+```
 
 ## Observing Changes
 
@@ -81,49 +83,50 @@ The
 indicate when a change has been made.
 [`HKSampleQuery`](https://developer.apple.com/documentation/healthkit/hksamplequery) will
 query the actual values.
-
-      func observerQuery(_ query: HKObserverQuery, 
-                         hasCompleted completed: HKObserverQueryCompletionHandler, 
-                         withError error: Error?) {
-        guard let healthStore = self.healthStore else {
-          #warning("Throw Error Message to User if no healthStore available")
-          return
-        }
-        guard let sampleType = query.objectType as? HKSampleType else {
-          completed()
-          return
-        }
-        // only query for the latest value
-        let sort = [
-          NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
-        ]
-        let sampleQuery = HKSampleQuery(sampleType: sampleType, predicate: nil, limit: 1, sortDescriptors: sort, resultsHandler: self.sampleQuery)
-        
-        healthStore.execute(sampleQuery)
-        
-      }
-      
-      func sampleQuery(_ query: HKSampleQuery, 
-                       withSamples samples: [HKSample]?, 
-                       andError error: Error?) {
-        guard let quantityType = query.objectType as? HKQuantityType else {
-          return
-        }
-        
-        if let error = error {
-          #warning("Theres an error with the query")
-          return
-        }
-        
-        guard let sample = samples?.first as? HKQuantitySample else {
-          #warning("Theres no sample with the query.")
-          return
-        }
-        
-        DispatchQueue.main.async {
-          // update the UI here
-        }
-      }  
+```
+  func observerQuery(_ query: HKObserverQuery, 
+                     hasCompleted completed: HKObserverQueryCompletionHandler, 
+                     withError error: Error?) {
+    guard let healthStore = self.healthStore else {
+      #warning("Throw Error Message to User if no healthStore available")
+      return
+    }
+    guard let sampleType = query.objectType as? HKSampleType else {
+      completed()
+      return
+    }
+    // only query for the latest value
+    let sort = [
+      NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+    ]
+    let sampleQuery = HKSampleQuery(sampleType: sampleType, predicate: nil, limit: 1, sortDescriptors: sort, resultsHandler: self.sampleQuery)
+    
+    healthStore.execute(sampleQuery)
+    
+  }
+  
+  func sampleQuery(_ query: HKSampleQuery, 
+                   withSamples samples: [HKSample]?, 
+                   andError error: Error?) {
+    guard let quantityType = query.objectType as? HKQuantityType else {
+      return
+    }
+    
+    if let error = error {
+      #warning("Theres an error with the query")
+      return
+    }
+    
+    guard let sample = samples?.first as? HKQuantitySample else {
+      #warning("Theres no sample with the query.")
+      return
+    }
+    
+    DispatchQueue.main.async {
+      // update the UI here
+    }
+  }  
+```
 
 When the workout is started, we begin the set of
 [`HKObserverQueries`](https://developer.apple.com/documentation/healthkit/hkobserverquery).
@@ -160,60 +163,62 @@ and start a
  [`HKWorkoutSession`](https://developer.apple.com/documentation/healthkit/hkworkoutsession).
 However the main change is in how the we are creating a
 `HKLiveWorkoutBuilder`.
+```
+  func startWorkoutWithHealthStore(_ healthStore: HKHealthStore, andActivityType activityType: HKWorkoutActivityType, withSampleTypes sampleTypes: [HKSampleType]) -> HKWorkoutSession {
+    let configuration = HKWorkoutConfiguration()
+    configuration.activityType = activityType
+    
+    let session : HKWorkoutSession
+    do {
+      session = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)
+    } catch let error {
+      // let the user know about the error
+      return
+    }
 
-      func startWorkoutWithHealthStore(_ healthStore: HKHealthStore, andActivityType activityType: HKWorkoutActivityType, withSampleTypes sampleTypes: [HKSampleType]) -> HKWorkoutSession {
-        let configuration = HKWorkoutConfiguration()
-        configuration.activityType = activityType
-        
-        let session : HKWorkoutSession
-        do {
-          session = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)
-        } catch let error {
-          // let the user know about the error
-          return
-        }
+    let builder = session.associatedWorkoutBuilder()
+    builder.delegate = self
+    builder.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: configuration) 
+    session.delegate = self
 
-        let builder = session.associatedWorkoutBuilder()
-        builder.delegate = self
-        builder.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: configuration) 
-        session.delegate = self
+    self.builder = builder
+    self.session = session
+    self.healthStore = healthStore
 
-        self.builder = builder
-        self.session = session
-        self.healthStore = healthStore
+    session.startActivity(with: Date())
 
-        session.startActivity(with: Date())
+    builder.beginCollection(withStart: Date()) { (success, error) in
+      // do something when the data collection begins
+    }
 
-        builder.beginCollection(withStart: Date()) { (success, error) in
-          // do something when the data collection begins
-        }
-
-        return session  
-      }
+    return session  
+  }
+```
 
 As you can see we are passing a delegate to
 the [`HKLiveWorkoutBuilder`](https://developer.apple.com/documentation/healthkit/hkliveworkoutbuilder?changes=_9).
 This is so we can collect health data as the workout progresses.
-
-      func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, 
-        didCollectDataOf collectedTypes: Set<HKSampleType>) {
-        
-        for sampleType in collectedTypes {
-          if let quantityType = sampleType as? HKQuantityType {
-            guard let statistic = workoutBuilder.statistics(for: quantityType) else {
-              continue
-            }
-            guard let quantity = statistic.mostRecentQuantity() else {
-              continue
-            }
-            DispatchQueue.main.async {
-              // update the UI based on the most recent quantitiy
-            }
-          } else {
-            // handle other HKSampleType subclasses
-          }
+```
+  func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, 
+    didCollectDataOf collectedTypes: Set<HKSampleType>) {
+    
+    for sampleType in collectedTypes {
+      if let quantityType = sampleType as? HKQuantityType {
+        guard let statistic = workoutBuilder.statistics(for: quantityType) else {
+          continue
         }
+        guard let quantity = statistic.mostRecentQuantity() else {
+          continue
+        }
+        DispatchQueue.main.async {
+          // update the UI based on the most recent quantitiy
+        }
+      } else {
+        // handle other HKSampleType subclasses
       }
+    }
+  }
+```
 
 In the method
 [`workoutBuilder(HKLiveWorkoutBuilder, didCollectDataOf: Set)`](https://developer.apple.com/documentation/healthkit/hkliveworkoutbuilderdelegate/2962897-workoutbuilder?changes=_9),
@@ -235,22 +240,22 @@ The ability to create, manage, and track workouts in watchOS is simpler
 with HKWorkoutBuilder
 
 -   [`HKWorkoutSessionDelegate`](https://developer.apple.com/documentation/healthkit/hkworkoutsessiondelegate) allows
-    you track the state of the workout session and update the UI
-    accordingly.
+you track the state of the workout session and update the UI
+accordingly.
 -   You can track the health data using a combination
-    of [`HKObserverQuery`](https://developer.apple.com/documentation/healthkit/hkobserverquery) and
-    other
-    [`HKQuery`](https://developer.apple.com/documentation/healthkit/hkquery) subclasses
-    such
-    as [`HKSampleQuery`](https://developer.apple.com/documentation/healthkit/hksamplequery) to
-    query `HKSample` data.
+of [`HKObserverQuery`](https://developer.apple.com/documentation/healthkit/hkobserverquery) and
+other
+[`HKQuery`](https://developer.apple.com/documentation/healthkit/hkquery) subclasses
+such
+as [`HKSampleQuery`](https://developer.apple.com/documentation/healthkit/hksamplequery) to
+query `HKSample` data.
 -   However, `HKLiveWorkoutBuilder` allows you to collect the workout
-    data more frequently without needing to use queries.
+data more frequently without needing to use queries.
 
 If you are interested in learning more, watch [the presentation, New
 Ways to Work with Workouts from WWDC
 2018.](https://developer.apple.com/videos/play/wwdc2018/707) For more
 info on how to develop with HealthKit, take a look at our [recent posts
-here](https://learningswift.brightdigit.com/category/healthkit/) and for
+here](/tutorials) and for
 [sign up for updates
-here.](https://mailchi.mp/29b439ff4ce6/learning-swift-newsletter)
+here.](/newsletters)

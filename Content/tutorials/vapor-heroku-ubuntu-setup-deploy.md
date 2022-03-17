@@ -24,7 +24,7 @@ In this article I am going to cover how to get started, specifically:
 
 -   **[Setup your Mac for Vapor Development](#macos-dev)**
 -   Convert your project to **[use PostgreSQL
-    Database](#macos-postgresql)**
+Database](#macos-postgresql)**
 -   Modify your project for **[Heroku Deployment](#heroku-vapor)**
 -   Prepare an **[Ubuntu Server for Vapor](#ubuntu-vapor)**
 -   Modify your project for **[Ubuntu deployment](#ubuntu-code)**
@@ -79,8 +79,9 @@ at the time of writing:
 
 I also have installed **[Homebrew](https://brew.sh/)**. To install
 Homebrew, open your terminal application and type:
-
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+```
 
 For more details you can go to **[the official Homebrew home
 page](https://brew.sh/)**.
@@ -91,25 +92,28 @@ Once you have Homebrew installed we can go ahead and install **Vapor**
 on your Mac. Before we proceed, we’ll need to add the Vapor repository
 to Homebrew.
 
-https://m.youtube.com/watch?v=yYCxa6ev1Ng
+> youtube https://www.youtube.com/watch?v=yYCxa6ev1Ng
 
 1.  Firstly, **add the Vapor repository** using the `tap` command:
 
 <!-- -->
-
-    brew tap vapor/tap
+```
+brew tap vapor/tap
+```
 
 1.  Next, **install the Vapor toolkit**:
 
 <!-- -->
-
-    brew install vapor/tap/vapor
+```
+brew install vapor/tap/vapor
+```
 
 As a result of installing the Vapor toolkit, **we’ll have access to the
 Vapor CLI tool**. Therefore, you can get access to the list of commands
 available by typing:
-
-    vapor --help
+```
+vapor --help
+```
 
 For example, **with the Vapor CLI tool**, you can:
 
@@ -121,29 +125,31 @@ For example, **with the Vapor CLI tool**, you can:
 
 ### Creating Your First Vapor Project
 
-https://m.youtube.com/watch?v=iZqHmFnisXQ
+> youtube https://www.youtube.com/watch?v=iZqHmFnisXQ
 
 Therefore, **we can create the Switch package which will contain the
 dependencies needed to run our server application** with the command:
-
-    vapor new app-collection
+```
+vapor new app-collection
+```
 
 Additionally, **we can create an Xcode project** from our Vapor
 application Swift package by typing:
-
-    vapor xcode
+```
+vapor xcode
+```
 
 As a result, we can open the newly created Xcode project.
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/macos_xcode_switch_target.jpg" class="wp-image-514" alt="Switching the target to Run" /><figcaption aria-hidden="true">Switching the target to <em>Run</em></figcaption>
+<img src="/media/wp-images/learningswift/2019/03/macos_xcode_switch_target.jpg" class="wp-image-514" alt="Switching the target to Run" /><figcaption aria-hidden="true">Switching the target to <em>Run</em></figcaption>
 </figure>
 
 <figure>
-<img src="https://learningswift.brightdigit.com/wp-content/uploads/sites/2/2019/03/macos_xcode_run.jpg" class="wp-image-515" alt="Building and running the Run target" /><figcaption aria-hidden="true">Building and running the <em>Run</em> target</figcaption>
+<img src="/media/wp-images/learningswift/2019/03/macos_xcode_run.jpg" class="wp-image-515" alt="Building and running the Run target" /><figcaption aria-hidden="true">Building and running the <em>Run</em> target</figcaption>
 </figure>
 
-https://www.youtube.com/watch?v=kZKP2MiFaLQ
+> youtube https://www.youtube.com/watch?v=kZKP2MiFaLQ
 
 After that, switch the target in the top left to *Run* and press the
 *play button* to run the application. Consequently, you should see a log
@@ -151,14 +157,16 @@ message at the bottom stating that a http server is started at port
 8080.
 
 As a result, go to the terminal and run the command:
-
-    curl http://localhost:8080/hello
+```
+curl http://localhost:8080/hello
+```
 
 Therefore, you should receive the message:
+```
+Hello, world!%
+```
 
-    Hello, world!%
-
-https://m.youtube.com/watch?v=bRXTT8K-lP8
+> youtube https://www.youtube.com/watch?v=bRXTT8K-lP8
 
 In conclusion, we’ve successfully used the provided Vapor templates with
 the *new* and *xcode* commands to create the Swift package and build the
@@ -175,25 +183,29 @@ to use PostgreSQL rather than the default SQLite.
 Therefore, make sure you already have PostgreSQL installed.
 Consequently, if you don’t you can use Homebrew to install PostgreSQL
 with the following command:
+```
+brew install postgresql
+```
 
-    brew install postgresql
-
-https://www.youtube.com/watch?v=KeLHTQrZXNI
+> youtube https://www.youtube.com/watch?v=KeLHTQrZXNI
 
 Further, to run the server from the Terminal:
-
-    pg_ctl -D /usr/local/var/postgres start
+```
+pg_ctl -D /usr/local/var/postgres start
+```
 
 Similarly, you can stop the server from the Terminal with:
-
-    pg_ctl -D /usr/local/var/postgres stop
+```
+pg_ctl -D /usr/local/var/postgres stop
+```
 
 On the other hand, if you wish to run PostgreSQL as background service
 with launchd you can use the
 [`brew services`](https://github.com/Homebrew/homebrew-services)
 command:
-
-    brew services start postgresql
+```
+brew services start postgresql
+```
 
 Most importantly, once PostgreSQL is started, we’ll need to add the
 database and user for our application to use.
@@ -205,23 +217,27 @@ database our Vapor application will use. Therefore, let’s run the
 PostgreSQL terminal-based front-end
 [`psql`](https://www.postgresql.org/docs/11/index.html) by going to the
 Terminal and typing:
-
-    psql -d postgres
+```
+psql -d postgres
+```
 
 After that, at the `psql` prompt, create the database with:
-
-    create database app_collection;
+```
+create database app_collection;
+```
 
 Likewise, we need to create a user. To clarify, we are creating a user
 with no password by typing:
-
-    create user app_collection;
+```
+create user app_collection;
+```
 
 Subsequently grant that user the privileges it needs with:
+```
+grant all privileges on database app_collection to app_collection;
+```
 
-    grant all privileges on database app_collection to app_collection;
-
-https://www.youtube.com/watch?v=gmKSy71PxWM
+> youtube https://www.youtube.com/watch?v=gmKSy71PxWM
 
 As a result, our database should be ready for access. However, we’ll
 need to update the code and specifically the Swift package to use
@@ -236,12 +252,14 @@ update the Package.swift file to use PostgreSQL as opposed to SQLite.
 
 Therefore, open the Package.swift and update `dependencies` by changing
 the line from:
-
-    .package(url: "https://github.com/vapor/fluent-sqlite.git", from: "3.0.0")
+```
+.package(url: "https://github.com/vapor/fluent-sqlite.git", from: "3.0.0")
+```
 
 to the line:
-
-    .package(url: "https://github.com/vapor/fluent-postgresql.git", from: "1.0.0")
+```
+.package(url: "https://github.com/vapor/fluent-postgresql.git", from: "1.0.0")
+```
 
 To clarify, we’ll be using
 [Fluent](https://docs.vapor.codes/3.0/fluent/getting-started/), Vapor’s
@@ -252,14 +270,16 @@ works in Fluent’s documentation.
 
 Consequently, we need to also update the *App targets* to use the new
 *FluentPostgreSQL* dependency. Therefore change the line:
-
-     .target(name: "App", dependencies: ["FluentSQLite", "Vapor"]),
+```
+ .target(name: "App", dependencies: ["FluentSQLite", "Vapor"]),
+```
 
 to the line:
+```
+ .target(name: "App", dependencies: ["FluentPostgreSQL", "Vapor"]),
+```
 
-     .target(name: "App", dependencies: ["FluentPostgreSQL", "Vapor"]),
-
-https://www.youtube.com/watch?v=j3Z1HxSMVWU
+> youtube https://www.youtube.com/watch?v=j3Z1HxSMVWU
 
 In addition to updating the *Package.swift* file, we need to actually
 update our Xcode project to use the new dependencies.
@@ -269,8 +289,9 @@ update our Xcode project to use the new dependencies.
 Therefore, in order to fetch and update the package with the new
 dependencies and update the Xcode project file, we can run the *xcode*
 command again with:
-
-    vapor xcode
+```
+vapor xcode
+```
 
 As a result, vapor has fetched the Fluent PostgreSQL driver and updated
 the Xcode project. Therefore, we can move forward by updating the code.
@@ -284,41 +305,47 @@ Provider, Database, and Migration used in our configuration. Therefore,
 open the *configure.swift*.
 
 Firstly, let’s update the import at the top of the file from:
-
-    import FluentSQLite
+```
+import FluentSQLite
+```
 
 to:
-
-    import FluentPostgreSQL
+```
+import FluentPostgreSQL
+```
 
 Secondly, update the provider by updating the line:
-
-    try services.register(FluentSQLiteProvider())
+```
+try services.register(FluentSQLiteProvider())
+```
 
 to
-
-    try services.register(FluentPostgreSQLProvider())
+```
+try services.register(FluentPostgreSQLProvider())
+```
 
 Further, update the database used by changing the line from:
+```
+// Configure a SQLite database
+let sqlite = try SQLiteDatabase(storage: .memory)
 
-    // Configure a SQLite database
-    let sqlite = try SQLiteDatabase(storage: .memory)
-
-    // Register the configured SQLite database to the database config.
-    var databases = DatabasesConfig()
-    databases.add(database: sqlite, as: .sqlite)
-    services.register(databases)
+// Register the configured SQLite database to the database config.
+var databases = DatabasesConfig()
+databases.add(database: sqlite, as: .sqlite)
+services.register(databases)
+```
 
 to:
+```
+// Configure a PostgreSQL database
+let postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: "localhost", username: "app_collection")
+let postgreSQL = PostgreSQLDatabase(config: postgreSQLConfig)
 
-    // Configure a PostgreSQL database
-    let postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: "localhost", username: "app_collection")
-    let postgreSQL = PostgreSQLDatabase(config: postgreSQLConfig)
-
-    // Register the configured PostreSQL database to the database config.
-    var databases = DatabasesConfig()
-    databases.add(database: postgreSQL, as: .psql)
-    services.register(databases)
+// Register the configured PostreSQL database to the database config.
+var databases = DatabasesConfig()
+databases.add(database: postgreSQL, as: .psql)
+services.register(databases)
+```
 
 In other words, we are replacing the memory based SQLite database with
 the PostgreSQL local database configured with the user name
@@ -336,24 +363,28 @@ Lastly, in the *configuration.swift*, update the migration for the
 to create and update the tables and relationships used by Fluent.
 Therefore, in this case we just need to change the parameter in this
 line:
-
-    migrations.add(model: Todo.self, database: .sqlite)
+```
+migrations.add(model: Todo.self, database: .sqlite)
+```
 
 to this line:
-
-    migrations.add(model: Todo.self, database: .psql)
+```
+migrations.add(model: Todo.self, database: .psql)
+```
 
 In the same vein, we need to change the subclasses used by our model by
 opening *Todo.swift*. After that change the import statement at the top
 again and then update model subclass from:
-
-    final class Todo: SQLiteModel {
+```
+final class Todo: SQLiteModel {
+```
 
 to
+```
+final class Todo: PostgreSQLModel {
+```
 
-    final class Todo: PostgreSQLModel {
-
-https://www.youtube.com/watch?v=EL98HVIzV9M
+> youtube https://www.youtube.com/watch?v=EL98HVIzV9M
 
 As a result, we can go ahead and run the Vapor application.
 
@@ -364,20 +395,24 @@ update the Swift package dependencies, and updated the code accordingly;
 we can build and run the Vapor application. Therefore, in Xcode, run the
 *Run* target again. After that, let’s go to the Terminal app to test the
 application. For example we can run again:
-
-    curl http://localhost:8080/hello
+```
+curl http://localhost:8080/hello
+```
 
 However, we can also add a `Todo` item by running:
-
-    curl -X POST -H "Content-Type: application/json" -d '{"title": "example"}' http://localhost:8080/todos
+```
+curl -X POST -H "Content-Type: application/json" -d '{"title": "example"}' http://localhost:8080/todos
+```
 
 Consequently, we can verify the `Todo` item was added by calling:
-
-    curl http://localhost:8080/todos
+```
+curl http://localhost:8080/todos
+```
 
 As a result, we get the JSON response:
-
-    [{"id":1,"title":"example"}]
+```
+[{"id":1,"title":"example"}]
+```
 
 Subsequently, let’s deploy this to the cloud. Firstly, we’ll look into
 Heroku.
@@ -395,8 +430,9 @@ let’s begin by setting up our project for Heroku.
 Importantly, make sure you have an account setup at Heroku. After that,
 go to the Terminal again, and in the project directory, we can simply
 run the command:
-
-    vapor heroku init
+```
+vapor heroku init
+```
 
 As a result, of running the command, we have created a Heroku
 application and added :
@@ -409,10 +445,11 @@ application and added :
 The Procfile, which you read about in [the Procfile
 documentation](https://devcenter.heroku.com/articles/procfile), contains
 the following line:
+```
+web: Run serve --env production --port $PORT --hostname 0.0.0.0
+```
 
-    web: Run serve --env production --port $PORT --hostname 0.0.0.0
-
-https://m.youtube.com/watch?v=8piDsDi6PNo
+> youtube https://www.youtube.com/watch?v=8piDsDi6PNo
 
 Moreover when you run the command, you do not need the supply any
 customizations. However we will need to add PostgreSQL to our Heroku
@@ -424,19 +461,21 @@ Similarly, as we have setup the Vapor application in Heroku via the
 Terminal, we need to add PostgreSQL to our application. Therefore, we
 can add the Heroku repo and install the *heroku* command with Homebrew
 by running:
-
-    brew tap heroku/brew && brew install heroku
+```
+brew tap heroku/brew && brew install heroku
+```
 
 Consequently, we can add PostgreSQL by running the command:
-
-    heroku addons:create heroku-postgresql:hobby-dev
+```
+heroku addons:create heroku-postgresql:hobby-dev
+```
 
 As a result of running this command, we’ve added a [free *hobby* level
 instance of
 PostgreSQL](https://www.heroku.com/postgres#heroku-postgres-hobby) to
 our application.
 
-https://m.youtube.com/watch?v=rprznYi-kKQ
+> youtube https://www.youtube.com/watch?v=rprznYi-kKQ
 
 Consequently, Heroku will add an environment variable for the database
 called `DATABASE_URL`. Therefore, we’ll need to update our code to use
@@ -448,20 +487,22 @@ Since we have added PostgreSQL to our Heroku instance, we need to update
 our code to use the environment the variable for the new database url,
 `DATABASE_URL`. Therefore, open the *configure.swift*. After that,
 change the lines where we setup the database from:
-
-    let postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: "localhost", username: "app_collection")
+```
+let postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: "localhost", username: "app_collection")
+```
 
 to:
+```
+let postgreSQLConfig : PostgreSQLDatabaseConfig
+  
+if let url = Environment.get("DATABASE_URL") {
+  postgreSQLConfig = PostgreSQLDatabaseConfig(url: url)!
+} else {
+  postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: "localhost", username: "app_collection")
+}
+```
 
-    let postgreSQLConfig : PostgreSQLDatabaseConfig
-      
-    if let url = Environment.get("DATABASE_URL") {
-      postgreSQLConfig = PostgreSQLDatabaseConfig(url: url)!
-    } else {
-      postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: "localhost", username: "app_collection")
-    }
-
-https://www.youtube.com/watch?v=J7VILggBt0Q
+> youtube https://www.youtube.com/watch?v=J7VILggBt0Q
 
 As a result of changing the code, we will be checking if there is an
 environment variable called `DATABASE_URL`. In other words, we are using
@@ -479,12 +520,14 @@ application.
 Similarly, we can deploy the application to Heroku in the terminal with
 one of two commands. Firstly, you can push directly with git using the
 command:
-
-    git push heroku master
+```
+git push heroku master
+```
 
 Secondly, you can push with the Vapor CLI command:
-
-    vapor heroku push
+```
+vapor heroku push
+```
 
 In short, either command will:
 
@@ -492,27 +535,28 @@ In short, either command will:
 -   Secondly, build the Application
 -   Lastly, run the application (based on the command in the Procfile)
 
-https://m.youtube.com/watch?v=J0-wLRCarzc
+> youtube https://www.youtube.com/watch?v=J0-wLRCarzc
 
 Therefore, if our application instance is called *damp-spire-56788* , we
 should be call our application with `curl`:
+```
+> curl http://damp-spire-56788.herokuapp.com/hello
+Hello, world!%
+> curl -X POST -H "Content-Type: application/json" -d '{"title": "example"}' http://damp-spire-56788.herokuapp.com/todos
+{"id":1,"title":"example"}%
+> curl http://damp-spire-56788.herokuapp.com/todos 
+[{"id":1,"title":"example"}]%
+```
 
-    > curl http://damp-spire-56788.herokuapp.com/hello
-    Hello, world!%
-    > curl -X POST -H "Content-Type: application/json" -d '{"title": "example"}' http://damp-spire-56788.herokuapp.com/todos
-    {"id":1,"title":"example"}%
-    > curl http://damp-spire-56788.herokuapp.com/todos 
-    [{"id":1,"title":"example"}]%
-
-https://m.youtube.com/watch?v=a0IJUTOJafo
+> youtube https://www.youtube.com/watch?v=a0IJUTOJafo
 
 In short, we can setup our app for Heroku by
 
 -   Firstly, using the Vapor CLI to setup the instance, build pack,
-    Procfile, and git remote
+Procfile, and git remote
 -   Secondly, using setting up a PostgreSQL instance in Heroku
 -   After that, updating the code to use the environment variable for
-    the database url to access the Heroku PostgreSQL instance
+the database url to access the Heroku PostgreSQL instance
 -   Lastly, pushing the code to Heroku and testing the application
 
 Similarly, now that we know how to deploy to Heroku, let’s look at what
@@ -534,8 +578,9 @@ Cuttlefish).
 With a new server setup, we need to install several package. However,
 first we need add Vapor’s APT repo. Therefore, on the server (as root),
 run the following command:
-
-    eval "$(curl -sL https://apt.vapor.sh)"
+```
+eval "$(curl -sL https://apt.vapor.sh)"
+```
 
 After that, we can proceed with installing the software we’ll be using
 to setup our server:
@@ -544,15 +589,16 @@ to setup our server:
 -   **nginx** - our http server
 -   **postgresql** - our database server
 -   **supervisor** - which is used to monitor and execute the
-    application
+application
 -   **swift** and **vapor** - which is used to build and run the
-    application
+application
 
 Therefore, we can install the application with:
+```
+apt install git supervisor postgresql swift vapor nginx
+```
 
-    apt install git supervisor postgresql swift vapor nginx
-
-https://m.youtube.com/watch?v=Ul4hL9vP06g
+> youtube https://www.youtube.com/watch?v=Ul4hL9vP06g
 
 ### Setting Up the PostgreSQL Database
 
@@ -565,36 +611,39 @@ Therefore, open up Xcode and in our project go back to
 `configure.swift`. After that, between the `import` statements but
 before the `configure` function add a struct to store the defaults for
 PostgreSQL:
-
-    public struct PostgresDefaults {
-      public static let hostname = "localhost"
-      public static let username = "app_collection"
-      public static let port = 5432
-    }
+```
+public struct PostgresDefaults {
+  public static let hostname = "localhost"
+  public static let username = "app_collection"
+  public static let port = 5432
+}
+```
 
 To clarify, this struct stores the default host name, user name, and
 port, we use for PostgreSQL configuration
 
 Moreover change the line in the else statement from:
-
-    postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: "localhost", username: "app_collection")
+```
+postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: "localhost", username: "app_collection")
+```
 
 to:
+```
+let hostname = Environment.get("DATABASE_HOSTNAME") ?? PostgresDefaults.hostname
+let username = Environment.get("DATABASE_USERNAME") ?? PostgresDefaults.username
+let database = Environment.get("DATABASE_DATABASE")
+let password = Environment.get("DATABASE_PASSWORD")
 
-    let hostname = Environment.get("DATABASE_HOSTNAME") ?? PostgresDefaults.hostname
-    let username = Environment.get("DATABASE_USERNAME") ?? PostgresDefaults.username
-    let database = Environment.get("DATABASE_DATABASE")
-    let password = Environment.get("DATABASE_PASSWORD")
+let port : Int
 
-    let port : Int
+if let portString = Environment.get("DATABASE_PORT") {
+  port = Int(portString) ?? PostgresDefaults.port
+} else {
+  port = PostgresDefaults.port
+}
 
-    if let portString = Environment.get("DATABASE_PORT") {
-      port = Int(portString) ?? PostgresDefaults.port
-    } else {
-      port = PostgresDefaults.port
-    }
-
-    postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: hostname, port: port, username: username, database: database, password: password, transport: .cleartext)
+postgreSQLConfig = PostgreSQLDatabaseConfig(hostname: hostname, port: port, username: username, database: database, password: password, transport: .cleartext)
+```
 
 To sum up, this code fetches from the environment variables for the host
 name, user name, database, password, and port. Consequently, if any
@@ -604,7 +653,7 @@ the `PostgresDefaults` struct or null and let’s the
 will still work on Heroku (with the `DATABASE_URL`) and on localhost
 with the defaults setup.
 
-https://www.youtube.com/watch?v=xb3LNa\_eADo
+> youtube https://www.youtube.com/watch?v=xb3LNaeADo
 
 However, before we setup the environment variables for our application,
 we need to setup the database.
@@ -612,14 +661,16 @@ we need to setup the database.
 #### Add Database and User
 
 Therefore, as root, sudo in as the `postgres` user and run `psql`:
-
-    sudo -u postgres psql
+```
+sudo -u postgres psql
+```
 
 After that, run the following sql statements:
-
-    create database app_collection;
-    create user app_collection with encrypted password 'app_collection_pw';
-    grant all privileges on database app_collection to app_collection;
+```
+create database app_collection;
+create user app_collection with encrypted password 'app_collection_pw';
+grant all privileges on database app_collection to app_collection;
+```
 
 To clarify, we are creating:
 
@@ -627,7 +678,7 @@ To clarify, we are creating:
 -   user named *app\_collection* with a password *app\_collection\_pw*
 -   grant the user all privileges on the database, we’ve created
 
-https://m.youtube.com/watch?v=hY1gOcB4XbE
+> youtube https://www.youtube.com/watch?v=hY1gOcB4XbE
 
 As a result of setting up the database, we can begin to setup
 *supervisor*.
@@ -640,8 +691,9 @@ user to run the actual application.
 #### Adding a Linux User
 
 As root user again, run the following command:
-
-    adduser app_collection
+```
+adduser app_collection
+```
 
 To clarify, we are setting up user called `app_collection` which does
 not need any other metadata (Full Name, Room Number, etc...). Therefore
@@ -651,19 +703,22 @@ having setup the user, let’s pull and build the code.
 
 Having setup the user in Linux, go ahead and super user in as the new
 user:
-
-    su -l app_collection
+```
+su -l app_collection
+```
 
 After that, as the new user, clone the repo:
-
-    git clone https://github.com/brightdigit/swift-vapor-app-collection-sample.git app
+```
+git clone https://github.com/brightdigit/swift-vapor-app-collection-sample.git app
+```
 
 Subsequently, go to the directory and build the application:
+```
+cd app
+vapor build
+```
 
-    cd app
-    vapor build
-
-https://m.youtube.com/watch?v=RU3jJUe66uE
+> youtube https://www.youtube.com/watch?v=RU3jJUe66uE
 
 In short, we have cloned the code from our repo and built the
 application. As a result, we can move forward with configuring
@@ -675,20 +730,22 @@ While our application will serve our Rest API and *nginx* will proxy
 that connection, *supervisor* will monitor and control the actual Vapor
 application process. Therefore, let’s create a configuration for our
 Vapor application. In other words, as root, create a file here:
-
-    /etc/supervisor/conf.d/app_collection.conf
+```
+/etc/supervisor/conf.d/app_collection.conf
+```
 
 After that, paste this text into the configuration file:
-
-    [program:app_collection]
-    environment =
-            DATABASE_PASSWORD="app_collection_pw",
-    command=vapor run --port=3000 --env=production
-    directory=/home/app_collection/app/ 
-    autorestart=true
-    user=app_collection             
-    stdout_logfile=/var/log/supervisor/%(program_name)-stdout.log
-    stderr_logfile=/var/log/supervisor/%(program_name)-stderr.log
+```
+[program:app_collection]
+environment =
+        DATABASE_PASSWORD="app_collection_pw",
+command=vapor run --port=3000 --env=production
+directory=/home/app_collection/app/ 
+autorestart=true
+user=app_collection             
+stdout_logfile=/var/log/supervisor/%(program_name)-stdout.log
+stderr_logfile=/var/log/supervisor/%(program_name)-stderr.log
+```
 
 To clarify:
 
@@ -701,16 +758,18 @@ To clarify:
 
 Subsequently, we can go ahead and update supervisor by with the
 following commands:
+```
+supervisorctl reread
+supervisorctl update
+```
 
-    supervisorctl reread
-    supervisorctl update
-
-https://m.youtube.com/watch?v=-dCqEE3L0nk
+> youtube https://www.youtube.com/watch?v=-dCqEE3L0nk
 
 After that, you can test if supervisor was successful by calling the
 application from port 3000:
-
-    curl http://localhost:3000/hello
+```
+curl http://localhost:3000/hello
+```
 
 In short, we’ve setup our Vapor application in supervisor to run on port
 3000 with a database password setup as an environment variable. As a
@@ -728,22 +787,25 @@ we are using from
 In addition, feel free to change host name before downloading.
 
 After that, unzip the file:
-
-    unzip nginxconfig.io-app_collection.local.zip
+```
+unzip nginxconfig.io-app_collection.local.zip
+```
 
 Firstly, we can, as root, move the files to their proper locations:
-
-    mv nginx.conf /etc/nginx/nginx.conf
-    mv sites-available/app_collection.local.conf /etc/nginx/sites-available
-    ln -s /etc/nginx/sites-available/app_collection.local.conf /etc/nginx/sites-enabled
-    mv nginxconfig.io /etc/nginx/
+```
+mv nginx.conf /etc/nginx/nginx.conf
+mv sites-available/app_collection.local.conf /etc/nginx/sites-available
+ln -s /etc/nginx/sites-available/app_collection.local.conf /etc/nginx/sites-enabled
+mv nginxconfig.io /etc/nginx/
+```
 
 Secondly, now that we have moved the configuration files over, restart
 nginx:
+```
+service nginx restart
+```
 
-    service nginx restart
-
-https://m.youtube.com/watch?v=qUrDtoHI-zw
+> youtube https://www.youtube.com/watch?v=qUrDtoHI-zw
 
 Most importantly, if you are using a `.local` host name, make sure to
 setup the host name on your network. That is to say, make sure the host
@@ -755,13 +817,14 @@ accordingly.
 
 After you have verified the dns or hosts file is updated, we can proceed
 if testing the application out:
-
-    > curl http://app_collection.local/hello
-    Hello, world!%
-    > curl -X POST -H "Content-Type: application/json" -d '{"title": "example"}' http://app_collection.local/todos
-    {"id":1,"title":"example"}%
-    > curl http://app_collection.local/todos 
-    [{"id":1,"title":"example"}]%
+```
+> curl http://app_collection.local/hello
+Hello, world!%
+> curl -X POST -H "Content-Type: application/json" -d '{"title": "example"}' http://app_collection.local/todos
+{"id":1,"title":"example"}%
+> curl http://app_collection.local/todos 
+[{"id":1,"title":"example"}]%
+```
 
 In short, we’ve successfully setup the application on an Ubuntu server.
 
@@ -803,10 +866,10 @@ practices here.](https://mailchimp.com/legal/)
 In conclusion, we’ve successfully:
 
 -   setup our **Mac for developing** server-side Swift application using
-    Vapor
+Vapor
 -   converted the beginner template to **use PostgreSQL** from SQLite
 -   updated the code to **use environment variables** for different
-    server environments
+server environments
 -   setup and deployed the application to **Heroku**
 -   setup and deployed to an **Ubuntu** server
 

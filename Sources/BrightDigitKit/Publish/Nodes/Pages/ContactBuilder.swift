@@ -9,6 +9,8 @@ struct ContactBuilder: PageBuilder {
       .makeSocialMediaSection()
     ]
   }
+
+  var bodyClasses: [String] { [] }
 }
 
 public extension Node where Context == HTML.BodyContext {
@@ -19,8 +21,7 @@ public extension Node where Context == HTML.BodyContext {
       .id("contact-us-form"),
       .main(
         .header(
-          .img(.class("rounded-lg"),
-               .src("http://placeimg.com/800/450/tech/CF994871-96B0-4257-A9F8-73FFDF87C015"))
+          .img(.src("/media/contact-us.svg"))
         ),
         .main(
           .div(
@@ -70,8 +71,7 @@ public extension Node where Context == HTML.BodyContext {
       .main(
         .header(
           .img(
-            .src("https://via.placeholder.com/1920x1080.png"),
-            .class("rounded-lg")
+            .src("/media/social-media.svg")
           )
         ),
         .main(

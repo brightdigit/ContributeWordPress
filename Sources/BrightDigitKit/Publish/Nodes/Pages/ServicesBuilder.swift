@@ -5,6 +5,8 @@ struct ServicesBuilder: PageBuilder {
   func main(forLocation _: Page, withContext _: PublishingContext<BrightDigitSite>) -> [Node<HTML.BodyContext>] {
     Node.servicesBody()
   }
+
+  var bodyClasses: [String] { [] }
 }
 
 public extension Node where Context == HTML.BodyContext {

@@ -21,7 +21,7 @@ Here are the top four things that I think we all have to look forward to
 with Apple in 2020:
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/11/bagus-hernawan-A6JxK37IlPo-unsplash-1024x512.jpg" class="wp-image-1799" />
+<img src="/media/wp-images/brightdigit/2019/11/bagus-hernawan-A6JxK37IlPo-unsplash-1024x512.jpg" class="wp-image-1799" />
 </figure>
 
 ## A Slowdown in Innovation for iPhone
@@ -44,7 +44,7 @@ relatively easy to maintain your app and there is a low risk of
 obsolescence if you want to add new features.
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/11/daniel-korpai-hbTKIbuMmBI-unsplash-1024x512.jpg" class="wp-image-1800" />
+<img src="/media/wp-images/brightdigit/2019/11/daniel-korpai-hbTKIbuMmBI-unsplash-1024x512.jpg" class="wp-image-1800" />
 </figure>
 
 ## Big Breakthroughs Coming for Apple Watch
@@ -66,7 +66,7 @@ the health and fitness sector**. I would venture this could be the
 perfect platform to have a fitness app in the next year
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/11/roberto-nickson-hLgYtX0rPgw-unsplash-1024x512.jpg" class="wp-image-1801" />
+<img src="/media/wp-images/brightdigit/2019/11/roberto-nickson-hLgYtX0rPgw-unsplash-1024x512.jpg" class="wp-image-1801" />
 </figure>
 
 ## Potential Change to How We Buy and Use iOS Apps
@@ -92,7 +92,7 @@ productivity apps, something the company Setapp is already doing on the
 Mac.
 
 <figure>
-<img src="https://brightdigit.com/wp-content/uploads/2019/11/Screen-Shot-2019-11-19-at-1.35.01-PM-1024x512.png" class="wp-image-1802" />
+<img src="/media/wp-images/brightdigit/2019/11/Screen-Shot-2019-11-19-at-1.35.01-PM-1024x512.png" class="wp-image-1802" />
 </figure>
 
 ## SwiftUI Changing How We Develop User Interfaces

@@ -56,7 +56,7 @@ public extension Newsletter.Source.Campaign {
 
     let featuredImageURL = campaign.socialCard?.imageURL.flatMap(URL.init(string:))
 
-    let slug: String = try title.convertedToSlug()
+    let slug: String = title.convertedToSlug()
 
     self.init(slug: slug, issueNo: issueNo, campaignID: campaignID, longArchiveURL: longArchiveURL, featuredImageURL: featuredImageURL, title: title, subjectLine: subjectLine, previewText: previewText, sendTime: sendTime)
   }
