@@ -6,11 +6,34 @@
 @tailwind utilities;
 
 ._button_normal {
-  @apply  text-gray-800 bg-bellow-500 p-2 rounded-lg;
+  @apply  text-gray-800 bg-bellow-500 p-2 rounded-lg no-underline;
+  &:hover {
+    @apply ring-4;
+  }
 }
 
 ._button {
   @apply  font-bold _button_normal;
+}
+
+body main a, header a {
+  @apply font-bold;
+  &:hover {
+    @apply underline;
+  }
+}
+
+body > main a{
+  @apply underline;
+  &:hover {  
+    @apply bg-bellow-300;
+  
+}
+}
+body > footer a {
+  &:hover {
+    @apply text-bellow-500;
+  }
 }
 
 body > header {
@@ -759,12 +782,19 @@ body#products {
           }
           & > header {
             & > a:first-child {
-              @apply flex flex-row-reverse sm:flex-row justify-between sm:justify-start items-center mb-2 md:mb-4 underline lg:no-underline lg:border-b-2 lg:pb-2;
+              @apply flex flex-row-reverse sm:flex-row justify-between sm:justify-start items-center mb-2 md:mb-4 lg:no-underline lg:border-b-2 lg:pb-2 no-underline text-gray-900;
+              @apply transition-all;
               & > img {
-                @apply w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 mr-4 object-contain rounded-full;
+                @apply w-12 h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 mr-4 object-contain rounded-full opacity-95;
               }
               & > h2 {
                 @apply text-4xl font-light md:text-7xl lg:text-8xl;
+              }
+              &:hover {
+                @apply text-black bg-transparent underline;
+                & > img {
+                  @apply opacity-100;
+                }
               }
             }
           }
