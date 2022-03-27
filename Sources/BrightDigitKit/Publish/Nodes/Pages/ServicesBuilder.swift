@@ -2,6 +2,10 @@ import Plot
 import Publish
 
 struct ServicesBuilder: PageBuilder {
+  let imagePath: Path = "/media/services/new2-12.png"
+
+  let description: String = "Is your app making customers and driving sales? We help you create, rebuild and port apps to excite customers and boost your business."
+
   func main(forLocation _: Page, withContext _: PublishingContext<BrightDigitSite>) -> [Node<HTML.BodyContext>] {
     Node.servicesBody()
   }
@@ -15,7 +19,7 @@ public extension Node where Context == HTML.BodyContext {
   static func makeHeroSection() -> Node {
     .header(
       .section(
-        .p("We work with ", .i("companies and agencies"), " that want Swift-based apps that are"),
+        .p("We work with ", .i("companies and agencies"), " that want Swift-based apps that are:"),
         .h1("Intuitive.", .br(), "Effective.", .br(), "Well-Designed.")
       )
     )

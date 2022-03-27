@@ -3,7 +3,7 @@ import Foundation
 struct LinkedInSocialShare: SocialQueryItemsShare {
   let flaticonName: String = "linkedin"
   static let baseURLComponents = URLComponents(string: "http://www.linkedin.com/shareArticle")!
-  func queryItems(for item: PostItem) -> [URLQueryItem] {
+  func queryItems<PostableType>(for item: PostItem<PostableType>) -> [URLQueryItem] where PostableType: Postable {
     var queryItems = [URLQueryItem]()
     queryItems.append(URLQueryItem(name: "title", value: item.title))
     queryItems.append(URLQueryItem(name: "summary", value: item.description))
