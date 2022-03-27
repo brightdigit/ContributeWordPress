@@ -9,11 +9,11 @@ extension SectionItem {
     var children = allChildren
     children.remove(at: featuredIndex)
     let builder = SectionBuilder(section: section, children: children, featuredItem: allChildren[featuredIndex])
-    return SectionContent(builder: builder)
+    return SectionContent(builder: builder, context: context)
   }
 
   static func content(forItem item: Item<BrightDigitSite>, withContext context: PublishingContext<BrightDigitSite>) throws -> PageContent {
     let object = try Self(item: item, site: context.site)
-    return ItemContent(item: object)
+    return ItemContent(item: object, context: context)
   }
 }

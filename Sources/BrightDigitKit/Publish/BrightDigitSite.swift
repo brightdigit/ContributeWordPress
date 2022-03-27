@@ -28,12 +28,20 @@ public struct BrightDigitSite: Website {
     var subscriptionCTA: String?
   }
 
+  public enum SiteInfo {
+    public static let url = URL(staticString: "https://brightdigit.com")
+    public static let name = "BrightDigit"
+    public static let title = "BrightDigit | Expert Swift App Development"
+    public static let description = "Need a specialist Swift developer for your business’s next app to grow sales and delight customers? We are your go-to for expert development in the Apple ecosystem. Learn more..."
+    public static let imagePath: Path = "/android-chrome-512x512.png"
+  }
+
   // Update these properties to configure your website:
-  public var url = URL(string: "https://brightdigit.com")!
-  public var name = "BrightDigit"
-  public var description = "A description of BrightdigitCom"
+  public let url = SiteInfo.url
+  public let name = SiteInfo.name
+  public let description = SiteInfo.description
   public var language: Language { .english }
-  public var imagePath: Path? { nil }
+  public var imagePath: Path? = SiteInfo.imagePath
 
   static let defaultSteps: [PublishingStep<BrightDigitSite>] = [
     .optional(.copyResources()),

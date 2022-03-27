@@ -1,7 +1,9 @@
 ---
 title: Understanding Optionals in Swift
-date: 2017-11-27 13:38
-featuredImage: /media/wp-images/learningswift/2019/03/deep-dive-into-vapor.jpg
+date: 2018-01-04 14:14
+description: Optionals are a fairly unique concept in Swift. While Objective-C used
+  pointers, Swift has an inherent syntax for optionals…
+featuredImage: /media/wp-images/brightdigit/2018/01/2000px-Question_Mark.svg_.png
 ---
 Optionals are a fairly unique concept in Swift. While Objective-C used
 pointers which could be nil and C\# had a Nullable generics type for
@@ -56,32 +58,30 @@ the question mark: `let x: Foo?` In this case, `x` could contain a Foo
 or not. What this is called is **wrapping** your variable as optional.
 So let’s say we create a struct for an iOS device:
 
-```
-struct Device {
 
-  let model: String
+    struct Device {
 
-  let storage: Int
+      let model: String
 
-  let color: UIColor
+      let storage: Int
 
-}
-```
+      let color: UIColor
+
+    }
 
 Great! Now let’s add a static property to get the device information.
-```
-extension struct Device {
 
-static var current : Device? {
+    extension struct Device {
 
-/// code here
+    static var current : Device? {
 
-/// could return nil if the device is not iOS
+    /// code here
 
-}
+    /// could return nil if the device is not iOS
 
-}
-```
+    }
+
+    }
 
 Notice this returns an *optional*. So if you run this code on your Mac
 or perhaps on Linux, you will get nil. Now, what is nice about Swift is
@@ -89,26 +89,23 @@ that we have the ability to use optional chaining to get properties.
 **By using the question mark suffix on a variable, we can safely pull
 properties from the optional.** Since the variable is optional, that
 optional gets carried to its properties:
-```
-let model : String? = Device.current?.model
-```
+
+    let model : String? = Device.current?.model
 
 This optional chaining can be carried through as well. So if the model
 property were something like this:
-```
-struct Model {
 
-let frontCameraResolution : CGSize?
+    struct Model {
 
-//...
+    let frontCameraResolution : CGSize?
 
-}
-```
+    //...
+
+    }
 
 Then you would do something like this:
-```
-let frontCameraResolution : CGSize? = Device.current?.model?.frontCameraResolution
-```
+
+    let frontCameraResolution : CGSize? = Device.current?.model?.frontCameraResolution
 
 So whether you are on a Mac, using Linux, or on an old iPhone with not
 front-facing camera, your value would be nil. Now it can get tedious
@@ -127,9 +124,8 @@ and using the exclamation mark.
 through a better error rather than the default `unexpectedly found nil`
 error.** However when you must just force an optional to not be an
 optional there is a way by using the exclamation mark.
-```
-let model : Model = Device.current!.model
-```
+
+    let model : Model = Device.current!.model
 
 Now we are using an exclamation mark to force the optional value to be
 just the value. So if we were to run this on a Mac or Linux, it will
@@ -143,11 +139,10 @@ Just as a question mark is used for optional chaining, that is chaining
 an optional value to its properties, as well as declaring a variable to
 be optional, you can declare a variable as an **Implicitly Unwrapped
 Optional.** For instance:
-```
-let model : Model! = Device.current?.model // no crash here
 
-let frontCameraResolution : CGSize = model.frontCameraResolution // will crash here if nil model
-```
+    let model : Model! = Device.current?.model // no crash here
+
+    let frontCameraResolution : CGSize = model.frontCameraResolution // will crash here if nil model
 
 What this means is that **the `model` variable will be treated as not
 optional and will not crash here but rather if `model` is nil and you
@@ -155,9 +150,8 @@ access a property on it, it will crash.** There is one main case where
 you will see this: properties which can’t be set at initialization but
 will be set very soon after. The classic example for this is IBOutlets
 and subviews.
-```
-@IBOutlet weak var subview: UIView!
-```
+
+    @IBOutlet weak var subview: UIView!
 
 If you have a UIViewController which contains a subview property that
 you’ve linked in a storyboard and that property cannot be set at
