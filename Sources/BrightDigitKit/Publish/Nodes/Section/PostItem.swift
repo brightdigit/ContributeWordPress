@@ -3,6 +3,10 @@ import Plot
 import Publish
 
 struct PostItem<PostableType: Postable>: SectionItem {
+  static var sectionH1: String? {
+    PostableType.sectionH1
+  }
+
   static var sectionDescription: String {
     PostableType.sectionDescription
   }
@@ -34,6 +38,7 @@ struct PostItem<PostableType: Postable>: SectionItem {
           .main(
             .header(
               .a(
+                .href(source.path),
                 .h2(.text(title))
               )
             ),
@@ -143,13 +148,14 @@ struct PostItem<PostableType: Postable>: SectionItem {
         .form(
           .div(
             .div(
-              .input(.type(.text), .placeholder("leo@brightdigit.com")),
+              .input(.type(.email), .name("email"), .placeholder("leo@brightdigit.com")),
               .label("Email")
             )
           ),
           .div(
             .div(
-              .button("Sign me up!")
+              .input(.type(.hidden), .name("source"), .value(source.path.string)),
+              .button(.type(.submit), .text("Sign me up!"))
             )
           )
         )

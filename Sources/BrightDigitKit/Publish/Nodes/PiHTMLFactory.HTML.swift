@@ -30,7 +30,7 @@ public extension Node where Context == HTML.BodyContext {
           .li(
             .a(
               .href("/"),
-              .img(.src("/media/brightdigit-name.svg"))
+              .img(.src("/media/brightdigit-name.svg"), .alt("BrightDigit"))
             )
           )
         ),
@@ -63,7 +63,8 @@ public extension Node where Context == HTML.BodyContext {
             .button(
               .id("menu"),
               .img(
-                .src("/media/list.svg")
+                .src("/media/list.svg"),
+                .alt("Mobile Menu")
               )
             )
           )
@@ -210,6 +211,7 @@ public extension Node where Context == HTML.ListContext {
   static func footerItem(href: String, flatIcon: String) -> Node {
     .li(
       .a(
+        .ariaLabel(flatIcon.capitalized),
         .href(href),
         .i(.class("flaticon-\(flatIcon)"))
       )

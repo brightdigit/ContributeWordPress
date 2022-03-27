@@ -9,4 +9,5 @@ protocol SectionBuilderProtocol {
   var featuredItem: ChildType { get }
   var description: String { get }
   var title: String { get }
+  var h1: String? { get }
 }

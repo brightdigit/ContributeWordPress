@@ -11,6 +11,8 @@ struct PodcastItem: SectionItem {
     nil
   }
 
+  static let sectionH1: String? = sectionTitle
+
   static let sectionTitle: String = "EmpowerApps Podcast"
 
   static let sectionDescription: String = "Watch and Listen to the latest episodes of EmpowerApps Show, we talk all things app development and Apple"
