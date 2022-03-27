@@ -14,6 +14,9 @@ struct ProductsBuilder: PageBuilder {
   let products: [Product]
   func main(forLocation _: Page, withContext _: PublishingContext<BrightDigitSite>) -> [Node<HTML.BodyContext>] {
     [
+      .header(
+        .h1(.text("Products"))
+      ),
       .ol(
         .forEach(products, Product.listItem)
       )

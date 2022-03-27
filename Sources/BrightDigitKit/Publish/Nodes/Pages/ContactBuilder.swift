@@ -9,6 +9,9 @@ struct ContactBuilder: PageBuilder {
 
   func main(forLocation _: Page, withContext _: PublishingContext<BrightDigitSite>) -> [Node<HTML.BodyContext>] {
     [
+      .header(
+        .h1("Contact Us")
+      ),
       .makeContactUsFormWithPicture(),
       .makeSocialMediaSection()
     ]
@@ -25,7 +28,7 @@ public extension Node where Context == HTML.BodyContext {
       .id("contact-us-form"),
       .main(
         .header(
-          .img(.src("/media/contact-us.svg"))
+          .img(.src("/media/contact-us.svg"), .alt("Contact Us"))
         ),
         .main(
           .div(
@@ -57,7 +60,7 @@ public extension Node where Context == HTML.BodyContext {
               ),
               .div(
                 .div(
-                  .button("Send")
+                  .button("Send", .type(.submit))
                 )
               )
             )
@@ -75,7 +78,8 @@ public extension Node where Context == HTML.BodyContext {
       .main(
         .header(
           .img(
-            .src("/media/social-media.svg")
+            .src("/media/social-media.svg"),
+            .alt("We are on Social Media")
           )
         ),
         .main(
