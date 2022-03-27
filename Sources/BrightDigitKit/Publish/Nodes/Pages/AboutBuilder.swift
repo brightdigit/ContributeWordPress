@@ -3,6 +3,10 @@ import Plot
 import Publish
 
 struct AboutBuilder: PageBuilder {
+  let description: String = Strings.About.ctaP1
+
+  var imagePath: Path = "/media/about-us/graphic-attract.jpg"
+
   func main(forLocation _: LocationType, withContext _: PublishingContext<BrightDigitSite>) -> [Node<HTML.BodyContext>] {
     [
       .aboutHeader(),

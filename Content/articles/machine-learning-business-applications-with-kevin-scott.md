@@ -3,7 +3,7 @@ title: Machine Learning Business Applications with Kevin Scott
 date: 2018-09-20 09:29
 description: Apple revealed updates specially for Machine Learning. We talk with Kevin
   Scott about learning more and investing in this field
-featuredImage: media/wp-images/brightdigit/2019/11/linkedin-sales-navigator-W3Jl3jREpDY-unsplash.jpg
+featuredImage: media/wp-images/brightdigit/2018/09/michal-parzuchowski-227671-unsplash.jpg
 ---
 Last week, Apple revealed more [updates to its
 iPhone](https://brightdigit.com/blog/2018/09/06/apple-september-event-2018/)

@@ -2,7 +2,15 @@ import Foundation
 import Plot
 import Publish
 
-struct PostItem: SectionItem {
+struct PostItem<PostableType: Postable>: SectionItem {
+  static var sectionDescription: String {
+    PostableType.sectionDescription
+  }
+
+  static var sectionTitle: String {
+    PostableType.sectionTitle
+  }
+
   let slug: String
   let description: String
   let featuredImageURL: URL
@@ -96,12 +104,6 @@ struct PostItem: SectionItem {
     )
   }
 
-  static let socialShares: [SocialShare] = [
-    TwitterSocialShare(),
-    LinkedInSocialShare(),
-    BufferSocialShare(),
-    EmailSocialShare()
-  ]
   var pageHeader: Node<HTML.BodyContext> {
     .header(
       .header(
@@ -110,7 +112,7 @@ struct PostItem: SectionItem {
       ),
       .footer(
         .ol(
-          .forEach(Self.socialShares, shareListItem(for:))
+          .forEach(SocialShares.shares, shareListItem(for:))
         ),
         .div(
           .class("readtime"),
@@ -123,7 +125,7 @@ struct PostItem: SectionItem {
   var pageFooter: Node<HTML.BodyContext> {
     .footer(
       .ol(
-        .forEach(Self.socialShares, shareListItem(for:))
+        .forEach(SocialShares.shares, shareListItem(for:))
       ),
       .main(
         .main(
@@ -161,6 +163,10 @@ struct PostItem: SectionItem {
       .main(.contentBody(source.body)),
       pageFooter
     ]
+  }
+
+  var redirectURL: URL? {
+    nil
   }
 
   init(item: Item<BrightDigitSite>, site: BrightDigitSite) throws {
