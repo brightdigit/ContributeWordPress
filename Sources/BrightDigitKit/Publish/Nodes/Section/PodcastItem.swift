@@ -7,6 +7,14 @@ import Publish
 #endif
 
 struct PodcastItem: SectionItem {
+  var redirectURL: URL? {
+    nil
+  }
+
+  static let sectionTitle: String = "EmpowerApps Podcast"
+
+  static let sectionDescription: String = "Watch and Listen to the latest episodes of EmpowerApps Show, we talk all things app development and Apple"
+
   let description: String
   let episodeNo: Int
   let title: String

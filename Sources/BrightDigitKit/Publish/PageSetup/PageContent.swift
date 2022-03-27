@@ -1,10 +1,17 @@
+import Foundation
 import Plot
 
 public protocol PageContent {
   var title: String { get }
+  var description: String { get }
+  var socialTitle: String { get }
+  var socialImageURL: URL { get }
+  var absoluteURL: URL { get }
   var main: [Node<HTML.BodyContext>] { get }
   var bodyID: String? { get }
   var bodyClasses: [String] { get }
+  var redirectURL: URL? { get }
+  var canonicalURL: URL? { get }
 }
 
 extension PageContent {
@@ -23,5 +30,9 @@ extension PageContent {
     }
 
     return value
+  }
+
+  var headTitle: String {
+    [title, "BrightDigit"].joined(separator: " | ")
   }
 }

@@ -81,14 +81,49 @@ public extension Node where Context == HTML.BodyContext {
 
 // MARK: - makeHead
 
+public extension Node where Context == HTML.HeadContext {
+  static func meta(name: String, content: String) -> Node<HTML.HeadContext> {
+    .meta(
+      .attribute(named: "name", value: name),
+      .attribute(named: "content", value: content)
+    )
+  }
+
+  static func meta(property: String, content: String) -> Node<HTML.HeadContext> {
+    .meta(
+      .attribute(named: "property", value: property),
+      .attribute(named: "content", value: content)
+    )
+  }
+}
+
 public extension Node where Context == HTML.DocumentContext {
-  static func makeHead(forPage page: PageContent, item: Item<BrightDigitSite>? = nil) -> Node {
+  static func makeHead(forPage page: PageContent, item _: Item<BrightDigitSite>? = nil) -> Node {
     .head(
+      .title(page.headTitle),
+      .meta(name: "description", content: page.description),
+      .meta(name: "robots", content: "index,follow"),
       .meta(
         .charset(.utf8)
       ),
-      .newsletterRedirect(forPage: page, item: item),
-      .title(page.title),
+      .unwrap(page.redirectURL) { url in
+        .meta(
+          .attribute(named: "http-equiv", value: "refresh"),
+          .attribute(named: "content", value: "0; url=\(url)")
+        )
+      },
+
+      .meta(name: "twitter:card", content: "summary"),
+      .meta(name: "twitter:site", content: "@brightdigit"),
+      .meta(name: "twitter:creator", content: "@leogdion"),
+      .meta(name: "twitter:title", content: page.socialTitle),
+      .meta(name: "twitter:description", content: page.description),
+      .meta(name: "twitter:image", content: page.socialImageURL.absoluteString),
+      .meta(property: "og:url", content: page.absoluteURL.absoluteString),
+      .meta(property: "og:title", content: page.socialTitle),
+      .meta(property: "og:description", content: page.description),
+      .meta(property: "og:image", content: page.socialImageURL.absoluteString),
+
       .meta(
         .name("viewport"),
         .content("width=device-width, initial-scale=1.0")
@@ -102,8 +137,9 @@ public extension Node where Context == HTML.DocumentContext {
       .link(.id("apple-dark-mode-icon"), .rel(.alternate), .href("/dark-mode-mask.svg?v=2022")),
       .link(.id("apple-light-mode-icon"), .rel(.alternate), .href("/safari-pinned-tab.svg?v=2022")),
 
-//      <meta name="apple-mobile-web-app-title" content="BrightDigit">
-//      <meta name="application-name" content="BrightDigit">
+      .unwrap(page.canonicalURL) { canonicalURL in
+        .link(.rel(.canonical), .href(canonicalURL))
+      },
 
       .script(
         .src("/js/main.js")
