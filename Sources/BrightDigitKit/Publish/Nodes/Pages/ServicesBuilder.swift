@@ -25,23 +25,24 @@ public extension Node where Context == HTML.BodyContext {
     )
   }
 
-  static func makeServicesBox(classStr: String, id: String, bigImageSrc: String, smallImageSrc: String, title: String, paragraph: String) -> Node {
-    makeServicesBox(classStr: classStr, id: id, bigImageSrc: bigImageSrc, smallImageSrc: smallImageSrc, title: title, paragraphs: [paragraph])
+  static func makeServicesBox(classStr: String, id: String, bigImageSrc: String, bigImageAlt: String, smallImageSrc: String, smallImageAlt: String, title: String, paragraph: String) -> Node {
+    makeServicesBox(classStr: classStr, id: id, bigImageSrc: bigImageSrc, bigImageAlt: bigImageAlt, smallImageSrc: smallImageSrc, smallImageAlt: smallImageAlt, title: title, paragraphs: [paragraph])
   }
 
-  static func makeServicesBox(classStr: String, id: String, bigImageSrc: String, smallImageSrc: String, title: String, paragraphs: [String]) -> Node {
+  static func makeServicesBox(classStr: String, id: String, bigImageSrc: String, bigImageAlt: String, smallImageSrc: String, smallImageAlt: String, title: String, paragraphs: [String]) -> Node {
     .section(
       .class(classStr),
       .id(id),
       .header(
         .img(
           .class("rounded-lg"),
-          .src(bigImageSrc)
+          .src(bigImageSrc),
+          .alt(bigImageAlt)
         )
       ),
       .main(
         .header(
-          .img(.src(smallImageSrc)),
+          .img(.src(smallImageSrc), .alt(smallImageAlt)),
           .h2("\(title)")
         ),
         .forEach(paragraphs) { paragraph in
@@ -88,7 +89,9 @@ public extension Node where Context == HTML.BodyContext {
         classStr: "service",
         id: "iPhone-service",
         bigImageSrc: "/media/services/new2-12.png",
+        bigImageAlt: "Building a Brand New App",
         smallImageSrc: "/media/services/003-iphone.svg",
+        smallImageAlt: "iPhone",
         title: "New App Development",
         paragraph: Strings.Services.iOSDevelopment
       ),
@@ -96,14 +99,18 @@ public extension Node where Context == HTML.BodyContext {
       .makeServicesBox(classStr: "service",
                        id: "swift-service",
                        bigImageSrc: "/media/services/12-agustus-outline-02.png",
+                       bigImageAlt: "Upgrading an Existing App",
                        smallImageSrc: "/media/services/001-swift.svg",
+                       smallImageAlt: "Swift Logo",
                        title: "Upgrade Your Existing App",
                        paragraph: Strings.Services.consulting),
 
       .makeServicesBox(classStr: "service",
                        id: "apple-service",
                        bigImageSrc: "/media/services/mar6-outline-07.png",
+                       bigImageAlt: "Porting an app over",
                        smallImageSrc: "/media/services/002-smartwatch-app.svg",
+                       smallImageAlt: "Apple Watch",
                        title: "Port Your App to Apple Platforms",
                        paragraph: Strings.Services.appleDevelopment),
 

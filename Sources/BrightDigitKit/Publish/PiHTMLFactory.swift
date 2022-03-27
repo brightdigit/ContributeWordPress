@@ -42,6 +42,7 @@ struct PiHTMLFactory: HTMLFactory {
   func makeIndexHTML(for index: Index, context: PublishingContext<BrightDigitSite>) throws -> HTML {
     let setup = Pages.page(forIndex: index, withContext: context)
     return HTML(
+      .lang(.usEnglish),
       .makeHead(forPage: setup),
       .body(
         .headerNav(),
@@ -57,6 +58,7 @@ struct PiHTMLFactory: HTMLFactory {
     let content = try Pages.content(forSection: section, withContext: context)
 
     return HTML(
+      .lang(.usEnglish),
       .makeHead(forPage: content),
       .body(
         .unwrap(content.bodyID, Node.id),
@@ -73,6 +75,7 @@ struct PiHTMLFactory: HTMLFactory {
   func makeItemHTML(for item: Item<BrightDigitSite>, context: PublishingContext<BrightDigitSite>) throws -> HTML {
     let content = try Pages.content(forItem: item, withContext: context)
     return HTML(
+      .lang(.usEnglish),
       .makeHead(forPage: content, item: item),
       .body(
         .unwrap(content.bodyID, Node.id),
@@ -89,9 +92,11 @@ struct PiHTMLFactory: HTMLFactory {
   func makePageHTML(for page: Page, context: PublishingContext<BrightDigitSite>) throws -> HTML {
     let content = try Pages.content(basedOnPage: page, withContext: context)
     return HTML(
+      .lang(.usEnglish),
       .makeHead(forPage: content),
       .body(
         .unwrap(content.bodyID, Node.id),
+        .unwrap(content.bodyClassValue, Node.class),
         .headerNav(),
         content.mainElement,
         .makeFooter()

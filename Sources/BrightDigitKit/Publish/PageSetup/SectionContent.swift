@@ -53,9 +53,12 @@ struct SectionContent<SectionBuilderType: SectionBuilderProtocol>: PageContent {
   var main: [Node<HTML.BodyContext>] {
     [
       .class("section"),
-
+      .unwrap(builder.h1) { text in
+        .header(
+          .h1(.text(text))
+        )
+      },
       featuredNode,
-
       .section(
         .ol(
           .forEach(builder.children) { .li(

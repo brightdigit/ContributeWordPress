@@ -74,7 +74,7 @@ public extension Node where Context == HTML.BodyContext {
     .section(
       .class("hero"),
       .header(
-        .img(.src("/media/swift-heroes.jpg"))
+        .img(.src("/media/swift-heroes.jpg"), .alt("Leo presenting at Swift Heroes"))
       ),
       .main(
         .section(
@@ -95,19 +95,22 @@ public extension Node where Context == HTML.BodyContext {
       .class("services"),
       .header(
         .h2("Experts in Swift"),
-        .img(.src("/media/services/001-swift.svg"))
+        .img(.src("/media/services/001-swift.svg"), .alt("Swift Logo"))
       ),
       .ol(
         .makeService(title: "Is your app still at the idea stage?",
                      imageSrc: "/media/services/003-iphone.svg",
+                     imageAlt: "iPhone",
                      paragraph: "We provide consulting servcies to make sure you can deliver the best user experience from the ground up.",
                      linkID: "iPhone-service"),
         .makeService(title: "Have you started development and need specialist support?",
                      imageSrc: "/media/services/002-smartwatch-app.svg",
+                     imageAlt: "Apple Watch",
                      paragraph: "We specialize in Swift development for apps, large and small. If you've run into development trouble, we can help get back on track",
                      linkID: "swift-service"),
         .makeService(title: "Do you have an existing app but want to go bigger, better or port to an Apple platform?",
                      imageSrc: "/media/services/004-cloud.svg",
+                     imageAlt: "The Cloud",
                      paragraph: "We belive that platform-native development is almost always best. If you have an app for Android we can help you make a twin app that works seamlessly on iOS.",
                      linkID: "apple-service")
       )
@@ -167,13 +170,13 @@ public extension Node where Context == HTML.BodyContext {
 // MARK: - ListContext
 
 public extension Node where Context == HTML.ListContext {
-  private static func makeService(title: String, imageSrc: String, paragraph: String, linkID: String) -> Node {
+  private static func makeService(title: String, imageSrc: String, imageAlt: String, paragraph: String, linkID: String) -> Node {
     .li(
       .header(
         .h3(
           .a(.href("/services#\(linkID)"), .text(title))
         ),
-        .img(.src(imageSrc))
+        .img(.src(imageSrc), .alt(imageAlt))
       ),
       .main(
         .p(.text(paragraph))

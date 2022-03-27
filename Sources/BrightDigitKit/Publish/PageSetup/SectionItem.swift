@@ -7,6 +7,7 @@ protocol SectionItem: SectionContentFactory {
   var sectionItemContent: [Node<HTML.BodyContext>] { get }
   var isFeatured: Bool { get }
   var source: Item<BrightDigitSite> { get }
+  static var sectionH1: String? { get }
   static var sectionTitle: String { get }
   static var sectionDescription: String { get }
   var description: String { get }

@@ -220,6 +220,7 @@ body > main #testimonials > ol > li {
 
 body > main #contact-us {
   @apply bg-black text-white py-4 text-lg md:container md:mx-auto md:max-w-screen-md md:rounded-lg;
+
 }
 
 body > main #contact-us > main {
@@ -323,6 +324,13 @@ body#contact-us {
   }
   & > main {
     @apply xl:container xl:mx-auto;
+
+  & > header {
+    @apply mx-6 mb-8 md:m-6 md:pb-4 lg:mb-8 xl:mb-16 border-b-2 border-gray-400 md:border-0;
+    & > h1 {
+      @apply font-extralight md:text-gray-800 md:text-5xl; 
+    }
+  }
     & > section {
       @apply m-6;
       & > main {
@@ -381,80 +389,7 @@ body#contact-us {
   }
 }
 
-body#articles {
-  & > main {
-    @apply mx-6 xl:container xl:mx-auto;
-    & > header {
-      @apply pb-4 border-b-2 mb-4 xl:mx-6;
-      & > nav {
-        @apply text-lg flex justify-between bg-gray-200 p-2 mb-2 rounded-lg;
-        h1 {
-        @apply font-bold; 
-        }
-        & > a:last-child {
-          @apply font-light;
-          scan {
-            @apply hidden;
-          }
-        }
-      }
-      & > article {
-        @apply w-full border-2 rounded-lg relative;
-        & > img {
-          @apply object-cover absolute z-0 opacity-50 md:opacity-100 w-full h-full;
-        }
-        & > main {
-          @apply z-50 top-0 m-4 p-4 bg-white bg-opacity-50 md:bg-opacity-90 relative rounded-lg md:w-1/2 xl:w-5/12 md:max-w-3xl;
-          h1 {
-            @apply font-bold pb-2 border-b-2 mb-1;
-            & + p {
-              @apply h-20 overflow-hidden overflow-ellipsis mb-2;
-            }
-          }
-          footer {
-            @apply flex w-full flex-row-reverse;
-          a.button {
-            @apply bg-gray-800 text-bellow-500 p-2 rounded-lg;
-          }
-          }
-        }
-      }
-    }
-    & > main {
-      @apply  xl:mx-6;
-      & > ul {
-        @apply md:grid md:grid-cols-3 md:gap-4 lg:gap-6;
-        & > li {
-          @apply my-4 py-2 border-b-2 border-gray-400 border-opacity-10;
-          & > article {
-            @apply text-sm lg:text-base;
-            & > img:first-child {
-              @apply object-cover w-full h-40 rounded-lg shadow-lg mb-2;
-            }  
-            & > h2 {
-              @apply font-bold text-lg;            
-            }       
-            & > ol {
-              @apply flex w-full -mx-2 text-xs text-gray-700;
-              & > li {
-                @apply mx-2;
-              }
-            }
-            & > p {
-              @apply my-2 font-light;
-            }
-            & > footer {
-              @apply flex justify-between text-xs lg:text-base lg:my-4;            
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 body#services {
-
   h2{ 
     @apply text-lg font-normal mb-4;
   }
@@ -661,6 +596,12 @@ body#about-us {
 
 body#products {
   & > main {
+    & > header {
+      @apply mx-6 mb-8 md:m-6 md:pb-4 lg:mb-8 xl:mb-16 border-b-2 border-gray-400 md:border-0;
+      & > h1 {
+        @apply font-extralight md:text-gray-800 md:text-5xl; 
+      }
+    }
     & > ol {
       & > li {
         @apply m-6 pb-4 md:pb-0 lg:mb-8 xl:mb-16;
@@ -815,6 +756,7 @@ body#products {
 body {
   & > main.section {
     @apply my-6;
+
     & > header {
       @apply mb-8 mx-6 border-b-2 border-bellow-500;
       & > section {
@@ -893,9 +835,9 @@ body {
     }
     header > .hero {
       & > .featured {
-        
         @apply bg-bellow-200 mb-4 sm:mt-4 lg:max-w-sm;
         & > header {
+
           & > h3 {
             @apply font-light text-xs mb-4 border-b-2 border-bellow-500;
           }
@@ -908,8 +850,9 @@ body {
           & > header {
             @apply sm:w-full sm:mr-4  lg:w-1/2;
             & > img {
-              @apply sm:rounded-lg h-full object-cover;
+              @apply h-48 flex-none sm:rounded-lg md:h-auto object-cover;
             }
+
           }
           h2 {
             @apply mb-4 lg:text-xl xl:text-2xl;
@@ -931,6 +874,13 @@ body {
         }
       }
     }
+
+    & > header:first-child {
+      @apply mx-6 mb-8 md:m-6 md:pb-4 lg:mb-8 xl:mb-16 border-b-2 border-gray-400 md:border-0;
+      & > h1 {
+        @apply font-extralight md:text-gray-800 md:text-5xl; 
+      }
+    }
   }
 }
 
@@ -950,6 +900,7 @@ body {
         .publish-date {
           @apply text-sm font-light;
         }
+        
       }
       & > main {
         & > main {
@@ -964,7 +915,6 @@ body {
         .publish-date {
           @apply text-sm;
         }
-
       }
       & > footer {
         @apply flex justify-between;
@@ -1121,7 +1071,9 @@ body {
         & > main {
           @apply  lg:flex-col;
         }
+        & > header {
 
+        }
 
       }
 
@@ -1435,6 +1387,15 @@ body.articles, body.tutorials {
         }
       }
       
+    }
+  }
+}
+
+body > main.section > header > .hero > .featured > main > header {
+  & > a {
+    @apply no-underline;
+    &:hover {
+      @apply underline;
     }
   }
 }
