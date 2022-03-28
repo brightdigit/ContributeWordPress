@@ -11,8 +11,6 @@ build focal:
   script:
     - export ARCH_PREFIX=$(uname -i)
     - swift build
-    - swift test --enable-test-discovery --enable-code-coverage
-#    - swift run brightdigitwg import wordpress Import/Wordpress --export-resources-directory=Resources --export-markdown-directory=Content
 
 build macos:
   except:
@@ -25,23 +23,14 @@ build macos:
     - swift build
     - swift run swiftformat --lint .
     - swift run swiftlint
-    - swift test --enable-test-discovery --enable-code-coverage
-    - swift run brightdigitwg import wordpress Import/Wordpress --export-resources-directory=Resources --export-markdown-directory=Content
-#    - xcrun llvm-cov export -format="lcov" .build/debug/BrightDigitPackageTests.xctest/Contents/MacOS/BrightDigitPackageTests -instr-profile .build/debug/codecov/default.profdata > info.lcov
-#    - bash <(curl https://codecov.io/bash) -F gitlab -F macOS -F swift5_4
 
 deploy:
   only:
     - main
-    - /^feature\/*/
   stage: deploy
   image: brightdigit/publish-xml
-  environment:
-    name: beta
-    url: https://beta.brightdigit.com
   script:
-    - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then SITE_ID=$NETLIFY_SITE_ID; else SITE_ID=$NETLIFY_FEATURE_SITE_ID; fi
-    - echo $SITE_ID
+    - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then SITE_ID=$NETLIFY_PRODUCTION_SITE_ID; else SITE_ID=$NETLIFY_BETA_SITE_ID; fi
     - swift build > /dev/null 2> /dev/null
     - swift run
     - netlify deploy --site $SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
