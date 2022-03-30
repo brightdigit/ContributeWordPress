@@ -146,6 +146,9 @@ struct PostItem<PostableType: Postable>: SectionItem {
         ),
 
         .form(
+          .attribute(named: "name", value: "subscribers"),
+          .method(.post),
+          .attribute(named: "data-netlify", value: "true"),
           .div(
             .div(
               .input(.type(.email), .name("email"), .placeholder("leo@brightdigit.com")),
