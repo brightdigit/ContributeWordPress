@@ -11,10 +11,6 @@ be hard to know what they need to know if you’re not a developer
 yourself. This is pretty significant, as choosing the *right* developer
 could have huge consequences once the project starts.
 
-<figure>
-<img src="/media/wp-images/brightdigit/2019/11/linkedin-sales-navigator-W3Jl3jREpDY-unsplash-1024x512.jpg" class="wp-image-1794" width="1024" height="512" />
-</figure>
-
 This post is a guide for **anyone looking to hire an iOS developer** and
 needs to know what kind of knowledge and experience you should be
 looking for. In this guide, we’ll detail what kinds of questions you
