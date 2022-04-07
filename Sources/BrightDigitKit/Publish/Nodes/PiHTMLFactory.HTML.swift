@@ -103,17 +103,15 @@ public extension Node where Context == HTML.DocumentContext {
     .head(
       .title(page.headTitle),
       .meta(name: "description", content: page.description),
-      .meta(name: "robots", content: "index,follow"),
       .meta(
         .charset(.utf8)
       ),
-      .unwrap(page.redirectURL) { url in
+      .unwrap(page.redirectURL, { url in
         .meta(
           .attribute(named: "http-equiv", value: "refresh"),
           .attribute(named: "content", value: "0; url=\(url)")
         )
-      },
-
+      }, else: .meta(name: "robots", content: "index,follow")),
       .meta(name: "twitter:card", content: "summary"),
       .meta(name: "twitter:site", content: "@brightdigit"),
       .meta(name: "twitter:creator", content: "@leogdion"),
