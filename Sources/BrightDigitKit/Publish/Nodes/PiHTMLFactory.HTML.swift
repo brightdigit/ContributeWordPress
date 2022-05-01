@@ -182,12 +182,12 @@ public extension Node where Context == HTML.BodyContext {
         ),
         .ol(
           .class("social"),
-          .footerItem(href: "/", flatIcon: "twitter"),
-          .footerItem(href: "/", flatIcon: "github"),
-          .footerItem(href: "/", flatIcon: "podcast"),
-          .footerItem(href: "/", flatIcon: "youtube"),
-          .footerItem(href: "/", flatIcon: "newsletter"),
-          .footerItem(href: "/", flatIcon: "rss")
+          .footerItem(href: "http://twitter.com/brightdigit", flatIcon: "twitter"),
+          .footerItem(href: "http://github.com/brightdigit", flatIcon: "github"),
+          .footerItem(href: "https://www.empowerapps.show", flatIcon: "podcast"),
+          .footerItem(href: "http://youtube.com/c/BrightdigitLLC", flatIcon: "youtube"),
+          .footerItem(href: "https://us12.campaign-archive.com/home/?u=cb3bba007ed171091f55c47f0&id=584d0d5c40", flatIcon: "newsletter"),
+          .footerItem(href: "/feed.rss", flatIcon: "rss")
         ),
         .footer(
           .div(
