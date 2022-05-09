@@ -8,13 +8,10 @@ struct TransistorEmbedGenerator {
     static let timeout = Error(localizedDescription: "The request to Twitter's embed API timed out")
   }
 
-  private var config: TransistorEmbedConfiguration
-
   let transistorURL: URL
 
-  init(url: URL, configuration: TransistorEmbedConfiguration) {
+  init(url: URL) {
     transistorURL = url
-    config = configuration
   }
 
   private func html(from id: String) -> String {
