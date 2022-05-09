@@ -1222,7 +1222,13 @@ body.articles, body.tutorials {
           & > li {
             @apply contents;
             & > a {
-              @apply text-xl p-2  md:text-white md:flex md:items-baseline md:bg-bellow-500 md:bg-opacity-50 md:px-2 md:mr-2;
+              @apply text-xl p-2  md:text-white md:flex md:items-baseline md:bg-bellow-500 md:bg-opacity-50 md:px-2 md:mr-2 no-underline;
+              &:hover {
+                @apply  md:bg-black md:bg-opacity-30;
+                span {
+                  @apply opacity-100;
+                }
+              }
               span {
                 @apply hidden md:inline md:text-xs md:mr-1 md:opacity-50;
                 &.name {
@@ -1342,7 +1348,10 @@ body.articles, body.tutorials {
         & > li {
           @apply contents;
           & > a {
-            @apply text-xl p-2 text-bellow-600 md:text-black flex items-baseline mr-1 md:mr-4 md:text-2xl md:bg-bellow-500 md:p-4 md:px-4 md:rounded-lg text-black;
+            @apply text-xl p-2 md:text-black flex items-baseline mr-1 md:mr-4 md:text-2xl md:bg-bellow-500 md:p-4 md:px-4 md:rounded-lg text-black md:no-underline;
+            &:hover {
+              @apply md:bg-bellow-300;
+            }
             span {
               @apply text-base mr-1 md:text-lg;
               &.action {

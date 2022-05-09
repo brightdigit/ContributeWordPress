@@ -25,7 +25,7 @@ public extension Modifier {
         fatalError("Invalid transistor URL \(markdown)")
       }
 
-      let generator = TransistorEmbedGenerator(url: url, configuration: .default)
+      let generator = TransistorEmbedGenerator(url: url)
       let transistor = generator.generate()
       return renderer.render(transistor: transistor)
     }

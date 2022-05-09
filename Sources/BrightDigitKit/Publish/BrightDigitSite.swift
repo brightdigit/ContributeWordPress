@@ -54,10 +54,13 @@ public struct BrightDigitSite: Website {
     .sortItems(by: \.date, order: .descending),
 
     .generateHTML(withTheme: .company, indentation: .spaces(2)),
-    .generateSiteMap(),
+    .generateRSSFeed(including: [.articles, .tutorials]),
+    .generateRSSFeed(including: [.articles], config: .init(targetPath: "articles.rss")),
 
-    .webpack,
-    .generateRSSFeed(including: [.articles, .tutorials])
+    .generateRSSFeed(including: [.tutorials], config: .init(targetPath: "tutorials.rss")),
+    .generateSiteMap(excluding: .init(["newsletters/"])),
+
+    .webpack
   ]
 }
 

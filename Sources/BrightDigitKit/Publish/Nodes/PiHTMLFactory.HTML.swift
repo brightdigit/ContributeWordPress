@@ -22,7 +22,7 @@ public extension Node where Context == HTML.BodyContext {
 
   /// Add an `<li>` HTML element within the current context.
   /// - parameter nodes: The element's attributes and child elements.
-  static func headerNav() -> Node {
+  static func header() -> Node {
     .header(
       .nav(
         .ol(
@@ -99,7 +99,7 @@ public extension Node where Context == HTML.HeadContext {
 }
 
 public extension Node where Context == HTML.DocumentContext {
-  static func makeHead(forPage page: PageContent, item _: Item<BrightDigitSite>? = nil) -> Node {
+  static func head(forPage page: PageContent) -> Node {
     .head(
       .title(page.headTitle),
       .meta(name: "description", content: page.description),
@@ -127,6 +127,15 @@ public extension Node where Context == HTML.DocumentContext {
         .name("viewport"),
         .content("width=device-width, initial-scale=1.0")
       ),
+
+      .link(.rel(.alternate), .type("application/rss+xml"), .title("Main Site Content"), .href("/feed.rss")),
+      .link(.rel(.alternate), .type("application/rss+xml"), .title("Just Articles"), .href("/articles.rss")),
+
+      .link(.rel(.alternate), .type("application/rss+xml"), .title("Developer Tutorials"), .href("/tutorials.rss")),
+
+      .link(.rel(.alternate), .type("application/rss+xml"), .title("EmpowerApps.Show Podcast"), .href("https://feeds.transistor.fm/empowerapps-show")),
+
+      .link(.rel(.alternate), .type("application/rss+xml"), .title("BrightDigit Newsletter"), .href("https://us12.campaign-archive.com/feed?u=cb3bba007ed171091f55c47f0&id=584d0d5c40")),
 
       .link(.rel(.icon), .href("/favicon.ico"), .sizes("any"), .type("image/svg+xml")),
       .link(.rel(.icon), .href("/favicon.svg"), .type("image/svg+xml")),
@@ -167,7 +176,7 @@ public extension Node where Context == HTML.HeadContext {
 // MARK: - makeFooter
 
 public extension Node where Context == HTML.BodyContext {
-  static func makeFooter() -> Node {
+  static func footer() -> Node {
     .footer(
       .footer(
         .header(
@@ -182,12 +191,12 @@ public extension Node where Context == HTML.BodyContext {
         ),
         .ol(
           .class("social"),
-          .footerItem(href: "http://twitter.com/brightdigit", flatIcon: "twitter"),
-          .footerItem(href: "http://github.com/brightdigit", flatIcon: "github"),
-          .footerItem(href: "https://www.empowerapps.show", flatIcon: "podcast"),
-          .footerItem(href: "http://youtube.com/c/BrightdigitLLC", flatIcon: "youtube"),
-          .footerItem(href: "https://us12.campaign-archive.com/home/?u=cb3bba007ed171091f55c47f0&id=584d0d5c40", flatIcon: "newsletter"),
-          .footerItem(href: "/feed.rss", flatIcon: "rss")
+          .li(href: "http://twitter.com/brightdigit", flatIcon: "twitter"),
+          .li(href: "http://github.com/brightdigit", flatIcon: "github"),
+          .li(href: "https://www.empowerapps.show", flatIcon: "podcast"),
+          .li(href: "http://youtube.com/c/BrightdigitLLC", flatIcon: "youtube"),
+          .li(href: "https://us12.campaign-archive.com/home/?u=cb3bba007ed171091f55c47f0&id=584d0d5c40", flatIcon: "newsletter"),
+          .li(href: "/feed.rss", flatIcon: "rss")
         ),
         .footer(
           .div(
@@ -206,7 +215,7 @@ public extension Node where Context == HTML.BodyContext {
 }
 
 public extension Node where Context == HTML.ListContext {
-  static func footerItem(href: String, flatIcon: String) -> Node {
+  static func li(href: String, flatIcon: String) -> Node {
     .li(
       .a(
         .ariaLabel(flatIcon.capitalized),

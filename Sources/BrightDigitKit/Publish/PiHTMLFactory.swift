@@ -43,11 +43,11 @@ struct PiHTMLFactory: HTMLFactory {
     let setup = Pages.page(forIndex: index, withContext: context)
     return HTML(
       .lang(.usEnglish),
-      .makeHead(forPage: setup),
+      .head(forPage: setup),
       .body(
-        .headerNav(),
+        .header(),
         setup.mainElement,
-        .makeFooter()
+        .footer()
       )
     )
   }
@@ -59,13 +59,13 @@ struct PiHTMLFactory: HTMLFactory {
 
     return HTML(
       .lang(.usEnglish),
-      .makeHead(forPage: content),
+      .head(forPage: content),
       .body(
         .unwrap(content.bodyID, Node.id),
         .unwrap(content.bodyClassValue, Node.class),
-        .headerNav(),
+        .header(),
         content.mainElement,
-        .makeFooter()
+        .footer()
       )
     )
   }
@@ -76,13 +76,13 @@ struct PiHTMLFactory: HTMLFactory {
     let content = try Pages.content(forItem: item, withContext: context)
     return HTML(
       .lang(.usEnglish),
-      .makeHead(forPage: content, item: item),
+      .head(forPage: content),
       .body(
         .unwrap(content.bodyID, Node.id),
         .unwrap(content.bodyClassValue, Node.class),
-        .headerNav(),
+        .header(),
         content.mainElement,
-        .makeFooter()
+        .footer()
       )
     )
   }
@@ -93,13 +93,13 @@ struct PiHTMLFactory: HTMLFactory {
     let content = try Pages.content(basedOnPage: page, withContext: context)
     return HTML(
       .lang(.usEnglish),
-      .makeHead(forPage: content),
+      .head(forPage: content),
       .body(
         .unwrap(content.bodyID, Node.id),
         .unwrap(content.bodyClassValue, Node.class),
-        .headerNav(),
+        .header(),
         content.mainElement,
-        .makeFooter()
+        .footer()
       )
     )
   }
