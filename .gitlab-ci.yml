@@ -27,6 +27,7 @@ build macos:
 deploy:
   only:
     - main
+    - develop
   stage: deploy
   image: brightdigit/publish-xml
   script:
