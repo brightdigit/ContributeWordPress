@@ -1,7 +1,7 @@
 ---
 issueNo: 57
 campaignID: a49b559d4d
-featuredImage: https://dim.mcusercontent.com/cs/cb3bba007ed171091f55c47f0/images/3bedd791-bfb0-bb37-0930-a1add8a42ee6.jpg?w=480&dpr=2
+featuredImage: /media/articles/scale-ios-app/overgrown-green-staircase-in-the-forest.jpg
 longArchiveURL: https://mailchi.mp/c3eaccab0e46/brightdigit-newsletter-57-scaling
 newsletterTitle: 'BrightDigit Newsletter - Issue #57 - 22.05.18'
 title: "BrightDigit Newsletter #57 - \U0001F4C8 How do you scale an iOS app \U0001FA9C"
