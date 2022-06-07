@@ -27,7 +27,7 @@ The goal is to show you how to avoid these pitfalls and point you toward success
 
 ## Which Purchases Type Is Best For You
 
-In almost all instances, adding in-app purchases to a Swift app will involve using the StoreKit API).
+In almost all instances, adding in-app purchases to a Swift app will involve using the StoreKit API.
 
 Apple has good documentation explaining the different types of in-app purchases available on their platforms – the following is meant as a simple summary to help you consider which type of in-app purchase may be best for your app.
 
@@ -40,7 +40,7 @@ This is the go-to purchase type for games or apps which use any credit-based sys
 Examples of apps that might use this purchase type:
 
 * Games
-* Dating apps (that temporarily boost your visibility on the platform
+* Dating apps (that temporarily boost your visibility on the platform)
 * Social media apps
 * Content library apps (where individual pieces of content are sold as consumables)
 
