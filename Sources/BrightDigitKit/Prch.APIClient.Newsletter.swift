@@ -13,7 +13,8 @@ typealias NewsletterCampaign = Newsletter.Source.Campaign
 extension Client where APIType == Mailchimp.API {
   func campaigns(fromRequest request: MailchimpCampaignRequest) throws -> [MailchimpCampaign] {
     let request = Campaigns.GetCampaigns.Request(count: 1000, status: .sent, listId: request.listID, sortField: .sendTime, sortDir: .desc)
-    let response = try requestSync(request)
+    #warning("make the timeout setting available")
+    let response = try requestSync(request, timeout: .now() + 10.0)
     guard let campaigns = response.campaigns else {
       throw ImportError.invalidMailchimp
     }
