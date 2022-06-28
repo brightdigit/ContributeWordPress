@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/93006
 youtubeID: _-k97s1ZPzE
 audioDuration: 2289
 videoDuration: 2352
-transistorID: '67771090'
+transistorID: 67771090
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://mikaelacaron.com/links"><strong>Mikaela Caron</strong></a><ul>
