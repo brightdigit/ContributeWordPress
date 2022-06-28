@@ -29,8 +29,8 @@ let package = Package(
 
     .package(name: "ReadingTimePublishPlugin", url: "https://github.com/alexito4/ReadingTimePublishPlugin", from: "0.2.0"),
 
-    .package(url: "https://github.com/BrightDigit/SwiftTube.git", from: "0.2.0-beta.1"),
-    .package(url: "https://github.com/BrightDigit/Spinetail.git", from: "0.2.0-beta.1"),
+    .package(url: "https://github.com/BrightDigit/SwiftTube.git", from: "0.2.0-beta.3"),
+    .package(url: "https://github.com/BrightDigit/Spinetail.git", from: "0.3.0"),
     .package(url: "https://github.com/BrightDigit/SyndiKit", from: "0.2.0"),
     .package(url: "https://github.com/BrightDigit/Options.git", from: "0.2.0"),
 
