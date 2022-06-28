@@ -88,7 +88,7 @@
         "state": {
           "branch": null,
           "revision": "74513ceb865358b457a656290ded54ed67de1702",
-          "version": "0.2.0-beta.1"
+          "version": "0.2.0"
         }
       },
       {
@@ -132,8 +132,8 @@
         "repositoryURL": "https://github.com/BrightDigit/Spinetail.git",
         "state": {
           "branch": null,
-          "revision": "6b3b52d63620e217ebbf01a492f946392e21a91b",
-          "version": "0.2.0-beta.1"
+          "revision": "1bc157836771772dddea118ae3c1f9bfd4eea262",
+          "version": "0.3.0"
         }
       },
       {
@@ -195,8 +195,8 @@
         "repositoryURL": "https://github.com/BrightDigit/SwiftTube.git",
         "state": {
           "branch": null,
-          "revision": "b48cbc49386e888fbc7c16146b5ad8db07024b2b",
-          "version": "0.2.0-beta.1"
+          "revision": "5ec972bf6c264e4ed4a5fe23e600c0c37ec5de4d",
+          "version": "0.2.0-beta.3"
         }
       },
       {
