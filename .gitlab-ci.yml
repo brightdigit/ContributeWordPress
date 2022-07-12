@@ -1,6 +1,10 @@
 stages:
   - build
   - deploy
+  - test
+
+include:
+  - template: Code-Quality.gitlab-ci.yml
   
 build focal:
   except:
@@ -35,3 +39,7 @@ deploy:
     - swift build > /dev/null 2> /dev/null
     - swift run
     - netlify deploy --site $SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+
+code_quality:
+  artifacts:
+    paths: [gl-code-quality-report.json]
