@@ -1,8 +1,10 @@
 import XCTest
 
-import brightdigitwgTests
+import BDContentTests
+import BDPublishTests
 
 var tests = [XCTestCaseEntry]()
-tests += brightdigitwgTests.__allTests()
+tests += BDContentTests.__allTests()
+tests += BDPublishTests.__allTests()
 
 XCTMain(tests)
