@@ -1,3 +1,3 @@
-import BrightDigitKit
+import BDCommand
 
 BrightDigitSiteCommand.main()
