@@ -24,15 +24,6 @@ extension String {
     return String(trimmedString[startIndex ..< endIndex])
   }
 
-  func padLeft(totalWidth: Int, byString: String) -> String {
-    let toPad = totalWidth - count
-    if toPad < 1 {
-      return self
-    }
-
-    return "".padding(toLength: toPad, withPad: byString, startingAt: 0) + self
-  }
-
   private func convertedToSlugBackCompat() -> String? {
     // On Linux StringTransform doesn't exist and CFStringTransform causes all sorts
     // of problems because of bridging issues using CFMutableString – d'oh.

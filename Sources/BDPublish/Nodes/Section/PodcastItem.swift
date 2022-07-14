@@ -35,20 +35,10 @@ struct PodcastItem: SectionItem {
     guard let youtubeID = youtubeID, episodeNo > 86 else {
       return featuredImageURL
     }
-    return Self.youtubeImageBaseURL.appendingPathComponent(youtubeID).appendingPathComponent("maxresdefault.jpg")
+    return Self.youtubeImageBaseURL.appendingPathComponent(youtubeID).appendingPathComponent(Self.maxresdefault)
   }
 
-  static let baseYoutubeImageURL = URL(string: "https://img.youtube.com/vi/")!
   static let maxresdefault = "maxresdefault.jpg"
-
-  var youtubeImage: URL? {
-    guard episodeNo > 86 else {
-      return nil
-    }
-    return youtubeID.map {
-      Self.baseYoutubeImageURL.appendingPathComponent($0).appendingPathComponent(Self.maxresdefault)
-    }
-  }
 
   var featuredItemContent: Node<HTML.BodyContext> {
     .header(
@@ -346,7 +336,7 @@ struct PodcastItem: SectionItem {
   }
 
   // swiftlint:disable:next force_try
-  static let regex = try! NSRegularExpression(pattern: "^\\d+", options: [])
+  // static let regex = try! NSRegularExpression(pattern: "^\\d+", options: [])
 
   init(item: Item<BrightDigitSite>, site _: BrightDigitSite) throws {
     source = item

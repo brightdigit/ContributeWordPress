@@ -19,6 +19,7 @@ public struct BrightDigitSite: Website {
     case newsletters
   }
 
+  // periphery:ignore
   public struct ItemMetadata: WebsiteItemMetadata {
     // Add any site-specific metadata that you want to use here.
     var featuredImage: String

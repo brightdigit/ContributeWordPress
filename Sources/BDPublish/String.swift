@@ -5,10 +5,6 @@ extension String {
 
   private static let slugSafeCharacters = CharacterSet(charactersIn: "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-")
 
-  func fixUnicodeEscape() -> String {
-    replacingOccurrences(of: "’", with: "'")
-  }
-
   func dequote() -> String {
     let trimmedString = trimmingCharacters(in: .whitespacesAndNewlines)
     guard let first = trimmedString.first.map(String.init), let last = trimmedString.last.map(String.init), trimmedString.count > 1, last == first else {
@@ -22,15 +18,6 @@ extension String {
     let endIndex = trimmedString.index(before: trimmedString.endIndex)
 
     return String(trimmedString[startIndex ..< endIndex])
-  }
-
-  func padLeft(totalWidth: Int, byString: String) -> String {
-    let toPad = totalWidth - count
-    if toPad < 1 {
-      return self
-    }
-
-    return "".padding(toLength: toPad, withPad: byString, startingAt: 0) + self
   }
 
   private func convertedToSlugBackCompat() -> String? {
