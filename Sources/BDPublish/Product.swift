@@ -119,6 +119,7 @@ struct Product {
   }
 
   struct PressCoverage: Codable, Equatable, Hashable {
+    // periphery:ignore
     internal init(source: String, quote: String, url: String, date: Date) {
       self.source = source
       self.quote = quote

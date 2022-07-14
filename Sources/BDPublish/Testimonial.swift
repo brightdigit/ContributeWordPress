@@ -28,8 +28,10 @@ public struct Testimonial: Hashable, Comparable {
   let id: Int
   let fullName: String
   let title: String
+  // periphery:ignore
   let fullQuote: String
   let briefQuote: String
+  // periphery:ignore
   let url: URL?
 }
 

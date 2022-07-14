@@ -42,7 +42,8 @@ let package = Package(
 
     .package(url: "https://github.com/shibapm/Komondor", from: "1.1.2"), // dev
     .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.47.0"), // dev
-    .package(url: "https://github.com/realm/SwiftLint", from: "0.43.0") // dev
+    .package(url: "https://github.com/realm/SwiftLint", from: "0.43.0"), // dev
+    .package(url: "https://github.com/leogdion/periphery", .branch("yams-4.0.0")) // dev
   ],
   targets: [
     // Targets are the basic building blocks of a package. A target can define a module or a test suite.

@@ -24,8 +24,4 @@ struct SectionBuilder<ChildType: SectionItem>: SectionBuilderProtocol {
   let section: Section<BrightDigitSite>
   let children: [ChildType]
   let featuredItem: ChildType
-
-  func pageSetup(withContext context: PublishingContext<BrightDigitSite>) -> PageContent {
-    SectionContent(builder: self, context: context)
-  }
 }

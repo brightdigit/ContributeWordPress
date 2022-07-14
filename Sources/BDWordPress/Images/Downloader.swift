@@ -17,13 +17,17 @@ public struct WordPressImageImport: Hashable {
       return nil
     }
 
-    guard let oldURL = post.attachmentURL else {
+    guard let attachmentURL = post.attachmentURL else {
       return nil
     }
 
-    self.oldURL = urlFromURL(oldURL) ?? oldURL
-    newPath = pathFromURL(self.oldURL)
-    parentID = post.parentID
+    let oldURL = urlFromURL(attachmentURL) ?? attachmentURL
+
+    self.init(
+      oldURL: oldURL,
+      parentID: post.parentID,
+      newPath: pathFromURL(oldURL)
+    )
   }
 
   let oldURL: URL

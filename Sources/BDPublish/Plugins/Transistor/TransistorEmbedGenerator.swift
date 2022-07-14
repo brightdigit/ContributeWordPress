@@ -1,13 +1,6 @@
 import Foundation
 
 struct TransistorEmbedGenerator {
-  struct Error: LocalizedError {
-    var localizedDescription: String
-
-    static let invalidURL = Error(localizedDescription: "Failed to construct an URL")
-    static let timeout = Error(localizedDescription: "The request to Twitter's embed API timed out")
-  }
-
   let transistorURL: URL
 
   init(url: URL) {

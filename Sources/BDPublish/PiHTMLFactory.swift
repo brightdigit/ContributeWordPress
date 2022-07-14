@@ -15,12 +15,6 @@ struct PiHTMLFactory: HTMLFactory {
     return formatter
   }()
 
-  static let dateFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-MM-dd"
-    return formatter
-  }()
-
   static let formatTimeIntervalSufficies = ["h", "m"]
 
   static func formatTimeInterval(_ timeInterval: TimeInterval) -> String {

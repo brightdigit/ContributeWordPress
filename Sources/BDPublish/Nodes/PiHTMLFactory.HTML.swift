@@ -160,19 +160,6 @@ public extension Node where Context == HTML.DocumentContext {
   }
 }
 
-public extension Node where Context == HTML.HeadContext {
-  static func newsletterRedirect(forPage _: PageContent, item: Item<BrightDigitSite>? = nil) -> Node {
-    if item?.metadata.longArchiveURL != nil {
-      return .meta(
-        .attribute(named: "http-equiv", value: "refresh"),
-        .attribute(named: "content", value: "0; url=\(item!.metadata.longArchiveURL!)")
-      )
-    } else {
-      return .empty
-    }
-  }
-}
-
 // MARK: - makeFooter
 
 public extension Node where Context == HTML.BodyContext {
