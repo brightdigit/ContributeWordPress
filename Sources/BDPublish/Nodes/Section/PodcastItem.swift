@@ -1,3 +1,4 @@
+import BDSite
 import Foundation
 import Plot
 import Publish
@@ -7,6 +8,7 @@ import Publish
 #endif
 
 struct PodcastItem: SectionItem {
+  typealias WebsiteType = BrightDigitSite
   var redirectURL: URL? {
     nil
   }

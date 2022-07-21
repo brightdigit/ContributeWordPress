@@ -9,7 +9,7 @@ struct TwitterSocialShare: SocialQueryItemsShare {
     var queryItems = [URLQueryItem]()
     queryItems.append(URLQueryItem(name: "text", value: item.title))
     queryItems.append(URLQueryItem(name: "url", value: item.absoluteURL.absoluteString))
-    queryItems.append(URLQueryItem(name: "via", value: item.source.sectionID == .tutorials ? "leogdion" : "brightdigit"))
+    queryItems.append(URLQueryItem(name: "via", value: PostableType.twitterSource))
     return queryItems
   }
 

@@ -1,12 +1,6 @@
 import Foundation
 import Publish
 
-public extension URL {
-  init(staticString: String) {
-    self.init(string: staticString)!
-  }
-}
-
 public protocol IndexArticle {
   var title: String { get }
   var tags: [Tag] { get }
@@ -18,14 +12,6 @@ public protocol IndexArticle {
 }
 
 extension Item: IndexArticle where Site == BrightDigitSite {
-  public var rootRelativeURL: URL {
-    URL(staticString: "/\(path)")
-  }
-
-  func absoluteURL(forSite site: Site) -> URL {
-    site.url(for: path)
-  }
-
   public var publishedAt: Date {
     metadata.date
   }

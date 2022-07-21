@@ -14,7 +14,7 @@ public protocol PageContent {
   var canonicalURL: URL? { get }
 }
 
-extension PageContent {
+public extension PageContent {
   var mainElement: Node<HTML.BodyContext> {
     .main(
       .forEach(main) { $0 }
@@ -32,6 +32,7 @@ extension PageContent {
     return value
   }
 
+  @available(*, deprecated)
   var headTitle: String {
     [title, "BrightDigit"].joined(separator: " | ")
   }

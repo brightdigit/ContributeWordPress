@@ -7,7 +7,7 @@ import SyndiKit
 #endif
 public extension Podcast {
   struct Source {
-    public init(episodeNo: Int, slug: String, title: String, date: Date, summary: String, content: String, audioURL: URL, imageURL: URL, duration: TimeInterval, transistorID: String, video: Video) {
+    public init(episodeNo: Int, slug: String, title: String, date: Date, summary: String, content: String, audioURL: URL, imageURL: URL, duration: TimeInterval, id: String, video: Video) {
       self.episodeNo = episodeNo
       self.slug = slug
       self.title = title
@@ -18,7 +18,7 @@ public extension Podcast {
       self.imageURL = imageURL
       self.duration = duration
       self.video = video
-      self.transistorID = transistorID
+      self.id = id
     }
 
     public let episodeNo: Int
@@ -31,18 +31,14 @@ public extension Podcast {
     public let imageURL: URL
     public let duration: TimeInterval
     public let video: Video
-    public let transistorID: String
+    public let id: String
   }
 }
 
 public extension Podcast.Source {
-  init(item: RSSItem, video: Video) throws {
+  init(id: String, item: RSSItem, video: Video) throws {
     let content = item.contentEncoded?.value ?? item.description.value
 
-    guard item.link.host == "share.transistor.fm" else {
-      throw ImportError.invalidPodcastEpisodeFromRSSItem(item)
-    }
-    let transistorID = item.link.lastPathComponent
     guard let date = item.published else {
       throw ImportError.invalidPodcastEpisodeFromRSSItem(item)
     }
@@ -73,16 +69,19 @@ public extension Podcast.Source {
 
     let slug = title.convertedToSlug()
 
-    self.init(episodeNo: episodeNo, slug: slug, title: title, date: date, summary: summary, content: content, audioURL: imageURL, imageURL: imageURL, duration: duration, transistorID: transistorID, video: video)
+    self.init(episodeNo: episodeNo, slug: slug, title: title, date: date, summary: summary, content: content, audioURL: imageURL, imageURL: imageURL, duration: duration, id: id, video: video)
   }
 
-  static func episodesBasedOn(rssItems: [RSSItem], withVideos videos: [String: Video]) throws -> [Podcast.Source] {
+  static func episodesBasedOn(rssItems: [RSSItem], withVideos videos: [String: Video], id: @escaping (RSSItem, Video) -> String?) throws -> [Podcast.Source] {
     try rssItems.map { rssItem in
       let title = rssItem.title.trimmingCharacters(in: .whitespacesAndNewlines)
       guard let video = videos[title] else {
         throw ImportError.missingVideoForEpisode(rssItem)
       }
-      return try .init(item: rssItem, video: video)
+      guard let id = id(rssItem, video) else {
+        throw ImportError.invalidPodcastEpisodeFromRSSItem(rssItem)
+      }
+      return try .init(id: id, item: rssItem, video: video)
     }
   }
 }

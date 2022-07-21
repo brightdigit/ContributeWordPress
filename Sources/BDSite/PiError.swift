@@ -1,11 +1,11 @@
 import Foundation
 import Publish
 
-enum PiError: Error, LocalizedError {
+public enum PiError: Error, LocalizedError {
   case missingContentFor(Location)
-  case missingField(MissingField, Item<BrightDigitSite>)
+  case missingField(MissingField, AnyItem)
 
-  var errorDescription: String? {
+  public var errorDescription: String? {
     switch self {
     case let .missingContentFor(location):
       return "Missing content for location: \(location)"

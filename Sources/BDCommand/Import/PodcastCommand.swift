@@ -45,6 +45,17 @@ public extension BrightDigitSiteCommand.ImportCommand {
       URL(fileURLWithPath: exportMarkdownDirectory)
     }
 
+    static func id(fromRssItem item: RSSItem, andVideo _: BDPodcast.Podcast.Source.Video) -> String? {
+      guard item.link.host == "share.transistor.fm" else {
+        return nil
+      }
+      return item.link.lastPathComponent
+    }
+
+    static func fileNameWithoutExtensionFromSource(_ source: BDPodcast.Podcast.Source) -> String {
+      "\(source.episodeNo.description.padLeft(totalWidth: 3, byString: "0"))-\(source.slug)"
+    }
+
     public func run() throws {
       let youtubeClient = Prch.Client(api: YouTube.API(), session: URLSession.shared)
       let videos = try youtubeClient.videos(fromRequest: .init(apiKey: youtubeAPIKey, playlistID: playlistID))
@@ -52,10 +63,10 @@ public extension BrightDigitSiteCommand.ImportCommand {
       let rssItems = try BDPodcast.Podcast.rssItemsFrom(rss)
 
       let options: MarkdownContentBuilderOptions = .init(shouldOverwriteExisting: overwriteExisting, includeMissingPrevious: includeMissingPrevious)
-      let episodes: [PodcastEpisode] = try PodcastEpisode.episodesBasedOn(rssItems: rssItems, withVideos: videoDurations).sorted(by: { lhs, rhs in
+      let episodes: [PodcastEpisode] = try PodcastEpisode.episodesBasedOn(rssItems: rssItems, withVideos: videoDurations, id: Self.id).sorted(by: { lhs, rhs in
         lhs.episodeNo < rhs.episodeNo
       })
-      try BDPodcast.Podcast.write(from: episodes, atContentPathURL: contentPathURL, options: options)
+      try BDPodcast.Podcast.write(from: episodes, atContentPathURL: contentPathURL, fileNameWithoutExtension: Self.fileNameWithoutExtensionFromSource, options: options)
     }
   }
 }

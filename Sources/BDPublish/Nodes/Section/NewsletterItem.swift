@@ -1,8 +1,11 @@
+import BDSite
 import Foundation
 import Plot
 import Publish
 
 struct NewsletterItem: SectionItem {
+  typealias WebsiteType = BrightDigitSite
+
   static let sectionH1: String? = nil
   static let sectionTitle: String = "Newsletters"
   static let sectionDescription: String = "Subscribe to the BrightDigit newsletter now and get  helpful tips and advice right to your inbox!"

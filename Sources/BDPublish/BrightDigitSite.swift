@@ -1,12 +1,15 @@
+import BDSite
 import Foundation
+import NodeJSPublishPlugin
 import Plot
 import Publish
 import ReadingTimePublishPlugin
 import SplashPublishPlugin
+import TransistorPublishPlugin
 import YoutubePublishPlugin
 
 // This type acts as the configuration for your website.
-public struct BrightDigitSite: Website {
+public struct BrightDigitSite: Website, MetadataAttached {
   public init(imagePath: Path? = SiteInfo.imagePath) {
     self.imagePath = imagePath
   }
@@ -32,6 +35,10 @@ public struct BrightDigitSite: Website {
     var videoDuration: TimeInterval?
     var transistorID: String?
     var subscriptionCTA: String?
+  }
+
+  public static var metadata: WebsiteMetadata {
+    WebsiteMetadata(title: Self.SiteInfo.title)
   }
 
   public enum SiteInfo {

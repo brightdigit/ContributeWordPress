@@ -1,8 +1,13 @@
+import BDSite
 import Foundation
 import Plot
 import Publish
 
 struct AboutBuilder: PageBuilder {
+  typealias WebsiteType = BrightDigitSite
+
+  typealias LocationType = Page
+
   let description: String = Strings.About.ctaP1
 
   var imagePath: Path = "/media/about-us/graphic-attract.jpg"
