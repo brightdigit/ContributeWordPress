@@ -13,16 +13,21 @@ extension Website {
   }
 }
 
-struct SectionContent<SectionBuilderType: SectionBuilderProtocol>: PageContent {
-  var description: String {
+public struct SectionContent<SectionBuilderType: SectionBuilderProtocol>: PageContent {
+  public init(builder: SectionBuilderType, context: PublishingContext<SectionBuilderType.WebsiteType>) {
+    self.builder = builder
+    self.context = context
+  }
+
+  public var description: String {
     builder.description
   }
 
-  var socialTitle: String {
+  public var socialTitle: String {
     title
   }
 
-  var socialImageURL: URL {
+  public var socialImageURL: URL {
     if builder.featuredItem.featuredImageURL.path.isEmpty {
       return builder.featuredItem.featuredImageURL.absoluteURL
     } else {
@@ -31,26 +36,26 @@ struct SectionContent<SectionBuilderType: SectionBuilderProtocol>: PageContent {
     }
   }
 
-  var absoluteURL: URL {
+  public var absoluteURL: URL {
     context.site.url(for: builder.section)
   }
 
   let builder: SectionBuilderType
-  let context: PublishingContext<BrightDigitSite>
+  let context: PublishingContext<SectionBuilderType.WebsiteType>
 
-  var title: String {
+  public var title: String {
     builder.title
   }
 
-  var bodyClasses: [String] {
+  public var bodyClasses: [String] {
     []
   }
 
-  var bodyID: String? {
+  public var bodyID: String? {
     builder.section.id.rawValue
   }
 
-  var main: [Node<HTML.BodyContext>] {
+  public var main: [Node<HTML.BodyContext>] {
     [
       .class("section"),
       .unwrap(builder.h1) { text in
@@ -69,15 +74,15 @@ struct SectionContent<SectionBuilderType: SectionBuilderProtocol>: PageContent {
     ]
   }
 
-  var featuredNode: Node<HTML.BodyContext> {
+  public var featuredNode: Node<HTML.BodyContext> {
     builder.featuredItem.featuredItemContent
   }
 
-  var redirectURL: URL? {
+  public var redirectURL: URL? {
     nil
   }
 
-  var canonicalURL: URL? {
+  public var canonicalURL: URL? {
     context.site.url(for: builder.section.path)
   }
 }

@@ -27,7 +27,7 @@ extension URL {
   }
 }
 
-extension PublishingStep {
+public extension PublishingStep {
   @available(*, deprecated)
   static var webpack: Self {
     .step(named: "Create JS using Webpack") { context in

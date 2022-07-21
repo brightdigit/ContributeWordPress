@@ -2,9 +2,10 @@ import Foundation
 import Plot
 import Publish
 
-protocol SectionBuilderProtocol {
+public protocol SectionBuilderProtocol {
   associatedtype ChildType: SectionItem
-  var section: Section<BrightDigitSite> { get }
+  associatedtype WebsiteType: Website
+  var section: Section<WebsiteType> { get }
   var children: [ChildType] { get }
   var featuredItem: ChildType { get }
   var description: String { get }

@@ -4,7 +4,6 @@ import SyndiKit
 
 public enum Podcast: ContentType {
   public typealias SourceType = Source
-  public typealias ContentURLGeneratorType = ContentURLGenerator
   public typealias MarkdownExtractorType = MarkdownExtractor
   public typealias FrontMatterTranslatorType = FrontMatterTranslator
 

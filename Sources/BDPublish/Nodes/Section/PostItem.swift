@@ -1,8 +1,10 @@
+import BDSite
 import Foundation
 import Plot
 import Publish
 
 struct PostItem<PostableType: Postable>: SectionItem {
+  typealias WebsiteType = BrightDigitSite
   static var sectionH1: String? {
     PostableType.sectionH1
   }

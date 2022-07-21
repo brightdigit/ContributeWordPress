@@ -28,6 +28,11 @@ let package = Package(
     .package(name: "SplashPublishPlugin", url: "https://github.com/johnsundell/splashpublishplugin", from: "0.2.0"),
     .package(name: "YoutubePublishPlugin", url: "https://github.com/tanabe1478/YoutubePublishPlugin.git", from: "1.0.1"),
     .package(name: "ReadingTimePublishPlugin", url: "https://github.com/leogdion/ReadingTimePublishPlugin", .branch("patch-2")),
+    .package(
+      name: "ShellOut",
+      url: "https://github.com/johnsundell/shellout.git",
+      from: "2.3.0"
+    ),
 
     .package(url: "https://github.com/BrightDigit/Prch.git", from: "0.2.1"),
     .package(url: "https://github.com/BrightDigit/SwiftTube.git", from: "0.2.0-beta.4"),
@@ -52,7 +57,9 @@ let package = Package(
       name: "brightdigitwg",
       dependencies: ["BDCommand"]
     ),
-    .target(name: "BDMarkdown", dependencies: ["Kanna", "MarkdownGenerator"]),
+    .target(name: "TransistorPublishPlugin", dependencies: ["Publish"]),
+    .target(name: "NodeJSPublishPlugin", dependencies: ["Publish"]),
+    .target(name: "BDMarkdown", dependencies: ["Kanna", "MarkdownGenerator", "ShellOut"]),
     .target(name: "BDMailchimp", dependencies: ["BDContent", "Spinetail"]),
     .target(name: "BDWordPress", dependencies: ["BDContent", "BDMarkdown"]),
     .target(name: "BDPodcast", dependencies: ["BDContent", "SyndiKit", "SwiftTube"]),
@@ -66,6 +73,10 @@ let package = Package(
               "BDPodcast"
             ]),
     .target(name: "BDPublish",
+            dependencies: [
+              "Publish", "SplashPublishPlugin", "YoutubePublishPlugin", "ReadingTimePublishPlugin", "Options", "BDSite", "TransistorPublishPlugin", "NodeJSPublishPlugin"
+            ]),
+    .target(name: "BDSite",
             dependencies: [
               "Publish", "SplashPublishPlugin", "YoutubePublishPlugin", "ReadingTimePublishPlugin", "Options"
             ]),

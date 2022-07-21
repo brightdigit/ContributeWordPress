@@ -17,5 +17,5 @@ public struct FilteredHTMLMarkdownExtractor<SourceType: HTMLSource>: MarkdownExt
 
   let preFilters: [(String) throws -> (String)] = []
   let postFilters: [(String) throws -> (String)] = []
-  let markdownGenerator: MarkdownGenerator // = PandocMarkdownGenerator()
+  let markdownGenerator: MarkdownGenerator
 }

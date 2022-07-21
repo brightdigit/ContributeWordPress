@@ -7,7 +7,7 @@ struct LinkedInSocialShare: SocialQueryItemsShare {
     var queryItems = [URLQueryItem]()
     queryItems.append(URLQueryItem(name: "title", value: item.title))
     queryItems.append(URLQueryItem(name: "summary", value: item.description))
-    queryItems.append(URLQueryItem(name: "source", value: "brightdigit.com"))
+    queryItems.append(URLQueryItem(name: "source", value: PostableType.linkedInSource))
     queryItems.append(URLQueryItem(name: "url", value: item.absoluteURL.absoluteString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)))
     return queryItems
   }

@@ -5,7 +5,7 @@ import Spinetail
 
 public enum Newsletter: ContentType {
   public typealias SourceType = Source
-  public typealias ContentURLGeneratorType = ContentURLGenerator
+  public typealias ContentURLGeneratorType = BasicContentURLGenerator
   public typealias MarkdownExtractorType = MarkdownExtractor
   public typealias FrontMatterTranslatorType = FrontMatterTranslator
 }

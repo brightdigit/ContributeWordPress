@@ -5,9 +5,12 @@ import Foundation
 #endif
 
 public extension Newsletter {
+  @available(*, deprecated)
   struct ContentURLGenerator: BDContent.ContentURLGenerator {
     public func destinationURL(basedOn source: Source, atContentPathURL contentPathURL: URL) -> URL {
-      contentPathURL.appendingPathComponent("\(source.issueNo.description.padLeft(totalWidth: 3, byString: "0"))-\(source.slug)").appendingPathExtension("md")
+      let fileNameWithoutExtension = "\(source.issueNo.description.padLeft(totalWidth: 3, byString: "0"))-\(source.slug)"
+
+      return contentPathURL.appendingPathComponent(fileNameWithoutExtension).appendingPathExtension("md")
     }
 
     public init() {}

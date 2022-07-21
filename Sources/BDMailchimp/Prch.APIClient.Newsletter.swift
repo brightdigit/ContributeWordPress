@@ -31,14 +31,14 @@ public extension Client where APIType == Mailchimp.API {
     return archiveHtml
   }
 
-  func newsletters(fromCampaigns campaigns: [MailchimpCampaign], processedWith markdownProcessing: PandocMarkdownGenerator) throws -> [Newsletter.Source] {
+  func newsletters(fromCampaigns campaigns: [MailchimpCampaign], withFactory factory: (MailchimpCampaign) throws -> Newsletter.Source.Campaign?, processedWith markdownProcessing: PandocMarkdownGenerator) throws -> [Newsletter.Source] {
     let newsletterResults: [Result<Newsletter.Source?, Error>] = campaigns.map { campaign in
       let campaignProperties: NewsletterCampaign?
       let html: String
       let markdown: String
 
       do {
-        campaignProperties = try NewsletterCampaign(campaign: campaign)
+        campaignProperties = try factory(campaign)
       } catch {
         return .failure(error)
       }
