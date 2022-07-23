@@ -1,6 +1,6 @@
 import BDSite
 import Foundation
-import NodeJSPublishPlugin
+import NPMPublishPlugin
 import Plot
 import Publish
 import ReadingTimePublishPlugin
@@ -14,6 +14,7 @@ public struct BrightDigitSite: Website, MetadataAttached {
     self.imagePath = imagePath
   }
 
+  // periphery:ignore
   public enum SectionID: String, WebsiteSectionID {
     // Add the sections that you want your website to contain here:
     case articles
@@ -56,6 +57,9 @@ public struct BrightDigitSite: Website, MetadataAttached {
   public var language: Language { .english }
   public var imagePath: Path? = SiteInfo.imagePath
 
+  public static let mainJS = OutputPath.file("js/main.js")
+  public static let npmPath = ProcessInfo.processInfo.environment["NPM_PATH"]
+
   static let defaultSteps: [PublishingStep<BrightDigitSite>] = [
     .optional(.copyResources()),
     .installPlugin(.transistor()),
@@ -73,7 +77,13 @@ public struct BrightDigitSite: Website, MetadataAttached {
     .generateRSSFeed(including: [.tutorials], config: .init(targetPath: "tutorials.rss")),
     .generateSiteMap(excluding: .init(["newsletters/"])),
 
-    .webpack
+    .npm(npmPath, at: "Styling") {
+      ci()
+      run(paths: [mainJS]) {
+        "publish -- --output-filename"
+        mainJS
+      }
+    }
   ]
 }
 

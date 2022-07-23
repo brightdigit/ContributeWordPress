@@ -58,7 +58,7 @@ let package = Package(
       dependencies: ["BDCommand"]
     ),
     .target(name: "TransistorPublishPlugin", dependencies: ["Publish"]),
-    .target(name: "NodeJSPublishPlugin", dependencies: ["Publish"]),
+    .target(name: "NPMPublishPlugin", dependencies: ["Publish"]),
     .target(name: "BDMarkdown", dependencies: ["Kanna", "MarkdownGenerator", "ShellOut"]),
     .target(name: "BDMailchimp", dependencies: ["BDContent", "Spinetail"]),
     .target(name: "BDWordPress", dependencies: ["BDContent", "BDMarkdown"]),
@@ -74,11 +74,11 @@ let package = Package(
             ]),
     .target(name: "BDPublish",
             dependencies: [
-              "Publish", "SplashPublishPlugin", "YoutubePublishPlugin", "ReadingTimePublishPlugin", "Options", "BDSite", "TransistorPublishPlugin", "NodeJSPublishPlugin"
+              "Publish", "SplashPublishPlugin", "YoutubePublishPlugin", "ReadingTimePublishPlugin", "Options", "BDSite", "TransistorPublishPlugin", "NPMPublishPlugin"
             ]),
     .target(name: "BDSite",
             dependencies: [
-              "Publish", "SplashPublishPlugin", "YoutubePublishPlugin", "ReadingTimePublishPlugin", "Options"
+              "Publish"
             ]),
     .testTarget(
       name: "BDContentTests",
@@ -96,7 +96,9 @@ let package = Package(
   let config = PackageConfiguration([
     "komondor": [
       "pre-commit": [
+        "swift build --enable-index-store",
         "swift test --enable-code-coverage --enable-test-discovery --generate-linuxmain",
+        "swift run periphery scan --skip-build --strict --quiet",
         "swift run swiftformat .",
         "swift run swiftlint autocorrect",
         "git add .",
