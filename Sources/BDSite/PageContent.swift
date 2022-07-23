@@ -31,9 +31,4 @@ public extension PageContent {
 
     return value
   }
-
-  @available(*, deprecated)
-  var headTitle: String {
-    [title, "BrightDigit"].joined(separator: " | ")
-  }
 }

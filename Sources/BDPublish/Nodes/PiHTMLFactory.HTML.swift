@@ -99,6 +99,12 @@ public extension Node where Context == HTML.HeadContext {
   }
 }
 
+public extension PageContent {
+  var headTitle: String {
+    [title, "BrightDigit"].joined(separator: " | ")
+  }
+}
+
 public extension Node where Context == HTML.DocumentContext {
   static func head(forPage page: PageContent) -> Node {
     .head(

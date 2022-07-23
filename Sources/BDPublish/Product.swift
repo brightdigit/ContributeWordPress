@@ -135,6 +135,7 @@ struct Product {
 
   let title: String
   let description: String
+  // periphery:ignore
   let isOpenSource: Bool
   let logo: URL
   let style: ScreenshotStyle
