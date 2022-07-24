@@ -11,7 +11,7 @@ public extension ShellOutCommand {
     let outputPathMap = try job.outputRelativePaths.reduce(into: [OutputPath: String]()) { partialResult, path in
       let output = try context.createOutput(for: path)
 
-      partialResult[path] = output.url.relativePath(from: folder.url) // .path(relativeTo:  folder)
+      partialResult[path] = output.url.relativePath(from: folder.url)
     }
     let argumentsArray: [String] = job.arguments.map { arg in
       switch arg {

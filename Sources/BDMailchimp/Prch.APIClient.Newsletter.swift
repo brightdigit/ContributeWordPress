@@ -1,5 +1,4 @@
 import BDContent
-import BDMarkdown
 import Foundation
 import Prch
 import Spinetail
@@ -31,35 +30,22 @@ public extension Client where APIType == Mailchimp.API {
     return archiveHtml
   }
 
-  func newsletters(fromCampaigns campaigns: [MailchimpCampaign], withFactory factory: (MailchimpCampaign) throws -> Newsletter.Source.Campaign?, processedWith markdownProcessing: PandocMarkdownGenerator) throws -> [Newsletter.Source] {
+  func source(fromCampaign campaign: MailchimpCampaign, withFactory factory: (MailchimpCampaign) throws -> Newsletter.Source.Campaign?, processedWith htmlToMarkdown: @escaping (String) throws -> String) throws -> Newsletter.Source? {
+    guard let campaignProperties = try factory(campaign) else {
+      return nil
+    }
+    let html = try htmlFromCampaign(withID: campaignProperties.campaignID)
+
+    let markdown = try htmlToMarkdown(html)
+
+    return .init(campaign: campaignProperties, html: html, markdown: markdown)
+  }
+
+  func newsletters(fromCampaigns campaigns: [MailchimpCampaign], withFactory factory: (MailchimpCampaign) throws -> Newsletter.Source.Campaign?, processedWith htmlToMarkdown: @escaping (String) throws -> String) throws -> [Newsletter.Source] {
     let newsletterResults: [Result<Newsletter.Source?, Error>] = campaigns.map { campaign in
-      let campaignProperties: NewsletterCampaign?
-      let html: String
-      let markdown: String
-
-      do {
-        campaignProperties = try factory(campaign)
-      } catch {
-        return .failure(error)
+      Result {
+        try self.source(fromCampaign: campaign, withFactory: factory, processedWith: htmlToMarkdown)
       }
-
-      guard let campaignProperties = campaignProperties else {
-        return .success(nil)
-      }
-
-      do {
-        html = try self.htmlFromCampaign(withID: campaignProperties.campaignID)
-      } catch {
-        return .failure(error)
-      }
-
-      do {
-        markdown = try markdownProcessing.markdown(fromHTML: html)
-      } catch {
-        return .failure(error)
-      }
-
-      return .success(.init(campaign: campaignProperties, html: html, markdown: markdown))
     }
     return try newsletterResults.compactMap { result in
       try result.get()

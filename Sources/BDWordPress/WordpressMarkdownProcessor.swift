@@ -1,5 +1,4 @@
 import BDContent
-import BDMarkdown
 import Foundation
 import ShellOut
 import SyndiKit
@@ -60,7 +59,7 @@ public struct WordpressMarkdownProcessor<
     }
   }
 
-  private func writeAllPosts(_ allPosts: [String: [WordPressPost]], withImages images: [WordPressImageImport], atImageRoot imageRoot: String, to contentPathURL: URL) throws {
+  private func writeAllPosts(_ allPosts: [String: [WordPressPost]], withImages images: [WordPressImageImport], atImageRoot imageRoot: String, to contentPathURL: URL, using htmlToMarkdown: @escaping (String) throws -> String) throws {
     try allPosts.forEach { args in
       try createDirectory(withName: args.key, in: contentPathURL)
       try args.value
@@ -70,7 +69,7 @@ public struct WordpressMarkdownProcessor<
             ["", imageRoot, $0.newPath].joined(separator: "/")
           }
 
-          _ = try self.contentBuilder.write(from: .init(sectionName: args.key, post: post, featuredImage: featuredImagePath), atContentPathURL: contentPathURL, basedOn: self.destinationURLGenerator)
+          _ = try self.contentBuilder.write(from: .init(sectionName: args.key, post: post, featuredImage: featuredImagePath), atContentPathURL: contentPathURL, basedOn: self.destinationURLGenerator, using: htmlToMarkdown)
         }
     }
   }
@@ -81,7 +80,8 @@ public struct WordpressMarkdownProcessor<
     try redirectListGenerator.writeRedirects(fromPosts: allPosts, formattedWith: redirectFromatter, inDirectory: settings.resourcesPathURL)
     let imageImports = try downloader.download(fromPosts: allPosts.flatMap(\.value), to: settings.resourceImagePathURL, dryRun: settings.skipDownload, allowsOverwrites: settings.overwriteImages)
     let imageRoot = settings.resourceImagePathURL.relativePath(from: settings.resourcesPathURL) ?? settings.resourcesPathURL.path
-    try writeAllPosts(allPosts, withImages: imageImports, atImageRoot: imageRoot, to: settings.contentPathURL)
+
+    try writeAllPosts(allPosts, withImages: imageImports, atImageRoot: imageRoot, to: settings.contentPathURL, using: type(of: settings).markdownFrom(html:))
   }
 }
 
@@ -92,7 +92,7 @@ public extension WordpressMarkdownProcessor {
       destinationURLGenerator: .init(),
       contentBuilder: .init(
         frontMatterExporter: FrontMatterYAMLExporter<WordPressSource, SpecFrontMatterTranslator>(translator: SpecFrontMatterTranslator()),
-        markdownExtractor: FilteredHTMLMarkdownExtractor<WordPressSource>(markdownGenerator: PandocMarkdownGenerator())
+        markdownExtractor: FilteredHTMLMarkdownExtractor<WordPressSource>()
       ),
       postFilters: postFilters
     )

@@ -1,5 +1,4 @@
 import Foundation
-import SyndiKit
 
 #if canImport(FoundationNetworking)
   import FoundationNetworking
@@ -20,8 +19,8 @@ public struct MarkdownContentYAMLBuilder<
     self.markdownExtractor = markdownExtractor
   }
 
-  public func content(from source: SourceType) throws -> String {
-    let markdownText = try markdownExtractor.markdown(from: source)
+  public func content(from source: SourceType, using htmlToMarkdown: @escaping (String) throws -> String) throws -> String {
+    let markdownText = try markdownExtractor.markdown(from: source, using: htmlToMarkdown)
     let frontMatterText = try frontMatterExporter.frontMatterText(from: source)
     return contentFormatter.format(frontMatterText: frontMatterText, withMarkdown: markdownText)
   }

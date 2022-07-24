@@ -1,4 +1,5 @@
 import ArgumentParser
+import BDMarkdown
 import Foundation
 import MarkdownGenerator
 import Publish
@@ -7,6 +8,8 @@ import SyndiKit
 
 public extension BrightDigitSiteCommand {
   struct ImportCommand: ParsableCommand {
+    public static let markdownGenerator = PandocMarkdownGenerator()
+
     public init() {}
     public static var configuration = CommandConfiguration(
       commandName: "import",

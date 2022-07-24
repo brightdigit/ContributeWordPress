@@ -7,4 +7,5 @@ public protocol WordPressMarkdownProcessorSettings {
   var resourceImagePathURL: URL { get }
   var overwriteImages: Bool { get }
   var skipDownload: Bool { get }
+  static func markdownFrom(html: String) throws -> String
 }

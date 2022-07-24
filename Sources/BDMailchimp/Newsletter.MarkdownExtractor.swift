@@ -1,7 +1,7 @@
 import BDContent
 public extension Newsletter {
   struct MarkdownExtractor: BDContent.MarkdownExtractor {
-    public func markdown(from source: Source) throws -> String {
+    public func markdown(from source: Newsletter.Source, using _: @escaping (String) throws -> String) throws -> String {
       source.markdown
     }
 

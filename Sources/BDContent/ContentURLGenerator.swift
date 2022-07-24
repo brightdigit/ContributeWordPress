@@ -1,5 +1,4 @@
 import Foundation
-import SyndiKit
 
 #if canImport(FoundationNetworking)
   import FoundationNetworking
