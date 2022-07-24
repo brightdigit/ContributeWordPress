@@ -1,5 +1,4 @@
 import Foundation
-import SyndiKit
 
 #if canImport(FoundationNetworking)
   import FoundationNetworking
@@ -7,7 +6,7 @@ import SyndiKit
 
 public protocol MarkdownContentBuilder {
   associatedtype SourceType
-  func content(from source: SourceType) throws -> String
+  func content(from source: SourceType, using htmlToMarkdown: @escaping (String) throws -> String) throws -> String
 }
 
 public struct MarkdownContentBuilderOptions: OptionSet {
@@ -37,6 +36,7 @@ public extension MarkdownContentBuilder {
     from source: SourceType,
     atContentPathURL contentPathURL: URL,
     basedOn destinationURLGenerator: ContentURLGeneratorType,
+    using htmlToMarkdown: @escaping (String) throws -> String,
     shouldOverwrite: Bool = false
   ) throws -> Bool where ContentURLGeneratorType.SourceType == Self.SourceType {
     let destinationURL = destinationURLGenerator.destinationURL(
@@ -47,16 +47,16 @@ public extension MarkdownContentBuilder {
     guard !fileExists || shouldOverwrite else {
       return fileExists
     }
-    let contentText = try content(from: source)
+    let contentText = try content(from: source, using: htmlToMarkdown)
     try contentText.write(to: destinationURL, atomically: true, encoding: .utf8)
     return fileExists
   }
 
-  func write<ContentURLGeneratorType: ContentURLGenerator>(from sources: [SourceType], atContentPathURL contentPathURL: URL, basedOn urlGenerator: ContentURLGeneratorType, options: MarkdownContentBuilderOptions = []) throws where ContentURLGeneratorType.SourceType == SourceType {
+  func write<ContentURLGeneratorType: ContentURLGenerator>(from sources: [SourceType], atContentPathURL contentPathURL: URL, basedOn urlGenerator: ContentURLGeneratorType, using htmlToMarkdown: @escaping (String) throws -> String, options: MarkdownContentBuilderOptions = []) throws where ContentURLGeneratorType.SourceType == SourceType {
     var newslettersWrittenIndicies = [Int]()
     var lastExistsIndex: Int?
     for (index, source) in sources.enumerated() {
-      let fileAlreadyExisted = try write(from: source, atContentPathURL: contentPathURL, basedOn: urlGenerator, shouldOverwrite: options.contains(.shouldOverwriteExisting))
+      let fileAlreadyExisted = try write(from: source, atContentPathURL: contentPathURL, basedOn: urlGenerator, using: htmlToMarkdown, shouldOverwrite: options.contains(.shouldOverwriteExisting))
       if fileAlreadyExisted {
         lastExistsIndex = index
       } else {

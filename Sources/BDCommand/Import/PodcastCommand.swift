@@ -66,7 +66,7 @@ public extension BrightDigitSiteCommand.ImportCommand {
       let episodes: [PodcastEpisode] = try PodcastEpisode.episodesBasedOn(rssItems: rssItems, withVideos: videoDurations, id: Self.id).sorted(by: { lhs, rhs in
         lhs.episodeNo < rhs.episodeNo
       })
-      try BDPodcast.Podcast.write(from: episodes, atContentPathURL: contentPathURL, fileNameWithoutExtension: Self.fileNameWithoutExtensionFromSource, options: options)
+      try BDPodcast.Podcast.write(from: episodes, atContentPathURL: contentPathURL, fileNameWithoutExtension: Self.fileNameWithoutExtensionFromSource, using: BrightDigitSiteCommand.ImportCommand.markdownGenerator.markdown(fromHTML:), options: options)
     }
   }
 }

@@ -6,13 +6,14 @@ import ShellOut
 public extension PublishingStep {
   static func npm(run jobs: [NPM.Job], withSettings settings: NPM.Settings) -> Self {
     .step(named: "Running npm Job...", body: { context in
+      let folderPath = try settings.folder(usingContext: context).path
 
       let commands: [ShellOutCommand] = try jobs.map { job in
         try .npm(job, withSettings: settings, andContext: context)
       }
 
       for command in commands {
-        try shellOut(to: command, at: settings.folder(usingContext: context).path)
+        try shellOut(to: command, at: folderPath)
       }
 
     })

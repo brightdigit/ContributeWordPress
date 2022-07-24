@@ -1,6 +1,5 @@
 import ArgumentParser
 import BDWordPress
-
 import Foundation
 
 #if canImport(FoundationNetworking)
@@ -33,6 +32,10 @@ public extension BrightDigitSiteCommand.ImportCommand {
     public var skipDownload: Bool = false
 
     public init() {}
+
+    public static func markdownFrom(html: String) throws -> String {
+      try BrightDigitSiteCommand.ImportCommand.markdownGenerator.markdown(fromHTML: html)
+    }
 
     public func run() throws {
       let processor = try WordpressMarkdownProcessor(postFilters: [

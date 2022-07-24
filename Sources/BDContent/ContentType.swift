@@ -14,12 +14,12 @@ public extension ContentType {
     )
   }
 
-  static func write<ContentURLGeneratorType: ContentURLGenerator>(from sources: [SourceType], atContentPathURL contentPathURL: URL, options: MarkdownContentBuilderOptions = [], using generator: ContentURLGeneratorType) throws where ContentURLGeneratorType.SourceType == Self.SourceType {
-    try contentBuilder().write(from: sources, atContentPathURL: contentPathURL, basedOn: generator, options: options)
+  static func write<ContentURLGeneratorType: ContentURLGenerator>(from sources: [SourceType], atContentPathURL contentPathURL: URL, using htmlToMarkdown: @escaping (String) throws -> String, options: MarkdownContentBuilderOptions = [], using generator: ContentURLGeneratorType) throws where ContentURLGeneratorType.SourceType == Self.SourceType {
+    try contentBuilder().write(from: sources, atContentPathURL: contentPathURL, basedOn: generator, using: htmlToMarkdown, options: options)
   }
 
-  static func write(from sources: [SourceType], atContentPathURL contentPathURL: URL, fileNameWithoutExtension: @escaping (SourceType) -> String, options: MarkdownContentBuilderOptions = []) throws {
+  static func write(from sources: [SourceType], atContentPathURL contentPathURL: URL, fileNameWithoutExtension: @escaping (SourceType) -> String, using htmlToMarkdown: @escaping (String) throws -> String, options: MarkdownContentBuilderOptions = []) throws {
     let contentURLGenerator = FileNameGenerator(fileNameWithoutExtension)
-    try write(from: sources, atContentPathURL: contentPathURL, options: options, using: contentURLGenerator)
+    try write(from: sources, atContentPathURL: contentPathURL, using: htmlToMarkdown, options: options, using: contentURLGenerator)
   }
 }

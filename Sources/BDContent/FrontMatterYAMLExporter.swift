@@ -1,5 +1,4 @@
 import Foundation
-import SyndiKit
 import Yams
 
 #if canImport(FoundationNetworking)

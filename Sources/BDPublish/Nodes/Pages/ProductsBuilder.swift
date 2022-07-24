@@ -19,7 +19,9 @@ struct ProductsBuilder: PageBuilder {
         .h1(.text("Products"))
       ),
       .ol(
-        .forEach(products, Product.listItem)
+        .forEach(products) { product in
+          Node.component(ListItem(forProduct: product))
+        }
       )
     ]
   }

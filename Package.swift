@@ -18,7 +18,15 @@ let package = Package(
     .executable(
       name: "brightdigitwg",
       targets: ["brightdigitwg"]
-    )
+    ),
+    .library(name: "TransistorPublishPlugin", targets: ["TransistorPublishPlugin"]),
+    .library(name: "NPMPublishPlugin", targets: ["NPMPublishPlugin"]),
+    .library(name: "BDMarkdown", targets: ["BDMarkdown"]),
+    .library(name: "BDMailchimp", targets: ["BDMailchimp"]),
+    .library(name: "BDWordPress", targets: ["BDWordPress"]),
+    .library(name: "BDPodcast", targets: ["BDPodcast"]),
+    .library(name: "BDContent", targets: ["BDContent"]),
+    .library(name: "BDSite", targets: ["BDSite"])
   ],
   dependencies: [
     // Dependencies declare other packages that this package depends on.
@@ -61,16 +69,17 @@ let package = Package(
     .target(name: "NPMPublishPlugin", dependencies: ["Publish"]),
     .target(name: "BDMarkdown", dependencies: ["Kanna", "MarkdownGenerator", "ShellOut"]),
     .target(name: "BDMailchimp", dependencies: ["BDContent", "Spinetail"]),
-    .target(name: "BDWordPress", dependencies: ["BDContent", "BDMarkdown"]),
+    .target(name: "BDWordPress", dependencies: ["BDContent", "SyndiKit"]),
     .target(name: "BDPodcast", dependencies: ["BDContent", "SyndiKit", "SwiftTube"]),
-    .target(name: "BDContent", dependencies: ["Yams", "BDMarkdown", "Prch"]),
+    .target(name: "BDContent", dependencies: ["Yams", "Prch"]),
     .target(name: "BDCommand",
             dependencies: [
               .product(name: "ArgumentParser", package: "swift-argument-parser"),
               "BDPublish",
               "BDMailchimp",
               "BDWordPress",
-              "BDPodcast"
+              "BDPodcast",
+              "BDMarkdown"
             ]),
     .target(name: "BDPublish",
             dependencies: [
@@ -97,8 +106,8 @@ let package = Package(
     "komondor": [
       "pre-commit": [
         "swift build --enable-index-store",
-        "swift test --enable-code-coverage --enable-test-discovery --generate-linuxmain",
-        "swift run periphery scan --skip-build --strict --quiet",
+        "swift test --enable-code-coverage --enable-test-discovery",
+        // "swift run periphery scan --skip-build --strict --quiet",
         "swift run swiftformat .",
         "swift run swiftlint autocorrect",
         "git add .",

@@ -89,17 +89,16 @@ public extension BrightDigitSiteCommand.ImportCommand {
 
     public func run() throws {
       let mailchimp = Newsletter.client(withAPIKey: mailchimpAPIKey, usingSession: URLSession.shared)
-      let markdownProcessing = PandocMarkdownGenerator()
 
       let campaigns = try mailchimp.campaigns(fromRequest: .init(listID: mailchimpListID))
 
-      let newsletters = try mailchimp.newsletters(fromCampaigns: campaigns, withFactory: Self.sourceFrom(campaign:), processedWith: markdownProcessing).sorted(by: { lhs, rhs in
+      let newsletters = try mailchimp.newsletters(fromCampaigns: campaigns, withFactory: Self.sourceFrom(campaign:), processedWith: BrightDigitSiteCommand.ImportCommand.markdownGenerator.markdown(fromHTML:)).sorted(by: { lhs, rhs in
         lhs.issueNo < rhs.issueNo
       })
 
       let options: MarkdownContentBuilderOptions = .init(shouldOverwriteExisting: overwriteExisting, includeMissingPrevious: includeMissingPrevious)
 
-      try Newsletter.write(from: newsletters, atContentPathURL: contentPathURL, fileNameWithoutExtension: Self.fileNameWithoutExtensionFromSource(_:), options: options)
+      try Newsletter.write(from: newsletters, atContentPathURL: contentPathURL, fileNameWithoutExtension: Self.fileNameWithoutExtensionFromSource(_:), using: BrightDigitSiteCommand.ImportCommand.markdownGenerator.markdown(fromHTML:), options: options)
     }
   }
 }

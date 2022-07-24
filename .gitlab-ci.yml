@@ -24,6 +24,7 @@ build focal:
   script:
     - export ARCH_PREFIX=$(uname -i)
     - swift build
+    - swift test
 
 build macos:
   except:
@@ -33,9 +34,10 @@ build macos:
   tags:
     - macos  
   script:
-    - swift build
+    - swift build    
     - swift run swiftformat --lint .
     - swift run swiftlint
+    - swift test
 
 package macos:
   except:
@@ -48,8 +50,8 @@ package macos:
   tags:
     - macos  
   script:
-    - swift build -c release
-    - BIN_PATH=`swift build -c release --show-bin-path`
+    - swift build -c release --product brightdigitwg
+    - BIN_PATH=`swift build -c release --product brightdigitwg --show-bin-path`
     - cp $BIN_PATH/brightdigitwg brightdigitwg-`uname`-`arch`
 
 package focal:
@@ -65,8 +67,8 @@ package focal:
       - brightdigitwg-*
   image: brightdigit/publish-xml
   script:
-    - swift build -c release
-    - BIN_PATH=`swift build -c release --show-bin-path`
+    - swift build -c release --product brightdigitwg
+    - BIN_PATH=`swift build -c release --product brightdigitwg --show-bin-path`
     - cp $BIN_PATH/brightdigitwg brightdigitwg-`uname`-`arch`
 
 deploy:

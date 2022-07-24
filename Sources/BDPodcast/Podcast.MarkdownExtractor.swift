@@ -4,8 +4,9 @@ public extension Podcast {
     public typealias SourceType = Source
 
     public init() {}
-    public func markdown(from episode: Source) throws -> String {
-      episode.content
+
+    public func markdown(from source: Podcast.Source, using _: @escaping (String) throws -> String) throws -> String {
+      source.content
     }
   }
 }
