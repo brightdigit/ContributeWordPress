@@ -1,4 +1,4 @@
-FROM swift:5.4-xenial
+FROM swift:5.6-focal
 
 RUN apt-get update
 RUN apt-get -y install libxml2-dev curl gnupg

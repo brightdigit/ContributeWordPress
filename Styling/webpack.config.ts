@@ -3,6 +3,9 @@ import { Configuration } from "webpack";
 
 const config: Configuration = {
   entry: "./scripts/index.ts",
+  output: {
+    path: path.resolve(__dirname)
+  },
   module: {
     rules: [
       {
