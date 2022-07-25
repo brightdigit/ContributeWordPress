@@ -55,6 +55,7 @@ package macos:
     - cp $BIN_PATH/brightdigitwg brightdigitwg-`uname`-`arch`
 
 package focal:
+  timeout: 3h
   only:
     - main
     - develop
