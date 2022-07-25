@@ -21,12 +21,12 @@ let package = Package(
     ),
     .library(name: "TransistorPublishPlugin", targets: ["TransistorPublishPlugin"]),
     .library(name: "NPMPublishPlugin", targets: ["NPMPublishPlugin"]),
-    .library(name: "BDMarkdown", targets: ["BDMarkdown"]),
-    .library(name: "BDMailchimp", targets: ["BDMailchimp"]),
-    .library(name: "BDWordPress", targets: ["BDWordPress"]),
-    .library(name: "BDPodcast", targets: ["BDPodcast"]),
-    .library(name: "BDContent", targets: ["BDContent"]),
-    .library(name: "BDSite", targets: ["BDSite"])
+    .library(name: "Tagscriber", targets: ["Tagscriber"]),
+    .library(name: "ContributeMailchimp", targets: ["ContributeMailchimp"]),
+    .library(name: "ContributeWordPress", targets: ["ContributeWordPress"]),
+    .library(name: "ContributeMedia", targets: ["ContributeMedia"]),
+    .library(name: "Contribute", targets: ["Contribute"]),
+    .library(name: "PublishType", targets: ["PublishType"])
   ],
   dependencies: [
     // Dependencies declare other packages that this package depends on.
@@ -63,39 +63,39 @@ let package = Package(
     // Targets can depend on other targets in this package, and on products in packages this package depends on.
     .executableTarget(
       name: "brightdigitwg",
-      dependencies: ["BDCommand"]
+      dependencies: ["BrightDigitArgs"]
     ),
     .target(name: "TransistorPublishPlugin", dependencies: ["Publish"]),
     .target(name: "NPMPublishPlugin", dependencies: ["Publish"]),
-    .target(name: "BDMarkdown", dependencies: ["Kanna", "MarkdownGenerator", "ShellOut"]),
-    .target(name: "BDMailchimp", dependencies: ["BDContent", "Spinetail"]),
-    .target(name: "BDWordPress", dependencies: ["BDContent", "SyndiKit"]),
-    .target(name: "BDPodcast", dependencies: ["BDContent", "SyndiKit", "SwiftTube"]),
-    .target(name: "BDContent", dependencies: ["Yams", "Prch"]),
-    .target(name: "BDCommand",
+    .target(name: "Tagscriber", dependencies: ["Kanna", "MarkdownGenerator", "ShellOut"]),
+    .target(name: "ContributeMailchimp", dependencies: ["Contribute", "Spinetail"]),
+    .target(name: "ContributeWordPress", dependencies: ["Contribute", "SyndiKit"]),
+    .target(name: "ContributeMedia", dependencies: ["Contribute", "SyndiKit", "SwiftTube"]),
+    .target(name: "Contribute", dependencies: ["Yams", "Prch"]),
+    .target(name: "BrightDigitArgs",
             dependencies: [
               .product(name: "ArgumentParser", package: "swift-argument-parser"),
-              "BDPublish",
-              "BDMailchimp",
-              "BDWordPress",
-              "BDPodcast",
-              "BDMarkdown"
+              "BrightDigitSite",
+              "ContributeMailchimp",
+              "ContributeWordPress",
+              "ContributeMedia",
+              "Tagscriber"
             ]),
-    .target(name: "BDPublish",
+    .target(name: "BrightDigitSite",
             dependencies: [
-              "Publish", "SplashPublishPlugin", "YoutubePublishPlugin", "ReadingTimePublishPlugin", "Options", "BDSite", "TransistorPublishPlugin", "NPMPublishPlugin"
+              "Publish", "SplashPublishPlugin", "YoutubePublishPlugin", "ReadingTimePublishPlugin", "Options", "PublishType", "TransistorPublishPlugin", "NPMPublishPlugin"
             ]),
-    .target(name: "BDSite",
+    .target(name: "PublishType",
             dependencies: [
               "Publish"
             ]),
     .testTarget(
-      name: "BDContentTests",
-      dependencies: ["BDContent"]
+      name: "ContributeTests",
+      dependencies: ["Contribute"]
     ),
     .testTarget(
-      name: "BDPublishTests",
-      dependencies: ["Yams", "BDPublish"]
+      name: "BrightDigitSiteTests",
+      dependencies: ["Yams", "BrightDigitSite"]
     )
   ]
 )
@@ -107,7 +107,7 @@ let package = Package(
       "pre-commit": [
         "swift build --enable-index-store",
         "swift test --enable-code-coverage --enable-test-discovery",
-        // "swift run periphery scan --skip-build --strict --quiet",
+        "swift run periphery scan --skip-build --strict --quiet",
         "swift run swiftformat .",
         "swift run swiftlint autocorrect",
         "git add .",

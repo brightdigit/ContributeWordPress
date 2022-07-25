@@ -1,4 +1,3 @@
-// periphery:ignore:all
 public protocol TransistorRenderer {
   func render(transistor: EmbeddedTransistor) -> String
 }

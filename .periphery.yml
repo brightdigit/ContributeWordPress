@@ -1,4 +1,11 @@
+retain_public: true
 targets:
 - brightdigitwg
-- BDCommand
-- BDPublish
+- BrightDigitArgs
+- TransistorPublishPlugin
+- NPMPublishPlugin
+- Tagscriber
+- ContributeMailchimp
+- ContributeWordPress
+- ContributeMedia
+- PublishType
