@@ -1,7 +1,20 @@
 stages:
   - build
+  - package
   - deploy
-  
+  - test
+
+include:
+  - template: Code-Quality.gitlab-ci.yml
+
+cache:
+  key: 
+    files:
+      - Package.resolved
+      - ~/.swiftpm
+  paths:
+    - .build/
+
 build focal:
   except:
     - /.*WIP$/
@@ -11,6 +24,7 @@ build focal:
   script:
     - export ARCH_PREFIX=$(uname -i)
     - swift build
+    - swift test
 
 build macos:
   except:
@@ -20,18 +34,58 @@ build macos:
   tags:
     - macos  
   script:
-    - swift build
+    - swift build    
     - swift run swiftformat --lint .
     - swift run swiftlint
+    - swift test
+
+package macos:
+  except:
+    - /.*WIP$/
+    - /styling\/.*$/
+  stage: package
+  artifacts:
+    paths:
+      - brightdigitwg-*
+  tags:
+    - macos  
+  script:
+    - swift build -c release --product brightdigitwg
+    - BIN_PATH=`swift build -c release --product brightdigitwg --show-bin-path`
+    - cp $BIN_PATH/brightdigitwg brightdigitwg-`uname`-`arch`
+
+package focal:
+  timeout: 3h
+  only:
+    - main
+    - develop
+  except:
+    - /.*WIP$/
+    - /styling\/.*$/
+  stage: package
+  artifacts:
+    paths:
+      - brightdigitwg-*
+  image: brightdigit/publish-xml
+  script:
+    - swift build -c release --product brightdigitwg
+    - BIN_PATH=`swift build -c release --product brightdigitwg --show-bin-path`
+    - cp $BIN_PATH/brightdigitwg brightdigitwg-`uname`-`arch`
 
 deploy:
+  cache: []
   only:
     - main
     - develop
   stage: deploy
-  image: brightdigit/publish-xml
-  script:
+  tags:
+    - macos  
+  script:    
     - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then SITE_ID=$NETLIFY_PRODUCTION_SITE_ID; else SITE_ID=$NETLIFY_BETA_SITE_ID; fi
-    - swift build > /dev/null 2> /dev/null
-    - swift run
+    - ./brightdigitwg-`uname`-`arch`
     - netlify deploy --site $SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+
+code_quality:
+  cache: []
+  artifacts:
+    paths: [gl-code-quality-report.json]

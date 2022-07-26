@@ -1,0 +1,11 @@
+retain_public: true
+targets:
+- brightdigitwg
+- BrightDigitArgs
+- TransistorPublishPlugin
+- NPMPublishPlugin
+- Tagscriber
+- ContributeMailchimp
+- ContributeWordPress
+- ContributeMedia
+- PublishType
