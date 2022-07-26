@@ -78,6 +78,8 @@ deploy:
     - main
     - develop
   stage: deploy
+  tags:
+    - macos  
   script:    
     - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then SITE_ID=$NETLIFY_PRODUCTION_SITE_ID; else SITE_ID=$NETLIFY_BETA_SITE_ID; fi
     - ./brightdigitwg-`uname`-`arch`
