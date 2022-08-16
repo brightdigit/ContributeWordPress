@@ -19,7 +19,7 @@ are going to look at the top two graphic editors: **Sketch** and
 
 ### Sketch
 
-https://youtu.be/4UmzRh4ENY
+> youtube https://youtu.be/4UmzRh4ENY
 
 In the last few years, Sketch has grown to be one of the leading
 applications used by graphic designers especially in the area of mobile
@@ -45,7 +45,7 @@ accessed and the multiple files will need to be updated in the repo.
 
 ### Photoshop
 
-https://youtu.be/yr6KsuP5j5A
+> youtube https://youtu.be/yr6KsuP5j5A
 
 Photoshop has been a well established graphics editor for over two
 decades. However it isn’t quite as targeted toward application
