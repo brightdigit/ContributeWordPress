@@ -15,7 +15,7 @@ to know what will be the leading edge of innovations for their products.
 This is also useful for any business or organization that owns an iOS
 app or is planning to develop one.
 
-https://youtu.be/PzaoBmb6PjM
+> youtube https://youtu.be/PzaoBmb6PjM
 
 Here are the top four things that I think we all have to look forward to
 with Apple in 2020:
@@ -133,7 +133,7 @@ It’s still a little early to know for sure what the full impact of
 SwiftUI will be, but it definitely something to keep an eye on. Time
 will tell.
 
-https://youtu.be/PzaoBmb6PjM
+> youtube https://youtu.be/PzaoBmb6PjM
 
 ## Want to Get Ahead of the Curve?
 
