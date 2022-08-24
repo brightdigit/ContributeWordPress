@@ -60,21 +60,29 @@ public struct BrightDigitSite: Website, MetadataAttached {
   public static let mainJS = OutputPath.file("js/main.js")
   public static let npmPath = ProcessInfo.processInfo.environment["NPM_PATH"]
 
-  static let defaultSteps: [PublishingStep<BrightDigitSite>] = [
+  static let now = Date()
+
+  static let preMarkdownSteps: [PublishingStep<BrightDigitSite>] = [
     .optional(.copyResources()),
-    .installPlugin(.transistor()),
-    .installPlugin(.youtube()),
-    .installPlugin(.splash(withClassPrefix: "")),
-    .addMarkdownFiles(),
+    .group([
+      .installPlugin(.transistor()),
+      .installPlugin(.youtube()),
+      .installPlugin(.splash(withClassPrefix: ""))
+    ]),
+    .addMarkdownFiles()
+  ]
+
+  static let postMarkdownSteps: [PublishingStep<BrightDigitSite>] = [
     .yamlStringFix,
     .installPlugin(.readingTime()),
     .sortItems(by: \.date, order: .descending),
-
     .generateHTML(withTheme: .company, indentation: .spaces(2)),
-    .generateRSSFeed(including: [.articles, .tutorials]),
-    .generateRSSFeed(including: [.articles], config: .init(targetPath: "articles.rss")),
+    .group([
+      .generateRSSFeed(including: [.articles, .tutorials]),
+      .generateRSSFeed(including: [.articles], config: .init(targetPath: "articles.rss")),
+      .generateRSSFeed(including: [.tutorials], config: .init(targetPath: "tutorials.rss"))
+    ]),
 
-    .generateRSSFeed(including: [.tutorials], config: .init(targetPath: "tutorials.rss")),
     .generateSiteMap(excluding: .init(["newsletters/"])),
 
     .npm(npmPath, at: "Styling") {
@@ -85,10 +93,27 @@ public struct BrightDigitSite: Website, MetadataAttached {
       }
     }
   ]
+
+  static let draftSteps = [
+    preMarkdownSteps,
+    postMarkdownSteps
+  ].flatMap { $0 }
+
+  static let productionSteps = [
+    preMarkdownSteps,
+    [
+      .removeAllItems(matching: .init(matcher: { item in
+        item.date > now
+      }))
+    ],
+    postMarkdownSteps
+  ].flatMap { $0 }
 }
 
 public extension BrightDigitSite {
-  func publish() throws {
-    try publish(using: Self.defaultSteps)
+  func publish(includeDrafts: Bool) throws {
+    let steps = includeDrafts ? Self.draftSteps : Self.productionSteps
+
+    try publish(using: steps)
   }
 }
