@@ -82,7 +82,8 @@ deploy:
     - macos  
   script:    
     - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then SITE_ID=$NETLIFY_PRODUCTION_SITE_ID; else SITE_ID=$NETLIFY_BETA_SITE_ID; fi
-    - ./brightdigitwg-`uname`-`arch`
+    - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then PUBLISHING_MODE=drafts; else PUBLISHING_MODE=production; fi
+    - ./brightdigitwg-`uname`-`arch` --mode $PUBLISHING_MODE
     - netlify deploy --site $SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
 
 code_quality:
