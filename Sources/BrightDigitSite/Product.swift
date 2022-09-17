@@ -38,6 +38,7 @@ struct Product {
     case postgreSQL
     case swiftUI
     case cloudkit
+    case virtualization
 
     static var mappedValues = [
       "Vapor",
@@ -45,7 +46,8 @@ struct Product {
       "Heroku",
       "PostgreSQL",
       "SwiftUI",
-      "CloudKit"
+      "CloudKit",
+      "Virtualization"
     ]
   }
 
@@ -71,10 +73,10 @@ struct Product {
   }
 
   static let all: [Product] = [
+    .bushel,
     .heartwitch,
     .gbeat,
     .speculid,
-    .orchardnest,
     .mistkit
   ]
 

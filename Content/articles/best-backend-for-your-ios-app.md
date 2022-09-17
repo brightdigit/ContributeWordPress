@@ -151,10 +151,13 @@ One really affordable option worth exploring in more detail is Apple's back-end 
 
 ### Firebase as Your Backend
 
-[Firebase](https://firebase.google.com) is the most popular mobile backend as a service not only because of price but also because it's available on a plethora of devices. But beware, on the surface, it seems really appealing but you should think carefully before using it for projects that might need to scale. If you want to learn how to do real-time database integration in a web browser and you don't want to introduce apps where you have to create a lot of extra code in order to access data, Firebase is a great way to go about it.
+[Firebase](https://firebase.google.com) is the most popular mobile backend as a service not only because of its price but also because it's available on a plethora of devices. Specifically, its Cloud Firestore is a NoSQL cloud database for both client and server-side development. Firebase incorporates features from both Firestore and Google Cloud (GCP) On the surface, it seems really appealing but you should think carefully before using it for certain projects. If you want to learn how to do real-time database integration in a web browser and you don't want to introduce apps where you have to create a lot of extra code in order to access data, Firebase is a great way to go about it.
 
-**We recommend using Firebase for simple situations where you have data that is not going to change in structure over time, doesn’t vary a lot, and when you don't need to do lots of complex queries.** It’s worth really studying the limitations before you jump into it as it may not be a good fit for your needs.
+**We recommend using Firebase and specifically Firestore for when you don't need to do lots of complex queries;** this depends of course on how your app’s data is organized. It’s worth noting that while Firestore, and Firebase products generally, are popularly believed to only be best for developing really basic app products, this isn’t really true. using Firestore as a backend also comes with live support for critical components like app security and authentication. All this to say, it’s important to study it before you jump in to make sure it’s a good fit for your needs.
 
+If you want to learn more about Firebase and Google Cloud Platform, I highly recommend checking out [this video from their team.](https://www.youtube.com/watch?v=xbmYmgBEj4o) or [our episode we did with Peter Friese, who's Developer Advocate at Google on Firebase](/episodes/108-what-is-firebase-with-peter-friese):
+
+> youtube https://www.youtube.com/watch?v=8m8oppa-Los
 
 ## Final Tips
 
