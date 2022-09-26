@@ -4,7 +4,7 @@ campaignID: 84b1a6432b
 featuredImage: https://dim.mcusercontent.com/cs/cb3bba007ed171091f55c47f0/video_thumbnails_new/eb3f7f0483bfcb74dd7bbfb7d1f92bdd.png?w=564&dpr=2
 longArchiveURL: https://mailchi.mp/d53201f7fd18/brightdigit-66-apple-event
 newsletterTitle: 'BrightDigit Newsletter - Issue #66 - 22.09.12'
-title: "BrightDigit #66 - The Dynamic Island\U0001F3DD️"
+title: "BrightDigit #66 - The Dynamic Island"
 date: 2022-09-12 09:15
 description: Today we talk about last week's Apple Event.
 ---
