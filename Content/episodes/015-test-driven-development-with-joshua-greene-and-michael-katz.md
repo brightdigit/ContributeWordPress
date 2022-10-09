@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: -8aEHJPB4j4
 audioDuration: 2824
 videoDuration: 2850
-transistorID: eddb8632
+podcastID: eddb8632
 ---
 <p><b>Guests</b></p><ul>
 <li>

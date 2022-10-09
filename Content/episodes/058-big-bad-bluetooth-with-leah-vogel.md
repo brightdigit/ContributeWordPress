@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/28835
 youtubeID: G0kgu1Kfg2M
 audioDuration: 2693
 videoDuration: 2695
-transistorID: 638f2668
+podcastID: 638f2668
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/leah_m_vogel"><strong>Leah Vogel - Twitter: @leah_m_vogel</strong></a><ul>

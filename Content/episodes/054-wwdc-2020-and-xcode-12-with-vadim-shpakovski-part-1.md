@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/26823
 youtubeID: XabDWquu-L8
 audioDuration: 1607
 videoDuration: 1610
-transistorID: 2c23d28a
+podcastID: 2c23d28a
 ---
 <p><a href="https://twitter.com/leogdion/status/1278305405794320384?s=20"><strong>Interested in 360iDev Tickets? Let us know what you think of WWDC 2020 by replying to this tweet.</strong></a></p><p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/VadimShpakovski"><strong>Vadim Shpakovski - @VadimShpakovski</strong></a><ul>

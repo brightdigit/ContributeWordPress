@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/43089
 youtubeID: iDP9wdtQ6sw
 audioDuration: 3041
 videoDuration: 3043
-transistorID: 5c6e99e7
+podcastID: 5c6e99e7
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://appforce1.net">Jeroen Leenarts - AppForce1.Net</a><ul>

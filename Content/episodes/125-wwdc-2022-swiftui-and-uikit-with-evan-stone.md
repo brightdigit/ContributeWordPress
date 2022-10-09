@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/91387
 youtubeID: 6Te0jPp82qg
 audioDuration: 2655
 videoDuration: 2877
-transistorID: 5d79ba10
+podcastID: 5d79ba10
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/evankstone"><strong>Evan K Stone</strong> @evankstone</a><ul>

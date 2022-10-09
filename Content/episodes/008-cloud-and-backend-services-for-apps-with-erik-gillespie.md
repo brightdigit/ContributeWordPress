@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: nuqLhPZE0kI
 audioDuration: 2080
 videoDuration: 2106
-transistorID: ffcb9fc1
+podcastID: ffcb9fc1
 ---
 <p><b>Previous Episodes</b></p><ul>
 <li><a href="https://share.transistor.fm/s/3ee56c45">Episode 7 - Apple 2019</a></li>

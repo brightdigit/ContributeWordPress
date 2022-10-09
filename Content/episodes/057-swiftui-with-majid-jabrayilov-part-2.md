@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/28781
 youtubeID: tjG-4fsHJKU
 audioDuration: 2290
 videoDuration: 2292
-transistorID: dfb18c54
+podcastID: dfb18c54
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://swiftwithmajid.com/"><strong>Majid Jabrayilov</strong></a><ul>

@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/16626
 youtubeID: 8X2GVqg2lUI
 audioDuration: 1289
 videoDuration: 1290
-transistorID: 87165d83
+podcastID: 87165d83
 ---
 <p><b><a href="https://youtu.be/8X2GVqg2lUI">Video</a></b></p><ul><li><a href="https://youtu.be/8X2GVqg2lUI"><strong>https://youtu.be/8X2GVqg2lUI</strong></a></li></ul><p><b><a href="https://brightdigit.com/blog/2020/02/04/swiftui-everything-is-possible-if-you-think-like-apple/">Full Article</a></b></p><ul><li><a href="https://brightdigit.com/blog/2020/02/04/swiftui-everything-is-possible-if-you-think-like-apple/"><strong>SwiftUI: Everything is possible if you think like Apple</strong></a></li></ul><p><b>Related Episodes</b></p><ul>
 <li><a href="https://share.transistor.fm/s/bcf9bb21"><strong>Episode 12: iOS Developer Interviews with Alex Bush</strong></a></li>

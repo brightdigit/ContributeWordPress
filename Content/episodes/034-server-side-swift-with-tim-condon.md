@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: _q_emkWO0AY
 audioDuration: 3155
 videoDuration: 3157
-transistorID: bf0516f2
+podcastID: bf0516f2
 ---
 <p><b>Guest</b></p><ul><li><a href="https://twitter.com/0xtim"><strong>Tim Condon - Twitter @0xTim</strong></a></li></ul><p><b>Related Episodes</b></p><ul>
 <li><a href="https://share.transistor.fm/s/ffcb9fc1"><strong>Episode 8 - Cloud and Backend Services</strong></a></li>

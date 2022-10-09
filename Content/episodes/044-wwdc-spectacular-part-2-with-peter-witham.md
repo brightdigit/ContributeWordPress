@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/23109
 youtubeID: R8l6MtRcXps
 audioDuration: 2497
 videoDuration: 2499
-transistorID: 7fc06c2f
+podcastID: 7fc06c2f
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://peterwitham.com/">Peter Witham</a> - <a href="https://compileswift.com/">Compileswift.com</a> - <a href="https://twitter.com/CompileSwift">Twitter</a>

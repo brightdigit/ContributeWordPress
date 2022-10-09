@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/23171
 youtubeID: u6yusShx3ws
 audioDuration: 2535
 videoDuration: 2537
-transistorID: 46b2f52d
+podcastID: 46b2f52d
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://daveverwer.com"><strong>Dave Verwer - daveverwer.com</strong></a><ul>

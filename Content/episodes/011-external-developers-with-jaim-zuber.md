@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: pDlGiCD4fuA
 audioDuration: 1622
 videoDuration: 1648
-transistorID: d746d2ff
+podcastID: d746d2ff
 ---
 <p><strong>Previous Episode</strong></p><ul><li>
 <a href="https://share.transistor.fm/s/00603d96">Episode 6 - Project Estimation</a> </li></ul><p><b>Guest: Jaim Zuber of Sharp Five Software </b></p><p><a href="https://sharpfivesoftware.com">Sharp Five Software</a></p><p><a href="https://jaimzuber.com">Jaim Zuber Blog</a></p><p><b>March 25 Apple Event</b></p><ul>

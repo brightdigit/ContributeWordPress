@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/25131
 youtubeID: KIYDue87wZw
 audioDuration: 2956
 videoDuration: 2958
-transistorID: 17f05dbf
+podcastID: 17f05dbf
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://t.co/w9s0Xj5sKK?amp=1"><strong>Tibor Bödecs</strong> (website)</a><ul>

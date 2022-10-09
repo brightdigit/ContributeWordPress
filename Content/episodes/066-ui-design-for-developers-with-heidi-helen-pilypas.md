@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/36778
 youtubeID: NTvljGAha_E
 audioDuration: 2729
 videoDuration: 2732
-transistorID: 35474f21
+podcastID: 35474f21
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://heidihelen.com"><strong>Heidi Helen Pilypas (web site)</strong></a><ul><li><a href="https://twitter.com/heidi_helen">Twitter @heidi_helen</a></li></ul>

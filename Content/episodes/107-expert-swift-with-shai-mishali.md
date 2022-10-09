@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/64657
 youtubeID: wQNs2ii-zsI
 audioDuration: 3151
 videoDuration: 3309
-transistorID: 88850e6f
+podcastID: 88850e6f
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/freak4pc"><strong>Shai Mishali - Twitter @freak4pc</strong></a><ul><li><a href="https://github.com/freak4pc">GitHub @freak4pc</a></li></ul>

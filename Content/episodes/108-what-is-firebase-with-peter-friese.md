@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/71415
 youtubeID: 8m8oppa-Los
 audioDuration: 2527
 videoDuration: 2673
-transistorID: 2efe521a
+podcastID: 2efe521a
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://peterfriese.dev"><strong>Peter Friese - Blog</strong></a><ul>

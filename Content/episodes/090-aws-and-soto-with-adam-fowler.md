@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/52390
 youtubeID: X5XOnyysMWo
 audioDuration: 1796
 videoDuration: 1834
-transistorID: 580c9ccc
+podcastID: 580c9ccc
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://opticalaberration.com"><strong>Adam Fowler (website)</strong></a><ul>

@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/60172
 youtubeID: L6U5Wm8_G74
 audioDuration: 2967
 videoDuration: 3016
-transistorID: c2946999
+podcastID: c2946999
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://www.donnywals.com/"><strong>Donny Wals - donnywals.com</strong></a><ul>

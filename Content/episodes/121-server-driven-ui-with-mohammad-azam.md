@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/87686
 youtubeID: z5JTfzBX4WM
 audioDuration: 2531
 videoDuration: 2523
-transistorID: 50fca4d8
+podcastID: 50fca4d8
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://azamsharp.com"><strong>Mohammad Azam (Website)</strong></a><ul>

@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/64656
 youtubeID: JHmn2y--wy0
 audioDuration: 2462
 videoDuration: 2610
-transistorID: 241ab8bf
+podcastID: 241ab8bf
 ---
 <p><b>Guest</b></p><ul><li> <a href="https://arielmichaeli.com/"><strong>Ariel Michaeli</strong></a><strong>  - </strong><a href="https://twitter.com/arielmichaeli"><strong>Twitter @arielmichaeli</strong></a><ul>
 <li>

@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: AjckH6a-Kgg
 audioDuration: 1081
 videoDuration: 1082
-transistorID: a19efbf9
+podcastID: a19efbf9
 ---
 <p><b>Previous Episodes</b></p><ul><li><a href="https://share.transistor.fm/s/a34307ee">Episode 9 - iPad Apps for Businesses and Pros</a></li></ul><p><b>Reddit Threads</b></p><ul>
 <li><a href="https://www.reddit.com/r/macsysadmin/comments/av17s3/business_owners_and_admins_what_are_some_mac_apps/">r/macsysadmin</a></li>

@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/45748
 youtubeID: Mgg9D4JggQI
 audioDuration: 2237
 videoDuration: 2239
-transistorID: f6582b48
+podcastID: f6582b48
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://www.fabisevi.ch/about/"><strong>Joe Fabisevich - Website</strong></a><ul>

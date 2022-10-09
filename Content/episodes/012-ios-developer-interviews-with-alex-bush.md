@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: 8WgdTvnGz-A
 audioDuration: 2242
 videoDuration: 2268
-transistorID: bcf9bb21
+podcastID: bcf9bb21
 ---
 <p><b>Alex's Links</b></p><p><a href="https://twitter.com/alex_v_bush"><strong>On Twitter @alex_v_bush</strong></a><br><a href="http://iosinterviewguide.com/"><strong>iOS Interview Guide</strong></a><strong> </strong></p><p><a href="http://insideiosdev.com/"><strong>Inside iOS Dev Podcast</strong></a></p><p><b>Previous Episodes</b></p><p><a href="https://share.transistor.fm/s/ffcb9fc1"><strong>Episode 8 - Cloud and Backend Services For Apps</strong></a></p><p><b>What makes interviewing iOS Developers special?</b></p><ul>
 <li>Apple Design Patterns<ul>

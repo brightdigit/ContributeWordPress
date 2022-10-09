@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: WtC0hGUh0NQ
 audioDuration: 1979
 videoDuration: 2005
-transistorID: a34307ee
+podcastID: a34307ee
 ---
 <p><b><strong>Apple March Event</strong></b></p><ul>
 <li><a href="https://share.transistor.fm/s/3ee56c45"><strong>Apple makes moves towards services (Previous Episode - Apple in 2019)</strong></a></li>

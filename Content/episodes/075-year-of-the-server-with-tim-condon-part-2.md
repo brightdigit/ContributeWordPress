@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/42731
 youtubeID: VMNvZtw9OyU
 audioDuration: 2138
 videoDuration: 2140
-transistorID: a8b66b9f
+podcastID: a8b66b9f
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://www.timc.dev/"><strong>Tim Condon</strong></a><ul><li><a href="https://twitter.com/0xtim?s=21">Twitter @0xTim</a></li></ul>

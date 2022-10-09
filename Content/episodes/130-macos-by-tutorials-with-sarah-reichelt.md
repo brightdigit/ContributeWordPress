@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/10123
 youtubeID: QgFW0L0a_D4
 audioDuration: 2959
 videoDuration: 3238
-transistorID: dc974134
+podcastID: dc974134
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://troz.net"><strong>Sarah Reichelt</strong> (troz.net</a>)<ul><li><a href="https://twitter.com/trozware">Twitter <strong>@trozware</strong></a></li></ul>

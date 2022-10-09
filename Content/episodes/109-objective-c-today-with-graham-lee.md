@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/71922
 youtubeID: H8O0rj1It1w
 audioDuration: 3043
 videoDuration: 3254
-transistorID: 6ba5bfff
+podcastID: 6ba5bfff
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/iwasleeg">Graham Lee - Twitter @iwasleeg</a><ul>

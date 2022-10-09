@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/83807
 youtubeID: xMm7qR0FBDU
 audioDuration: 2132
 videoDuration: 2171
-transistorID: 98b1df10
+podcastID: 98b1df10
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/phil__hofmann">Philipp Hofmann (@phil__hofmann)</a><ul><li>

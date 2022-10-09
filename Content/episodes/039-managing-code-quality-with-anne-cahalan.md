@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/19901
 youtubeID: mh83ua5A_Yc
 audioDuration: 3540
 videoDuration: 3542
-transistorID: 99f236b1
+podcastID: 99f236b1
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/northofnormal"><strong>Anne Cahalan </strong></a><ul>

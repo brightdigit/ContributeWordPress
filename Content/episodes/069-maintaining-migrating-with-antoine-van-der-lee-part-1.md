@@ -10,7 +10,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/39958
 youtubeID: bnAzZo3-N4g
 audioDuration: 1916
 videoDuration: 1919
-transistorID: de8caf60
+podcastID: de8caf60
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://www.avanderlee.com"><strong>Antoine van der Lee</strong></a><ul>

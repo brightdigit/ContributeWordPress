@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/19903
 youtubeID: PfBEYCixLtg
 audioDuration: 2405
 videoDuration: 2407
-transistorID: ec99f183
+podcastID: ec99f183
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/kthomas901"><strong>Kaya Thomas (Twitter @kthomas901)</strong></a><ul><li><a href="https://kayathomas.info">kayathomas.info</a></li></ul>

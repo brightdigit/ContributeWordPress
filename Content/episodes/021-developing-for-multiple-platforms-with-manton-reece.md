@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: IaTgg3AljHg
 audioDuration: 3195
 videoDuration: 3221
-transistorID: 3498c82f
+podcastID: 3498c82f
 ---
 <p><b>Guest</b></p><ul><li> <a href="https://manton.org">Manton Reece</a><ul>
 <li><a href="https://micro.blog/">Micro.blog</a></li>

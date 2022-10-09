@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/25131
 youtubeID: Bo7H2PIIWRU
 audioDuration: 2976
 videoDuration: 2978
-transistorID: fca974ca
+podcastID: fca974ca
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://kristaps.me/"><strong>Kristaps Grinbergs</strong> (website)</a><ul>

@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/10160
 youtubeID: QfSFAjaHrZM
 audioDuration: 3066
 videoDuration: 3446
-transistorID: d34d034c
+podcastID: d34d034c
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/steve_lipton"><strong>Steve Lipton- Twitter @Steve_Lipton</strong></a><ul>

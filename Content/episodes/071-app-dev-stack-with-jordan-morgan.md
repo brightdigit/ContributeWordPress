@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/40797
 youtubeID: 9-9XxNzXoTs
 audioDuration: 2309
 videoDuration: 2311
-transistorID: 021d08bc
+podcastID: 021d08bc
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/jordanmorgan10">Jordan Morgan - @jordanmorgan10</a><ul>

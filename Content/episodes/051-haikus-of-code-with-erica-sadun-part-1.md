@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/25131
 youtubeID: SeaRbgIkmW4
 audioDuration: 1762
 videoDuration: 1764
-transistorID: 4d6360c9
+podcastID: 4d6360c9
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://ericasadun.com"><strong>Erica Sadun (website)</strong></a><ul>

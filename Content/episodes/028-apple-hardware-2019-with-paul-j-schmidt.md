@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: w7PFFq6skpw
 audioDuration: 1985
 videoDuration: 1987
-transistorID: '19292615'
+podcastID: '19292615'
 ---
 <p><b>Guest</b></p><ul><li> Paul J Schmidt - <a href="https://www.unodeuce.com/">UnoDeuce Multimedia</a><ul>
 <li><a href="https://www.youtube.com/user/1dpmultimedia?feature=results_main">Youtube</a></li>

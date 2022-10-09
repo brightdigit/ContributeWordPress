@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/58171
 youtubeID: 2Lj21NQ3CXI
 audioDuration: 2166
 videoDuration: 2405
-transistorID: 395aa04c
+podcastID: 395aa04c
 ---
 <p><strong>Guest</strong></p><ul><li><a href="https://twitter.com/zhbrass"><strong>Zach Brass - @zhbrass</strong></a></li></ul><p><a href="https://brightdigit.typeform.com/to/yVZN2gIT"><strong>Podcast Survey</strong> - https://brightdigit.typeform.com/to/yVZN2gIT</a><br><a href="https://youtu.be/2Lj21NQ3CXI"><strong>Youtube Video</strong> - https://youtu.be/2Lj21NQ3CXI</a></p><p><b>Related Episodes</b></p><ul>
 <li><a href="https://share.transistor.fm/s/0aedd602">Episode 38 - Accessibility with Kim Arnett</a></li>

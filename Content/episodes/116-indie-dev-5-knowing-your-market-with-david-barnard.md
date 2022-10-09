@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/79813
 youtubeID: LaCj_Oaw1uo
 audioDuration: 3262
 videoDuration: 3335
-transistorID: 635099a8
+podcastID: 635099a8
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://davidbarnard.com"><strong>David Barnard</strong> (blog)</a><ul>

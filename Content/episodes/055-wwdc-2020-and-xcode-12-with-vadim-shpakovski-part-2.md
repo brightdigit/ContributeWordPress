@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/28781
 youtubeID: MEwl5jhjDws
 audioDuration: 3341
 videoDuration: 3344
-transistorID: 51c9a342
+podcastID: 51c9a342
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/VadimShpakovski"><strong>Vadim Shpakovski - @VadimShpakovski</strong></a><ul>

@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: SiLbztr2f2o
 audioDuration: 2452
 videoDuration: 2454
-transistorID: a14f868f
+podcastID: a14f868f
 ---
 <p><b>Guest</b></p><ul><li> <a href="https://pyrus.io"><strong>Kyle Newsome</strong></a><strong> - (</strong><a href="https://twitter.com/kylnew"><strong>Twitter @kylnew</strong></a><strong>)</strong><ul><li>
 <a href="https://vimeo.com/showcase/6225806/video/354783100">Continuous Integration - What, Why &amp; How feat. Bitrise</a> - SwiftTO</li></ul>

@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: PzaoBmb6PjM
 audioDuration: 479
 videoDuration: 480
-transistorID: 2f12eb02
+podcastID: 2f12eb02
 ---
 <p><a href="https://youtu.be/PzaoBmb6PjM"><strong>Youtube Video</strong></a></p><p><b>Related Episodes</b></p><ul>
 <li><a href="https://share.transistor.fm/s/7966a039"><strong>Episode 22 - September 2019 Event</strong></a></li>

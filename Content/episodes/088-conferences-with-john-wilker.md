@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/52175
 youtubeID: XXQB24mqQp4
 audioDuration: 2052
 videoDuration: 2128
-transistorID: 30ff6bea
+podcastID: 30ff6bea
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://johnwilker.com"><strong>John Wilker (johnwilker.com)</strong></a><ul>

@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/56734
 youtubeID: OM9jbAbUXZ0
 audioDuration: 3500
 videoDuration: 3704
-transistorID: e07bf6ba
+podcastID: e07bf6ba
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://gio.codes/"><strong>Gio Lodi</strong> </a>-<a href="https://gio.codes"> gio.codes</a><ul>

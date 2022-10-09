@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/43391
 youtubeID: VqQTUM7-_64
 audioDuration: 2788
 videoDuration: 2790
-transistorID: e6621ded
+podcastID: e6621ded
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://finestructure.co"><strong>Sven A. Schmidt - finestructure.co</strong></a><ul>

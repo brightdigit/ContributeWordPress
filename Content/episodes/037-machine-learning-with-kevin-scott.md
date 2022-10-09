@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/19022
 youtubeID: H2zi80T8Zk8
 audioDuration: 2248
 videoDuration: 2250
-transistorID: 52ef1db7
+podcastID: 52ef1db7
 ---
 <p><b>Guest</b></p><ul><li>
 <strong>Kevin Scott </strong><ul>

@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/92605
 youtubeID: BnsPUjcDSik
 audioDuration: 1824
 videoDuration: 1855
-transistorID: 4dcb9652
+podcastID: 4dcb9652
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/rudrankriyam"><strong>Rudrank Riyam</strong> (@rudrankriyam)</a><ul><li><a href="https://rudrank.gumroad.com/l/musickit"><strong>Exploring MusicKit and Apple Music API</strong> by Rudrank Riyam</a></li></ul>

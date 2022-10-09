@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/44185
 youtubeID: L-lOLeuGrnM
 audioDuration: 3421
 videoDuration: 3423
-transistorID: 588ee24d
+podcastID: 588ee24d
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/_inside"><strong>Gui Rambo - Twitter @_inside</strong></a><ul>

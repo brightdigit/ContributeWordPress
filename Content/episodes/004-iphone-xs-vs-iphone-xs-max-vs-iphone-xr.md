@@ -10,7 +10,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: U8n8vJlMLzY
 audioDuration: 2495
 videoDuration: 2518
-transistorID: b358d0a4
+podcastID: b358d0a4
 ---
 <ul>
 <li><a href="http://www.empowerapps.show/episodes/low-cost-macs-macbook-air-mac-mini">Episode 3 - Low-Cost Macs</a></li>

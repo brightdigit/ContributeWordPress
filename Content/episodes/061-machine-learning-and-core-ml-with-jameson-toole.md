@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/28948
 youtubeID: bcOBFuqS9_o
 audioDuration: 2648
 videoDuration: 2650
-transistorID: 14bb74b2
+podcastID: 14bb74b2
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/jamesonthecrow"><strong>Jameson Toole (@jamesonthecrow)</strong></a><ul>

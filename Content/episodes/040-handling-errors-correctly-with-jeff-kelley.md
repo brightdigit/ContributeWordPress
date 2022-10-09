@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/19901
 youtubeID: m9VouX_K2Uo
 audioDuration: 2991
 videoDuration: 2993
-transistorID: 03d8db53
+podcastID: 03d8db53
 ---
 <p><b>Guest</b></p><ul><li><a href="https://twitter.com/SlaunchaMan"><strong>Jeff Kelley (Twitter @SlaunchaMan)</strong></a></li></ul><p><b>Related Episodes</b></p><ul>
 <li><a href="https://share.transistor.fm/s/87165d83"><strong>Episode 35: SwiftUI - The Good, the Bad, and the Benefits</strong></a></li>

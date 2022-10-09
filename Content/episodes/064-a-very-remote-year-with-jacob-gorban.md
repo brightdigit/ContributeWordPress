@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/36419
 youtubeID: wKGEc-9YFGs
 audioDuration: 2281
 videoDuration: 2283
-transistorID: 2445da70
+podcastID: 2445da70
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://gorban.org"><strong>Jacob Gorban </strong></a><strong>- </strong><a href="https://twitter.com/jacobgorban"><strong>Twitter @jacobgorban</strong></a><ul><li><a href="https://www.apparentsoft.com"><strong>Apparent Software</strong></a></li></ul>

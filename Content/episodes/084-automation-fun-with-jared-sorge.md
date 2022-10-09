@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/49334
 youtubeID: hWVfxNkY5Sw
 audioDuration: 1877
 videoDuration: 1879
-transistorID: bab83e8a
+podcastID: bab83e8a
 ---
 <p><b><a href="https://xcoders.org/2021/03/21/xcoders-podcast-march.html"><strong>Part 2 of Episode at Xcoders!</strong></a></b></p><ul><li>More on Swift Package Manager, Graphics Management, and Server-Side Dev 👆</li></ul><p><b>Guest</b></p><ul><li>
 <a href="https://jsorge.net"><strong>Jared Sorge</strong></a><ul>

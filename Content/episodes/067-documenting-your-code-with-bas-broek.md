@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/38267
 youtubeID: 4T25oqyXBLw
 audioDuration: 2541
 videoDuration: 2544
-transistorID: 66f6958e
+podcastID: 66f6958e
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="%20https://basthomas.github.io"><strong>Bas Broek</strong></a><ul>

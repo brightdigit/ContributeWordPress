@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/82512
 youtubeID: HRfciIxoSMo
 audioDuration: 2413
 videoDuration: 2725
-transistorID: 3847e32e
+podcastID: 3847e32e
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://mattbraun.co">Matt Braun (@mattbraun)</a><ul>

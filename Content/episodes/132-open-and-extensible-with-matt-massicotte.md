@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/10369
 youtubeID: dc7x04Ao2xU
 audioDuration: 2474
 videoDuration: 2690
-transistorID: e4733e76
+podcastID: e4733e76
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/mattie">Matt Massicotte - Twitter @mattie</a><ul><li><a href="https://www.chimehq.com">Chime</a></li></ul>

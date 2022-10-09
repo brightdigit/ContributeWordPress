@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/93641
 youtubeID: AbK1n_WHsZM
 audioDuration: 1543
 videoDuration: 1539
-transistorID: 7a7ea6c8
+podcastID: 7a7ea6c8
 ---
 <p><b>Guest</b></p><ul><li>
 <strong>Danijela Vrzan</strong> <a href="https://danijelavrzan.com/">https://danijelavrzan.com/</a><ul><li>Twitter <a href="https://twitter.com/dvrzan">https://twitter.com/dvrzan</a>

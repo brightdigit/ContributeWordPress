@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/36580
 youtubeID: C0Ymu7vx_ko
 audioDuration: 3386
 videoDuration: 3388
-transistorID: 8226bebf
+podcastID: 8226bebf
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/phatblat"><strong>Ben Chatelain (@phatblat)</strong></a><ul>

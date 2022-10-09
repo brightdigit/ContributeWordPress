@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/84983
 youtubeID: bgDI6HbxeDU
 audioDuration: 2647
 videoDuration: 2840
-transistorID: 3637f231
+podcastID: 3637f231
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://t.co/YFi977wx2F"><strong>Dominik Hauser</strong></a><ul>

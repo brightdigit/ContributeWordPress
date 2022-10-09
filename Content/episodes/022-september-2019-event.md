@@ -10,7 +10,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: 5Qn22CN3hAA
 audioDuration: 1127
 videoDuration: 1127
-transistorID: 7966a039
+podcastID: 7966a039
 ---
 <p><b>Full Video</b></p><p><a href="https://youtu.be/5Qn22CN3hAA"><strong>Youtube Video - https://youtu.be/5Qn22CN3hAA</strong></a></p><p><b>Sponsors</b></p><p><a href="https://brightdigit.com/"><strong>BrightDigit</strong></a></p><ul>
 <li>Specialize in helping businesses build apps for iPhone, iPad, Mac and Apple Watch</li>

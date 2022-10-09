@@ -10,7 +10,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/75471
 youtubeID: 3MOK_smitUU
 audioDuration: 5266
 videoDuration: 5398
-transistorID: 7623c736
+podcastID: 7623c736
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://peterwitham.com/">Peter Witham</a> - <a href="https://compileswift.com/">Compileswift.com</a> - <a href="https://twitter.com/CompileSwift">Twitter</a><ul><li><a href="https://compileswift.live">Peter's New Livestream - compileswift.live</a></li></ul>

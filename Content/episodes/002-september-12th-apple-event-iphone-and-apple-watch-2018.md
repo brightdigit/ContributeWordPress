@@ -10,7 +10,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: 4UAOP-ZKzBk
 audioDuration: 1433
 videoDuration: 1456
-transistorID: c1521cf5
+podcastID: c1521cf5
 ---
 <ul>
 <li><a href="https://www.tomsguide.com/us/new-iphones-apple-event-date,news-27904.html">Tom's Guide - Apple Will Launch New iPhones at Big Sept. 12 Event</a></li>

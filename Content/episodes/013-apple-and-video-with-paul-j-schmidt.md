@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: ivHsDRHRty0
 audioDuration: 2452
 videoDuration: 2478
-transistorID: 6321c757
+podcastID: 6321c757
 ---
 <p><b>UnoDeuce Multimedia and Storytelling</b></p><ul>
 <li><a href="https://www.unodeuce.com">UnoDeuce Multimedia</a></li>

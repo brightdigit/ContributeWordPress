@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/60404
 youtubeID: Rnv58mzGXOk
 audioDuration: 3094
 videoDuration: 3096
-transistorID: 0d1ba706
+podcastID: 0d1ba706
 ---
 <p><b><a href="https://youtu.be/Rnv58mzGXOk">Youtube Video</a></b></p><p><a href="https://youtu.be/Rnv58mzGXOk">https://youtu.be/Rnv58mzGXOk</a></p><p><b>Links</b></p><p><a href="https://gbeat.com"><strong>gBeat.com</strong></a><strong><br></strong><a href="http://transistor.fm"><strong>transistor.fm</strong></a><strong><br></strong><a href="https://www.podcastedition.com"><strong>podcastedition.com</strong></a></p><p><b>Related Episodes</b></p><ul>
 <li><a href="https://share.transistor.fm/s/c2946999">Episode 99 - Practical Entrepreneur with Donny Wals</a></li>

@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/21799
 youtubeID: TQpRYibmyvQ
 audioDuration: 1210
 videoDuration: 1211
-transistorID: 4eba2003
+podcastID: 4eba2003
 ---
 <p><b>Video</b></p><ul><li><a href="https://youtu.be/TQpRYibmyvQ"><strong>Youtube Video</strong> - https://youtu.be/TQpRYibmyvQ</a></li></ul><p><b>Related Episodes</b></p><ul>
 <li><a href="https://share.transistor.fm/s/99f236b1"><strong>Episode 39: Managing Code Quality with Anne Cahalan</strong></a></li>

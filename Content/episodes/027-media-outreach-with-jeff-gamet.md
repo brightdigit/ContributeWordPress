@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: IqttUIJOMDA
 audioDuration: 2565
 videoDuration: 2567
-transistorID: b0bd852d
+podcastID: b0bd852d
 ---
 <p><b>Guest</b></p><ul><li> Jeff Gamet - <a href="https://textexpander.com">Text Expander</a> Evangelist <ul>
 <li>

@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: hl-a_dcqhIw
 audioDuration: 2465
 videoDuration: 2491
-transistorID: b059197f
+podcastID: b059197f
 ---
 <p><b>Guest</b></p><ul><li> <a href="https://joec.design">Joe Cieplinski</a> <ul>
 <li><a href="https://twitter.com/jcieplinski">jcieplinski (@jcieplinski) - Twitter</a></li>

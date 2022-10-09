@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/52390
 youtubeID: YgEXQ1k6eRI
 audioDuration: 2589
 videoDuration: 3040
-transistorID: 8505d100
+podcastID: 8505d100
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://www.joshholtz.com"><strong>Josh Holtz (website)</strong></a><ul><li><a href="https://twitter.com/joshdholtz"><strong>Twitter @joshdholtz</strong></a></li></ul>

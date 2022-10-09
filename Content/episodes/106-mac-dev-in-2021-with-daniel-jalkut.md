@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/64657
 youtubeID: W2f-GJFRY_U
 audioDuration: 2518
 videoDuration: 2749
-transistorID: b9cde87e
+podcastID: b9cde87e
 ---
 <p><b>Guest</b></p><ul><li>
 <strong>Daniel Jalkut</strong> <a href="https://twitter.com/danielpunkass">(@danielpunkass) | Twitter</a><ul>

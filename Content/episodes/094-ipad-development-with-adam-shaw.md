@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/56738
 youtubeID: WHzAdaMHWgE
 audioDuration: 2746
 videoDuration: 2846
-transistorID: 75a6d9ba
+podcastID: 75a6d9ba
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/KabukiVision">Adam Shaw (Twitter @kabukivision)</a><ul>

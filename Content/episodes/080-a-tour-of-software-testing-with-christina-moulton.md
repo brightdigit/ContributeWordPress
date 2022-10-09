@@ -11,7 +11,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/46315
 youtubeID: 5LShKIwHEsA
 audioDuration: 1843
 videoDuration: 1846
-transistorID: 30f5853f
+podcastID: 30f5853f
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/christinamltn">Christina Moulton - @ChristinaMltn</a><ul><li><a href="https://grokswift.com">GrokSwift.com</a></li></ul>

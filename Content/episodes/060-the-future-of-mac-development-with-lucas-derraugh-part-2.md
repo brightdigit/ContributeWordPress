@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/29645
 youtubeID: b_lZbRud7ME
 audioDuration: 2667
 videoDuration: 2669
-transistorID: c73ba3e5
+podcastID: c73ba3e5
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://derraugh.com/">Lucas Derraugh</a> <ul>

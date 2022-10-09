@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: SW5_5BupP6Y
 audioDuration: 1776
 videoDuration: 1799
-transistorID: 8108defb
+podcastID: 8108defb
 ---
 <p>In this episode, we talk about <strong>WWDC 2018</strong> and what it means for the technology industry and businesses. <br>It seemed like a fairly quiet conference for Apple but maybe that's a good thing. </p><ul>
 <li>Is Apple cleaning house?</li>

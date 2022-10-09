@@ -10,7 +10,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/39360
 youtubeID: NmFHkLlxhL8
 audioDuration: 3022
 videoDuration: 3024
-transistorID: 1decc81f
+podcastID: 1decc81f
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://pawelmadej.com">Paweł Madej</a> <ul>

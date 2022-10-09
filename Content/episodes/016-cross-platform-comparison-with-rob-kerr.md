@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: m6YWVnswHqI
 audioDuration: 2083
 videoDuration: 2109
-transistorID: c2631188
+podcastID: c2631188
 ---
 <p><b>Guest</b></p><ul><li><a href="https://twitter.com/rekerrsive/"><strong>Rob Kerr - @rekerrsive</strong></a></li></ul><p><b>Why should companies go with a cross-platform solution?</b></p><ul>
 <li>Consistent User Experience (whether that's a good idea or not)</li>

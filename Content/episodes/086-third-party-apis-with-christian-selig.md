@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/50444
 youtubeID: rhVazmvPTYo
 audioDuration: 2631
 videoDuration: 2633
-transistorID: ec2c53c2
+podcastID: ec2c53c2
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://christianselig.com"><strong>Christian Selig (website)</strong></a><ul>

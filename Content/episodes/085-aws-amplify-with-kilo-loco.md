@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/50229
 youtubeID: kQP7dCaKdEc
 audioDuration: 1971
 videoDuration: 1974
-transistorID: 9a225bb3
+podcastID: 9a225bb3
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://www.kiloloco.com">Kilo Loco</a><ul>

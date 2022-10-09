@@ -10,7 +10,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: QWzc4DgRdDU
 audioDuration: 1703
 videoDuration: 1726
-transistorID: '82709349'
+podcastID: '82709349'
 ---
 <ul>
 <li><a href="https://www.reddit.com/r/apple/comments/9fkb3t/im_an_emergency_physician_and_wanted_to_talk/">I'm an Emergency Physician and wanted to talk about Apple Watch's new ECG</a></li>

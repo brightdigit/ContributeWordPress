@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/64656
 youtubeID: KhIg2u0J_wQ
 audioDuration: 2729
 videoDuration: 3182
-transistorID: 9b775257
+podcastID: 9b775257
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/designatednerd">Ellen Shapiro - Twitter @designatednerd</a><ul>

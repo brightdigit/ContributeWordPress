@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: BTG7e_60zN8
 audioDuration: 3163
 videoDuration: 3165
-transistorID: c8f9aa41
+podcastID: c8f9aa41
 ---
 <p><b>Guest</b></p><ul><li> <a href="https://abbeyjackson.ca"><strong>Abbey Jackson</strong></a><strong> - (</strong><a href="https://twitter.com/earthabbey"><strong>Twitter @earthabbey</strong></a><strong>)</strong><ul><li><a href="https://vimeo.com/showcase/6225806/video/354783100">Modularize All the Things - Abbey Jackson</a></li></ul>
 </li></ul><p><b>Sponsors</b></p><p><a href="https://brightdigit.com/"><strong>BrightDigit</strong></a></p><ul>

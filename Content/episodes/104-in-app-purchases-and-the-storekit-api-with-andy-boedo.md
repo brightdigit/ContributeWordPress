@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/64656
 youtubeID: _3sIBHZPhx8
 audioDuration: 2705
 videoDuration: 2824
-transistorID: b35be3a4
+podcastID: b35be3a4
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/AndresBoedo"><strong>Andy Boedo</strong> - Twitter <strong>@AndresBoedo</strong></a><ul>

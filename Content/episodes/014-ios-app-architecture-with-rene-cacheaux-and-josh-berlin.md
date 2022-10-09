@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: 19wNH6krSz4
 audioDuration: 2137
 videoDuration: 2163
-transistorID: 7247db7e
+podcastID: 7247db7e
 ---
 <p><b>Guests</b></p><ul>
 <li><a href="https://twitter.com/jab2109"><strong>Josh Berlin - @jab2109</strong></a></li>

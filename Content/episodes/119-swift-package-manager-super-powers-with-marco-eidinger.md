@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/83915
 youtubeID: QY0TPCHXMWA
 audioDuration: 2663
 videoDuration: 2973
-transistorID: 3643e409
+podcastID: 3643e409
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://blog.eidinger.info"><strong>Marco Eidinger</strong> (website)</a><ul>

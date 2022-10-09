@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/51329
 youtubeID: SwVF-wihDvE
 audioDuration: 2323
 videoDuration: 2411
-transistorID: 448ffe27
+podcastID: 448ffe27
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://it-guy.com"><strong>Tim Mitra (website)</strong></a><ul>

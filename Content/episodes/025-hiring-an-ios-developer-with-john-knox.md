@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: 6Dnha5n3-w4
 audioDuration: 2026
 videoDuration: 2028
-transistorID: 382a5473
+podcastID: 382a5473
 ---
 <p><b>Guest</b></p><ul><li> <a href="https://pyrus.io/"><strong>J</strong></a><strong>ohn Knox  - </strong><a href="https://twitter.com/windaddict"><strong>Twitter @windaddict</strong></a><strong> - </strong><a href="https://www.linkedin.com/in/johnmpknox/"><strong>LinkedIn</strong></a><ul><li>
 <a href="https://www.hireappdeveloper.org"><strong>Hiring An App Developer</strong></a> - <a href="https://twitter.com/hireanappdev">Twitter @hireanappdev</a>

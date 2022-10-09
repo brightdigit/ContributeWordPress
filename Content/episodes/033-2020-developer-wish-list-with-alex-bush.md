@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: 4tPSu8V2Cz0
 audioDuration: 2787
 videoDuration: 2790
-transistorID: 71500d55
+podcastID: 71500d55
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/alex_v_bush"><strong>Alex Bush - Twitter @alex_v_bush</strong></a><ul>

@@ -34,7 +34,7 @@ public struct BrightDigitSite: Website, MetadataAttached {
     var youtubeID: String?
     var audioDuration: TimeInterval?
     var videoDuration: TimeInterval?
-    var transistorID: String?
+    var podcastID: String?
     var subscriptionCTA: String?
   }
 

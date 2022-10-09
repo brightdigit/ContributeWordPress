@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/26822
 youtubeID: wDpNBXItVLo
 audioDuration: 889
 videoDuration: 890
-transistorID: 8f940315
+podcastID: 8f940315
 ---
 <p><b><a href="https://youtu.be/wDpNBXItVLo">Youtube Video</a></b></p><p><a href="https://youtu.be/wDpNBXItVLo">https://youtu.be/wDpNBXItVLo</a></p><p><b>iOS 14</b></p><ul>
 <li>Widgets</li>

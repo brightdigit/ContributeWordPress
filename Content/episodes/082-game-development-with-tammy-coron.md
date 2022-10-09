@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/47455
 youtubeID: cqhSz3-fZtI
 audioDuration: 2240
 videoDuration: 2242
-transistorID: ee6bf4b1
+podcastID: ee6bf4b1
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://tammycoron.com"><strong>Tammy Coron</strong></a><ul>

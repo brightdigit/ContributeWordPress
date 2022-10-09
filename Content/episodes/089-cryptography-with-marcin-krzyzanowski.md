@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/52386
 youtubeID: eigMjltZlP8
 audioDuration: 2401
 videoDuration: 2475
-transistorID: 6858d372
+podcastID: 6858d372
 ---
 <p><b>Guest</b></p><ul><li>
 <strong>Marcin Krzyżanowski </strong><ul>

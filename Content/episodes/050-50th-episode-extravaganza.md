@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/25131
 youtubeID: 9rxLjwqID2U
 audioDuration: 2799
 videoDuration: 2800
-transistorID: a1086b72
+podcastID: a1086b72
 ---
 <p><b><a href="https://youtu.be/9rxLjwqID2U">Youtube Video</a></b></p><p><a href="https://youtu.be/9rxLjwqID2U">https://youtu.be/9rxLjwqID2U</a></p><p><b>Current Interests and Products </b></p><ul>
 <li><a href="https://github.com/shibapm/Komondor">Komondor</a></li>

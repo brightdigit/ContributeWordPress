@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: jf-v-WSC5UY
 audioDuration: 2204
 videoDuration: 2230
-transistorID: 00603d96
+podcastID: 00603d96
 ---
 <ul>
 <li><a href="https://learningswift.brightdigit.com/swift-development-tips-speculid-tryswift/">Speculid Talk</a></li>

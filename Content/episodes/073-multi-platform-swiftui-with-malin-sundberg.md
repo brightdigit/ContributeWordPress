@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/42224
 youtubeID: uFdLYrze0uc
 audioDuration: 2768
 videoDuration: 2771
-transistorID: 0d12719b
+podcastID: 0d12719b
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/malinsundberg"><strong>Malin Sundberg - @malinsundberg</strong></a><ul>

@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: q-2pCv86TmY
 audioDuration: 922
 videoDuration: 945
-transistorID: 4f13fa7b
+podcastID: 4f13fa7b
 ---
 <ul>
 <li><a href="https://itunes.apple.com/us/podcast/apple-special-event-september-2015-1080p/id509310064?i=1000352406900&amp;mt=2">Apple September Event 2015  </a></li>

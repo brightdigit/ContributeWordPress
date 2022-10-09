@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/58868
 youtubeID: H6vW7f66zyU
 audioDuration: 2720
 videoDuration: 3092
-transistorID: f234b424
+podcastID: f234b424
 ---
 <p><strong>Guest</strong></p><ul><li>
 <a href="https://underplot.com/"><strong>Marin Todorov - underplot.com</strong></a><ul>

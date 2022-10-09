@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: lmZbx3nxr2o
 audioDuration: 1358
 videoDuration: 1384
-transistorID: '03051561'
+podcastID: '03051561'
 ---
 <p><b>Guest</b></p><ul><li> Jason Anderson <ul>
 <li><a href="https://twitter.com/_jasonranderson">(@_jasonranderson) | Twitter</a></li>

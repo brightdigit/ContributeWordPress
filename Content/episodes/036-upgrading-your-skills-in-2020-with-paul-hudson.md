@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/18423
 youtubeID: Xe2X-mXhfI0
 audioDuration: 4199
 videoDuration: 4201
-transistorID: eba8ef64
+podcastID: eba8ef64
 ---
 <p><b>Guest</b></p><ul><li>
 <strong>Paul Hudson </strong><ul>

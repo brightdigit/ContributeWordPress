@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/89367
 youtubeID: 2uXDG04aJUI
 audioDuration: 2467
 videoDuration: 2500
-transistorID: 0d0ab8b0
+podcastID: 0d0ab8b0
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/sarahgretter">Sarah Gretter, PhD (@SarahGretter)</a><ul><li><a href="https://www.linkedin.com/in/sarahgretter">LinkedIn - Sarah Gretter, PhD</a></li></ul>

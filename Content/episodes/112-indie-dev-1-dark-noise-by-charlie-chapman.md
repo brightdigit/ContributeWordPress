@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/76137
 youtubeID: UXvCBj6SAEA
 audioDuration: 2529
 videoDuration: 2657
-transistorID: '7462e031'
+podcastID: '7462e031'
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://charliemchapman.com/about/"><strong>Charlie Chapman</strong> (Blog)</a><ul>

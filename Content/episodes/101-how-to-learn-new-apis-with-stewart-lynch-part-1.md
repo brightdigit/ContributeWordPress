@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/62413
 youtubeID: gH3QnVHsUAc
 audioDuration: 2332
 videoDuration: 2413
-transistorID: 31b2d4ab
+podcastID: 31b2d4ab
 ---
 <p><strong>Guest</strong></p><ul><li>
 <a href="https://twitter.com/StewartLynch"><strong>Stewart Lynch</strong> @StewartLynch</a><ul>

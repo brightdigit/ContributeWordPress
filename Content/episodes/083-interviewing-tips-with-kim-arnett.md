@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/48993
 youtubeID: UpUQY7sD9g4
 audioDuration: 2080
 videoDuration: 2083
-transistorID: 38ce32c5
+podcastID: 38ce32c5
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://kimarnett.com/"><strong>Kim Arnett (kimarnett.com)</strong></a><ul>

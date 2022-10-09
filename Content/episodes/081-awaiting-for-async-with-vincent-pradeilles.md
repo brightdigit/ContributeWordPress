@@ -9,7 +9,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/46903
 youtubeID: hcVJSu7we5w
 audioDuration: 2656
 videoDuration: 2658
-transistorID: 593efb15
+podcastID: 593efb15
 ---
 <p><b>Guest</b></p><ul><li>
 <strong>Vincent Pradeilles </strong><ul>

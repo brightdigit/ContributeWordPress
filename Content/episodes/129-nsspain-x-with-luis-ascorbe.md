@@ -6,7 +6,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/93819
 youtubeID: hmSFPjQ7HuY
 audioDuration: 2444
 videoDuration: 2812
-transistorID: 647dda5b
+podcastID: 647dda5b
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://lascorbe.com"><strong>Luis Ascorbe </strong>(lascorbe.com)</a><ul>

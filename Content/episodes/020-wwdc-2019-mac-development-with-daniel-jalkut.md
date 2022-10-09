@@ -7,7 +7,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: 0JG7_ovqqL0
 audioDuration: 3890
 videoDuration: 3916
-transistorID: 4f8b37d3
+podcastID: 4f8b37d3
 ---
 <p><b>Guest</b></p><ul><li> Daniel Jalkut<ul>
 <li><a href="https://red-sweater.com">Red Sweater - Software Company</a></li>

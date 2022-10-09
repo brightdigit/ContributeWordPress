@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/41943
 youtubeID: YWZt2vq3Y_U
 audioDuration: 2372
 videoDuration: 2374
-transistorID: b203049d
+podcastID: b203049d
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://dimsumthinking.com"><strong>Daniel Steinberg - dimsumthinking.com</strong></a><ul>

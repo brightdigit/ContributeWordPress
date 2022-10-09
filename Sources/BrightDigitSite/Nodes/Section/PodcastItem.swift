@@ -355,7 +355,7 @@ struct PodcastItem: SectionItem {
       throw PublishTypeError.missingField(MissingFields.PodcastField.audioDuration, item)
     }
 
-    guard let transistorID = item.metadata.transistorID else {
+    guard let transistorID = item.metadata.podcastID else {
       throw PublishTypeError.missingField(MissingFields.PodcastField.transistorID, item)
     }
 

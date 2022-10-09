@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/show/122/full
 youtubeID: ooVaXy_yAVI
 audioDuration: 2489
 videoDuration: 2514
-transistorID: 3d4c7634
+podcastID: 3d4c7634
 ---
 <p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/garysabo">Gary Sabo</a><ul>

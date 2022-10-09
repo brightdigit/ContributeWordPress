@@ -8,7 +8,7 @@ featuredImage: https://images.transistor.fm/file/transistor/images/episode/28948
 youtubeID: AJR_evPDxms
 audioDuration: 3307
 videoDuration: 3309
-transistorID: f6092e38
+podcastID: f6092e38
 ---
 <p><a href="https://www.youtube.com/watch?v=RMAczbuXgKo"><strong>Bonus! We talked about Automattic and Apple here...</strong></a></p><p><b>Guest</b></p><ul><li>
 <a href="https://twitter.com/astralbodies"><strong>Aaron Douglas (@astralbodies)</strong></a><ul>
