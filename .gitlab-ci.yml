@@ -74,17 +74,15 @@ package focal:
 
 deploy:
   cache: []
-  only:
-    - main
-    - develop
   stage: deploy
   tags:
     - macos  
   script:    
     - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then SITE_ID=$NETLIFY_PRODUCTION_SITE_ID; else SITE_ID=$NETLIFY_BETA_SITE_ID; fi
     - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then PUBLISHING_MODE=production; else PUBLISHING_MODE=drafts; fi
+    - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then PROD_FLAG="--prod"; else PROD_FLAG=""; fi    
     - ./brightdigitwg-`uname`-`arch` --mode $PUBLISHING_MODE
-    - netlify deploy --site $SITE_ID --auth $NETLIFY_AUTH_TOKEN --prod
+    - netlify deploy --site $SITE_ID --auth $NETLIFY_AUTH_TOKEN $PROD_FLAG
 
 code_quality:
   cache: []
