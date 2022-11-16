@@ -1,5 +1,5 @@
 ---
-title: How to hire iOS developers: Hire developers who can learn 
+title: How to hire iOS developers - Hire developers who can learn 
 description: A guide to how you can reliably hire good iOS developers – Learn things that might undermine your interviewing process, and what to do instead.
 date: 2022-10-12 00:00
 featuredImage: /media/articles/want-to-hire-ios-developer/sad-and-disappointed-worker-2022-02-07-10-47-58.webp
