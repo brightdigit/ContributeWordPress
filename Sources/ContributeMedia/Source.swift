@@ -37,7 +37,9 @@ public extension Podcast {
 
 public extension Podcast.Source {
   init(podcastID: String, item: RSSItem, video: Video) throws {
-    let content = item.contentEncoded?.value ?? item.description.value
+    guard let content = item.contentEncoded?.value ?? item.description?.value else {
+      throw ImportError.invalidPodcastEpisodeFromRSSItem(item)
+    }
 
     guard let date = item.published else {
       throw ImportError.invalidPodcastEpisodeFromRSSItem(item)

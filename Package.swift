@@ -45,7 +45,7 @@ let package = Package(
     .package(url: "https://github.com/BrightDigit/Prch.git", from: "0.2.1"),
     .package(url: "https://github.com/BrightDigit/SwiftTube.git", from: "0.2.0-beta.4"),
     .package(url: "https://github.com/BrightDigit/Spinetail.git", from: "0.3.0"),
-    .package(url: "https://github.com/BrightDigit/SyndiKit", from: "0.2.0"),
+    .package(url: "https://github.com/BrightDigit/SyndiKit", from: "0.3.1"),
     .package(url: "https://github.com/BrightDigit/Options.git", from: "0.2.0"),
 
     .package(url: "https://github.com/jpsim/Yams.git", from: "4.0.4"),
