@@ -167,3 +167,5 @@ Pods
 Brewfile.lock.json
 Output
 .publish
+# Local Netlify folder
+.netlify
