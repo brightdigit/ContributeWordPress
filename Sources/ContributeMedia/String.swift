@@ -47,4 +47,10 @@ extension String {
 
     return result
   }
+
+  public func firstParagraph() -> String? {
+    components(separatedBy: .newlines).first { line in
+      !line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }?.trimmingCharacters(in: .whitespacesAndNewlines)
+  }
 }

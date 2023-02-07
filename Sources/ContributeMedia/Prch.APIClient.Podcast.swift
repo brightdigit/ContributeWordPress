@@ -47,7 +47,7 @@ public extension Client where APIType == YouTube.API {
       let requests = playlistItems
         .compactMap { $0.snippet?.resourceId?.videoId }
         .chunked(by: 50).map { ids in
-          Videos.YoutubeVideosList.Request(fields: "items(id,contentDetails/duration,snippet/title)", key: request.apiKey, part: ["contentDetails", "snippet"], id: ids, pageToken: nil)
+          Videos.YoutubeVideosList.Request(fields: "items(id,contentDetails/duration,snippet/title,snippet/description)", key: request.apiKey, part: ["contentDetails", "snippet"], id: ids, pageToken: nil)
         }
       var results: [Result<Videos.YoutubeVideosList.Response.SuccessType, Error>?]
       results = .init(repeating: nil, count: requests.count)

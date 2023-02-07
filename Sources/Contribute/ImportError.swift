@@ -12,6 +12,7 @@ public enum ImportError: Error {
     case snippetTitle
     case id
     case duration
+    case description
   }
 
   public enum EpisodeField {
