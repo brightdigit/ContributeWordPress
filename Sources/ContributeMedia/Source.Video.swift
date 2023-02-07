@@ -5,6 +5,7 @@ public extension Podcast.Source {
   struct Video: Equatable {
     public let youtubeID: String
     public let duration: TimeInterval
+    public let description: String
   }
 }
 
@@ -18,9 +19,12 @@ public extension Podcast.Source.Video {
         throw ImportError.missingFieldForVideo(video, .id)
       }
       guard let durationString = video.contentDetails?.duration else {
-        throw ImportError.missingFieldForVideo(video, .id)
+        throw ImportError.missingFieldForVideo(video, .duration)
       }
-      return (title, Self(youtubeID: id, duration: .init(iso6801: durationString)))
+      guard let description = video.snippet?.description else {
+        throw ImportError.missingFieldForVideo(video, .description)
+      }
+      return (title, Self(youtubeID: id, duration: .init(iso6801: durationString), description: description))
     }
     return try videoDurationList.reduce([String: Self]()) { dictionary, pair in
       let (title, video) = pair
