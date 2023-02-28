@@ -1278,6 +1278,9 @@ body.articles, body.tutorials {
         &.thumbnail-inline {
           @apply h-6 w-auto inline-block my-auto;
         }
+        &.icon {
+          @apply w-20 h-20 lg:w-48 lg:h-48 object-contain mt-8;
+        }
       }
       iframe {
         @apply w-full h-auto my-2;
