@@ -80,7 +80,7 @@ public extension Node where Context == HTML.BodyContext {
       .main(
         .section(
           .class("text"),
-          .main("Founded in 2021, BrightDigit aims to provide you with the very best in Swift-based development for the Apple ecosystem.")
+          .main("Founded in 2012, BrightDigit aims to provide you with the very best in Swift-based development for the Apple ecosystem.")
         ),
         .footer(
           .a(.href("/about-us"), .text("Learn more about us"))
