@@ -1,14 +1,15 @@
 ---
 title: Apples, Glasses, and HAL, Oh My!
-date: 2023-03-31 21:48
-description: "\n        "
+date: 2023-04-01 00:00
+description: "In this episode, we explore the exciting and rapidly changing landscape of iOS development, as we discuss the potential impact of AI, machine learning, and AR glasses on the future of mobile apps. We also make predictions about what Apple might unveil at WWDC 2023, and speculate about the secret plans they may have in store. With a mix of humor, quirkiness, and expert analysis, this podcast episode is a must-listen for anyone interested in the latest trends and developments in iOS app development."
 featuredImage: https://images.transistor.fm/file/transistor/images/episode/1240042/full_1678407724-artwork.jpg
 youtubeID: 024D7909VNQ
 audioDuration: 685
 videoDuration: 690
 podcastID: 801b49fa
 ---
-<p>In this episode, we explore the exciting and rapidly changing landscape of iOS development, as we discuss the potential impact of AI, machine learning, and AR glasses on the future of mobile apps. We also make predictions about what Apple might unveil at WWDC 2023, and speculate about the secret plans they may have in store. With a mix of humor, quirkiness, and expert analysis, this podcast episode is a must-listen for anyone interested in the latest trends and developments in iOS app development.</p><p><b>Guest (how I made the episode)</b></p><ul>
+<p><b>Guest (how I made the episode)</b></p>
+<ul>
 <li><a href="https://beta.openai.com/demo/">Generate Script, Title, Description, Links, Social Media Text</a></li>
 <li>
 <a href="https://www.descript.com">Text-to-Voice</a> </li>
