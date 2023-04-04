@@ -1,14 +1,14 @@
 ---
 title: Going Pro with Sean Allen
 date: 2023-04-04 00:00
-description: "\n        "
+description: "Sean Allen joins the podcast to talk about what it means to be a pro developer, how to manage your career, and how to use social media to your benefit."
 featuredImage: https://images.transistor.fm/file/transistor/images/episode/1256041/full_1679491088-artwork.jpg
 youtubeID: ZgkMTeSDhik
 audioDuration: 2706
 videoDuration: 2942
 podcastID: 11c845b0
 ---
-<p>Sean Allen joins the podcast to talk about what it means to be a pro developer, how to manage your career, and how to use social media to your benefit.</p><p><b>Guest</b></p><ul>
+<p><b>Guest</b></p><ul>
 <li><a href="https://twitter.com/seanallen_dev">Sean Allen - Twitter @seanallen_dev</a></li>
 <li>
 <a href="https://www.youtube.com/@seanallen">Sean Allen - Youtube</a><ul>
