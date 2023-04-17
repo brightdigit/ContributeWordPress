@@ -9,7 +9,7 @@ public struct BrightDigitSiteCommand: ParsableCommand {
 
   public static var configuration = CommandConfiguration(
     abstract: "Command for maintaining the BrightDigit site.",
-    subcommands: [PublishCommand.self, ImportCommand.self],
+    subcommands: [PublishCommand.self, ImportCommand.self, URLCommand.self],
     defaultSubcommand: PublishCommand.self
   )
 }

@@ -52,10 +52,6 @@ public extension BrightDigitSiteCommand.ImportCommand {
       return item.link.lastPathComponent
     }
 
-    static func fileNameWithoutExtensionFromSource(_ source: ContributeMedia.Podcast.Source) -> String {
-      "\(source.episodeNo.description.padLeft(totalWidth: 3, byString: "0"))-\(source.slug)"
-    }
-
     public func run() throws {
       let youtubeClient = Prch.Client(api: YouTube.API(), session: URLSession.shared)
       let videos = try youtubeClient.videos(fromRequest: .init(apiKey: youtubeAPIKey, playlistID: playlistID))
@@ -66,7 +62,7 @@ public extension BrightDigitSiteCommand.ImportCommand {
       let episodes: [PodcastEpisode] = try PodcastEpisode.episodesBasedOn(rssItems: rssItems, withVideos: videoDurations, id: Self.id).sorted(by: { lhs, rhs in
         lhs.episodeNo < rhs.episodeNo
       })
-      try ContributeMedia.Podcast.write(from: episodes, atContentPathURL: contentPathURL, fileNameWithoutExtension: Self.fileNameWithoutExtensionFromSource, using: BrightDigitSiteCommand.ImportCommand.markdownGenerator.markdown(fromHTML:), options: options)
+      try ContributeMedia.Podcast.write(from: episodes, atContentPathURL: contentPathURL, using: BrightDigitSiteCommand.ImportCommand.markdownGenerator.markdown(fromHTML:), options: options)
     }
   }
 }

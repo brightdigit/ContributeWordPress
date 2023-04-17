@@ -16,4 +16,20 @@ public enum Podcast: ContentType {
     }
     return rssFeed.channel.items
   }
+
+  public static func fileNameWithoutExtensionForEpisode(withNumber episodeNo: Int, title: String) -> String {
+    fileNameWithoutExtensionForEpisode(withNumber: episodeNo, slug: title.convertedToSlug())
+  }
+
+  public static func fileNameWithoutExtensionForEpisode(withNumber episodeNo: Int, slug: String) -> String {
+    "\(episodeNo.description.padLeft(totalWidth: 3, byString: "0"))-\(slug)"
+  }
+
+  public static func fileNameWithoutExtensionFromSource(_ source: Source) -> String {
+    fileNameWithoutExtensionForEpisode(withNumber: source.episodeNo, slug: source.slug)
+  }
+
+  public static func write(from sources: [SourceType], atContentPathURL contentPathURL: URL, using htmlToMarkdown: @escaping (String) throws -> String, options _: MarkdownContentBuilderOptions = []) throws {
+    try write(from: sources, atContentPathURL: contentPathURL, fileNameWithoutExtension: Self.fileNameWithoutExtensionFromSource(_:), using: htmlToMarkdown)
+  }
 }
