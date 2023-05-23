@@ -15,11 +15,49 @@ cache:
   paths:
     - .build/
 
+variables:
+  main_branch: 'main'
+  excluded_branches: '/(styling\/.*$)|(.*WIP$)/i'
+  merge_request_draft:  '/^(\[Draft\]|\(Draft\)|Draft:)/'
+  merge_request_pipeline_source: 'merge_request_event'
+
+## Rules ##
+
+.default_build_rules:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == $merge_request_pipeline_source && $CI_MERGE_REQUEST_TITLE =~ $merge_request_draft
+      when: manual
+    - if: '$CI_COMMIT_BRANCH !~ $excluded_branches'
+      changes:
+        - "**/*.swift"
+    - if: '$CI_COMMIT_BRANCH !~ $excluded_branches'
+      exists:
+        - brightdigitwg-*
+      when: never
+
+.package_focal_rules:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $main_branch
+      changes:
+        - "**/*.swift"
+    - if: $CI_COMMIT_BRANCH == $main_branch
+      exists:
+        - brightdigitwg-*
+      when: never
+
+.deploy_rules:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == $merge_request_pipeline_source && $CI_MERGE_REQUEST_TITLE =~ $merge_request_draft
+      when: manual
+    - when: on_success
+
+## JOBS ##
+
 build focal:
-  except:
-    - /.*WIP$/
-    - /styling\/.*$/
+  rules:
+    - !reference [.default_build_rules, rules]
   stage: build
+  resource_group: $CI_COMMIT_REF_NAME
   image: brightdigit/publish-xml
   script:
     - export ARCH_PREFIX=$(uname -i)
@@ -27,28 +65,28 @@ build focal:
     - swift test
 
 build macos:
-  except:
-    - /.*WIP$/
-    - /styling\/.*$/
+  rules:
+    - !reference [.default_build_rules, rules]
   stage: build
+  resource_group: $CI_COMMIT_REF_NAME
   tags:
-    - macos  
+    - macos
   script:
-    - swift build    
+    - swift build
     - swift run swiftformat --lint .
     - swift run swiftlint
     - swift test
 
 package macos:
-  except:
-    - /.*WIP$/
-    - /styling\/.*$/
+  rules:
+    - !reference [.default_build_rules, rules]
   stage: package
+  resource_group: $CI_COMMIT_REF_NAME
+  tags:
+    - macos
   artifacts:
     paths:
       - brightdigitwg-*
-  tags:
-    - macos  
   script:
     - swift build -c release --product brightdigitwg
     - BIN_PATH=`swift build -c release --product brightdigitwg --show-bin-path`
@@ -56,35 +94,44 @@ package macos:
 
 package focal:
   timeout: 3h
-  only:
-    - main
-    - develop
-  except:
-    - /.*WIP$/
-    - /styling\/.*$/
+  rules:
+    - !reference [.package_focal_rules, rules]
   stage: package
+  resource_group: $CI_COMMIT_REF_NAME
+  image: brightdigit/publish-xml
   artifacts:
     paths:
       - brightdigitwg-*
-  image: brightdigit/publish-xml
   script:
     - swift build -c release --product brightdigitwg
     - BIN_PATH=`swift build -c release --product brightdigitwg --show-bin-path`
     - cp $BIN_PATH/brightdigitwg brightdigitwg-`uname`-`arch`
 
 deploy:
-  cache: []
+  rules:
+    - !reference [.deploy_rules, rules]
   stage: deploy
+  resource_group: $CI_COMMIT_REF_NAME
   tags:
     - macos  
+  artifacts:
+    paths:
+      - brightdigitwg-*
   script:    
     - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then SITE_ID=$NETLIFY_PRODUCTION_SITE_ID; else SITE_ID=$NETLIFY_BETA_SITE_ID; fi
     - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then PUBLISHING_MODE=production; else PUBLISHING_MODE=drafts; fi
-    - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then PROD_FLAG="--prod"; else PROD_FLAG=""; fi    
+    - if [ "$CI_COMMIT_REF_NAME" = "main" ]; then PROD_FLAG="--prod"; else PROD_FLAG=""; fi   
+    - BIN_PATH=`swift build -c release --product brightdigitwg --show-bin-path`
+    - cp $BIN_PATH/brightdigitwg brightdigitwg-`uname`-`arch`
     - ./brightdigitwg-`uname`-`arch` --mode $PUBLISHING_MODE
     - netlify deploy --site $SITE_ID --auth $NETLIFY_AUTH_TOKEN $PROD_FLAG
 
 code_quality:
   cache: []
+  stage: test
+  resource_group: $CI_COMMIT_REF_NAME
+  rules:
+    - !reference [.default_build_rules, rules]
   artifacts:
     paths: [gl-code-quality-report.json]
+
