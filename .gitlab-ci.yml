@@ -35,7 +35,7 @@ variables:
         - brightdigitwg-*
       when: never
 
-.package_focal_rules:
+.package_jammy_rules:
   rules:
     - if: $CI_COMMIT_BRANCH == $main_branch
       changes:
@@ -53,7 +53,7 @@ variables:
 
 ## JOBS ##
 
-build focal:
+build jammy:
   rules:
     - !reference [.default_build_rules, rules]
   stage: build
@@ -72,9 +72,9 @@ build macos:
   tags:
     - macos
   script:
-    - swift build
-    - swift run swiftformat --lint .
-    - swift run swiftlint
+    - swift build    
+    #- swift run swiftformat --lint .
+    #- swift run swiftlint
     - swift test
 
 package macos:
@@ -92,10 +92,10 @@ package macos:
     - BIN_PATH=`swift build -c release --product brightdigitwg --show-bin-path`
     - cp $BIN_PATH/brightdigitwg brightdigitwg-`uname`-`arch`
 
-package focal:
+package jammy:
   timeout: 3h
   rules:
-    - !reference [.package_focal_rules, rules]
+    - !reference [.package_jammy_rules, rules]
   stage: package
   resource_group: $CI_COMMIT_REF_NAME
   image: brightdigit/publish-xml

@@ -1,4 +1,4 @@
-FROM swift:5.6-focal
+FROM swift:5.8-jammy
 
 RUN apt-get update
 RUN apt-get -y install libxml2-dev curl gnupg
