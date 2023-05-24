@@ -80,15 +80,14 @@ There are a ton of good resources available for Swift and iOS developers looking
 Paul Hudson does a stellar job covering topics and news at the forefront of Swift app development. He recently published [an article covering the release of Swift 5.8](https://www.hackingwithswift.com/articles/256/whats-new-in-swift-5-8) with excellent breakdowns, code examples, and insights into what it could mean for the future of development.
 
 
-### [WWDC 2023 Discord](https://discord.gg/wMYQx3jy)
+### [WWDC 2023 Discord](https://discord.com/invite/39gfzeB3xR)
 
-[A Discord server has already been set up for this year’s WWDC](https://discord.gg/wMYQx3jy), and hundreds of Swift developers are already connecting and planning out what activities and talks they’re attending (both in person and online). WWDC is probably the biggest event of the year for bringing us developers together, so if your goal is to connect with people just like you, this is a great place to start.
+[A Discord server has already been set up for this year’s WWDC](https://discord.com/invite/39gfzeB3xR), and hundreds of Swift developers are already connecting and planning out what activities and talks they’re attending (both in person and online). WWDC is probably the biggest event of the year for bringing us developers together, so if your goal is to connect with people just like you, this is a great place to start.
 
 
 ### [Dub Dub Together](https://wwdctogether.com/#)
 
 A live-streaming service where you can watch the keynote and other talks live online, with a live chat so you can talk to other viewers while things are happening.
-
 
 ### [WWDC Notes](https://www.wwdcnotes.com)
 
@@ -98,7 +97,6 @@ Additionally, Apple itself keeps its WWDC videos published for only about three 
 
 It should be pointed out that WWDC Notes is only as good as its contributors. If you find yourself motivated to take thorough notes of a talk, you can publish them here for the benefit of other developers.
 
-
 ### [iOS Dev Happy Hour](https://www.iosdevhappyhour.com)
 
 If you can’t make it to WWDC or any other conferences to share experiences, hang out, and have a drink with other developers, iOS Dev Happy Hour gives you a chance to do it virtually instead.
@@ -107,6 +105,10 @@ If you can’t make it to WWDC or any other conferences to share experiences, ha
 ### [MacRumors](https://www.macrumors.com)
 
 MacRumors is usually a great resource for keeping up with the latest Swift developments, plus regular articles that explore and speculate what is coming next from Apple. At the time of writing, [they’ve just published a thorough roundup ahead of WWDC](https://www.macrumors.com/roundup/wwdc/), with a breakdown of what we can expect Apple will announce during this year’s conference.
+
+---
+
+**If you are interested in more resources** be sure to check out **[Apple's Beyond WWDC list here.](https://developer.apple.com/wwdc23/beyond-wwdc/)**
 
 ![Pace Yourself](/media/articles/wwdc-swift-developer-guide/pace-yourself-this-is-your-journey-closeup-shot-2023-01-11-22-11-58-utc.webp)
 
