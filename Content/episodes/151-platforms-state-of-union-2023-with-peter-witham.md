@@ -5,7 +5,7 @@ description: Peter comes on for our annual discussion of the WWDC 2023 Platforms
 featuredImage: https://images.transistor.fm/file/transistor/images/episode/1371158/full_1686058744-artwork.jpg
 youtubeID: Zf59sFAby94
 audioDuration: 4258
-videoDuration: 27428
+videoDuration: 4258
 podcastID: 336118a1
 ---
 <p>Peter comes on for our annual discussion of the WWDC 2023 Platforms State of the Union including Macs, Macros, Swift Data, watchOS, and the other thing 🥽.</p><p><b>Guest</b></p><ul><li>
