@@ -168,17 +168,17 @@
         "repositoryURL": "https://github.com/BrightDigit/SyndiKit",
         "state": {
           "branch": null,
-          "revision": "3777765645a0ca25a2cdd53df5a901a492315800",
-          "version": "0.3.1"
+          "revision": "238c8d85a94b67072c8fafcb4feff1b6df11d87b",
+          "version": "0.3.3"
         }
       },
       {
         "package": "XMLCoder",
-        "repositoryURL": "https://github.com/MaxDesiatov/XMLCoder",
+        "repositoryURL": "https://github.com/CoreOffice/XMLCoder",
         "state": {
           "branch": null,
-          "revision": "f30119af03996939cc4f54e0bf0dda9f88a84da5",
-          "version": "0.13.1"
+          "revision": "b1e944cbd0ef33787b13f639a5418d55b3bed501",
+          "version": "0.17.1"
         }
       },
       {

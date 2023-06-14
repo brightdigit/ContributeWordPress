@@ -61,7 +61,7 @@ public extension Podcast.Source {
       throw ImportError.missingFieldFromPodcastEpisode(episode, .episode)
     }
 
-    guard let summary = episode.summary ?? episode.subtitle ?? video.description.firstParagraph() else {
+    guard let summary = episode.summary?.firstSummaryParagraph() ?? episode.subtitle ?? video.description.firstParagraphText() else {
       throw ImportError.missingFieldFromPodcastEpisode(episode, .summary)
     }
 

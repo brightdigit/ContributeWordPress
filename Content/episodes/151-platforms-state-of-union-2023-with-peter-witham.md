@@ -1,11 +1,11 @@
 ---
 title: Platforms State of Union 2023 with Peter Witham
-date: 2023-06-06 09:48
-description: Peter comes on for our annual discussion of the WWDC 2023 Platforms State of the Union including Macs, Macros, Swift Data, watchOS, and the other thing 🥽.
+date: 2023-06-06 16:48
+description: "Peter comes on for our annual discussion of the WWDC 2023 Platforms State of the Union including Macs, Macros, Swift Data, watchOS, and the other thing \U0001F97D."
 featuredImage: https://images.transistor.fm/file/transistor/images/episode/1371158/full_1686058744-artwork.jpg
 youtubeID: Zf59sFAby94
 audioDuration: 4258
-videoDuration: 4258
+videoDuration: 5646
 podcastID: 336118a1
 ---
 <p>Peter comes on for our annual discussion of the WWDC 2023 Platforms State of the Union including Macs, Macros, Swift Data, watchOS, and the other thing 🥽.</p><p><b>Guest</b></p><ul><li>

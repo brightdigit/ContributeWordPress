@@ -21,18 +21,18 @@ extension String {
   public func convertedToSlug() -> String {
     var result: String?
 
-    #if os(Linux)
-      result = convertedToSlugBackCompat()
-    #else
-      if #available(OSX 10.11, *) {
-        if let latin = self.applyingTransform(StringTransform("Any-Latin; Latin-ASCII; Lower;"), reverse: false) {
-          let urlComponents = latin.components(separatedBy: String.slugSafeCharacters.inverted)
-          result = urlComponents.filter { $0 != "" }.joined(separator: "-")
-        }
-      } else {
-        result = convertedToSlugBackCompat()
+#if os(Linux)
+    result = convertedToSlugBackCompat()
+#else
+    if #available(OSX 10.11, *) {
+      if let latin = self.applyingTransform(StringTransform("Any-Latin; Latin-ASCII; Lower;"), reverse: false) {
+        let urlComponents = latin.components(separatedBy: String.slugSafeCharacters.inverted)
+        result = urlComponents.filter { $0 != "" }.joined(separator: "-")
       }
-    #endif
+    } else {
+      result = convertedToSlugBackCompat()
+    }
+#endif
 
     guard var result = result, result.count > 0 else {
       return self
@@ -47,10 +47,33 @@ extension String {
 
     return result
   }
+}
 
-  public func firstParagraph() -> String? {
+extension String {
+
+  public static let allParagraphTagRegex = try! NSRegularExpression(pattern: "<p[^>]*>(.*?)</p>", options: [])
+
+  public func firstSummaryParagraph() -> String? {
+    guard let htmlFirstParagraph = self.firstParagraphTag() else {
+      return firstParagraphText()
+    }
+
+    return htmlFirstParagraph
+  }
+
+  public func firstParagraphText() -> String? {
     components(separatedBy: .newlines).first { line in
       !line.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }?.trimmingCharacters(in: .whitespacesAndNewlines)
+  }
+
+  public func firstParagraphTag() -> String? {
+    let range = NSRange(location: 0, length: self.utf16.count)
+
+    guard let match = String.allParagraphTagRegex.firstMatch(in: self, options: [], range: range) else {
+      return nil
+    }
+
+    return (self as NSString).substring(with: match.range(at: 1))
   }
 }
