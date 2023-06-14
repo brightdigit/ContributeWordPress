@@ -1,205 +1,221 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Codextended",
-        "repositoryURL": "https://github.com/johnsundell/codextended.git",
-        "state": {
-          "branch": null,
-          "revision": "8d7c46dfc9c55240870cf5561d6cefa41e3d7105",
-          "version": "0.3.0"
-        }
-      },
-      {
-        "package": "CollectionConcurrencyKit",
-        "repositoryURL": "https://github.com/johnsundell/collectionConcurrencyKit.git",
-        "state": {
-          "branch": null,
-          "revision": "b4f23e24b5a1bff301efc5e70871083ca029ff95",
-          "version": "0.2.0"
-        }
-      },
-      {
-        "package": "Files",
-        "repositoryURL": "https://github.com/johnsundell/files.git",
-        "state": {
-          "branch": null,
-          "revision": "d273b5b7025d386feef79ef6bad7de762e106eaf",
-          "version": "4.2.0"
-        }
-      },
-      {
-        "package": "Ink",
-        "repositoryURL": "https://github.com/johnsundell/ink.git",
-        "state": {
-          "branch": null,
-          "revision": "77c3d8953374a9cf5418ef0bd7108524999de85a",
-          "version": "0.5.1"
-        }
-      },
-      {
-        "package": "Kanna",
-        "repositoryURL": "https://github.com/tid-kijyun/Kanna.git",
-        "state": {
-          "branch": null,
-          "revision": "f9e4922223dd0d3dfbf02ca70812cf5531fc0593",
-          "version": "5.2.7"
-        }
-      },
-      {
-        "package": "MarkdownGenerator",
-        "repositoryURL": "https://github.com/eneko/MarkdownGenerator.git",
-        "state": {
-          "branch": null,
-          "revision": "1fc31be6b66245187c3f87f35d86b6aeac6dfe7f",
-          "version": "0.5.0"
-        }
-      },
-      {
-        "package": "Options",
-        "repositoryURL": "https://github.com/BrightDigit/Options.git",
-        "state": {
-          "branch": null,
-          "revision": "ac181ab407ef0bc2860ea696498fc454e7626002",
-          "version": "0.2.0"
-        }
-      },
-      {
-        "package": "Plot",
-        "repositoryURL": "https://github.com/johnsundell/plot.git",
-        "state": {
-          "branch": null,
-          "revision": "c27f6857deeb4c4623db294172a8ec572790a9be",
-          "version": "0.10.0"
-        }
-      },
-      {
-        "package": "Prch",
-        "repositoryURL": "https://github.com/BrightDigit/Prch.git",
-        "state": {
-          "branch": null,
-          "revision": "600b49cc7a77271ea3d2a9f9e449be081562a087",
-          "version": "0.2.1"
-        }
-      },
-      {
-        "package": "Publish",
-        "repositoryURL": "https://github.com/johnsundell/publish.git",
-        "state": {
-          "branch": null,
-          "revision": "1c8ad00d39c985cb5d497153241a2f1b654e0d40",
-          "version": "0.9.0"
-        }
-      },
-      {
-        "package": "ReadingTimePublishPlugin",
-        "repositoryURL": "https://github.com/leogdion/ReadingTimePublishPlugin",
-        "state": {
-          "branch": "patch-2",
-          "revision": "7326962206ffdc08a23c87161aeab8c430adb21f",
-          "version": null
-        }
-      },
-      {
-        "package": "ShellOut",
-        "repositoryURL": "https://github.com/JohnSundell/ShellOut.git",
-        "state": {
-          "branch": null,
-          "revision": "e1577acf2b6e90086d01a6d5e2b8efdaae033568",
-          "version": "2.3.0"
-        }
-      },
-      {
-        "package": "Spinetail",
-        "repositoryURL": "https://github.com/BrightDigit/Spinetail.git",
-        "state": {
-          "branch": null,
-          "revision": "1bc157836771772dddea118ae3c1f9bfd4eea262",
-          "version": "0.3.0"
-        }
-      },
-      {
-        "package": "Splash",
-        "repositoryURL": "https://github.com/johnsundell/splash.git",
-        "state": {
-          "branch": null,
-          "revision": "7f4df436eb78fe64fe2c32c58006e9949fa28ad8",
-          "version": "0.16.0"
-        }
-      },
-      {
-        "package": "SplashPublishPlugin",
-        "repositoryURL": "https://github.com/johnsundell/splashpublishplugin",
-        "state": {
-          "branch": null,
-          "revision": "4fe79070f51e288bc8ba31934a3018cbe099d5f7",
-          "version": "0.2.0"
-        }
-      },
-      {
-        "package": "Sweep",
-        "repositoryURL": "https://github.com/johnsundell/sweep.git",
-        "state": {
-          "branch": null,
-          "revision": "801c2878e4c6c5baf32fe132e1f3f3af6f9fd1b0",
-          "version": "0.4.0"
-        }
-      },
-      {
-        "package": "swift-argument-parser",
-        "repositoryURL": "https://github.com/apple/swift-argument-parser",
-        "state": {
-          "branch": null,
-          "revision": "df9ee6676cd5b3bf5b330ec7568a5644f547201b",
-          "version": "1.1.3"
-        }
-      },
-      {
-        "package": "SwiftTube",
-        "repositoryURL": "https://github.com/BrightDigit/SwiftTube.git",
-        "state": {
-          "branch": null,
-          "revision": "11262e260b9a86aa6626b98e7fc8dfcb84e106d9",
-          "version": "0.2.0-beta.4"
-        }
-      },
-      {
-        "package": "SyndiKit",
-        "repositoryURL": "https://github.com/BrightDigit/SyndiKit",
-        "state": {
-          "branch": null,
-          "revision": "238c8d85a94b67072c8fafcb4feff1b6df11d87b",
-          "version": "0.3.3"
-        }
-      },
-      {
-        "package": "XMLCoder",
-        "repositoryURL": "https://github.com/CoreOffice/XMLCoder",
-        "state": {
-          "branch": null,
-          "revision": "b1e944cbd0ef33787b13f639a5418d55b3bed501",
-          "version": "0.17.1"
-        }
-      },
-      {
-        "package": "Yams",
-        "repositoryURL": "https://github.com/jpsim/Yams.git",
-        "state": {
-          "branch": null,
-          "revision": "9ff1cc9327586db4e0c8f46f064b6a82ec1566fa",
-          "version": "4.0.6"
-        }
-      },
-      {
-        "package": "YoutubePublishPlugin",
-        "repositoryURL": "https://github.com/tanabe1478/YoutubePublishPlugin.git",
-        "state": {
-          "branch": null,
-          "revision": "7616bb1d54999bef253846e2861cdbae8c3015fa",
-          "version": "1.0.1"
-        }
+  "pins" : [
+    {
+      "identity" : "codextended",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnsundell/codextended.git",
+      "state" : {
+        "revision" : "8d7c46dfc9c55240870cf5561d6cefa41e3d7105",
+        "version" : "0.3.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "collectionconcurrencykit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnsundell/collectionConcurrencyKit.git",
+      "state" : {
+        "revision" : "b4f23e24b5a1bff301efc5e70871083ca029ff95",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "files",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnsundell/files.git",
+      "state" : {
+        "revision" : "d273b5b7025d386feef79ef6bad7de762e106eaf",
+        "version" : "4.2.0"
+      }
+    },
+    {
+      "identity" : "ink",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnsundell/ink.git",
+      "state" : {
+        "revision" : "bcc9f219900a62c4210e6db726035d7f03ae757b",
+        "version" : "0.6.0"
+      }
+    },
+    {
+      "identity" : "kanna",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tid-kijyun/Kanna.git",
+      "state" : {
+        "revision" : "f9e4922223dd0d3dfbf02ca70812cf5531fc0593",
+        "version" : "5.2.7"
+      }
+    },
+    {
+      "identity" : "markdowngenerator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/eneko/MarkdownGenerator.git",
+      "state" : {
+        "revision" : "1fc31be6b66245187c3f87f35d86b6aeac6dfe7f",
+        "version" : "0.5.0"
+      }
+    },
+    {
+      "identity" : "npmpublishplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brightdigit/NPMPublishPlugin.git",
+      "state" : {
+        "revision" : "8d5ee2e220cc84d75efea9cebc18a881ba7158f5",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "options",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BrightDigit/Options.git",
+      "state" : {
+        "revision" : "ac181ab407ef0bc2860ea696498fc454e7626002",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "plot",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnsundell/plot.git",
+      "state" : {
+        "revision" : "271926b4413fe868739d99f5eadcf2bd6cd62fb8",
+        "version" : "0.14.0"
+      }
+    },
+    {
+      "identity" : "prch",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BrightDigit/Prch.git",
+      "state" : {
+        "revision" : "600b49cc7a77271ea3d2a9f9e449be081562a087",
+        "version" : "0.2.1"
+      }
+    },
+    {
+      "identity" : "publish",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnsundell/publish.git",
+      "state" : {
+        "revision" : "1c8ad00d39c985cb5d497153241a2f1b654e0d40",
+        "version" : "0.9.0"
+      }
+    },
+    {
+      "identity" : "readingtimepublishplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alexito4/ReadingTimePublishPlugin.git",
+      "state" : {
+        "revision" : "0a0bf141a5b626c2444601cf0ed7b2bfcfdabcdf",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "shellout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JohnSundell/ShellOut.git",
+      "state" : {
+        "revision" : "e1577acf2b6e90086d01a6d5e2b8efdaae033568",
+        "version" : "2.3.0"
+      }
+    },
+    {
+      "identity" : "spinetail",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BrightDigit/Spinetail.git",
+      "state" : {
+        "revision" : "1bc157836771772dddea118ae3c1f9bfd4eea262",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "splash",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnsundell/splash.git",
+      "state" : {
+        "revision" : "7f4df436eb78fe64fe2c32c58006e9949fa28ad8",
+        "version" : "0.16.0"
+      }
+    },
+    {
+      "identity" : "splashpublishplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnsundell/splashpublishplugin",
+      "state" : {
+        "revision" : "4fe79070f51e288bc8ba31934a3018cbe099d5f7",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "sweep",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnsundell/sweep.git",
+      "state" : {
+        "revision" : "801c2878e4c6c5baf32fe132e1f3f3af6f9fd1b0",
+        "version" : "0.4.0"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser",
+      "state" : {
+        "revision" : "fee6933f37fde9a5e12a1e4aeaa93fe60116ff2a",
+        "version" : "1.2.2"
+      }
+    },
+    {
+      "identity" : "swifttube",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BrightDigit/SwiftTube.git",
+      "state" : {
+        "revision" : "11262e260b9a86aa6626b98e7fc8dfcb84e106d9",
+        "version" : "0.2.0-beta.4"
+      }
+    },
+    {
+      "identity" : "syndikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BrightDigit/SyndiKit",
+      "state" : {
+        "revision" : "238c8d85a94b67072c8fafcb4feff1b6df11d87b",
+        "version" : "0.3.3"
+      }
+    },
+    {
+      "identity" : "transistorpublishplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brightdigit/TransistorPublishPlugin.git",
+      "state" : {
+        "revision" : "d8cb3c341cfea0495d99096c7caac4016884dc79",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "xmlcoder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CoreOffice/XMLCoder",
+      "state" : {
+        "revision" : "b1e944cbd0ef33787b13f639a5418d55b3bed501",
+        "version" : "0.17.1"
+      }
+    },
+    {
+      "identity" : "yams",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jpsim/Yams.git",
+      "state" : {
+        "revision" : "9ff1cc9327586db4e0c8f46f064b6a82ec1566fa",
+        "version" : "4.0.6"
+      }
+    },
+    {
+      "identity" : "youtubepublishplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tanabe1478/YoutubePublishPlugin.git",
+      "state" : {
+        "revision" : "7616bb1d54999bef253846e2861cdbae8c3015fa",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 2
 }
