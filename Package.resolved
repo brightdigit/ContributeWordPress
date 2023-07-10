@@ -5,8 +5,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brightdigit/Contribute.git",
       "state" : {
-        "branch" : "v1.0.0",
-        "revision" : "990821baa1d41d513718394b40f99c3d08341cd9"
+        "branch" : "shendy/develop/migration",
+        "revision" : "e657ec195c1f6455ecbc39ad57dbc2e5a6ca306d"
+      }
+    },
+    {
+      "identity" : "prch",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BrightDigit/Prch.git",
+      "state" : {
+        "revision" : "600b49cc7a77271ea3d2a9f9e449be081562a087",
+        "version" : "0.2.1"
       }
     },
     {

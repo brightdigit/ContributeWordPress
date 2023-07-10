@@ -19,8 +19,8 @@ public struct Specs: Codable {
   let featuredImage: String?
 }
 
-public extension Specs {
-  init(from source: WordPressSource) {
+extension Specs {
+  public init(from source: WordPressSource) {
     self.init(
       title: source.post.title.fixUnicodeEscape().dequote(),
       date: source.post.postDate,
