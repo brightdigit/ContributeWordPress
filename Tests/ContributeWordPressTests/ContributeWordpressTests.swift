@@ -1,7 +1,7 @@
-@testable import ContributeWordpress
+@testable import ContributeWordPress
 import XCTest
 
-final class ContributeWordpressTests: XCTestCase {
+final class ContributeWordPressTests: XCTestCase {
   func testExample() throws {
     // XCTest Documentation
     // https://developer.apple.com/documentation/xctest

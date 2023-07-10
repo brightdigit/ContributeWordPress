@@ -7,13 +7,13 @@
 import PackageDescription
 
 let package = Package(
-  name: "ContributeWordpress",
+  name: "ContributeWordPress",
   platforms: [.macOS(.v12)],
   products: [
     // Products define the executables and libraries a package produces, making them visible to other packages.
     .library(
-      name: "ContributeWordpress",
-      targets: ["ContributeWordpress"]
+      name: "ContributeWordPress",
+      targets: ["ContributeWordPress"]
     )
   ],
   dependencies: [
@@ -28,12 +28,12 @@ let package = Package(
   ],
   targets: [
     .target(
-      name: "ContributeWordpress",
+      name: "ContributeWordPress",
       dependencies: ["Contribute", "SyndiKit"]
     ),
     .testTarget(
-      name: "ContributeWordpressTests",
-      dependencies: ["ContributeWordpress"]
+      name: "ContributeWordPressTests",
+      dependencies: ["ContributeWordPress"]
     )
   ]
 )

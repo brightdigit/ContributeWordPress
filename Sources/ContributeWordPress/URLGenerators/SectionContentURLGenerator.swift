@@ -11,7 +11,7 @@ public struct SectionContentURLGenerator: ContentURLGenerator {
   public init() {}
 
   public func destinationURL(
-    basedOn source: WordPressSource,
+    from source: WordPressSource,
     atContentPathURL contentPathURL: URL
   ) -> URL {
     let sectionPath = contentPathURL.appendingPathComponent(source.sectionName)
