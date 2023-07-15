@@ -1,2 +1,2 @@
 # ContributeWordPress
-Import your Wordpress site into Publish
+Import your WordPress site into Publish

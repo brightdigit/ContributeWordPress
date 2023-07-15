@@ -3,6 +3,7 @@ import Foundation
 #if canImport(FoundationNetworking)
   import FoundationNetworking
 #endif
+
 public struct NetlifyRedirectFormatter: RedirectFormatter {
   public func redirectsURL(basedOnResourcesDirectoryURL resourcesDirURL: URL) -> URL {
     resourcesDirURL.appendingPathComponent("_redirects")

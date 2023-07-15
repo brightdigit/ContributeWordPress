@@ -1,4 +1,8 @@
+/// A type that represents a redirect.
 public struct RedirectItem {
-  let fromURLPath: String
-  let redirectURLPath: String
+  /// The old URL path.
+  public let fromURLPath: String
+
+  /// The new URL path.
+  public let redirectURLPath: String
 }

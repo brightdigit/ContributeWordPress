@@ -1,5 +1,4 @@
 // swift-tools-version: 5.8
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 // swiftlint:disable explicit_top_level_acl
 // swiftlint:disable prefixed_toplevel_constant
 // swiftlint:disable explicit_acl
@@ -10,7 +9,6 @@ let package = Package(
   name: "ContributeWordPress",
   platforms: [.macOS(.v12)],
   products: [
-    // Products define the executables and libraries a package produces, making them visible to other packages.
     .library(
       name: "ContributeWordPress",
       targets: ["ContributeWordPress"]

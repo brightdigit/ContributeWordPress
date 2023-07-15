@@ -1,40 +1,21 @@
 import Foundation
 import SyndiKit
 
-#if canImport(FoundationNetworking)
-  import FoundationNetworking
-#endif
-
-public struct WordPressImageImport: Hashable {
-  internal init(oldURL: URL, parentID: Int?, newPath: String) {
-    self.oldURL = oldURL
-    self.parentID = parentID
-    self.newPath = newPath
-  }
-
-  init?(post: WordPressPost, pathFromURL: (URL) -> String, urlFromURL: (URL) -> URL?) {
-    guard post.type == "attachment" else {
-      return nil
-    }
-
-    guard let attachmentURL = post.attachmentURL else {
-      return nil
-    }
-
-    let oldURL = urlFromURL(attachmentURL) ?? attachmentURL
-
-    self.init(
-      oldURL: oldURL,
-      parentID: post.parentID,
-      newPath: pathFromURL(oldURL)
-    )
-  }
-
-  let oldURL: URL
-  let parentID: Int?
-  let newPath: String
-}
-
+/// A protocol that defines the methods needed to download data from WordPress posts.
 public protocol Downloader {
-  func download(fromPosts posts: [WordPressPost], to resourceImagePath: URL, dryRun: Bool, allowsOverwrites: Bool) throws -> [WordPressImageImport]
+  /// Downloads images from the given posts to the given resource image path.
+  ///
+  /// - Parameters:
+  ///   - posts: The WordPress posts to download images from.
+  ///   - resourcePath: The path to where the downloaded images will be saved.
+  ///   - dryRun: Whether to download the images.
+  ///   - allowsOverwrites: Whether to overwrite existing images.
+  /// - Returns: An array of `WordPressImageImport` objects,
+  ///            one for each post image.
+  func download(
+    fromPosts posts: [WordPressPost],
+    to resourceImagePath: URL,
+    dryRun: Bool,
+    allowsOverwrites: Bool
+  ) throws -> [WordPressImageImport]
 }
