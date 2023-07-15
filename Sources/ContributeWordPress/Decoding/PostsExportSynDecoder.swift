@@ -6,25 +6,26 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
-/// A type that decodes WordPress xml files using the `SynDecoder`.
+/// A type that decodes WordPress export files using the `SynDecoder`.
 public struct PostsExportSynDecoder: PostsExportDecoder {
-  /// The decoder used to decode the WordPress xml file.
+  /// The decoder used to decode the WordPress export file.
   private let decoder: WordPressDecoder = SynDecoder()
 
   /// Returns an array of URLs for all of the files in the given directory.
   // swiftlint:disable:next line_length
-  private let fileURLFromDirectory: (URL) throws -> [URL] = Self.defaultFileURLs(atDirectory:)
+  private let fileURLsFromDirectory: (_ atDirectory: URL) throws -> [URL] = Self.defaultFileURLs(atDirectory:)
 
   /// Returns the last path component of the given URL without its extension.
+  /// This will be the section id for all posts found in the export file at given URL.
   private let keyFromURL: (URL) -> String = { $0.lastPathComponentWithoutExtension() }
 
-  /// Returns an array of `URL` for files found at the given directory.
+  /// A default logic for finding all files found at given directory.
   ///
   /// If the `directoryURL` is not valid directory, this method
   /// throws `ImportError.directory(:_)` error.
   ///
   /// - Parameter directoryURL: The directory URL.
-  /// - Returns: An array of file URLs, or `nil` if the directory could not be read.
+  /// - Returns: An array of export file URLs that can be found in the given directory.
   /// - Throws: An error if the directory could not be enumerated.
   private static func defaultFileURLs(atDirectory directoryURL: URL) throws -> [URL] {
     let enumerator = FileManager.default.enumerator(
@@ -56,11 +57,11 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
 
   /// Returns a dictionary of WordPress posts keyed by filename.
   ///
-  /// - Parameter directoryURL: The directory URL.
-  /// - Returns: A dictionary of filenames keys to lists of WordPress posts.
-  /// - Throws: An error if couldn't get the list of files at the given directory.
+  /// - Parameter directoryURL: The URL of the directory containing the exports.
+  /// - Returns: A dictionary of keys to lists of WordPress posts.
+  /// - Throws: An error if posts couldn't be extracted from any of the export files.
   public func posts(fromExportsAt directoryURL: URL) throws -> [String: [WordPressPost]] {
-    let files = try fileURLFromDirectory(directoryURL)
+    let files = try fileURLsFromDirectory(directoryURL)
 
     let feedPairs = try files.map { url -> (String, [WordPressPost]?) in
       try (self.keyFromURL(url), Self.postsFromURL(url, using: decoder))

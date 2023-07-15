@@ -121,3 +121,5 @@ excluded:
   - .build
 indentation_width:
   indentation_width: 2
+generic_type_name:
+  max_length: 31

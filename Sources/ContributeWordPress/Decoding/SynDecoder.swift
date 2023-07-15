@@ -5,13 +5,13 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
-/// An extension that enables SynDecoder to decode WordPress posts..
+/// An extension that enables SynDecoder to decode WordPress posts.
 extension SynDecoder: WordPressDecoder {
   /// Decodes an array of WordPress posts from the given data.
   ///
   /// - Parameters:
   ///   - data: The data to decode.
-  ///   - allowInvalidCharacters: Whether to allow invalid characters in the data.
+  ///   - allowInvalidCharacters: Whether to allow invalid characters in decoded data.
   /// - Returns: An array of WordPress posts, or nil if decoding failed.
   /// - Throws: An error if data couldn't be decoded.
   public func decodePosts(
