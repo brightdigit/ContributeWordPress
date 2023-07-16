@@ -7,7 +7,7 @@ import Yams
   import FoundationNetworking
 #endif
 
-/// A type that processes WordPress posts and generates Markdown files.
+/// A type that processes WordPress posts and generates Markdown files for each.
 public struct WordPressMarkdownProcessor<
   ContentURLGeneratorType: ContentURLGenerator,
   MarkdownContentBuilderType: MarkdownContentBuilder
@@ -40,6 +40,12 @@ public struct WordPressMarkdownProcessor<
     self.postFilters = postFilters
   }
 
+  /// Creates a directory with the given name in the specified content path URL.
+  ///
+  /// - Parameters:
+  ///   - directoryName: The name of the directory to create.
+  ///   - contentPathURL: The content path URL.
+  /// - Throws: An error if the directory creation fails.
   private func createDirectory(
     withName directoryName: String,
     in contentPathURL: URL
@@ -59,15 +65,18 @@ public struct WordPressMarkdownProcessor<
 
   /// Writes all posts to the given content path URL.
   ///
+  /// It creates the content directory if not already existed, where the posts are going
+  /// to be written at.
+  ///
   /// - Parameters:
-  ///   - allPosts: A dictionary of filenames keys to lists of WordPress posts.
+  ///   - allPosts: A dictionary of WordPress posts keyed by section name.
   ///   - images: An array of images that were imported from WordPress posts.
   ///   - imageRoot: The root path of the images directory.
   ///   - contentPathURL: The content path URL.
   ///   - htmlToMarkdown: A function that converts HTML to Markdown.
   /// - Throws: An error if an error occurs.
   private func writeAllPosts(
-    _ allPosts: [String: [WordPressPost]],
+    _ allPosts: SectionPostDictionary,
     withImages images: [WordPressImageImport],
     atImageRoot imageRoot: String,
     to contentPathURL: URL,

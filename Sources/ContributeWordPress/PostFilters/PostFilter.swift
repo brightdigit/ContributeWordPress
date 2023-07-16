@@ -1,13 +1,12 @@
-import Foundation
 import SyndiKit
 
-/// A protocol that defines a filter to be used to include or exclude WordPress posts.
+/// A protocol used as filter condition to include/exclude specific WordPress post
+/// in/from redirects list.
 public protocol PostFilter {
   /// Determines whether a WordPress post meets the criteria defined by the filter.
   ///
-  /// - Parameters:
-  ///   - post: The WordPressPost object being evaluated.
+  /// - Parameter post: The WordPress post being evaluated.
   /// - Returns: A boolean value indicating whether the post meets the criteria
-  ///            defined by the filter or not.
+  ///            defined by the filter.
   func include(_ post: WordPressPost) -> Bool
 }

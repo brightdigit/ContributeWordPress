@@ -1,7 +1,7 @@
 import Foundation
 import SyndiKit
 
-/// A protocol that defines the methods needed to download data from WordPress posts.
+/// A protocol for downloading resources from WordPress posts.
 public protocol Downloader {
   /// Downloads images from the given posts to the given resource image path.
   ///

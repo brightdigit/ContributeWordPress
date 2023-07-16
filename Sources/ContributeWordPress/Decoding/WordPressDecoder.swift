@@ -5,7 +5,7 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
-/// A protocol that defines a method to decode WordPress posts from raw data.
+/// A protocol for decoding WordPress posts from raw data.
 public protocol WordPressDecoder {
   /// Decodes an array of WordPress posts from the given data.
   ///
