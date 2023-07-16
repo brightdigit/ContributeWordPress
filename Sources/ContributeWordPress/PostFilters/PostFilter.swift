@@ -1,7 +1,7 @@
 import SyndiKit
 
-/// A protocol used as filter condition to include/exclude specific WordPress post
-/// in/from redirects list.
+/// A protocol used as a filter condition to include or exclude specific WordPress post
+/// in a redirects list.
 public protocol PostFilter {
   /// Determines whether a WordPress post meets the criteria defined by the filter.
   ///

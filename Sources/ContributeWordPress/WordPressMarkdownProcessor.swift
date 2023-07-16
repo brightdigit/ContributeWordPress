@@ -1,3 +1,4 @@
+// swiftlint:disable file_length
 import Contribute
 import Foundation
 import SyndiKit
@@ -13,10 +14,12 @@ public struct WordPressMarkdownProcessor<
   MarkdownContentBuilderType: MarkdownContentBuilder
 > where ContentURLGeneratorType.SourceType == WordPressSource,
   MarkdownContentBuilderType.SourceType == WordPressSource {
-  private let redirectListGenerator: RedirectListGenerator
+  /// The redirect formatter used by the processor.
   private let redirectFromatter: RedirectFormatter = NetlifyRedirectFormatter()
   private let downloader: Downloader = ImageDownloader()
   private let exportDecoder: PostsExportDecoder = PostsExportSynDecoder()
+
+  private let redirectListGenerator: RedirectListGenerator
   private let destinationURLGenerator: ContentURLGeneratorType
   private let contentBuilder: MarkdownContentBuilderType
   private let postFilters: [PostFilter]
@@ -65,9 +68,6 @@ public struct WordPressMarkdownProcessor<
 
   /// Writes all posts to the given content path URL.
   ///
-  /// It creates the content directory if not already existed, where the posts are going
-  /// to be written at.
-  ///
   /// - Parameters:
   ///   - allPosts: A dictionary of WordPress posts keyed by section name.
   ///   - images: An array of images that were imported from WordPress posts.
@@ -107,8 +107,8 @@ public struct WordPressMarkdownProcessor<
 
   /// Begins the processing of the WordPress posts.
   ///
-  /// - Parameter settings: The WordPress Markdown processor settings.
-  /// - Throws: An error if the processing fails.
+  /// - Parameter settings: The required settings for processing WordPress exports.
+  /// - Throws: An error if the processing failed at any step.
   public func begin(withSettings settings: WordPressMarkdownProcessorSettings) throws {
     let allPosts = try exportDecoder.posts(fromExportsAt: settings.directoryURL)
 
@@ -140,11 +140,15 @@ public struct WordPressMarkdownProcessor<
 }
 
 extension WordPressMarkdownProcessor {
-  public typealias WordPressFrontMatterYAMLExporter = FrontMatterYAMLExporter<
+  private typealias WordPressFrontMatterYAMLExporter = FrontMatterYAMLExporter<
     WordPressSource,
     SpecFrontMatterTranslator
   >
 
+  /// Initializes a new `WordPressMarkdownProcessor` instance with default values for
+  /// `ContentURLGeneratorType` and `MarkdownContentBuilderType`.
+  ///
+  /// - Parameter postFilters: The post filters.
   public init(postFilters: [PostFilter]) where
     ContentURLGeneratorType == SectionContentURLGenerator,
     MarkdownContentBuilderType == MarkdownContentYAMLBuilder<

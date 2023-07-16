@@ -6,7 +6,7 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
-/// A type that downloads images from WordPress posts.
+/// A type that downloads images required by WordPress posts.
 public struct ImageDownloader: Downloader {
   private let downloadPathFromURL: (URL) -> String = Self.defaultDownloadPath(fromURL:)
   private let downloadURLFromURL: (URL) -> URL? = Self.defaultDownloadURL(fromURL:)
@@ -25,14 +25,17 @@ public struct ImageDownloader: Downloader {
     return components.url
   }
 
-  /// Downloads images from the given posts to the given resource image path.
+  /// Downloads images from WordPress posts.
   ///
   /// - Parameters:
-  ///   - posts: The WordPress posts to download images from.
-  ///   - resourceImagePath: The path to where downloaded images be saved.
-  ///   - dryRun: Whether to only print the images that would be downloaded.
-  ///   - allowsOverwrites: Whether to overwrite existing images.
-  /// - Returns: An array `WordPressImageImport` objects, one for each image that was downloaded.
+  ///   - posts: The array of WordPress posts from which to download images.
+  ///   - resourceImagePath: The directory path where the downloaded images will be saved.
+  ///   - dryRun: To perform a dry run without actually downloading the images.
+  ///   - allowsOverwrites: To allow overwriting existing images.
+  /// - Returns: An array of `WordPressImageImport` objects, one for each image that
+  ///            was downloaded.
+  /// - Throws: An `ImportError.imageDownloads` error if there are any errors during
+  ///           the image download process.
   public func download(
     fromPosts posts: [WordPressPost],
     to resourceImagePath: URL,
@@ -40,15 +43,11 @@ public struct ImageDownloader: Downloader {
     allowsOverwrites: Bool
   ) throws -> [WordPressImageImport] {
     let imagePosts = Set(posts.compactMap { post in
-      let i = WordPressImageImport(
+      WordPressImageImport(
         post: post,
-        pathFromURL: self.downloadPathFromURL,
-        urlFromURL: self.downloadURLFromURL
+        newPathFromURL: self.downloadPathFromURL,
+        oldURLFromURL: self.downloadURLFromURL
       )
-
-      print(i?.oldURL)
-
-      return i
     })
 
     guard !dryRun else {
