@@ -5,10 +5,17 @@ import Foundation
 #endif
 
 extension URL {
+  /// Returns the last path component of the URL without the file extension.
+  ///
+  /// - Returns: The last path component without the file extension.
   internal func lastPathComponentWithoutExtension() -> String {
     deletingPathExtension().lastPathComponent
   }
 
+  /// Calculates the relative path between two file URLs.
+  ///
+  /// - Parameter base: The base URL from which the relative path is calculated.
+  /// - Returns: The relative path from the base URL to the current URL.
   internal func relativePath(from base: URL) -> String? {
     // Ensure that both URLs represent files:
     guard isFileURL, base.isFileURL else {
