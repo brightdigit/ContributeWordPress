@@ -16,8 +16,8 @@ let package = Package(
   ],
   dependencies: [
     .package(
-      url: "https://github.com/brightdigit/Contribute.git",
-      branch: "shendy/develop/migration"
+      name: "Contribute",
+      path: "../Contribute"
     ),
     .package(
       url: "https://github.com/brightdigit/SyndiKit.git",

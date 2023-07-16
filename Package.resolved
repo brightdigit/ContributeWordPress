@@ -1,24 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "contribute",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/brightdigit/Contribute.git",
-      "state" : {
-        "branch" : "shendy/develop/migration",
-        "revision" : "e657ec195c1f6455ecbc39ad57dbc2e5a6ca306d"
-      }
-    },
-    {
-      "identity" : "prch",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/BrightDigit/Prch.git",
-      "state" : {
-        "revision" : "600b49cc7a77271ea3d2a9f9e449be081562a087",
-        "version" : "0.2.1"
-      }
-    },
-    {
       "identity" : "syndikit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brightdigit/SyndiKit",
