@@ -36,8 +36,8 @@ public struct WordPressImageImport: Hashable {
   ///   - urlFromURL: A closure that maps the original image URL to a new URL, if needed.
   public init?(
     post: WordPressPost,
-    newPathFromURL: (URL) -> String,
-    oldURLFromURL: (URL) -> URL?
+    oldURLFromURL: (URL) -> URL?,
+    newPathFromURL: (URL) -> String
   ) {
     guard post.type == "attachment" else {
       return nil

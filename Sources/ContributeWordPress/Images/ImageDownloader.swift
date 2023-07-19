@@ -8,9 +8,9 @@ import SyndiKit
 
 /// A type that downloads images required by WordPress posts.
 public struct ImageDownloader: Downloader {
-  private let downloadPathFromURL: (URL) -> String = Self.defaultDownloadPath(fromURL:)
-  private let downloadURLFromURL: (URL) -> URL? = Self.defaultDownloadURL(fromURL:)
-  private let urlDownloader: URLDownloader = FileURLDownloader()
+  private let downloadPathFromURL: (URL) -> String
+  private let downloadURLFromURL: (URL) -> URL?
+  private let urlDownloader: URLDownloader
 
   private static func defaultDownloadPath(fromURL url: URL) -> String {
     let directoryPrefix = url.host?.components(separatedBy: ".").first ?? "default"
@@ -23,6 +23,16 @@ public struct ImageDownloader: Downloader {
     }
     components.query = nil
     return components.url
+  }
+
+  init(
+    downloadURLFromURL: @escaping (URL) -> URL? = Self.defaultDownloadURL(fromURL:),
+    downloadPathFromURL: @escaping (URL) -> String = Self.defaultDownloadPath(fromURL:),
+    urlDownloader: URLDownloader = FileURLDownloader()
+  ) {
+    self.downloadURLFromURL = downloadURLFromURL
+    self.downloadPathFromURL = downloadPathFromURL
+    self.urlDownloader = urlDownloader
   }
 
   /// Downloads images from WordPress posts.
@@ -45,8 +55,8 @@ public struct ImageDownloader: Downloader {
     let imagePosts = Set(posts.compactMap { post in
       WordPressImageImport(
         post: post,
-        newPathFromURL: self.downloadPathFromURL,
-        oldURLFromURL: self.downloadURLFromURL
+        oldURLFromURL: self.downloadURLFromURL,
+        newPathFromURL: self.downloadPathFromURL
       )
     })
 
@@ -60,7 +70,9 @@ public struct ImageDownloader: Downloader {
 
     for image in imagePosts {
       group.enter()
+
       let destinationURL = resourceImagePath.appendingPathComponent(image.newPath)
+
       urlDownloader.download(
         from: image.oldURL,
         to: destinationURL,

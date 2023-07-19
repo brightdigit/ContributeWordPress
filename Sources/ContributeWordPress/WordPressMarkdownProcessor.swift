@@ -16,7 +16,7 @@ public struct WordPressMarkdownProcessor<
   MarkdownContentBuilderType.SourceType == WordPressSource {
   /// The redirect formatter used by the processor.
   private let redirectFromatter: RedirectFormatter = NetlifyRedirectFormatter()
-  private let downloader: Downloader = ImageDownloader()
+  private var downloader: Downloader = ImageDownloader()
   private let exportDecoder: PostsExportDecoder = PostsExportSynDecoder()
 
   private let redirectListGenerator: RedirectListGenerator
@@ -109,7 +109,20 @@ public struct WordPressMarkdownProcessor<
   ///
   /// - Parameter settings: The required settings for processing WordPress exports.
   /// - Throws: An error if the processing failed at any step.
-  public func begin(withSettings settings: WordPressMarkdownProcessorSettings) throws {
+  mutating public func begin(withSettings settings: WordPressMarkdownProcessorSettings) throws {
+
+    if let importImagePathURL = settings.importImagePathURL {
+      downloader = ImageDownloader(
+        downloadURLFromURL: { url in
+          return importImagePathURL.appendingPathComponent(url.path)
+        },
+        downloadPathFromURL: { url in
+          // TODO: I am a bit confused why .suffix(3) worked here, please recheck.
+          return (["default"] + url.pathComponents.suffix(3)).joined(separator: "/")
+        }
+      )
+    }
+
     let allPosts = try exportDecoder.posts(fromExportsAt: settings.directoryURL)
 
     try redirectListGenerator.writeRedirects(
