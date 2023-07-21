@@ -80,13 +80,16 @@ public struct WordPressMarkdownProcessor<
     withImages images: [WordPressImageImport],
     atImageRoot imageRoot: String,
     to contentPathURL: URL,
-    using htmlToMarkdown: @escaping (String) throws -> String
+    using htmlToMarkdown: @escaping (String) throws -> String,
+    htmlFromPost: ((WordPressPost) -> String)? = nil
   ) throws {
     try allPosts.forEach { args in
       try createDirectory(withName: args.key, in: contentPathURL)
       try args.value
         .filter(self.postFilters.postSatisfiesAll)
         .forEach { post in
+          // From the list of images attached to this post,
+          // choose the first one as featuredImage
           let featuredImagePath = images.first { $0.parentID == post.ID }.map {
             ["", imageRoot, $0.newPath].joined(separator: "/")
           }
@@ -95,7 +98,8 @@ public struct WordPressMarkdownProcessor<
             from: .init(
               sectionName: args.key,
               post: post,
-              featuredImage: featuredImagePath
+              featuredImage: featuredImagePath,
+              htmlFromPost: htmlFromPost
             ),
             atContentPathURL: contentPathURL,
             basedOn: self.destinationURLGenerator,
@@ -111,6 +115,18 @@ public struct WordPressMarkdownProcessor<
   /// - Throws: An error if the processing failed at any step.
   mutating public func begin(withSettings settings: WordPressMarkdownProcessorSettings) throws {
 
+    // 1. Decodes WordPress posts from exports directory.
+    let allPosts = try exportDecoder.posts(fromExportsAt: settings.directoryURL)
+
+    // 2. Writes redirects for all decoded WordPress posts.
+    try redirectListGenerator.writeRedirects(
+      fromPosts: allPosts,
+      formattedWith: redirectFromatter,
+      inDirectory: settings.resourcesPathURL
+    )
+
+    // Prepare ImageDownloader with custom url builders, if a local images directory
+    // is provided to import images from.
     if let importImagePathURL = settings.importImagePathURL {
       downloader = ImageDownloader(
         downloadURLFromURL: { url in
@@ -123,14 +139,7 @@ public struct WordPressMarkdownProcessor<
       )
     }
 
-    let allPosts = try exportDecoder.posts(fromExportsAt: settings.directoryURL)
-
-    try redirectListGenerator.writeRedirects(
-      fromPosts: allPosts,
-      formattedWith: redirectFromatter,
-      inDirectory: settings.resourcesPathURL
-    )
-
+    // 3. Download images for all decoded WordPress posts so far.
     let imageImports = try downloader.download(
       fromPosts: allPosts.flatMap(\.value),
       to: settings.resourceImagePathURL,
@@ -138,16 +147,33 @@ public struct WordPressMarkdownProcessor<
       allowsOverwrites: settings.overwriteImages
     )
 
+    // 4. Builds a relative path representing image resources under
+    //    resources directory.
+    // ex: media/wp-images is the relative path directory built from /Resources/media/wp-images and /Resources
     let imageRoot = settings.resourceImagePathURL.relativePath(
       from: settings.resourcesPathURL
     ) ?? settings.resourcesPathURL.path
 
+    let htmlFromPost: ((WordPressPost) -> String)?
+    if let imagesRootURL = settings.imagesRootURL {
+      htmlFromPost = { post in
+        post.body.replacingOccurrences(
+          of: "\(imagesRootURL)/wp-content/uploads",
+          with: "/\(imageRoot)/default"
+        )
+      }
+    } else {
+      htmlFromPost = nil
+    }
+
+    // 5. Starts writing the markdown files for all WordPress post,
     try writeAllPosts(
       allPosts,
       withImages: imageImports,
       atImageRoot: imageRoot,
       to: settings.contentPathURL,
-      using: type(of: settings).markdownFrom(html:)
+      using: type(of: settings).markdownFrom(html:),
+      htmlFromPost: htmlFromPost
     )
   }
 }

@@ -17,6 +17,9 @@ public protocol WordPressMarkdownProcessorSettings {
   /// The URL of the directory that the posts images should be imported.
   var importImagePathURL: URL? { get }
 
+  // TODO: add doc here
+  var imagesRootURL: URL? { get }
+
   /// Whether to overwrite existing images.
   var overwriteImages: Bool { get }
 

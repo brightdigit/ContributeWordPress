@@ -12,11 +12,14 @@ public struct WordPressSource {
 
   /// Optional URL string pointing to the featured image of the post.
   public let featuredImage: String?
+
+  // TODO: Add doc here
+  public var htmlFromPost: ((WordPressPost) -> String)? = nil
 }
 
 extension WordPressSource: HTMLSource {
   /// The HTML body of the WordPress post.
   public var html: String {
-    post.body
+    self.htmlFromPost?(post) ?? post.body
   }
 }

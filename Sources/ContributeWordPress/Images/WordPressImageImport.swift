@@ -48,11 +48,12 @@ public struct WordPressImageImport: Hashable {
     }
 
     let oldURL = oldURLFromURL(attachmentURL) ?? attachmentURL
+    let newPath = newPathFromURL(oldURL)
 
     self.init(
       oldURL: oldURL,
       parentID: post.parentID,
-      newPath: newPathFromURL(oldURL)
+      newPath: newPath
     )
   }
 }
