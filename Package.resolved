@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "syndikit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/brightdigit/SyndiKit",
-      "state" : {
-        "revision" : "238c8d85a94b67072c8fafcb4feff1b6df11d87b",
-        "version" : "0.3.3"
-      }
-    },
-    {
       "identity" : "xmlcoder",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/CoreOffice/XMLCoder",

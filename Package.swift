@@ -20,8 +20,8 @@ let package = Package(
       path: "../Contribute"
     ),
     .package(
-      url: "https://github.com/brightdigit/SyndiKit.git",
-      from: "0.3.0"
+      name: "SyndiKit",
+      path: "../SyndiKit"
     )
   ],
   targets: [
