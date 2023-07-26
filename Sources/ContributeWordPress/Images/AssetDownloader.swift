@@ -6,8 +6,8 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
-/// A type that downloads images required by WordPress posts.
-public struct ImageDownloader: Downloader {
+/// A type that downloads assets required by WordPress posts.
+public struct AssetDownloader: Downloader {
   private let downloadPathFromURL: (URL) -> String
   private let downloadURLFromURL: (URL) -> URL?
   private let urlDownloader: URLDownloader
@@ -26,60 +26,53 @@ public struct ImageDownloader: Downloader {
   }
 
   init(
-    downloadURLFromURL: @escaping (URL) -> URL? = Self.defaultDownloadURL(fromURL:),
     downloadPathFromURL: @escaping (URL) -> String = Self.defaultDownloadPath(fromURL:),
+    downloadURLFromURL: @escaping (URL) -> URL? = Self.defaultDownloadURL(fromURL:),
     urlDownloader: URLDownloader = FileURLDownloader()
   ) {
-    self.downloadURLFromURL = downloadURLFromURL
     self.downloadPathFromURL = downloadPathFromURL
+    self.downloadURLFromURL = downloadURLFromURL
     self.urlDownloader = urlDownloader
   }
 
-  /// Downloads images from WordPress posts.
+  /// Downloads assets from WordPress posts.
   ///
   /// - Parameters:
-  ///   - posts: The array of WordPress posts from which to download images.
-  ///   - resourceImagePath: The directory path where the downloaded images will be saved.
-  ///   - dryRun: To perform a dry run without actually downloading the images.
-  ///   - allowsOverwrites: To allow overwriting existing images.
-  /// - Returns: An array of `WordPressImageImport` objects, one for each image that
-  ///            was downloaded.
-  /// - Throws: An `ImportError.imageDownloads` error if there are any errors during
-  ///           the image download process.
+  ///   - assets: The array of imported assets to be downloaded.
+  ///   - resourceImagePath: The directory path where the downloaded assets will be saved.
+  ///   - dryRun: To perform a dry run without actually downloading the assets.
+  ///   - allowsOverwrites: To allow overwriting existing assets.
+  /// - Throws: An `ImportError.assetDownloads` error if there are any errors during
+  ///           the download process.
   public func download(
-    fromPosts posts: [WordPressPost],
+    assets: [WordPressAssetImport],
     to resourceImagePath: URL,
     dryRun: Bool,
     allowsOverwrites: Bool
-  ) throws -> [WordPressImageImport] {
-    let imagePosts = Set(posts.compactMap { post in
-      WordPressImageImport(
-        post: post,
-        oldURLFromURL: self.downloadURLFromURL,
-        newPathFromURL: self.downloadPathFromURL
-      )
-    })
-
+  ) throws {
     guard !dryRun else {
-      return .init(imagePosts)
+      return
     }
 
     let group = DispatchGroup()
 
     var errors = [URL: Error]()
 
-    for image in imagePosts {
+    for asset in assets {
       group.enter()
 
-      let destinationURL = resourceImagePath.appendingPathComponent(image.newPath)
+      let fromURL = self.downloadURLFromURL(asset.oldURL) ?? asset.oldURL
+      let newPath = self.downloadPathFromURL(asset.oldURL)
+
+      let destinationURL = resourceImagePath.appendingPathComponent(newPath)
 
       urlDownloader.download(
-        from: image.oldURL,
+        from: fromURL,
         to: destinationURL,
         allowOverwrite: allowsOverwrites
       ) { error in
         if let error = error {
-          errors[image.oldURL] = error
+          errors[asset.oldURL] = error
         }
         group.leave()
       }
@@ -88,9 +81,8 @@ public struct ImageDownloader: Downloader {
     group.wait()
 
     guard errors.isEmpty else {
-      throw ImportError.imageDownloads(errors)
+      throw ImportError.assetDownloads(errors)
     }
-
-    return .init(imagePosts)
   }
+
 }

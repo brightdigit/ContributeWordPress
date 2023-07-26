@@ -3,22 +3,34 @@ import Foundation
 /// A protocol that defines the settings for the `WordPressMarkdownProcessor`.
 public protocol WordPressMarkdownProcessorSettings {
   /// The URL for the content path
+  ///
+  /// Example: Content
   var contentPathURL: URL { get }
 
   /// The URL for the resources path
+  ///
+  /// Example: Resources
   var resourcesPathURL: URL { get }
 
   /// The URL for the directory
+  ///
+  /// Example: Import/WordPress
   var directoryURL: URL { get }
 
   /// The URL of the directory that the resource images will be written to.
+  ///
+  /// Example: Resources/media/wp-images
   var resourceImagePathURL: URL { get }
 
   /// The URL of the directory that the posts images should be imported.
+  ///
+  /// Example: WordPress/html/
   var importImagePathURL: URL? { get }
 
-  // TODO: add doc here
-  var imagesRootURL: URL? { get }
+  /// The URL from which assets will be downloaded
+  ///
+  /// Example: https://websitename.com
+  var assetsSiteURL: URL { get }
 
   /// Whether to overwrite existing images.
   var overwriteImages: Bool { get }

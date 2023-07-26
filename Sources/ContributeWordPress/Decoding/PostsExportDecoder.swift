@@ -5,8 +5,9 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
+public typealias SectionName = String
 /// A dictionary of WordPress posts keyed by section name.
-public typealias SectionPostDictionary = [String: [WordPressPost]]
+public typealias SectionPostDictionary = [SectionName: [WordPressPost]]
 
 /// A protocol for decoding WordPress posts from exports.
 public protocol PostsExportDecoder {
@@ -16,5 +17,5 @@ public protocol PostsExportDecoder {
   /// - Parameter directoryURL: The URL of the directory containing the exports.
   /// - Returns: A dictionary of WordPress posts keyed by section name.
   /// - Throws: An error if posts couldn't be extracted from any of the export files.
-  func posts(fromExportsAt directoryURL: URL) throws -> SectionPostDictionary
+  func posts(fromExportsAt directoryURL: URL) throws -> [SectionName: [WordPressPost]]
 }

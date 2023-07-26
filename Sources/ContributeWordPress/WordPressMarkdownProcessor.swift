@@ -16,7 +16,7 @@ public struct WordPressMarkdownProcessor<
   MarkdownContentBuilderType.SourceType == WordPressSource {
   /// The redirect formatter used by the processor.
   private let redirectFromatter: RedirectFormatter = NetlifyRedirectFormatter()
-  private var downloader: Downloader = ImageDownloader()
+  private var downloader: Downloader = AssetDownloader()
   private let exportDecoder: PostsExportDecoder = PostsExportSynDecoder()
 
   private let redirectListGenerator: RedirectListGenerator
@@ -70,15 +70,15 @@ public struct WordPressMarkdownProcessor<
   ///
   /// - Parameters:
   ///   - allPosts: A dictionary of WordPress posts keyed by section name.
-  ///   - images: An array of images that were imported from WordPress posts.
-  ///   - imageRoot: The root path of the images directory.
+  ///   - assets: An array of assets that were imported from WordPress posts.
+  ///   - assetRoot: The root path of the assets directory.
   ///   - contentPathURL: The content path URL.
   ///   - htmlToMarkdown: A function that converts HTML to Markdown.
   /// - Throws: An error if an error occurs.
   private func writeAllPosts(
-    _ allPosts: SectionPostDictionary,
-    withImages images: [WordPressImageImport],
-    atImageRoot imageRoot: String,
+    _ allPosts: [SectionName: [WordPressPost]],
+    withAssets assets: [WordPressAssetImport],
+    atAssetRoot assetRoot: String,
     to contentPathURL: URL,
     using htmlToMarkdown: @escaping (String) throws -> String,
     htmlFromPost: ((WordPressPost) -> String)? = nil
@@ -88,10 +88,11 @@ public struct WordPressMarkdownProcessor<
       try args.value
         .filter(self.postFilters.postSatisfiesAll)
         .forEach { post in
+          // @Leo, it might find a pdf as first match
           // From the list of images attached to this post,
           // choose the first one as featuredImage
-          let featuredImagePath = images.first { $0.parentID == post.ID }.map {
-            ["", imageRoot, $0.newPath].joined(separator: "/")
+          let featuredImagePath = assets.first { $0.parentID == post.ID }.map {
+            ["", assetRoot, $0.newPath].joined(separator: "/")
           }
 
           _ = try self.contentBuilder.write(
@@ -109,6 +110,12 @@ public struct WordPressMarkdownProcessor<
     }
   }
 
+  /**
+   1. Go through posts and find all images
+   2. Modify all posts with their new urls
+   3. Download from remote site OR copy from local depending on options passed
+   */
+
   /// Begins the processing of the WordPress posts.
   ///
   /// - Parameter settings: The required settings for processing WordPress exports.
@@ -125,52 +132,70 @@ public struct WordPressMarkdownProcessor<
       inDirectory: settings.resourcesPathURL
     )
 
-    // Prepare ImageDownloader with custom url builders, if a local images directory
-    // is provided to import images from.
+    // 3. Calculate assets root path for assets under resources directory.
+    // ex: media/wp-images is the relative path directory built from /Resources/media/wp-images and /Resources
+    let assetRoot = settings.resourceImagePathURL.relativePath(
+      from: settings.resourcesPathURL
+    ) ?? settings.resourcesPathURL.path
+
+
+    // 4. Build asset imports from all posts
+    let assetsImports: [WordPressAssetImport] = {
+      allPosts
+        .flatMap(\.value)
+        .filter { $0.type == "post" }
+        .map { post in
+          (
+            try? post.body
+              .matches(of: Regex("\(settings.assetsSiteURL)/wp-content/uploads([^\"]+)"))
+              .map { $0.output.compactMap { $0.substring } }
+              .compactMap { $0.first }
+              .compactMap {
+                WordPressAssetImport(
+                  forPost: post,
+                  oldUrl: String($0),
+                  assetRoot: assetRoot,
+                  assetSiteURL: settings.assetsSiteURL
+                )
+              }
+          ) ?? []
+        }
+        .flatMap { $0 }
+
+    }()
+
+    // 5. Get ready to download all assets
     if let importImagePathURL = settings.importImagePathURL {
-      downloader = ImageDownloader(
+      downloader = AssetDownloader(
+        downloadPathFromURL: { url in
+          return (["default"] + url.pathComponents.suffix(3)).joined(separator: "/")
+        },
         downloadURLFromURL: { url in
           return importImagePathURL.appendingPathComponent(url.path)
-        },
-        downloadPathFromURL: { url in
-          // TODO: I am a bit confused why .suffix(3) worked here, please recheck.
-          return (["default"] + url.pathComponents.suffix(3)).joined(separator: "/")
         }
       )
     }
 
-    // 3. Download images for all decoded WordPress posts so far.
-    let imageImports = try downloader.download(
-      fromPosts: allPosts.flatMap(\.value),
+    try downloader.download(
+      assets: assetsImports,
       to: settings.resourceImagePathURL,
       dryRun: settings.skipDownload,
       allowsOverwrites: settings.overwriteImages
     )
 
-    // 4. Builds a relative path representing image resources under
-    //    resources directory.
-    // ex: media/wp-images is the relative path directory built from /Resources/media/wp-images and /Resources
-    let imageRoot = settings.resourceImagePathURL.relativePath(
-      from: settings.resourcesPathURL
-    ) ?? settings.resourcesPathURL.path
-
-    let htmlFromPost: ((WordPressPost) -> String)?
-    if let imagesRootURL = settings.imagesRootURL {
-      htmlFromPost = { post in
-        post.body.replacingOccurrences(
-          of: "\(imagesRootURL)/wp-content/uploads",
-          with: "/\(imageRoot)/default"
-        )
-      }
-    } else {
-      htmlFromPost = nil
+    // 6. To modify asset urls with local path instead
+    let htmlFromPost: ((WordPressPost) -> String) = { post in
+      post.body.replacingOccurrences(
+        of: "\(settings.assetsSiteURL)/wp-content/uploads",
+        with: "/\(assetRoot)/default"
+      )
     }
 
-    // 5. Starts writing the markdown files for all WordPress post,
+    // 7. Starts writing the markdown files for all WordPress post,
     try writeAllPosts(
       allPosts,
-      withImages: imageImports,
-      atImageRoot: imageRoot,
+      withAssets: assetsImports,
+      atAssetRoot: assetRoot,
       to: settings.contentPathURL,
       using: type(of: settings).markdownFrom(html:),
       htmlFromPost: htmlFromPost

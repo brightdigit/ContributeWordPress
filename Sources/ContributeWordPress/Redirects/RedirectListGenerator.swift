@@ -11,7 +11,7 @@ public protocol RedirectListGenerator {
   ///
   /// - Parameter allPosts: A dictionary of WordPress posts keyed by section name.
   /// - Returns: An array of `RedirectItem` representing the redirects.
-  func redirects(fromWordPressPosts allPosts: SectionPostDictionary) -> [RedirectItem]
+  func redirects(fromWordPressPosts allPosts: [SectionName: [WordPressPost]]) -> [RedirectItem]
 }
 
 extension RedirectListGenerator {
@@ -24,7 +24,7 @@ extension RedirectListGenerator {
   ///   - formatter: The redirect formatter to use.
   /// - Returns: A string representation of the formatted redirects.
   public func redirects(
-    fromPosts posts: SectionPostDictionary,
+    fromPosts posts: [SectionName: [WordPressPost]],
     formattedWith formatter: RedirectFormatter
   ) -> String {
     let redirects = self.redirects(fromWordPressPosts: posts)
@@ -40,7 +40,7 @@ extension RedirectListGenerator {
   ///   - directoryURL: The directory URL where the redirects file should be written.
   /// - Throws: An error if the writing operation fails.
   public func writeRedirects(
-    fromPosts posts: SectionPostDictionary,
+    fromPosts posts: [SectionName: [WordPressPost]],
     formattedWith formatter: RedirectFormatter,
     inDirectory directoryURL: URL
   ) throws {
