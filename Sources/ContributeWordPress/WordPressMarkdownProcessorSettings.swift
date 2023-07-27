@@ -17,25 +17,25 @@ public protocol WordPressMarkdownProcessorSettings {
   /// Example: Import/WordPress
   var directoryURL: URL { get }
 
-  /// The URL of the directory that the resource images will be written to.
+  /// The URL of the directory that the resource assets will be written to.
   ///
-  /// Example: Resources/media/wp-images
-  var resourceImagePathURL: URL { get }
+  /// Example: Resources/media/wp-assets
+  var resourceAssetPathURL: URL { get }
 
-  /// The URL of the directory that the posts images should be imported.
+  /// The URL of the directory that the posts assets should be imported.
   ///
   /// Example: WordPress/html/
-  var importImagePathURL: URL? { get }
+  var importAssetPathURL: URL? { get }
 
   /// The URL from which assets will be downloaded
   ///
   /// Example: https://websitename.com
   var assetsSiteURL: URL { get }
 
-  /// Whether to overwrite existing images.
-  var overwriteImages: Bool { get }
+  /// Whether to overwrite existing assets.
+  var overwriteAssets: Bool { get }
 
-  /// Whether to skip downloading images.
+  /// Whether to skip downloading assets.
   var skipDownload: Bool { get }
 
   /// Converts the given HTML to Markdown.

@@ -133,8 +133,8 @@ public struct WordPressMarkdownProcessor<
     )
 
     // 3. Calculate assets root path for assets under resources directory.
-    // ex: media/wp-images is the relative path directory built from /Resources/media/wp-images and /Resources
-    let assetRoot = settings.resourceImagePathURL.relativePath(
+    // ex: media/wp-assets is the relative path directory built from /Resources/media/wp-assets and /Resources
+    let assetRoot = settings.resourceAssetPathURL.relativePath(
       from: settings.resourcesPathURL
     ) ?? settings.resourcesPathURL.path
 
@@ -168,7 +168,7 @@ public struct WordPressMarkdownProcessor<
     }()
 
     // 5. Get ready to download all assets
-    if let importImagePathURL = settings.importImagePathURL {
+    if let importImagePathURL = settings.importAssetPathURL {
       downloader = AssetDownloader(
         downloadPathFromURL: { url in
           return (["default"] + url.pathComponents.suffix(3)).joined(separator: "/")
@@ -181,9 +181,9 @@ public struct WordPressMarkdownProcessor<
 
     try downloader.download(
       assets: assetsImports,
-      to: settings.resourceImagePathURL,
+      to: settings.resourceAssetPathURL,
       dryRun: settings.skipDownload,
-      allowsOverwrites: settings.overwriteImages
+      allowsOverwrites: settings.overwriteAssets
     )
 
     // 6. To modify asset urls with local path instead
