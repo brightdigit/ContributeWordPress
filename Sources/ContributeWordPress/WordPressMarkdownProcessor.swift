@@ -92,7 +92,9 @@ public struct WordPressMarkdownProcessor<
           // From the list of images attached to this post,
           // choose the first one as featuredImage
           let featuredImagePath = assets.first { $0.parentID == post.ID }.map {
-            ["", assetRoot, $0.newPath].joined(separator: "/")
+              ["", assetRoot, $0.newPath]
+                  .joined(separator: "/")
+                  .replacingOccurrences(of: "//", with: "/")
           }
 
           _ = try self.contentBuilder.write(
