@@ -80,6 +80,18 @@ jobs:
             xcode: "/Applications/Xcode_14.3.app"
             iOSVersion: "16.4"
             watchOSVersion: "9.4"
+            watchName: "Apple Watch SE (40mm) (2nd generation)"
+            iPhoneName: "iPhone 14"
+          - runs-on: macos-13
+            xcode: "/Applications/Xcode_14.3.1.app"
+            iOSVersion: "16.4"
+            watchOSVersion: "9.4"
+            watchName: "Apple Watch Series 8 (45mm)"
+            iPhoneName: "iPhone 14 Pro"
+          - runs-on: macos-13
+            xcode: "/Applications/Xcode_15.0.app"
+            iOSVersion: "17.0"
+            watchOSVersion: "10.0"
             watchName: "Apple Watch Ultra (49mm)"
             iPhoneName: "iPhone 14 Pro Max"
     steps:
@@ -95,7 +107,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.xcode }}-
       - name: Cache mint
-        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3')
+        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
         id: cache-mint
         uses: actions/cache@v3
         env:
@@ -112,37 +124,36 @@ jobs:
       - name: Setup Xcode
         run: sudo xcode-select -s ${{ matrix.xcode }}/Contents/Developer
       - name: Install mint
-        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3')
+        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
         run: |
           brew update
           brew install mint
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
-          languages: ${{ matrix.language }}
+          languages: swift
       - name: Build
         run: swift build
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
       - name: Run Swift Package tests
         run: swift test -v --enable-code-coverage
-        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3')
+        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
       - uses: sersoft-gmbh/swift-coverage-action@v3
         id: coverage-files
       - name: Upload SPM coverage to Codecov
-        uses: codecov/codecov-action@v2
-        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3')
+        uses: codecov/codecov-action@v3
+        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
         with:
           fail_ci_if_error: true
           files: ${{join(fromJSON(steps.coverage-files.outputs.files), ',')}}
           flags: spm
           verbose: true
-          token: ${{ secrets.CODECOV_TOKEN }}
       - name: Lint
         run: ./scripts/lint.sh
-        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3')
+        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
       - name: Dump PIF
-        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3')
+        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
         run: |
           swift package dump-pif > /dev/null
           MAX_ATTEMPT=3
