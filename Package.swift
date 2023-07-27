@@ -16,12 +16,12 @@ let package = Package(
   ],
   dependencies: [
     .package(
-      name: "Contribute",
-      path: "../Contribute"
+      url: "https://github.com/brightdigit/Contribute.git",
+      from: "1.0.0-alpha.1"
     ),
     .package(
-      name: "SyndiKit",
-      path: "../SyndiKit"
+      url: "https://github.com/brightdigit/SyndiKit.git",
+      from: "0.3.3"
     )
   ],
   targets: [
