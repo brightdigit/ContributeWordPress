@@ -5,9 +5,10 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
+
+// @Leo, I just used this instead, it makes the dictionary more clear
+// do you have any idea where to put this?
 public typealias SectionName = String
-/// A dictionary of WordPress posts keyed by section name.
-public typealias SectionPostDictionary = [SectionName: [WordPressPost]]
 
 /// A protocol for decoding WordPress posts from exports.
 public protocol PostsExportDecoder {
