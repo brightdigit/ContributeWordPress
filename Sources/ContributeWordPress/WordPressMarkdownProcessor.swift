@@ -111,7 +111,7 @@ public struct WordPressMarkdownProcessor<
   }
 
   /**
-   1. Go through posts and find all images
+   1. Go through posts and find all assets
    2. Modify all posts with their new urls
    3. Download from remote site OR copy from local depending on options passed
    */
@@ -138,7 +138,6 @@ public struct WordPressMarkdownProcessor<
       from: settings.resourcesPathURL
     ) ?? settings.resourcesPathURL.path
 
-
     // 4. Build asset imports from all posts
     let assetsImports: [WordPressAssetImport] = {
       allPosts
@@ -146,10 +145,14 @@ public struct WordPressMarkdownProcessor<
         .filter { $0.type == "post" }
         .map { post in
           (
-            try? post.body
-              .matches(of: Regex("\(settings.assetsSiteURL)/wp-content/uploads([^\"]+)"))
-              .map { $0.output.compactMap { $0.substring } }
-              .compactMap { $0.first }
+            try? NSRegularExpression(pattern: "\(settings.assetsSiteURL)/wp-content/uploads([^\"]+)")
+              .matches(
+                in: post.body,
+                range: NSRange(post.body.startIndex..., in: post.body)
+              )
+              .map { match in
+                String(post.body[Range(match.range, in: post.body)!])
+              }
               .compactMap {
                 WordPressAssetImport(
                   forPost: post,

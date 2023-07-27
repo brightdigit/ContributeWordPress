@@ -7,7 +7,7 @@ import PackageDescription
 
 let package = Package(
   name: "ContributeWordPress",
-  platforms: [.macOS(.v13)],
+  platforms: [.macOS(.v12)],
   products: [
     .library(
       name: "ContributeWordPress",
