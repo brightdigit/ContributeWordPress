@@ -2,11 +2,11 @@ import Foundation
 
 /// This extension is used to combine two arrays of the same type.
 extension Array {
-  /// Combines the given two arrays.
+  /// Combines the given two optional arrays.
   ///
   /// - Parameters:
-  ///   - lhs: The first array.
-  ///   - rhs: The second array.
+  ///   - lhs: The first optional array.
+  ///   - rhs: The second optional array.
   /// - Returns: A new array that is the combination of the two arrays.
   internal static func combine(_ lhs: Self?, _ rhs: Self?) -> Self? {
     guard let lhs = lhs else {
