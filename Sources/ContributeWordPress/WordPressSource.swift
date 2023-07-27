@@ -13,7 +13,7 @@ public struct WordPressSource {
   /// Optional URL string pointing to the featured image of the post.
   public let featuredImage: String?
 
-  // TODO: Add doc here
+  /// Optional closure to get html string from the post.
   public var htmlFromPost: ((WordPressPost) -> String)? = nil
 }
 
