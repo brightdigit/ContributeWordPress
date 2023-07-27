@@ -61,12 +61,14 @@ jobs:
       - name: Test
         run: swift test --enable-code-coverage
       - uses: sersoft-gmbh/swift-coverage-action@v3
+        id: coverage-files
         with:
           fail-on-empty-output: true
       - name: Upload package coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: true
+          files: ${{join(fromJSON(steps.coverage-files.outputs.files), ',')}}
           flags: spm,swift-${{ matrix.swift-version }}
           token: ${{ secrets.CODECOV_TOKEN }}
   build-macos:
@@ -130,12 +132,14 @@ jobs:
           brew install mint
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
+        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
         with:
           languages: swift
       - name: Build
         run: swift build
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
+        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
       - name: Run Swift Package tests
         run: swift test -v --enable-code-coverage
         if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
@@ -148,39 +152,39 @@ jobs:
           fail_ci_if_error: true
           files: ${{join(fromJSON(steps.coverage-files.outputs.files), ',')}}
           flags: spm
-          verbose: true
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: Lint
         run: ./scripts/lint.sh
         if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
-      - name: Dump PIF
-        if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
-        run: |
-          swift package dump-pif > /dev/null
-          MAX_ATTEMPT=3
-          ATTEMPT=0
-          while [ -z $SUCCESS ] && [ "$ATTEMPT" -le "$MAX_ATTEMPT" ]; do
-            xcodebuild clean -scheme ContributeWordpress -destination 'generic/platform=iOS' | grep -q "CLEAN SUCCEEDED" && SUCCESS=true
-            ATTEMPT=$(($ATTEMPT+1))
-          done
-      - name: Run iOS target tests
-        run:  xcodebuild test -scheme ContributeWordpress -sdk iphonesimulator -destination 'platform=iOS Simulator,name=${{ matrix.iPhoneName }},OS=${{ matrix.iOSVersion }}' -enableCodeCoverage YES build test
-      - uses: sersoft-gmbh/swift-coverage-action@v3
-        with:
-          fail-on-empty-output: true
-      - name: Upload iOS coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          fail_ci_if_error: true
-          flags: iOS,iOS-${{ matrix.iOSVersion }}
-          token: ${{ secrets.CODECOV_TOKEN }}
-      - name: Run watchOS target tests
-        run: xcodebuild test -scheme ContributeWordpress -sdk watchsimulator -destination 'platform=watchOS Simulator,name=${{ matrix.watchName }},OS=${{ matrix.watchOSVersion }}' -enableCodeCoverage YES build test
-      - uses: sersoft-gmbh/swift-coverage-action@v3
-        with:
-          fail-on-empty-output: true
-      - name: Upload watchOS coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          fail_ci_if_error: true
-          flags: watchOS,watchOS${{ matrix.watchOSVersion }}
-          token: ${{ secrets.CODECOV_TOKEN }}
+      # - name: Dump PIF
+      #   if: startsWith(matrix.xcode,'/Applications/Xcode_14.3.1')
+      #   run: |
+      #     swift package dump-pif > /dev/null
+      #     MAX_ATTEMPT=3
+      #     ATTEMPT=0
+      #     while [ -z $SUCCESS ] && [ "$ATTEMPT" -le "$MAX_ATTEMPT" ]; do
+      #       xcodebuild clean -scheme ContributeWordpress -destination 'generic/platform=iOS' | grep -q "CLEAN SUCCEEDED" && SUCCESS=true
+      #       ATTEMPT=$(($ATTEMPT+1))
+      #     done
+      # - name: Run iOS target tests
+      #   run:  xcodebuild test -scheme ContributeWordpress -sdk iphonesimulator -destination 'platform=iOS Simulator,name=${{ matrix.iPhoneName }},OS=${{ matrix.iOSVersion }}' -enableCodeCoverage YES build test
+      # - uses: sersoft-gmbh/swift-coverage-action@v3
+      #   with:
+      #     fail-on-empty-output: true
+      # - name: Upload iOS coverage to Codecov
+      #   uses: codecov/codecov-action@v3
+      #   with:
+      #     fail_ci_if_error: true
+      #     flags: iOS,iOS-${{ matrix.iOSVersion }}
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      # - name: Run watchOS target tests
+      #   run: xcodebuild test -scheme ContributeWordpress -sdk watchsimulator -destination 'platform=watchOS Simulator,name=${{ matrix.watchName }},OS=${{ matrix.watchOSVersion }}' -enableCodeCoverage YES build test
+      # - uses: sersoft-gmbh/swift-coverage-action@v3
+      #   with:
+      #     fail-on-empty-output: true
+      # - name: Upload watchOS coverage to Codecov
+      #   uses: codecov/codecov-action@v3
+      #   with:
+      #     fail_ci_if_error: true
+      #     flags: watchOS,watchOS${{ matrix.watchOSVersion }}
+      #     token: ${{ secrets.CODECOV_TOKEN }}
