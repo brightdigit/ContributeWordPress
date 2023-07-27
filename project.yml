@@ -1,4 +1,4 @@
-name: Contribute
+name: ContributeWordPress
 settings:
   LINT_MODE: ${LINT_MODE}
 packages:
