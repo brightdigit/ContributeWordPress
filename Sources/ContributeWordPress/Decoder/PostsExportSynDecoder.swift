@@ -60,7 +60,9 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
   /// - Parameter directoryURL: The URL of the directory containing the exports.
   /// - Returns: A dictionary of WordPress posts keyed by section name.
   /// - Throws: An error if posts couldn't be extracted from any of the export files.
-  public func posts(fromExportsAt directoryURL: URL) throws -> [SectionName: [WordPressPost]] {
+  public func posts(
+    fromExportsAt directoryURL: URL
+  ) throws -> [SectionName: [WordPressPost]] {
     let files = try fileURLsFromDirectory(directoryURL)
 
     let feedPairs = try files.map { url -> (String, [WordPressPost]?) in
@@ -69,4 +71,8 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
 
     return Dictionary(feedPairs, uniquingKeysWith: Array.combine).compactMapValues { $0 }
   }
+}
+
+extension PostsExportDecoder where Self == PostsExportSynDecoder {
+  static func synDecoder() -> Self { .init() }
 }
