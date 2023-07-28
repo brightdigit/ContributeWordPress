@@ -37,7 +37,7 @@ public struct WordPressMarkdownProcessor<
   ) {
     self.exportDecoder = exportDecoder
     self.redirectWriter = redirectWriter
-    assetDownloader = assetDownloader
+    self.assetDownloader = assetDownloader
     self.destinationURLGenerator = destinationURLGenerator
     self.contentBuilder = contentBuilder
     self.postFilters = postFilters
@@ -68,9 +68,7 @@ public struct WordPressMarkdownProcessor<
           // From the list of images attached to this post,
           // choose the first one as featuredImage
           let featuredImagePath = assets.first { $0.parentID == post.ID }.map {
-            ["", assetRoot, $0.newPath]
-              .joined(separator: "/")
-              .replacingOccurrences(of: "//", with: "/")
+            $0.featuredPath
           }
 
           _ = try self.contentBuilder.write(
@@ -88,6 +86,10 @@ public struct WordPressMarkdownProcessor<
     }
   }
 
+  // TODO: remove this once finished
+  // importAssetURLPath /Users/shendy/Desktop/Projects/Leo/gitlab/leogdion.name/Wordpress/html/
+  // oldUrl https://leogdion.name/wp-content/uploads/2018/01/diagram-for-goals-e1535132251116.png
+
   /// Begins the processing of the WordPress posts.
   ///
   /// - Parameter settings: The required settings for processing WordPress exports.
@@ -96,7 +98,7 @@ public struct WordPressMarkdownProcessor<
     withSettings settings: WordPressMarkdownProcessorSettings
   ) throws {
     // 1. Decodes WordPress posts from exports directory.
-    let allPosts = try exportDecoder.posts(fromExportsAt: settings.directoryURL)
+    let allPosts = try exportDecoder.posts(fromExportsAt: settings.exportsDirectoryURL)
 
     // 2. Writes redirects for all decoded WordPress posts.
     try redirectWriter.writeRedirects(
@@ -111,74 +113,56 @@ public struct WordPressMarkdownProcessor<
       from: settings.resourcesPathURL
     ) ?? settings.resourcesPathURL.path
 
+    var htmlFromPost: ((WordPressPost) -> String)? = nil
+
     // 4. Build asset imports from all posts
     let assetsImports: [WordPressAssetImport] = {
       guard let urlPathRegex = try? NSRegularExpression(
-        pattern: "\(settings.assetsSiteURL)/wp-content/uploads([^\"]+)"
+        pattern: "\(settings.assetSiteURL)/wp-content/uploads([^\"]+)"
       ) else {
         fatalError("Unable to create the regex expression")
       }
 
-      // swiftlint:disable:next line_length
-      #warning("I think oldURL should use the `importImagePathURL` if it's there, rather then change the `downloader` ")
       return allPosts
         .flatMap(\.value)
         .filter { $0.type == "post" }
         .map { post in
-          urlPathRegex
-            .matches(
-              in: post.body,
-              range: NSRange(post.body.startIndex..., in: post.body)
-            )
-            .compactMap { match -> String? in
-              guard let range = Range(match.range, in: post.body) else {
-                return nil
+          post.body
+            .matchesUrls(regex: urlPathRegex)
+            .compactMap { (match: String) -> WordPressAssetImport? in
+              guard let sourceURL = URL(string: match) else { return nil }
+
+              let directoryPrefix = sourceURL.host?.components(separatedBy: ".").first ?? "default"
+              // TODO: Rename this properly
+              let assetRoot = ["", assetRoot, directoryPrefix].joined(separator: "/")
+
+              // TODO: Still thinking about this.
+              htmlFromPost = { post in
+                post.body.replacingOccurrences(
+                  of: "\(settings.assetSiteURL)/wp-content/uploads",
+                  with: assetRoot
+                )
               }
 
-              return String(post.body[range])
-            }
-            .compactMap {
-              WordPressAssetImport(
+              print(assetRoot)
+
+              return WordPressAssetImport(
                 forPost: post,
-                oldUrl: String($0),
+                sourceURL: sourceURL,
                 assetRoot: assetRoot,
-                assetSiteURL: settings.assetsSiteURL
+                resourcePathURL: settings.resourcesPathURL,
+                importPathURL: settings.importAssetPathURL
               )
             }
         }
         .flatMap { $0 }
     }()
 
-    // 5. Download all assets (images, pdfs, etc)
-    // swiftlint:disable:next line_length
-    #warning("Why is it using `default`? There are insances of multiple sites using a multi site in wp. That's what BrightDigit was.")
-//    if let importImagePathURL = settings.importAssetPathURL {
-//      assetDownloader = AssetDownloader(
-//        downloadPathFromURL: { url in
-//          (["default"] + url.pathComponents.suffix(3)).joined(separator: "/")
-//        },
-//        downloadURLFromURL: { url in
-//          importImagePathURL.appendingPathComponent(url.path)
-//        }
-//      )
-//    }
-
     try assetDownloader.download(
       assets: assetsImports,
-      to: settings.resourceAssetPathURL,
       dryRun: settings.skipDownload,
       allowsOverwrites: settings.overwriteAssets
     )
-
-    // 6. To modify asset urls with local path instead
-    // swiftlint:disable:next line_length
-    #warning("Why is it using `default`? There are insances of multiple sites using a multi site in wp. That's what BrightDigit was.")
-    let htmlFromPost: ((WordPressPost) -> String) = { post in
-      post.body.replacingOccurrences(
-        of: "\(settings.assetsSiteURL)/wp-content/uploads",
-        with: "/\(assetRoot)/default"
-      )
-    }
 
     // 7. Starts writing the markdown files for all WordPress post,
     try writeAllPosts(
@@ -230,5 +214,22 @@ extension WordPressMarkdownProcessor {
       contentBuilder: contentBuilder,
       postFilters: postFilters
     )
+  }
+}
+
+extension String {
+  internal func matchesUrls(regex: NSRegularExpression) -> [String] {
+    regex
+      .matches(
+        in: self,
+        range: NSRange(self.startIndex..., in: self)
+      )
+      .compactMap { match -> String? in
+        guard let range = Range(match.range, in: self) else {
+          return nil
+        }
+
+        return String(self[range])
+      }
   }
 }
