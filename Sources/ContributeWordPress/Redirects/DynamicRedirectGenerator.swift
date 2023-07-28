@@ -25,7 +25,9 @@ public struct DynamicRedirectGenerator: RedirectListGenerator {
   ///                      for a WordPress post.
   public init(
     postFilter: @escaping (WordPressPost) -> Bool = Self.defaultFilter(post:),
-    urlPathGenerate: @escaping (String, WordPressPost) -> String = Self.defaultURLPath(fromName:wordpressPost:)
+    urlPathGenerate: @escaping (String, WordPressPost) -> String = Self.defaultURLPath(
+      fromName:wordpressPost:
+    )
   ) {
     self.postFilter = postFilter
     self.urlPathGenerate = urlPathGenerate
