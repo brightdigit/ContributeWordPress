@@ -11,6 +11,12 @@ import SyndiKit
 public struct AssetDownloader: Downloader {
   private let urlDownloader: URLDownloader
 
+  public init(
+      urlDownloader: URLDownloader = FileURLDownloader()
+    ) {
+      self.urlDownloader = urlDownloader
+    }
+
   /// Downloads assets.
   ///
   /// - Parameters:
