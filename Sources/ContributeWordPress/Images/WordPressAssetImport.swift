@@ -8,13 +8,16 @@ import SyndiKit
 /// A type that holds information about an asset imported from a `WordPressPost`.
 public struct WordPressAssetImport: Hashable {
   /// The original URL of the asset.
-  public let oldURL: URL
+  public let downloadFromURL: URL
+
+  // TODO: do it once approved
+  public let downloadAtURL: URL
+
+  // TODO: do it once approved
+  public let featuredPath: String
 
   /// The id of `WordPressPost` to which the asset belongs.
-  public let parentID: Int?
-
-  /// The new path where the asset will be saved.
-  public let newPath: String
+  public let parentID: Int
 
   /// Initializes a new `WordPressAssetImport` instance.
   ///
@@ -22,30 +25,43 @@ public struct WordPressAssetImport: Hashable {
   ///   - oldURL: The original URL of the asset.
   ///   - parentID: The id of `WordPressPost` to which the asset belongs.
   ///   - newPath: The new path where the asset will be saved.
-  internal init(oldURL: URL, parentID: Int?, newPath: String) {
-    self.oldURL = oldURL
+  internal init(oldURL: URL, newURL: URL, featuredPath: String, parentID: Int) {
+    self.downloadFromURL = oldURL
+    self.downloadAtURL = newURL
+    self.featuredPath = featuredPath
     self.parentID = parentID
-    self.newPath = newPath
+
+    print()
+    print("sourceURL: \(self.downloadFromURL.absoluteString)")
+    print("destinationURL: \(self.downloadAtURL.absoluteString)")
+    print("featuredPath: \(self.featuredPath)")
+    print()
   }
 
   public init?(
     forPost post: WordPressPost,
-    oldUrl: String,
+    sourceURL: URL,
     assetRoot: String,
-    assetSiteURL: URL
+    resourcePathURL: URL,
+    importPathURL: URL?
   ) {
-    guard let oldURL = URL(string: oldUrl) else {
-      return nil
-    }
+    let directoryPrefix = sourceURL.host?.components(separatedBy: ".").first ?? "default"
 
-    #warning("SHENDY: Why is it using `default`? There are insances of multiple sites using a multi site in wp. That's what BrightDigit was.")
-    self.init(
-      oldURL: oldURL,
-      parentID: post.ID,
-      newPath: oldUrl.replacingOccurrences(
-        of: "\(assetSiteURL)/wp-content/uploads",
-        with: "/\(assetRoot)/default"
+    let featuredPath = sourceURL.path
+      .replacingOccurrences(
+        of: "/wp-content/uploads",
+        with: assetRoot
       )
+      .replacingOccurrences(of: "//", with: "/")
+
+
+    let destinationURL = resourcePathURL.appendingPathComponent(featuredPath)
+
+    self.init(
+      oldURL: importPathURL?.appendingPathComponent(sourceURL.path) ?? sourceURL,
+      newURL: destinationURL,
+      featuredPath: featuredPath,
+      parentID: post.ID
     )
   }
 }

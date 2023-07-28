@@ -4,33 +4,33 @@ import Foundation
 public protocol WordPressMarkdownProcessorSettings {
   /// The URL for the content path
   ///
-  /// Example: Content
+  /// Example: /..../Content/
   var contentPathURL: URL { get }
 
   /// The URL for the resources path
   ///
-  /// Example: Resources
+  /// Example: /..../Resources/
   var resourcesPathURL: URL { get }
 
   /// The URL for the directory
   ///
-  /// Example: Import/WordPress
-  var directoryURL: URL { get }
+  /// Example: /..../WordPress/exports/
+  var exportsDirectoryURL: URL { get }
 
   /// The URL of the directory that the resource assets will be written to.
   ///
-  /// Example: Resources/media/wp-assets
+  /// Example: /..../Resources/media/wp-assets/
   var resourceAssetPathURL: URL { get }
 
   /// The URL of the directory that the posts assets should be imported.
   ///
-  /// Example: WordPress/html/
+  /// Example: /..../WordPress/html/
   var importAssetPathURL: URL? { get }
 
   /// The URL from which assets will be downloaded
   ///
   /// Example: https://websitename.com
-  var assetsSiteURL: URL { get }
+  var assetSiteURL: URL { get }
 
   /// Whether to overwrite existing assets.
   var overwriteAssets: Bool { get }
