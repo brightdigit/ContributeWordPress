@@ -28,35 +28,6 @@ public struct WordPressAssetImport: Hashable {
     self.newPath = newPath
   }
 
-  /// Initializes a new `WordPressAssetImport` instance from a WordPress post.
-  ///
-  /// - Parameters:
-  ///   - post: The WordPress post from which to create the asset import.
-  ///   - pathFromURL: A closure that generates the new path for the asset based on its URL.
-  ///   - urlFromURL: A closure that maps the original asset URL to a new URL, if needed.
-  public init?(
-    post: WordPressPost,
-    oldURLFromURL: (URL) -> URL?,
-    newPathFromURL: (URL) -> String
-  ) {
-    guard post.type == "attachment" else {
-      return nil
-    }
-
-    guard let attachmentURL = post.attachmentURL else {
-      return nil
-    }
-
-    let oldURL = oldURLFromURL(attachmentURL) ?? attachmentURL
-    let newPath = newPathFromURL(oldURL)
-
-    self.init(
-      oldURL: oldURL,
-      parentID: post.parentID,
-      newPath: newPath
-    )
-  }
-
   public init?(
     forPost post: WordPressPost,
     oldUrl: String,
@@ -67,6 +38,7 @@ public struct WordPressAssetImport: Hashable {
       return nil
     }
 
+    #warning("SHENDY: Why is it using `default`? There are insances of multiple sites using a multi site in wp. That's what BrightDigit was.")
     self.init(
       oldURL: oldURL,
       parentID: post.ID,

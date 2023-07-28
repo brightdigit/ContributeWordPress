@@ -1,3 +1,4 @@
+// swiftlint:disable function_body_length
 import Contribute
 import Foundation
 import SyndiKit
@@ -12,27 +13,27 @@ public struct AssetDownloader: Downloader {
   private let downloadURLFromURL: (URL) -> URL?
   private let urlDownloader: URLDownloader
 
-  private static func defaultDownloadPath(fromURL url: URL) -> String {
+  public init(
+    downloadPathFromURL: ((URL) -> String)? = nil,
+    downloadURLFromURL: ((URL) -> URL?)? = nil,
+    urlDownloader: URLDownloader = FileURLDownloader()
+  ) {
+    self.downloadPathFromURL = downloadPathFromURL ?? Self.defaultDownloadPath(fromURL:)
+    self.downloadURLFromURL = downloadURLFromURL ?? Self.defaultDownloadURL(fromURL:)
+    self.urlDownloader = urlDownloader
+  }
+
+  internal static func defaultDownloadPath(fromURL url: URL) -> String {
     let directoryPrefix = url.host?.components(separatedBy: ".").first ?? "default"
     return ([directoryPrefix] + url.pathComponents.suffix(3)).joined(separator: "/")
   }
 
-  private static func defaultDownloadURL(fromURL url: URL) -> URL? {
+  internal static func defaultDownloadURL(fromURL url: URL) -> URL? {
     guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
       return nil
     }
     components.query = nil
     return components.url
-  }
-
-  init(
-    downloadPathFromURL: @escaping (URL) -> String = Self.defaultDownloadPath(fromURL:),
-    downloadURLFromURL: @escaping (URL) -> URL? = Self.defaultDownloadURL(fromURL:),
-    urlDownloader: URLDownloader = FileURLDownloader()
-  ) {
-    self.downloadPathFromURL = downloadPathFromURL
-    self.downloadURLFromURL = downloadURLFromURL
-    self.urlDownloader = urlDownloader
   }
 
   /// Downloads assets from WordPress posts.
@@ -61,8 +62,8 @@ public struct AssetDownloader: Downloader {
     for asset in assets {
       group.enter()
 
-      let fromURL = self.downloadURLFromURL(asset.oldURL) ?? asset.oldURL
-      let newPath = self.downloadPathFromURL(asset.oldURL)
+      let newPath = downloadPathFromURL(asset.oldURL)
+      let fromURL = downloadURLFromURL(asset.oldURL) ?? asset.oldURL
 
       let destinationURL = resourceImagePath.appendingPathComponent(newPath)
 
@@ -84,5 +85,4 @@ public struct AssetDownloader: Downloader {
       throw ImportError.assetDownloads(errors)
     }
   }
-
 }

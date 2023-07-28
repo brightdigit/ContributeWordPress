@@ -1,4 +1,3 @@
-// swiftlint:disable file_length
 import Contribute
 import Foundation
 import SyndiKit
@@ -14,16 +13,9 @@ public struct WordPressMarkdownProcessor<
   MarkdownContentBuilderType: MarkdownContentBuilder
 > where ContentURLGeneratorType.SourceType == WordPressSource,
   MarkdownContentBuilderType.SourceType == WordPressSource {
-  /// The redirect formatter used by the processor.
-#warning("Should be something which can be passed to the processor")
-  private let redirectFromatter: RedirectFormatter = NetlifyRedirectFormatter()
-  
-  #warning("Should not be var")
-  private var downloader: Downloader = AssetDownloader()
-  #warning("Should be something which can be passed to the processor")
-  private let exportDecoder: PostsExportDecoder = PostsExportSynDecoder()
-
-  private let redirectListGenerator: RedirectListGenerator
+  private let exportDecoder: PostsExportDecoder
+  private var downloader: Downloader
+  private let redirectWriter: RedirectFileWriter
   private let destinationURLGenerator: ContentURLGeneratorType
   private let contentBuilder: MarkdownContentBuilderType
   private let postFilters: [PostFilter]
@@ -36,38 +28,19 @@ public struct WordPressMarkdownProcessor<
   ///   - contentBuilder: The Markdown content builder.
   ///   - postFilters: The post filters.
   public init(
-    redirectListGenerator: RedirectListGenerator,
+    exportDecoder: PostsExportDecoder,
+    redirectWriter: RedirectFileWriter,
+    assetdownloader: Downloader,
     destinationURLGenerator: ContentURLGeneratorType,
     contentBuilder: MarkdownContentBuilderType,
     postFilters: [PostFilter]
   ) {
-    self.redirectListGenerator = redirectListGenerator
+    self.exportDecoder = exportDecoder
+    self.redirectWriter = redirectWriter
+    downloader = assetdownloader
     self.destinationURLGenerator = destinationURLGenerator
     self.contentBuilder = contentBuilder
     self.postFilters = postFilters
-  }
-
-  /// Creates a directory with the given name in the specified content path URL.
-  ///
-  /// - Parameters:
-  ///   - directoryName: The name of the directory to create.
-  ///   - contentPathURL: The content path URL.
-  /// - Throws: An error if the directory creation fails.
-  private func createDirectory(
-    withName directoryName: String,
-    in contentPathURL: URL
-  ) throws {
-    let directoryURL = contentPathURL.appendingPathComponent(
-      directoryName,
-      isDirectory: true
-    )
-
-    if !FileManager.default.fileExists(atPath: directoryURL.path) {
-      try FileManager.default.createDirectory(
-        at: directoryURL,
-        withIntermediateDirectories: true
-      )
-    }
   }
 
   /// Writes all posts to the given content path URL.
@@ -87,23 +60,22 @@ public struct WordPressMarkdownProcessor<
     using htmlToMarkdown: @escaping (String) throws -> String,
     htmlFromPost: ((WordPressPost) -> String)? = nil
   ) throws {
-    try allPosts.forEach { args in
-      try createDirectory(withName: args.key, in: contentPathURL)
-      try args.value
+    try allPosts.forEach { sectionName, posts in
+      try FileManager.createDirectory(withName: sectionName, in: contentPathURL)
+      try posts
         .filter(self.postFilters.postSatisfiesAll)
         .forEach { post in
-          // @Leo, it might find a pdf as first match
           // From the list of images attached to this post,
           // choose the first one as featuredImage
           let featuredImagePath = assets.first { $0.parentID == post.ID }.map {
-              ["", assetRoot, $0.newPath]
-                  .joined(separator: "/")
-                  .replacingOccurrences(of: "//", with: "/")
+            ["", assetRoot, $0.newPath]
+              .joined(separator: "/")
+              .replacingOccurrences(of: "//", with: "/")
           }
 
           _ = try self.contentBuilder.write(
             from: .init(
-              sectionName: args.key,
+              sectionName: sectionName,
               post: post,
               featuredImage: featuredImagePath,
               htmlFromPost: htmlFromPost
@@ -116,78 +88,80 @@ public struct WordPressMarkdownProcessor<
     }
   }
 
-  /**
-   1. Go through posts and find all assets
-   2. Modify all posts with their new urls
-   3. Download from remote site OR copy from local depending on options passed
-   */
-
   /// Begins the processing of the WordPress posts.
   ///
   /// - Parameter settings: The required settings for processing WordPress exports.
   /// - Throws: An error if the processing failed at any step.
-  mutating public func begin(withSettings settings: WordPressMarkdownProcessorSettings) throws {
-
+  public func begin(
+    withSettings settings: WordPressMarkdownProcessorSettings
+  ) throws {
     // 1. Decodes WordPress posts from exports directory.
     let allPosts = try exportDecoder.posts(fromExportsAt: settings.directoryURL)
 
     // 2. Writes redirects for all decoded WordPress posts.
-    try redirectListGenerator.writeRedirects(
+    try redirectWriter.writeRedirects(
       fromPosts: allPosts,
-      formattedWith: redirectFromatter,
       inDirectory: settings.resourcesPathURL
     )
 
     // 3. Calculate assets root path for assets under resources directory.
-    // ex: media/wp-assets is the relative path directory built from /Resources/media/wp-assets and /Resources
+    // ex: media/wp-assets is the relative path directory built
+    //     from /Resources/media/wp-assets and /Resources
     let assetRoot = settings.resourceAssetPathURL.relativePath(
       from: settings.resourcesPathURL
     ) ?? settings.resourcesPathURL.path
 
     // 4. Build asset imports from all posts
     let assetsImports: [WordPressAssetImport] = {
-      allPosts
+      guard let urlPathRegex = try? NSRegularExpression(
+        pattern: "\(settings.assetsSiteURL)/wp-content/uploads([^\"]+)"
+      ) else {
+        fatalError("Unable to create the regex expression")
+      }
+
+      // swiftlint:disable:next line_length
+      #warning("I think oldURL should use the `importImagePathURL` if it's there, rather then change the `downloader` ")
+      return allPosts
         .flatMap(\.value)
         .filter { $0.type == "post" }
         .map { post in
-#warning("Create the regular expression once")
-          return (
-            try? NSRegularExpression(pattern: "\(settings.assetsSiteURL)/wp-content/uploads([^\"]+)")
-              .matches(
-                in: post.body,
-                range: NSRange(post.body.startIndex..., in: post.body)
+          urlPathRegex
+            .matches(
+              in: post.body,
+              range: NSRange(post.body.startIndex..., in: post.body)
+            )
+            .compactMap { match -> String? in
+              guard let range = Range(match.range, in: post.body) else {
+                return nil
+              }
+
+              return String(post.body[range])
+            }
+            .compactMap {
+              WordPressAssetImport(
+                forPost: post,
+                oldUrl: String($0),
+                assetRoot: assetRoot,
+                assetSiteURL: settings.assetsSiteURL
               )
-              .map { match in
-                String(post.body[Range(match.range, in: post.body)!])
-              }
-              .compactMap {
-  #warning("I think oldURL should use the `importImagePathURL` if it's there, rather then change the `downloader` ")
-                WordPressAssetImport(
-                  forPost: post,
-                  oldUrl: String($0),
-                  assetRoot: assetRoot,
-                  assetSiteURL: settings.assetsSiteURL
-                )
-              }
-          ) ?? []
+            }
         }
         .flatMap { $0 }
-
     }()
 
-    // 5. Get ready to download all assets
-    
-    if let importImagePathURL = settings.importAssetPathURL {
-      downloader = AssetDownloader(
-        downloadPathFromURL: { url in
-          #warning("Why is it using `default`? There are insances of multiple sites using a multi site in wp. That's what BrightDigit was.")
-          return (["default"] + url.pathComponents.suffix(3)).joined(separator: "/")
-        },
-        downloadURLFromURL: { url in
-          return importImagePathURL.appendingPathComponent(url.path)
-        }
-      )
-    }
+    // 5. Download all assets (images, pdfs, etc)
+    // swiftlint:disable:next line_length
+    #warning("Why is it using `default`? There are insances of multiple sites using a multi site in wp. That's what BrightDigit was.")
+//    if let importImagePathURL = settings.importAssetPathURL {
+//      downloader = AssetDownloader(
+//        downloadPathFromURL: { url in
+//          (["default"] + url.pathComponents.suffix(3)).joined(separator: "/")
+//        },
+//        downloadURLFromURL: { url in
+//          importImagePathURL.appendingPathComponent(url.path)
+//        }
+//      )
+//    }
 
     try downloader.download(
       assets: assetsImports,
@@ -197,10 +171,11 @@ public struct WordPressMarkdownProcessor<
     )
 
     // 6. To modify asset urls with local path instead
+    // swiftlint:disable:next line_length
+    #warning("Why is it using `default`? There are insances of multiple sites using a multi site in wp. That's what BrightDigit was.")
     let htmlFromPost: ((WordPressPost) -> String) = { post in
       post.body.replacingOccurrences(
         of: "\(settings.assetsSiteURL)/wp-content/uploads",
-        #warning("Why is it using `default`? There are insances of multiple sites using a multi site in wp. That's what BrightDigit was.")
         with: "/\(assetRoot)/default"
       )
     }
@@ -213,37 +188,6 @@ public struct WordPressMarkdownProcessor<
       to: settings.contentPathURL,
       using: type(of: settings).markdownFrom(html:),
       htmlFromPost: htmlFromPost
-    )
-  }
-}
-
-extension WordPressMarkdownProcessor {
-  private typealias WordPressFrontMatterYAMLExporter = FrontMatterYAMLExporter<
-    WordPressSource,
-    SpecFrontMatterTranslator
-  >
-
-  /// Initializes a new `WordPressMarkdownProcessor` instance with default values for
-  /// `ContentURLGeneratorType` and `MarkdownContentBuilderType`.
-  ///
-  /// - Parameter postFilters: The post filters.
-  public init(postFilters: [PostFilter]) where
-    ContentURLGeneratorType == SectionContentURLGenerator,
-    MarkdownContentBuilderType == MarkdownContentYAMLBuilder<
-      WordPressSource,
-      FilteredHTMLMarkdownExtractor<WordPressSource>,
-      FrontMatterYAMLExporter<WordPressSource, SpecFrontMatterTranslator>
-    > {
-    self.init(
-      redirectListGenerator: DynamicRedirectGenerator(postFilters: postFilters),
-      destinationURLGenerator: .init(),
-      contentBuilder: .init(
-        frontMatterExporter: WordPressFrontMatterYAMLExporter(
-          translator: SpecFrontMatterTranslator()
-        ),
-        markdownExtractor: FilteredHTMLMarkdownExtractor<WordPressSource>()
-      ),
-      postFilters: postFilters
     )
   }
 }

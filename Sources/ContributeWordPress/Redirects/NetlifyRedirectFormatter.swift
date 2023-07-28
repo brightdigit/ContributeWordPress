@@ -25,3 +25,7 @@ public struct NetlifyRedirectFormatter: RedirectFormatter {
     resourcesDirURL.appendingPathComponent("_redirects")
   }
 }
+
+extension RedirectFormatter where Self == NetlifyRedirectFormatter {
+  public static func netlify() -> Self { .init() }
+}
