@@ -55,7 +55,6 @@ public struct WordPressMarkdownProcessor<
   private func writeAllPosts(
     _ allPosts: [SectionName: [WordPressPost]],
     withAssets assets: [WordPressAssetImport],
-    atAssetRoot assetRoot: String,
     to contentPathURL: URL,
     using htmlToMarkdown: @escaping (String) throws -> String,
     htmlFromPost: ((WordPressPost) -> String)? = nil
@@ -67,9 +66,9 @@ public struct WordPressMarkdownProcessor<
         .forEach { post in
           // From the list of images attached to this post,
           // choose the first one as featuredImage
-          let featuredImagePath = assets.first { $0.parentID == post.ID }.map {
-            $0.featuredPath
-          }
+          let featuredImagePath = assets
+            .first { $0.parentID == post.ID }
+            .map { $0.featuredPath }
 
           _ = try self.contentBuilder.write(
             from: .init(
@@ -109,18 +108,20 @@ public struct WordPressMarkdownProcessor<
     // 3. Calculate assets root path for assets under resources directory.
     // ex: media/wp-assets is the relative path directory built
     //     from /Resources/media/wp-assets and /Resources
-    let assetRoot = settings.resourceAssetPathURL.relativePath(
+    var assetRoot = settings.resourceAssetPathURL.relativePath(
       from: settings.resourcesPathURL
     ) ?? settings.resourcesPathURL.path
 
-    var htmlFromPost: ((WordPressPost) -> String)? = nil
+    let directoryPrefix = settings.assetSiteURL.host?.components(separatedBy: ".").first ?? "default"
+    assetRoot = ["", assetRoot, directoryPrefix].joined(separator: "/")
+
 
     // 4. Build asset imports from all posts
     let assetsImports: [WordPressAssetImport] = {
       guard let urlPathRegex = try? NSRegularExpression(
         pattern: "\(settings.assetSiteURL)/wp-content/uploads([^\"]+)"
       ) else {
-        fatalError("Unable to create the regex expression")
+        return []
       }
 
       return allPosts
@@ -131,18 +132,6 @@ public struct WordPressMarkdownProcessor<
             .matchesUrls(regex: urlPathRegex)
             .compactMap { (match: String) -> WordPressAssetImport? in
               guard let sourceURL = URL(string: match) else { return nil }
-
-              let directoryPrefix = sourceURL.host?.components(separatedBy: ".").first ?? "default"
-              // TODO: Rename this properly
-              let assetRoot = ["", assetRoot, directoryPrefix].joined(separator: "/")
-
-              // TODO: Still thinking about this.
-              htmlFromPost = { post in
-                post.body.replacingOccurrences(
-                  of: "\(settings.assetSiteURL)/wp-content/uploads",
-                  with: assetRoot
-                )
-              }
 
               print(assetRoot)
 
@@ -158,6 +147,13 @@ public struct WordPressMarkdownProcessor<
         .flatMap { $0 }
     }()
 
+    let htmlFromPost: (WordPressPost) -> String = { post in
+      post.body.replacingOccurrences(
+        of: "\(settings.assetSiteURL)/wp-content/uploads",
+        with: assetRoot
+      )
+    }
+
     try assetDownloader.download(
       assets: assetsImports,
       dryRun: settings.skipDownload,
@@ -168,7 +164,6 @@ public struct WordPressMarkdownProcessor<
     try writeAllPosts(
       allPosts,
       withAssets: assetsImports,
-      atAssetRoot: assetRoot,
       to: settings.contentPathURL,
       using: type(of: settings).markdownFrom(html:),
       htmlFromPost: htmlFromPost
