@@ -19,26 +19,7 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
   /// This will be the section id for all posts found in the export file at given URL.
   private let keyFromURL: (URL) -> String = { $0.lastPathComponentWithoutExtension() }
 
-  /// A default logic for finding all files found at given directory.
-  ///
-  /// If the `directoryURL` is not valid directory, this method
-  /// throws `ImportError.directory(:_)` error.
-  ///
-  /// - Parameter directoryURL: The directory URL.
-  /// - Returns: An array of export file URLs that can be found in the given directory.
-  /// - Throws: An error if the directory could not be enumerated.
-  private static func defaultFileURLs(atDirectory directoryURL: URL) throws -> [URL] {
-    let enumerator = FileManager.default.enumerator(
-      at: directoryURL,
-      includingPropertiesForKeys: nil
-    )
-
-    guard let enumerator = enumerator else {
-      throw ImportError.directory(directoryURL)
-    }
-
-    return enumerator.compactMap { $0 as? URL }
-  }
+  public init() {}
 
   /// The method decodes posts from the given file URL.
   ///
@@ -73,6 +54,25 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
   }
 }
 
-extension PostsExportDecoder where Self == PostsExportSynDecoder {
-  public static func synDecoder() -> Self { .init() }
+extension PostsExportSynDecoder {
+  /// A default logic for finding all files found at given directory.
+  ///
+  /// If the `directoryURL` is not valid directory, this method
+  /// throws `ImportError.directory(:_)` error.
+  ///
+  /// - Parameter directoryURL: The directory URL.
+  /// - Returns: An array of export file URLs that can be found in the given directory.
+  /// - Throws: An error if the directory could not be enumerated.
+  private static func defaultFileURLs(atDirectory directoryURL: URL) throws -> [URL] {
+    let enumerator = FileManager.default.enumerator(
+      at: directoryURL,
+      includingPropertiesForKeys: nil
+    )
+
+    guard let enumerator = enumerator else {
+      throw ImportError.directory(directoryURL)
+    }
+
+    return enumerator.compactMap { $0 as? URL }
+  }
 }

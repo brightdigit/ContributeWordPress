@@ -38,28 +38,6 @@ public struct DynamicRedirectGenerator: RedirectListGenerator {
     self.init(postFilter: postFilters.postSatisfiesAll)
   }
 
-  /// The default filter used by `DynamicRedirectGenerator`.
-  ///
-  /// - Parameter post: The WordPress post being evaluated.
-  /// - Returns: A boolean value indicating whether the post should be included
-  ///            in the redirects.
-  public static func defaultFilter(post: WordPressPost) -> Bool {
-    post.type == "post" && post.link.path != "/" && post.status == "publish"
-  }
-
-  /// The default URL redirect path generator used by `DynamicRedirectGenerator`.
-  ///
-  /// - Parameters:
-  ///   - name: The name of the directory where the WordPress posts are located.
-  ///   - post: The WordPress post for which the redirect URL path is generated.
-  /// - Returns: The redirect URL path for the WordPress post.
-  public static func defaultURLPath(
-    fromName name: String,
-    wordpressPost post: WordPressPost
-  ) -> String {
-    ["", name, post.name].joined(separator: "/")
-  }
-
   /// Generates redirects from the given WordPress posts.
   ///
   /// - Parameter allPosts: A dictionary of WordPress posts keyed by section name.
@@ -80,11 +58,26 @@ public struct DynamicRedirectGenerator: RedirectListGenerator {
   }
 }
 
-extension RedirectListGenerator where Self == DynamicRedirectGenerator {
-  public static func dynamic(
-    postFilter: @escaping (WordPressPost) -> Bool = Self.defaultFilter(post:),
-    urlPathGenerate: @escaping (String, WordPressPost) -> String = Self.defaultURLPath(fromName:wordpressPost:)
-  ) -> Self {
-    .init(postFilter: postFilter, urlPathGenerate: urlPathGenerate)
+extension DynamicRedirectGenerator {
+  /// The default filter used by `DynamicRedirectGenerator`.
+  ///
+  /// - Parameter post: The WordPress post being evaluated.
+  /// - Returns: A boolean value indicating whether the post should be included
+  ///            in the redirects.
+  public static func defaultFilter(post: WordPressPost) -> Bool {
+    post.type == "post" && post.link.path != "/" && post.status == "publish"
+  }
+
+  /// The default URL redirect path generator used by `DynamicRedirectGenerator`.
+  ///
+  /// - Parameters:
+  ///   - name: The name of the directory where the WordPress posts are located.
+  ///   - post: The WordPress post for which the redirect URL path is generated.
+  /// - Returns: The redirect URL path for the WordPress post.
+  public static func defaultURLPath(
+    fromName name: String,
+    wordpressPost post: WordPressPost
+  ) -> String {
+    ["", name, post.name].joined(separator: "/")
   }
 }
