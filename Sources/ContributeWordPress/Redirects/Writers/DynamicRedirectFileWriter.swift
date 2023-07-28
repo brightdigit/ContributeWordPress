@@ -1,9 +1,11 @@
 import Foundation
 import SyndiKit
 
-// TODO: Finish the docs once approved
-/// A type that provides dynamic implementation for generating redirects.
+/// A type that writes redirects from posts into a file.
 ///
+/// It uses an instance of `DynamicRedirectGenerator` to generate redirect items,
+/// then using the provided `RedirectFormatter` it formats the redirects into a string
+/// whtich later will be written into a file in a given directory.
 public struct DynamicRedirectFileWriter: RedirectFileWriter {
   private let generator: RedirectListGenerator
   private let formatter: RedirectFormatter

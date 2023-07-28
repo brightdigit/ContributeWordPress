@@ -12,18 +12,18 @@ public struct AssetDownloader: Downloader {
   private let urlDownloader: URLDownloader
 
   public init(
-      urlDownloader: URLDownloader = FileURLDownloader()
-    ) {
-      self.urlDownloader = urlDownloader
-    }
+    urlDownloader: URLDownloader = FileURLDownloader()
+  ) {
+    self.urlDownloader = urlDownloader
+  }
 
-  /// Downloads assets.
+  /// Downloads assets using `URLDownloader`.
   ///
   /// - Parameters:
   ///   - assets: The imported assets to be downloaded.
   ///   - dryRun: To perform a dry run without actually downloading the assets.
   ///   - allowsOverwrites: To allow overwriting existing assets.
-  /// - Throws: An `ImportError.assetDownloads` error if there are any errors during
+  /// - Throws: An `ImportError.assetDownloads` error if there are any errors happened.
   public func download(
     assets: [WordPressAssetImport],
     dryRun: Bool,
@@ -41,12 +41,12 @@ public struct AssetDownloader: Downloader {
       group.enter()
 
       urlDownloader.download(
-        from: asset.downloadFromURL,
-        to: asset.downloadAtURL,
+        from: asset.fromURL,
+        to: asset.atURL,
         allowOverwrite: allowsOverwrites
       ) { error in
         if let error = error {
-          errors[asset.downloadFromURL] = error
+          errors[asset.fromURL] = error
         }
         group.leave()
       }
