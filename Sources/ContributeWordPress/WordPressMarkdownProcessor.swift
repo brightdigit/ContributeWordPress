@@ -63,18 +63,13 @@ public struct WordPressMarkdownProcessor<
       try FileManager.createDirectory(withName: sectionName, in: contentPathURL)
       try posts
         .filter(self.postFilters.postSatisfiesAll)
-        .forEach { post in
-          // From the list of images attached to this post,
-          // choose the first one as featuredImage
-          let featuredImagePath = assets
-            .first { $0.parentID == post.ID }
-            .map { $0.featuredPath }
-
+        .map { post in (post, assets.first { $0.parentID == post.ID }) }
+        .forEach { post, featuredImage in
           _ = try self.contentBuilder.write(
             from: .init(
               sectionName: sectionName,
               post: post,
-              featuredImage: featuredImagePath,
+              featuredImage: featuredImage.map(\.featuredPath),
               htmlFromPost: htmlFromPost
             ),
             atContentPathURL: contentPathURL,
@@ -84,10 +79,6 @@ public struct WordPressMarkdownProcessor<
         }
     }
   }
-
-  // TODO: remove this once finished
-  // importAssetURLPath /Users/shendy/Desktop/Projects/Leo/gitlab/leogdion.name/Wordpress/html/
-  // oldUrl https://leogdion.name/wp-content/uploads/2018/01/diagram-for-goals-e1535132251116.png
 
   /// Begins the processing of the WordPress posts.
   ///
@@ -105,60 +96,38 @@ public struct WordPressMarkdownProcessor<
       inDirectory: settings.resourcesPathURL
     )
 
-    // 3. Calculate assets root path for assets under resources directory.
-    // ex: media/wp-assets is the relative path directory built
-    //     from /Resources/media/wp-assets and /Resources
-    var assetRoot = settings.resourceAssetPathURL.relativePath(
+    // 3. Calculate assets root for assets under resources directory.
+    let assetRelative = settings.resourceAssetPathURL.relativePath(
       from: settings.resourcesPathURL
     ) ?? settings.resourcesPathURL.path
 
-    let directoryPrefix = settings.assetSiteURL.host?.components(separatedBy: ".").first ?? "default"
-    assetRoot = ["", assetRoot, directoryPrefix].joined(separator: "/")
-
+    let directoryPrefix = settings.assetSiteURL.host?
+      .components(separatedBy: ".")
+      .first ?? "default"
+    let assetRoot = ["", assetRelative, directoryPrefix].joined(separator: "/")
 
     // 4. Build asset imports from all posts
-    let assetsImports: [WordPressAssetImport] = {
-      guard let urlPathRegex = try? NSRegularExpression(
-        pattern: "\(settings.assetSiteURL)/wp-content/uploads([^\"]+)"
-      ) else {
-        return []
-      }
+    let assetsImports: [WordPressAssetImport] = extractAssetImports(
+      from: allPosts.flatMap(\.value).filter { $0.type == "post" },
+      with: "\(settings.assetSiteURL)/wp-content/uploads([^\"]+)",
+      assetRoot: assetRoot,
+      settings: settings
+    )
 
-      return allPosts
-        .flatMap(\.value)
-        .filter { $0.type == "post" }
-        .map { post in
-          post.body
-            .matchesUrls(regex: urlPathRegex)
-            .compactMap { (match: String) -> WordPressAssetImport? in
-              guard let sourceURL = URL(string: match) else { return nil }
+    // 5. Download all assets
+    try assetDownloader.download(
+      assets: assetsImports,
+      dryRun: settings.skipDownload,
+      allowsOverwrites: settings.overwriteAssets
+    )
 
-              print(assetRoot)
-
-              return WordPressAssetImport(
-                forPost: post,
-                sourceURL: sourceURL,
-                assetRoot: assetRoot,
-                resourcePathURL: settings.resourcesPathURL,
-                importPathURL: settings.importAssetPathURL
-              )
-            }
-        }
-        .flatMap { $0 }
-    }()
-
+    // 6.
     let htmlFromPost: (WordPressPost) -> String = { post in
       post.body.replacingOccurrences(
         of: "\(settings.assetSiteURL)/wp-content/uploads",
         with: assetRoot
       )
     }
-
-    try assetDownloader.download(
-      assets: assetsImports,
-      dryRun: settings.skipDownload,
-      allowsOverwrites: settings.overwriteAssets
-    )
 
     // 7. Starts writing the markdown files for all WordPress post,
     try writeAllPosts(
@@ -168,6 +137,29 @@ public struct WordPressMarkdownProcessor<
       using: type(of: settings).markdownFrom(html:),
       htmlFromPost: htmlFromPost
     )
+  }
+
+  private func extractAssetImports(
+    from allPosts: [WordPressPost],
+    with pattern: String,
+    assetRoot: String,
+    settings: WordPressMarkdownProcessorSettings
+  ) -> [WordPressAssetImport] {
+    guard let regex = try? NSRegularExpression(pattern: pattern) else {
+      return []
+    }
+
+    return regex
+      .matchUrls(in: allPosts)
+      .compactMap { match in
+        WordPressAssetImport(
+          forPost: match.post,
+          sourceURL: match.sourceURL,
+          assetRoot: assetRoot,
+          resourcePathURL: settings.resourcesPathURL,
+          importPathURL: settings.importAssetPathURL
+        )
+      }
   }
 }
 
@@ -209,22 +201,5 @@ extension WordPressMarkdownProcessor {
       contentBuilder: contentBuilder,
       postFilters: postFilters
     )
-  }
-}
-
-extension String {
-  internal func matchesUrls(regex: NSRegularExpression) -> [String] {
-    regex
-      .matches(
-        in: self,
-        range: NSRange(self.startIndex..., in: self)
-      )
-      .compactMap { match -> String? in
-        guard let range = Range(match.range, in: self) else {
-          return nil
-        }
-
-        return String(self[range])
-      }
   }
 }

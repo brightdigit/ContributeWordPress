@@ -5,6 +5,7 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
+/// A type to explicitly give a type for section name
 public typealias SectionName = String
 
 /// A protocol for decoding WordPress posts from exports.

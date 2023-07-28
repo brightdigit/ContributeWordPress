@@ -23,27 +23,3 @@ extension WordPressSource: HTMLSource {
     htmlFromPost?(post) ?? post.body
   }
 }
-
-// TODO: Clean this
-// try allPosts.forEach { args in
-//  try createDirectory(withName: args.key, in: contentPathURL)
-//  try args.value
-//    .filter(self.postFilters.postSatisfiesAll)
-//    .forEach { post in
-//      _ = try self.contentBuilder.write(
-//        from: .init(
-//          sectionName: args.key,
-//          post: post,
-//          featuredImage: featuredImagePath(
-//            from: assets,
-//            for: post.ID,
-//            at: assetRoot
-//          ),
-//          htmlFromPost: htmlFromPost
-//        ),
-//        atContentPathURL: contentPathURL,
-//        basedOn: self.destinationURLGenerator,
-//        using: htmlToMarkdown
-//      )
-//    }
-// }

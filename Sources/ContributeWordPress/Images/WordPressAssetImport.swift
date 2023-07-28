@@ -8,12 +8,13 @@ import SyndiKit
 /// A type that holds information about an asset imported from a `WordPressPost`.
 public struct WordPressAssetImport: Hashable {
   /// The original URL of the asset.
-  public let downloadFromURL: URL
+  /// /// The source `URL` from where asset will be imported.
+  public let fromURL: URL
 
-  // TODO: do it once approved
-  public let downloadAtURL: URL
+  /// The destination `URL` to where asset will be imported.
+  public let atURL: URL
 
-  // TODO: do it once approved
+  /// The featured path for the asset.
   public let featuredPath: String
 
   /// The id of `WordPressPost` to which the asset belongs.
@@ -22,20 +23,19 @@ public struct WordPressAssetImport: Hashable {
   /// Initializes a new `WordPressAssetImport` instance.
   ///
   /// - Parameters:
-  ///   - oldURL: The original URL of the asset.
+  ///   - importFromURL: The original URL of the asset.
   ///   - parentID: The id of `WordPressPost` to which the asset belongs.
   ///   - newPath: The new path where the asset will be saved.
-  internal init(oldURL: URL, newURL: URL, featuredPath: String, parentID: Int) {
-    self.downloadFromURL = oldURL
-    self.downloadAtURL = newURL
+  internal init(
+    importFromURL: URL,
+    importAtURL: URL,
+    featuredPath: String,
+    parentID: Int
+  ) {
+    fromURL = importFromURL
+    atURL = importAtURL
     self.featuredPath = featuredPath
     self.parentID = parentID
-
-    print()
-    print("sourceURL: \(self.downloadFromURL.absoluteString)")
-    print("destinationURL: \(self.downloadAtURL.absoluteString)")
-    print("featuredPath: \(self.featuredPath)")
-    print()
   }
 
   public init?(
@@ -45,8 +45,6 @@ public struct WordPressAssetImport: Hashable {
     resourcePathURL: URL,
     importPathURL: URL?
   ) {
-    let directoryPrefix = sourceURL.host?.components(separatedBy: ".").first ?? "default"
-
     let featuredPath = sourceURL.path
       .replacingOccurrences(
         of: "/wp-content/uploads",
@@ -54,12 +52,11 @@ public struct WordPressAssetImport: Hashable {
       )
       .replacingOccurrences(of: "//", with: "/")
 
-
     let destinationURL = resourcePathURL.appendingPathComponent(featuredPath)
 
     self.init(
-      oldURL: importPathURL?.appendingPathComponent(sourceURL.path) ?? sourceURL,
-      newURL: destinationURL,
+      importFromURL: importPathURL?.appendingPathComponent(sourceURL.path) ?? sourceURL,
+      importAtURL: destinationURL,
       featuredPath: featuredPath,
       parentID: post.ID
     )
