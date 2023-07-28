@@ -14,7 +14,7 @@ public struct WordPressMarkdownProcessor<
 > where ContentURLGeneratorType.SourceType == WordPressSource,
   MarkdownContentBuilderType.SourceType == WordPressSource {
   private let exportDecoder: PostsExportDecoder
-  private var downloader: Downloader
+  private var assetDownloader: Downloader
   private let redirectWriter: RedirectFileWriter
   private let destinationURLGenerator: ContentURLGeneratorType
   private let contentBuilder: MarkdownContentBuilderType
@@ -30,14 +30,14 @@ public struct WordPressMarkdownProcessor<
   public init(
     exportDecoder: PostsExportDecoder,
     redirectWriter: RedirectFileWriter,
-    assetdownloader: Downloader,
+    assetDownloader: Downloader,
     destinationURLGenerator: ContentURLGeneratorType,
     contentBuilder: MarkdownContentBuilderType,
     postFilters: [PostFilter]
   ) {
     self.exportDecoder = exportDecoder
     self.redirectWriter = redirectWriter
-    downloader = assetdownloader
+    assetDownloader = assetDownloader
     self.destinationURLGenerator = destinationURLGenerator
     self.contentBuilder = contentBuilder
     self.postFilters = postFilters
@@ -153,7 +153,7 @@ public struct WordPressMarkdownProcessor<
     // swiftlint:disable:next line_length
     #warning("Why is it using `default`? There are insances of multiple sites using a multi site in wp. That's what BrightDigit was.")
 //    if let importImagePathURL = settings.importAssetPathURL {
-//      downloader = AssetDownloader(
+//      assetDownloader = AssetDownloader(
 //        downloadPathFromURL: { url in
 //          (["default"] + url.pathComponents.suffix(3)).joined(separator: "/")
 //        },
@@ -163,7 +163,7 @@ public struct WordPressMarkdownProcessor<
 //      )
 //    }
 
-    try downloader.download(
+    try assetDownloader.download(
       assets: assetsImports,
       to: settings.resourceAssetPathURL,
       dryRun: settings.skipDownload,
@@ -188,6 +188,47 @@ public struct WordPressMarkdownProcessor<
       to: settings.contentPathURL,
       using: type(of: settings).markdownFrom(html:),
       htmlFromPost: htmlFromPost
+    )
+  }
+}
+
+extension WordPressMarkdownProcessor {
+  /// Initializes a new `WordPressMarkdownProcessor` instance with default values for
+  ///   - `PostsExportDecoder`
+  ///   - `Downloader`
+  ///   - `ContentURLGeneratorType`
+  ///   - `MarkdownContentBuilderType`.
+  ///
+  /// It will be created with a `DynamicRedirectFileWriter` instance that makes use of
+  /// `DynamicRedirectGenerator` and the provided `RedirectFormatter` to generate
+  /// the redirects and write them into a file.
+  ///
+  /// - Parameters:
+  ///   - redirectFromatter: The formatter to format redirect items into a file.
+  ///   - postFilters: The post filters.
+  public init(
+    redirectFromatter: RedirectFormatter,
+    postFilters: [PostFilter],
+    exportDecoder: PostsExportDecoder = PostsExportSynDecoder(),
+    assetDownloader: Downloader = AssetDownloader(),
+    destinationURLGenerator: ContentURLGeneratorType = .init(),
+    contentBuilder: MarkdownContentBuilderType = .init(
+      frontMatterExporter: .init(translator: SpecFrontMatterTranslator()),
+      markdownExtractor: FilteredHTMLMarkdownExtractor<WordPressSource>()
+    )
+  ) where ContentURLGeneratorType == SectionContentURLGenerator,
+    MarkdownContentBuilderType == MarkdownContentYAMLBuilder<
+      WordPressSource,
+      FilteredHTMLMarkdownExtractor<WordPressSource>,
+      FrontMatterYAMLExporter<WordPressSource, SpecFrontMatterTranslator>
+    > {
+    self.init(
+      exportDecoder: exportDecoder,
+      redirectWriter: DynamicRedirectFileWriter(redirectFromatter: redirectFromatter),
+      assetDownloader: assetDownloader,
+      destinationURLGenerator: destinationURLGenerator,
+      contentBuilder: contentBuilder,
+      postFilters: postFilters
     )
   }
 }
