@@ -73,6 +73,6 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
   }
 }
 
-public extension PostsExportDecoder where Self == PostsExportSynDecoder {
-  static func synDecoder() -> Self { .init() }
+extension PostsExportDecoder where Self == PostsExportSynDecoder {
+  public static func synDecoder() -> Self { .init() }
 }

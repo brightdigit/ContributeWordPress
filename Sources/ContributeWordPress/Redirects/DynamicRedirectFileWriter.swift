@@ -30,3 +30,9 @@ public struct DynamicRedirectFileWriter: RedirectFileWriter {
     try redirectsText.write(to: redirectsPath, atomically: true, encoding: .utf8)
   }
 }
+
+extension RedirectFileWriter where Self == DynamicRedirectFileWriter {
+  public static func dynamic(redirectFromatter: RedirectFormatter) -> Self {
+    .init(redirectFromatter: redirectFromatter)
+  }
+}

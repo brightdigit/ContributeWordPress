@@ -79,3 +79,12 @@ public struct DynamicRedirectGenerator: RedirectListGenerator {
     }
   }
 }
+
+extension RedirectListGenerator where Self == DynamicRedirectGenerator {
+  public static func dynamic(
+    postFilter: @escaping (WordPressPost) -> Bool = Self.defaultFilter(post:),
+    urlPathGenerate: @escaping (String, WordPressPost) -> String = Self.defaultURLPath(fromName:wordpressPost:)
+  ) -> Self {
+    .init(postFilter: postFilter, urlPathGenerate: urlPathGenerate)
+  }
+}
