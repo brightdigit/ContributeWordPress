@@ -15,8 +15,12 @@ public struct WordPressMarkdownProcessor<
 > where ContentURLGeneratorType.SourceType == WordPressSource,
   MarkdownContentBuilderType.SourceType == WordPressSource {
   /// The redirect formatter used by the processor.
+#warning("Should be something which can be passed to the processor")
   private let redirectFromatter: RedirectFormatter = NetlifyRedirectFormatter()
+  
+  #warning("Should not be var")
   private var downloader: Downloader = AssetDownloader()
+  #warning("Should be something which can be passed to the processor")
   private let exportDecoder: PostsExportDecoder = PostsExportSynDecoder()
 
   private let redirectListGenerator: RedirectListGenerator
@@ -146,7 +150,8 @@ public struct WordPressMarkdownProcessor<
         .flatMap(\.value)
         .filter { $0.type == "post" }
         .map { post in
-          (
+#warning("Create the regular expression once")
+          return (
             try? NSRegularExpression(pattern: "\(settings.assetsSiteURL)/wp-content/uploads([^\"]+)")
               .matches(
                 in: post.body,
@@ -156,6 +161,7 @@ public struct WordPressMarkdownProcessor<
                 String(post.body[Range(match.range, in: post.body)!])
               }
               .compactMap {
+  #warning("I think oldURL should use the `importImagePathURL` if it's there, rather then change the `downloader` ")
                 WordPressAssetImport(
                   forPost: post,
                   oldUrl: String($0),
@@ -170,9 +176,11 @@ public struct WordPressMarkdownProcessor<
     }()
 
     // 5. Get ready to download all assets
+    
     if let importImagePathURL = settings.importAssetPathURL {
       downloader = AssetDownloader(
         downloadPathFromURL: { url in
+          #warning("Why is it using `default`? There are insances of multiple sites using a multi site in wp. That's what BrightDigit was.")
           return (["default"] + url.pathComponents.suffix(3)).joined(separator: "/")
         },
         downloadURLFromURL: { url in
@@ -192,6 +200,7 @@ public struct WordPressMarkdownProcessor<
     let htmlFromPost: ((WordPressPost) -> String) = { post in
       post.body.replacingOccurrences(
         of: "\(settings.assetsSiteURL)/wp-content/uploads",
+        #warning("Why is it using `default`? There are insances of multiple sites using a multi site in wp. That's what BrightDigit was.")
         with: "/\(assetRoot)/default"
       )
     }
