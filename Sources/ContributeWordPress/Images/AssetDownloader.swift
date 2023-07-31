@@ -1,4 +1,3 @@
-// swiftlint:disable function_body_length
 import Contribute
 import Foundation
 import SyndiKit
@@ -9,6 +8,8 @@ import SyndiKit
 
 /// A type that downloads assets required by WordPress posts.
 public struct AssetDownloader: Downloader {
+  // swiftlint:disable:next line_length
+  #warning("I'm not sure we gain anything by this abstraction. I'd combine FileURLDownloader with this type for now.")
   private let urlDownloader: URLDownloader
 
   public init(

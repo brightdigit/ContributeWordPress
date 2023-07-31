@@ -12,8 +12,8 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
   private let decoder: WordPressDecoder = SynDecoder()
 
   /// Returns an array of URLs for all of the files in the given directory.
-  // swiftlint:disable:next line_length
-  private let fileURLsFromDirectory: (_ atDirectory: URL) throws -> [URL] = Self.defaultFileURLs(atDirectory:)
+  private let fileURLsFromDirectory: (URL) throws -> [URL] =
+    Self.defaultFileURLs(atDirectory:)
 
   /// Returns the last path component of the given URL without its extension.
   /// This will be the section id for all posts found in the export file at given URL.
