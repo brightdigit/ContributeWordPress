@@ -63,14 +63,15 @@ extension PostsExportSynDecoder {
   /// - Parameter directoryURL: The directory URL.
   /// - Returns: An array of export file URLs that can be found in the given directory.
   /// - Throws: An error if the directory could not be enumerated.
-  private static func defaultFileURLs(atDirectory directoryURL: URL) throws -> [URL] {
+  private static func defaultFileURLs(atDirectory directoryURL: URL) -> [URL] {
     let enumerator = FileManager.default.enumerator(
       at: directoryURL,
       includingPropertiesForKeys: nil
     )
 
     guard let enumerator = enumerator else {
-      throw ImportError.directory(directoryURL)
+      assertionFailure("\(directoryURL) returned empty enumerator.")
+      return []
     }
 
     return enumerator.compactMap { $0 as? URL }

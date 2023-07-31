@@ -6,10 +6,12 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
+enum WordPressError: Error {
+  case assetDownloadErrors([URL: Error])
+}
+
 /// A type that downloads assets required by WordPress posts.
 public struct AssetDownloader: Downloader {
-  // swiftlint:disable:next line_length
-  #warning("I'm not sure we gain anything by this abstraction. I'd combine FileURLDownloader with this type for now.")
   private let urlDownloader: URLDownloader
 
   public init(
@@ -56,7 +58,7 @@ public struct AssetDownloader: Downloader {
     group.wait()
 
     guard errors.isEmpty else {
-      throw ImportError.assetDownloads(errors)
+      throw WordPressError.assetDownloadErrors(errors)
     }
   }
 }
