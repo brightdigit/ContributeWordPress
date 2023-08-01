@@ -5,8 +5,11 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
+@available(*, deprecated, renamed: "AssetImport")
+public typealias WordPressAssetImport = AssetImport
+
 /// A type that holds information about an asset imported from a `WordPressPost`.
-public struct WordPressAssetImport: Hashable {
+public struct AssetImport: Hashable {
   /// The original URL of the asset.
   /// /// The source `URL` from where asset will be imported.
   public let fromURL: URL
@@ -63,18 +66,44 @@ public struct WordPressAssetImport: Hashable {
   }
 }
 
-extension WordPressAssetImport {
+extension URL {
+  var firstHostComponent : String? {
+    return self.host?.components(separatedBy: ".").first
+  }
+}
+
+extension WordPressSite {
+  public var importDirectoryName : String {
+    self.baseBlogURL?.firstHostComponent ?? self.link.firstHostComponent ?? self.baseSiteURL?.firstHostComponent ?? "default"
+  }
+  
+  public var baseURL : URL {
+    
+      self.baseBlogURL ?? self.link 
+  }
+}
+
+extension AssetImport {
+  public static func defaultAssetsImagesRegex(
+    forAssetSiteURL assetSiteURL: URL,
+    relativeResourcePath: String = "wp-content/uploads"
+  ) throws -> NSRegularExpression {
+    try NSRegularExpression(pattern: "\(assetSiteURL)/\(relativeResourcePath)([^\"]+)")
+  }
+  
   public static func extractAssetImports(
-    from posts: [WordPressPost],
-    using importSettings: WordPressMarkdownProcessorSettings
-  ) -> [WordPressAssetImport] {
-    importSettings.assetsImagesRegex
-      .matchUrls(in: posts)
+    from site: WordPressSite,
+    using importSettings: ProcessorSettings
+  ) -> [AssetImport] {
+    let assetRoot = ["", importSettings.assetRelativePath, site.importDirectoryName].joined(separator: "/")
+    let regex = try! Self.defaultAssetsImagesRegex(forAssetSiteURL: site.baseURL)
+    return regex
+      .matchUrls(in: site.posts)
       .compactMap { match in
-        WordPressAssetImport(
+        AssetImport(
           forPost: match.post,
           sourceURL: match.sourceURL,
-          assetRoot: importSettings.assetDirectoryPath,
+          assetRoot: assetRoot,
           resourcePathURL: importSettings.resourcesPathURL,
           importPathURL: importSettings.importAssetPathURL
         )
@@ -83,4 +112,4 @@ extension WordPressAssetImport {
 }
 
 public typealias AssetImportFactory =
-  ([WordPressPost], WordPressMarkdownProcessorSettings) -> [WordPressAssetImport]
+  (WordPressSite, ProcessorSettings) -> [AssetImport]

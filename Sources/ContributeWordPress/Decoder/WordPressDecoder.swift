@@ -7,6 +7,7 @@ import SyndiKit
 
 /// A protocol for decoding WordPress posts from raw data.
 public protocol WordPressDecoder {
+  
   /// Decodes an array of WordPress posts from the given data.
   ///
   /// - Parameters:
@@ -17,5 +18,5 @@ public protocol WordPressDecoder {
   func decodePosts(
     fromData data: Data,
     allowInvalidCharacters: Bool
-  ) throws -> [WordPressPost]?
+  ) throws -> WordPressSite?
 }

@@ -16,5 +16,5 @@ public protocol PostsExportDecoder {
   /// - Parameter directoryURL: The URL of the directory containing the exports.
   /// - Returns: A dictionary of WordPress posts keyed by section name.
   /// - Throws: An error if posts couldn't be extracted from any of the export files.
-  func posts(fromExportsAt directoryURL: URL) throws -> [SectionName: [WordPressPost]]
+  func posts(fromExportsAt directoryURL: URL) throws -> [SectionName: WordPressSite]
 }

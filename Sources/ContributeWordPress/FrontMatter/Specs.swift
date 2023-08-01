@@ -47,7 +47,7 @@ extension Specs {
   /// Initializes a new `Specs` isntance from a WordPress source.
   ///
   /// - Parameter source: The WordPress source.
-  public init(from source: WordPressSource) {
+  public init(from source: Source) {
     self.init(
       title: source.post.title.fixUnicodeEscape().dequote(),
       date: source.post.postDate,

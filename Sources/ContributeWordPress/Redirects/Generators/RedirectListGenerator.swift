@@ -12,6 +12,6 @@ public protocol RedirectListGenerator {
   /// - Parameter allPosts: A dictionary of WordPress posts keyed by section name.
   /// - Returns: An array of `RedirectItem` representing the redirects.
   func redirects(
-    fromWordPressPosts allPosts: [SectionName: [WordPressPost]]
+    fromWordPressPosts allPosts: [SectionName: WordPressSite]
   ) -> [RedirectItem]
 }

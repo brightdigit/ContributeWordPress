@@ -11,7 +11,7 @@ public protocol Downloader {
   ///   - allowsOverwrites: To allow overwriting existing assets.
   /// - Throws: An error if there are any errors happened.
   func download(
-    assets: [WordPressAssetImport],
+    assets: [AssetImport],
     dryRun: Bool,
     allowsOverwrites: Bool
   ) throws

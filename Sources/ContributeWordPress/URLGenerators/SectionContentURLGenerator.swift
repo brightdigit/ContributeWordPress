@@ -7,7 +7,7 @@ import Foundation
 
 /// A type that generates a destination URL for a WordPress post.
 public struct SectionContentURLGenerator: ContentURLGenerator {
-  public typealias SourceType = WordPressSource
+  public typealias SourceType = Source
 
   /// Initializes a new `SectionContentURLGenerator` instance.
   public init() {}
@@ -19,7 +19,7 @@ public struct SectionContentURLGenerator: ContentURLGenerator {
   ///   - contentPathURL: The content path URL.
   /// - Returns: The destination URL for the WordPress post.
   public func destinationURL(
-    from source: WordPressSource,
+    from source: Source,
     atContentPathURL contentPathURL: URL
   ) -> URL {
     let sectionPath = contentPathURL.appendingPathComponent(source.sectionName)

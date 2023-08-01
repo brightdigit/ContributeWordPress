@@ -43,7 +43,7 @@ public struct DynamicRedirectFileWriter: RedirectFileWriter {
   ///   - directoryURL: The directory URL where the redirects file should be written.
   /// - Throws: An error if the writing operation fails.
   public func writeRedirects(
-    fromPosts posts: [SectionName: [WordPressPost]],
+    fromPosts posts: [SectionName: WordPressSite],
     inDirectory directoryURL: URL
   ) throws {
     let redirects = generator.redirects(fromWordPressPosts: posts)

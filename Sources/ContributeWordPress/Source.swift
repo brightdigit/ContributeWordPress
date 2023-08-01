@@ -2,8 +2,11 @@ import Contribute
 import Foundation
 import SyndiKit
 
+@available(*, deprecated, renamed: "Source")
+public typealias WordPressSource = Source
+
 /// A type that represents a source for a WordPress post.
-public struct WordPressSource {
+public struct Source {
   /// The name of the section to which the post belongs.
   public let sectionName: String
 
@@ -17,7 +20,7 @@ public struct WordPressSource {
   public var htmlFromPost: ((WordPressPost) -> String)?
 }
 
-extension WordPressSource: HTMLSource {
+extension Source: HTMLSource {
   /// The HTML body of the WordPress post.
   public var html: String {
     htmlFromPost?(post) ?? post.body

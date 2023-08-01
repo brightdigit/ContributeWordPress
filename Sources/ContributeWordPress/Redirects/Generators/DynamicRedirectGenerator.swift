@@ -45,12 +45,12 @@ public struct DynamicRedirectGenerator: RedirectListGenerator {
   /// - Parameter allPosts: A dictionary of WordPress posts keyed by section name.
   /// - Returns: An array of `RedirectItem` representing the redirects.
   public func redirects(
-    fromWordPressPosts allPosts: [SectionName: [WordPressPost]]
+    fromWordPressPosts allPosts: [SectionName: WordPressSite]
   ) -> [RedirectItem] {
     allPosts.flatMap { args -> [RedirectItem] in
-      let (dir, posts) = args
-
-      return posts.filter(self.postFilter).map { post in
+      let (dir, site) = args
+      
+      return site.posts.filter(self.postFilter).map { post in
         RedirectItem(
           fromURLPath: post.link.path,
           redirectURLPath: self.urlPathGenerate(dir, post)

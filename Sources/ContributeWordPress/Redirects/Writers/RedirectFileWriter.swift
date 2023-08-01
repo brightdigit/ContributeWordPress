@@ -11,7 +11,7 @@ public protocol RedirectFileWriter {
   ///   - directoryURL: The directory URL where the redirects file should be written.
   /// - Throws: An error if the writing operation fails.
   func writeRedirects(
-    fromPosts posts: [SectionName: [WordPressPost]],
+    fromPosts posts: [SectionName: WordPressSite],
     inDirectory directoryURL: URL
   ) throws
 }

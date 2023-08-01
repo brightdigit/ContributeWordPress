@@ -31,7 +31,7 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
   private static func postsFromURL(
     _ url: URL,
     using decoder: WordPressDecoder
-  ) throws -> [WordPressPost]? {
+  ) throws -> WordPressSite? {
     let data = try Data(contentsOf: url)
     return try decoder.decodePosts(fromData: data, allowInvalidCharacters: true)
   }
@@ -43,14 +43,14 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
   /// - Throws: An error if posts couldn't be extracted from any of the export files.
   public func posts(
     fromExportsAt directoryURL: URL
-  ) throws -> [SectionName: [WordPressPost]] {
+  ) throws -> [SectionName: WordPressSite] {
     let files = try fileURLsFromDirectory(directoryURL)
 
-    let feedPairs = try files.map { url -> (String, [WordPressPost]?) in
+    let feedPairs = try files.map { url -> (String, WordPressSite?) in
       try (self.keyFromURL(url), Self.postsFromURL(url, using: decoder))
     }
 
-    return Dictionary(feedPairs, uniquingKeysWith: Array.combine).compactMapValues { $0 }
+    return Dictionary(uniqueKeysWithValues: feedPairs).compactMapValues{$0}
   }
 }
 

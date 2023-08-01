@@ -1,24 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "contribute",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/brightdigit/Contribute.git",
-      "state" : {
-        "revision" : "958759a8857c55ee84d5504ad88e653d5e87c61f",
-        "version" : "1.0.0-alpha.1"
-      }
-    },
-    {
-      "identity" : "syndikit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/brightdigit/SyndiKit.git",
-      "state" : {
-        "revision" : "238c8d85a94b67072c8fafcb4feff1b6df11d87b",
-        "version" : "0.3.3"
-      }
-    },
-    {
       "identity" : "xmlcoder",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/CoreOffice/XMLCoder",

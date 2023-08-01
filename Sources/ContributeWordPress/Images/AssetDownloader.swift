@@ -6,7 +6,7 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
-enum WordPressError: Error {
+enum WordPressError: ContributeError {
   case assetDownloadErrors([URL: Error])
 }
 
@@ -28,7 +28,7 @@ public struct AssetDownloader: Downloader {
   ///   - allowsOverwrites: To allow overwriting existing assets.
   /// - Throws: An `ImportError.assetDownloads` error if there are any errors happened.
   public func download(
-    assets: [WordPressAssetImport],
+    assets: [AssetImport],
     dryRun: Bool,
     allowsOverwrites: Bool
   ) throws {
