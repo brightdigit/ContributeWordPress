@@ -62,3 +62,25 @@ public struct WordPressAssetImport: Hashable {
     )
   }
 }
+
+extension WordPressAssetImport {
+  public static func extractAssetImports(
+    from posts: [WordPressPost],
+    using importSettings: WordPressMarkdownProcessorSettings
+  ) -> [WordPressAssetImport] {
+    importSettings.assetsImagesRegex
+      .matchUrls(in: posts)
+      .compactMap { match in
+        WordPressAssetImport(
+          forPost: match.post,
+          sourceURL: match.sourceURL,
+          assetRoot: importSettings.assetDirectoryPath,
+          resourcePathURL: importSettings.resourcesPathURL,
+          importPathURL: importSettings.importAssetPathURL
+        )
+      }
+  }
+}
+
+public typealias AssetImportFactory =
+  ([WordPressPost], WordPressMarkdownProcessorSettings) -> [WordPressAssetImport]
