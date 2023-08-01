@@ -1,4 +1,3 @@
-// swiftlint:disable function_body_length
 import Contribute
 import Foundation
 import SyndiKit
@@ -6,6 +5,10 @@ import SyndiKit
 #if canImport(FoundationNetworking)
   import FoundationNetworking
 #endif
+
+enum WordPressError: Error {
+  case assetDownloadErrors([URL: Error])
+}
 
 /// A type that downloads assets required by WordPress posts.
 public struct AssetDownloader: Downloader {
@@ -55,7 +58,7 @@ public struct AssetDownloader: Downloader {
     group.wait()
 
     guard errors.isEmpty else {
-      throw ImportError.assetDownloads(errors)
+      throw WordPressError.assetDownloadErrors(errors)
     }
   }
 }

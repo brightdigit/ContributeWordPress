@@ -14,11 +14,12 @@ public struct WordPressMarkdownProcessor<
 > where ContentURLGeneratorType.SourceType == WordPressSource,
   MarkdownContentBuilderType.SourceType == WordPressSource {
   private let exportDecoder: PostsExportDecoder
-  private var assetDownloader: Downloader
+  private let assetDownloader: Downloader
   private let redirectWriter: RedirectFileWriter
   private let destinationURLGenerator: ContentURLGeneratorType
   private let contentBuilder: MarkdownContentBuilderType
   private let postFilters: [PostFilter]
+  private let assetImportFactory: AssetImportFactory
 
   /// Initializes a new `WordPressMarkdownProcessor` instance.
   ///
@@ -33,7 +34,8 @@ public struct WordPressMarkdownProcessor<
     assetDownloader: Downloader,
     destinationURLGenerator: ContentURLGeneratorType,
     contentBuilder: MarkdownContentBuilderType,
-    postFilters: [PostFilter]
+    postFilters: [PostFilter],
+    assetImportFactory: @escaping AssetImportFactory
   ) {
     self.exportDecoder = exportDecoder
     self.redirectWriter = redirectWriter
@@ -41,6 +43,7 @@ public struct WordPressMarkdownProcessor<
     self.destinationURLGenerator = destinationURLGenerator
     self.contentBuilder = contentBuilder
     self.postFilters = postFilters
+    self.assetImportFactory = assetImportFactory
   }
 
   /// Writes all posts to the given content path URL.
@@ -96,23 +99,11 @@ public struct WordPressMarkdownProcessor<
       inDirectory: settings.resourcesPathURL
     )
 
-    // 3. Calculate assets root for assets under resources directory.
-    let assetRelative = settings.resourceAssetPathURL.relativePath(
-      from: settings.resourcesPathURL
-    ) ?? settings.resourcesPathURL.path
-
-    let directoryPrefix = settings.assetSiteURL.host?
-      .components(separatedBy: ".")
-      .first ?? "default"
-    let assetRoot = ["", assetRelative, directoryPrefix].joined(separator: "/")
+    #warning("Should this just use `.filter(self.postFilters.postSatisfiesAll)`?")
+    let importPosts = allPosts.flatMap(\.value).filter { $0.type == "post" }
 
     // 4. Build asset imports from all posts
-    let assetsImports: [WordPressAssetImport] = extractAssetImports(
-      from: allPosts.flatMap(\.value).filter { $0.type == "post" },
-      with: "\(settings.assetSiteURL)/wp-content/uploads([^\"]+)",
-      assetRoot: assetRoot,
-      settings: settings
-    )
+    let assetsImports: [WordPressAssetImport] = assetImportFactory(importPosts, settings)
 
     // 5. Download all assets
     try assetDownloader.download(
@@ -121,45 +112,14 @@ public struct WordPressMarkdownProcessor<
       allowsOverwrites: settings.overwriteAssets
     )
 
-    // 6.
-    let htmlFromPost: (WordPressPost) -> String = { post in
-      post.body.replacingOccurrences(
-        of: "\(settings.assetSiteURL)/wp-content/uploads",
-        with: assetRoot
-      )
-    }
-
     // 7. Starts writing the markdown files for all WordPress post,
     try writeAllPosts(
       allPosts,
       withAssets: assetsImports,
       to: settings.contentPathURL,
       using: type(of: settings).markdownFrom(html:),
-      htmlFromPost: htmlFromPost
+      htmlFromPost: settings.htmlFromPost
     )
-  }
-
-  private func extractAssetImports(
-    from allPosts: [WordPressPost],
-    with pattern: String,
-    assetRoot: String,
-    settings: WordPressMarkdownProcessorSettings
-  ) -> [WordPressAssetImport] {
-    guard let regex = try? NSRegularExpression(pattern: pattern) else {
-      return []
-    }
-
-    return regex
-      .matchUrls(in: allPosts)
-      .compactMap { match in
-        WordPressAssetImport(
-          forPost: match.post,
-          sourceURL: match.sourceURL,
-          assetRoot: assetRoot,
-          resourcePathURL: settings.resourcesPathURL,
-          importPathURL: settings.importAssetPathURL
-        )
-      }
   }
 }
 
@@ -181,6 +141,8 @@ extension WordPressMarkdownProcessor {
     redirectFromatter: RedirectFormatter,
     postFilters: [PostFilter],
     exportDecoder: PostsExportDecoder = PostsExportSynDecoder(),
+    assetImportFactory: @escaping AssetImportFactory =
+      WordPressAssetImport.extractAssetImports(from:using:),
     assetDownloader: Downloader = AssetDownloader(),
     destinationURLGenerator: ContentURLGeneratorType = .init(),
     contentBuilder: MarkdownContentBuilderType = .init(
@@ -199,7 +161,8 @@ extension WordPressMarkdownProcessor {
       assetDownloader: assetDownloader,
       destinationURLGenerator: destinationURLGenerator,
       contentBuilder: contentBuilder,
-      postFilters: postFilters
+      postFilters: postFilters,
+      assetImportFactory: assetImportFactory
     )
   }
 }

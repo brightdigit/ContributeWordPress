@@ -12,8 +12,8 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
   private let decoder: WordPressDecoder = SynDecoder()
 
   /// Returns an array of URLs for all of the files in the given directory.
-  // swiftlint:disable:next line_length
-  private let fileURLsFromDirectory: (_ atDirectory: URL) throws -> [URL] = Self.defaultFileURLs(atDirectory:)
+  private let fileURLsFromDirectory: (URL) throws -> [URL] =
+    Self.defaultFileURLs(atDirectory:)
 
   /// Returns the last path component of the given URL without its extension.
   /// This will be the section id for all posts found in the export file at given URL.
@@ -63,14 +63,15 @@ extension PostsExportSynDecoder {
   /// - Parameter directoryURL: The directory URL.
   /// - Returns: An array of export file URLs that can be found in the given directory.
   /// - Throws: An error if the directory could not be enumerated.
-  private static func defaultFileURLs(atDirectory directoryURL: URL) throws -> [URL] {
+  private static func defaultFileURLs(atDirectory directoryURL: URL) -> [URL] {
     let enumerator = FileManager.default.enumerator(
       at: directoryURL,
       includingPropertiesForKeys: nil
     )
 
     guard let enumerator = enumerator else {
-      throw ImportError.directory(directoryURL)
+      assertionFailure("\(directoryURL) returned empty enumerator.")
+      return []
     }
 
     return enumerator.compactMap { $0 as? URL }
