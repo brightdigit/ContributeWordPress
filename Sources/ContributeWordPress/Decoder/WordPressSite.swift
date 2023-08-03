@@ -1,7 +1,7 @@
 import Foundation
 import SyndiKit
 
-public struct WordPressSite {
+public struct WordPressSite: BaseURLSite {
   public static let wpContentUploadsRelativePath = "wp-content/uploads"
   public init(
     title: String,
@@ -61,9 +61,8 @@ extension WordPressSite {
     channel: RSSChannel,
     relativeResourcePath: String
   ) throws {
-    let baseURL = channel.wpBaseBlogURL ?? channel.link
     let assetsImagesRegex = try Self.defaultAssetsImagesRegex(
-      forAssetSiteURL: baseURL,
+      forSite: channel,
       relativeResourcePath: relativeResourcePath
     )
     self.init(
@@ -78,21 +77,26 @@ extension WordPressSite {
     )
   }
 
-  public static func defaultAssetsImagesRegex(
+  static func defaultAssetsImagesRegex(
+    forSite site: BaseURLSite,
+    relativeResourcePath: String = WordPressSite.wpContentUploadsRelativePath
+  ) throws -> NSRegularExpression {
+    try Self.defaultAssetsImagesRegex(
+      forAssetSiteURL: site.baseURL,
+      relativeResourcePath: relativeResourcePath
+    )
+  }
+
+  static func defaultAssetsImagesRegex(
     forAssetSiteURL assetSiteURL: URL,
     relativeResourcePath: String = WordPressSite.wpContentUploadsRelativePath
   ) throws -> NSRegularExpression {
     try NSRegularExpression(pattern: "\(assetSiteURL)/\(relativeResourcePath)([^\"]+)")
   }
 
-  public var importDirectoryName: String {
-    baseBlogURL?.firstHostComponent ??
-      link.firstHostComponent ??
+  var importDirectoryName: String {
+    baseURL.firstHostComponent ??
       baseSiteURL?.firstHostComponent ??
       "default"
-  }
-
-  public var baseURL: URL {
-    baseBlogURL ?? link
   }
 }
