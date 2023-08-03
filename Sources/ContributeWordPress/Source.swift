@@ -2,9 +2,6 @@ import Contribute
 import Foundation
 import SyndiKit
 
-@available(*, deprecated, renamed: "Source")
-public typealias WordPressSource = Source
-
 /// A type that represents a source for a WordPress post.
 public struct Source {
   /// The name of the section to which the post belongs.

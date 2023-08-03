@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brightdigit/Contribute.git",
       "state" : {
-        "branch" : "contribute-wp",
-        "revision" : "2b2abb4261e545df04cdbe7a3c1912dc51532cea"
+        "revision" : "2dbdcdc99861f589639f1828b10ec3c459323639",
+        "version" : "1.0.0-alpha.2"
       }
     },
     {

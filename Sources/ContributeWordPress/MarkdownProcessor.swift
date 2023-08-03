@@ -7,9 +7,6 @@ import Yams
   import FoundationNetworking
 #endif
 
-@available(*, deprecated, renamed: "MarkdownProcessor")
-public typealias WordPressMarkdownProcessor = MarkdownProcessor
-
 /// A type that processes WordPress posts and generates Markdown files for each.
 public struct MarkdownProcessor<
   ContentURLGeneratorType: ContentURLGenerator,
@@ -105,11 +102,9 @@ public struct MarkdownProcessor<
     )
 
     #warning("Should this just use `.filter(self.postFilters.postSatisfiesAll)`?")
-    
-    
-    
+
     // 4. Build asset imports from all posts
-    let assetsImports: [AssetImport] = allPosts.values.flatMap{
+    let assetsImports: [AssetImport] = allPosts.values.flatMap {
       assetImportFactory($0, settings)
     }
 

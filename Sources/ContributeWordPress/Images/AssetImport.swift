@@ -5,9 +5,6 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
-@available(*, deprecated, renamed: "AssetImport")
-public typealias WordPressAssetImport = AssetImport
-
 /// A type that holds information about an asset imported from a `WordPressPost`.
 public struct AssetImport: Hashable {
   /// The original URL of the asset.
@@ -67,37 +64,22 @@ public struct AssetImport: Hashable {
 }
 
 extension URL {
-  var firstHostComponent : String? {
-    return self.host?.components(separatedBy: ".").first
-  }
-}
-
-extension WordPressSite {
-  public var importDirectoryName : String {
-    self.baseBlogURL?.firstHostComponent ?? self.link.firstHostComponent ?? self.baseSiteURL?.firstHostComponent ?? "default"
-  }
-  
-  public var baseURL : URL {
-    
-      self.baseBlogURL ?? self.link 
+  var firstHostComponent: String? {
+    host?.components(separatedBy: ".").first
   }
 }
 
 extension AssetImport {
-  public static func defaultAssetsImagesRegex(
-    forAssetSiteURL assetSiteURL: URL,
-    relativeResourcePath: String = "wp-content/uploads"
-  ) throws -> NSRegularExpression {
-    try NSRegularExpression(pattern: "\(assetSiteURL)/\(relativeResourcePath)([^\"]+)")
-  }
-  
   public static func extractAssetImports(
     from site: WordPressSite,
     using importSettings: ProcessorSettings
   ) -> [AssetImport] {
-    let assetRoot = ["", importSettings.assetRelativePath, site.importDirectoryName].joined(separator: "/")
-    let regex = try! Self.defaultAssetsImagesRegex(forAssetSiteURL: site.baseURL)
-    return regex
+    let assetRoot = [
+      "",
+      importSettings.assetRelativePath,
+      site.importDirectoryName
+    ].joined(separator: "/")
+    return site.assetsImagesRegex
       .matchUrls(in: site.posts)
       .compactMap { match in
         AssetImport(

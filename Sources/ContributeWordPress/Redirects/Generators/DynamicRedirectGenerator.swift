@@ -49,7 +49,7 @@ public struct DynamicRedirectGenerator: RedirectListGenerator {
   ) -> [RedirectItem] {
     allPosts.flatMap { args -> [RedirectItem] in
       let (dir, site) = args
-      
+
       return site.posts.filter(self.postFilter).map { post in
         RedirectItem(
           fromURLPath: post.link.path,

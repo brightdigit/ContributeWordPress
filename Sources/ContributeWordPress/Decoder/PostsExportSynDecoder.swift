@@ -50,7 +50,7 @@ public struct PostsExportSynDecoder: PostsExportDecoder {
       try (self.keyFromURL(url), Self.postsFromURL(url, using: decoder))
     }
 
-    return Dictionary(uniqueKeysWithValues: feedPairs).compactMapValues{$0}
+    return Dictionary(uniqueKeysWithValues: feedPairs).compactMapValues { $0 }
   }
 }
 

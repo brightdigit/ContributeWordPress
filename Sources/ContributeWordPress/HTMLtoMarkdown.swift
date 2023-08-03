@@ -1,5 +1,5 @@
-import Foundation
 import Contribute
+import Foundation
 
 public struct HTMLtoMarkdown: MarkdownGenerator {
   public init(_ markdownFromHTML: @escaping (String) throws -> String) {
