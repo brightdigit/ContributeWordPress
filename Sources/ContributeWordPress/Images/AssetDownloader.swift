@@ -6,10 +6,6 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
-enum WordPressError: ContributeError {
-  case assetDownloadErrors([URL: Error])
-}
-
 /// A type that downloads assets required by WordPress posts.
 public struct AssetDownloader: Downloader {
   private let urlDownloader: URLDownloader

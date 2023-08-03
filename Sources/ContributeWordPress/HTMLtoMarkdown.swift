@@ -1,6 +1,7 @@
 import Contribute
 import Foundation
 
+@available(*, deprecated, message: "Use `HTMLtoMarkdown` in `Contrbute`.")
 public struct HTMLtoMarkdown: MarkdownGenerator {
   public init(_ markdownFromHTML: @escaping (String) throws -> String) {
     self.markdownFromHTML = markdownFromHTML

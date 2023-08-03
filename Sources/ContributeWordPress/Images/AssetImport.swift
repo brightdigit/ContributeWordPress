@@ -63,12 +63,6 @@ public struct AssetImport: Hashable {
   }
 }
 
-extension URL {
-  var firstHostComponent: String? {
-    host?.components(separatedBy: ".").first
-  }
-}
-
 extension AssetImport {
   public static func extractAssetImports(
     from site: WordPressSite,
