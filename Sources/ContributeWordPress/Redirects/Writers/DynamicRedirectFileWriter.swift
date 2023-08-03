@@ -4,7 +4,7 @@ import SyndiKit
 /// A type that writes redirects from posts into a file.
 ///
 /// It uses an instance of `DynamicRedirectGenerator` to generate redirect items,
-/// then using the provided `RedirectFormatter` it formats the redirects into a string
+/// then uses the provided `RedirectFormatter` to format the redirects into a string
 /// whtich later will be written into a file in a given directory.
 public struct DynamicRedirectFileWriter: RedirectFileWriter {
   private let generator: RedirectListGenerator
@@ -35,18 +35,11 @@ public struct DynamicRedirectFileWriter: RedirectFileWriter {
     formatter = redirectFromatter
   }
 
-  /// Generates redirects list from WordPress posts per section, then writes
-  /// them into a file at the given directory.
-  ///
-  /// - Parameters:
-  ///   - posts: A dictionary of WordPress posts keyed by section name.
-  ///   - directoryURL: The directory URL where the redirects file should be written.
-  /// - Throws: An error if the writing operation fails.
   public func writeRedirects(
-    fromPosts posts: [SectionName: WordPressSite],
+    fromSites sites: [SectionName: WordPressSite],
     inDirectory directoryURL: URL
   ) throws {
-    let redirects = generator.redirects(fromWordPressPosts: posts)
+    let redirects = generator.redirects(fromSites: sites)
     let redirectsText = formatter.formatRedirects(redirects)
     let redirectsPath = formatter.redirectsURL(basedOnResourcesDirectoryURL: directoryURL)
     try redirectsText.write(to: redirectsPath, atomically: true, encoding: .utf8)

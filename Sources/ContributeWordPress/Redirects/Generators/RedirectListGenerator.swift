@@ -5,13 +5,13 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
-/// A protocol for generating redirect items from WordPress posts.
+/// A protocol for generating redirect items for each post of WordPress sites.
 public protocol RedirectListGenerator {
-  /// Generates redirects list from the given WordPress posts.
+  /// Generates redirects list for each post of the given WordPress sites.
   ///
-  /// - Parameter allPosts: A dictionary of WordPress posts keyed by section name.
+  /// - Parameter sites: A dictionary of WordPress sites keyed by section name.
   /// - Returns: An array of `RedirectItem` representing the redirects.
   func redirects(
-    fromWordPressPosts allPosts: [SectionName: WordPressSite]
+    fromSites sites: [SectionName: WordPressSite]
   ) -> [RedirectItem]
 }

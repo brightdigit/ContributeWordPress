@@ -1,9 +1,9 @@
 import Foundation
 import SyndiKit
 
-/// A protocol for downloading assets from WordPress posts.
+/// A protocol for downloading asset imports.
 public protocol Downloader {
-  /// Downloads assets.
+  /// Downloads asset imports.
   ///
   /// - Parameters:
   ///   - assets: The imported assets to be downloaded.

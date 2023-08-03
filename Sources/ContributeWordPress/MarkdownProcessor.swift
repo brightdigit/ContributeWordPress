@@ -7,13 +7,13 @@ import Yams
   import FoundationNetworking
 #endif
 
-/// A type that processes WordPress posts and generates Markdown files for each.
+/// A type that processes WordPress sites and generates Markdowns for their posts.
 public struct MarkdownProcessor<
   ContentURLGeneratorType: ContentURLGenerator,
   MarkdownContentBuilderType: MarkdownContentBuilder
 > where ContentURLGeneratorType.SourceType == Source,
   MarkdownContentBuilderType.SourceType == Source {
-  private let exportDecoder: PostsExportDecoder
+  private let exportDecoder: SitesExportDecoder
   private let assetDownloader: Downloader
   private let redirectWriter: RedirectFileWriter
   private let destinationURLGenerator: ContentURLGeneratorType
@@ -21,15 +21,18 @@ public struct MarkdownProcessor<
   private let postFilters: [PostFilter]
   private let assetImportFactory: AssetImportFactory
 
-  /// Initializes a new `WordPressMarkdownProcessor` instance.
+  /// Initializes a new `MarkdownProcessor` instance.
   ///
   /// - Parameters:
-  ///   - redirectListGenerator: The redirect list generator.
+  ///   - exportDecoder: The export decoder.
+  ///   - redirectWriter: The redirect file writer.
+  ///   - assetDownloader: The asset downloader.
   ///   - destinationURLGenerator: The content URL generator.
   ///   - contentBuilder: The Markdown content builder.
   ///   - postFilters: The post filters.
+  ///   - assetImportFactory: The asset import factory.
   public init(
-    exportDecoder: PostsExportDecoder,
+    exportDecoder: SitesExportDecoder,
     redirectWriter: RedirectFileWriter,
     assetDownloader: Downloader,
     destinationURLGenerator: ContentURLGeneratorType,
@@ -46,27 +49,47 @@ public struct MarkdownProcessor<
     self.assetImportFactory = assetImportFactory
   }
 
-  /// Writes all posts to the given content path URL.
-  ///
-  /// - Parameters:
-  ///   - allPosts: A dictionary of WordPress posts keyed by section name.
-  ///   - assets: An array of assets that were imported from WordPress posts.
-  ///   - assetRoot: The root path of the assets directory.
-  ///   - contentPathURL: The content path URL.
-  ///   - htmlToMarkdown: A function that converts HTML to Markdown.
-  /// - Throws: An error if an error occurs.
+  private func decodeExports(
+    at directoryURL: URL
+  ) throws -> [SectionName: WordPressSite] {
+    try exportDecoder.sites(fromExportsAt: directoryURL)
+  }
+
+  private func writeRedirects(
+    fromSites sites: [SectionName: WordPressSite],
+    inDirectory directoryURL: URL
+  ) throws {
+    try redirectWriter.writeRedirects(fromSites: sites, inDirectory: directoryURL)
+  }
+
+  private func retrieveAssetImports(
+    fromSites sites: [SectionName: WordPressSite],
+    using importSettings: ProcessorSettings
+  ) throws -> [AssetImport] {
+    let assetImports: [AssetImport] = sites.values.flatMap {
+      assetImportFactory($0, importSettings)
+    }
+
+    try assetDownloader.download(
+      assets: assetImports,
+      dryRun: importSettings.skipDownload,
+      allowsOverwrites: importSettings.overwriteAssets
+    )
+
+    return assetImports
+  }
+
   private func writeAllPosts(
-    _ allPosts: [SectionName: WordPressSite],
+    fromSites sites: [SectionName: WordPressSite],
     withAssets assets: [AssetImport],
-    to contentPathURL: URL,
+    inContentDirectory contentDirectoryURL: URL,
     using htmlToMarkdown: @escaping (String) throws -> String,
     htmlFromSitePost: ((WordPressSite) -> ((WordPressPost) -> String))? = nil
   ) throws {
-    try allPosts.forEach { sectionName, posts in
-      try FileManager.createDirectory(withName: sectionName, in: contentPathURL)
-      let htmlFromPost = htmlFromSitePost?(posts)
-      try posts
-        .posts
+    try sites.forEach { sectionName, site in
+      try FileManager.createDirectory(withName: sectionName, in: contentDirectoryURL)
+      let htmlFromPost = htmlFromSitePost?(site)
+      try site.posts
         .filter(self.postFilters.postSatisfiesAll)
         .map { post in (post, assets.first { $0.parentID == post.ID }) }
         .forEach { post, featuredImage in
@@ -77,7 +100,7 @@ public struct MarkdownProcessor<
               featuredImage: featuredImage.map(\.featuredPath),
               htmlFromPost: htmlFromPost
             ),
-            atContentPathURL: contentPathURL,
+            atContentPathURL: contentDirectoryURL,
             basedOn: self.destinationURLGenerator,
             using: htmlToMarkdown
           )
@@ -92,34 +115,20 @@ public struct MarkdownProcessor<
   public func begin(
     withSettings settings: ProcessorSettings
   ) throws {
-    // 1. Decodes WordPress posts from exports directory.
-    let allPosts = try exportDecoder.posts(fromExportsAt: settings.exportsDirectoryURL)
+    // 1. Decodes WordPress site from exports directory.
+    let allSites = try decodeExports(at: settings.exportsDirectoryURL)
 
     // 2. Writes redirects for all decoded WordPress posts.
-    try redirectWriter.writeRedirects(
-      fromPosts: allPosts,
-      inDirectory: settings.resourcesPathURL
-    )
+    try writeRedirects(fromSites: allSites, inDirectory: settings.resourcesPathURL)
 
-    #warning("Should this just use `.filter(self.postFilters.postSatisfiesAll)`?")
+    // 3. Extract and download asset imports for all WordPress sites.
+    let assetImports = try retrieveAssetImports(fromSites: allSites, using: settings)
 
-    // 4. Build asset imports from all posts
-    let assetsImports: [AssetImport] = allPosts.values.flatMap {
-      assetImportFactory($0, settings)
-    }
-
-    // 5. Download all assets
-    try assetDownloader.download(
-      assets: assetsImports,
-      dryRun: settings.skipDownload,
-      allowsOverwrites: settings.overwriteAssets
-    )
-
-    // 7. Starts writing the markdown files for all WordPress post,
+    // 4. Starts writing the markdown files for all WordPress posts for each site.
     try writeAllPosts(
-      allPosts,
-      withAssets: assetsImports,
-      to: settings.contentPathURL,
+      fromSites: allSites,
+      withAssets: assetImports,
+      inContentDirectory: settings.contentPathURL,
       using: settings.markdownFrom(html:),
       htmlFromSitePost: settings.htmlFromPost
     )
@@ -127,31 +136,32 @@ public struct MarkdownProcessor<
 }
 
 extension MarkdownProcessor {
-  /// Initializes a new `WordPressMarkdownProcessor` instance with default values for
-  ///   - `PostsExportDecoder`
-  ///   - `Downloader`
-  ///   - `ContentURLGeneratorType`
-  ///   - `MarkdownContentBuilderType`.
+  /// Initializes a new `WordPressMarkdownProcessor` instance.
   ///
   /// It will be created with a `DynamicRedirectFileWriter` instance that makes use of
   /// `DynamicRedirectGenerator` and the provided `RedirectFormatter` to generate
   /// the redirects and write them into a file.
   ///
   /// - Parameters:
-  ///   - redirectFromatter: The formatter to format redirect items into a file.
+  ///   - redirectFormatter: The formatter used to make redirects.
   ///   - postFilters: The post filters.
+  ///   - exportDecoder: The decoder used to decode posts .
+  ///   - assetDownloader: The asset downloader.
+  ///   - destinationURLGenerator: The destination URL generator.
+  ///   - contentBuilder: The content builder.
+  ///   - assetImportFactory: The asset import factory.
   public init(
     redirectFromatter: RedirectFormatter,
     postFilters: [PostFilter],
-    exportDecoder: PostsExportDecoder = PostsExportSynDecoder(),
-    assetImportFactory: @escaping AssetImportFactory =
-      AssetImport.extractAssetImports(from:using:),
+    exportDecoder: SitesExportDecoder = SitesExportSynDecoder(),
     assetDownloader: Downloader = AssetDownloader(),
     destinationURLGenerator: ContentURLGeneratorType = .init(),
     contentBuilder: MarkdownContentBuilderType = .init(
       frontMatterExporter: .init(translator: SpecFrontMatterTranslator()),
       markdownExtractor: FilteredHTMLMarkdownExtractor<Source>()
-    )
+    ),
+    assetImportFactory: @escaping AssetImportFactory =
+      AssetImport.extractAssetImports(from:using:)
   ) where ContentURLGeneratorType == SectionContentURLGenerator,
     MarkdownContentBuilderType == MarkdownContentYAMLBuilder<
       Source,

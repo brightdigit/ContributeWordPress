@@ -32,9 +32,30 @@ public struct AssetDownloader: Downloader {
       return
     }
 
-    let group = DispatchGroup()
+    try downloadUsingGroupDispatch(
+      assets: assets,
+      allowsOverwrites: allowsOverwrites
+    ) { errors in
+      guard errors.isEmpty else {
+        throw WordPressError.assetDownloadErrors(errors)
+      }
+    }
+  }
 
+  /// A helper function to download assets using DispatchGroup.
+  ///
+  /// - Parameters:
+  ///   - assets: The imported assets to be downloaded.
+  ///   - allowsOverwrites: To allow overwriting existing assets.
+  ///   - completion: A completion handler called with errors mapped to asset source url.
+  private func downloadUsingGroupDispatch(
+    assets: [AssetImport],
+    allowsOverwrites: Bool,
+    completion: (_ errors: [URL: Error]) throws -> Void
+  ) throws {
     var errors = [URL: Error]()
+
+    let group = DispatchGroup()
 
     for asset in assets {
       group.enter()
@@ -53,8 +74,6 @@ public struct AssetDownloader: Downloader {
 
     group.wait()
 
-    guard errors.isEmpty else {
-      throw WordPressError.assetDownloadErrors(errors)
-    }
+    try completion(errors)
   }
 }

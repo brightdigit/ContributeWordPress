@@ -18,7 +18,7 @@ public protocol ProcessorSettings {
   /// Example: /..../WordPress/exports/
   var exportsDirectoryURL: URL { get }
 
-  /// The URL of the directory that the posts assets should be imported.
+  /// The URL of the directory that the assets should be imported.
   ///
   /// Example: /..../WordPress/html/
   var importAssetPathURL: URL? { get }
@@ -32,28 +32,37 @@ public protocol ProcessorSettings {
   /// Name of directory to store assets relative to ``resourcesPathURL``
   var assetRelativePath: String { get }
 
-  /// Converts the given HTML to Markdown.
+  /// The relative path for uploads.
+  var uploadsRelativePath: String { get }
+
+  /// Converts the given HTML string to Markdown string.
   ///
   /// - Parameter html: The HTML string to convert.
-  /// - Returns: The Markdown representation of the HTML.
+  /// - Returns: The Markdown string representation of the HTML.
   func markdownFrom(html: String) throws -> String
 
-  /// Converts the given HTML to Markdown.
+  /// Converts the given `WordPressSite` to HTML string.
   ///
-  /// - Parameter html: The HTML string to convert.
-  /// - Returns: The Markdown representation of the HTML.
+  /// - Parameter site: The WordPress site to convert.
+  /// - Returns: The HTML string representation of the WordPress site.
   func htmlFromPost(_ site: WordPressSite) -> ((WordPressPost) -> String)
-
-  var uploadsRelativePath: String {
-    get
-  }
 }
 
 extension ProcessorSettings {
+  /// The URL for the asset path located under `resourcesPathURL`.
   public var resourceAssetPathURL: URL {
     resourcesPathURL.appendingPathComponent(assetRelativePath)
   }
 
+  /// The relative path for uploads directory of WordPress content.
+  public var uploadsRelativePath: String {
+    WordPressSite.wpContentUploadsRelativePath
+  }
+
+  /// Returns the asset directory path for the given site name.
+  ///
+  /// - Parameter siteName: The name of the site.
+  /// - Returns: The asset directory path.
   public func assetDirectoryPath(forSiteName siteName: String) -> String {
     let assetRelative = resourceAssetPathURL.relativePath(
       from: resourcesPathURL
@@ -62,10 +71,10 @@ extension ProcessorSettings {
     return ["", assetRelative, siteName].joined(separator: "/")
   }
 
-  public var uploadsRelativePath: String {
-    WordPressSite.wpContentUploadsRelativePath
-  }
-
+  /// Returns the HTML from the given post.
+  ///
+  /// - Parameter site: The WordPress site.
+  /// - Returns: The HTML representation of the post.
   public func htmlFromPost(_ site: WordPressSite) -> ((WordPressPost) -> String) {
     let assetPostURLSearchPrefix = site
       .baseURL
