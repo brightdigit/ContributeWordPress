@@ -1,6 +1,12 @@
 import Foundation
 import SyndiKit
 
+public enum AssetImportSetting {
+  case none
+  case download
+  case copyFilesFrom(URL)
+}
+
 /// A protocol that defines the settings for the `WordPressMarkdownProcessor`.
 public protocol ProcessorSettings {
   /// The URL for the content path
@@ -18,16 +24,10 @@ public protocol ProcessorSettings {
   /// Example: /..../WordPress/exports/
   var exportsDirectoryURL: URL { get }
 
-  /// The URL of the directory that the assets should be imported.
-  ///
-  /// Example: /..../WordPress/html/
-  var importAssetPathURL: URL? { get }
-
   /// Whether to overwrite existing assets.
   var overwriteAssets: Bool { get }
 
-  /// Whether to skip downloading assets.
-  var skipDownload: Bool { get }
+  var assetImportSetting: AssetImportSetting { get }
 
   /// Name of directory to store assets relative to ``resourcesPathURL``
   var assetRelativePath: String { get }
@@ -49,6 +49,36 @@ public protocol ProcessorSettings {
 }
 
 extension ProcessorSettings {
+  /// The URL of the directory that the assets should be imported.
+  ///
+  /// Example: /..../WordPress/html/
+  @available(
+    *, deprecated, renamed: "assetImportSetting",
+    message: "Use `assetImportSetting` for whether to copy from location."
+  )
+  public var importAssetPathURL: URL? {
+    if case let .copyFilesFrom(url) = assetImportSetting {
+      return url
+    }
+
+    return nil
+  }
+
+  /// Whether to skip downloading assets.
+  @available(
+    *, deprecated, renamed: "assetImportSetting",
+    message: "Use `assetImportSetting` for whether to skip download."
+  )
+  public var skipDownload: Bool {
+    switch assetImportSetting {
+    case .none:
+      return true
+
+    default:
+      return false
+    }
+  }
+
   /// The URL for the asset path located under `resourcesPathURL`.
   public var resourceAssetPathURL: URL {
     resourcesPathURL.appendingPathComponent(assetRelativePath)
