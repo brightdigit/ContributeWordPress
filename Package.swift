@@ -17,7 +17,7 @@ let package = Package(
   dependencies: [
     .package(
       url: "https://github.com/brightdigit/Contribute.git",
-      branch: "v1.0.0"
+      from: "1.0.0-alpha.3"
     ),
     .package(
       url: "https://github.com/brightdigit/SyndiKit.git",
