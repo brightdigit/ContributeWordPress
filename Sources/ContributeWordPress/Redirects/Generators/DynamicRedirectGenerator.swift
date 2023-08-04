@@ -3,9 +3,10 @@ import SyndiKit
 /// A type that provides dynamic implementation for generating redirects.
 ///
 /// It allows for flexible and customizable generation of redirects by providing closures
-/// for post filtering and URL path generation. It dynamically determines which WordPress
-/// posts should be included in the redirects and generates the redirect URL paths based
-/// on the provided criteria.
+/// for post filtering and URL path generation.
+///
+/// It dynamically determines which WordPress posts should be included in the redirects
+/// and generates the redirect URL paths based on the provided criteria.
 ///
 /// By using the `DynamicRedirectGenerator`, someone can define their own rules
 /// and logic for including or excluding specific WordPress posts and generating the
@@ -25,7 +26,9 @@ public struct DynamicRedirectGenerator: RedirectListGenerator {
   ///                      for a WordPress post.
   public init(
     postFilter: @escaping (WordPressPost) -> Bool = Self.defaultFilter(post:),
-    urlPathGenerate: @escaping (String, WordPressPost) -> String = Self.defaultURLPath(fromName:wordpressPost:)
+    urlPathGenerate: @escaping (String, WordPressPost) -> String = Self.defaultURLPath(
+      fromName:wordpressPost:
+    )
   ) {
     self.postFilter = postFilter
     self.urlPathGenerate = urlPathGenerate
@@ -38,6 +41,27 @@ public struct DynamicRedirectGenerator: RedirectListGenerator {
     self.init(postFilter: postFilters.postSatisfiesAll)
   }
 
+  /// Generates redirects for each post from the given WordPress sites.
+  ///
+  /// - Parameter allPosts: A dictionary of WordPress posts keyed by section name.
+  /// - Returns: An array of `RedirectItem` representing the redirects.
+  public func redirects(
+    fromSites sites: [SectionName: WordPressSite]
+  ) -> [RedirectItem] {
+    sites.flatMap { dir, site -> [RedirectItem] in
+      site.posts
+        .filter(self.postFilter)
+        .map { post in
+          RedirectItem(
+            fromURLPath: post.link.path,
+            redirectURLPath: self.urlPathGenerate(dir, post)
+          )
+        }
+    }
+  }
+}
+
+extension DynamicRedirectGenerator {
   /// The default filter used by `DynamicRedirectGenerator`.
   ///
   /// - Parameter post: The WordPress post being evaluated.
@@ -58,24 +82,5 @@ public struct DynamicRedirectGenerator: RedirectListGenerator {
     wordpressPost post: WordPressPost
   ) -> String {
     ["", name, post.name].joined(separator: "/")
-  }
-
-  /// Generates redirects from the given WordPress posts.
-  ///
-  /// - Parameter allPosts: A dictionary of WordPress posts keyed by section name.
-  /// - Returns: An array of `RedirectItem` representing the redirects.
-  public func redirects(
-    fromWordPressPosts allPosts: [SectionName: [WordPressPost]]
-  ) -> [RedirectItem] {
-    allPosts.flatMap { args -> [RedirectItem] in
-      let (dir, posts) = args
-
-      return posts.filter(self.postFilter).map { post in
-        RedirectItem(
-          fromURLPath: post.link.path,
-          redirectURLPath: self.urlPathGenerate(dir, post)
-        )
-      }
-    }
   }
 }

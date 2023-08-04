@@ -2,7 +2,7 @@ name: ContributeWordPress
 settings:
   LINT_MODE: ${LINT_MODE}
 packages:
-  StealthyStash:
+  ContributeWordPress:
     path: .
 aggregateTargets:
   Lint:

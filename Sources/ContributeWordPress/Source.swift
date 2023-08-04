@@ -3,7 +3,7 @@ import Foundation
 import SyndiKit
 
 /// A type that represents a source for a WordPress post.
-public struct WordPressSource {
+public struct Source {
   /// The name of the section to which the post belongs.
   public let sectionName: String
 
@@ -14,12 +14,12 @@ public struct WordPressSource {
   public let featuredImage: String?
 
   /// Optional closure to get html string from the post.
-  public var htmlFromPost: ((WordPressPost) -> String)? = nil
+  public var htmlFromPost: ((WordPressPost) -> String)?
 }
 
-extension WordPressSource: HTMLSource {
+extension Source: HTMLSource {
   /// The HTML body of the WordPress post.
   public var html: String {
-    self.htmlFromPost?(post) ?? post.body
+    htmlFromPost?(post) ?? post.body
   }
 }

@@ -8,45 +8,23 @@ import SyndiKit
 
 /// A type that downloads assets required by WordPress posts.
 public struct AssetDownloader: Downloader {
-  private let downloadPathFromURL: (URL) -> String
-  private let downloadURLFromURL: (URL) -> URL?
   private let urlDownloader: URLDownloader
 
-  private static func defaultDownloadPath(fromURL url: URL) -> String {
-    let directoryPrefix = url.host?.components(separatedBy: ".").first ?? "default"
-    return ([directoryPrefix] + url.pathComponents.suffix(3)).joined(separator: "/")
-  }
-
-  private static func defaultDownloadURL(fromURL url: URL) -> URL? {
-    guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
-      return nil
-    }
-    components.query = nil
-    return components.url
-  }
-
-  init(
-    downloadPathFromURL: @escaping (URL) -> String = Self.defaultDownloadPath(fromURL:),
-    downloadURLFromURL: @escaping (URL) -> URL? = Self.defaultDownloadURL(fromURL:),
+  public init(
     urlDownloader: URLDownloader = FileURLDownloader()
   ) {
-    self.downloadPathFromURL = downloadPathFromURL
-    self.downloadURLFromURL = downloadURLFromURL
     self.urlDownloader = urlDownloader
   }
 
-  /// Downloads assets from WordPress posts.
+  /// Downloads assets using `URLDownloader`.
   ///
   /// - Parameters:
-  ///   - assets: The array of imported assets to be downloaded.
-  ///   - resourceImagePath: The directory path where the downloaded assets will be saved.
+  ///   - assets: The imported assets to be downloaded.
   ///   - dryRun: To perform a dry run without actually downloading the assets.
   ///   - allowsOverwrites: To allow overwriting existing assets.
-  /// - Throws: An `ImportError.assetDownloads` error if there are any errors during
-  ///           the download process.
+  /// - Throws: An `ImportError.assetDownloads` error if there are any errors happened.
   public func download(
-    assets: [WordPressAssetImport],
-    to resourceImagePath: URL,
+    assets: [AssetImport],
     dryRun: Bool,
     allowsOverwrites: Bool
   ) throws {
@@ -54,25 +32,41 @@ public struct AssetDownloader: Downloader {
       return
     }
 
-    let group = DispatchGroup()
+    try downloadUsingGroupDispatch(
+      assets: assets,
+      allowsOverwrites: allowsOverwrites
+    ) { errors in
+      guard errors.isEmpty else {
+        throw WordPressError.assetDownloadErrors(errors)
+      }
+    }
+  }
 
+  /// A helper function to download assets using DispatchGroup.
+  ///
+  /// - Parameters:
+  ///   - assets: The imported assets to be downloaded.
+  ///   - allowsOverwrites: To allow overwriting existing assets.
+  ///   - completion: A completion handler called with errors mapped to asset source url.
+  private func downloadUsingGroupDispatch(
+    assets: [AssetImport],
+    allowsOverwrites: Bool,
+    completion: (_ errors: [URL: Error]) throws -> Void
+  ) throws {
     var errors = [URL: Error]()
+
+    let group = DispatchGroup()
 
     for asset in assets {
       group.enter()
 
-      let fromURL = self.downloadURLFromURL(asset.oldURL) ?? asset.oldURL
-      let newPath = self.downloadPathFromURL(asset.oldURL)
-
-      let destinationURL = resourceImagePath.appendingPathComponent(newPath)
-
       urlDownloader.download(
-        from: fromURL,
-        to: destinationURL,
+        from: asset.fromURL,
+        to: asset.atURL,
         allowOverwrite: allowsOverwrites
       ) { error in
         if let error = error {
-          errors[asset.oldURL] = error
+          errors[asset.fromURL] = error
         }
         group.leave()
       }
@@ -80,9 +74,6 @@ public struct AssetDownloader: Downloader {
 
     group.wait()
 
-    guard errors.isEmpty else {
-      throw ImportError.assetDownloads(errors)
-    }
+    try completion(errors)
   }
-
 }

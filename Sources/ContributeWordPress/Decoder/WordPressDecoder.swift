@@ -5,17 +5,17 @@ import SyndiKit
   import FoundationNetworking
 #endif
 
-/// A protocol for decoding WordPress posts from raw data.
+/// A protocol for decoding WordPress sites from raw data.
 public protocol WordPressDecoder {
-  /// Decodes an array of WordPress posts from the given data.
+  /// Decodes an array of WordPress sites from the given data.
   ///
   /// - Parameters:
   ///   - data: The data to decode.
   ///   - allowInvalidCharacters: Whether to allow invalid characters in the data.
-  /// - Returns: An array of WordPress posts, or nil if decoding failed.
+  /// - Returns: An array of WordPress sites, or nil if decoding failed.
   /// - Throws: An error if data couldn't be decoded.
-  func decodePosts(
+  func decodeSites(
     fromData data: Data,
     allowInvalidCharacters: Bool
-  ) throws -> [WordPressPost]?
+  ) throws -> WordPressSite?
 }

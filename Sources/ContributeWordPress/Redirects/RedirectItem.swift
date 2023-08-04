@@ -1,4 +1,4 @@
-/// @Leo: stuck in good description for this component
+import Foundation
 
 /// A type for redirect entry in the redirects list.
 public struct RedirectItem {
