@@ -2,7 +2,7 @@ import Foundation
 import SyndiKit
 
 /// A protocol representing a site with a base URL.
-public protocol BaseURLSite {
+internal protocol BaseURLSite {
   /// The main URL of the site.
   var link: URL { get }
 

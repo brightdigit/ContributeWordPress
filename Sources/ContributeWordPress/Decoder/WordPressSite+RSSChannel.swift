@@ -55,7 +55,7 @@ extension WordPressSite {
   ///   - relativeResourcePath: The relative resource path where assets would be located.
   /// - Returns: The default regular expression for matching asset urls.
   /// - Throws: An error if the regular expression cannot be created.
-  public static func defaultAssetURLRegex(
+  internal static func defaultAssetURLRegex(
     forSite site: BaseURLSite,
     relativeResourcePath: String = WordPressSite.wpContentUploadsRelativePath
   ) throws -> NSRegularExpression {

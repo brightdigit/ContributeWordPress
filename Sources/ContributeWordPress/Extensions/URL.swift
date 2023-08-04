@@ -12,7 +12,7 @@ extension URL {
   /// Returns the last path component of the URL without the file extension.
   ///
   /// - Returns: The last path component without the file extension.
-  internal func lastPathComponentWithoutExtension() -> String {
+  public func lastPathComponentWithoutExtension() -> String {
     deletingPathExtension().lastPathComponent
   }
 

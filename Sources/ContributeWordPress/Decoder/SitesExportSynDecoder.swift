@@ -12,14 +12,20 @@ public struct SitesExportSynDecoder: SitesExportDecoder {
   private let decoder: WordPressDecoder = SynDecoder()
 
   /// Returns an array of URLs for all of the files in the given directory.
-  private let fileURLsFromDirectory: (URL) throws -> [URL] =
-    Self.defaultFileURLs(atDirectory:)
+  private let fileURLsFromDirectory: (URL) throws -> [URL]
 
   /// Returns the last path component of the given URL without its extension.
   /// This will be the section id for all posts found in the export file at given URL.
-  private let keyFromURL: (URL) -> String = { $0.lastPathComponentWithoutExtension() }
+  private let keyFromURL: (URL) -> String
 
-  public init() {}
+  public init(
+    fileURLsFromDirectory: @escaping (URL) throws -> [URL] =
+      Self.defaultFileURLs(atDirectory:),
+    keyFromURL: @escaping (URL) -> String = { $0.lastPathComponentWithoutExtension() }
+  ) {
+    self.fileURLsFromDirectory = fileURLsFromDirectory
+    self.keyFromURL = keyFromURL
+  }
 
   /// The method decodes `WordPressSite` from the given file URL.
   ///
@@ -59,7 +65,7 @@ extension SitesExportSynDecoder {
   ///
   /// - Parameter directoryURL: The directory URL.
   /// - Returns: An array of URLs for export files found in the given directory.
-  private static func defaultFileURLs(atDirectory directoryURL: URL) -> [URL] {
+  public static func defaultFileURLs(atDirectory directoryURL: URL) -> [URL] {
     let enumerator = FileManager.default.enumerator(
       at: directoryURL,
       includingPropertiesForKeys: nil
