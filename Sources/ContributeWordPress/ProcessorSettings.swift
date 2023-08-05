@@ -75,7 +75,7 @@ extension ProcessorSettings {
 
   /// The relative path for uploads directory of WordPress content.
   public var uploadsRelativePath: String {
-    WordPressSite.wpContentUploadsRelativePath
+    WordPressSite.contentUploadsRelativePath
   }
 
   /// Returns the asset directory path for the given site name.

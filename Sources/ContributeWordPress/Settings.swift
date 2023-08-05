@@ -22,7 +22,7 @@ public struct Settings: ProcessorSettings {
     exportsDirectoryURL: URL,
     assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
-    assetRelativePath: String = WordPressSite.wpContentUploadsRelativePath,
+    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath,
     markdownFromHTML: @escaping (String) throws -> String = { $0 }
   ) {
     self.contentPathURL = contentPathURL

@@ -7,7 +7,7 @@ extension Settings {
     exportsDirectoryURL: URL,
     assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
-    assetRelativePath: String = WordPressSite.wpContentUploadsRelativePath,
+    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath,
     markdownFromHTML: @escaping (String) throws -> String = { $0 }
   ) {
     self.init(
@@ -27,10 +27,10 @@ extension Settings {
     contentPathURL: URL,
     resourcesPathURL: URL,
     exportsDirectoryURL: URL,
-    markdownGenerator: MarkdownGenerator,
+    markdownGenerator: MarkdownGenerator = PassthroughMarkdownGenerator.shared,
     assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
-    assetRelativePath: String = WordPressSite.wpContentUploadsRelativePath
+    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath
   ) {
     self.init(
       contentPathURL: contentPathURL,
@@ -46,10 +46,10 @@ extension Settings {
   public init(
     rootPublishSiteURL: URL,
     exportsDirectoryURL: URL,
-    markdownGenerator: MarkdownGenerator,
+    markdownGenerator: MarkdownGenerator = PassthroughMarkdownGenerator.shared,
     assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
-    assetRelativePath: String = WordPressSite.wpContentUploadsRelativePath
+    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath
   ) {
     self.init(
       contentPathURL:
@@ -70,7 +70,7 @@ extension Settings {
     exportsDirectoryURL: URL,
     assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
-    assetRelativePath: String = WordPressSite.wpContentUploadsRelativePath,
+    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath,
     temporaryFile: @escaping (String) throws -> URL =
       PandocMarkdownGenerator.Temporary.file(fromContent:),
     shellOut: @escaping (String, [String]) throws -> String
@@ -92,7 +92,7 @@ extension Settings {
     exportsDirectoryURL: URL,
     assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
-    assetRelativePath: String = WordPressSite.wpContentUploadsRelativePath,
+    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath,
     temporaryFile: @escaping (String) throws -> URL =
       PandocMarkdownGenerator.Temporary.file(fromContent:),
     shellOut: @escaping (String, [String]) throws -> String

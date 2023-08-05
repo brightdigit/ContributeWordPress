@@ -7,16 +7,26 @@ import Yams
   import FoundationNetworking
 #endif
 
+@available(*, deprecated, message: "Use from Contribute.")
+public struct PassthroughMarkdownGenerator: MarkdownGenerator {
+  private init() {}
+  public static let shared = PassthroughMarkdownGenerator()
+  public func markdown(fromHTML htmlString: String) throws -> String {
+    htmlString
+  }
+}
+
 extension MarkdownProcessor where ContentURLGeneratorType == SectionContentURLGenerator,
   MarkdownContentBuilderType == MarkdownContentYAMLBuilder<
     Source,
     FilteredHTMLMarkdownExtractor<Source>,
     FrontMatterYAMLExporter<Source, SpecFrontMatterTranslator>
   > {
-  public static func begin(
-    importFrom exportsDirectoryURL: URL,
+  public static func beginImport(
+    from exportsDirectoryURL: URL,
     to rootPublishSiteURL: URL,
-    usingGenerator markdownGenerator: MarkdownGenerator,
+    usingGenerator markdownGenerator: MarkdownGenerator =
+      PassthroughMarkdownGenerator.shared,
     filteringPostsWith postFilters: [PostFilter] = .default,
     redirectsFormattedUsing redirectFromatter: RedirectFormatter? = nil,
     importAssetsBy assetImportSetting: AssetImportSetting = .download,
@@ -36,8 +46,8 @@ extension MarkdownProcessor where ContentURLGeneratorType == SectionContentURLGe
     try processor.begin(withSettings: settings)
   }
 
-  public static func begin(
-    importFrom exportsDirectoryURL: URL,
+  public static func beginImport(
+    from exportsDirectoryURL: URL,
     to rootPublishSiteURL: URL,
     filteringPostsWith postFilters: [PostFilter] = .default,
     redirectsFormattedUsing redirectFromatter: RedirectFormatter? = nil,
@@ -45,8 +55,8 @@ extension MarkdownProcessor where ContentURLGeneratorType == SectionContentURLGe
     overwriteAssets: Bool = false,
     shellOut: @escaping (String, [String]) throws -> String
   ) throws {
-    try begin(
-      importFrom: exportsDirectoryURL,
+    try beginImport(
+      from: exportsDirectoryURL,
       to: rootPublishSiteURL,
       usingGenerator: PandocMarkdownGenerator(shellOut: shellOut),
       filteringPostsWith: postFilters,
