@@ -25,13 +25,8 @@ public struct AssetDownloader: Downloader {
   /// - Throws: An `ImportError.assetDownloads` error if there are any errors happened.
   public func download(
     assets: [AssetImport],
-    dryRun: Bool,
     allowsOverwrites: Bool
   ) throws {
-    guard !dryRun else {
-      return
-    }
-
     try downloadUsingGroupDispatch(
       assets: assets,
       allowsOverwrites: allowsOverwrites

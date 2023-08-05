@@ -1,12 +1,6 @@
 import Foundation
 import SyndiKit
 
-public enum AssetImportSetting {
-  case none
-  case download
-  case copyFilesFrom(URL)
-}
-
 /// A protocol that defines the settings for the `WordPressMarkdownProcessor`.
 public protocol ProcessorSettings {
   /// The URL for the content path
@@ -27,6 +21,7 @@ public protocol ProcessorSettings {
   /// Whether to overwrite existing assets.
   var overwriteAssets: Bool { get }
 
+  /// The method to import assets from the WordPress site.
   var assetImportSetting: AssetImportSetting { get }
 
   /// Name of directory to store assets relative to ``resourcesPathURL``
@@ -70,13 +65,7 @@ extension ProcessorSettings {
     message: "Use `assetImportSetting` for whether to skip download."
   )
   public var skipDownload: Bool {
-    switch assetImportSetting {
-    case .none:
-      return true
-
-    default:
-      return false
-    }
+    assetImportSetting == .none
   }
 
   /// The URL for the asset path located under `resourcesPathURL`.
