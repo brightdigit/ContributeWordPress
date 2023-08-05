@@ -28,9 +28,19 @@ Import your WordPress site into Publish.
 * [Introduction](#introduction)
    * [Requirements](#requirements)
    * [Installation](#installation)
+   * [How It Works](#how-it-works)
+   * [Exporting from WordPress](#exporting-from-wordpress)
 * [Usage](#usage)
-   * [Further Documentation](#further-documentation)     
-* [References](#references)
+   * [Getting Started](#getting-started)
+   * [Exporting to Publish](#exporting-to-publish)
+   * [Dowloading Resources from Active Site](#dowloading-resources-from-active-site)
+   * [Copy Resources from Local Backup](#copy-resources-from-local-backup)
+   * [Converting Posts to Markdown](#converting-posts-to-markdown)
+   * [Using ShellOut and Pandoc for Markdown](#using-shellout-and-pandoc-for-markdown)
+   * [Filtering Posts](#filtering-posts)
+   * [Redirecting Old URLs](#redirecting-old-urls)
+   * [Using SwiftArgumentParser for Settings](#using-swiftargumentparser-for-settings)
+   * [Further Documentation](#further-documentation)
 * [License](#license)
 
 # Introduction
@@ -160,7 +170,7 @@ sentirent ovaque cumque, qui caeli Quin Alcides faciunt animans postquam fatur
 iuventam concita. Ventusve medium, fuit noviens Iovemque Atlantiades et simplex
 quosque?
 
-## Exporting to Publish (Content and Resources)
+## Exporting to Publish
 
 _What are the directories for..._
 
@@ -197,7 +207,7 @@ quatiens longo [est hanc](http://me.net/venit-maius.aspx) crinem nivosos corpore
 Bacchus damus, qui *veniam mensas* et taedae vidi citraque
 [ditia](http://www.perflorem.io/aeneasmedius.aspx).
 
-## Importing Resource (i.e. Images)
+## Dowloading Resources from Active Site
 
 _Normal way to _download_ images_
 
@@ -212,7 +222,7 @@ procerum tempora peccasse Hyacinthe quam, vulnere carmina bello, nam. Et coniunx
 parentis tecta inopi erubuit sine hoc templa ut duxque. Temerasse canit felix,
 nisi vultus Echion caelo enim cupidine adest orantemque reccidat lege.
 
-### Copy Resources from Backup
+## Copy Resources from Local Backup
 
 _Explain how to copy resources if site is down_
 
@@ -268,7 +278,7 @@ mundo?
 
 Here's how to use...
 
-### Using ShellOut and Pandoc
+## Using ShellOut and Pandoc for Markdown
 
 _How to use ShellOut and install Pandoc_
 
