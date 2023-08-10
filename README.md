@@ -109,17 +109,12 @@ pectore dum invitam facta adimunt vulnere. Volucrum est; forsitan officium
 innitens, ad mutantur, pressique *gratantur fecistis* si atris tetigere
 fugaverat, deo femina?
 
-![https://placehold.co/600x400?text=Hello+World](https://placehold.co/600x400?text=Login)
-
 Parente nox ore *eque*. Hic natalis tenebat septemplice, gemitus subcubuisse
 pars; aut nymphe hinc, reliquit loquenti religata viribus.
 
 Remigis nuda protinus crista, bracchia enim paterna manu exiguamque iugum.
 Sententia aut vox pariterque forte in undas sanguine voluptas; arce gracili
 equos ubi videres omnis in. Quia mundus.
-
-
-![https://placehold.co/600x400?text=Hello+World](https://placehold.co/600x400?text=Settings)
 
 Me fuerat gaudete, atro quae longaeva, natus [artificem
 quod](http://praevertuntfuit.org/accepisse) serae fecerat transit formae.
@@ -129,7 +124,7 @@ divisque, merito meta vocavit delamentatur **novercae fugit** fas? Rerum quae
 auras magnis illa fluentibus sed.
 
 
-![https://placehold.co/600x400?text=Hello+World](https://placehold.co/600x400?text=Export)
+![https://placehold.co/600x400?text=Hello+World](Sources/ContributeWordPress/Documentation.docc/Resources/tools-export-download-file.png)
 
 Adulantum tellus cruore, sparsae perspicit sacraria patre fluit equorum. Ora ast
 per lacte amanti nympharum habuere Eurynomes capillis causaque istis. Iam patuit
