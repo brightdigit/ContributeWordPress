@@ -12,7 +12,8 @@ let package = Package(
     .library(
       name: "ContributeWordPress",
       targets: ["ContributeWordPress"]
-    )
+    ),
+    .executable(name: "wpublish", targets: ["wpublish"])
   ],
   dependencies: [
     .package(
@@ -31,6 +32,10 @@ let package = Package(
     ),
     .testTarget(
       name: "ContributeWordPressTests",
+      dependencies: ["ContributeWordPress"]
+    ),
+    .executableTarget(
+      name: "wpublish",
       dependencies: ["ContributeWordPress"]
     )
   ]

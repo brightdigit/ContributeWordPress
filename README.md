@@ -73,7 +73,25 @@ Use version up to `1.0.0`.
 
 ## How It Works
 
-**ContributeWordPress** uses the exported XML (also referred to as WXR file) to import content into your existing **Publish** site. In order to begin, you need:
+**ContributeWordPress** uses the exported XML (also referred to as WXR file) to import content into your existing **Publish** site. 
+
+```swift
+import ContributeWordPress
+
+let fromURL = URL(
+    fileURLWithPath: "directory/containing/your/export/xml/files"
+)
+let toURL = URL(
+    fileURLWithPath: "Path/to/Publish/root"
+)
+
+try MarkdownProcessor.beginImport(
+    from: fromURL, 
+    to: toURL
+)
+```
+
+In order to begin, you need:
 
 * The exported **XML file** 
 * The active WordPress site or a complete download of the site's files (for the images on your site)
@@ -99,91 +117,134 @@ For more details on the export process, please read [the documentation on the **
 
 ## Getting Started
 
-_Most simple usage..._
+Besides exporting your **WordPress site**, you need access to the images by either:
+* downloading directly from the site
+* having a copy of the site's files
 
-Lorem markdownum te rogat alumna, cunasque ora hora Corinthiaci et ire vati:
-temerarius dederat tremit purpureo multumque. Subiectaque in *equorum iamdudum
-in* mihi si dis committi artus confodit, arbore avem erit, pererrat. Cum fit
-luctibus animam retentus adversaque *non* feres duxisses, et. Olivi laedere
-capellae cereris et deos tantique: tum tibi inserui **armis**.
+![Example Copy of the WordPress Site's Files](Sources/ContributeWordPress/Documentation.docc/Resources/wordpress-site-files.png "Example Copy of the WordPress Site's Files")
 
-Novoque me oculos nec eripuit vivit carpere, fatus et. Utrique admotis foramina
-**alios**, vias *tum vota*, cum auro omnia contrahitur inquit ignes currus
-accessit.
+Once you have both components, [you need to setup a **Publish** site]((https://github.com/JohnSundell/Publish)). There are several great tutorials online:
 
-Aquila haerentem matre, causa eo illo undis non sed. Et formam, exstructas
-sentirent ovaque cumque, qui caeli Quin Alcides faciunt animans postquam fatur
-iuventam concita. Ventusve medium, fuit noviens Iovemque Atlantiades et simplex
-quosque?
+* [JohnSundell/Publish: A static site generator for Swift developers](https://github.com/JohnSundell/Publish)
+* [How to Create a Personal Website in Swift using Publish | Danijela's blog](https://www.danijelavrzan.com/posts/2022/06/create-portfolio-website-using-publish/)
+* [Static Site Generation with Swift using Publish, Plot and Ink](https://www.createwithswift.com/static-site-generation-with-swift-using-publish/)
+* [Getting started with static-site generation in Swift using Publish | Andy Regensky](https://andyregensky.dev/articles/publish-getting-started/)
 
+Once the site is setup, we can:
+
+* convert and translate the HTML inside your exported XML (also referred to as WXR file) to Markdown files inside your _Content_ directory
+* download (or copy) your images and other files inside your WordPress upload folder to your _Resources_ directory
 ## Exporting to Publish
 
-_What are the directories for..._
+The simplest way to import your **WordPress** site is by just passing the path to your xml files as well as the root of your **Publish** site.
 
-Tamen alto, et tamen: me sed dextra vestrum. Se omnia turris adspexit tamen
-[late](http://www.conterminusquam.org/) flemus ubere cogam involvitur est.
+```swift
+import ContributeWordPress
 
-    if (website_pretest - download_ssid_kernel <= reader_printer_rpc) {
-        hdtv_scalable_del.hexadecimalGbps.surface_bios_archie(
-                barcraft_base_socket.mamp_system_cable(pim,
-                balancing_bank_gigahertz, url), -2);
-        ray_troll_up(unfriendInstaller(dvd), pushArchitecture, ios_dashboard);
-        dslam_modem.virtualTwainHandle += baseband(laptopPeoplewareDesktop,
-                output_cps, 823152);
-    } else {
-        dpiFileBatch = rippingUdp * device_smartphone;
-        path_bar -= userNetiquette(protector_hoc_graphic,
-                certificateFinderService + computingMenu);
-    }
-    map_windows_youtube += cssPimFlatbed * 1;
-    var dialogNewlineSequence = wan_vram_word;
-    if (insertionDpi) {
-        formula = 1 * 3 / thunderboltRich;
-        logic -= architecture(-3, word);
-        dmaUtility(file_meta.room(file, deprecatedIntellectualSector));
-    } else {
-        screenshot += 2 - 4;
-        system.eupVistaDock = speed_kibibyte_header;
-    }
+let fromURL = URL(
+    fileURLWithPath: "directory/containing/your/export/xml/files"
+)
+let toURL = URL(
+    fileURLWithPath: "Path/to/Publish/root"
+)
 
-Transit thalamosque moveoque solebant illam superum admiserat galeae Iunonis
-Ismenos dum omnes et nondum **cura cavo**. Ense petam, omnia maculoso te
-quatiens longo [est hanc](http://me.net/venit-maius.aspx) crinem nivosos corpore
-[herboso](http://www.quoqueleves.org/luctus), esse si suffusa. Praevitiat
-Bacchus damus, qui *veniam mensas* et taedae vidi citraque
-[ditia](http://www.perflorem.io/aeneasmedius.aspx).
+try MarkdownProcessor.beginImport(
+    from: fromURL, 
+    to: toURL
+)
+```
+
+If you wish to create a small command line application you can take in command line arguments for the two paths:
+
+```swift
+import ContributeWordPress
+
+let fromURL : URL
+let toURL : URL
+
+guard CommandLine.arguments.count == 2 else {
+  exit(1)
+}
+
+fromURL = .init(fileURLWithPath: CommandLine.arguments[0])
+toURL = .init(fileURLWithPath: CommandLine.arguments[1])
+
+try! MarkdownProcessor.beginImport(from: fromURL, to: toURL)
+```
 
 ## Dowloading Resources from Active Site
 
-_Normal way to _download_ images_
+By default, **ContributeWordPress** will download the images from your active **WordPress** site. Therefore if it comes across a reference to url to your site it will change the url to the new address it will be imported to.
 
-Hoc manu *signavit* in sibi resolvit, caelitibus socerum *quidem*. Removit me
-doctos in et ventis armigerae dabitur et
-[et](http://www.honoreamphitryoniadae.net/) me quos vatum, petit illa,
-accinctus.
+Therefore HTML from your exports file will change from:
 
-Tenet opacae excepto, cum exiguus nobis *te quod*, quaedam moram nunc erat.
-Pelagi cessit. **Fuit regis** in **manebo et** miseras cruentas ad est lumina
-procerum tempora peccasse Hyacinthe quam, vulnere carmina bello, nam. Et coniunx
-parentis tecta inopi erubuit sine hoc templa ut duxque. Temerasse canit felix,
-nisi vultus Echion caelo enim cupidine adest orantemque reccidat lege.
+```html
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2019/01/image-e1547230562842-1024x682.jpg" alt="A JavaScript Meetup I hosted in 2018 " class="wp-image-105"/><figcaption>A JavaScript Meetup I hosted in 2018 </figcaption></figure>
+```
+
+to this in your markdown file:
+
+```html
+<figure class="wp-block-image">
+<img
+src="/media/wp-assets/default/2019/01/image-e1547230562842-1024x682.jpg"
+class="wp-image-105" alt="A JavaScript Meetup I hosted in 2018 " />
+<figcaption>A JavaScript Meetup I hosted in 2018</figcaption>
+</figure>
+```
 
 ## Copy Resources from Local Backup
 
-_Explain how to copy resources if site is down_
 
-Ratis alii sed maduisse, in rapit. Nempe crimina harundine nitidum, ad ultimus
-veniebat praemia, nunc! Sine iterum triste horrent sidera pectora parvum iam
-pariter, hoc nubes ramum me habes munus. Mutat facis rudem tristis et omnes
-magnis loricaeque liquidum interea, sibi sunt.
+If your site is no longer active but you have a local copy of the site, you can pass in that directory to be used instead.
 
-    dial(ospfAta.margin(surge_koffice_party),
-            gnutellaHtmlIntelligence.rootkit_network(contextualOsd));
-    sqlMalware = memory;
-    card_printer_caps(mouse(server_blob, socket), rw_trinitron);
+Let's expand on our previous command line example by adding an optional parameter:
 
-Et et impetus incrementa **enim** dis, in et quod vitiasse, agitata in exuere
-liquet. Est abit rogavi.
+```swift
+let fromURL : URL
+let toURL : URL
+
+let importAssetsSetting : AssetImportSetting
+
+guard CommandLine.arguments.count >= 2 else {
+  exit(1)
+}
+
+fromURL = URL(fileURLWithPath: CommandLine.arguments[0])
+toURL = URL(fileURLWithPath: CommandLine.arguments[1])
+
+// if a third argument is passed
+if CommandLine.arguments.count > 2 {
+  // assume they want to copy the resources directly
+  importAssetsSetting = .copyFilesFrom(
+    URL(fileURLWithPath: CommandLine.arguments[2])
+  )
+} else {
+  // otherwise use the default `download` option
+  importAssetsSetting = .download
+}
+
+try! MarkdownProcessor.beginImport(
+  from: fromURL,
+  to: toURL,
+  importAssetsBy: importAssetsSetting
+)
+
+```
+
+Therefore you can call:
+
+```bash
+> wpublish \
+  directory/with/export/xml/files \
+  Path/to/Publish/root \
+  path/to/root/wordpress/files
+```
+
+The `AssetImportSetting` option contains three options:
+* `none` - don't do anything
+* `download` - download them from the WordPress site
+* `copyFilesFrom(URL)` - copy the files from a local mapped location
 
 ## Converting Posts to Markdown
 
