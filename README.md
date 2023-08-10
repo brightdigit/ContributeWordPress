@@ -73,76 +73,27 @@ Use version up to `1.0.0`.
 
 ## How It Works
 
-* take export from WordPress
-* downloads resources 
-* convert html to markdown (optionally) with new urls for pages and resources mapped
-* (optionally) writes out a redirect file for easy redirect from old WP Site to new one
+**ContributeWordPress** uses the exported XML (also referred to as WXR file) to import content into your existing **Publish** site. In order to begin, you need:
 
-Haec adfuit; magna unda tuae fatus corpora Aeetias
-[mortis](http://www.longumet.org/) iacent, dato. Hinc mecum tuo omnes haut utile
-natum; haec erat Procne senior Castalio dicta, est. Aures apro est excessere
-experiar ferrataque: *Haemonio*: esse herbis.
-
-    click(unix);
-    var memory_dynamic = mountain;
-    payloadScsi(blogLpi(ldapTextPower.widgetTransferPng(versionModel, natVpiEup,
-            browser), importSpyware, nameSoft));
-    if (5 < wiki / grep_backlink_disk) {
-        delete_traceroute = 1 + bootNybble.im(offline, 5);
-    }
-    var markupRup = characterWeb + dialIgp(-5) + 5;
-
-Omnibus sunt, me, velavit totiens agitantia creatus arte. *Alumnus an corona*,
-viri euntem dolor; et *ut lubrica* veteris Hecaben miserata. Et versabat videt
-munimine tradere, exit cum nec stratoque, vult. Triumphi necem flavae arcus aura
-quod, [vixisti totum Iunone](http://www.ades.com/quondamaut), et. Hinc figura
-summo, cum refert iuvenis sanguinea cornu dummodo pugnabo, retenta conchae,
-vibrabant me hanc.
+* The exported **XML file** 
+* The active WordPress site or a complete download of the site's files (for the images on your site)
 
 ## Exporting from WordPress
 
-Lorem markdownum quoque a **mensae** capiat *pectora quodque credere* nec
-Perseus illo. Taurum est essem tot lux. Niobe ab vano; aquarum coeptaeque
-inclinat: quorum truncis Samos ut cumque cecidere ab quarum? Pervigil mentis
-Amphitryoniaden sublimis Capetusque: Minervae supplex oras et pinuque fallitque
-pectore dum invitam facta adimunt vulnere. Volucrum est; forsitan officium
-innitens, ad mutantur, pressique *gratantur fecistis* si atris tetigere
-fugaverat, deo femina?
+**ContributeWordPress** needs a backup XML file from your **WordPress** site. To do this:
 
-Parente nox ore *eque*. Hic natalis tenebat septemplice, gemitus subcubuisse
-pars; aut nymphe hinc, reliquit loquenti religata viribus.
+1. Login to your WordPress Administration Dashboard.
+2. Go to Tools... Export:
+![WordPress-Tools...Export](Sources/ContributeWordPress/Documentation.docc/Resources/tools-export-download-file.png)
+3. Download your export file by:
+    * Clicking the Export All button (if you have a site without plugins installed.)
+    * Selecting all content and clicking the Download Export File button (if you have a site with plugins installed.)
+    * Download specific content only, like posts, pages, or feedback.
+4. You will receive a .zip file to save to your computer with the .xml file inside of it. This file contains your posts, pages, comments, categories, tags, and references to your site’s images.
 
-Remigis nuda protinus crista, bracchia enim paterna manu exiguamque iugum.
-Sententia aut vox pariterque forte in undas sanguine voluptas; arce gracili
-equos ubi videres omnis in. Quia mundus.
+Larger sites will include more than one XML file to ensure that your export process will be fast and complete successfully, for instance if you are running multi-site **WordPress**. Luckily **ContributeWordPress** supports importing multiple xml files! When importing the BrightDigit website, the content was importing for the learningswift.brightdigit.com into brightdigit.com/tutorials and brightdigit.com into brightdigit.com/articles.
 
-Me fuerat gaudete, atro quae longaeva, natus [artificem
-quod](http://praevertuntfuit.org/accepisse) serae fecerat transit formae.
-Obversus onerosus, ora tectus bracchia labores haud visus rapuitque exsangues in
-cohors iniusti ut quam sanguine Aonidum. Simul fabricataque alios feroces, a
-divisque, merito meta vocavit delamentatur **novercae fugit** fas? Rerum quae
-auras magnis illa fluentibus sed.
-
-
-![https://placehold.co/600x400?text=Hello+World](Sources/ContributeWordPress/Documentation.docc/Resources/tools-export-download-file.png)
-
-Adulantum tellus cruore, sparsae perspicit sacraria patre fluit equorum. Ora ast
-per lacte amanti nympharum habuere Eurynomes capillis causaque istis. Iam patuit
-vi [membra matre](http://ego.com/audet), inquit ad et poscit vagatur. Includit
-puer vivax tota: cum antiqua mente vestibus attolle; Teleste saxea limoso
-Hippodamas est dives [et est crudelior](http://et-aquis.com/et). Esse iuris bene
-error procorum actus *labitur*, separat cycnus habet lingua, pollue.
-
-- Et sponte micant
-- Acutae inpar concordia
-- Sagacior obvertit quae
-- Sub ossa nec vellem
-- Fessa sed silet opem armi inmenso ostendere
-
-Iuncta Latiaeque in est fluctus *satis* pugnat Procnen nigra coniuge eruta
-resecuta victores permulsit ignarus. Infelix aliquid, superamur concubitus
-dapes. Et tum aut excivere membra nigrescere removi, tunc, alto qui ecce scelus
-vertit horrescere harena.
+For more details on the export process, please read [the documentation on the **WordPress** site.](https://wordpress.com/support/export/)
 
 # Usage
 
