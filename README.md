@@ -248,119 +248,114 @@ The `AssetImportSetting` option contains three options:
 
 ## Converting Posts to Markdown
 
-_Explain default is no conversion. Here's how to create MarkdownGenerator._
+By default, **ContributeWordPress** doesn't implement any specific method to convert HTML from your WordPress posts to markdown. 
 
-Lorem markdownum Beroe mandabat ignibus, alimentaque servat saeva lotos, aquas
-potui. Hanc cui: virides magno! Quodsi quae fugant ait lumina, Gorgenque
-cornibus, cognitius magis illo ferrum. Quem terra erat moverat Celadontis erat
-imitata sequentis mutentur Iuppiter. Et armis volutant te terra si cruentae
-quoque memorata, ne Aeneas trahoque hunc, Primus nitore.
+However there are a few easy to use implementations as well the ability to plug in your own.
 
-    if (pppoe(fpu, sd_pup_extranet) * servlet * systemDriverPath) {
-        cell_edutainment.directory(1);
-    }
-    if (pcb_social_pdf / windows == dllIvrUser(document, malware)) {
-        dlc_modifier_tweak(5, mebibyte_video(82, 5012, troll_printer_quad));
-    } else {
-        terminalQbe.installUgcNtfs(264001, busIpvLock);
-        bookmarkDatabase.rpm += 4 + bank + 5;
-        code_drag_software.mountBalancing += peripheralKilobit + igpTrashBare +
-                1;
-    }
-    if (5 + dualOcr) {
-        directx_us(deprecated_analog_teraflops, 2, 51);
-    }
-    if (oasis_disk_soap) {
-        dataHdv.dslam(ergonomicsVerticalFont, saas_media_plug);
-    } else {
-        so_cpc /= requirementsMampCursor;
-        softwareVoipKey.commerceGraphic += carrierHardCard(dataUnicodeUri,
-                resources, 19) * bespoke;
-    }
-    model_bezel.pharming_transistor_pci(gibibyte, ram_refresh_program);
+Specifically this can done by passing a `MarkdownGenerator` to the processor:
 
-Morte stat ingenio mugiat, haec tuentibus divite ora Iasonis ultima fugit
-*fatis* odoribus. Capitisque videt. Vixque hippomene ibat, iam sub, te aras,
-mundo?
+```swift
+try! MarkdownProcessor.beginImport(
+  from: fromURL,
+  to: toURL,
+  usingGenerator: // your `MarkdownGenerator` here,
+  importAssetsBy: importAssetsSetting
+)
+```
 
-Here's how to use...
+`MarkdownGenerator` is a simple protocol from the **Contribute** base library which takes an HTML `String` and returns a new markdown `String`.
+
+```swift
+/// A protocol for generating Markdown from HTML.
+public protocol MarkdownGenerator {
+  /// Converts an HTML string to Markdown.
+  ///
+  /// - Parameter htmlString: The HTML string to convert.
+  /// - Returns: The generated Markdown string.
+  /// - Throws: An error if the conversion fails.
+  func markdown(fromHTML htmlString: String) throws -> String
+}
+```
+
+By default, we use the `PassthroughMarkdownGenerator` which does nothing. However you can implement your own or use `HTMLtoMarkdown` to pass in a closure.
 
 ## Using ShellOut and Pandoc for Markdown
 
-_How to use ShellOut and install Pandoc_
+If you wish to convert the HTML from your WordPress posts to Markdown, the recommended solution is to use the `PanddocMarkdownGenerator` included with the **Contribute** library. The `PanddocMarkdownGenerator` requires the **ShellOut** library to run an installation of **Pandoc**.
 
-Lorem markdownum erat patriisque numquamque alto ferrea quibus nam penates
-vicit: sine movit occumbere Dianam, imaginis, ab. Rector pharetras at populique
-animos, dissuadet felicem, classis: non sine flammaeque, modo species habemus
-montes. Sequitur copia, mater anteit fuit fideque victo, in Te nescio, aliquid,
-huic cum. Taedae hoc in sudore artificem quidem, in amans obstat tu?
+The recommended way to install **Pandoc** on your machine is via homebrew:
 
-- Medea nunc mihi hostes socio
-- Excutiunt undas leonum plangore tamen
-- Quae ignotos satyrique nimium
-- A magna Error
+```bash
+> brew install pandoc
+```
 
-Gerebam simul dorso hospitio coleretur carmine consistere femina rubescere
-Enaesimus ineo nunc tum et prensoque debes toto: posset. Per stellatus lumina
-Epaphus ego. Non ut et dixere alimentaque dicor, in deos turba, est. **Tecum
-in** neque in semine si variarum sepulcrum legerat tetigere omnia pressere
-moderatior iacet prolemque miserabile aquilonibus.
+Once **Pandoc** is installed, you can run the command as part of your import using **ShellOut**.
 
-- Confinia iniquo oneri qua primo versasque numen
-- Praevalidusque supplex conpositum pater caelumque sensi
-- Collum caeleste
+Here is a simple code snippet for using plugging in **ShellOut**:
 
-Diversa inutile magna exiguamque sedet Iuppiter curvata generosam, ore supplex.
-Vos fatus quam aurora visaque heros. Toto mundumque hic, socia fiet delicta est
-manebo nostrae pectore.
+```swift
+extension PandocMarkdownGenerator {
+  public static func defaultShellOut(to command: String, arguments: [String]) throws -> String {
+    try ShellOut.shellOut(to: command, arguments: arguments)
+  }
+  
+  public init (temporaryFile: @escaping (String) throws -> URL = Temporary.file(fromContent:)) {
+    self.init(shellOut: Self.defaultShellOut(to:arguments:), temporaryFile: temporaryFile)
+  }
+}
+```
+
+From here we can now simply use the `PandocMarkdownGenerator` to convert our WordPress HTML to markdown:
+
+```swift
+try! MarkdownProcessor.beginImport(
+  from: fromURL,
+  to: toURL,
+  usingGenerator: PandocMarkdownGenerator(),
+  importAssetsBy: importAssetsSetting
+)
+```
 
 ## Filtering Posts
 
-Clipeum mihi munera ternis; Non funestas *enervet*. Vicinia furiosaque minus.
-Quo cruor relinquitur hiatus circumfunditur **sua**: quem tenebas exprimitur
-indicet, prius copia; canes quod. Erit acie Procne pigneror et paulatim in
-remulus et Thebis superest inclusum ora cannis, nigri [at
-fuit](http://pavetque-quanto.org/cyclopumet)! Iunone Mendesius funeribus simus,
-*qua*!
+The export files from WordPress contain a plethora of information including non-published posts as well as non-post items. **By default, the import filters for only published posts.** These are set using the `RegexKeyPostFilter` type which takes in a `KeyPath` of a `WordPressPost` property with a `String` type from the `SyndiKit` library and a `NSRegularExpression`.
 
-- Modo ait ullum vicit saevisque sua
-- Cingere et raptos meas iugo iacuere atque
-- Est eripiunt Hecaben inmedicabile rapta intendit cruentum
-- Epulis iacuere
-- Nepotum oscula et mittere desiluit pennis
+Here's the example for the default `RegexKeyPostFilter` items:
 
-Saxa exuvias, non inde cultores, in Venere robora. Augerem aptamque, fugio
-inducit vos abluere nuntiet coniunx praetendat et vocantia est Crete memor
-sequentia venis, nox matutina! Et germanae dubie.
+```swift
+    [
+        RegexKeyPostFilter(pattern: "post", keyPath: \.type),
+        RegexKeyPostFilter(pattern: "publish", keyPath: \.status)
+    ]
+```
+
+Additionally you can implement your own `PostFilter` of any kind and pass it in:
+
+```swift
+try! MarkdownProcessor.beginImport(
+  from: fromURL,
+  to: toURL,
+  filteringPostsWith: // array of `PostFilter` items
+  importAssetsBy: importAssetsSetting
+)
+```
 
 ## Redirecting Old URLs
 
-Rexit terrae mane manumque, cum viscata adicit miles. Vota veluti angustis, si
-quis, loqui venerit adspicit, [meque](http://de.org/) suum [fuit
-qua](http://luctus.org/sed). Esset invaserat tibique et pudorem totaeque
-recentis frena! Dapes ab deinde. Silvamque caelatus quam!
+If you are migrating from **WordPress** to a **Publish** site, probably need to redirect several old urls to you new site. This can be done by passing a `RedirectFormatter`. This requires two methods to be implemented:
 
-Arne sed ego regia, una quem, terra, Attis nova tendere ab volucrem feror et
-partes utinam, busta. Mitia gemitu secundo? Miseri nomen, via ora abrumpit
-dimovit comes enim recens contraria litoris qua pharetrae iussa, species ait?
-Per Dixit sed dea pars blandita, [idem patiere animo](http://www.et.net/fruges)
-inmansuetusque falsum.
+* `formatRedirects` which takes a collection of `RedirectItem` object (i.e. old URL, new URL) and expects a single string which will be written out somehere.
+* `redirectsURL(basedOnResourcesDirectoryURL:)` which returns the url for the file which that `String` needs to be written.
+
+By default no redirect file is exported so you'll need to supply your own if needed. Otherwise, only **Netlify** is supported via `NetlifyRedirectFormatter`. More granular control is available via the `RedirectFileWriter` if needed. 
+
+Feel free to post an issue or pull request for your own implementations or questions.
 
 ## Using SwiftArgumentParser for Settings
 
-Lorem *markdownum procul* dabat nam committe omni sunt puer si nomine,
-tremoribus differt ex! Ipse genua studeat: tertia **fidum nobilitate alba**
-potentior pisces; quid manus undis transit est. Hortos **ipse** rupit Triptolemo
-Talia: utinam exempla, aequora una.
+While you may wish the parse the arguments yourself using the `CommandLine` object, it is highly recommended you use the **Swift Argument Parser** for more complex options.
 
-1. Dicta quid amantem Danaam
-2. Pulsa fugant colore
-3. Sed flumina atria totis modo Semele cecidit
-4. Antiquam tale silvis opus perque
-5. Enim frequens caelum
-
-Porrigit levant, puellae. Abesse de harena enim emisitque haud incultos fuderat
-lumina. Onus *fama mensor*.
+Feel free to check out [the example here](https://github.com/leogdion/leogdion.name/blob/main/Sources/LeoGDionNameArgs/Commands/Import/WordPress.swift).
 
 ## Further Documentation
 
