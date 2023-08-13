@@ -1,7 +1,7 @@
 import Foundation
 import SyndiKit
 
-/// A protocol that defines the settings for the `WordPressMarkdownProcessor`.
+/// A protocol that defines the settings for the ``MarkdownProcessor``.
 public protocol ProcessorSettings {
   /// The URL for the content path
   ///
@@ -13,7 +13,7 @@ public protocol ProcessorSettings {
   /// Example: /..../Resources/
   var resourcesPathURL: URL { get }
 
-  /// The URL for the directory
+  /// The URL for the directory containing the export files.
   ///
   /// Example: /..../WordPress/exports/
   var exportsDirectoryURL: URL { get }
