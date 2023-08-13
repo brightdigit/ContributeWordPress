@@ -41,7 +41,7 @@ public struct DynamicRedirectGenerator: RedirectListGenerator {
     self.init(postFilter: postFilters.postSatisfiesAll)
   }
 
-  /// Generates redirects for each post from the given WordPress sites.
+  /// Generates redirects for each post of the given WordPress site.
   ///
   /// - Parameter allPosts: A dictionary of WordPress posts keyed by section name.
   /// - Returns: An array of `RedirectItem` representing the redirects.
