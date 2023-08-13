@@ -19,15 +19,15 @@ extension MarkdownProcessor {
   ///   - contentBuilder: The content builder.
   ///   - assetImportFactory: The asset import factory.
   public init(
-    redirectFromatter: RedirectFormatter,
-    postFilters: [PostFilter],
-    exportDecoder: SitesExportDecoder = SitesExportSynDecoder(),
-    assetDownloader: Downloader = AssetDownloader(),
-    destinationURLGenerator: ContentURLGeneratorType = .init(),
     contentBuilder: MarkdownContentBuilderType = .init(
       frontMatterExporter: .init(translator: SpecFrontMatterTranslator()),
       markdownExtractor: FilteredHTMLMarkdownExtractor<Source>()
     ),
+    destinationURLGenerator: ContentURLGeneratorType = .init(),
+    exportDecoder: SitesExportDecoder = SitesExportSynDecoder(),
+    postFilters: [PostFilter] = .default,
+    redirectFromatter: RedirectFormatter? = nil,
+    assetDownloader: Downloader = AssetDownloader(),
     assetImportFactory: @escaping AssetImportFactory =
       AssetImport.extractAssetImports(from:using:)
   ) where ContentURLGeneratorType == SectionContentURLGenerator,
@@ -37,12 +37,14 @@ extension MarkdownProcessor {
       FrontMatterYAMLExporter<Source, SpecFrontMatterTranslator>
     > {
     self.init(
-      exportDecoder: exportDecoder,
-      redirectWriter: DynamicRedirectFileWriter(redirectFromatter: redirectFromatter),
-      assetDownloader: assetDownloader,
-      destinationURLGenerator: destinationURLGenerator,
       contentBuilder: contentBuilder,
+      destinationURLGenerator: destinationURLGenerator,
+      exportDecoder: exportDecoder,
       postFilters: postFilters,
+      redirectWriter: redirectFromatter.map(
+        DynamicRedirectFileWriter.init(redirectFromatter:)
+      ),
+      assetDownloader: assetDownloader,
       assetImportFactory: assetImportFactory
     )
   }

@@ -3,7 +3,7 @@ import SyndiKit
 
 /// A struct that represents a WordPress site.
 public struct WordPressSite: BaseURLSite {
-  public static let wpContentUploadsRelativePath = "wp-content/uploads"
+  public static let contentUploadsRelativePath = "wp-content/uploads"
 
   /// The name of the channel.
   public let title: String
