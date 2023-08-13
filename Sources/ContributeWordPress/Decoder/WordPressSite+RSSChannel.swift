@@ -9,7 +9,7 @@ extension WordPressSite {
       "default"
   }
 
-  /// Initializes a `WordPressSite` instance from an ``RSSChannel``.
+  /// Initializes a `WordPressSite` instance from an ``SyndiKit/RSSChannel``.
   ///
   /// - Parameters:
   ///   - channel: The `RSSChannel` instance.
@@ -21,7 +21,7 @@ extension WordPressSite {
     )
   }
 
-  /// Initializes a `WordPressSite` instance from an ``RSSChannel`` with
+  /// Initializes a `WordPressSite` instance from an `SyndiKit/RSSChannel`` with
   /// a relative resource path.
   ///
   /// - Parameters:
