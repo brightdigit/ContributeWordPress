@@ -32,6 +32,5 @@ if CommandLine.arguments.count > 2 {
 try! MarkdownProcessor.beginImport(
   from: fromURL,
   to: toURL,
-  filteringPostsWith: <#T##[PostFilter]#>,
   importAssetsBy: importAssetsSetting
 )
