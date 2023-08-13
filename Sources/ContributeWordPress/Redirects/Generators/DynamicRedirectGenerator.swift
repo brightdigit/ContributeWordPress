@@ -74,7 +74,7 @@ extension DynamicRedirectGenerator {
   /// The default URL redirect path generator used by `DynamicRedirectGenerator`.
   ///
   /// - Parameters:
-  ///   - name: The name of the directory where the WordPress posts are located.
+  ///   - name: The name of the section where the WordPress posts belong to.
   ///   - post: The WordPress post for which the redirect URL path is generated.
   /// - Returns: The redirect URL path for the WordPress post.
   public static func defaultURLPath(

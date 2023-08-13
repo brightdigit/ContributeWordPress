@@ -1,13 +1,9 @@
 import XCTest
 @testable import ContributeWordPress
 
-final class NetlifyRedirectFormatterTests: XCTestCase {
+internal final class NetlifyRedirectFormatterTests: XCTestCase {
 
-    private var formatter: NetlifyRedirectFormatter!
-
-    override func setUp() {
-        formatter = NetlifyRedirectFormatter()
-    }
+    private var formatter: NetlifyRedirectFormatter = .init()
 
     func testEmptyRedirectItemsShouldReturnEmptyString() {
         let redirects = formatter.formatRedirects([])
