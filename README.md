@@ -17,7 +17,7 @@ Import your WordPress site into Publish.
 
 [![Codecov](https://img.shields.io/codecov/c/github/brightdigit/ContributeWordPress)](https://codecov.io/gh/brightdigit/ContributeWordPress)
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/brightdigit/ContributeWordPress)](https://www.codefactor.io/repository/github/brightdigit/ContributeWordPress)
-[![codebeat badge](https://codebeat.co/badges/54695d4b-98c8-4f0f-855e-215500163094)](https://codebeat.co/projects/github-com-brightdigit-ContributeWordPress-main)
+[![codebeat badge](https://codebeat.co/badges/4dadaf1f-863e-4bd2-8038-747b1db3ce88)](https://codebeat.co/projects/github-com-brightdigit-ContributeWordPress-main)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/brightdigit/ContributeWordPress)](https://codeclimate.com/github/brightdigit/ContributeWordPress)
 [![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/brightdigit/ContributeWordPress?label=debt)](https://codeclimate.com/github/brightdigit/ContributeWordPress)
 [![Code Climate issues](https://img.shields.io/codeclimate/issues/brightdigit/ContributeWordPress)](https://codeclimate.com/github/brightdigit/ContributeWordPress)
@@ -45,8 +45,7 @@ Import your WordPress site into Publish.
 
 # Introduction
 
-**ContributeWordPress** provides an undis manus herbarum Theseus? Et **graves**, ille? Genusque non
-quatenus [suos Hippodamen](http://www.mersitquemagnae.com/superetque.php)
+**ContributeWordPress** provides an easy to use API for importing a **WordPress** site into **Publish**.
 
 ## Requirements 
 
