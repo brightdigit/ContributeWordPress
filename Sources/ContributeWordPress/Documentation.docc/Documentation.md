@@ -12,7 +12,7 @@
 
 - Xcode 14.3.1 or later
 - Swift 5.8 or later
-- iOS 14 / watchOS 7 / tvOS 14 / macOS 12 or later deployment targets
+- macOS 12 or later deployment targets
 
 **Linux**
 
