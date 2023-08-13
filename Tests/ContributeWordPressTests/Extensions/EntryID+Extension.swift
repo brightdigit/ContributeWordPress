@@ -2,5 +2,5 @@ import Foundation
 import SyndiKit
 
 extension EntryID {
-    static let diagramForGoalsEntryID: EntryID = .url(.diagramForGoalsLink)
+  internal static let diagramForGoalsEntryID: EntryID = .url(.diagramForGoalsLink)
 }

@@ -1,5 +1,5 @@
-import Foundation
 import Contribute
+import Foundation
 import SyndiKit
 
 import Yams
@@ -60,9 +60,9 @@ extension Specs {
 }
 
 extension WordPressPost {
-    var description: String? {
-        meta["_yoast_wpseo_metadesc"]?
-          .fixUnicodeEscape()
-          .dequote()
-    }
+  internal var description: String? {
+    meta["_yoast_wpseo_metadesc"]?
+      .fixUnicodeEscape()
+      .dequote()
+  }
 }
