@@ -3,7 +3,8 @@ import Contribute
 @testable import ContributeWordPress
 
 internal final class AssetDownloaderTests: XCTestCase {
-  func testSuccessDownload() throws {
+  
+  internal func testSuccessDownload() throws {
     let downloader = AssetDownloader(urlDownloader: MockSuccessFileDownloader())
 
     let assets: [AssetImport] = try myYearInReviewAssets()
@@ -13,7 +14,7 @@ internal final class AssetDownloaderTests: XCTestCase {
     )
   }
 
-  func testFailureDownload() throws {
+  internal func testFailureDownload() throws {
     let downloader = AssetDownloader()
 
     let assets: [AssetImport] = try myYearInReviewAssets()
