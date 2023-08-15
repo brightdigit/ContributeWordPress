@@ -28,6 +28,8 @@ internal final class AssetDownloaderTests: XCTestCase {
 
       let failedURLs: [URL] = Array(errors.keys)
 
+      XCTAssertEqual(failedURLs.count, assets.count)
+
       for index in failedURLs.indices {
         let asset = assets[index]
         let url = failedURLs[index]
