@@ -9,7 +9,7 @@ extension WordPressSite {
       "default"
   }
 
-  /// Initializes a `WordPressSite` instance from an ``RSSChannel``.
+  /// Initializes a `WordPressSite` instance from an ``SyndiKit/RSSChannel``.
   ///
   /// - Parameters:
   ///   - channel: The `RSSChannel` instance.
@@ -17,11 +17,11 @@ extension WordPressSite {
   public init(channel: RSSChannel) throws {
     try self.init(
       channel: channel,
-      relativeResourcePath: WordPressSite.wpContentUploadsRelativePath
+      relativeResourcePath: WordPressSite.contentUploadsRelativePath
     )
   }
 
-  /// Initializes a `WordPressSite` instance from an ``RSSChannel`` with
+  /// Initializes a `WordPressSite` instance from an `SyndiKit/RSSChannel`` with
   /// a relative resource path.
   ///
   /// - Parameters:
@@ -57,7 +57,7 @@ extension WordPressSite {
   /// - Throws: An error if the regular expression cannot be created.
   internal static func defaultAssetURLRegex(
     forSite site: BaseURLSite,
-    relativeResourcePath: String = WordPressSite.wpContentUploadsRelativePath
+    relativeResourcePath: String = WordPressSite.contentUploadsRelativePath
   ) throws -> NSRegularExpression {
     try Self.defaultAssetURLRegex(
       forAssetSiteURL: site.baseURL,
@@ -74,7 +74,7 @@ extension WordPressSite {
   /// - Throws: An error if the regular expression cannot be created.
   public static func defaultAssetURLRegex(
     forAssetSiteURL assetSiteURL: URL,
-    relativeResourcePath: String = WordPressSite.wpContentUploadsRelativePath
+    relativeResourcePath: String = WordPressSite.contentUploadsRelativePath
   ) throws -> NSRegularExpression {
     try NSRegularExpression(pattern: "\(assetSiteURL)/\(relativeResourcePath)([^\"]+)")
   }

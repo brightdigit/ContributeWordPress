@@ -1,7 +1,7 @@
 import Foundation
 import SyndiKit
 
-/// A protocol that defines the settings for the `WordPressMarkdownProcessor`.
+/// A protocol that defines the settings for the ``MarkdownProcessor``.
 public protocol ProcessorSettings {
   /// The URL for the content path
   ///
@@ -13,21 +13,16 @@ public protocol ProcessorSettings {
   /// Example: /..../Resources/
   var resourcesPathURL: URL { get }
 
-  /// The URL for the directory
+  /// The URL for the directory containing the export files.
   ///
   /// Example: /..../WordPress/exports/
   var exportsDirectoryURL: URL { get }
 
-  /// The URL of the directory that the assets should be imported.
-  ///
-  /// Example: /..../WordPress/html/
-  var importAssetPathURL: URL? { get }
-
   /// Whether to overwrite existing assets.
   var overwriteAssets: Bool { get }
 
-  /// Whether to skip downloading assets.
-  var skipDownload: Bool { get }
+  /// The method to import assets from the WordPress site.
+  var assetImportSetting: AssetImportSetting { get }
 
   /// Name of directory to store assets relative to ``resourcesPathURL``
   var assetRelativePath: String { get }
@@ -49,6 +44,30 @@ public protocol ProcessorSettings {
 }
 
 extension ProcessorSettings {
+  /// The URL of the directory that the assets should be imported.
+  ///
+  /// Example: /..../WordPress/html/
+  @available(
+    *, deprecated, renamed: "assetImportSetting",
+    message: "Use `assetImportSetting` for whether to copy from location."
+  )
+  public var importAssetPathURL: URL? {
+    if case let .copyFilesFrom(url) = assetImportSetting {
+      return url
+    }
+
+    return nil
+  }
+
+  /// Whether to skip downloading assets.
+  @available(
+    *, deprecated, renamed: "assetImportSetting",
+    message: "Use `assetImportSetting` for whether to skip download."
+  )
+  public var skipDownload: Bool {
+    assetImportSetting == .none
+  }
+
   /// The URL for the asset path located under `resourcesPathURL`.
   public var resourceAssetPathURL: URL {
     resourcesPathURL.appendingPathComponent(assetRelativePath)
@@ -56,7 +75,7 @@ extension ProcessorSettings {
 
   /// The relative path for uploads directory of WordPress content.
   public var uploadsRelativePath: String {
-    WordPressSite.wpContentUploadsRelativePath
+    WordPressSite.contentUploadsRelativePath
   }
 
   /// Returns the asset directory path for the given site name.

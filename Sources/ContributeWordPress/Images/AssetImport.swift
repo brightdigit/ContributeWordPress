@@ -55,7 +55,7 @@ public struct AssetImport: Hashable {
   ) {
     let featuredPath = sourceURL.path
       .replacingOccurrences(
-        of: ["", WordPressSite.wpContentUploadsRelativePath].joined(separator: "/"),
+        of: ["", WordPressSite.contentUploadsRelativePath].joined(separator: "/"),
         with: assetRoot
       )
       .replacingOccurrences(of: "//", with: "/")

@@ -12,7 +12,6 @@ public protocol Downloader {
   /// - Throws: An error if there are any errors happened.
   func download(
     assets: [AssetImport],
-    dryRun: Bool,
     allowsOverwrites: Bool
   ) throws
 }
