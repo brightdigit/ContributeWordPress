@@ -15,6 +15,18 @@ public struct Source {
 
   /// Optional closure to get html string from the post.
   public var htmlFromPost: ((WordPressPost) -> String)?
+
+  public init(
+    sectionName: String,
+    post: WordPressPost,
+    featuredImage: String?,
+    htmlFromPost: ((WordPressPost) -> String)? = nil
+  ) {
+    self.sectionName = sectionName
+    self.post = post
+    self.featuredImage = featuredImage
+    self.htmlFromPost = htmlFromPost
+  }
 }
 
 extension Source: HTMLSource {

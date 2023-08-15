@@ -20,7 +20,7 @@ extension MarkdownProcessor {
     let allSites = try exportDecoder.sites(fromExportsAt: settings.exportsDirectoryURL)
 
     // 2. Writes redirects for all decoded WordPress posts.
-    try redirectWriter.writeRedirects(
+    try redirectWriter?.writeRedirects(
       fromSites: allSites,
       inDirectory: settings.resourcesPathURL
     )
@@ -30,11 +30,12 @@ extension MarkdownProcessor {
       assetImportFactory($0, settings)
     }
 
-    try assetDownloader.download(
-      assets: assetImports,
-      dryRun: settings.skipDownload,
-      allowsOverwrites: settings.overwriteAssets
-    )
+    if settings.assetImportSetting != .none {
+      try assetDownloader.download(
+        assets: assetImports,
+        allowsOverwrites: settings.overwriteAssets
+      )
+    }
 
     // 4. Starts writing the markdown files for all WordPress posts for each site.
     try writeAllPosts(

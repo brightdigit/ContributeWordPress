@@ -15,7 +15,7 @@ public struct MarkdownProcessor<
   MarkdownContentBuilderType.SourceType == Source {
   internal let exportDecoder: SitesExportDecoder
   internal let assetDownloader: Downloader
-  internal let redirectWriter: RedirectFileWriter
+  internal let redirectWriter: RedirectFileWriter?
   internal let assetImportFactory: AssetImportFactory
   private let destinationURLGenerator: ContentURLGeneratorType
   private let contentBuilder: MarkdownContentBuilderType
@@ -25,20 +25,21 @@ public struct MarkdownProcessor<
   ///
   /// - Parameters:
   ///   - exportDecoder: The export decoder.
-  ///   - redirectWriter: The redirect file writer.
+  ///   - redirectWriter: Optional redirect file writer.
   ///   - assetDownloader: The asset downloader.
   ///   - destinationURLGenerator: The content URL generator.
   ///   - contentBuilder: The Markdown content builder.
   ///   - postFilters: The post filters.
   ///   - assetImportFactory: The asset import factory.
   public init(
-    exportDecoder: SitesExportDecoder,
-    redirectWriter: RedirectFileWriter,
-    assetDownloader: Downloader,
-    destinationURLGenerator: ContentURLGeneratorType,
     contentBuilder: MarkdownContentBuilderType,
-    postFilters: [PostFilter],
-    assetImportFactory: @escaping AssetImportFactory
+    destinationURLGenerator: ContentURLGeneratorType,
+    exportDecoder: SitesExportDecoder = SitesExportSynDecoder(),
+    postFilters: [PostFilter] = .default,
+    redirectWriter: RedirectFileWriter? = nil,
+    assetDownloader: Downloader = AssetDownloader(),
+    assetImportFactory: @escaping AssetImportFactory =
+      AssetImport.extractAssetImports(from:using:)
   ) {
     self.exportDecoder = exportDecoder
     self.redirectWriter = redirectWriter
