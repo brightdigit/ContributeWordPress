@@ -25,7 +25,7 @@ public struct MarkdownProcessor<
   ///
   /// - Parameters:
   ///   - exportDecoder: The export decoder.
-  ///   - redirectWriter: The redirect file writer.
+  ///   - redirectWriter: Optional redirect file writer.
   ///   - assetDownloader: The asset downloader.
   ///   - destinationURLGenerator: The content URL generator.
   ///   - contentBuilder: The Markdown content builder.
