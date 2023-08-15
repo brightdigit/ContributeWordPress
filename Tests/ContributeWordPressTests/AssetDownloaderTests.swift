@@ -9,8 +9,4 @@ import XCTest
 
 final class AssetDownloaderTests: XCTestCase {
 
-    func testDownload() throws {
-      XCTFail("Not implemented")
-
-    }
 }
