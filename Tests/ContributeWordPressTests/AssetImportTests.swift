@@ -43,8 +43,6 @@ final class AssetImportTests: XCTestCase {
       importPathURL: importPathURL
     )
 
-    print(asset)
-
     let expectedFromURL = importPathURL.appendingPathComponent(sampleSourceURL.path)
     let expectedAtURL = sampleResourcesPathURL.appendingPathComponent(asset.featuredPath)
     let expectedFeaturedPath = makeFeaturedPath(from: sampleSourceURL, assetRoot: sampleAssetRoot)
