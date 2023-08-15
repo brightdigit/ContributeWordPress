@@ -3,7 +3,7 @@ import Contribute
 @testable import ContributeWordPress
 
 internal final class AssetDownloaderTests: XCTestCase {
-  
+
   internal func testSuccessDownload() throws {
     let downloader = AssetDownloader(urlDownloader: MockSuccessFileDownloader())
 
@@ -55,6 +55,7 @@ internal final class AssetDownloaderTests: XCTestCase {
   }
 }
 
+// TODO: @Leo, If approved, what is the appropriate place for this?
 private final class MockSuccessFileDownloader: URLDownloader {
   func download(
     from fromURL: URL,
