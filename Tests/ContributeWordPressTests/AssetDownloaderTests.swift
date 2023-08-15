@@ -37,6 +37,8 @@ internal final class AssetDownloaderTests: XCTestCase {
     }
   }
 
+  // MARK: - Helpers
+
   private func myYearInReviewAssets() throws -> [AssetImport] {
     [
       AssetImport(
