@@ -4,7 +4,7 @@ import SyndiKit
 /// A type that writes redirects from posts into a file.
 ///
 /// It uses an instance of `DynamicRedirectGenerator` to generate redirect items,
-/// then uses the provided `RedirectFormatter` to format the redirects into a string
+/// then using the provided `RedirectFormatter` it formats the redirects into a string
 /// whtich later will be written into a file in a given directory.
 public struct DynamicRedirectFileWriter: RedirectFileWriter {
   private let generator: RedirectListGenerator

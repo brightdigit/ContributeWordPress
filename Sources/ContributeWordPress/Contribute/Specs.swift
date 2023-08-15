@@ -1,5 +1,6 @@
 import Contribute
 import Foundation
+import SyndiKit
 
 import Yams
 
@@ -51,11 +52,17 @@ extension Specs {
     self.init(
       title: source.post.title.fixUnicodeEscape().dequote(),
       date: source.post.postDate,
-      description: source.post.meta["_yoast_wpseo_metadesc"]?
-        .fixUnicodeEscape()
-        .dequote(),
+      description: source.post.description,
       tags: source.post.tags,
       featuredImage: source.featuredImage
     )
+  }
+}
+
+extension WordPressPost {
+  internal var description: String? {
+    meta["_yoast_wpseo_metadesc"]?
+      .fixUnicodeEscape()
+      .dequote()
   }
 }

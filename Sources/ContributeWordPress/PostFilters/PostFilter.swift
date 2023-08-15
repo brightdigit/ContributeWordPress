@@ -1,15 +1,6 @@
 import SyndiKit
 
-private enum PostFilters {
-  // swiftlint:disable:next force_try
-  static let `default` = try! [
-    RegexKeyPostFilter(pattern: "post", keyPath: \.type),
-    RegexKeyPostFilter(pattern: "publish", keyPath: \.status)
-  ]
-}
-
-/// A protocol used as a filter condition to include or exclude specific WordPress post
-/// in a redirects list.
+/// A protocol used as a filter condition to include or exclude specific WordPress post.
 public protocol PostFilter {
   /// Determines whether a WordPress post meets the criteria defined by the filter.
   ///
@@ -17,6 +8,14 @@ public protocol PostFilter {
   /// - Returns: A boolean value indicating whether the post meets the criteria
   ///            defined by the filter.
   func include(_ post: WordPressPost) -> Bool
+}
+
+private enum PostFilters {
+  // swiftlint:disable:next force_try
+  static let `default` = try! [
+    RegexKeyPostFilter(pattern: "post", keyPath: \.type),
+    RegexKeyPostFilter(pattern: "publish", keyPath: \.status)
+  ]
 }
 
 extension Array where Element == PostFilter {
