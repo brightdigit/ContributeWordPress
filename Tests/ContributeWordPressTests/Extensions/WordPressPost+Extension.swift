@@ -58,7 +58,9 @@ extension WordPressPost {
       categories: tags ?? []
     )
   }
+}
 
+extension WordPressPost {
   internal static func make(
     title: String,
     link: URL = .diagramForGoalsLink,
