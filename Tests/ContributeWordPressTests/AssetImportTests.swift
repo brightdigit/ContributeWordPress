@@ -52,29 +52,6 @@ internal final class AssetImportTests: XCTestCase {
     XCTAssertEqual(asset.featuredPath, expectedFeaturedPath)
   }
 
-  internal func testExtractAssetImports() throws {
-    let site: WordPressSite = try .make(
-      posts: [
-        .productivityAppsPost()
-      ]
-    )
-
-//    print(site.posts.first?.body)
-
-    let rootPublishSiteURL: URL = .temporaryDirURL
-    let x = AssetImport.extractAssetImports(
-      from: site,
-      using: Settings(
-        rootPublishSiteURL: rootPublishSiteURL,
-        exportsDirectoryURL: rootPublishSiteURL.appendingPathComponent("WordPress/exports")
-      )
-    )
-
-    print(site.assetURLRegex.pattern)
-
-    print(x)
-  }
-
   // MARK: - Helpers
 
   private func makeFeaturedPath(from sourceURL: URL, assetRoot: String) -> String {
