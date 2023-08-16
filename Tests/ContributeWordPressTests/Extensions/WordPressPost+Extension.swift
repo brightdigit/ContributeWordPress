@@ -12,7 +12,6 @@ extension WordPressPost {
       link: URL(string: "https://leogdion.name/2019/01/14/2018-review/")!,
       description: "My main goal this year was to produce more content online and less time on local events and gatherings. Unfortunately, that wasn't the case.",
       postName: "2018-review",
-      contentEncoded: .productivityContentEncoded,
       categories: tags ?? []
     )
   }
@@ -22,7 +21,6 @@ extension WordPressPost {
       title: "Are We There Yet?",
       link: URL(string: "https://leogdion.name/2018/12/13/are-we-there-yet/")!,
       postName: "are-we-there-yet",
-      contentEncoded: .productivityContentEncoded,
       categories: tags ?? []
     )
   }
@@ -32,7 +30,6 @@ extension WordPressPost {
       title: "From Goals to Actions 2018",
       link: URL(string: "https://leogdion.name/2018/01/08/from-goals-to-actions-2018/diagram-for-goals/")!,
       postName: "from-goals-to-actions-2018",
-      contentEncoded: .productivityContentEncoded,
       categories: tags ?? []
     )
   }
@@ -43,10 +40,11 @@ extension WordPressPost {
       link: URL(string: "https://leogdion.name/2019/06/13/podcasting-getting-started-content-recording-audience/")!,
       description: "Generally speaking, podcasting gives specific audiences an in-depth specialized analysis without the need to appeal to the general audience.",
       postName: "podcasting-getting-started-content-recording-audience",
-      contentEncoded: .productivityContentEncoded,
       categories: tags ?? []
     )
   }
+
+  // MARK: - Productivity Apps for Developers (and Everyone Else)
 
   internal static func productivityAppsPost(tags: [RSSItemCategory]? = nil) throws -> WordPressPost {
     try make(
@@ -73,7 +71,8 @@ extension WordPressPost {
     contentEncoded: String? = nil,
     categories: [RSSItemCategory] = [.Podcasting, .Productivity],
     creators: [String] = ["Leo"],
-    status: String = "publish"
+    status: String = "publish",
+    attachmentURL: URL? = nil
   ) throws -> WordPressPost {
     try .init(
       item: .make(
@@ -88,7 +87,8 @@ extension WordPressPost {
         postDate: postDate,
         categories: categories,
         creators: creators,
-        status: status
+        status: status,
+        attachmentURL: attachmentURL
       )
     )
   }

@@ -5,15 +5,14 @@ final class AssetImportTests_WordPress: XCTestCase {
 
   internal func testExtractAssetImports() throws {
     let site: WordPressSite = try .make(
+      link: URL(string: "https://leogdion.name")!,
       posts: [
         .productivityAppsPost()
       ]
     )
 
-//    print(site.posts.first?.body)
-
     let rootPublishSiteURL: URL = .temporaryDirURL
-    let x = AssetImport.extractAssetImports(
+    let assetImports = AssetImport.extractAssetImports(
       from: site,
       using: Settings(
         rootPublishSiteURL: rootPublishSiteURL,
@@ -21,9 +20,11 @@ final class AssetImportTests_WordPress: XCTestCase {
       )
     )
 
-    print(site.assetURLRegex.pattern)
+    for assetImport in assetImports {
+      print(assetImport.fromURL)
+      print(assetImport.atURL)
+    }
 
-    print(x)
   }
 
 }

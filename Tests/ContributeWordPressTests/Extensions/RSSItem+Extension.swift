@@ -17,7 +17,8 @@ extension RSSItem {
     postDate: Date?,
     categories: [RSSItemCategory],
     creators: [String],
-    status: String
+    status: String,
+    attachmentURL: URL?
   ) -> RSSItem {
     .init(
       title: title,
@@ -53,7 +54,7 @@ extension RSSItem {
       wpPostName: postName,
       wpPostType: type,
       wpPostMeta: nil,
-      wpAttachmentURL: nil,
+      wpAttachmentURL: attachmentURL,
       mediaContent: nil,
       mediaThumbnail: nil
     )

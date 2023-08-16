@@ -14,7 +14,6 @@ extension AssetImport {
   ) -> [AssetImport] {
     let assetRoot = ["", importSettings.assetRelativePath, site.importDirectoryName]
       .joined(separator: "/")
-    print(assetRoot)
     return matchUrls(
       in: site.posts,
       using: site.assetURLRegex
@@ -35,10 +34,6 @@ extension AssetImport {
     using regex: NSRegularExpression
   ) -> [(sourceURL: URL, post: WordPressPost)] {
     posts
-      .map {
-        print($0.type)
-        return $0
-      }
       .flatMap { post in
         return regex
           .matches(
