@@ -14,7 +14,7 @@ extension URL {
 
 // TODO: Waiting on Contribute to be updated to use its URL extension instead
 extension URL {
-  static let temporaryDirURL = URL(
+  internal static let temporaryDirURL = URL(
     fileURLWithPath: NSTemporaryDirectory(),
     isDirectory: true
   )

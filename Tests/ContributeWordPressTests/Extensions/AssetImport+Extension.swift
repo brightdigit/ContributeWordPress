@@ -1,6 +1,4 @@
-import Foundation
 import ContributeWordPress
+import Foundation
 
-extension AssetImport {
-  
-}
+extension AssetImport {}

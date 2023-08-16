@@ -1,8 +1,7 @@
-import XCTest
 @testable import ContributeWordPress
+import XCTest
 
 internal final class SectionContentURLGeneratorTests: XCTestCase {
-
   private let generator: SectionContentURLGenerator = .init()
 
   internal func testCorrectDestinationURL() throws {
@@ -30,5 +29,4 @@ internal final class SectionContentURLGeneratorTests: XCTestCase {
       .appendingPathComponent(source.sectionName)
       .appendingPathComponent(source.post.name + ".md")
   }
-
 }

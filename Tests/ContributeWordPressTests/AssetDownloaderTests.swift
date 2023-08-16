@@ -1,16 +1,15 @@
-import XCTest
 import Contribute
 @testable import ContributeWordPress
+import XCTest
 
 internal final class AssetDownloaderTests: XCTestCase {
-
   internal func testSuccessDownload() throws {
     let downloader = AssetDownloader(urlDownloader: MockSuccessFileDownloader())
 
     let assets: [AssetImport] = try myYearInReviewAssets()
 
     XCTAssertNoThrow(
-      try downloader.download(assets: assets,allowsOverwrites: false)
+      try downloader.download(assets: assets, allowsOverwrites: false)
     )
   }
 
@@ -22,7 +21,7 @@ internal final class AssetDownloaderTests: XCTestCase {
     XCTAssertThrowsError(
       try downloader.download(assets: assets, allowsOverwrites: false)
     ) { throwError in
-      guard case WordPressError.assetDownloadErrors(let errors) = throwError else {
+      guard case let WordPressError.assetDownloadErrors(errors) = throwError else {
         XCTFail("Expected associated list of url->error.")
         return
       }
@@ -48,7 +47,7 @@ internal final class AssetDownloaderTests: XCTestCase {
         forPost: try .myYearInReviewPost(),
         sourceURL: .temporaryResourcesPathURL,
         assetRoot: "/media/wp-assets",
-        resourcesPathURL:  URL(string: "https://leogdion.name/wp-content/uploads/2019/06/aleks-dorohovich-26-unsplash-701.jpeg")!,
+        resourcesPathURL: URL(string: "https://leogdion.name/wp-content/uploads/2019/06/aleks-dorohovich-26-unsplash-701.jpeg")!,
         importPathURL: nil
       )
     ]
@@ -58,10 +57,11 @@ internal final class AssetDownloaderTests: XCTestCase {
 // TODO: @Leo, If approved, what is the appropriate place for this?
 private final class MockSuccessFileDownloader: URLDownloader {
   func download(
-    from fromURL: URL,
-    to toURL: URL,
-    allowOverwrite: Bool,
-    _ completion: @escaping (Error?) -> Void) {
-      completion(nil)
+    from _: URL,
+    to _: URL,
+    allowOverwrite _: Bool,
+    _ completion: @escaping (Error?) -> Void
+  ) {
+    completion(nil)
   }
 }

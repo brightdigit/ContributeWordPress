@@ -1,12 +1,11 @@
-import XCTest
-import SyndiKit
 @testable import ContributeWordPress
+import SyndiKit
+import XCTest
 
-final class AssetImportTests: XCTestCase {
-
+internal final class AssetImportTests: XCTestCase {
   private let sampleResourcesPathURL: URL = .temporaryResourcesPathURL
   private let sampleAssetRoot: String = "/media/wp-assets"
-  private let sampleSourceURL: URL = URL(string: "https://leogdion.name/wp-content/uploads/2019/06/aleks-dorohovich-26-unsplash-701.jpeg")!
+  private let sampleSourceURL = URL(string: "https://leogdion.name/wp-content/uploads/2019/06/aleks-dorohovich-26-unsplash-701.jpeg")!
 
   internal func testRemoteAsset() throws {
     let post: WordPressPost = try .myYearInReviewPost()
@@ -53,6 +52,29 @@ final class AssetImportTests: XCTestCase {
     XCTAssertEqual(asset.featuredPath, expectedFeaturedPath)
   }
 
+  internal func testExtractAssetImports() throws {
+    let site: WordPressSite = try .make(
+      posts: [
+        .productivityAppsPost()
+      ]
+    )
+
+//    print(site.posts.first?.body)
+
+    let rootPublishSiteURL: URL = .temporaryDirURL
+    let x = AssetImport.extractAssetImports(
+      from: site,
+      using: Settings(
+        rootPublishSiteURL: rootPublishSiteURL,
+        exportsDirectoryURL: rootPublishSiteURL.appendingPathComponent("WordPress/exports")
+      )
+    )
+
+    print(site.assetURLRegex.pattern)
+
+    print(x)
+  }
+
   // MARK: - Helpers
 
   private func makeFeaturedPath(from sourceURL: URL, assetRoot: String) -> String {
@@ -64,3 +86,29 @@ final class AssetImportTests: XCTestCase {
       .replacingOccurrences(of: "//", with: "/")
   }
 }
+
+// internal struct MockProcessorSettings: ProcessorSettings {
+//  private let projectPath: URL = .temporaryResourcesPathURL
+//
+//  var contentPathURL: URL {
+//    projectPath.appendingPathComponent(PublishDefaults.contentDirectoryName)
+//  }
+//
+//  var resourcesPathURL: URL {
+//    projectPath.appendingPathComponent(PublishDefaults.resourcesDirectoryName)
+//  }
+//
+//  var exportsDirectoryURL: URL {
+//    projectPath.appendingPathComponent("WordPress/exports")
+//  }
+//
+//  var overwriteAssets: Bool { false }
+//
+//  var assetImportSetting: ContributeWordPress.AssetImportSetting = .none
+//
+//  var assetRelativePath: String { }
+//
+//  func markdownFrom(html: String) throws -> String {
+//    fatalError("What to do here?")
+//  }
+// }

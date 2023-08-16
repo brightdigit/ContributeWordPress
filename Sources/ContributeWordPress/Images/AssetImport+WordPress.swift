@@ -12,11 +12,9 @@ extension AssetImport {
     from site: WordPressSite,
     using importSettings: ProcessorSettings
   ) -> [AssetImport] {
-    let assetRoot = [
-      "",
-      importSettings.assetRelativePath,
-      site.importDirectoryName
-    ].joined(separator: "/")
+    let assetRoot = ["", importSettings.assetRelativePath, site.importDirectoryName]
+      .joined(separator: "/")
+    print(assetRoot)
     return matchUrls(
       in: site.posts,
       using: site.assetURLRegex
@@ -37,8 +35,12 @@ extension AssetImport {
     using regex: NSRegularExpression
   ) -> [(sourceURL: URL, post: WordPressPost)] {
     posts
+      .map {
+        print($0.type)
+        return $0
+      }
       .flatMap { post in
-        regex
+        return regex
           .matches(
             in: post.body,
             range: NSRange(post.body.startIndex..., in: post.body)

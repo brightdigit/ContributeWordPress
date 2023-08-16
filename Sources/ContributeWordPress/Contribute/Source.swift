@@ -16,6 +16,7 @@ public struct Source {
   /// Optional closure to get html string from the post.
   public var htmlFromPost: ((WordPressPost) -> String)?
 
+  /// Initializes a new `Source` instance.
   public init(
     sectionName: String,
     post: WordPressPost,

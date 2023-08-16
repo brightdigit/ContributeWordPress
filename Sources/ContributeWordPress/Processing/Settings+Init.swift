@@ -19,7 +19,7 @@ extension Settings {
     assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
     assetRelativePath: String = PublishDefaults.wpAssetsRelativePath,
-    markdownFromHTML: @escaping (String) throws -> String = { $0 }
+    markdownFromHTML: @escaping (String) throws -> String
   ) {
     self.init(
       contentPathURL:
@@ -48,10 +48,10 @@ extension Settings {
     contentPathURL: URL,
     resourcesPathURL: URL,
     exportsDirectoryURL: URL,
-    markdownGenerator: MarkdownGenerator = PassthroughMarkdownGenerator.shared,
     assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
-    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath
+    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath,
+    markdownGenerator: MarkdownGenerator
   ) {
     self.init(
       contentPathURL: contentPathURL,
@@ -76,10 +76,10 @@ extension Settings {
   public init(
     rootPublishSiteURL: URL,
     exportsDirectoryURL: URL,
-    markdownGenerator: MarkdownGenerator = PassthroughMarkdownGenerator.shared,
     assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
-    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath
+    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath,
+    markdownGenerator: MarkdownGenerator = PassthroughMarkdownGenerator.shared
   ) {
     self.init(
       contentPathURL:
@@ -87,10 +87,10 @@ extension Settings {
       resourcesPathURL:
       rootPublishSiteURL.appendingPathComponent(PublishDefaults.resourcesDirectoryName),
       exportsDirectoryURL: exportsDirectoryURL,
-      markdownGenerator: markdownGenerator,
       assetImportSetting: assetImportSetting,
       overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath
+      assetRelativePath: assetRelativePath,
+      markdownGenerator: markdownGenerator
     )
   }
 
@@ -122,11 +122,11 @@ extension Settings {
       contentPathURL: contentPathURL,
       resourcesPathURL: resourcesPathURL,
       exportsDirectoryURL: exportsDirectoryURL,
-      markdownGenerator:
-      PandocMarkdownGenerator(shellOut: shellOut, temporaryFile: temporaryFile),
       assetImportSetting: assetImportSetting,
       overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath
+      assetRelativePath: assetRelativePath,
+      markdownGenerator:
+      PandocMarkdownGenerator(shellOut: shellOut, temporaryFile: temporaryFile)
     )
   }
 
@@ -162,6 +162,31 @@ extension Settings {
       assetRelativePath: assetRelativePath,
       temporaryFile: temporaryFile,
       shellOut: shellOut
+    )
+  }
+
+  /// Defines the settings for the ``MarkdownProcessor``
+  /// - Parameters:
+  ///   - rootPublishSiteURL: Root of the `Publish` site.
+  ///   - exportsDirectoryURL: The URL for the directory containing the export files.
+  ///   - assetImportSetting: The method to import assets from the WordPress site.
+  ///   - overwriteAssets: Whether to overwrite existing assets.
+  ///   - assetRelativePath:
+  ///   Name of directory to store assets relative to ``resourcesPathURL``
+  public init(
+    rootPublishSiteURL: URL,
+    exportsDirectoryURL: URL,
+    assetImportSetting: AssetImportSetting = .download,
+    overwriteAssets: Bool = false,
+    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath
+  ) {
+    self.init(
+      rootPublishSiteURL: rootPublishSiteURL,
+      exportsDirectoryURL: exportsDirectoryURL,
+      assetImportSetting: assetImportSetting,
+      overwriteAssets: overwriteAssets,
+      assetRelativePath: assetRelativePath,
+      markdownFromHTML: PassthroughMarkdownGenerator.shared.markdown(fromHTML:)
     )
   }
 }
