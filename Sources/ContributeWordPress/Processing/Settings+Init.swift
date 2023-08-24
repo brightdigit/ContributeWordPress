@@ -106,7 +106,6 @@ extension Settings {
   ///   - temporaryFile: Creates a temporary file and returns the URL
   ///   - shellOut: Runs a `pandoc` command
   ///   for converting HTML to Markdown using `ShellOut`
-  @available(*, deprecated, message: "Use temporaryFile of URL extension instead")
   public init(
     contentPathURL: URL,
     resourcesPathURL: URL,

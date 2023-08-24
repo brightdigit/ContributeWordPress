@@ -63,29 +63,3 @@ internal final class AssetImportTests: XCTestCase {
       .replacingOccurrences(of: "//", with: "/")
   }
 }
-
-// internal struct MockProcessorSettings: ProcessorSettings {
-//  private let projectPath: URL = .temporaryResourcesPathURL
-//
-//  var contentPathURL: URL {
-//    projectPath.appendingPathComponent(PublishDefaults.contentDirectoryName)
-//  }
-//
-//  var resourcesPathURL: URL {
-//    projectPath.appendingPathComponent(PublishDefaults.resourcesDirectoryName)
-//  }
-//
-//  var exportsDirectoryURL: URL {
-//    projectPath.appendingPathComponent("WordPress/exports")
-//  }
-//
-//  var overwriteAssets: Bool { false }
-//
-//  var assetImportSetting: ContributeWordPress.AssetImportSetting = .none
-//
-//  var assetRelativePath: String { }
-//
-//  func markdownFrom(html: String) throws -> String {
-//    fatalError("What to do here?")
-//  }
-// }
