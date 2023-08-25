@@ -9,6 +9,16 @@ extension URL {
 }
 
 extension URL {
+  internal static func make(string: String) throws -> URL {
+    guard let url = URL(string: string) else {
+      throw TestError.invalidURLString
+    }
+
+    return url
+  }
+}
+
+extension URL {
   internal static let temporaryResourcesPathURL: URL = .temporaryDirURL.appendingPathComponent("Resources")
 }
 

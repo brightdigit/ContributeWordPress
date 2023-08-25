@@ -1078,3 +1078,290 @@ https://www.youtube.com/watch?v=ojL0JPZrAGE
 <!-- /wp:paragraph -->
 """
 }
+
+extension String {
+  static let wpExport: String = """
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+  xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:wp="http://wordpress.org/export/1.2/"
+  >
+    <channel>
+      <title>Leo G Dion</title>
+      <link>https://leogdion.name</link>
+      <description>Personal Blog</description>
+      <pubDate>Mon, 02 May 2022 18:38:45 +0000</pubDate>
+      <language>en-US</language>
+      <wp:wxr_version>1.2</wp:wxr_version>
+      <wp:base_site_url>https://leogdion.name</wp:base_site_url>
+      <wp:base_blog_url>https://leogdion.name</wp:base_blog_url>
+
+    <wp:category>
+      <wp:term_id>1</wp:term_id>
+      <wp:category_nicename><![CDATA[uncategorized]]></wp:category_nicename>
+      <wp:category_parent><![CDATA[]]></wp:category_parent>
+      <wp:cat_name><![CDATA[Uncategorized]]></wp:cat_name>
+    </wp:category>
+    <wp:tag>
+      <wp:term_id>4</wp:term_id>
+      <wp:tag_slug><![CDATA[podcasting]]></wp:tag_slug>
+      <wp:tag_name><![CDATA[podcasting]]></wp:tag_name>
+    </wp:tag>
+    <wp:tag>
+      <wp:term_id>5</wp:term_id>
+      <wp:tag_slug><![CDATA[productivity]]></wp:tag_slug>
+      <wp:tag_name><![CDATA[productivity]]></wp:tag_name>
+    </wp:tag>
+    <wp:tag>
+      <wp:term_id>6</wp:term_id>
+      <wp:tag_slug><![CDATA[software]]></wp:tag_slug>
+      <wp:tag_name><![CDATA[software]]></wp:tag_name>
+    </wp:tag>
+
+    <generator>https://wordpress.org/?v=5.9.3</generator>
+    <site xmlns="com-wordpress:feed-additions:1">135799540</site>
+
+    <!-- Add post -->
+        <item>
+          <title><![CDATA[diagram-for-goals]]></title>
+          <link>https://leogdion.name/2018/01/08/from-goals-to-actions-2018/diagram-for-goals/</link>
+          <pubDate>Fri, 05 Jan 2018 18:25:17 +0000</pubDate>
+          <dc:creator><![CDATA[leo]]></dc:creator>
+          <guid isPermaLink="false">https://leogdion.name/wp-content/uploads/2018/01/diagram-for-goals.png</guid>
+          <description></description>
+          <content:encoded><![CDATA[]]></content:encoded>
+          <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+          <wp:post_id>18</wp:post_id>
+          <wp:post_date><![CDATA[2018-01-05 18:25:17]]></wp:post_date>
+          <wp:post_date_gmt><![CDATA[2018-01-05 18:25:17]]></wp:post_date_gmt>
+          <wp:post_modified><![CDATA[2018-08-24 13:37:37]]></wp:post_modified>
+          <wp:post_modified_gmt><![CDATA[2018-08-24 17:37:37]]></wp:post_modified_gmt>
+          <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+          <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+          <wp:post_name><![CDATA[diagram-for-goals]]></wp:post_name>
+          <wp:status><![CDATA[inherit]]></wp:status>
+          <wp:post_parent>16</wp:post_parent>
+          <wp:menu_order>0</wp:menu_order>
+          <wp:post_type><![CDATA[attachment]]></wp:post_type>
+          <wp:post_password><![CDATA[]]></wp:post_password>
+          <wp:is_sticky>0</wp:is_sticky>
+          <wp:attachment_url><![CDATA[https://leogdion.name/wp-content/uploads/2018/01/diagram-for-goals-e1535132251116.png]]></wp:attachment_url>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+            <wp:meta_value><![CDATA[2018/01/diagram-for-goals-e1535132251116.png]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+            <wp:meta_value><![CDATA[a:5:{s:5:"width";i:400;s:6:"height";i:388;s:4:"file";s:44:"2018/01/diagram-for-goals-e1535132251116.png";s:5:"sizes";a:4:{s:9:"thumbnail";a:4:{s:4:"file";s:29:"diagram-for-goals-150x150.png";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:9:"image/png";}s:6:"medium";a:4:{s:4:"file";s:29:"diagram-for-goals-300x291.png";s:5:"width";i:300;s:6:"height";i:291;s:9:"mime-type";s:9:"image/png";}s:12:"medium_large";a:4:{s:4:"file";s:29:"diagram-for-goals-768x745.png";s:5:"width";i:768;s:6:"height";i:745;s:9:"mime-type";s:9:"image/png";}s:5:"large";a:4:{s:4:"file";s:30:"diagram-for-goals-1024x994.png";s:5:"width";i:1024;s:6:"height";i:994;s:9:"mime-type";s:9:"image/png";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_wp_attachment_backup_sizes]]></wp:meta_key>
+            <wp:meta_value><![CDATA[a:2:{s:9:"full-orig";a:3:{s:5:"width";i:1422;s:6:"height";i:1380;s:4:"file";s:21:"diagram-for-goals.png";}s:18:"full-1535132251116";a:3:{s:5:"width";i:711;s:6:"height";i:690;s:4:"file";s:36:"diagram-for-goals-e1535132084983.png";}}]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+            <wp:meta_value><![CDATA[1]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+            <wp:meta_value><![CDATA[30]]></wp:meta_value>
+          </wp:postmeta>
+        </item>
+
+    <!-- Add attachments -->
+    <item>
+      <title>Attachment 1</title>
+      <link>http://yourblog.com/attachment-1</link>
+      <pubDate>Mon, 24 Aug 2023 00:00:00 +0000</pubDate>
+      <dc:creator><![CDATA[admin]]></dc:creator>
+      <guid isPermaLink="false">http://yourblog.com/attachment-1</guid>
+      <description></description>
+      <content:encoded><![CDATA[<p>Attachment 1 description goes here.</p>]]></content:encoded>
+      <wp:post_id>2</wp:post_id>
+      <wp:post_date>2023-08-24 00:00:00</wp:post_date>
+      <wp:post_date_gmt>2023-08-24 00:00:00</wp:post_date_gmt>
+      <wp:comment_status>closed</wp:comment_status>
+      <wp:ping_status>closed</wp:ping_status>
+      <wp:post_name>attachment-1</wp:post_name>
+      <wp:status>inherit</wp:status>
+      <wp:post_parent>1</wp:post_parent>
+      <wp:menu_order>0</wp:menu_order>
+      <wp:post_type>attachment</wp:post_type>
+      <wp:post_password></wp:post_password>
+      <wp:is_sticky>0</wp:is_sticky>
+      <wp:attachment_url>http://yourblog.com/wp-content/uploads/2023/08/attachment-1.jpg</wp:attachment_url>
+    </item>
+
+        <item>
+          <title><![CDATA[From Goals to Actions 2018]]></title>
+          <link>https://leogdion.name/2018/01/08/from-goals-to-actions-2018/</link>
+          <pubDate>Mon, 08 Jan 2018 12:45:52 +0000</pubDate>
+          <dc:creator><![CDATA[leo]]></dc:creator>
+          <guid isPermaLink="false">https://leogdion.name/?p=16</guid>
+          <description></description>
+          <content:encoded><![CDATA[<p>With a new year here, it’s a good time to talk about goals and how to reach them.</p>
+            <p>Let’s take a few results you may want in 2018:</p>
+            <ul>
+            <li>Lose Weight</li>
+            <li>Publish A Book</li>
+            <li>Learn To Play the Piano</li>
+            </ul>
+            <p>There are a few problems with these <em>goals</em>. For one thing all three of these <em>goals</em> are some combination of ambiguous, complex, abstract or out of your control. What these really are are the <em>results</em> you want by the end of the year. Today I want to break down these <em>results</em> into actual committed actions.<!--more--></p>
+
+            <!-- wp:image {"id":18,"align":"center"} -->
+            <figure class="wp-block-image aligncenter"><img src="https://leogdion.name/wp-content/uploads/2018/01/diagram-for-goals-e1535132251116.png" alt="" class="wp-image-18"/></figure>
+            <!-- /wp:image -->
+
+            <h2>Making Results Actionable</h2>
+            <p>First thing you need to do is break these down into actual actions. Ask yourself what actions you need to do to achieve those results:</p>
+            <ul>
+            <li>Lose Weight
+            <ul>
+            <li>Exercise</li>
+            <li>Diet</li>
+            </ul>
+            </li>
+            <li>Publish Book
+            <ul>
+            <li>Write</li>
+            <li>Research Publishing</li>
+            </ul>
+            </li>
+            <li>Learn to Play the Piano
+            <ul>
+            <li>Take a class</li>
+            <li>Practice</li>
+            </ul>
+            </li>
+            </ul>
+            <p>These are things you can actual <strong>do</strong>. Losing Weight for instance is a complex problem requirement many habits and lifestyle changes.<br>Now that you have actual actions, you <strong>need</strong> to allocate time to commit to these.</p>
+            <h2>Scheduling Actions</h2>
+            <p>There are two reasons to schedule your actions this:</p>
+            <ol>
+            <li>You make sure nothing short of an emergency will prevent you from doing those things.</li>
+            <li>You can see whether those actions are in fact achievable.</li>
+            </ol>
+            <p>This helps you understand what you can actually do and it forces you to budget your time accordingly. So actions now become part your schedule:</p>
+            <ul>
+            <li>Exercise becomes <strong>Exercise between 6am - 8am every Monday, Wednesday, Friday</strong></li>
+            <li>Write becomes <strong>Write between 9am - 11am every Thursday</strong></li>
+            <li>Practice becomes <strong>Practice Playing the Piano every Monday and Thursday from 8pm - 9pm</strong></li>
+            <li>Research Publishing becomes <strong>Research Publishing next Tuesday from 2pm-4pm</strong></li>
+            </ul>
+            <p>There are of course weeks where the schedule may not work out perfectly but you can always move a specific appointment to a different time. The important thing to make sure you are committing to that amount of time either total over the whole period or per week if something which is recurring (exercise, writing, etc...).</p>
+            <h2>Dealing with Ambiguous Actions</h2>
+            <p>If an action has an indeterminate amount time; It may still be too ambiguous, complex, abstract or unachievable. There are several ways to fix this:</p>
+            <ul>
+            <li>Break the action down even further into sub-actions or steps.
+            <ul>
+            <li>Research Publishing
+            <ul>
+            <li>List Publishing Platforms</li>
+            <li>Compare Platforms on List</li>
+            <li>Make Decision Based on Comparison</li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            <li>Be as specific as possible for those actions:
+            <ul>
+            <li>Research Publishing
+            <ul>
+            <li>List 7 Online Publishing Platforms</li>
+            <li>Compare Platforms on List based on Price, Formats, and Compatibility</li>
+            <li>Sign up for the Publishing Platform Based on Comparison</li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            <li>Schedule a specific time to complete the task
+            <ul>
+            <li>Research Publishing
+            <ul>
+            <li>List 5-7 Online Publishing Platforms on Monday from 3pm - 5pm</li>
+            <li>Compare Platforms on List based on Price, Formats, and Compatibility from 8am - Noon on Thursday</li>
+            <li>Sign up for the Publishing Platform Based on Comparison from 8am - Noon on Next Tuesday</li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+            <p>If the task isn’t completed, you have the choice the decide to allocate more time after or quit and realize your goal may not be achievable. The quicker you quit one goal - the more you have time to achieve another. Don’t fall for the Sunk Cost Fallacy.</p>
+            <h2>Conclusion</h2>
+            <p>For 2018, you have the ability to make things actually happen. Follow these simple rules:</p>
+            <ul>
+            <li>Break down your goals into more as specific an action as possible</li>
+            <li>Use your calendar to schedule time for specific actions</li>
+            <li>If you don’t know how much time to allocate repeat process of breaking down action into more specific sub-actiosn</li>
+            <li>If you still can’t allocate time, cap the action to a specific time.</li>
+            <li>If you can’t complete the action in that time, make a decision to quit and allocate time further.</li>
+            </ul>]]></content:encoded>
+          <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+          <wp:post_id>16</wp:post_id>
+          <wp:post_date><![CDATA[2018-01-08 12:45:52]]></wp:post_date>
+          <wp:post_date_gmt><![CDATA[2018-01-08 12:45:52]]></wp:post_date_gmt>
+          <wp:post_modified><![CDATA[2018-08-24 13:48:14]]></wp:post_modified>
+          <wp:post_modified_gmt><![CDATA[2018-08-24 17:48:14]]></wp:post_modified_gmt>
+          <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+          <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+          <wp:post_name><![CDATA[from-goals-to-actions-2018]]></wp:post_name>
+          <wp:status><![CDATA[publish]]></wp:status>
+          <wp:post_parent>0</wp:post_parent>
+          <wp:menu_order>0</wp:menu_order>
+          <wp:post_type><![CDATA[post]]></wp:post_type>
+          <wp:post_password><![CDATA[]]></wp:post_password>
+          <wp:is_sticky>0</wp:is_sticky>
+          <category domain="category" nicename="uncategorized"><![CDATA[Uncategorized]]></category>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_jetpack_related_posts_cache]]></wp:meta_key>
+            <wp:meta_value><![CDATA[a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1651501548;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:99;}i:1;a:1:{s:2:"id";i:178;}i:2;a:1:{s:2:"id";i:245;}}}}]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+            <wp:meta_value><![CDATA[1]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+            <wp:meta_value><![CDATA[57]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_yoast_wpseo_content_score]]></wp:meta_key>
+            <wp:meta_value><![CDATA[60]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_yoast_wpseo_primary_category]]></wp:meta_key>
+            <wp:meta_value><![CDATA[]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[medium_post]]></wp:meta_key>
+            <wp:meta_value><![CDATA[O:11:"Medium_Post":11:{s:16:"author_image_url";s:65:"https://cdn-images-1.medium.com/fit/c/400/400/0*5gxjmuy9X71xBtwb.";s:10:"author_url";s:28:"https://medium.com/@leogdion";s:11:"byline_name";N;s:12:"byline_email";N;s:10:"cross_link";s:2:"no";s:2:"id";s:12:"6132313bb61e";s:21:"follower_notification";s:3:"yes";s:7:"license";s:19:"all-rights-reserved";s:14:"publication_id";s:2:"-1";s:6:"status";s:6:"public";s:3:"url";s:68:"https://medium.com/@leogdion/from-goals-to-actions-2018-6132313bb61e";}]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_publicize_twitter_user]]></wp:meta_key>
+            <wp:meta_value><![CDATA[@leogdion]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_wpas_done_all]]></wp:meta_key>
+            <wp:meta_value><![CDATA[1]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_wpas_skip_6792684]]></wp:meta_key>
+            <wp:meta_value><![CDATA[1]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_wpas_skip_19180323]]></wp:meta_key>
+            <wp:meta_value><![CDATA[1]]></wp:meta_value>
+          </wp:postmeta>
+          <wp:postmeta>
+            <wp:meta_key><![CDATA[_wpas_skip_6792719]]></wp:meta_key>
+            <wp:meta_value><![CDATA[1]]></wp:meta_value>
+          </wp:postmeta>
+        </item>
+
+  </channel>
+</rss>
+"""
+}
