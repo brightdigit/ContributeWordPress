@@ -1,9 +1,64 @@
 @testable import ContributeWordPress
 import XCTest
 
-// TODO: Update tests naming
 extension SettingsTests {
-  internal func test1() {
+
+  internal func test_contentPathURL_shellOut() {
+    let settings = Settings(
+      contentPathURL: contentPathURL,
+      resourcesPathURL: resourcesPathURL,
+      exportsDirectoryURL: exportsDirectoryURL,
+      assetImportSetting: assetImportSetting,
+      overwriteAssets: overwriteAssets,
+      assetRelativePath: assetRelativePath
+    ) { _, _ in
+      self.htmlSample
+    }
+
+    assertSettings(settings)
+  }
+
+  internal func test_contentPathURL_markdownGenerator() {
+    let settings = Settings(
+      contentPathURL: contentPathURL,
+      resourcesPathURL: resourcesPathURL,
+      exportsDirectoryURL: exportsDirectoryURL,
+      assetImportSetting: assetImportSetting,
+      overwriteAssets: overwriteAssets,
+      assetRelativePath: assetRelativePath,
+      markdownGenerator: markdownGenerator
+    )
+
+    assertSettings(settings)
+  }
+
+  internal func test_rootPublishSiteURL_defaultMarkdownFromHTML() {
+    let settings = Settings(
+      rootPublishSiteURL: projectDirURL,
+      exportsDirectoryURL: exportsDirectoryURL,
+      assetImportSetting: assetImportSetting,
+      overwriteAssets: overwriteAssets,
+      assetRelativePath: assetRelativePath
+    )
+
+    assertSettings(settings)
+  }
+
+  internal func test_rootPublishSiteURL_shellOut() {
+    let settings = Settings(
+      rootPublishSiteURL: projectDirURL,
+      exportsDirectoryURL: exportsDirectoryURL,
+      assetImportSetting: assetImportSetting,
+      overwriteAssets: overwriteAssets,
+      assetRelativePath: assetRelativePath
+    ) { _, _ in
+      self.htmlSample
+    }
+
+    assertSettings(settings)
+  }
+
+  internal func test_rootPublishSiteURL_markdownFromHTML() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,
@@ -16,21 +71,7 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  internal func test2() {
-    let settings = Settings(
-      contentPathURL: contentPathURL,
-      resourcesPathURL: resourcesPathURL,
-      exportsDirectoryURL: exportsDirectoryURL,
-      assetImportSetting: assetImportSetting,
-      overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath,
-      markdownGenerator: markdownGenerator
-    )
-
-    assertSettings(settings)
-  }
-
-  internal func test3() {
+  internal func test_rootPublishSiteURL_markdownGenerator() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,
@@ -38,47 +79,6 @@ extension SettingsTests {
       overwriteAssets: overwriteAssets,
       assetRelativePath: assetRelativePath,
       markdownGenerator: markdownGenerator
-    )
-
-    assertSettings(settings)
-  }
-
-  internal func test4() {
-    let settings = Settings(
-      contentPathURL: contentPathURL,
-      resourcesPathURL: resourcesPathURL,
-      exportsDirectoryURL: exportsDirectoryURL,
-      assetImportSetting: assetImportSetting,
-      overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath
-    ) { _, _ in
-      self.htmlSample
-    }
-
-    assertSettings(settings)
-  }
-
-  internal func test5() {
-    let settings = Settings(
-      rootPublishSiteURL: projectDirURL,
-      exportsDirectoryURL: exportsDirectoryURL,
-      assetImportSetting: assetImportSetting,
-      overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath
-    ) { _, _ in
-      self.htmlSample
-    }
-
-    assertSettings(settings)
-  }
-
-  internal func test6() {
-    let settings = Settings(
-      rootPublishSiteURL: projectDirURL,
-      exportsDirectoryURL: exportsDirectoryURL,
-      assetImportSetting: assetImportSetting,
-      overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath
     )
 
     assertSettings(settings)

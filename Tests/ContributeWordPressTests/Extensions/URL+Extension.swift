@@ -22,7 +22,6 @@ extension URL {
   internal static let temporaryResourcesPathURL: URL = .temporaryDirURL.appendingPathComponent("Resources")
 }
 
-// TODO: Waiting on Contribute to be updated to use its URL extension instead
 extension URL {
   internal static let temporaryDirURL = URL(
     fileURLWithPath: NSTemporaryDirectory(),
