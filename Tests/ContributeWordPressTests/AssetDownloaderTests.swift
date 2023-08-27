@@ -2,20 +2,27 @@ import Contribute
 @testable import ContributeWordPress
 import XCTest
 
-// TODO: Recheck this testing, we know better now in using Spy than Mock.
 internal final class AssetDownloaderTests: XCTestCase {
-  internal func testSuccessDownload() throws {
-    let downloader = AssetDownloader(urlDownloader: MockSuccessFileDownloader())
+
+  internal func testSuccessfulDownload() throws {
+    let downloadSpy = FileDownloaderSpy(.success(()))
+
+    let downloader = AssetDownloader(urlDownloader: downloadSpy)
 
     let assets: [AssetImport] = try myYearInReviewAssets()
 
     XCTAssertNoThrow(
       try downloader.download(assets: assets, allowsOverwrites: false)
     )
+
+    XCTAssertTrue(downloadSpy.downloadIsCalled)
   }
 
   internal func testFailureDownload() throws {
-    let downloader = AssetDownloader()
+    let expectedError = DownloadError.assetDownload
+    let downloadSpy = FileDownloaderSpy(.failure(expectedError))
+
+    let downloader = AssetDownloader(urlDownloader: downloadSpy)
 
     let assets: [AssetImport] = try myYearInReviewAssets()
 
@@ -52,17 +59,5 @@ internal final class AssetDownloaderTests: XCTestCase {
         importPathURL: nil
       )
     ]
-  }
-}
-
-// TODO: @Leo, If approved, what is the appropriate place for this?
-private final class MockSuccessFileDownloader: URLDownloader {
-  func download(
-    from _: URL,
-    to _: URL,
-    allowOverwrite _: Bool,
-    _ completion: @escaping (Error?) -> Void
-  ) {
-    completion(nil)
   }
 }

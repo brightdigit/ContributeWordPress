@@ -1,8 +1,7 @@
 @testable import ContributeWordPress
 import XCTest
 
-// TODO: Please finish this.
-internal final class AssetImportTests_WordPress: XCTestCase {
+internal final class AssetImportWordPressTests: XCTestCase {
   internal func testExtractAssetImports() throws {
     let site: WordPressSite = try .make(
       link: try .make(string: "https://leogdion.name"),
