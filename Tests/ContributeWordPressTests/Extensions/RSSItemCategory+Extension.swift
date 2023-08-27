@@ -2,12 +2,6 @@ import Foundation
 import SyndiKit
 
 extension RSSItemCategory: Equatable {
-  public static func == (lhs: RSSItemCategory, rhs: RSSItemCategory) -> Bool {
-    lhs.value == rhs.value
-    && lhs.domain == rhs.domain
-    && lhs.nicename == rhs.nicename
-  }
-
   internal static let TopMenu: Self = .init(
     value: "Top Menu",
     domain: "nav_menu",
@@ -43,4 +37,10 @@ extension RSSItemCategory: Equatable {
     domain: "post_tag",
     nicename: "productivity"
   )
+
+  public static func == (lhs: RSSItemCategory, rhs: RSSItemCategory) -> Bool {
+    lhs.value == rhs.value
+      && lhs.domain == rhs.domain
+      && lhs.nicename == rhs.nicename
+  }
 }

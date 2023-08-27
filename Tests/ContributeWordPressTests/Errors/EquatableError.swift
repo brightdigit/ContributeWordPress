@@ -1,5 +1,3 @@
 import Foundation
 
-protocol EquatableError: Error, Equatable {
-
-}
+internal protocol EquatableError: Error, Equatable {}

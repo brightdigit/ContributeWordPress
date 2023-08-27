@@ -1,10 +1,10 @@
 import Foundation
 import SyndiKit
 
-final class UrlPathGenerateSpy {
-  var isCalled: Bool = false
+internal final class UrlPathGenerateSpy {
+  internal var isCalled: Bool = false
 
-  func generate(sectionName: String, post: WordPressPost) -> String {
+  internal func generate(sectionName _: String, post _: WordPressPost) -> String {
     isCalled = true
     return ""
   }

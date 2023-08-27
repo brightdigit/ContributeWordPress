@@ -12,9 +12,15 @@ internal final class SectionContentURLGeneratorTests: XCTestCase {
 
     let contentPathURL: URL = .temporaryDirURL.appendingPathComponent("content")
 
-    let expectedDestinationURL = generateDestinationURL(from: source, atContentPathURL: contentPathURL)
+    let expectedDestinationURL = generateDestinationURL(
+      from: source,
+      atContentPathURL: contentPathURL
+    )
 
-    let destinationURL = generator.destinationURL(from: source, atContentPathURL: contentPathURL)
+    let destinationURL = generator.destinationURL(
+      from: source,
+      atContentPathURL: contentPathURL
+    )
 
     XCTAssertEqual(destinationURL, expectedDestinationURL)
   }

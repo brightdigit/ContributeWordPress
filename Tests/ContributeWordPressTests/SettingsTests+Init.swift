@@ -1,8 +1,9 @@
-import XCTest
 @testable import ContributeWordPress
+import XCTest
 
+// TODO: Update tests naming
 extension SettingsTests {
-  func test1() {
+  internal func test1() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,
@@ -15,7 +16,7 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  func test2() {
+  internal func test2() {
     let settings = Settings(
       contentPathURL: contentPathURL,
       resourcesPathURL: resourcesPathURL,
@@ -29,7 +30,7 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  func test3() {
+  internal func test3() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,
@@ -42,34 +43,36 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  func test4() {
+  internal func test4() {
     let settings = Settings(
       contentPathURL: contentPathURL,
       resourcesPathURL: resourcesPathURL,
       exportsDirectoryURL: exportsDirectoryURL,
       assetImportSetting: assetImportSetting,
       overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath,
-      shellOut: { _, _ in self.htmlSample }
-    )
+      assetRelativePath: assetRelativePath
+    ) { _, _ in
+      self.htmlSample
+    }
 
     assertSettings(settings)
   }
 
-  func test5() {
+  internal func test5() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,
       assetImportSetting: assetImportSetting,
       overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath,
-      shellOut: { _, _ in self.htmlSample }
-    )
+      assetRelativePath: assetRelativePath
+    ) { _, _ in
+      self.htmlSample
+    }
 
     assertSettings(settings)
   }
 
-  func test6() {
+  internal func test6() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,
@@ -80,5 +83,4 @@ extension SettingsTests {
 
     assertSettings(settings)
   }
-
 }

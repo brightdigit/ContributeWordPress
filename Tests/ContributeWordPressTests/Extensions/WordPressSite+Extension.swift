@@ -1,6 +1,6 @@
+import ContributeWordPress
 import Foundation
 import SyndiKit
-import ContributeWordPress
 
 extension WordPressSite {
   internal static func leogdion() throws -> WordPressSite {

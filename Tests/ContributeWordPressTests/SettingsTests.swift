@@ -1,26 +1,36 @@
-import XCTest
 import Contribute
 @testable import ContributeWordPress
+import XCTest
 
 internal final class SettingsTests: XCTestCase {
+  internal let projectDirURL: URL = .temporaryDirURL
 
-  let projectDirURL: URL = .temporaryDirURL
-  var contentPathURL: URL
-  { projectDirURL.appendingPathComponent(PublishDefaults.contentDirectoryName) }
-  var resourcesPathURL: URL
-  { projectDirURL.appendingPathComponent(PublishDefaults.resourcesDirectoryName) }
-  var exportsDirectoryURL: URL
-  { .temporaryDirURL.appendingPathComponent("WordPress/exports") }
-  var assetImportSetting: AssetImportSetting
-  { .copyFilesFrom(projectDirURL.appendingPathComponent("WordPress/html")) }
-  let overwriteAssets: Bool = true
-  let assetRelativePath: String = "media/wordpress-assets"
-  let markdownGenerator: MarkdownGenerator = PassthroughMarkdownGenerator.shared
-  var markdownFromHTML: (String) throws -> String { markdownGenerator.markdown(fromHTML:) }
+  internal var contentPathURL: URL {
+    projectDirURL.appendingPathComponent(PublishDefaults.contentDirectoryName)
+  }
 
-  let htmlSample: String = "<b>Html Sample</b>"
+  internal var resourcesPathURL: URL {
+    projectDirURL.appendingPathComponent(PublishDefaults.resourcesDirectoryName)
+  }
 
-  func testDefaultInit() {
+  internal var exportsDirectoryURL: URL {
+    .temporaryDirURL.appendingPathComponent("WordPress/exports")
+  }
+
+  internal var assetImportSetting: AssetImportSetting {
+    .copyFilesFrom(projectDirURL.appendingPathComponent("WordPress/html"))
+  }
+
+  internal let overwriteAssets: Bool = true
+  internal let assetRelativePath: String = "media/wordpress-assets"
+  internal let markdownGenerator: MarkdownGenerator = PassthroughMarkdownGenerator.shared
+  internal var markdownFromHTML: (String) throws -> String {
+    markdownGenerator.markdown(fromHTML:)
+  }
+
+  internal let htmlSample: String = "<b>Html Sample</b>"
+
+  internal func testDefaultInit() {
     let settings = Settings(
       contentPathURL: contentPathURL,
       resourcesPathURL: resourcesPathURL,
@@ -34,7 +44,7 @@ internal final class SettingsTests: XCTestCase {
     assertSettings(settings)
   }
 
-  func assertSettings(_ settings: Settings) {
+  internal func assertSettings(_ settings: Settings) {
     XCTAssertEqual(settings.contentPathURL, contentPathURL)
     XCTAssertEqual(settings.resourcesPathURL, resourcesPathURL)
     XCTAssertEqual(settings.exportsDirectoryURL, exportsDirectoryURL)

@@ -1,10 +1,10 @@
 import Foundation
 import SyndiKit
 
-final class PostFilterSpy {
-  var isCalled: Bool = false
+internal final class PostFilterSpy {
+  internal var isCalled: Bool = false
 
-  func include(_ post: WordPressPost) -> Bool {
+  internal func include(_: WordPressPost) -> Bool {
     isCalled = true
     return true
   }

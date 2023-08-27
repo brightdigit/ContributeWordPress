@@ -1,8 +1,7 @@
-import XCTest
 @testable import ContributeWordPress
+import XCTest
 
 internal final class DynamicRedirectFileWriterTests: XCTestCase {
-
   internal func testSuccessfulWriteRedirectsCall() throws {
     let formatter = RedirectFormatterSpy()
 
@@ -57,5 +56,4 @@ internal final class DynamicRedirectFileWriterTests: XCTestCase {
     XCTAssertTrue(filter.isCalled)
     XCTAssertTrue(urlGenerate.isCalled)
   }
-
 }

@@ -1,15 +1,13 @@
-import XCTest
 @testable import ContributeWordPress
+import XCTest
 
 internal final class URLExtensionTests: XCTestCase {
-
   internal func testLastPathComponentWithoutExtension() throws {
     let expectedString = "banner.jpg"
     let filename = expectedString + ".jpg"
 
-    let url: URL = try .make(
-      string: "https://leogdion.name/wp-content/uploads/2018/12/"
-    ).appendingPathComponent(filename)
+    let url: URL = try .make(string: "https://leogdion.name/wp-content/uploads/2018/12/")
+      .appendingPathComponent(filename)
 
     let actualString = url.lastPathComponentWithoutExtension()
 
@@ -45,5 +43,4 @@ internal final class URLExtensionTests: XCTestCase {
 
     XCTAssertNil(actualRelativePath)
   }
-
 }

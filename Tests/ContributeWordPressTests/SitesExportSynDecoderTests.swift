@@ -1,15 +1,15 @@
-import XCTest
 @testable import ContributeWordPress
+import XCTest
 
 internal final class SitesExportSynDecoderTests: XCTestCase {
-
   private let fileManager: FileManager = .default
-  private let testDir = URL.temporaryDirURL.appendingPathComponent("test", isDirectory: true)
+  private let testDir = URL.temporaryDirURL
+    .appendingPathComponent("test", isDirectory: true)
 
   // MARK: - fileURLsFromDirectory Tests
 
   internal func testDefaultFileURLsAtDirectory() throws {
-    let expectedFileURLs: [URL] = (1...2)
+    let expectedFileURLs: [URL] = (1 ... 2)
       .compactMap { testDir.appendingPathComponent("file\($0).xml") }
 
     try createFiles(expectedFileURLs, with: "some content", atDirectory: testDir)
@@ -73,7 +73,11 @@ internal final class SitesExportSynDecoderTests: XCTestCase {
 
   // MARK: - Helpers
 
-  private func createFiles(_ files: [URL], with content: String, atDirectory: URL) throws {
+  private func createFiles(
+    _ files: [URL],
+    with content: String,
+    atDirectory: URL
+  ) throws {
     try fileManager.removeItem(at: atDirectory)
 
     try fileManager.createDirectory(
@@ -85,5 +89,4 @@ internal final class SitesExportSynDecoderTests: XCTestCase {
       try content.data(using: .utf8)?.write(to: file)
     }
   }
-
 }

@@ -1,11 +1,11 @@
-import XCTest
 @testable import ContributeWordPress
+import XCTest
 
-final class AssetImportTests_WordPress: XCTestCase {
-
+// TODO: Please finish this.
+internal final class AssetImportTests_WordPress: XCTestCase {
   internal func testExtractAssetImports() throws {
     let site: WordPressSite = try .make(
-      link: URL(string: "https://leogdion.name")!,
+      link: try .make(string: "https://leogdion.name"),
       posts: [
         .productivityAppsPost()
       ]
@@ -16,7 +16,8 @@ final class AssetImportTests_WordPress: XCTestCase {
       from: site,
       using: Settings(
         rootPublishSiteURL: rootPublishSiteURL,
-        exportsDirectoryURL: rootPublishSiteURL.appendingPathComponent("WordPress/exports")
+        exportsDirectoryURL: rootPublishSiteURL
+          .appendingPathComponent("WordPress/exports")
       )
     )
 
@@ -24,7 +25,5 @@ final class AssetImportTests_WordPress: XCTestCase {
       print(assetImport.fromURL)
       print(assetImport.atURL)
     }
-
   }
-
 }

@@ -35,7 +35,7 @@ extension AssetImport {
   ) -> [(sourceURL: URL, post: WordPressPost)] {
     posts
       .flatMap { post in
-        return regex
+        regex
           .matches(
             in: post.body,
             range: NSRange(post.body.startIndex..., in: post.body)

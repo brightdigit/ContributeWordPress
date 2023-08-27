@@ -1,22 +1,19 @@
-import Foundation
 import ContributeWordPress
+import Foundation
 
-final class RedirectFormatterSpy: RedirectFormatter {
-  private(set) var formatRedirectsIsCalled: Bool = false
-  private(set) var redirectsURLIsCalled: Bool = false
+internal final class RedirectFormatterSpy: RedirectFormatter {
+  internal private(set) var formatRedirectsIsCalled: Bool = false
+  internal private(set) var redirectsURLIsCalled: Bool = false
 
-  func formatRedirects(_ redirects: [ContributeWordPress.RedirectItem]) -> String {
+  internal func formatRedirects(_: [ContributeWordPress.RedirectItem]) -> String {
     formatRedirectsIsCalled = true
 
     return "redirects"
   }
 
-  func redirectsURL(basedOnResourcesDirectoryURL resourcesDirURL: URL) -> URL {
+  internal func redirectsURL(basedOnResourcesDirectoryURL resourcesDirURL: URL) -> URL {
     redirectsURLIsCalled = true
 
     return resourcesDirURL.appendingPathComponent("_redirects")
   }
-
-
 }
-

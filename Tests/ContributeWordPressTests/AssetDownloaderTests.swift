@@ -2,6 +2,7 @@ import Contribute
 @testable import ContributeWordPress
 import XCTest
 
+// TODO: Recheck this testing, we know better now in using Spy than Mock.
 internal final class AssetDownloaderTests: XCTestCase {
   internal func testSuccessDownload() throws {
     let downloader = AssetDownloader(urlDownloader: MockSuccessFileDownloader())

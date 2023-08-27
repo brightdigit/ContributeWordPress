@@ -1,21 +1,22 @@
 import Foundation
 
-final class FileURLFromDirectorySpy {
-  var fromDirectoryIsCalled: Bool = false
+internal final class FileURLFromDirectorySpy {
+  internal var fromDirectoryIsCalled: Bool = false
 
   private let result: Result<Void, SitesExportSynDecoderError>
 
-  init(_ result: Result<Void, SitesExportSynDecoderError>) {
+  internal init(_ result: Result<Void, SitesExportSynDecoderError>) {
     self.result = result
   }
 
-  func fileURLsFromDirectory(_ directory: URL) throws -> [URL] {
+  internal func fileURLsFromDirectory(_: URL) throws -> [URL] {
     fromDirectoryIsCalled = true
 
     switch result {
     case .success:
       return []
-    case .failure(let failure):
+
+    case let .failure(failure):
       throw failure
     }
   }

@@ -1,9 +1,8 @@
-import XCTest
-import SyndiKit
 @testable import ContributeWordPress
+import SyndiKit
+import XCTest
 
 internal final class SynDecoderTests: XCTestCase {
-
   internal func testDecodingWordPressSite() throws {
     let sut = SynDecoder()
 
@@ -12,7 +11,9 @@ internal final class SynDecoderTests: XCTestCase {
       return
     }
 
-    guard let decodedSite = try sut.decodeSites(fromData: data, allowInvalidCharacters: true) else {
+    let decodedSite = try sut.decodeSites(fromData: data, allowInvalidCharacters: true)
+
+    guard let decodedSite = decodedSite else {
       XCTFail("Expected a decoded WordPressSite.")
       return
     }
@@ -21,12 +22,13 @@ internal final class SynDecoderTests: XCTestCase {
 
     XCTAssertEqual(decodedSite.title, expectedSite.title)
     XCTAssertEqual(decodedSite.link, expectedSite.link)
+    XCTAssertEqual(decodedSite.baseSiteURL, expectedSite.baseSiteURL)
+    XCTAssertEqual(decodedSite.baseBlogURL, expectedSite.baseBlogURL)
+    //    XCTAssertEqual(decodedSite.posts, expectedSite.posts)
+
+    #warning("Update to v0.3.5 for equatable WordPressElements")
 //    XCTAssertEqual(decodedSite.pubDate, expectedSite.pubDate)
 //    XCTAssertEqual(decodedSite.categories, expectedSite.categories)
 //    XCTAssertEqual(decodedSite.tags, expectedSite.tags)
-    XCTAssertEqual(decodedSite.baseSiteURL, expectedSite.baseSiteURL)
-    XCTAssertEqual(decodedSite.baseBlogURL, expectedSite.baseBlogURL)
-//    XCTAssertEqual(decodedSite.posts, expectedSite.posts)
   }
-
 }
