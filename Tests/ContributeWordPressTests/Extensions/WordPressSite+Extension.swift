@@ -10,7 +10,12 @@ extension WordPressSite {
       description: "Personal Blog",
       categories: [.Uncategorized, .Podcasting, .Productivity, .Software],
       baseSiteURL: URL(string: "https://leogdion.name"),
-      baseBlogURL: URL(string: "https://leogdion.name")
+      baseBlogURL: URL(string: "https://leogdion.name"),
+      posts: [
+        .areWeThereYetPost(), .fromGoalsToActionsPost(),
+        .myYearInReviewPost(), .podcastingPost(), .productivityAppsPost(),
+        .attachmentA(), .attachmentB(), .attachmentC()
+      ]
     )
   }
 }

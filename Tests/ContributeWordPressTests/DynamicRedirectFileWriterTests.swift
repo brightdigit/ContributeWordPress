@@ -1,35 +1,61 @@
-//
-//  DynamicRedirectFileWriterTests.swift
-//  
-//
-//  Created by Ahmed Shendy on 25/08/2023.
-//
-
 import XCTest
+@testable import ContributeWordPress
 
-final class DynamicRedirectFileWriterTests: XCTestCase {
+internal final class DynamicRedirectFileWriterTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+  internal func testSuccessfulWriteRedirectsCall() throws {
+    let formatter = RedirectFormatterSpy()
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    let sut = DynamicRedirectFileWriter(
+      postFilters: [],
+      redirectFromatter: formatter
+    )
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+    try sut.writeRedirects(
+      fromSites: [:],
+      inDirectory: .temporaryDirURL
+    )
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+    XCTAssertTrue(formatter.formatRedirectsIsCalled)
+    XCTAssertTrue(formatter.redirectsURLIsCalled)
+  }
+
+  internal func testSuccessfulWriteRedirectsCallB() throws {
+    let formatter = RedirectFormatterSpy()
+
+    let sut = DynamicRedirectFileWriter(
+      redirectFromatter: formatter
+    )
+
+    try sut.writeRedirects(
+      fromSites: [:],
+      inDirectory: .temporaryDirURL
+    )
+
+    XCTAssertTrue(formatter.formatRedirectsIsCalled)
+    XCTAssertTrue(formatter.redirectsURLIsCalled)
+  }
+
+  internal func testSuccessfulWriteRedirectsCallC() throws {
+    let formatter = RedirectFormatterSpy()
+    let filter = PostFilterSpy()
+    let urlGenerate = UrlPathGenerateSpy()
+
+    let sut = DynamicRedirectFileWriter(
+      postFilter: filter.include(_:),
+      urlPathGenerate: urlGenerate.generate(sectionName:post:),
+      redirectFromatter: formatter
+    )
+
+    try sut.writeRedirects(
+      fromSites: ["blogs": .leogdion()],
+      inDirectory: .temporaryDirURL
+    )
+
+    XCTAssertTrue(formatter.formatRedirectsIsCalled)
+    XCTAssertTrue(formatter.redirectsURLIsCalled)
+    XCTAssertTrue(filter.isCalled)
+    XCTAssertTrue(urlGenerate.isCalled)
+  }
 
 }
