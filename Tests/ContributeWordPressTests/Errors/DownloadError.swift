@@ -1,5 +1,5 @@
 import Foundation
 
-enum DownloadError: EquatableError {
+internal enum DownloadError: EquatableError {
   case assetDownload
 }

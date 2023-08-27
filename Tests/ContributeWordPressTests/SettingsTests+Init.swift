@@ -2,7 +2,6 @@
 import XCTest
 
 extension SettingsTests {
-
   internal func test_contentPathURL_shellOut() {
     let settings = Settings(
       contentPathURL: contentPathURL,

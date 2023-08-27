@@ -3,7 +3,6 @@ import Contribute
 import XCTest
 
 internal final class AssetDownloaderTests: XCTestCase {
-
   internal func testSuccessfulDownload() throws {
     let downloadSpy = FileDownloaderSpy(.success(()))
 
@@ -19,9 +18,7 @@ internal final class AssetDownloaderTests: XCTestCase {
   }
 
   internal func testFailureDownload() throws {
-    let expectedError = DownloadError.assetDownload
-    let downloadSpy = FileDownloaderSpy(.failure(expectedError))
-
+    let downloadSpy = FileDownloaderSpy(.failure(.assetDownload))
     let downloader = AssetDownloader(urlDownloader: downloadSpy)
 
     let assets: [AssetImport] = try myYearInReviewAssets()
@@ -55,7 +52,9 @@ internal final class AssetDownloaderTests: XCTestCase {
         forPost: try .myYearInReviewPost(),
         sourceURL: .temporaryResourcesPathURL,
         assetRoot: "/media/wp-assets",
-        resourcesPathURL: URL(string: "https://leogdion.name/wp-content/uploads/2019/06/aleks-dorohovich-26-unsplash-701.jpeg")!,
+        resourcesPathURL: try .make(
+          string: "https://leogdion.name/wp-content/uploads/2019/06/-unsplash-701.jpeg"
+        ),
         importPathURL: nil
       )
     ]

@@ -1,20 +1,20 @@
-import Foundation
 import Contribute
 import ContributeWordPress
+import Foundation
 
 internal final class FileDownloaderSpy: URLDownloader {
   internal var downloadIsCalled: Bool = false
 
   private let result: Result<Void, DownloadError>
 
-  init(_ result: Result<Void, DownloadError>) {
+  internal init(_ result: Result<Void, DownloadError>) {
     self.result = result
   }
 
   internal func download(
-    from fromURL: URL,
+    from _: URL,
     to toURL: URL,
-    allowOverwrite: Bool,
+    allowOverwrite _: Bool,
     _ completion: @escaping (Error?) -> Void
   ) {
     downloadIsCalled = true
@@ -22,8 +22,9 @@ internal final class FileDownloaderSpy: URLDownloader {
     switch result {
     case .success:
       completion(nil)
-    case .failure(let failure):
-      completion(WordPressError.assetDownloadErrors([toURL : failure]))
+
+    case let .failure(failure):
+      completion(WordPressError.assetDownloadErrors([toURL: failure]))
     }
   }
 }
