@@ -13,7 +13,8 @@ extension WordPressPost {
       description: "My main goal this year was to produce more content online and less time on local events and gatherings. Unfortunately, that wasn't the case.",
       postName: "2018-review",
       contentEncoded: .myYearInReviewContent,
-      categories: tags ?? []
+      categories: tags ?? [],
+      postID: 1
     )
   }
 
@@ -23,7 +24,8 @@ extension WordPressPost {
       link: URL(string: "https://leogdion.name/2018/12/13/are-we-there-yet/")!,
       postName: "are-we-there-yet",
       contentEncoded: .areWeThereYetContent,
-      categories: tags ?? []
+      categories: tags ?? [],
+      postID: 2
     )
   }
 
@@ -33,7 +35,8 @@ extension WordPressPost {
       link: URL(string: "https://leogdion.name/2018/01/08/from-goals-to-actions-2018/diagram-for-goals/")!,
       postName: "from-goals-to-actions-2018",
       contentEncoded: .fromGoalsToActionsContent,
-      categories: tags ?? []
+      categories: tags ?? [],
+      postID: 3
     )
   }
 
@@ -44,7 +47,8 @@ extension WordPressPost {
       description: "Generally speaking, podcasting gives specific audiences an in-depth specialized analysis without the need to appeal to the general audience.",
       postName: "podcasting-getting-started-content-recording-audience",
       contentEncoded: .podcastingContent,
-      categories: tags ?? []
+      categories: tags ?? [],
+      postID: 4
     )
   }
 
@@ -57,22 +61,38 @@ extension WordPressPost {
       description: "It's important to keep a set of great productivity app which help me optimize rather than distract. Here's a list of productivity apps and services to help you.",
       postName: "productivity-apps-for-developers-and-everyone",
       contentEncoded: .productivityContent,
-      categories: tags ?? []
+      categories: tags ?? [],
+      postID: 4
     )
   }
 }
 
 extension WordPressPost {
-  internal static func attachmentA() throws -> WordPressPost {
-    try .make(title: "\(#function)", type: "attachment", contentEncoded: "")
+  internal static func attachmentA(postID: Int = 1) throws -> WordPressPost {
+    try .make(
+      title: "\(#function)",
+      type: "attachment",
+      contentEncoded: "",
+      postID: postID
+    )
   }
 
-  internal static func attachmentB() throws -> WordPressPost {
-    try .make(title: "\(#function)", type: "attachment", contentEncoded: "")
+  internal static func attachmentB(postID: Int = 1) throws -> WordPressPost {
+    try .make(
+      title: "\(#function)",
+      type: "attachment",
+      contentEncoded: "",
+      postID: postID
+    )
   }
 
-  internal static func attachmentC() throws -> WordPressPost {
-    try .make(title: "\(#function)", type: "attachment", contentEncoded: "")
+  internal static func attachmentC(postID: Int = 1) throws -> WordPressPost {
+    try .make(
+      title: "\(#function)",
+      type: "attachment",
+      contentEncoded: "",
+      postID: postID
+    )
   }
 }
 

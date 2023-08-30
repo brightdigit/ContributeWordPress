@@ -14,6 +14,7 @@ extension WordPressPost {
     contentEncoded: String? = nil,
     categories: [RSSItemCategory] = [.Podcasting, .Productivity],
     creators: [String] = ["Leo"],
+    postID: Int,
     status: String = "publish",
     attachmentURL: URL? = nil
   ) throws -> WordPressPost {
@@ -30,6 +31,7 @@ extension WordPressPost {
         postDate: postDate,
         categories: categories,
         creators: creators,
+        postID: postID,
         status: status,
         attachmentURL: attachmentURL
       )

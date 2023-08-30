@@ -17,6 +17,7 @@ extension RSSItem {
     postDate: Date?,
     categories: [RSSItemCategory],
     creators: [String],
+    postID: Int,
     status: String,
     attachmentURL: URL?
   ) -> RSSItem {
@@ -46,7 +47,7 @@ extension RSSItem {
       wpMenuOrder: .bitWidth,
       wpIsSticky: .bitWidth,
       wpPostPassword: .init(),
-      wpPostID: 10,
+      wpPostID: postID,
       wpPostDate: postDate,
       wpPostDateGMT: .distantFuture,
       wpModifiedDate: .distantFuture,

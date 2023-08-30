@@ -6,24 +6,29 @@ internal final class AssetImportWordPressTests: XCTestCase {
     let site: WordPressSite = try .make(
       link: try .make(string: "https://leogdion.name"),
       posts: [
-        .productivityAppsPost()
+        .myYearInReviewPost()
       ]
     )
 
     let rootPublishSiteURL: URL = .temporaryDirURL
+    let expoertingDirectoryURL: URL = rootPublishSiteURL
+      .appendingPathComponent("WordPress/exports")
+
     let assetImports = AssetImport.extractAssetImports(
       from: site,
       using: Settings(
         rootPublishSiteURL: rootPublishSiteURL,
-        exportsDirectoryURL: rootPublishSiteURL
-          .appendingPathComponent("WordPress/exports")
+        exportsDirectoryURL: expoertingDirectoryURL
       )
     )
 
-    // TODO: Write the actual tests
+    // TODO: Only this final tests needs to be finished
     for assetImport in assetImports {
-      print(assetImport.fromURL)
-      print(assetImport.atURL)
+//      XCTAssertEqual(assetImport.parentID, site.???)
+
+      print("fromURL: " + assetImport.fromURL.absoluteString)
+      print("fromURL: " + assetImport.fromURL.absoluteString)
+      print("parentID: \(assetImport.parentID)")
     }
   }
 }
