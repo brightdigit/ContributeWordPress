@@ -1,5 +1,5 @@
-import Foundation
 import ContributeWordPress
+import Foundation
 
 internal final class AssetDownloaderSpy: Downloader {
   internal private(set) var isCalled: Bool = false
@@ -10,13 +10,14 @@ internal final class AssetDownloaderSpy: Downloader {
     self.result = result
   }
 
-  internal func download(assets: [AssetImport], allowsOverwrites: Bool) throws {
+  internal func download(assets _: [AssetImport], allowsOverwrites _: Bool) throws {
     isCalled = true
 
     switch result {
     case .success:
       break
-    case .failure(let failure):
+
+    case let .failure(failure):
       throw failure
     }
   }

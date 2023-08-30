@@ -1,5 +1,5 @@
 import Foundation
 
-enum AssetDownloaderError: EquatableError {
+internal enum AssetDownloaderError: EquatableError {
   case unreachableDestination
 }
