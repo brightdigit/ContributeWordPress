@@ -2,10 +2,10 @@
 import XCTest
 
 internal final class NetlifyRedirectFormatterTests: XCTestCase {
-  private var formatter: NetlifyRedirectFormatter = .init()
+  private var sut: NetlifyRedirectFormatter = .init()
 
   internal func testEmptyRedirectItemsShouldReturnEmptyString() {
-    let redirects = formatter.formatRedirects([])
+    let redirects = sut.formatRedirects([])
 
     XCTAssertTrue(redirects.isEmpty)
   }
@@ -22,7 +22,7 @@ internal final class NetlifyRedirectFormatterTests: XCTestCase {
       )
     ]
 
-    let redirects = formatter.formatRedirects(redirectItems)
+    let redirects = sut.formatRedirects(redirectItems)
     let lines = redirects.split(separator: "\n")
 
     XCTAssertEqual(lines.count, redirectItems.count)
@@ -36,7 +36,7 @@ internal final class NetlifyRedirectFormatterTests: XCTestCase {
       )
     ]
 
-    let redirects = formatter.formatRedirects(redirectItems)
+    let redirects = sut.formatRedirects(redirectItems)
 
     let firstLine = redirects.split(separator: "\n").first
     let lineParts = firstLine?.split(separator: "\t") ?? []

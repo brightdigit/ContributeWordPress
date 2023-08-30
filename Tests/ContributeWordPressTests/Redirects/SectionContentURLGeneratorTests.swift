@@ -2,7 +2,7 @@
 import XCTest
 
 internal final class SectionContentURLGeneratorTests: XCTestCase {
-  private let generator: SectionContentURLGenerator = .init()
+  private let sut: SectionContentURLGenerator = .init()
 
   internal func testCorrectDestinationURL() throws {
     let source: Source = .make(
@@ -17,7 +17,7 @@ internal final class SectionContentURLGeneratorTests: XCTestCase {
       atContentPathURL: contentPathURL
     )
 
-    let destinationURL = generator.destinationURL(
+    let destinationURL = sut.destinationURL(
       from: source,
       atContentPathURL: contentPathURL
     )

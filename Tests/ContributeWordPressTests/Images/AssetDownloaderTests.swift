@@ -6,12 +6,12 @@ internal final class AssetDownloaderTests: XCTestCase {
   internal func testSuccessfulDownload() throws {
     let downloadSpy = FileDownloaderSpy(.success(()))
 
-    let downloader = AssetDownloader(urlDownloader: downloadSpy)
+    let sut = AssetDownloader(urlDownloader: downloadSpy)
 
     let assets: [AssetImport] = try myYearInReviewAssets()
 
     XCTAssertNoThrow(
-      try downloader.download(assets: assets, allowsOverwrites: false)
+      try sut.download(assets: assets, allowsOverwrites: false)
     )
 
     XCTAssertTrue(downloadSpy.downloadIsCalled)
@@ -19,12 +19,13 @@ internal final class AssetDownloaderTests: XCTestCase {
 
   internal func testFailureDownload() throws {
     let downloadSpy = FileDownloaderSpy(.failure(.assetDownload))
-    let downloader = AssetDownloader(urlDownloader: downloadSpy)
+
+    let sut = AssetDownloader(urlDownloader: downloadSpy)
 
     let assets: [AssetImport] = try myYearInReviewAssets()
 
     XCTAssertThrowsError(
-      try downloader.download(assets: assets, allowsOverwrites: false)
+      try sut.download(assets: assets, allowsOverwrites: false)
     ) { throwError in
       guard case let WordPressError.assetDownloadErrors(errors) = throwError else {
         XCTFail("Expected associated list of url->error.")

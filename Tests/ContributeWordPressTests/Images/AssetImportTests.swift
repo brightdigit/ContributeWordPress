@@ -21,14 +21,14 @@ internal final class AssetImportTests: XCTestCase {
   internal func testRemoteAsset() throws {
     let post: WordPressPost = try .myYearInReviewPost()
 
-    let asset = makeSampleAssetImport(forPost: post, importPathURL: nil)
+    let sut = makeSampleAssetImport(forPost: post, importPathURL: nil)
 
     let expectedFromURL = sampleSourceURL
     let expectedAtURL = sampleResourcesPathURL
-      .appendingPathComponent(asset.featuredPath)
+      .appendingPathComponent(sut.featuredPath)
 
     assetSampleAsset(
-      asset,
+      sut,
       expectedPostID: post.ID,
       expectedFromURL: expectedFromURL,
       expectedAtURL: expectedAtURL
@@ -42,15 +42,15 @@ internal final class AssetImportTests: XCTestCase {
       .appendingPathComponent("WordPress")
       .appendingPathComponent(WordPressSite.contentUploadsRelativePath)
 
-    let asset = makeSampleAssetImport(forPost: post, importPathURL: importPathURL)
+    let sut = makeSampleAssetImport(forPost: post, importPathURL: importPathURL)
 
     let expectedFromURL = importPathURL
       .appendingPathComponent(sampleSourceURL.path)
     let expectedAtURL = sampleResourcesPathURL
-      .appendingPathComponent(asset.featuredPath)
+      .appendingPathComponent(sut.featuredPath)
 
     assetSampleAsset(
-      asset,
+      sut,
       expectedPostID: post.ID,
       expectedFromURL: expectedFromURL,
       expectedAtURL: expectedAtURL

@@ -4,7 +4,7 @@ import XCTest
 
 internal final class RegexKeyPostFilterTests: XCTestCase {
   internal func testNoFiltersShouldMatchEverything() throws {
-    let filters: [RegexKeyPostFilter] = []
+    let sut: [RegexKeyPostFilter] = []
 
     let posts: [WordPressPost] = [
       try .attachmentA(),
@@ -13,22 +13,22 @@ internal final class RegexKeyPostFilterTests: XCTestCase {
     ]
 
     let matched = posts.filter { post in
-      filters.allSatisfy { $0.include(post) }
+      sut.allSatisfy { $0.include(post) }
     }
 
     XCTAssertEqual(matched.count, posts.count)
   }
 
   internal func testSinglePostFilterShouldMatchSinglePost() throws {
-    let filter = try RegexKeyPostFilter(pattern: "post", keyPath: \.type)
+    let sut = try RegexKeyPostFilter(pattern: "post", keyPath: \.type)
 
     let post: WordPressPost = try .areWeThereYetPost()
 
-    XCTAssertTrue(filter.include(post))
+    XCTAssertTrue(sut.include(post))
   }
 
   internal func testMultipleFiltersShouldOnlyMatchPublishedPosts() throws {
-    let filters: [RegexKeyPostFilter] = [
+    let sut: [RegexKeyPostFilter] = [
       try RegexKeyPostFilter(pattern: "post", keyPath: \.type),
       try RegexKeyPostFilter(pattern: "publish", keyPath: \.status)
     ]
@@ -40,7 +40,7 @@ internal final class RegexKeyPostFilterTests: XCTestCase {
     ]
 
     let matched = posts.filter { post in
-      filters.allSatisfy { $0.include(post) }
+      sut.allSatisfy { $0.include(post) }
     }
 
     XCTAssertTrue(matched.count == 2)
