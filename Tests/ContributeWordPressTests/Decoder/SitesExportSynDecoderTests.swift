@@ -48,7 +48,7 @@ internal final class SitesExportSynDecoderTests: XCTestCase {
     )
 
     assertThrowableBlock(
-      expectedError: SitesExportSynDecoderError.fileURLsFromDirectory,
+      expectedError: SitesExportDecoderError.fileURLsFromDirectory,
       try sut.sites(fromExportsAt: .temporaryDirURL)
     )
   }

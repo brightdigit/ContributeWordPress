@@ -3,9 +3,9 @@ import Foundation
 internal final class FileURLFromDirectorySpy {
   internal var fromDirectoryIsCalled: Bool = false
 
-  private let result: Result<Void, SitesExportSynDecoderError>
+  private let result: Result<Void, SitesExportDecoderError>
 
-  internal init(_ result: Result<Void, SitesExportSynDecoderError>) {
+  internal init(_ result: Result<Void, SitesExportDecoderError>) {
     self.result = result
   }
 

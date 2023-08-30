@@ -3,24 +3,6 @@ import Foundation
 import SyndiKit
 
 extension WordPressSite {
-  internal static func leogdion() throws -> WordPressSite {
-    try .make(
-      title: "Leo G Dion",
-      link: try .make(string: "https://leogdion.name"),
-      description: "Personal Blog",
-      categories: [.Uncategorized, .Podcasting, .Productivity, .Software],
-      baseSiteURL: URL(string: "https://leogdion.name"),
-      baseBlogURL: URL(string: "https://leogdion.name"),
-      posts: [
-        .areWeThereYetPost(), .fromGoalsToActionsPost(),
-        .myYearInReviewPost(), .podcastingPost(), .productivityAppsPost(),
-        .attachmentA(), .attachmentB(), .attachmentC()
-      ]
-    )
-  }
-}
-
-extension WordPressSite {
   internal static func make(
     title: String = "Leo G Dion",
     link: URL = .diagramForGoalsLink,
