@@ -25,7 +25,7 @@ let package = Package(
     ),
     .package(
       url: "https://github.com/brightdigit/SyndiKit.git",
-      branch: "v0.3.6"
+      from: "0.3.6"
     )
   ],
   targets: [
