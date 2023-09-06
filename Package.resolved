@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brightdigit/SyndiKit.git",
       "state" : {
-        "revision" : "eade19807774699fac520740124c8a3fc6f5b8bb",
-        "version" : "0.3.6"
+        "branch" : "v0.3.7",
+        "revision" : "41cbcbad6cd594680f38a28c71a862c62a580424"
       }
     },
     {
