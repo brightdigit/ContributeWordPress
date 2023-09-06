@@ -9,12 +9,6 @@ extension URL {
 }
 
 extension URL {
-  internal static let temporaryResourcesPathURL: URL = .temporaryDirURL.appendingPathComponent("Resources")
-}
-
-extension URL {
-  internal static let temporaryDirURL = URL(
-    fileURLWithPath: NSTemporaryDirectory(),
-    isDirectory: true
-  )
+  internal static let temporaryResourcesPathURL: URL = 
+    .temporaryDirURL.appendingPathComponent("Resources")
 }

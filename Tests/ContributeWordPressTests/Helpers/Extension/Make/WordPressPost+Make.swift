@@ -11,7 +11,7 @@ extension WordPressPost {
     postName: String = "post-name",
     pubDate: Date? = Date(),
     postDate: Date? = Date(),
-    contentEncoded: String? = nil,
+    contentEncoded: String?,
     categories: [RSSItemCategory] = [.Podcasting, .Productivity],
     creators: [String] = ["Leo"],
     postID: Int,

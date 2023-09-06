@@ -8,4 +8,8 @@ extension URL {
 
     return url
   }
+
+  internal static func makeRootPublishSiteURL() -> URL {
+    .temporaryDirURL.appendingPathComponent(UUID().uuidString)
+  }
 }
