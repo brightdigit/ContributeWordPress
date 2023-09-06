@@ -2,7 +2,8 @@ import ContributeWordPress
 import Foundation
 
 internal struct SettingsStub: ProcessorSettings {
-  internal let rootPublishSiteURL: URL = .temporaryDirURL
+  internal let rootPublishSiteURL: URL =
+    .temporaryDirURL.appendingPathComponent(UUID().uuidString)
 
   internal var contentPathURL: URL {
     rootPublishSiteURL.appendingPathComponent(PublishDefaults.contentDirectoryName)

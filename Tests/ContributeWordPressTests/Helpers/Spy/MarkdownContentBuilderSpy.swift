@@ -5,7 +5,7 @@ import Foundation
 internal final class MarkdownContentBuilderSpy: MarkdownContentBuilder {
   internal typealias SourceType = Source
 
-  internal private(set) var isCalled = false
+  internal private(set) var isContentCalled = false
 
   private let result: Result<Void, MarkdownContentBuilderError>
 
@@ -17,7 +17,7 @@ internal final class MarkdownContentBuilderSpy: MarkdownContentBuilder {
     from _: SourceType,
     using _: @escaping (String) throws -> String
   ) throws -> String {
-    isCalled = true
+    isContentCalled = true
 
     switch result {
     case .success:

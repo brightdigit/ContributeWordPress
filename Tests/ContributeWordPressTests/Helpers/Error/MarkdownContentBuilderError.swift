@@ -1,3 +1,5 @@
 import Foundation
 
-internal enum MarkdownContentBuilderError: EquatableError {}
+internal enum MarkdownContentBuilderError: EquatableError {
+  case content
+}

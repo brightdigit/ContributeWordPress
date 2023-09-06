@@ -5,16 +5,7 @@ import XCTest
 internal final class MarkdownProcessorTests: XCTestCase {
   private let settings = SettingsStub()
 
-  internal func testbeginImportShellOut() throws {
-    try MarkdownProcessor.beginImport(
-      from: settings.exportsDirectoryURL,
-      to: settings.rootPublishSiteURL,
-      importAssetsBy: .download,
-      overwriteAssets: false
-    ) { _, _ in
-      "fake"
-    }
-  }
+  // MARK: - exportDecoder Tests
 
   internal func testSuccessfulBeginExportDecoderStep() throws {
     let exportDecoder = SitesExportDecoderSpy(.success(()))
@@ -51,6 +42,8 @@ internal final class MarkdownProcessorTests: XCTestCase {
       try sut.begin(withSettings: settings)
     )
   }
+
+  // MARK: - redirectWriter Tests
 
   internal func testSuccessfulBeginRedirectWriterStep() throws {
     let redirectWriter = RedirectFileWriterSpy(.success(()))
@@ -89,6 +82,8 @@ internal final class MarkdownProcessorTests: XCTestCase {
     )
   }
 
+  // MARK: - assetImportFactory Tests
+
   internal func testBeginAssetImportExtract() throws {
     let assetImportFactory = AssetImportFactorySpy()
 
@@ -106,6 +101,8 @@ internal final class MarkdownProcessorTests: XCTestCase {
 
     XCTAssertTrue(assetImportFactory.isCalled)
   }
+
+  // MARK: - assetDownloader Tests
 
   internal func testSuccessfulBeginAssetDownloaderStep() throws {
     let assetDownloader = AssetDownloaderSpy(.success(()))
@@ -136,6 +133,46 @@ internal final class MarkdownProcessorTests: XCTestCase {
       postFilters: .default,
       redirectWriter: RedirectFileWriterStub(),
       assetDownloader: assetDownloader,
+      assetImportFactory: AssetImportFactoryStub().extractAssetImports(from:using:)
+    )
+
+    assertThrowableBlock(
+      expectedError: expectedError,
+      try sut.begin(withSettings: settings)
+    )
+  }
+
+  // MARK: - contentBuilder Tests
+
+  internal func testSuccessfulBeginContentBuilerStep() throws {
+    let contentBuilder = MarkdownContentBuilderSpy(.success(()))
+
+    let sut = MarkdownProcessor(
+      contentBuilder: contentBuilder,
+      destinationURLGenerator: ContentURLGeneratorStub(),
+      exportDecoder: SitesExportDecoderStub(),
+      postFilters: .default,
+      redirectWriter: RedirectFileWriterStub(),
+      assetDownloader: AssetDownloaderStub(),
+      assetImportFactory: AssetImportFactoryStub().extractAssetImports(from:using:)
+    )
+
+    try sut.begin(withSettings: settings)
+
+    XCTAssertTrue(contentBuilder.isContentCalled)
+  }
+
+  internal func testFailedBeginContentBuilerStep() throws {
+    let expectedError = MarkdownContentBuilderError.content
+    let contentBuilder = MarkdownContentBuilderSpy(.failure(expectedError))
+
+    let sut = MarkdownProcessor(
+      contentBuilder: contentBuilder,
+      destinationURLGenerator: ContentURLGeneratorStub(),
+      exportDecoder: SitesExportDecoderStub(),
+      postFilters: .default,
+      redirectWriter: RedirectFileWriterStub(),
+      assetDownloader: AssetDownloaderStub(),
       assetImportFactory: AssetImportFactoryStub().extractAssetImports(from:using:)
     )
 
