@@ -24,11 +24,8 @@ internal final class SynDecoderTests: XCTestCase {
     XCTAssertEqual(decodedSite.link, expectedSite.link)
     XCTAssertEqual(decodedSite.baseSiteURL, expectedSite.baseSiteURL)
     XCTAssertEqual(decodedSite.baseBlogURL, expectedSite.baseBlogURL)
-    //    XCTAssertEqual(decodedSite.posts, expectedSite.posts)
-
-    #warning("Update to v0.3.5 for equatable WordPressElements")
-//    XCTAssertEqual(decodedSite.pubDate, expectedSite.pubDate)
-//    XCTAssertEqual(decodedSite.categories, expectedSite.categories)
-//    XCTAssertEqual(decodedSite.tags, expectedSite.tags)
+    XCTAssertEqual(decodedSite.categories, expectedSite.categories)
+    XCTAssertEqual(decodedSite.tags, expectedSite.tags)
+    XCTAssertEqual(decodedSite.pubDate, expectedSite.pubDate)
   }
 }

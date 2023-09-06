@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brightdigit/Contribute.git",
       "state" : {
-        "branch" : "1.0.0-alpha.4",
-        "revision" : "cd366bbeceed5ad30fe7c3c604b0400615c5149e"
+        "revision" : "cd366bbeceed5ad30fe7c3c604b0400615c5149e",
+        "version" : "1.0.0-alpha.4"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brightdigit/SyndiKit.git",
       "state" : {
-        "revision" : "67f398a23ad1ca35a276295d4cf0e46c7cfc4e4f",
-        "version" : "0.3.4"
+        "revision" : "eade19807774699fac520740124c8a3fc6f5b8bb",
+        "version" : "0.3.6"
       }
     },
     {
