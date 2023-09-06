@@ -2,8 +2,11 @@ import Foundation
 import SyndiKit
 
 extension WordPressPost {
+  // swiftlint:disable:next function_body_length
   internal static func make(
+    postID: Int,
     title: String,
+    contentEncoded: String?,
     link: URL = .diagramForGoalsLink,
     description: String? = nil,
     guid: EntryID = .diagramForGoalsEntryID,
@@ -11,10 +14,8 @@ extension WordPressPost {
     postName: String = "post-name",
     pubDate: Date? = Date(),
     postDate: Date? = Date(),
-    contentEncoded: String?,
-    categories: [RSSItemCategory] = [.Podcasting, .Productivity],
+    categories: [RSSItemCategory] = [],
     creators: [String] = ["Leo"],
-    postID: Int,
     status: String = "publish",
     attachmentURL: URL? = nil
   ) throws -> WordPressPost {
