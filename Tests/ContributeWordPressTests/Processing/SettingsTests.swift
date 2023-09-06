@@ -21,7 +21,7 @@ internal final class SettingsTests: XCTestCase {
     .copyFilesFrom(projectDirURL.appendingPathComponent("WordPress/html"))
   }
 
-  internal let overwriteAssets: Bool = true
+  internal let overwriteAssets = true
   internal let assetRelativePath: String = "media/wordpress-assets"
   internal let markdownGenerator: MarkdownGenerator = PassthroughMarkdownGenerator.shared
   internal var markdownFromHTML: (String) throws -> String {

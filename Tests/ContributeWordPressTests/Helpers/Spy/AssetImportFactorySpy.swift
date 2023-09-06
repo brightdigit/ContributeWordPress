@@ -2,7 +2,7 @@ import ContributeWordPress
 import Foundation
 
 internal final class AssetImportFactorySpy {
-  internal private(set) var isCalled: Bool = false
+  internal private(set) var isCalled = false
 
   internal func extractAssetImports(
     from _: WordPressSite,

@@ -2,8 +2,8 @@ import ContributeWordPress
 import Foundation
 
 internal final class RedirectFormatterSpy: RedirectFormatter {
-  internal private(set) var formatRedirectsIsCalled: Bool = false
-  internal private(set) var redirectsURLIsCalled: Bool = false
+  internal private(set) var formatRedirectsIsCalled = false
+  internal private(set) var redirectsURLIsCalled = false
 
   internal func formatRedirects(_: [ContributeWordPress.RedirectItem]) -> String {
     formatRedirectsIsCalled = true

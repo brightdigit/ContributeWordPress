@@ -5,7 +5,7 @@ import Foundation
 internal final class MarkdownExtractorSpy: MarkdownExtractor {
   internal typealias SourceType = Source
 
-  internal private(set) var isCalled: Bool = false
+  internal private(set) var isCalled = false
 
   private let result: Result<Void, MarkdownExtractorError>
 

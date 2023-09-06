@@ -2,7 +2,7 @@ import ContributeWordPress
 import Foundation
 
 internal final class RedirectFileWriterSpy: RedirectFileWriter {
-  internal private(set) var isCalled: Bool = false
+  internal private(set) var isCalled = false
 
   private let result: Result<Void, RedirectFileWriterError>
 

@@ -2,7 +2,7 @@ import ContributeWordPress
 import Foundation
 
 internal final class AssetDownloaderSpy: Downloader {
-  internal private(set) var isCalled: Bool = false
+  internal private(set) var isCalled = false
 
   private let result: Result<Void, AssetDownloaderError>
 

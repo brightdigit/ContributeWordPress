@@ -1,7 +1,7 @@
 import Foundation
 
 internal final class FileURLFromDirectorySpy {
-  internal var fromDirectoryIsCalled: Bool = false
+  internal var fromDirectoryIsCalled = false
 
   private let result: Result<Void, SitesExportDecoderError>
 

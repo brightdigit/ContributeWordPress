@@ -3,7 +3,7 @@ import ContributeWordPress
 import Foundation
 
 internal final class FileDownloaderSpy: URLDownloader {
-  internal var downloadIsCalled: Bool = false
+  internal var downloadIsCalled = false
 
   private let result: Result<Void, DownloadError>
 
