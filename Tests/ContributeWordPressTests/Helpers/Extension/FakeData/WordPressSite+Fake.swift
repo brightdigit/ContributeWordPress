@@ -6,14 +6,14 @@ extension WordPressSite {
   internal static func leogdion() throws -> WordPressSite {
     try .make(
       title: "Leo G Dion",
-      link: try .make(string: "https://leogdion.name"),
+      link: URL("https://leogdion.name"),
       description: "Personal Blog",
       categories: [
         .init(termID: 1, niceName: "uncategorized", parent: "", name: "Uncategorized")
       ],
       tags: leogdionTags(),
-      baseSiteURL: URL(string: "https://leogdion.name"),
-      baseBlogURL: URL(string: "https://leogdion.name"),
+      baseSiteURL: URL("https://leogdion.name"),
+      baseBlogURL: URL("https://leogdion.name"),
       posts: try leogdionPosts()
     )
   }

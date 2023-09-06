@@ -5,7 +5,7 @@ extension AssetImport {
   internal static func makeAssetImportForAttachmentA() throws -> AssetImport {
     try .make(
       forPost: .attachmentA(),
-      sourceURL: try .make(string: "http://leogdion.name")
+      sourceURL: URL("http://leogdion.name")
     )
   }
 }

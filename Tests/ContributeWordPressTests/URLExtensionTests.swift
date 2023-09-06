@@ -6,7 +6,7 @@ internal final class URLExtensionTests: XCTestCase {
     let expectedString = "banner.jpg"
     let filename = expectedString + ".jpg"
 
-    let url: URL = try .make(string: "https://leogdion.name/wp-content/uploads/2018/12/")
+    let url = URL("https://leogdion.name/wp-content/uploads/2018/12/")
       .appendingPathComponent(filename)
 
     let actualString = url.lastPathComponentWithoutExtension()
@@ -30,7 +30,7 @@ internal final class URLExtensionTests: XCTestCase {
   }
 
   internal func testRelativePathFromBaseNotFileURLShouldBeNil() throws {
-    let projectPathURL: URL = try .make(string: "http://www.google.com")
+    let projectPathURL = URL("http://www.google.com")
 
     let expectedRelativePath = PublishDefaults.resourcesDirectoryName
 

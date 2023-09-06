@@ -15,7 +15,7 @@ internal final class FileManagerExtensionTests: XCTestCase {
     XCTAssertThrowsError(
       try FileManager.createDirectory(
         withName: "test",
-        in: try .make(string: "/fake/path")
+        in: URL("/fake/path")
       )
     )
   }
