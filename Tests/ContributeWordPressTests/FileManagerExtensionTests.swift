@@ -1,4 +1,3 @@
-// swiftlint:disable force_unwrapping
 @testable import ContributeWordPress
 import XCTest
 
@@ -16,7 +15,7 @@ internal final class FileManagerExtensionTests: XCTestCase {
     XCTAssertThrowsError(
       try FileManager.createDirectory(
         withName: "test",
-        in: .init(string: "/fake/path")!
+        in: try .make(string: "/fake/path")
       )
     )
   }
