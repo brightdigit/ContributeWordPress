@@ -7,25 +7,26 @@ extension WordPressSite {
     title: String = "Leo G Dion",
     link: URL = .diagramForGoalsLink,
     description: String? = nil,
-    pubDate: Date = Date(),
-    categories _: [RSSItemCategory] = [.Uncategorized],
+    pubDate: Date? = nil,
+    categories: [WordPressElements.Category] = [],
     tags: [WordPressElements.Tag] = [],
     baseSiteURL: URL? = nil,
     baseBlogURL _: URL? = nil,
-    posts: [WordPressPost] = [],
-    assetURLRegex: NSRegularExpression? = nil
+    posts: [WordPressPost] = []
   ) throws -> WordPressSite {
     .init(
       title: title,
       link: link,
       description: description,
       pubDate: pubDate,
-      categories: [.TopMenu],
+      categories: categories,
       tags: tags,
       baseSiteURL: baseSiteURL,
       baseBlogURL: baseSiteURL,
       posts: posts,
-      assetURLRegex: try (assetURLRegex ?? .init(pattern: "---"))
+      assetURLRegex: try NSRegularExpression(
+        pattern: "\(link)/\(WordPressSite.contentUploadsRelativePath)([^\"]+)"
+      )
     )
   }
 }

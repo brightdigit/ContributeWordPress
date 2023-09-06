@@ -34,19 +34,19 @@ extension MarkdownProcessor where ContentURLGeneratorType == SectionContentURLGe
   public static func beginImport(
     from exportsDirectoryURL: URL,
     to rootPublishSiteURL: URL,
-    usingGenerator markdownGenerator: MarkdownGenerator =
-      PassthroughMarkdownGenerator.shared,
     filteringPostsWith postFilters: [PostFilter] = .default,
     redirectsFormattedUsing redirectFromatter: RedirectFormatter? = nil,
     importAssetsBy assetImportSetting: AssetImportSetting = .download,
-    overwriteAssets: Bool = false
+    overwriteAssets: Bool = false,
+    usingGenerator markdownGenerator: MarkdownGenerator =
+      PassthroughMarkdownGenerator.shared
   ) throws {
     let settings = Settings(
       rootPublishSiteURL: rootPublishSiteURL,
       exportsDirectoryURL: exportsDirectoryURL,
-      markdownGenerator: markdownGenerator,
       assetImportSetting: assetImportSetting,
-      overwriteAssets: overwriteAssets
+      overwriteAssets: overwriteAssets,
+      markdownGenerator: markdownGenerator
     )
     let processor = MarkdownProcessor(
       postFilters: postFilters,
@@ -77,11 +77,11 @@ extension MarkdownProcessor where ContentURLGeneratorType == SectionContentURLGe
     try beginImport(
       from: exportsDirectoryURL,
       to: rootPublishSiteURL,
-      usingGenerator: PandocMarkdownGenerator(shellOut: shellOut),
       filteringPostsWith: postFilters,
       redirectsFormattedUsing: redirectFromatter,
       importAssetsBy: assetImportSetting,
-      overwriteAssets: overwriteAssets
+      overwriteAssets: overwriteAssets,
+      usingGenerator: PandocMarkdownGenerator(shellOut: shellOut)
     )
   }
 }
