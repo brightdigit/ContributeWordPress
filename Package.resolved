@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brightdigit/Contribute.git",
       "state" : {
-        "branch" : "1.0.0-alpha.3",
-        "revision" : "136c566f0f5c893547a8158878d15634d3652553"
+        "branch" : "1.0.0-alpha.4",
+        "revision" : "cd366bbeceed5ad30fe7c3c604b0400615c5149e"
       }
     },
     {
