@@ -1,8 +1,9 @@
-import XCTest
+// swiftlint:disable force_unwrapping
 @testable import ContributeWordPress
+import XCTest
 
-final class FileManagerExtensionTests: XCTestCase {
-  func testSuccessfulCreateDirectory() throws {
+internal final class FileManagerExtensionTests: XCTestCase {
+  internal func testSuccessfulCreateDirectory() throws {
     XCTAssertNoThrow(
       try FileManager.createDirectory(
         withName: "test",
@@ -11,7 +12,7 @@ final class FileManagerExtensionTests: XCTestCase {
     )
   }
 
-  func testFailedCreateDirectory() throws {
+  internal func testFailedCreateDirectory() throws {
     XCTAssertThrowsError(
       try FileManager.createDirectory(
         withName: "test",

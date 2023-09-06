@@ -9,6 +9,6 @@ extension URL {
 }
 
 extension URL {
-  internal static let temporaryResourcesPathURL: URL = 
+  internal static let temporaryResourcesPathURL: URL =
     .temporaryDirURL.appendingPathComponent("Resources")
 }

@@ -32,8 +32,8 @@ public struct AssetImport: Hashable {
     featuredPath: String,
     parentID: Int
   ) {
-    self.fromURL = importFromURL
-    self.atURL = importAtURL
+    fromURL = importFromURL
+    atURL = importAtURL
     self.featuredPath = featuredPath
     self.parentID = parentID
   }
