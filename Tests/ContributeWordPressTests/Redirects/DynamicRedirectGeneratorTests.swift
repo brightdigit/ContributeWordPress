@@ -4,13 +4,13 @@ import SyndiKit
 import XCTest
 
 internal final class DynamicRedirectGeneratorTests: XCTestCase {
-  private var generator: DynamicRedirectGenerator = .init()
+  private var sut: DynamicRedirectGenerator = .init()
   private let blogSection: String = "blog"
   private let tutorialsSection: String = "tutorials"
 
   internal func testEmptySiteShouldGenerateNoRedirects() throws {
     let site: WordPressSite = try .make(posts: [])
-    let redirects = generator.redirects(fromSites: [blogSection: site])
+    let redirects = sut.redirects(fromSites: [blogSection: site])
 
     XCTAssertTrue(redirects.isEmpty)
   }
@@ -28,7 +28,7 @@ internal final class DynamicRedirectGeneratorTests: XCTestCase {
       .flatMap { $0 }
     let allPosts: [WordPressPost] = tuples.map(\.0)
 
-    let redirects = generator.redirects(fromSites: allSites)
+    let redirects = sut.redirects(fromSites: allSites)
 
     XCTAssertEqual(redirects.count, allPosts.count)
 

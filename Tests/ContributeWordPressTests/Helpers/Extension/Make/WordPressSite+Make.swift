@@ -12,8 +12,7 @@ extension WordPressSite {
     tags: [WordPressElements.Tag] = [],
     baseSiteURL: URL? = nil,
     baseBlogURL _: URL? = nil,
-    posts: [WordPressPost] = [],
-    assetURLRegex: NSRegularExpression? = nil
+    posts: [WordPressPost] = []
   ) throws -> WordPressSite {
     .init(
       title: title,
@@ -25,7 +24,9 @@ extension WordPressSite {
       baseSiteURL: baseSiteURL,
       baseBlogURL: baseSiteURL,
       posts: posts,
-      assetURLRegex: try (assetURLRegex ?? .init(pattern: "---"))
+      assetURLRegex: try NSRegularExpression(
+        pattern: "\(link)/\(WordPressSite.contentUploadsRelativePath)([^\"]+)"
+      )
     )
   }
 }

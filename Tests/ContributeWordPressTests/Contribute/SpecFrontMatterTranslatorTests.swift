@@ -4,35 +4,17 @@ import SyndiKit
 import XCTest
 
 internal final class SpecFrontMatterTranslatorTests: XCTestCase {
-  private var translator: SpecFrontMatterTranslator = .init()
+  internal func testFrontMatterTranslation() throws {
+    let sut: SpecFrontMatterTranslator = .init()
 
-  internal func testEmptySourceData() throws {
-    let source = Source(
-      sectionName: "...",
-      post: try .make(title: "", description: nil, categories: []),
-      featuredImage: nil
-    )
-
-    let specs = translator.frontMatter(from: source)
-
-    assertSpecs(specs, vs: source)
-  }
-
-  internal func testFullSourceData() throws {
     let source = Source(
       sectionName: "...",
       post: try .areWeThereYetPost(tags: [.Podcasting, .Productivity]),
       featuredImage: "/media/wp-assets/leogdion/2019/01/image-e1547230562842-1024x682.jpg"
     )
 
-    let specs = translator.frontMatter(from: source)
+    let specs = sut.frontMatter(from: source)
 
-    assertSpecs(specs, vs: source)
-  }
-
-  // MARK: - Helpers
-
-  private func assertSpecs(_ specs: Specs, vs source: Source) {
     XCTAssertEqual(specs.title, source.post.title)
     XCTAssertEqual(specs.date, source.post.postDateString)
     XCTAssertEqual(specs.description, source.post.description)

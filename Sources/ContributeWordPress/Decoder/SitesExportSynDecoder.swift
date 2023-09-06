@@ -61,7 +61,7 @@ public struct SitesExportSynDecoder: SitesExportDecoder {
 }
 
 extension SitesExportSynDecoder {
-  /// A default logic for finding all files found at given directory.
+  /// A default logic for finding all files at given directory.
   ///
   /// - Parameter directoryURL: The directory URL.
   /// - Returns: An array of URLs for export files found in the given directory.

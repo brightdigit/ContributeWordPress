@@ -1,9 +1,8 @@
-import XCTest
 @testable import ContributeWordPress
+import XCTest
 
 internal final class SectionContentURLGeneratorTests: XCTestCase {
-
-  private let generator: SectionContentURLGenerator = .init()
+  private let sut: SectionContentURLGenerator = .init()
 
   internal func testCorrectDestinationURL() throws {
     let source: Source = .make(
@@ -13,9 +12,15 @@ internal final class SectionContentURLGeneratorTests: XCTestCase {
 
     let contentPathURL: URL = .temporaryDirURL.appendingPathComponent("content")
 
-    let expectedDestinationURL = generateDestinationURL(from: source, atContentPathURL: contentPathURL)
+    let expectedDestinationURL = generateDestinationURL(
+      from: source,
+      atContentPathURL: contentPathURL
+    )
 
-    let destinationURL = generator.destinationURL(from: source, atContentPathURL: contentPathURL)
+    let destinationURL = sut.destinationURL(
+      from: source,
+      atContentPathURL: contentPathURL
+    )
 
     XCTAssertEqual(destinationURL, expectedDestinationURL)
   }
@@ -30,14 +35,4 @@ internal final class SectionContentURLGeneratorTests: XCTestCase {
       .appendingPathComponent(source.sectionName)
       .appendingPathComponent(source.post.name + ".md")
   }
-
-}
-
-
-// TODO: Waiting on Contribute to be updated to use its URL extension instead
-extension URL {
-  static let temporaryDirURL = URL(
-    fileURLWithPath: NSTemporaryDirectory(),
-    isDirectory: true
-  )
 }

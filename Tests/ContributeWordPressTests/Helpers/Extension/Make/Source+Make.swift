@@ -1,10 +1,9 @@
+import ContributeWordPress
 import Foundation
 import SyndiKit
-import ContributeWordPress
 
 extension Source {
-
-  static func make(
+  internal static func make(
     sectionName: String,
     post: WordPressPost,
     featuredImage: String? = nil,

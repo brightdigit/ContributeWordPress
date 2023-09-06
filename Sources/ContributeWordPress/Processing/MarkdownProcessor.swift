@@ -70,10 +70,10 @@ public struct MarkdownProcessor<
     importing assets: [AssetImport],
     to contentDirectoryURL: URL,
     transformFromHTML: @escaping (String) throws -> String,
-    transformerFromPost: ((WordPressSite) -> ((WordPressPost) -> String))? = nil
+    transformerFromSite: ((WordPressSite) -> ((WordPressPost) -> String))? = nil
   ) throws {
     try FileManager.createDirectory(withName: sectionName, in: contentDirectoryURL)
-    let htmlFromPost = transformerFromPost?(site)
+    let htmlFromPost = transformerFromSite?(site)
     try site.posts
       .filter(postFilters.postSatisfiesAll)
       .map { post in (post, assets.first { $0.parentID == post.ID }) }
@@ -106,7 +106,7 @@ public struct MarkdownProcessor<
         importing: assets,
         to: contentDirectoryURL,
         transformFromHTML: htmlToMarkdown,
-        transformerFromPost: htmlFromSitePost
+        transformerFromSite: htmlFromSitePost
       )
     }
   }

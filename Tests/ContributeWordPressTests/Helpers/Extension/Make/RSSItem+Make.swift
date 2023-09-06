@@ -13,10 +13,13 @@ extension RSSItem {
     type: String,
     postName: String,
     pubDate: Date?,
+    contentEncoded: String?,
     postDate: Date?,
     categories: [RSSItemCategory],
     creators: [String],
-    status: String
+    postID: Int,
+    status: String,
+    attachmentURL: URL?
   ) -> RSSItem {
     .init(
       title: title,
@@ -24,7 +27,7 @@ extension RSSItem {
       description: description,
       guid: guid,
       pubDate: pubDate,
-      contentEncoded: .init(),
+      contentEncoded: contentEncoded,
       categoryTerms: categories,
       content: .init(),
       itunesTitle: "itunes Title",
@@ -44,7 +47,7 @@ extension RSSItem {
       wpMenuOrder: .bitWidth,
       wpIsSticky: .bitWidth,
       wpPostPassword: .init(),
-      wpPostID: 10,
+      wpPostID: postID,
       wpPostDate: postDate,
       wpPostDateGMT: .distantFuture,
       wpModifiedDate: .distantFuture,
@@ -52,7 +55,7 @@ extension RSSItem {
       wpPostName: postName,
       wpPostType: type,
       wpPostMeta: nil,
-      wpAttachmentURL: nil,
+      wpAttachmentURL: attachmentURL,
       mediaContent: nil,
       mediaThumbnail: nil
     )
