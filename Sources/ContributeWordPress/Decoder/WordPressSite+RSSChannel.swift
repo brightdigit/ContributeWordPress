@@ -39,11 +39,11 @@ extension WordPressSite {
     self.init(
       title: channel.title,
       link: channel.link,
+      posts: channel.items.compactMap(\.wpPost),
       categories: channel.wpCategories,
       tags: channel.wpTags,
       baseSiteURL: channel.wpBaseSiteURL,
       baseBlogURL: channel.wpBaseBlogURL,
-      posts: channel.items.compactMap(\.wpPost),
       assetURLRegex: assetURLRegex
     )
   }

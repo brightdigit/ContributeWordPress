@@ -17,13 +17,13 @@ extension WordPressSite {
     .init(
       title: title,
       link: link,
+      posts: posts,
       description: description,
       pubDate: pubDate,
       categories: categories,
       tags: tags,
       baseSiteURL: baseSiteURL,
       baseBlogURL: baseSiteURL,
-      posts: posts,
       assetURLRegex: try NSRegularExpression(
         pattern: "\(link)/\(WordPressSite.contentUploadsRelativePath)([^\"]+)"
       )

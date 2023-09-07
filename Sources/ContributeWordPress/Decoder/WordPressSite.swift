@@ -47,18 +47,17 @@ public struct WordPressSite: BaseURLSite {
   ///   - baseBlogURL: The base blog URL.
   ///   - posts: The posts associated with the site.
   ///   - assetURLRegex: The regular expression for matching asset urls.
-  // swiftlint:disable:next function_default_parameter_at_end
   public init(
     title: String,
     link: URL,
+    posts: [WordPressPost],
     description: String? = nil,
     pubDate: Date? = nil,
-    categories: [WordPressElements.Category],
-    tags: [WordPressElements.Tag],
+    categories: [WordPressElements.Category] = [],
+    tags: [WordPressElements.Tag] = [],
     baseSiteURL: URL? = nil,
     baseBlogURL: URL? = nil,
-    posts: [WordPressPost],
-    assetURLRegex: NSRegularExpression
+    assetURLRegex: NSRegularExpression? = nil
   ) {
     self.title = title
     self.link = link
@@ -69,6 +68,8 @@ public struct WordPressSite: BaseURLSite {
     self.baseSiteURL = baseSiteURL
     self.baseBlogURL = baseBlogURL
     self.posts = posts
-    self.assetURLRegex = assetURLRegex
+    // swiftlint:disable:next force_try
+    self.assetURLRegex = try! assetURLRegex ??
+      Self.defaultAssetURLRegex(forAssetSiteURL: link)
   }
 }

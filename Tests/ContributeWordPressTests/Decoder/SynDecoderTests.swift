@@ -20,6 +20,10 @@ internal final class SynDecoderTests: XCTestCase {
 
     let expectedSite = try WordPressSite.leogdion()
 
+    assert(decodedSite: decodedSite, against: expectedSite)
+  }
+
+  private func assert(decodedSite: WordPressSite, against expectedSite: WordPressSite) {
     XCTAssertEqual(decodedSite.title, expectedSite.title)
     XCTAssertEqual(decodedSite.link, expectedSite.link)
     XCTAssertEqual(decodedSite.baseSiteURL, expectedSite.baseSiteURL)

@@ -4,7 +4,7 @@ import XCTest
 internal final class AssetImportWordPressTests: XCTestCase {
   internal func testExtractAssetImportFromPostWithAssets() throws {
     let site: WordPressSite = try .make(
-      link: try .make(string: "https://leogdion.name"),
+      link: URL("https://leogdion.name"),
       posts: [.myYearInReviewPost()]
     )
 
@@ -25,7 +25,7 @@ internal final class AssetImportWordPressTests: XCTestCase {
 
   internal func testExtractAssetImportFromPostWithoutAssets() throws {
     let site: WordPressSite = try .make(
-      link: try .make(string: "https://leogdion.name"),
+      link: URL("https://leogdion.name"),
       posts: [.make(postID: 00, title: "fake", contentEncoded: "")]
     )
 

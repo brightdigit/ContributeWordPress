@@ -1,4 +1,3 @@
-// swiftlint:disable line_length
 @testable import ContributeWordPress
 import SyndiKit
 import XCTest
@@ -15,11 +14,28 @@ internal final class DynamicRedirectGeneratorTests: XCTestCase {
     XCTAssertTrue(redirects.isEmpty)
   }
 
-  internal func testOneSiteWithSomeNumberOfPostsShouldGenerateSameNumberOfRedirects() throws {
+  internal func testSingleSiteWithTwoPostsShouldGenerateTwoRedirectEntries() throws {
     let posts: [WordPressPost] = [try .myYearInReviewPost(), try .podcastingPost()]
     let site: WordPressSite = try .make(posts: posts)
 
     testThenAssertRedirect(fromSites: [blogSection: site])
+  }
+
+  internal func testTwoSitesEachWithTwoPostsEachShouldGenerateFourRedirects() throws {
+    let blogSite: WordPressSite = try .make(
+      posts: [try .myYearInReviewPost(), try .podcastingPost()]
+    )
+
+    let tutorialsSite: WordPressSite = try .make(
+      posts: [try .areWeThereYetPost(), try .fromGoalsToActionsPost()]
+    )
+
+    let allSites: [SectionName: WordPressSite] = [
+      blogSection: blogSite,
+      tutorialsSection: tutorialsSite
+    ]
+
+    testThenAssertRedirect(fromSites: allSites)
   }
 
   private func testThenAssertRedirect(fromSites allSites: [SectionName: WordPressSite]) {
@@ -43,23 +59,6 @@ internal final class DynamicRedirectGeneratorTests: XCTestCase {
     }
   }
 
-  internal func testMultipleSitesEachWithNumberOfPostsShouldGenerateSameNumberOfRedirectsPerSite() throws {
-    let blogSite: WordPressSite = try .make(
-      posts: [try .myYearInReviewPost(), try .podcastingPost()]
-    )
-
-    let tutorialsSite: WordPressSite = try .make(
-      posts: [try .areWeThereYetPost(), try .fromGoalsToActionsPost()]
-    )
-
-    let allSites: [SectionName: WordPressSite] = [
-      blogSection: blogSite,
-      tutorialsSection: tutorialsSite
-    ]
-
-    testThenAssertRedirect(fromSites: allSites)
-  }
-
   // MARK: - Helpers
 
   private func generateUrlPath(
@@ -67,15 +66,5 @@ internal final class DynamicRedirectGeneratorTests: XCTestCase {
     wordpressPost post: WordPressPost
   ) -> String {
     DynamicRedirectGenerator.defaultURLPath(fromName: name, wordpressPost: post)
-  }
-}
-
-extension WordPressPost: Hashable {
-  public static func == (lhs: WordPressPost, rhs: WordPressPost) -> Bool {
-    lhs.ID == rhs.ID
-  }
-
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(ID)
   }
 }

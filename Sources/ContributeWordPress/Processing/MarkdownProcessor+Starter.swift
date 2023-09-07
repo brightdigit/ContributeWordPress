@@ -7,15 +7,6 @@ import Yams
   import FoundationNetworking
 #endif
 
-@available(*, deprecated, message: "Use from Contribute.")
-public struct PassthroughMarkdownGenerator: MarkdownGenerator {
-  public static let shared = PassthroughMarkdownGenerator()
-  private init() {}
-  public func markdown(fromHTML htmlString: String) throws -> String {
-    htmlString
-  }
-}
-
 extension MarkdownProcessor where ContentURLGeneratorType == SectionContentURLGenerator,
   MarkdownContentBuilderType == MarkdownContentYAMLBuilder<
     Source,
