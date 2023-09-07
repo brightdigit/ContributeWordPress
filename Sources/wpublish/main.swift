@@ -1,6 +1,4 @@
-// swiftlint:disable explicit_top_level_acl
-// swiftlint:disable prefixed_toplevel_constant
-// swiftlint:disable explicit_acl
+// swiftlint:disable explicit_top_level_acl prefixed_toplevel_constant explicit_acl
 
 import ContributeWordPress
 import Foundation

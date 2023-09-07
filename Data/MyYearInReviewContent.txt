@@ -1,0 +1,403 @@
+<!-- wp:list -->
+<ul><li><a href="/2019/01/14/2018-review/#goals-2018">2018 Goals</a></li><li><a href="/2019/01/14/2018-review/#stats-2018">2018 Stats</a></li><li><a href="/2019/01/14/2018-review/#obstacles-2018">2018 Obstacles</a></li><li><a href="/2019/01/14/2018-review/#2019-changes">2019 Changes</a></li><li><a href="/2019/01/14/2018-review/#2019-obstacles">2019 Possible Obstacles</a></li><li><a href="/2019/01/14/2018-review/#thank-yous">Thank Yous</a></li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>This is the first time I’ve done a year in review. It’s a healthy way to look back on what went well and what was challenging. My main goal this year was to produce more content online and less time on local events and gatherings. I removed many things which I felt were a distraction. Instead focused on building habits which would help me to build more content in the future. While many years have presented challenges both personally and professionally, I hoped this year I could focus on that work. Unfortunately, that wasn’t the case. <strong>Despite many challenges, I would say 2018 was a success in the sense that I was able to prove to myself, what I could do. My hope is that this gives me the momentum to move forward in 2019.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:more -->
+<!--more-->
+<!-- /wp:more -->
+
+<!-- wp:heading -->
+<h2 id="goals-2018">My Goals for 2018</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>As I said I removed many activities from my life mostly networking and meetups from my schedule. This is because <strong>I am better off showcasing my talent to a wider audience online.</strong> This includes meetups which I no longer related to.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":105} -->
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2019/01/image-e1547230562842-1024x682.jpg" alt="A JavaScript Meetup I hosted in 2018 " class="wp-image-105"/><figcaption>A JavaScript Meetup I hosted in 2018 </figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Optimizing Meetups in 2018</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I started two meetups and stopped organizing one. If the meetup was not popular enough or was not an audience which matched my online content audience, I cut it from my schedule.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4} -->
+<h4>Javascript</h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>In 2014, I started Lansing’s first Javascript Meetup along with two of my colleagues. <strong>It was getting audience sizes at the time of 5-15 people. Meanwhile, for instance, the Ruby meetup was getting 20 easily. By the end of 2017, we were getting as many as 30 people to the JavaScript. While many other meetups including Ruby had fizzled out. </strong>Despite this by 2018, I was barely writing JavaScript. Regardless of how much I enjoyed attending, I stepped down from my leadership position in 2018. My focus has shifted more toward Swift development. So it made more sense to start a Cocoaheads meetup. Unfortunately, this did not go as well as I wanted it too.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4} -->
+<h4>Cocoaheads</h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Despite the Apple store being gracious enough to offer the space, we never had much of an audience. Our best event was our Introduction to iPhone Development meetup, which I presented at. Teaching beginner level content in the long term won’t likely draw a long-term audience. Therefore, I put Lansing Cocoaheads on hiatus in 2018. The other meetup I started was Lansing Marketing Hackers and this to me was the biggest surprise.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4} -->
+<h4><em>Marketing Hackers</em></h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Having attended ReleaseNotes and Microconf, two business/marketing conferences for developers, I saw a gap in the marketing expertise locally. Starting this meetup in Lansing I met three goals:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li>test the demand for this type of marketing content in Lansing</li><li>enrich my own knowledge of the subject, </li><li>meet others interested in this topic set</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>The meetup would be a new hybrid of marketing and technology. An intermediate level educational networking meetup focusing on how different technologies could help marketing businesses. <strong>Our first meetup only drew 10 people. However, by October of 2018, we were able to grow our attendance to 40 people. </strong>This showed me that there was a demand for this kind of material and event. So of course, I renewed the meetup for the 2018-2019 session. Like so many medium-sized towns, it’s a challenge to get people of out of <g class="gr_ gr_118 gr-alert gr_spell gr_inline_cards gr_disable_anim_appear ContextualSpelling ins-del multiReplace" id="118" data-gr-id="118">thier</g> home or workplace for lunch. That is what makes Lansing Marketing Hackers a rarity when it came to local networking events.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":106} -->
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2019/01/pexels-photo-886465-1024x682.jpg" alt="Handshaking at a Networking Event " class="wp-image-106"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Local Networking in 2018</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>With 5 children under 10 needing to be put to bed every night, it was a heavy load to depend on my wife to do bedtime for all our children. Besides, if the event had little return, I decided to cut it in 2018. On top of this, <strong>if going to an event meant time away from me producing content, it was a distraction.</strong> I think this illustrates a conclusion I learned:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Nobody is looking for an iOS developer at their local networking event.</strong> And while <strong>of course</strong>, I didn’t advertise myself as that necessarily, I did pitch myself as a technical jack-of-all-trades. But I'd need to explain that I am not...</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li>your IT Company</li><li>a security expert</li><li>a networking guru</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>And the biggest change I made this year was no longer doing web design for businesses and non-profits. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":107} -->
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2019/01/pexels-photo-326424-e1547232461581-1024x682.jpg" alt="Web Design Tools" class="wp-image-107"/><figcaption>Web Design Tools</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Getting Out Of The Web Design Business</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>There is one main reason for this. <strong>In 2018 (and perhaps well before that) the web design business has matured to a point where the market demands more than a simple website design</strong> (ie. analytics, copywriting, marketing, graphics design, etc…). <strong>The other side of that is that whatever potential customers do remain they do not place a high priority on web design.</strong>&nbsp;I&nbsp;was&nbsp;either&nbsp;competing&nbsp;with well-established marketing businesses or services which come with good enough templates.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Therefore it put me at a disadvantage of building a product that I was not proud of and barely bringing in revenue or to commit more time, additional money, and project risk into building an agency which I frankly have no desire or ability to do at this time. <strong>It is better for me to establish myself as an expert in a particular technology so that I have a product to sell which is my knowledge (ebook, video, etc…) and it offers a glimpse to a potential client of what I can provide.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":108} -->
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2019/01/img_0020.jpg" alt="" class="wp-image-108"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Being a Swift Expert</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I never hated Objective-C, Apple’s first primary language for development, however I could definitely tell this was a programming language from the 1980s propped up over time by 2000s programming paradigms syntaxes. Swift was Apple’s solution to both bringing developers who hated Objective-C over and allow for more modern paradigms to take hold.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Since the beginning, I made sure to deep dive and learn as much as I can in the language since it was so green. That meant how Swift could be used by different devices, different APIs, and different programming concepts available. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4} -->
+<h4>Building Swift <a rel="noreferrer noopener" aria-label="Content (opens in a new tab)" href="http://learningswift.brightdigit.com" target="_blank">Content&nbsp;in&nbsp;2018</a></h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I needed to choose something:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><li> I enjoyed working with</li><li>there’s enough of an audience interested</li><li>there’s still room for more content in the subject</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>So there were three sources for content I’d produce:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"ordered":true} -->
+<ol><li>Blog about what <strong>I am building </strong><br>The market is flooded with iOS blog posts. I was actually using Swift to build a macOS app. This puts me in a unique position of knowing what I am talking and producing content that is rare and which has an audience.</li><li>Blog about what <strong>people are asking about</strong> <br>This means search forums, Q&amp;As, and other communities on the web and if I saw a question I knew the answer to, I’d write a blog post on it.</li><li>Blog about some new feature, technology, API, etc..<br>I especially took advantage of this after WWDC in 2018, Apple’s developer conference.</li></ol>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>The sweet spot was something new, that I was interested in, and was asked about frequently on the web. I wasn’t only doing written content. I made a habit of recording myself presenting at meetups. <strong>This was content I could share and attach to my brand. This would also include other non-written content such as podcasts, videos, and streaming.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":111} -->
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2019/01/matt-botsford-197870-unsplash-e1547232675473-1024x683.jpg" alt="Microphone for Podcasting" class="wp-image-111"/><figcaption>Microphone for Podcasting</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3} -->
+<h3><em>Other Content</em></h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I could see the writing on the wall that podcasts are an ever-increasing media consumed by more and more people. Like all the new things, I wanted to know the challenges and quirks of producing that content and get into the habit of doing it. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4} -->
+<h4><a href="https://okproductive.com" target="_blank" rel="noreferrer noopener" aria-label="OK Productive (opens in a new tab)">OK Productive</a></h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>At the end of 2017, Erik Gillespie and I started our first podcast <a href="#">OKProductive</a>. We came up with the idea of doing a productivity podcast because it was something we were both interested in but also felt that <strong>many podcasts in the area of personal productivity are obsessed with optimizing every aspect of daily life in an almost clinical way - think of the difference between a photo you’d see in a furniture catalog of a living room and a real organized room - one looks gorgeous but is absolutely impractical, the other is slightly messy at times but practical and comfortable.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>We set a regular schedule throughout 2018 for recording podcast and to regularly chat about topics and share notes. Overall producing OKProductive was an enjoyable and educational experience. I’m grateful for the opportunity to work with such a great co-host. From there, I then went on to start another podcast in 2018 - this would be for my business BrightDigit - <a href="#">EmpowerApps.Show</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4} -->
+<h4><a href="#">EmpowerApps.Show</a></h4>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>With help from Theresa Jasko my co-host, we created a regular schedule and workflow of notes, recording, and blog posts. The podcast focuses on businesses which use Apple devices and want to learn more about how the ecosystem works as well as what’s new.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I also began to stream both professionally and personally (i.e. video games). Like I said in the section about Swift if I spoke publicly I recorded it and posted it online (such as <a rel="noopener" href="https://leogdion.name/2018/12/13/are-we-there-yet/">when I spoke at LSJ Storytellers on my family's story</a>). Again the emphasis was more on habit and getting comfortable with the process than on audience building necessarily.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":82} -->
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2018/11/6fcd4a78-cb8f-454d-ab60-d07d7009eb0e-180918_storytellers_103a.jpg" alt="Me speaking at LSJ Storytellers" class="wp-image-82"/><figcaption>Me speaking at LSJ Storytellers</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading -->
+<h2 id="stats-2018">My Stats for 2018</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>So the question is what did I produce. Well here you go...</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3><a href="#">BrightDigit</a></h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>21 blog posts of various sizes </li><li>8 full posts</li><li>3000 visitors</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3><a href="#">Learning Swift</a></h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>16 blog posts of various sizes </li><li>9 full posts</li><li>4,500 visitors</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3><a href="#">LeoGDion.name</a></h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>2 blog posts</li><li>200 visitors</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3><a href="#">OK Productive</a></h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>10 episodes recorded</li><li>9 episodes posted</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3><a href="#">EmpowerApps.Show</a></h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>5 episodes recorded</li><li>4 episodes posted</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":3} -->
+<h3><a rel="noreferrer noopener" aria-label="Youtube (opens in a new tab)" href="https://www.youtube.com/channel/UCnl3jF6GHAvlj1MZyb6Ka9g" target="_blank">Youtube</a></h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul><li>13 videos</li></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>This in my opinion was… good.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":112} -->
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2019/01/michael-rosner-hyman-30557-unsplash-1024x683.jpg" alt="Dealing with Obstacles" class="wp-image-112"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading -->
+<h2 id="obstacles-2018">Unfortunate Obstacles of 2018</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>If there was ever a theme for last year it was that <strong>life happens</strong>. Previous years dealing with a pregnancy, foster care system, the anxiousness of knowing whether you’d keep a child for life or temporarily, the death of a parent, and the threatening of lawsuits by notorious clients were all issues I had dealt with in the past five years - 2018 was going to be the easy year. <strong>However the very day our last foster child was adopted, my dad was scheduled for surgery - this should have been a clear omen of what 2018 would bring.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Family Health Issues</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>I had to take my father to the hospital emergency room several times throughout the year.</strong> Dealing with the healthcare system, incompetent health care professionals, and my poor dad’s challenges, made it difficult to optimize my content production in any sense of the word. On a given day where I planned to do notes for a podcast, I’d have to drop everything. When I was coming back on a red-eye flight from a conference in Las Vegas, I'd have to take my dad to the hospital because he was in paralyzing pain and needed to be taken to the ER. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>My expectation was that I would be able to produce more content this year than I did and I fell short. <strong>My point is not for pity but rather to point out the fact that life does happen and no amount of preparation in life can ensure your ability to be as productive as you want to - you don’t know what you don’t know.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>TMJ</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>On top of this, the years of sitting and working at a laptop introduced me to temporomandibular joint pain or <strong><em>TMJ</em></strong>. The pounding feeling of pain at the sides of my head made it difficult for me to focus on the work I wanted to focus on. I had dealt with lower back in the past and have been able to maneuver my life such that I see it as fully managed now. I believe I am getting a better grasp now of how to deal with this and I am hoping to continue to make those changes to my life.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>An observation about myself is that when stress and pain is piled on my ability to simply write content is seriously diminished.</strong> Quite frankly in those times, it was writing code which became my relaxing work and fed my desire to build. At the end of the day, I would take much pride in the ability to build something cool but there was no audience I had built up yet to engage with. This is why building content was my primary goal of the year.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Finding Balance</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The pain and stress taught me if there’s anything I’ve learned from this year is that <strong>work is not my life but simply a part of my life.</strong> Right now with a living parent, helpful relatives and in-laws, adorable nephews and nieces nearby, 5 beautiful children and the best wife anyone could ask; I consistently can’t see myself looking back and wishing I had done things differently and sacrificed my relationships for my work. I want to treasure every moment now that I can especially as I creep closer to 40.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":113} -->
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2019/01/davide-ragusa-24118-unsplash-1024x680.jpg" alt="Researching the Audience" class="wp-image-113"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading -->
+<h2 id="2019-changes">Changes for 2019</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I made the effort to <a href="#">schedule every hour of my day as much as possible according to what my goals are</a>. <g class="gr_ gr_7 gr-alert gr_gramm gr_inline_cards gr_disable_anim_appear Punctuation only-ins replaceWithoutSep" id="7" data-gr-id="7">Unfortunately</g> with the challenges I faced and the realities of who I am, I simply could not write a blog post from my dad’s hospital bed on my laptop while dealing with a throbbing headache. <strong>I am going to be more honest and flexible with my actual schedule day-to-day rather than optimizing to the minute.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Audience building more than forming habits will be my goal for 2019.</strong> That means more research into what my audience wants rather than just what I want to produce.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>OK Productive</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>When it comes to podcasting especially with <a rel="noreferrer noopener" aria-label="OKProductive (opens in a new tab)" href="http://okproductive.com" target="_blank">OKProductive</a> I have a better grasp of what may be more enjoyable to produce - shorter more diverse content. Previously, each <a href="http://okproductive.com" target="_blank" rel="noreferrer noopener" aria-label="OKProductive (opens in a new tab)">OKProductive</a> podcast episode would focus on one topic for as much as 50 minutes. For instance, an entire podcast episode would focus on sleeping for perhaps 50 minutes. That’s too much for an audience. Rather <strong>I’d like to produce a <g class="gr_ gr_11 gr-alert gr_spell gr_inline_cards gr_disable_anim_appear ContextualSpelling multiReplace" id="11" data-gr-id="11">30 minute</g> episode with three parts, include more humor and small-talk, and really hone the content of the episode.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Email</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><g class="gr_ gr_7 gr-alert gr_gramm gr_inline_cards gr_disable_anim_appear Grammar only-ins doubleReplace replaceWithoutSep" id="7" data-gr-id="7">Email</g> will also be a much more key component in my communications this year. Through the years it has been shown to be reliable and more personal means of communication regardless of social media’s growth. Of course, being able to balance consuming social media while also posting to social media as a regular practice will always be a challenge but the fact of the matter is that email will always be a great way to communicate with people.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Focus On The Audience</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>My primary goal is to pre-sell a product (most likely an info product) by the first half of 2019.</strong> This means focusing more on audience building rather than forming the habits of building content. I am hoping by the middle of the year to be able to look back on this post and see how things went and what I didn’t foresee as obstacles.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Public Speaking</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>As far as attending development conferences, I’d like to focus on speaking at them. Business and marketing focused conferences are much more likely to provide info valuable to me which is why I’ll be attending conferences like Microconf and Peers.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":114} -->
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2019/01/nick-seliverstov-516549-unsplash-e1547232941528-1024x684.jpg" alt="Keeping An Eye Out For 2019" class="wp-image-114"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading -->
+<h2 id="2019-obstacles">Things to Watch Out For</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>There a few things I am concerned about in 2019 as far as what I can achieve and whether I will be profitable enough. I am hoping this will actually be the quieter of years as far as personal and family issues and give me more breathing room to achieve what I need to do. However I need to always make room for that in my goals and make sure I accept the challenges life throws at it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I need to make sure I keep my sales pipeline going while also focusing on content. While building an audience is my primary goal, I need money and <strong>building an audience frankly takes time.</strong> I’ll need to balance the immediate goal of profit while the long term goal of building a product.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>My other worry is whether <strong>investing in being an expert in the Swift space in the long term is the right choice.</strong> Will Apple continue to foster the community? Is there a chance of Swift growing outside of the Apple space? Is Swift limited to only iOS development still? Will other mobile development methods such as React Native, NativeScript, Ionic, etc… over take native development in Swift? Will the mobile app market app become more and more consolidated? These are all things which could affect the Swift info product space and affect me in the long term. We’ll see where this goes in 2019.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":115} -->
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2019/01/courtney-hedger-336844-unsplash-1024x684.jpg" alt="" class="wp-image-115"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading -->
+<h2 id="thank-yous">Thank Yous</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I want to thank and mention the things which helped in more than anything else in 2019. Having a supportive extended family makes this possible. <strong>Having folks who can help you and your family, make it possible to have the time but more importantly the mind space to keep your business going.</strong> This means my uncle, my aunt, my in-laws and others I may forget to mention.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Collaborators and Partners</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>My goal in 2017 was to make sure I began delegating more and more of my work to reduce dependencies on me and this was a very helpful practice to continue. My co-hosts, Theresa and Erik on our respective podcast helped me stay on task and continue keep momentum going. With my meetups as well, I got the help of others like Paul and Chad to continue to grow Lansing Marketing Hackers. I continued to also hire subcontractors on projects where needed as well and I am hoping to continue this where I can. I often see people doing it all themselves - <strong>including others help reduce dependency on you and allows others to be stake-holders in the process.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Online Communities</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I also can’t say enough about the importance of finding folks smarter than you where you can throw your ideas at. The various Masterminds, Slacks, Forums, and Twitter communities provided a great opportunity to meet others and hear their stories about where they are at and how it was helpful to them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Family</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Last but not least is my wife Betsy, who has been my everything this year. When things got rough, she was able to provide the support I needed to keep going. When there were times I simply needed to focus and get something done she provided it. When I need someone to talk to and throw an idea at (bad or good), she was honest and encouraging. <strong>I can’t say how important it was to be on the same page with my significant other when it comes to running a business and we have continued to go through this journey together.</strong> I am looking forward to taking the whole family to New Orleans this year as well as going to <a rel="noreferrer noopener" aria-label="Peers conference (opens in a new tab)" href="http://peersconf.com" target="_blank">Peers conference</a>. <strong>Integrating family time with business is a challenge but also a goal very important to me.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":116} -->
+<figure class="wp-block-image"><img src="https://leogdion.name/wp-content/uploads/2019/01/david-pennington-434304-unsplash-e1547230375178-1024x683.jpg" alt="" class="wp-image-116"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3} -->
+<h3>Conclusion</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>2018 was a challenging year made easier by a support network but also proved to me that I can continue on this path of being self-employed. Many businesses fail at their fifth year and this was my sixth. This year continued my trend away from simply being a freelancer. <strong>I am hoping to have continued focus and confidence in what I need to do to be sustainable but also humbled by the fact that life happens and I need to be flexible.</strong> &nbsp;We will see what 2019 brings and if growth happens in the areas I’d like to see. Stay tuned!</p>
+<!-- /wp:paragraph -->

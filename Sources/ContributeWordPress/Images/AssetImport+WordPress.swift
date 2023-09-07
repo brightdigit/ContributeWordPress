@@ -24,7 +24,7 @@ extension AssetImport {
         sourceURL: match.sourceURL,
         assetRoot: assetRoot,
         resourcesPathURL: importSettings.resourcesPathURL,
-        importPathURL: importSettings.importAssetPathURL
+        importPathURL: importSettings.assetImportSetting.importPathURL
       )
     }
   }
