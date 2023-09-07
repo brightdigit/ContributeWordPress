@@ -12,11 +12,8 @@ extension AssetImport {
     from site: WordPressSite,
     using importSettings: ProcessorSettings
   ) -> [AssetImport] {
-    let assetRoot = [
-      "",
-      importSettings.assetRelativePath,
-      site.importDirectoryName
-    ].joined(separator: "/")
+    let assetRoot = ["", importSettings.assetRelativePath, site.importDirectoryName]
+      .joined(separator: "/")
     return matchUrls(
       in: site.posts,
       using: site.assetURLRegex
@@ -27,7 +24,7 @@ extension AssetImport {
         sourceURL: match.sourceURL,
         assetRoot: assetRoot,
         resourcesPathURL: importSettings.resourcesPathURL,
-        importPathURL: importSettings.importAssetPathURL
+        importPathURL: importSettings.assetImportSetting.importPathURL
       )
     }
   }

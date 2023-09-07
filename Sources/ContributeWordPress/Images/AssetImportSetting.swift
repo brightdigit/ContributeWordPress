@@ -9,3 +9,13 @@ public enum AssetImportSetting: Equatable {
   /// Copy the files from a local mapped location.
   case copyFilesFrom(URL)
 }
+
+extension AssetImportSetting {
+  internal var importPathURL: URL? {
+    if case let .copyFilesFrom(url) = self {
+      return url
+    }
+
+    return nil
+  }
+}

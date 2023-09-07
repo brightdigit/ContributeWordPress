@@ -44,30 +44,6 @@ public protocol ProcessorSettings {
 }
 
 extension ProcessorSettings {
-  /// The URL of the directory that the assets should be imported.
-  ///
-  /// Example: /..../WordPress/html/
-  @available(
-    *, deprecated, renamed: "assetImportSetting",
-    message: "Use `assetImportSetting` for whether to copy from location."
-  )
-  public var importAssetPathURL: URL? {
-    if case let .copyFilesFrom(url) = assetImportSetting {
-      return url
-    }
-
-    return nil
-  }
-
-  /// Whether to skip downloading assets.
-  @available(
-    *, deprecated, renamed: "assetImportSetting",
-    message: "Use `assetImportSetting` for whether to skip download."
-  )
-  public var skipDownload: Bool {
-    assetImportSetting == .none
-  }
-
   /// The URL for the asset path located under `resourcesPathURL`.
   public var resourceAssetPathURL: URL {
     resourcesPathURL.appendingPathComponent(assetRelativePath)

@@ -13,16 +13,19 @@ let package = Package(
       name: "ContributeWordPress",
       targets: ["ContributeWordPress"]
     ),
-    .executable(name: "wpublish", targets: ["wpublish"])
+    .executable(
+      name: "wpublish",
+      targets: ["wpublish"]
+    )
   ],
   dependencies: [
     .package(
       url: "https://github.com/brightdigit/Contribute.git",
-      from: "1.0.0-alpha.3"
+      from: "1.0.0-alpha.5"
     ),
     .package(
       url: "https://github.com/brightdigit/SyndiKit.git",
-      from: "0.3.4"
+      from: "0.3.7"
     )
   ],
   targets: [
