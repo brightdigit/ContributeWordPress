@@ -19,14 +19,8 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(
-      url: "https://github.com/brightdigit/Contribute.git",
-      from: "1.0.0-alpha.5"
-    ),
-    .package(
-      url: "https://github.com/brightdigit/SyndiKit.git",
-      from: "0.3.7"
-    )
+    .package(path: "../../BrightDigit/Contribute"),
+    .package(path: "../../BrightDigit/SyndiKit")
   ],
   targets: [
     .target(
