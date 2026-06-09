@@ -51,9 +51,9 @@ extension Settings {
     assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
     assetRelativePath: String = PublishDefaults.wpAssetsRelativePath,
-    temporaryFile: @escaping (String) throws -> URL =
-      PandocMarkdownGenerator.Temporary.file(fromContent:),
-    shellOut: @escaping (String, [String]) throws -> String
+    temporaryFile: @escaping @Sendable (String) throws -> URL =
+      { try PandocMarkdownGenerator.Temporary.file(fromContent: $0) },
+    shellOut: @escaping @Sendable (String, [String]) throws -> String
   ) {
     self.init(
       contentPathURL: contentPathURL,

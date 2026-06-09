@@ -63,7 +63,7 @@ extension MarkdownProcessor where ContentURLGeneratorType == SectionContentURLGe
     redirectsFormattedUsing redirectFromatter: RedirectFormatter? = nil,
     importAssetsBy assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
-    shellOut: @escaping (String, [String]) throws -> String
+    shellOut: @escaping @Sendable (String, [String]) throws -> String
   ) throws {
     try beginImport(
       from: exportsDirectoryURL,
