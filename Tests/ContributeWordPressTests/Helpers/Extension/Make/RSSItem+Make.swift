@@ -3,7 +3,7 @@ import Foundation
 import SyndiKit
 
 extension RSSItem {
-  // swiftlint:disable:next function_body_length function_parameter_count
+  // swiftlint:disable:next function_parameter_count
   internal static func make(
     title: String,
     link: URL,

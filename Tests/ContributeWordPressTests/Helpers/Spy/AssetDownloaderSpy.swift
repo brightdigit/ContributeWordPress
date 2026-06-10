@@ -17,7 +17,7 @@ internal final class AssetDownloaderSpy: Downloader {
     case .success:
       break
 
-    case let .failure(failure):
+    case .failure(let failure):
       throw failure
     }
   }

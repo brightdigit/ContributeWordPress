@@ -1,7 +1,8 @@
 import Contribute
-@testable import ContributeWordPress
 import SyndiKit
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class SpecFrontMatterTranslatorTests: XCTestCase {
   internal func testFrontMatterTranslation() throws {

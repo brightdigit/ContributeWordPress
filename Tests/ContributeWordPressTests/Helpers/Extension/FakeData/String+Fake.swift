@@ -4,7 +4,7 @@ extension String {
   private static let dataDirectoryURL = { filePath in
     let thisFileURL = URL(fileURLWithPath: filePath)
     var dataDirectoryURL = thisFileURL
-    for _ in 0 ..< 6 {
+    for _ in 0..<6 {
       dataDirectoryURL.deleteLastPathComponent()
     }
     dataDirectoryURL.appendPathComponent("Data")

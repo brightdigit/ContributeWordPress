@@ -1,5 +1,6 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class SectionContentURLGeneratorTests: XCTestCase {
   private let sut: SectionContentURLGenerator = .init()

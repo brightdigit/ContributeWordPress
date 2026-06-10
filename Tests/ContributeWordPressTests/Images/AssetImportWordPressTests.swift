@@ -1,5 +1,6 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class AssetImportWordPressTests: XCTestCase {
   internal func testExtractAssetImportFromPostWithAssets() throws {
@@ -9,7 +10,8 @@ internal final class AssetImportWordPressTests: XCTestCase {
     )
 
     let rootPublishSiteURL: URL = .makeRootPublishSiteURL()
-    let expoertingDirectoryURL: URL = rootPublishSiteURL
+    let expoertingDirectoryURL: URL =
+      rootPublishSiteURL
       .appendingPathComponent("WordPress/exports")
 
     let assetImports = AssetImport.extractAssetImports(
@@ -30,7 +32,8 @@ internal final class AssetImportWordPressTests: XCTestCase {
     )
 
     let rootPublishSiteURL: URL = .makeRootPublishSiteURL()
-    let expoertingDirectoryURL: URL = rootPublishSiteURL
+    let expoertingDirectoryURL: URL =
+      rootPublishSiteURL
       .appendingPathComponent("WordPress/exports")
 
     let assetImports = AssetImport.extractAssetImports(

@@ -1,6 +1,7 @@
 import Contribute
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class AssetDownloaderTests: XCTestCase {
   internal func testSuccessfulDownload() throws {
@@ -27,7 +28,7 @@ internal final class AssetDownloaderTests: XCTestCase {
     XCTAssertThrowsError(
       try sut.download(assets: assets, allowsOverwrites: false)
     ) { throwError in
-      guard case let WordPressError.assetDownloadErrors(errors) = throwError else {
+      guard case WordPressError.assetDownloadErrors(let errors) = throwError else {
         XCTFail("Expected associated list of url->error.")
         return
       }
@@ -53,7 +54,8 @@ internal final class AssetDownloaderTests: XCTestCase {
         forPost: try .myYearInReviewPost(),
         sourceURL: .temporaryResourcesPathURL,
         assetRoot: "/media/wp-assets",
-        resourcesPathURL: URL(staticString: "https://leogdion.name/wp-content/uploads/2019/06/-unsplash-701.jpeg"
+        resourcesPathURL: URL(
+          staticString: "https://leogdion.name/wp-content/uploads/2019/06/-unsplash-701.jpeg"
         ),
         importPathURL: nil
       )

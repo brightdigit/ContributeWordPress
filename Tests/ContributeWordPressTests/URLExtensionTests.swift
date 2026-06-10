@@ -1,5 +1,6 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class URLExtensionTests: XCTestCase {
   internal func testLastPathComponentWithoutExtension() throws {
@@ -19,7 +20,8 @@ internal final class URLExtensionTests: XCTestCase {
 
     let expectedRelativePath = PublishDefaults.resourcesDirectoryName
 
-    let resourcesURL: URL = projectPathURL
+    let resourcesURL: URL =
+      projectPathURL
       .appendingPathComponent(expectedRelativePath)
 
     let baseURL: URL = projectPathURL
@@ -34,7 +36,8 @@ internal final class URLExtensionTests: XCTestCase {
 
     let expectedRelativePath = PublishDefaults.resourcesDirectoryName
 
-    let resourcesURL: URL = projectPathURL
+    let resourcesURL: URL =
+      projectPathURL
       .appendingPathComponent(expectedRelativePath)
 
     let baseURL: URL = projectPathURL

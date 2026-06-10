@@ -22,7 +22,7 @@ extension WordPressSite {
     [
       .init(termID: 4, slug: "podcasting", name: "podcasting"),
       .init(termID: 5, slug: "productivity", name: "productivity"),
-      .init(termID: 6, slug: "software", name: "software")
+      .init(termID: 6, slug: "software", name: "software"),
     ]
   }
 
@@ -35,7 +35,7 @@ extension WordPressSite {
       .productivityAppsPost(),
       .attachmentA(),
       .attachmentB(),
-      .attachmentC()
+      .attachmentC(),
     ]
   }
 }

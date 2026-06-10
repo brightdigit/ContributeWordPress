@@ -1,5 +1,6 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class SitesExportSynDecoderTests: XCTestCase {
   private let fileManager: FileManager = .default
@@ -9,7 +10,7 @@ internal final class SitesExportSynDecoderTests: XCTestCase {
   // MARK: - fileURLsFromDirectory Tests
 
   internal func testDefaultFileURLsAtDirectory() throws {
-    let expectedFileURLs: [URL] = (1 ... 2)
+    let expectedFileURLs: [URL] = (1...2)
       .compactMap { testDir.appendingPathComponent("file\($0).xml") }
 
     try createFiles(expectedFileURLs, with: "some content", atDirectory: testDir)

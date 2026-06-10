@@ -1,5 +1,6 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class DynamicRedirectFileWriterTests: XCTestCase {
   internal func testSuccessfulWriteRedirectsCall() throws {

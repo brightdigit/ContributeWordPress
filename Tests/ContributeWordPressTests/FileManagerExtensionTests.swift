@@ -1,5 +1,6 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class FileManagerExtensionTests: XCTestCase {
   internal func testSuccessfulCreateDirectory() throws {

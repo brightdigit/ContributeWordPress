@@ -23,7 +23,7 @@ internal final class FileDownloaderSpy: URLDownloader {
     case .success:
       completion(nil)
 
-    case let .failure(failure):
+    case .failure(let failure):
       completion(WordPressError.assetDownloadErrors([toURL: failure]))
     }
   }

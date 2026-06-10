@@ -1,5 +1,6 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class MarkdownProcessorRedirectWriterTests: XCTestCase {
   private let settings = SettingsStub()

@@ -1,6 +1,7 @@
-@testable import ContributeWordPress
 import SyndiKit
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class SynDecoderTests: XCTestCase {
   internal func testDecodingWordPressSite() throws {

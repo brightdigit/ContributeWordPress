@@ -1,6 +1,7 @@
 import Contribute
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class SettingsTests: XCTestCase {
   internal let projectDirURL: URL = .temporaryDirURL

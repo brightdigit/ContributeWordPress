@@ -1,5 +1,6 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 extension SettingsTests {
   internal func test_contentPathURL_shellOut() {
