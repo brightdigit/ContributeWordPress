@@ -6,8 +6,7 @@ internal final class AssetImportTests: XCTestCase {
   private let sampleResourcesPathURL: URL = .temporaryResourcesPathURL
   private let sampleAssetRoot: String = "/media/wp-assets"
 
-  private let sampleSourceURL = URL(
-    "https://leogdion.name/wp-content/uploads/2019/06/unsplash-701.jpeg"
+  private let sampleSourceURL = URL(staticString: "https://leogdion.name/wp-content/uploads/2019/06/unsplash-701.jpeg"
   )
   private var sampleFeaturedPath: String {
     sampleSourceURL.path

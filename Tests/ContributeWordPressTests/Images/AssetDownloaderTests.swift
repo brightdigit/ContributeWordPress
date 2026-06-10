@@ -53,8 +53,7 @@ internal final class AssetDownloaderTests: XCTestCase {
         forPost: try .myYearInReviewPost(),
         sourceURL: .temporaryResourcesPathURL,
         assetRoot: "/media/wp-assets",
-        resourcesPathURL: URL(
-          "https://leogdion.name/wp-content/uploads/2019/06/-unsplash-701.jpeg"
+        resourcesPathURL: URL(staticString: "https://leogdion.name/wp-content/uploads/2019/06/-unsplash-701.jpeg"
         ),
         importPathURL: nil
       )

@@ -1,7 +1,7 @@
 import Foundation
 
 extension URL {
-  internal init(_ staticString: StaticString) {
+  internal init(staticString: StaticString) {
     guard let url = URL(string: .init(describing: staticString)) else {
       fatalError("Invalid URL String")
     }
