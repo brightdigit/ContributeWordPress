@@ -16,14 +16,20 @@ jobs:
     container: swift:6.3-noble
     steps:
       - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-deps
       - uses: brightdigit/swift-build@v1
+        with:
+          skip-package-resolved: true
 
   build-macos:
     name: Build on macOS
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-deps
       - uses: brightdigit/swift-build@v1
+        with:
+          skip-package-resolved: true
 
   lint:
     name: Linting

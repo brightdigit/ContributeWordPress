@@ -1,0 +1,59 @@
+name: Setup Dependencies
+description: >-
+  Reconstructs the monorepo sibling layout for a standalone CI build. Each package on the
+  `brightdigit-com-260406` branch declares its siblings by monorepo-relative path
+  (`.package(path: "../../Publish/Publish")`), which don't exist in a standalone checkout.
+  This action recursively clones every relative-path dependency (at the same branch) into the
+  location its `Package.swift` expects, so the committed relative paths resolve unchanged.
+  Pair with `skip-package-resolved: true` on the swift-build step (this deletes Package.resolved).
+
+inputs:
+  branch:
+    description: Branch of the sibling forks to clone.
+    required: false
+    default: brightdigit-com-260406
+  org:
+    description: GitHub org hosting the forks (GitHub is case-insensitive).
+    required: false
+    default: brightdigit
+
+runs:
+  using: composite
+  steps:
+    - name: Clone sibling dependencies
+      shell: bash
+      env:
+        SETUP_DEPS_BRANCH: ${{ inputs.branch }}
+        SETUP_DEPS_ORG: ${{ inputs.org }}
+      run: |
+        set -euo pipefail
+        BRANCH="$SETUP_DEPS_BRANCH"
+        ORG="$SETUP_DEPS_ORG"
+
+        # Recursively clone each `.package(path: "../X")` sibling into its relative location,
+        # then descend into the clone for its own relative deps. Dedup by checking the target
+        # dir, which also breaks dependency cycles.
+        process() {
+          local dir="$1"
+          [ -f "$dir/Package.swift" ] || return 0
+          local rels=() rel target name
+          while IFS= read -r rel; do
+            [ -n "$rel" ] && rels+=("$rel")
+          done < <(grep -oE 'path:[[:space:]]*"\.\.[^"]*"' "$dir/Package.swift" \
+                     | sed -E 's/.*"(\.\.[^"]*)"/\1/')
+          [ "${#rels[@]}" -eq 0 ] && return 0
+          for rel in "${rels[@]}"; do
+            target="$dir/$rel"
+            name="$(basename "$rel")"
+            if [ ! -d "$target" ]; then
+              mkdir -p "$(dirname "$target")"
+              echo "setup-deps: cloning $ORG/$name @ $BRANCH -> $rel"
+              git clone -q --depth 1 --branch "$BRANCH" \
+                "https://github.com/$ORG/$name.git" "$target"
+              process "$target"
+            fi
+          done
+        }
+
+        process "$GITHUB_WORKSPACE"
+        rm -f "$GITHUB_WORKSPACE/Package.resolved"
