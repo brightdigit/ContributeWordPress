@@ -95,7 +95,7 @@ public struct AssetImport: Hashable {
       importFromURL: importPathURL?.appendingPathComponent(sourceURL.path) ?? sourceURL,
       importAtURL: destinationURL,
       featuredPath: featuredPath,
-      parentID: post.ID
+      parentID: post.id
     )
   }
 }

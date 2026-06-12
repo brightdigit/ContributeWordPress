@@ -11,6 +11,6 @@ extension URL {
 
 extension URL {
   internal static func makeRootPublishSiteURL() -> URL {
-    .temporaryDirURL.appendingPathComponent(UUID().uuidString)
+    .temporaryDir.appendingPathComponent(UUID().uuidString)
   }
 }

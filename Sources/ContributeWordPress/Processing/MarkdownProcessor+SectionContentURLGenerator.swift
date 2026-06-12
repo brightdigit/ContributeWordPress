@@ -40,12 +40,12 @@ extension MarkdownProcessor {
   /// the redirects and write them into a file.
   ///
   /// - Parameters:
-  ///   - redirectFormatter: The formatter used to make redirects.
-  ///   - postFilters: The post filters.
-  ///   - exportDecoder: The decoder used to decode posts .
-  ///   - assetDownloader: The asset downloader.
-  ///   - destinationURLGenerator: The destination URL generator.
   ///   - contentBuilder: The content builder.
+  ///   - destinationURLGenerator: The destination URL generator.
+  ///   - exportDecoder: The decoder used to decode posts.
+  ///   - postFilters: The post filters.
+  ///   - redirectFromatter: The formatter used to make redirects.
+  ///   - assetDownloader: The asset downloader.
   ///   - assetImportFactory: The asset import factory.
   public init(
     contentBuilder: ContentBuilderType = .init(

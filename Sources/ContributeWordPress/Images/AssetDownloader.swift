@@ -39,6 +39,9 @@ import SyndiKit
 public struct AssetDownloader: Downloader {
   private let urlDownloader: URLDownloader
 
+  /// Initializes a new `AssetDownloader` instance.
+  ///
+  /// - Parameter urlDownloader: The downloader used to fetch each asset URL.
   public init(
     urlDownloader: URLDownloader = FileURLDownloader()
   ) {
@@ -49,9 +52,9 @@ public struct AssetDownloader: Downloader {
   ///
   /// - Parameters:
   ///   - assets: The imported assets to be downloaded.
-  ///   - dryRun: To perform a dry run without actually downloading the assets.
   ///   - allowsOverwrites: To allow overwriting existing assets.
-  /// - Throws: An `ImportError.assetDownloads` error if there are any errors happened.
+  /// - Throws: A `WordPressError.assetDownloadErrors` error
+  ///   if any of the downloads failed.
   public func download(
     assets: [AssetImport],
     allowsOverwrites: Bool
@@ -72,6 +75,7 @@ public struct AssetDownloader: Downloader {
   ///   - assets: The imported assets to be downloaded.
   ///   - allowsOverwrites: To allow overwriting existing assets.
   ///   - completion: A completion handler called with errors mapped to asset source url.
+  /// - Throws: Any error thrown by the completion handler.
   private func downloadUsingGroupDispatch(
     assets: [AssetImport],
     allowsOverwrites: Bool,

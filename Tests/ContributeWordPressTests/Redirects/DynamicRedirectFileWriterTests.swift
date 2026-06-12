@@ -13,7 +13,7 @@ internal final class DynamicRedirectFileWriterTests: XCTestCase {
 
     try sut.writeRedirects(
       fromSites: [:],
-      inDirectory: .temporaryDirURL
+      inDirectory: .temporaryDir
     )
 
     XCTAssertTrue(formatter.formatRedirectsIsCalled)
@@ -29,7 +29,7 @@ internal final class DynamicRedirectFileWriterTests: XCTestCase {
 
     try sut.writeRedirects(
       fromSites: [:],
-      inDirectory: .temporaryDirURL
+      inDirectory: .temporaryDir
     )
 
     XCTAssertTrue(formatter.formatRedirectsIsCalled)
@@ -49,7 +49,7 @@ internal final class DynamicRedirectFileWriterTests: XCTestCase {
 
     try sut.writeRedirects(
       fromSites: ["blogs": .leogdion()],
-      inDirectory: .temporaryDirURL
+      inDirectory: .temporaryDir
     )
 
     XCTAssertTrue(formatter.formatRedirectsIsCalled)

@@ -30,11 +30,16 @@
 import SyndiKit
 
 private enum PostFilters {
-  // swiftlint:disable:next force_try
-  static let `default` = try! [
-    RegexKeyPostFilter(pattern: "post", keyPath: \.type),
-    RegexKeyPostFilter(pattern: "publish", keyPath: \.status),
-  ]
+  static let `default`: [PostFilter] = {
+    do {
+      return try [
+        RegexKeyPostFilter(pattern: "post", keyPath: \.type),
+        RegexKeyPostFilter(pattern: "publish", keyPath: \.status),
+      ]
+    } catch {
+      fatalError("Unable to build default post filters: \(error)")
+    }
+  }()
 }
 
 extension Array where Element == PostFilter {

@@ -3,7 +3,7 @@ import XCTest
 @testable import ContributeWordPress
 
 extension SettingsTests {
-  internal func test_contentPathURL_shellOut() {
+  internal func testContentPathURLShellOut() {
     let settings = Settings(
       contentPathURL: contentPathURL,
       resourcesPathURL: resourcesPathURL,
@@ -18,7 +18,7 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  internal func test_contentPathURL_markdownGenerator() {
+  internal func testContentPathURLMarkdownGenerator() {
     let settings = Settings(
       contentPathURL: contentPathURL,
       resourcesPathURL: resourcesPathURL,
@@ -32,7 +32,7 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  internal func test_rootPublishSiteURL_defaultMarkdownFromHTML() {
+  internal func testRootPublishSiteURLDefaultMarkdownFromHTML() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,
@@ -44,7 +44,7 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  internal func test_rootPublishSiteURL_shellOut() {
+  internal func testRootPublishSiteURLShellOut() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,
@@ -58,7 +58,7 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  internal func test_rootPublishSiteURL_markdownFromHTML() {
+  internal func testRootPublishSiteURLMarkdownFromHTML() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,
@@ -71,7 +71,7 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  internal func test_rootPublishSiteURL_markdownGenerator() {
+  internal func testRootPublishSiteURLMarkdownGenerator() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,

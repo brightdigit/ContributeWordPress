@@ -60,8 +60,7 @@ public struct Settings: ProcessorSettings {
   ///   - exportsDirectoryURL: The URL for the directory containing the export files.
   ///   - assetImportSetting: The method to import assets from the WordPress site.
   ///   - overwriteAssets: Whether to overwrite existing assets.
-  ///   - assetRelativePath:
-  ///   Name of directory to store assets relative to ``resourcesPathURL``
+  ///   - assetRelativePath: Directory name for assets within ``resourcesPathURL``.
   ///   - markdownFromHTML: Converts the given HTML string to Markdown string.
   public init(
     contentPathURL: URL,
@@ -85,6 +84,7 @@ public struct Settings: ProcessorSettings {
   ///
   /// - Parameter html: The HTML string to convert.
   /// - Returns: The Markdown string representation of the HTML.
+  /// - Throws: An error if the HTML could not be converted to Markdown.
   public func markdownFrom(html: String) throws -> String {
     try markdownFromHTML(html)
   }

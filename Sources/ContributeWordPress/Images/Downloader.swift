@@ -36,9 +36,8 @@ public protocol Downloader {
   ///
   /// - Parameters:
   ///   - assets: The imported assets to be downloaded.
-  ///   - dryRun: To perform a dry run without actually downloading the assets.
   ///   - allowsOverwrites: To allow overwriting existing assets.
-  /// - Throws: An error if there are any errors happened.
+  /// - Throws: An error if any of the downloads failed.
   func download(
     assets: [AssetImport],
     allowsOverwrites: Bool

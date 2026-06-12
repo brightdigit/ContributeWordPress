@@ -39,6 +39,14 @@ public struct DynamicRedirectFileWriter: RedirectFileWriter {
   private let generator: RedirectListGenerator
   private let formatter: RedirectFormatter
 
+  /// Initializes a new `DynamicRedirectFileWriter` instance.
+  ///
+  /// - Parameters:
+  ///   - postFilter: A closure that determines whether a WordPress post
+  ///     should be included in the redirects.
+  ///   - urlPathGenerate: A closure that generates the redirect URL path
+  ///     for a WordPress post.
+  ///   - redirectFromatter: The formatter used to format the redirects.
   public init(
     postFilter: @escaping (WordPressPost) -> Bool,
     urlPathGenerate: @escaping (String, WordPressPost) -> String,
@@ -51,6 +59,11 @@ public struct DynamicRedirectFileWriter: RedirectFileWriter {
     formatter = redirectFromatter
   }
 
+  /// Initializes a new `DynamicRedirectFileWriter` instance with custom post filters.
+  ///
+  /// - Parameters:
+  ///   - postFilters: An array of post filters to apply.
+  ///   - redirectFromatter: The formatter used to format the redirects.
   public init(
     postFilters: [PostFilter],
     redirectFromatter: RedirectFormatter
@@ -59,11 +72,21 @@ public struct DynamicRedirectFileWriter: RedirectFileWriter {
     formatter = redirectFromatter
   }
 
+  /// Initializes a new `DynamicRedirectFileWriter` instance
+  /// with the default redirect generator.
+  ///
+  /// - Parameter redirectFromatter: The formatter used to format the redirects.
   public init(redirectFromatter: RedirectFormatter) {
     generator = DynamicRedirectGenerator()
     formatter = redirectFromatter
   }
 
+  /// Writes the redirects generated from the given sites into a file.
+  ///
+  /// - Parameters:
+  ///   - sites: A dictionary of WordPress sites keyed by section name.
+  ///   - directoryURL: The directory URL to write the redirects file into.
+  /// - Throws: An error if the redirects file could not be written.
   public func writeRedirects(
     fromSites sites: [SectionName: WordPressSite],
     inDirectory directoryURL: URL

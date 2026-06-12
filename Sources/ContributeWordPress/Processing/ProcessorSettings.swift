@@ -63,6 +63,7 @@ public protocol ProcessorSettings {
   ///
   /// - Parameter html: The HTML string to convert.
   /// - Returns: The Markdown string representation of the HTML.
+  /// - Throws: An error if the HTML could not be converted to Markdown.
   func markdownFrom(html: String) throws -> String
 
   /// Converts the given `WordPressSite` to HTML string.

@@ -18,12 +18,17 @@ extension String {
   }(#filePath)
 
   private static let contentDictionary = { dataDirectoryURL in
-    // swiftlint:disable:next force_try
-    let pairs = try! FileManager.default.contentsOfDirectory(
-      at: dataDirectoryURL, includingPropertiesForKeys: nil
-    )
-    .map { try ($0.deletingPathExtension().lastPathComponent, String(contentsOf: $0)) }
-    return Dictionary(uniqueKeysWithValues: pairs)
+    do {
+      let pairs = try FileManager.default.contentsOfDirectory(
+        at: dataDirectoryURL, includingPropertiesForKeys: nil
+      )
+      .map {
+        try ($0.deletingPathExtension().lastPathComponent, String(contentsOf: $0))
+      }
+      return Dictionary(uniqueKeysWithValues: pairs)
+    } catch {
+      fatalError("Unable to load test data from \(dataDirectoryURL.path): \(error)")
+    }
   }(dataDirectoryURL)
 
   internal static let myYearInReviewContent: String = content("MyYearInReviewContent")
@@ -39,7 +44,9 @@ extension String {
   internal static let wpExport: String = content("WPExport")
 
   private static func content(_ name: String) -> String {
-    // swiftlint:disable:next force_unwrapping
-    contentDictionary[name]!
+    guard let content = contentDictionary[name] else {
+      preconditionFailure("Missing test data content named \(name).")
+    }
+    return content
   }
 }

@@ -9,7 +9,7 @@ extension WordPressSite {
       link: URL(staticString: "https://leogdion.name"),
       description: "Personal Blog",
       categories: [
-        .init(termID: 1, niceName: "uncategorized", parent: "", name: "Uncategorized")
+        .init(termID: 1, nicename: "uncategorized", parent: "", name: "Uncategorized")
       ],
       tags: leogdionTags(),
       baseSiteURL: URL(staticString: "https://leogdion.name"),

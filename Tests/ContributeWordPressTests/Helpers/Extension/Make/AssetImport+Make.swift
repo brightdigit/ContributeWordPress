@@ -11,7 +11,7 @@ extension AssetImport {
       forPost: post,
       sourceURL: sourceURL,
       assetRoot: PublishDefaults.wpAssetsRelativePath,
-      resourcesPathURL: .temporaryDirURL.appendingPathComponent(
+      resourcesPathURL: .temporaryDir.appendingPathComponent(
         PublishDefaults.resourcesDirectoryName
       ),
       importPathURL: nil

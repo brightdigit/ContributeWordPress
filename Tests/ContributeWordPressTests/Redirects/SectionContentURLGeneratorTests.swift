@@ -11,7 +11,7 @@ internal final class SectionContentURLGeneratorTests: XCTestCase {
       post: try .myYearInReviewPost()
     )
 
-    let contentPathURL: URL = .temporaryDirURL.appendingPathComponent("content")
+    let contentPathURL: URL = .temporaryDir.appendingPathComponent("content")
 
     let expectedDestinationURL = generateDestinationURL(
       from: source,

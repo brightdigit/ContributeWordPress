@@ -38,8 +38,7 @@ extension WordPressSite {
 
   /// Initializes a `WordPressSite` instance from an ``SyndiKit/RSSChannel``.
   ///
-  /// - Parameters:
-  ///   - channel: The `RSSChannel` instance.
+  /// - Parameter channel: The `RSSChannel` instance.
   /// - Throws: An error if initialization fails.
   public init(channel: RSSChannel) throws {
     try self.init(

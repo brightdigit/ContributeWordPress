@@ -56,12 +56,12 @@ where
   /// Initializes a new `MarkdownProcessor` instance.
   ///
   /// - Parameters:
+  ///   - contentBuilder: The Markdown content builder.
+  ///   - destinationURLGenerator: The content URL generator.
   ///   - exportDecoder: The export decoder.
+  ///   - postFilters: The post filters.
   ///   - redirectWriter: Optional redirect file writer.
   ///   - assetDownloader: The asset downloader.
-  ///   - destinationURLGenerator: The content URL generator.
-  ///   - contentBuilder: The Markdown content builder.
-  ///   - postFilters: The post filters.
   ///   - assetImportFactory: The asset import factory.
   public init(
     contentBuilder: ContentBuilderType,
@@ -106,22 +106,22 @@ where
   ) throws {
     try FileManager.createDirectory(withName: sectionName, in: contentDirectoryURL)
     let htmlFromPost = transformerFromSite?(site)
-    try site.posts
+    let posts = site.posts
       .filter(postFilters.postSatisfiesAll)
-      .map { post in (post, assets.first { $0.parentID == post.ID }) }
-      .forEach { post, featuredImage in
-        _ = try self.contentBuilder.write(
-          from: .init(
-            sectionName: sectionName,
-            post: post,
-            featuredImage: featuredImage.map(\.featuredPath),
-            htmlFromPost: htmlFromPost
-          ),
-          atContentPathURL: contentDirectoryURL,
-          basedOn: self.destinationURLGenerator,
-          using: transformFromHTML
-        )
-      }
+      .map { post in (post, assets.first { $0.parentID == post.id }) }
+    for (post, featuredImage) in posts {
+      _ = try self.contentBuilder.write(
+        from: .init(
+          sectionName: sectionName,
+          post: post,
+          featuredImage: featuredImage.map(\.featuredPath),
+          htmlFromPost: htmlFromPost
+        ),
+        atContentPathURL: contentDirectoryURL,
+        basedOn: self.destinationURLGenerator,
+        using: transformFromHTML
+      )
+    }
   }
 
   private func writeAllPosts(
@@ -131,7 +131,7 @@ where
     using htmlToMarkdown: @escaping (String) throws -> String,
     htmlFromSitePost: ((WordPressSite) -> ((WordPressPost) -> String))? = nil
   ) throws {
-    try sites.forEach { sectionName, site in
+    for (sectionName, site) in sites {
       try writeSite(
         site,
         sectionName: sectionName,

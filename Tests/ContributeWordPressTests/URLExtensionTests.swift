@@ -16,7 +16,7 @@ internal final class URLExtensionTests: XCTestCase {
   }
 
   internal func testRelativePathFromBaseFileURL() throws {
-    let projectPathURL: URL = .temporaryDirURL
+    let projectPathURL: URL = .temporaryDir
 
     let expectedRelativePath = PublishDefaults.resourcesDirectoryName
 

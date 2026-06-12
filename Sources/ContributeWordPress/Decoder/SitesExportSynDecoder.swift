@@ -47,6 +47,11 @@ public struct SitesExportSynDecoder: SitesExportDecoder {
   /// This will be the section id for all posts found in the export file at given URL.
   private let keyFromURL: (URL) -> String
 
+  /// Initializes a new `SitesExportSynDecoder` instance.
+  ///
+  /// - Parameters:
+  ///   - fileURLsFromDirectory: Returns the URLs of the files in a directory.
+  ///   - keyFromURL: Returns the section id for the export file at a URL.
   public init(
     fileURLsFromDirectory: @escaping (URL) throws -> [URL] =
       Self.defaultFileURLs(atDirectory:),

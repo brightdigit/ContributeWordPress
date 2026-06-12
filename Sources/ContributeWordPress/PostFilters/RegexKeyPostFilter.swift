@@ -61,7 +61,7 @@ public struct RegexKeyPostFilter: PostFilter {
   /// Initializes a new `RegexKeyPostFilter` instance.
   ///
   /// - Parameters:
-  ///   - pattern: The regular expression object.
+  ///   - regex: The regular expression object.
   ///   - keyPath: The keyPath on the WordPress post object to filter by.
   ///   - not: Whether the match should be excluded or included.
   internal init(
@@ -76,8 +76,7 @@ public struct RegexKeyPostFilter: PostFilter {
 
   /// Returns `true` if the post matches the regular expression, and `false` otherwise.
   ///
-  /// - Parameters:
-  ///   - post: The WordPressPost object being evaluated.
+  /// - Parameter post: The WordPressPost object being evaluated.
   /// - Returns: A boolean value indicating whether the keyPath on the WordPress
   ///            post matches the regular expression or not.
   public func include(_ post: WordPressPost) -> Bool {

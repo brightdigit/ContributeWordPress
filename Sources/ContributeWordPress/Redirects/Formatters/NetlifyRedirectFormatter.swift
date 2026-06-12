@@ -35,6 +35,7 @@ import Foundation
 
 /// A type that formats redirects in the way Netlify can understand it.
 public struct NetlifyRedirectFormatter: RedirectFormatter {
+  /// Initializes a new `NetlifyRedirectFormatter` instance.
   public init() {}
 
   /// Formats the given redirect items into a string representation.

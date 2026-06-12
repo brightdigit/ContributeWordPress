@@ -49,11 +49,12 @@ where
   /// - Parameters:
   ///   - exportsDirectoryURL: The URL for the directory containing the export files.
   ///   - rootPublishSiteURL: Root Directory of the Publish site.
-  ///   - markdownGenerator: Converts the given HTML string to Markdown string.
   ///   - postFilters: The post filters.
   ///   - redirectFromatter: Formats the given redirects of old URLs.
   ///   - assetImportSetting: The method to import assets from the WordPress site.
   ///   - overwriteAssets: Whether to overwrite existing assets.
+  ///   - markdownGenerator: Converts the given HTML string to Markdown string.
+  /// - Throws: An error if the WordPress posts could not be imported.
   public static func beginImport(
     from exportsDirectoryURL: URL,
     to rootPublishSiteURL: URL,
@@ -88,6 +89,7 @@ where
   ///   - overwriteAssets: Whether to overwrite existing assets.
   ///   - shellOut: Runs a `pandoc` command
   ///   for converting HTML to Markdown using `ShellOut`
+  /// - Throws: An error if the WordPress posts could not be imported.
   public static func beginImport(
     from exportsDirectoryURL: URL,
     to rootPublishSiteURL: URL,

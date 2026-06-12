@@ -36,6 +36,7 @@ import Foundation
 
 /// A type that generates a destination URL for a WordPress post.
 public struct SectionContentURLGenerator: ContentURLGenerator {
+  /// The WordPress source type the URLs are generated from.
   public typealias SourceType = Source
 
   /// Initializes a new `SectionContentURLGenerator` instance.

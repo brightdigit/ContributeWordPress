@@ -70,9 +70,9 @@ public struct DynamicRedirectGenerator: RedirectListGenerator {
     self.init(postFilter: postFilters.postSatisfiesAll)
   }
 
-  /// Generates redirects for each post of the given WordPress site.
+  /// Generates redirects for each post of the given WordPress sites.
   ///
-  /// - Parameter allPosts: A dictionary of WordPress posts keyed by section name.
+  /// - Parameter sites: A dictionary of WordPress sites keyed by section name.
   /// - Returns: An array of `RedirectItem` representing the redirects.
   public func redirects(
     fromSites sites: [SectionName: WordPressSite]

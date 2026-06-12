@@ -31,6 +31,7 @@ import Foundation
 import SyndiKit
 
 extension RSSChannel: BaseURLSite {
+  /// The blog URL of the WordPress channel.
   public var baseBlogURL: URL? {
     wpBaseBlogURL
   }

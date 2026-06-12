@@ -7,7 +7,7 @@ internal final class FileManagerExtensionTests: XCTestCase {
     XCTAssertNoThrow(
       try FileManager.createDirectory(
         withName: "test",
-        in: .temporaryDirURL
+        in: .temporaryDir
       )
     )
   }

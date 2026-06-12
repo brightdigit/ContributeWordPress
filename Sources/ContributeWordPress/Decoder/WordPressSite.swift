@@ -32,6 +32,7 @@ import SyndiKit
 
 /// A struct that represents a WordPress site.
 public struct WordPressSite: BaseURLSite {
+  /// The relative path of the WordPress content uploads directory.
   public static let contentUploadsRelativePath = "wp-content/uploads"
 
   /// The name of the channel.
@@ -68,13 +69,13 @@ public struct WordPressSite: BaseURLSite {
   /// - Parameters:
   ///   - title: The name of the channel.
   ///   - link: The URL to the HTML website corresponding to the channel.
+  ///   - posts: The posts associated with the site.
   ///   - description: Phrase or sentence describing the channel.
   ///   - pubDate: The publication date and time of the feed's content.
   ///   - categories: The categories associated with the site.
   ///   - tags: The tags associated with the site.
   ///   - baseSiteURL: The base site URL.
   ///   - baseBlogURL: The base blog URL.
-  ///   - posts: The posts associated with the site.
   ///   - assetURLRegex: The regular expression for matching asset urls.
   public init(
     title: String,
@@ -97,7 +98,14 @@ public struct WordPressSite: BaseURLSite {
     self.baseSiteURL = baseSiteURL
     self.baseBlogURL = baseBlogURL
     self.posts = posts
-    // swiftlint:disable:next force_try
-    self.assetURLRegex = try! assetURLRegex ?? Self.defaultAssetURLRegex(forAssetSiteURL: link)
+    if let assetURLRegex = assetURLRegex {
+      self.assetURLRegex = assetURLRegex
+    } else {
+      do {
+        self.assetURLRegex = try Self.defaultAssetURLRegex(forAssetSiteURL: link)
+      } catch {
+        fatalError("Unable to create asset URL regex for \(link): \(error)")
+      }
+    }
   }
 }

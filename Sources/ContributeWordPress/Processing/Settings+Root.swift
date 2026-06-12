@@ -37,8 +37,7 @@ extension Settings {
   ///   - exportsDirectoryURL: The URL for the directory containing the export files.
   ///   - assetImportSetting: The method to import assets from the WordPress site.
   ///   - overwriteAssets: Whether to overwrite existing assets.
-  ///   - assetRelativePath:
-  ///   Name of directory to store assets relative to ``resourcesPathURL``
+  ///   - assetRelativePath: Directory name for assets within ``resourcesPathURL``.
   ///   - markdownGenerator: Converts the given HTML string to Markdown string.
   public init(
     rootPublishSiteURL: URL,
@@ -67,8 +66,7 @@ extension Settings {
   ///   - exportsDirectoryURL: The URL for the directory containing the export files.
   ///   - assetImportSetting: The method to import assets from the WordPress site.
   ///   - overwriteAssets: Whether to overwrite existing assets.
-  ///   - assetRelativePath:
-  ///   Name of directory to store assets relative to ``resourcesPathURL``
+  ///   - assetRelativePath: Directory name for assets within ``resourcesPathURL``.
   ///   - markdownFromHTML: Converts the given HTML string to Markdown string.
   public init(
     rootPublishSiteURL: URL,
@@ -97,8 +95,7 @@ extension Settings {
   ///   - exportsDirectoryURL: The URL for the directory containing the export files.
   ///   - assetImportSetting: The method to import assets from the WordPress site.
   ///   - overwriteAssets: Whether to overwrite existing assets.
-  ///   - assetRelativePath:
-  ///   Name of directory to store assets relative to ``resourcesPathURL``
+  ///   - assetRelativePath: Directory name for assets within ``resourcesPathURL``.
   ///   - temporaryFile: Creates a temporary file and returns the URL
   ///   - shellOut: Runs a `pandoc` command
   ///   for converting HTML to Markdown using `ShellOut`
@@ -132,8 +129,7 @@ extension Settings {
   ///   - exportsDirectoryURL: The URL for the directory containing the export files.
   ///   - assetImportSetting: The method to import assets from the WordPress site.
   ///   - overwriteAssets: Whether to overwrite existing assets.
-  ///   - assetRelativePath:
-  ///   Name of directory to store assets relative to ``resourcesPathURL``
+  ///   - assetRelativePath: Directory name for assets within ``resourcesPathURL``.
   public init(
     rootPublishSiteURL: URL,
     exportsDirectoryURL: URL,

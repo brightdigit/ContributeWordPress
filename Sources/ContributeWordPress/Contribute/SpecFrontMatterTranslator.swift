@@ -36,7 +36,10 @@ import Foundation
 
 /// A type that converts front matter from a WordPress source to a `Specs` object.
 public struct SpecFrontMatterTranslator: FrontMatterTranslator {
+  /// The WordPress source type the front matter is translated from.
   public typealias SourceType = Source
+
+  /// The front matter type the source is translated to.
   public typealias FrontMatterType = Specs
 
   /// Initialize a new instance of `SpecFrontMatterTranslator`.

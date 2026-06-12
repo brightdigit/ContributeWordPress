@@ -56,9 +56,12 @@ if CommandLine.arguments.count > 2 {
   importAssetsSetting = .download
 }
 
-// swiftlint:disable:next force_try
-try! MarkdownProcessor.beginImport(
-  from: fromURL,
-  to: toURL,
-  importAssetsBy: importAssetsSetting
-)
+do {
+  try MarkdownProcessor.beginImport(
+    from: fromURL,
+    to: toURL,
+    importAssetsBy: importAssetsSetting
+  )
+} catch {
+  fatalError("WordPress import failed: \(error)")
+}

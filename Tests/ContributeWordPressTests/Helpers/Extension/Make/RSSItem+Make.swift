@@ -53,7 +53,7 @@ extension RSSItem {
       wpModifiedDateGMT: nil,
       wpPostName: postName,
       wpPostType: type,
-      wpPostMeta: nil,
+      wpPostMeta: [],
       wpAttachmentURL: attachmentURL,
       mediaContent: nil,
       mediaThumbnail: nil
