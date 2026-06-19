@@ -3,21 +3,6 @@ import XCTest
 @testable import ContributeWordPress
 
 extension SettingsTests {
-  internal func testContentPathURLShellOut() {
-    let settings = Settings(
-      contentPathURL: contentPathURL,
-      resourcesPathURL: resourcesPathURL,
-      exportsDirectoryURL: exportsDirectoryURL,
-      assetImportSetting: assetImportSetting,
-      overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath
-    ) { _, _ in
-      self.htmlSample
-    }
-
-    assertSettings(settings)
-  }
-
   internal func testContentPathURLMarkdownGenerator() {
     let settings = Settings(
       contentPathURL: contentPathURL,
@@ -40,20 +25,6 @@ extension SettingsTests {
       overwriteAssets: overwriteAssets,
       assetRelativePath: assetRelativePath
     )
-
-    assertSettings(settings)
-  }
-
-  internal func testRootPublishSiteURLShellOut() {
-    let settings = Settings(
-      rootPublishSiteURL: projectDirURL,
-      exportsDirectoryURL: exportsDirectoryURL,
-      assetImportSetting: assetImportSetting,
-      overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath
-    ) { _, _ in
-      self.htmlSample
-    }
 
     assertSettings(settings)
   }

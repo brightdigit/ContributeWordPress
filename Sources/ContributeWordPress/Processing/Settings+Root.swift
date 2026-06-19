@@ -96,40 +96,6 @@ extension Settings {
   ///   - assetImportSetting: The method to import assets from the WordPress site.
   ///   - overwriteAssets: Whether to overwrite existing assets.
   ///   - assetRelativePath: Directory name for assets within ``resourcesPathURL``.
-  ///   - temporaryFile: Creates a temporary file and returns the URL
-  ///   - shellOut: Runs a `pandoc` command
-  ///   for converting HTML to Markdown using `ShellOut`
-  public init(
-    rootPublishSiteURL: URL,
-    exportsDirectoryURL: URL,
-    assetImportSetting: AssetImportSetting = .download,
-    overwriteAssets: Bool = false,
-    assetRelativePath: String = PublishDefaults.wpAssetsRelativePath,
-    temporaryFile: @escaping @Sendable (String) throws -> URL =
-      { try PandocMarkdownGenerator.Temporary.file(fromContent: $0) },
-    shellOut: @escaping @Sendable (String, [String]) throws -> String
-  ) {
-    self.init(
-      contentPathURL:
-        rootPublishSiteURL.appendingPathComponent(PublishDefaults.contentDirectoryName),
-      resourcesPathURL:
-        rootPublishSiteURL.appendingPathComponent(PublishDefaults.resourcesDirectoryName),
-      exportsDirectoryURL: exportsDirectoryURL,
-      assetImportSetting: assetImportSetting,
-      overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath,
-      temporaryFile: temporaryFile,
-      shellOut: shellOut
-    )
-  }
-
-  /// Defines the settings for the ``MarkdownProcessor``
-  /// - Parameters:
-  ///   - rootPublishSiteURL: Root of the `Publish` site.
-  ///   - exportsDirectoryURL: The URL for the directory containing the export files.
-  ///   - assetImportSetting: The method to import assets from the WordPress site.
-  ///   - overwriteAssets: Whether to overwrite existing assets.
-  ///   - assetRelativePath: Directory name for assets within ``resourcesPathURL``.
   public init(
     rootPublishSiteURL: URL,
     exportsDirectoryURL: URL,

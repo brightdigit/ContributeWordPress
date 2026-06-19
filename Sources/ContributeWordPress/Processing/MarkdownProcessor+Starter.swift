@@ -78,35 +78,4 @@ where
     )
     try processor.begin(withSettings: settings)
   }
-
-  /// Begins the processing of the WordPress posts.
-  /// - Parameters:
-  ///   - exportsDirectoryURL: The URL for the directory containing the export files.
-  ///   - rootPublishSiteURL: Root Directory of the Publish site.
-  ///   - postFilters: The post filters.
-  ///   - redirectFromatter: Formats the given redirects of old URLs.
-  ///   - assetImportSetting: The method to import assets from the WordPress site.
-  ///   - overwriteAssets: Whether to overwrite existing assets.
-  ///   - shellOut: Runs a `pandoc` command
-  ///   for converting HTML to Markdown using `ShellOut`
-  /// - Throws: An error if the WordPress posts could not be imported.
-  public static func beginImport(
-    from exportsDirectoryURL: URL,
-    to rootPublishSiteURL: URL,
-    filteringPostsWith postFilters: [PostFilter] = .default,
-    redirectsFormattedUsing redirectFromatter: RedirectFormatter? = nil,
-    importAssetsBy assetImportSetting: AssetImportSetting = .download,
-    overwriteAssets: Bool = false,
-    shellOut: @escaping @Sendable (String, [String]) throws -> String
-  ) throws {
-    try beginImport(
-      from: exportsDirectoryURL,
-      to: rootPublishSiteURL,
-      filteringPostsWith: postFilters,
-      redirectsFormattedUsing: redirectFromatter,
-      importAssetsBy: assetImportSetting,
-      overwriteAssets: overwriteAssets,
-      usingGenerator: PandocMarkdownGenerator(shellOut: shellOut)
-    )
-  }
 }

@@ -238,39 +238,17 @@ public protocol MarkdownGenerator {
 
 By default, we use the `PassthroughMarkdownGenerator` which does nothing. However you can implement your own or use `HTMLtoMarkdown` to pass in a closure.
 
-### Using ShellOut and Pandoc for Markdown
+### Converting HTML to Markdown
 
-If you wish to convert the HTML from your WordPress posts to Markdown, the recommended solution is to use the `PanddocMarkdownGenerator` included with the **Contribute** library. The `PanddocMarkdownGenerator` requires the **ShellOut** library to run an installation of **Pandoc**.
+If you wish to convert the HTML from your WordPress posts to Markdown, use the `SwiftSoupMarkdownGenerator` included with the **Contribute** library. It converts HTML to Markdown entirely in-process using SwiftSoup and swift-markdown, so it needs no external tools (no `pandoc` install, no shelling out) and works on Linux and CI.
 
-The recommended way to install **Pandoc** on your machine is via homebrew:
-
-```bash
-> brew install pandoc
-```
-
-Once **Pandoc** is installed, you can run the command as part of your import using **ShellOut**.
-
-Here is a simple code snippet for using plugging in **ShellOut**:
-
-```swift
-extension PandocMarkdownGenerator {
-  public static func defaultShellOut(to command: String, arguments: [String]) throws -> String {
-    try ShellOut.shellOut(to: command, arguments: arguments)
-  }
-  
-  public init (temporaryFile: @escaping (String) throws -> URL = Temporary.file(fromContent:)) {
-    self.init(shellOut: Self.defaultShellOut(to:arguments:), temporaryFile: temporaryFile)
-  }
-}
-```
-
-From here we can now simply use the `PandocMarkdownGenerator` to convert our WordPress HTML to markdown:
+Simply pass it as the generator for your import:
 
 ```swift
 try! MarkdownProcessor.beginImport(
   from: fromURL,
   to: toURL,
-  usingGenerator: PandocMarkdownGenerator(),
+  usingGenerator: SwiftSoupMarkdownGenerator(),
   importAssetsBy: importAssetsSetting
 )
 ```
