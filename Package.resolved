@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "swiftsoup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brightdigit/SwiftSoup.git",
+      "state" : {
+        "branch" : "fix/swift-6.4-inline-crash",
+        "revision" : "5d5d9ec29b5ba0b046944f9ad3ff668bb4996e08"
+      }
+    },
+    {
       "identity" : "xmlcoder",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/CoreOffice/XMLCoder",
