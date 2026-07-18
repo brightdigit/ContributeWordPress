@@ -19,8 +19,8 @@ let package = Package(
     )
   ],
   dependencies: [
-    .package(path: "../../BrightDigit/Contribute"),
-    .package(path: "../../BrightDigit/SyndiKit")
+    .package(name: "Contribute", path: "../../BrightDigit/Contribute"),
+    .package(name: "SyndiKit", path: "../../BrightDigit/SyndiKit")
   ],
   targets: [
     .target(
