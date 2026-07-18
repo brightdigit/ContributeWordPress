@@ -30,7 +30,10 @@
 import SyndiKit
 
 private enum PostFilters {
-  static let `default`: [PostFilter] = {
+  // Build a fresh immutable filter list for each request. Keeping existential
+  // filters in shared static storage would require every custom `PostFilter`
+  // implementation to be `Sendable`, even though filtering is synchronous.
+  static var `default`: [PostFilter] {
     do {
       return try [
         RegexKeyPostFilter(pattern: "post", keyPath: \.type),
@@ -39,7 +42,7 @@ private enum PostFilters {
     } catch {
       fatalError("Unable to build default post filters: \(error)")
     }
-  }()
+  }
 }
 
 extension Array where Element == PostFilter {
