@@ -24,8 +24,14 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(name: "Contribute", path: "../../BrightDigit/Contribute"),
-    .package(name: "SyndiKit", path: "../../BrightDigit/SyndiKit"),
+    .package(
+      url: "https://github.com/brightdigit/Contribute.git",
+      branch: "brightdigit-com-260621"
+    ),
+    .package(
+      url: "https://github.com/brightdigit/SyndiKit.git",
+      branch: "brightdigit-com-260621"
+    ),
   ],
   targets: [
     .target(

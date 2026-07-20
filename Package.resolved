@@ -1,5 +1,15 @@
 {
+  "originHash" : "162a0232ca6d0f8bd7d97e39f84a31208616d7907d317f623e40ac5a4b6d9107",
   "pins" : [
+    {
+      "identity" : "contribute",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brightdigit/Contribute.git",
+      "state" : {
+        "branch" : "brightdigit-com-260621",
+        "revision" : "b674f44579bfcc55c389676ec6bd5af584d3dcbb"
+      }
+    },
     {
       "identity" : "swift-cmark",
       "kind" : "remoteSourceControl",
@@ -28,6 +38,15 @@
       }
     },
     {
+      "identity" : "syndikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brightdigit/SyndiKit.git",
+      "state" : {
+        "branch" : "brightdigit-com-260621",
+        "revision" : "5496b47244628daafc747f6151d44ed9e9accfdb"
+      }
+    },
+    {
       "identity" : "xmlcoder",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/CoreOffice/XMLCoder",
@@ -46,5 +65,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
