@@ -86,7 +86,10 @@ if [ -z "$CI" ]; then
 fi
 
 if [ -z "$CI" ]; then
-	run_command $TOOL_CMD periphery scan $PERIPHERY_OPTIONS --disable-update-check
+	# Swift 6.4's default 'swiftbuild' build system writes the index store to
+	# .build/index-build/...; periphery 3.7.4 looks for it under .build/debug/index/store.
+	# Force the native build system so periphery finds the index store.
+	run_command $TOOL_CMD periphery scan $PERIPHERY_OPTIONS --disable-update-check -- --build-system native
 fi
 
 popd
