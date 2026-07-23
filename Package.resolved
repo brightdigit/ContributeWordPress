@@ -1,13 +1,13 @@
 {
-  "originHash" : "162a0232ca6d0f8bd7d97e39f84a31208616d7907d317f623e40ac5a4b6d9107",
+  "originHash" : "5e98ad96707fff0cab6abcc189355972c2b2d0fe8e8d20f8d6592eeefedbe801",
   "pins" : [
     {
       "identity" : "contribute",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brightdigit/Contribute.git",
       "state" : {
-        "branch" : "brightdigit-com-260621",
-        "revision" : "b674f44579bfcc55c389676ec6bd5af584d3dcbb"
+        "branch" : "main",
+        "revision" : "5dc9049fb106ca684ba432935ed24f32dfc83065"
       }
     },
     {
@@ -25,7 +25,7 @@
       "location" : "https://github.com/swiftlang/swift-markdown.git",
       "state" : {
         "branch" : "main",
-        "revision" : "4661b550c55abde97d14e35b89e094084669f40a"
+        "revision" : "27b7fc1a19068bcea3d2072db0ce86360d1400ed"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brightdigit/SyndiKit.git",
       "state" : {
-        "branch" : "brightdigit-com-260621",
-        "revision" : "5496b47244628daafc747f6151d44ed9e9accfdb"
+        "branch" : "main",
+        "revision" : "ddec490dfc8be4cad7a2b805f454899e87643389"
       }
     },
     {

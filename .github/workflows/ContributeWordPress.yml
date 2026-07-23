@@ -45,7 +45,6 @@ jobs:
       - uses: brightdigit/swift-build@v1
         id: build
         with:
-          skip-package-resolved: true
           type: ${{ matrix.type }}
           # wasm / wasm-embedded are build-only: WasmKit doesn't mount the Foundation
           # resource bundles the tests load, and embedded hits OpenAPIRuntime keypath
@@ -130,7 +129,6 @@ jobs:
       - uses: brightdigit/swift-build@v1
         id: build
         with:
-          skip-package-resolved: true
           xcode: "/Applications/Xcode_27.0.app"
       - name: Process coverage
         if: steps.build.outputs.contains-code-coverage == 'true'
@@ -166,7 +164,6 @@ jobs:
       - uses: brightdigit/swift-build@v1
         id: build
         with:
-          skip-package-resolved: true
           windows-swift-version: ${{ matrix.swift.version }}
           windows-swift-build: ${{ matrix.swift.build }}
 
@@ -197,7 +194,6 @@ jobs:
         if: ${{ !(matrix.type == 'watchos' && vars.ENABLE_WATCHOS == 'false') }}
         uses: brightdigit/swift-build@v1
         with:
-          skip-package-resolved: true
           type: ${{ matrix.type }}
           xcode: "/Applications/Xcode_27.0.app"
           deviceName: ${{ matrix.deviceName }}
@@ -243,7 +239,6 @@ jobs:
           swap-storage: true
       - uses: brightdigit/swift-build@v1
         with:
-          skip-package-resolved: true
           type: android
           android-swift-version: 6.4.x-DEVELOPMENT-SNAPSHOT-2026-06-15-a
           android-sdk-url: https://download.swift.org/swift-6.4.x-branch/android-sdk/swift-6.4.x-DEVELOPMENT-SNAPSHOT-2026-06-15-a/swift-6.4.x-DEVELOPMENT-SNAPSHOT-2026-06-15-a_android.artifactbundle.tar.gz
