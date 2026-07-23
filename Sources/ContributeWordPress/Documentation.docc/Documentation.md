@@ -6,28 +6,43 @@
 
 ![Logo](ContributeWordPressLogo-DocC.png)
 
-### Requirements 
+Migrating off WordPress means moving two things: the posts and the media that goes with them.
+WordPress hands you the first as a **WXR export** — one or more XML files full of HTML post
+bodies — and leaves the second in `wp-content/uploads` on a server you are about to turn off.
 
-**Apple Platforms**
+**ContributeWordPress** turns that pair into a ready-to-build **Publish** site: Markdown files
+with YAML front matter in your `Content/` directory, images copied or downloaded into your
+`Resources/` directory with their URLs rewritten to match, and — optionally — a redirect file so
+old permalinks keep working.
 
-- Xcode 14.3.1 or later
-- Swift 5.8 or later
-- macOS 12 or later deployment targets
+It builds on the **Contribute** pipeline and decodes the export with **SyndiKit**. Multi-site
+exports are supported: point it at a directory of XML files and each site maps to its own
+section. The package ships both a library and a small `wpublish` executable.
 
-**Linux**
+### Requirements
 
-- Ubuntu 18.04 or later
-- Swift 5.8 or later
+- Swift 6.4 or later
+- macOS 15+, iOS 16+, tvOS 16+, watchOS 9+
+- Linux (Ubuntu 24.04 "Noble"), Windows, and Android are covered by CI
 
 ### Installation
 
-Use the Swift Package Manager to install this library via the repository url:
+Add **ContributeWordPress** to your `Package.swift`:
 
-```
-https://github.com/brightdigit/ContributeWordPress.git
+```swift
+dependencies: [
+  .package(url: "https://github.com/brightdigit/ContributeWordPress.git", from: "1.0.0-alpha.1")
+]
 ```
 
-Use version up to `1.0.0`.
+Then add it to a target:
+
+```swift
+.target(
+  name: "MySiteImporter",
+  dependencies: [.product(name: "ContributeWordPress", package: "ContributeWordPress")]
+)
+```
 
 ### How It Works
 
