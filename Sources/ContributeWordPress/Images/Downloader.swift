@@ -31,7 +31,7 @@ import Foundation
 import SyndiKit
 
 /// A protocol for downloading asset imports.
-public protocol Downloader {
+public protocol Downloader: Sendable {
   /// Downloads asset imports.
   ///
   /// - Parameters:
@@ -41,5 +41,5 @@ public protocol Downloader {
   func download(
     assets: [AssetImport],
     allowsOverwrites: Bool
-  ) throws
+  ) async throws
 }

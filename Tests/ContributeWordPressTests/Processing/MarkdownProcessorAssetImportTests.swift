@@ -5,7 +5,7 @@ import XCTest
 internal final class MarkdownProcessorAssetImportTests: XCTestCase {
   private let settings = SettingsStub()
 
-  internal func testStep() throws {
+  internal func testStep() async throws {
     let assetImportFactory = AssetImportFactorySpy()
 
     let sut = MarkdownProcessor(
@@ -18,8 +18,9 @@ internal final class MarkdownProcessorAssetImportTests: XCTestCase {
       assetImportFactory: assetImportFactory.extractAssetImports(from:using:)
     )
 
-    try sut.begin(withSettings: settings)
+    try await sut.begin(withSettings: settings)
 
-    XCTAssertTrue(assetImportFactory.isCalled)
+    let isCalled = await assetImportFactory.isCalled
+    XCTAssertTrue(isCalled)
   }
 }

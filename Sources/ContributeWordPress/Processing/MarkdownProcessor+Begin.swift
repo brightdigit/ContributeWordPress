@@ -44,7 +44,7 @@ extension MarkdownProcessor {
   /// - Throws: An error if the processing failed at any step.
   public func begin(
     withSettings settings: ProcessorSettings
-  ) throws {
+  ) async throws {
     // 1. Decodes WordPress site from exports directory.
     let allSites = try exportDecoder.sites(fromExportsAt: settings.exportsDirectoryURL)
 
@@ -60,7 +60,7 @@ extension MarkdownProcessor {
     }
 
     if settings.assetImportSetting != .none {
-      try assetDownloader.download(
+      try await assetDownloader.download(
         assets: assetImports,
         allowsOverwrites: settings.overwriteAssets
       )

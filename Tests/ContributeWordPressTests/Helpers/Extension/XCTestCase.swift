@@ -22,4 +22,22 @@ extension XCTestCase {
 
     wait(for: [expectation], timeout: 0.100)
   }
+
+  /// Asserts that an asynchronous block throws `expectedError`.
+  ///
+  /// `XCTAssertThrowsError` cannot await, so this awaits the block directly and
+  /// compares the caught error.
+  internal func assertThrowableBlock<T: EquatableError>(
+    expectedError: T,
+    _ throwableBlock: () async throws -> Any
+  ) async {
+    do {
+      _ = try await throwableBlock()
+      XCTFail("Expected error of type \(expectedError)")
+    } catch let actualError as T {
+      XCTAssertEqual(actualError, expectedError)
+    } catch {
+      XCTFail("Expected error of type \(expectedError), got \(error)")
+    }
+  }
 }

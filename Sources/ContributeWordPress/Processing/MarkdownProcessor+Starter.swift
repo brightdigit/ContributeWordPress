@@ -64,7 +64,7 @@ where
     overwriteAssets: Bool = false,
     usingGenerator markdownGenerator: MarkdownGenerator =
       PassthroughMarkdownGenerator.shared
-  ) throws {
+  ) async throws {
     let settings = Settings(
       rootPublishSiteURL: rootPublishSiteURL,
       exportsDirectoryURL: exportsDirectoryURL,
@@ -76,6 +76,6 @@ where
       postFilters: postFilters,
       redirectFromatter: redirectFromatter
     )
-    try processor.begin(withSettings: settings)
+    try await processor.begin(withSettings: settings)
   }
 }

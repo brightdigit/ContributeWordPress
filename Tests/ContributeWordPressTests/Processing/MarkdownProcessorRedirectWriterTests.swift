@@ -5,7 +5,7 @@ import XCTest
 internal final class MarkdownProcessorRedirectWriterTests: XCTestCase {
   private let settings = SettingsStub()
 
-  internal func testSuccessfulStep() throws {
+  internal func testSuccessfulStep() async throws {
     let redirectWriter = RedirectFileWriterSpy(.success(()))
 
     let sut = MarkdownProcessor(
@@ -17,12 +17,13 @@ internal final class MarkdownProcessorRedirectWriterTests: XCTestCase {
       assetDownloader: AssetDownloaderStub()
     )
 
-    try sut.begin(withSettings: settings)
+    try await sut.begin(withSettings: settings)
 
-    XCTAssertTrue(redirectWriter.isCalled)
+    let isCalled = await redirectWriter.isCalled
+    XCTAssertTrue(isCalled)
   }
 
-  internal func testFailedStep() throws {
+  internal func testFailedStep() async throws {
     let expectedError = RedirectFileWriterError.writeRedirects
 
     let redirectWriter = RedirectFileWriterSpy(.failure(expectedError))
@@ -36,9 +37,10 @@ internal final class MarkdownProcessorRedirectWriterTests: XCTestCase {
       assetDownloader: AssetDownloaderStub()
     )
 
-    assertThrowableBlock(
-      expectedError: expectedError,
-      try sut.begin(withSettings: settings)
-    )
+    await assertThrowableBlock(
+      expectedError: expectedError
+    ) {
+      try await sut.begin(withSettings: settings)
+    }
   }
 }

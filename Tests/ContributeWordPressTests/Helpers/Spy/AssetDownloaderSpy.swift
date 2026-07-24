@@ -1,7 +1,9 @@
 import ContributeWordPress
 import Foundation
 
-internal final class AssetDownloaderSpy: Downloader {
+/// `Downloader` is `Sendable`, and downloading is `async`, so the recorded call
+/// flag is protected by actor isolation.
+internal actor AssetDownloaderSpy: Downloader {
   internal private(set) var isCalled = false
 
   private let result: Result<Void, AssetDownloaderError>
@@ -10,7 +12,7 @@ internal final class AssetDownloaderSpy: Downloader {
     self.result = result
   }
 
-  internal func download(assets _: [AssetImport], allowsOverwrites _: Bool) throws {
+  internal func download(assets _: [AssetImport], allowsOverwrites _: Bool) async throws {
     isCalled = true
 
     switch result {

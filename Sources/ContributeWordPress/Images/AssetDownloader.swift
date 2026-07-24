@@ -50,6 +50,10 @@ public struct AssetDownloader: Downloader {
 
   /// Downloads assets using `URLDownloader`.
   ///
+  /// Every asset is downloaded concurrently in a task group. Each child task
+  /// returns its own failure rather than writing to shared state, so the errors
+  /// are collected at the join point without any synchronization.
+  ///
   /// - Parameters:
   ///   - assets: The imported assets to be downloaded.
   ///   - allowsOverwrites: To allow overwriting existing assets.
@@ -58,50 +62,34 @@ public struct AssetDownloader: Downloader {
   public func download(
     assets: [AssetImport],
     allowsOverwrites: Bool
-  ) throws {
-    try downloadUsingGroupDispatch(
-      assets: assets,
-      allowsOverwrites: allowsOverwrites
-    ) { errors in
-      guard errors.isEmpty else {
-        throw WordPressError.assetDownloadErrors(errors)
-      }
-    }
-  }
-
-  /// A helper function to download assets using DispatchGroup.
-  ///
-  /// - Parameters:
-  ///   - assets: The imported assets to be downloaded.
-  ///   - allowsOverwrites: To allow overwriting existing assets.
-  ///   - completion: A completion handler called with errors mapped to asset source url.
-  /// - Throws: Any error thrown by the completion handler.
-  private func downloadUsingGroupDispatch(
-    assets: [AssetImport],
-    allowsOverwrites: Bool,
-    completion: (_ errors: [URL: Error]) throws -> Void
-  ) throws {
-    let errors = AssetDownloadErrors()
-
-    let group = DispatchGroup()
-
-    for asset in assets {
-      group.enter()
-
-      urlDownloader.download(
-        from: asset.fromURL,
-        to: asset.atURL,
-        allowOverwrite: allowsOverwrites
-      ) { error in
-        if let error = error {
-          errors.record(error, for: asset.fromURL)
+  ) async throws {
+    let errors = try await withThrowingTaskGroup(
+      of: (URL, any Error)?.self
+    ) { group in
+      for asset in assets {
+        group.addTask {
+          do {
+            try await urlDownloader.download(
+              from: asset.fromURL,
+              to: asset.atURL,
+              allowOverwrite: allowsOverwrites
+            )
+            return nil
+          } catch {
+            return (asset.fromURL, error)
+          }
         }
-        group.leave()
       }
+
+      var errors = [URL: any Error]()
+      for try await case (let url, let error)? in group {
+        errors[url] = error
+      }
+      return errors
     }
 
-    group.wait()
-
-    try completion(errors.all)
+    guard errors.isEmpty else {
+      throw WordPressError.assetDownloadErrors(errors)
+    }
   }
 }

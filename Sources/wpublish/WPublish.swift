@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  WPublish.swift
 //  ContributeWordPress
 //
 //  Created by Leo Dion.
@@ -30,38 +30,37 @@
 import ContributeWordPress
 import Foundation
 
-// swiftlint:disable:next explicit_top_level_acl explicit_acl prefixed_toplevel_constant
-let fromURL: URL
-// swiftlint:disable:next explicit_top_level_acl explicit_acl prefixed_toplevel_constant
-let toURL: URL
+/// The `wpublish` command-line entry point.
+///
+/// Importing is asynchronous, so this is a `@main` type rather than top-level
+/// code in `main.swift`: top-level code cannot `await`.
+@main
+internal enum WPublish {
+  internal static func main() async {
+    guard CommandLine.arguments.count >= 2 else {
+      exit(1)
+    }
 
-// swiftlint:disable:next explicit_top_level_acl explicit_acl prefixed_toplevel_constant
-let importAssetsSetting: AssetImportSetting
+    let fromURL = URL(fileURLWithPath: CommandLine.arguments[0])
+    let toURL = URL(fileURLWithPath: CommandLine.arguments[1])
 
-guard CommandLine.arguments.count >= 2 else {
-  exit(1)
-}
+    // If a third argument is passed, assume they want to copy the resources
+    // directly; otherwise use the default `download` option.
+    let importAssetsSetting: AssetImportSetting =
+      if CommandLine.arguments.count > 2 {
+        .copyFilesFrom(URL(fileURLWithPath: CommandLine.arguments[2]))
+      } else {
+        .download
+      }
 
-fromURL = URL(fileURLWithPath: CommandLine.arguments[0])
-toURL = URL(fileURLWithPath: CommandLine.arguments[1])
-
-// if a third argument is passed
-if CommandLine.arguments.count > 2 {
-  // assume they want to copy the resources directly
-  importAssetsSetting = .copyFilesFrom(
-    URL(fileURLWithPath: CommandLine.arguments[2])
-  )
-} else {
-  // otherwise use the default `download` option
-  importAssetsSetting = .download
-}
-
-do {
-  try MarkdownProcessor.beginImport(
-    from: fromURL,
-    to: toURL,
-    importAssetsBy: importAssetsSetting
-  )
-} catch {
-  fatalError("WordPress import failed: \(error)")
+    do {
+      try await MarkdownProcessor.beginImport(
+        from: fromURL,
+        to: toURL,
+        importAssetsBy: importAssetsSetting
+      )
+    } catch {
+      fatalError("WordPress import failed: \(error)")
+    }
+  }
 }
