@@ -11,8 +11,10 @@ site as Markdown files with YAML front matter.
 Two products:
 
 - `ContributeWordPress` — the library.
-- `wpublish` — a thin executable wrapper (`Sources/wpublish/main.swift`) that takes
-  `<export-dir> <publish-root> [wordpress-files-dir]` on the command line.
+- `wpublish` — a thin executable wrapper (`Sources/wpublish/WPublish.swift`) that takes
+  `<export-dir> <publish-root> [wordpress-files-dir]` on the command line. It is a `@main`
+  type rather than top-level code in `main.swift` because importing is now `async`, and
+  top-level code cannot `await`.
 
 It builds on the [`Contribute`](https://github.com/brightdigit/Contribute) pipeline
 (`MarkdownContentBuilder`, `FrontMatterTranslator`, `ContentURLGenerator`) and decodes the
