@@ -35,7 +35,11 @@ import SyndiKit
 #endif
 
 /// A type that holds information about an asset imported from a `WordPressPost`.
-public struct AssetImport: Hashable {
+///
+/// Values of this type are handed to `URLDownloader`, whose completion handler is
+/// `@Sendable`, so they cross concurrency domains. Every stored property is an
+/// immutable value type, which makes the conformance unconditional.
+public struct AssetImport: Hashable, Sendable {
   /// The source `URL` from where asset will be imported.
   public let fromURL: URL
 
