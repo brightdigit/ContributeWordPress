@@ -81,7 +81,7 @@ public struct AssetDownloader: Downloader {
     allowsOverwrites: Bool,
     completion: (_ errors: [URL: Error]) throws -> Void
   ) throws {
-    var errors = [URL: Error]()
+    let errors = AssetDownloadErrors()
 
     let group = DispatchGroup()
 
@@ -94,7 +94,7 @@ public struct AssetDownloader: Downloader {
         allowOverwrite: allowsOverwrites
       ) { error in
         if let error = error {
-          errors[asset.fromURL] = error
+          errors.record(error, for: asset.fromURL)
         }
         group.leave()
       }
@@ -102,6 +102,6 @@ public struct AssetDownloader: Downloader {
 
     group.wait()
 
-    try completion(errors)
+    try completion(errors.all)
   }
 }
