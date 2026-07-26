@@ -1,4 +1,4 @@
-![ContributeWordPress Logo](Sources/ContributeWordPress/Documentation.docc/Resources/ContributeWordPressLogo.png)
+![ContributeWordPress Logo](Sources/ContributeWordPress/Documentation.docc/Resources/ContributeWordPressLogo.svg)
 
 # ContributeWordPress
 

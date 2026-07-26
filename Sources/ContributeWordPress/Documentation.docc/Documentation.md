@@ -4,7 +4,7 @@
 
 ## Overview
 
-![Logo](ContributeWordPressLogo-DocC.png)
+![Logo](ContributeWordPressLogo.svg)
 
 Migrating off WordPress means moving two things: the posts and the media that goes with them.
 WordPress hands you the first as a **WXR export** — one or more XML files full of HTML post
