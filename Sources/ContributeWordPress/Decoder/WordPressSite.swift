@@ -77,6 +77,8 @@ public struct WordPressSite: BaseURLSite {
   ///   - baseSiteURL: The base site URL.
   ///   - baseBlogURL: The base blog URL.
   ///   - assetURLRegex: The regular expression for matching asset urls.
+  /// - Throws: ``WordPressError/invalidAssetURLRegex(siteURL:underlying:)`` when the
+  ///   default asset URL regex cannot be built.
   public init(
     title: String,
     link: URL,
