@@ -50,7 +50,7 @@ where
   ///   - exportsDirectoryURL: The URL for the directory containing the export files.
   ///   - rootPublishSiteURL: Root Directory of the Publish site.
   ///   - postFilters: The post filters.
-  ///   - redirectFromatter: Formats the given redirects of old URLs.
+  ///   - redirectFormatter: Formats the given redirects of old URLs.
   ///   - assetImportSetting: The method to import assets from the WordPress site.
   ///   - overwriteAssets: Whether to overwrite existing assets.
   ///   - markdownGenerator: Converts the given HTML string to Markdown string.
@@ -59,7 +59,7 @@ where
     from exportsDirectoryURL: URL,
     to rootPublishSiteURL: URL,
     filteringPostsWith postFilters: [PostFilter] = .default,
-    redirectsFormattedUsing redirectFromatter: RedirectFormatter? = nil,
+    redirectsFormattedUsing redirectFormatter: RedirectFormatter? = nil,
     importAssetsBy assetImportSetting: AssetImportSetting = .download,
     overwriteAssets: Bool = false,
     usingGenerator markdownGenerator: MarkdownGenerator =
@@ -74,7 +74,7 @@ where
     )
     let processor = MarkdownProcessor(
       postFilters: postFilters,
-      redirectFromatter: redirectFromatter
+      redirectFormatter: redirectFormatter
     )
     try await processor.begin(withSettings: settings)
   }

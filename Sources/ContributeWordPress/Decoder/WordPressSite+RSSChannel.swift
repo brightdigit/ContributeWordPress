@@ -62,7 +62,7 @@ extension WordPressSite {
       forSite: channel,
       relativeResourcePath: relativeResourcePath
     )
-    self.init(
+    try self.init(
       title: channel.title,
       link: channel.link,
       posts: channel.items.compactMap(\.wpPost),

@@ -44,7 +44,7 @@ extension MarkdownProcessor {
   ///   - destinationURLGenerator: The destination URL generator.
   ///   - exportDecoder: The decoder used to decode posts.
   ///   - postFilters: The post filters.
-  ///   - redirectFromatter: The formatter used to make redirects.
+  ///   - redirectFormatter: The formatter used to make redirects.
   ///   - assetDownloader: The asset downloader.
   ///   - assetImportFactory: The asset import factory.
   public init(
@@ -55,7 +55,7 @@ extension MarkdownProcessor {
     destinationURLGenerator: URLGeneratorType = .init(),
     exportDecoder: SitesExportDecoder = SitesExportSynDecoder(),
     postFilters: [PostFilter] = .default,
-    redirectFromatter: RedirectFormatter? = nil,
+    redirectFormatter: RedirectFormatter? = nil,
     assetDownloader: Downloader = AssetDownloader(),
     assetImportFactory: @escaping AssetImportFactory =
       AssetImport.extractAssetImports(from:using:)
@@ -73,8 +73,8 @@ extension MarkdownProcessor {
       destinationURLGenerator: destinationURLGenerator,
       exportDecoder: exportDecoder,
       postFilters: postFilters,
-      redirectWriter: redirectFromatter.map(
-        DynamicRedirectFileWriter.init(redirectFromatter:)
+      redirectWriter: redirectFormatter.map(
+        DynamicRedirectFileWriter.init(redirectFormatter:)
       ),
       assetDownloader: assetDownloader,
       assetImportFactory: assetImportFactory

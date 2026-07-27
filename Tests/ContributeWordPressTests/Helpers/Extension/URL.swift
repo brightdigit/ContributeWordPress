@@ -14,3 +14,10 @@ extension URL {
     .temporaryDir.appendingPathComponent(UUID().uuidString)
   }
 }
+
+
+extension URL {
+  internal static var temporaryDir: URL {
+    FileManager.default.temporaryDirectory
+  }
+}

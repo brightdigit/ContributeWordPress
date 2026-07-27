@@ -88,7 +88,7 @@ public struct WordPressSite: BaseURLSite {
     baseSiteURL: URL? = nil,
     baseBlogURL: URL? = nil,
     assetURLRegex: NSRegularExpression? = nil
-  ) {
+  ) throws {
     self.title = title
     self.link = link
     self.description = description
@@ -104,7 +104,7 @@ public struct WordPressSite: BaseURLSite {
       do {
         self.assetURLRegex = try Self.defaultAssetURLRegex(forAssetSiteURL: link)
       } catch {
-        fatalError("Unable to create asset URL regex for \(link): \(error)")
+        throw WordPressError.invalidAssetURLRegex(siteURL: link, underlying: error)
       }
     }
   }

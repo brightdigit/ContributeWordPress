@@ -34,4 +34,7 @@ import Foundation
 public enum WordPressError: ContributeError {
   /// Errors downloading from URLs.
   case assetDownloadErrors([URL: Error])
+
+  /// The default asset-URL regex could not be built for a site link.
+  case invalidAssetURLRegex(siteURL: URL, underlying: Error)
 }
