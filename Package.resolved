@@ -1,12 +1,40 @@
 {
+  "originHash" : "5e98ad96707fff0cab6abcc189355972c2b2d0fe8e8d20f8d6592eeefedbe801",
   "pins" : [
     {
       "identity" : "contribute",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brightdigit/Contribute.git",
       "state" : {
-        "revision" : "5db9f5d03b9f009702cc4ec508162d8db6b00491",
-        "version" : "1.0.0-alpha.5"
+        "branch" : "main",
+        "revision" : "2d346bd9e2c82630839dcaba2481da0633896b8c"
+      }
+    },
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-cmark.git",
+      "state" : {
+        "branch" : "gfm",
+        "revision" : "0101bf2c6ff6a218f93150f340fe5ccf76d9f3aa"
+      }
+    },
+    {
+      "identity" : "swift-markdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-markdown.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "27b7fc1a19068bcea3d2072db0ce86360d1400ed"
+      }
+    },
+    {
+      "identity" : "swiftsoup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brightdigit/SwiftSoup.git",
+      "state" : {
+        "branch" : "fix/swift-6.4-inline-crash",
+        "revision" : "5d5d9ec29b5ba0b046944f9ad3ff668bb4996e08"
       }
     },
     {
@@ -14,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/brightdigit/SyndiKit.git",
       "state" : {
-        "revision" : "0a077415a1ae3d20fb0327fdc3837442f7298708",
-        "version" : "0.3.7"
+        "branch" : "main",
+        "revision" : "ddec490dfc8be4cad7a2b805f454899e87643389"
       }
     },
     {
@@ -23,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/CoreOffice/XMLCoder",
       "state" : {
-        "revision" : "b1e944cbd0ef33787b13f639a5418d55b3bed501",
-        "version" : "0.17.1"
+        "revision" : "42f62383dbcd074440cb1f6a750b9c02df9e7325",
+        "version" : "0.18.2"
       }
     },
     {
@@ -32,10 +60,10 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jpsim/Yams.git",
       "state" : {
-        "revision" : "9ff1cc9327586db4e0c8f46f064b6a82ec1566fa",
-        "version" : "4.0.6"
+        "revision" : "a27b21e0c81c5bf42049b897a62aaf387e80f279",
+        "version" : "6.2.2"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

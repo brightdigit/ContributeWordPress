@@ -1,13 +1,16 @@
-// swift-tools-version: 5.8
-// swiftlint:disable explicit_top_level_acl
-// swiftlint:disable prefixed_toplevel_constant
-// swiftlint:disable explicit_acl
+// swift-tools-version:6.4
 
 import PackageDescription
 
+// swiftlint:disable:next explicit_acl explicit_top_level_acl
 let package = Package(
   name: "ContributeWordPress",
-  platforms: [.macOS(.v12)],
+  platforms: [
+    .macOS(.v15),
+    .iOS(.v16),
+    .tvOS(.v16),
+    .watchOS(.v9),
+  ],
   products: [
     .library(
       name: "ContributeWordPress",
@@ -16,17 +19,17 @@ let package = Package(
     .executable(
       name: "wpublish",
       targets: ["wpublish"]
-    )
+    ),
   ],
   dependencies: [
     .package(
       url: "https://github.com/brightdigit/Contribute.git",
-      from: "1.0.0-alpha.5"
+      branch: "main"
     ),
     .package(
       url: "https://github.com/brightdigit/SyndiKit.git",
-      from: "0.3.7"
-    )
+      branch: "main"
+    ),
   ],
   targets: [
     .target(
@@ -40,6 +43,6 @@ let package = Package(
     .executableTarget(
       name: "wpublish",
       dependencies: ["ContributeWordPress"]
-    )
+    ),
   ]
 )

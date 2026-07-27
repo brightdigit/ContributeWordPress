@@ -1,13 +1,14 @@
-@testable import ContributeWordPress
 import SyndiKit
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class AssetImportTests: XCTestCase {
   private let sampleResourcesPathURL: URL = .temporaryResourcesPathURL
   private let sampleAssetRoot: String = "/media/wp-assets"
 
   private let sampleSourceURL = URL(
-    "https://leogdion.name/wp-content/uploads/2019/06/unsplash-701.jpeg"
+    staticString: "https://leogdion.name/wp-content/uploads/2019/06/unsplash-701.jpeg"
   )
   private var sampleFeaturedPath: String {
     sampleSourceURL.path
@@ -24,12 +25,13 @@ internal final class AssetImportTests: XCTestCase {
     let sut = makeSampleAssetImport(forPost: post, importPathURL: nil)
 
     let expectedFromURL = sampleSourceURL
-    let expectedAtURL = sampleResourcesPathURL
+    let expectedAtURL =
+      sampleResourcesPathURL
       .appendingPathComponent(sut.featuredPath)
 
     assetSampleAsset(
       sut,
-      expectedPostID: post.ID,
+      expectedPostID: post.id,
       expectedFromURL: expectedFromURL,
       expectedAtURL: expectedAtURL
     )
@@ -38,20 +40,22 @@ internal final class AssetImportTests: XCTestCase {
   internal func testLocalAsset() throws {
     let post: WordPressPost = try .myYearInReviewPost()
 
-    let importPathURL: URL = .temporaryDirURL
+    let importPathURL: URL = .temporaryDir
       .appendingPathComponent("WordPress")
       .appendingPathComponent(WordPressSite.contentUploadsRelativePath)
 
     let sut = makeSampleAssetImport(forPost: post, importPathURL: importPathURL)
 
-    let expectedFromURL = importPathURL
+    let expectedFromURL =
+      importPathURL
       .appendingPathComponent(sampleSourceURL.path)
-    let expectedAtURL = sampleResourcesPathURL
+    let expectedAtURL =
+      sampleResourcesPathURL
       .appendingPathComponent(sut.featuredPath)
 
     assetSampleAsset(
       sut,
-      expectedPostID: post.ID,
+      expectedPostID: post.id,
       expectedFromURL: expectedFromURL,
       expectedAtURL: expectedAtURL
     )

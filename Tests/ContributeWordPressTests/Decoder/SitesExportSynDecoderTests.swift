@@ -1,15 +1,16 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class SitesExportSynDecoderTests: XCTestCase {
   private let fileManager: FileManager = .default
-  private let testDir = URL.temporaryDirURL
+  private let testDir = URL.temporaryDir
     .appendingPathComponent("test", isDirectory: true)
 
   // MARK: - fileURLsFromDirectory Tests
 
   internal func testDefaultFileURLsAtDirectory() throws {
-    let expectedFileURLs: [URL] = (1 ... 2)
+    let expectedFileURLs: [URL] = (1...2)
       .compactMap { testDir.appendingPathComponent("file\($0).xml") }
 
     try createFiles(expectedFileURLs, with: "some content", atDirectory: testDir)
@@ -35,7 +36,7 @@ internal final class SitesExportSynDecoderTests: XCTestCase {
       fileURLsFromDirectory: spy.fileURLsFromDirectory(_:)
     )
 
-    _ = try sut.sites(fromExportsAt: .temporaryDirURL)
+    _ = try sut.sites(fromExportsAt: .temporaryDir)
 
     XCTAssertTrue(spy.fromDirectoryIsCalled)
   }
@@ -49,7 +50,7 @@ internal final class SitesExportSynDecoderTests: XCTestCase {
 
     assertThrowableBlock(
       expectedError: SitesExportDecoderError.fileURLsFromDirectory,
-      try sut.sites(fromExportsAt: .temporaryDirURL)
+      try sut.sites(fromExportsAt: .temporaryDir)
     )
   }
 
@@ -68,7 +69,7 @@ internal final class SitesExportSynDecoderTests: XCTestCase {
       atDirectory: testDir
     )
 
-    XCTAssertThrowsError(try sut.sites(fromExportsAt: .temporaryDirURL))
+    XCTAssertThrowsError(try sut.sites(fromExportsAt: .temporaryDir))
   }
 
   // MARK: - Helpers
@@ -85,7 +86,7 @@ internal final class SitesExportSynDecoderTests: XCTestCase {
       withIntermediateDirectories: true
     )
 
-    try files.forEach { file in
+    for file in files {
       try content.data(using: .utf8)?.write(to: file)
     }
   }

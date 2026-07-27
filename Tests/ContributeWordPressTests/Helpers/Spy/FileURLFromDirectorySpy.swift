@@ -16,7 +16,7 @@ internal final class FileURLFromDirectorySpy {
     case .success:
       return []
 
-    case let .failure(failure):
+    case .failure(let failure):
       throw failure
     }
   }

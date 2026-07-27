@@ -1,15 +1,17 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class AssetImportWordPressTests: XCTestCase {
   internal func testExtractAssetImportFromPostWithAssets() throws {
     let site: WordPressSite = try .make(
-      link: URL("https://leogdion.name"),
+      link: URL(staticString: "https://leogdion.name"),
       posts: [.myYearInReviewPost()]
     )
 
     let rootPublishSiteURL: URL = .makeRootPublishSiteURL()
-    let expoertingDirectoryURL: URL = rootPublishSiteURL
+    let expoertingDirectoryURL: URL =
+      rootPublishSiteURL
       .appendingPathComponent("WordPress/exports")
 
     let assetImports = AssetImport.extractAssetImports(
@@ -25,12 +27,13 @@ internal final class AssetImportWordPressTests: XCTestCase {
 
   internal func testExtractAssetImportFromPostWithoutAssets() throws {
     let site: WordPressSite = try .make(
-      link: URL("https://leogdion.name"),
+      link: URL(staticString: "https://leogdion.name"),
       posts: [.make(postID: 00, title: "fake", contentEncoded: "")]
     )
 
     let rootPublishSiteURL: URL = .makeRootPublishSiteURL()
-    let expoertingDirectoryURL: URL = rootPublishSiteURL
+    let expoertingDirectoryURL: URL =
+      rootPublishSiteURL
       .appendingPathComponent("WordPress/exports")
 
     let assetImports = AssetImport.extractAssetImports(

@@ -26,7 +26,7 @@ internal final class MarkdownExtractorSpy: MarkdownExtractor {
     switch result {
     case .success:
       return "# markdown"
-    case let .failure(failure):
+    case .failure(let failure):
       throw failure
     }
   }

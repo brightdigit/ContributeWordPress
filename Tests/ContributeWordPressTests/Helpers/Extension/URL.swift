@@ -1,16 +1,20 @@
 import Foundation
 
 extension URL {
-  internal init(_ staticString: StaticString) {
-    guard let url = URL(string: .init(describing: staticString)) else {
-      fatalError("Invalid URL String")
-    }
-    self = url
+  internal static var temporaryDir: URL {
+    FileManager.default.temporaryDirectory
+  }
+
+  internal static func makeRootPublishSiteURL() -> URL {
+    .temporaryDir.appendingPathComponent(UUID().uuidString)
   }
 }
 
 extension URL {
-  internal static func makeRootPublishSiteURL() -> URL {
-    .temporaryDirURL.appendingPathComponent(UUID().uuidString)
+  internal init(staticString: StaticString) {
+    guard let url = URL(string: .init(describing: staticString)) else {
+      fatalError("Invalid URL String")
+    }
+    self = url
   }
 }

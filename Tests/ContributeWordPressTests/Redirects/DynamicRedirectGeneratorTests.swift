@@ -1,6 +1,7 @@
-@testable import ContributeWordPress
 import SyndiKit
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class DynamicRedirectGeneratorTests: XCTestCase {
   private var sut: DynamicRedirectGenerator = .init()
@@ -32,14 +33,15 @@ internal final class DynamicRedirectGeneratorTests: XCTestCase {
 
     let allSites: [SectionName: WordPressSite] = [
       blogSection: blogSite,
-      tutorialsSection: tutorialsSite
+      tutorialsSection: tutorialsSite,
     ]
 
     testThenAssertRedirect(fromSites: allSites)
   }
 
   private func testThenAssertRedirect(fromSites allSites: [SectionName: WordPressSite]) {
-    let tuples: [(WordPressPost, SectionName)] = allSites
+    let tuples: [(WordPressPost, SectionName)] =
+      allSites
       .map { section, site in site.posts.compactMap { ($0, section) } }
       .flatMap { $0 }
     let allPosts: [WordPressPost] = tuples.map(\.0)

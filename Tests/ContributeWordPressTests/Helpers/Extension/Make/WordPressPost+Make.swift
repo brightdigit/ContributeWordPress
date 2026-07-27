@@ -2,7 +2,6 @@ import Foundation
 import SyndiKit
 
 extension WordPressPost {
-  // swiftlint:disable:next function_body_length
   internal static func make(
     postID: Int,
     title: String,

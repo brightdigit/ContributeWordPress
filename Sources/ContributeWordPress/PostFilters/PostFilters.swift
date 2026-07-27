@@ -1,0 +1,53 @@
+//
+//  PostFilters.swift
+//  ContributeWordPress
+//
+//  Created by Leo Dion.
+//  Copyright © 2026 BrightDigit.
+//
+//  Permission is hereby granted, free of charge, to any person
+//  obtaining a copy of this software and associated documentation
+//  files (the "Software"), to deal in the Software without
+//  restriction, including without limitation the rights to use,
+//  copy, modify, merge, publish, distribute, sublicense, and/or
+//  sell copies of the Software, and to permit persons to whom the
+//  Software is furnished to do so, subject to the following
+//  conditions:
+//
+//  The above copyright notice and this permission notice shall be
+//  included in all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+//  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+//  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+//  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+//  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+//  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+//  OTHER DEALINGS IN THE SOFTWARE.
+//
+
+import SyndiKit
+
+private enum PostFilters {
+  // Build a fresh immutable filter list for each request. Keeping existential
+  // filters in shared static storage would require every custom `PostFilter`
+  // implementation to be `Sendable`, even though filtering is synchronous.
+  static var `default`: [PostFilter] {
+    do {
+      return try [
+        RegexKeyPostFilter(pattern: "post", keyPath: \.type),
+        RegexKeyPostFilter(pattern: "publish", keyPath: \.status),
+      ]
+    } catch {
+      fatalError("Unable to build default post filters: \(error)")
+    }
+  }
+}
+
+extension Array where Element == PostFilter {
+  /// Default post filters for published posts.
+  public static var `default`: Self {
+    PostFilters.default
+  }
+}
