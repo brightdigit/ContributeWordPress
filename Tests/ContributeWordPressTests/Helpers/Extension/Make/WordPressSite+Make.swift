@@ -14,7 +14,7 @@ extension WordPressSite {
     baseBlogURL _: URL? = nil,
     posts: [WordPressPost] = []
   ) throws -> WordPressSite {
-    .init(
+    try .init(
       title: title,
       link: link,
       posts: posts,

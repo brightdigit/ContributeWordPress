@@ -1,3 +1,32 @@
+//
+//  MarkdownProcessor.swift
+//  ContributeWordPress
+//
+//  Created by Leo Dion.
+//  Copyright © 2026 BrightDigit.
+//
+//  Permission is hereby granted, free of charge, to any person
+//  obtaining a copy of this software and associated documentation
+//  files (the "Software"), to deal in the Software without
+//  restriction, including without limitation the rights to use,
+//  copy, modify, merge, publish, distribute, sublicense, and/or
+//  sell copies of the Software, and to permit persons to whom the
+//  Software is furnished to do so, subject to the following
+//  conditions:
+//
+//  The above copyright notice and this permission notice shall be
+//  included in all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+//  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+//  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+//  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+//  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+//  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+//  OTHER DEALINGS IN THE SOFTWARE.
+//
+
 import Contribute
 import Foundation
 import SyndiKit
@@ -9,31 +38,34 @@ import Yams
 
 /// A type that processes WordPress sites and generates Markdowns for their posts.
 public struct MarkdownProcessor<
-  ContentURLGeneratorType: ContentURLGenerator,
-  MarkdownContentBuilderType: MarkdownContentBuilder
-> where ContentURLGeneratorType.SourceType == Source,
-  MarkdownContentBuilderType.SourceType == Source {
+  URLGeneratorType: ContentURLGenerator,
+  ContentBuilderType: MarkdownContentBuilder
+>
+where
+  URLGeneratorType.SourceType == Source,
+  ContentBuilderType.SourceType == Source
+{
   internal let exportDecoder: SitesExportDecoder
   internal let assetDownloader: Downloader
   internal let redirectWriter: RedirectFileWriter?
   internal let assetImportFactory: AssetImportFactory
-  private let destinationURLGenerator: ContentURLGeneratorType
-  private let contentBuilder: MarkdownContentBuilderType
+  private let destinationURLGenerator: URLGeneratorType
+  private let contentBuilder: ContentBuilderType
   private let postFilters: [PostFilter]
 
   /// Initializes a new `MarkdownProcessor` instance.
   ///
   /// - Parameters:
+  ///   - contentBuilder: The Markdown content builder.
+  ///   - destinationURLGenerator: The content URL generator.
   ///   - exportDecoder: The export decoder.
+  ///   - postFilters: The post filters.
   ///   - redirectWriter: Optional redirect file writer.
   ///   - assetDownloader: The asset downloader.
-  ///   - destinationURLGenerator: The content URL generator.
-  ///   - contentBuilder: The Markdown content builder.
-  ///   - postFilters: The post filters.
   ///   - assetImportFactory: The asset import factory.
   public init(
-    contentBuilder: MarkdownContentBuilderType,
-    destinationURLGenerator: ContentURLGeneratorType,
+    contentBuilder: ContentBuilderType,
+    destinationURLGenerator: URLGeneratorType,
     exportDecoder: SitesExportDecoder = SitesExportSynDecoder(),
     postFilters: [PostFilter] = .default,
     redirectWriter: RedirectFileWriter? = nil,
@@ -74,22 +106,22 @@ public struct MarkdownProcessor<
   ) throws {
     try FileManager.createDirectory(withName: sectionName, in: contentDirectoryURL)
     let htmlFromPost = transformerFromSite?(site)
-    try site.posts
+    let posts = site.posts
       .filter(postFilters.postSatisfiesAll)
-      .map { post in (post, assets.first { $0.parentID == post.ID }) }
-      .forEach { post, featuredImage in
-        _ = try self.contentBuilder.write(
-          from: .init(
-            sectionName: sectionName,
-            post: post,
-            featuredImage: featuredImage.map(\.featuredPath),
-            htmlFromPost: htmlFromPost
-          ),
-          atContentPathURL: contentDirectoryURL,
-          basedOn: self.destinationURLGenerator,
-          using: transformFromHTML
-        )
-      }
+      .map { post in (post, assets.first { $0.parentID == post.id }) }
+    for (post, featuredImage) in posts {
+      _ = try self.contentBuilder.write(
+        from: .init(
+          sectionName: sectionName,
+          post: post,
+          featuredImage: featuredImage.map(\.featuredPath),
+          htmlFromPost: htmlFromPost
+        ),
+        atContentPathURL: contentDirectoryURL,
+        basedOn: self.destinationURLGenerator,
+        using: transformFromHTML
+      )
+    }
   }
 
   private func writeAllPosts(
@@ -99,7 +131,7 @@ public struct MarkdownProcessor<
     using htmlToMarkdown: @escaping (String) throws -> String,
     htmlFromSitePost: ((WordPressSite) -> ((WordPressPost) -> String))? = nil
   ) throws {
-    try sites.forEach { sectionName, site in
+    for (sectionName, site) in sites {
       try writeSite(
         site,
         sectionName: sectionName,

@@ -1,7 +1,8 @@
 import Contribute
-@testable import ContributeWordPress
 import SyndiKit
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class SpecFrontMatterTranslatorTests: XCTestCase {
   internal func testFrontMatterTranslation() throws {
@@ -9,7 +10,7 @@ internal final class SpecFrontMatterTranslatorTests: XCTestCase {
 
     let source = Source(
       sectionName: "...",
-      post: try .areWeThereYetPost(tags: [.Podcasting, .Productivity]),
+      post: try .areWeThereYetPost(tags: [.podcasting, .productivity]),
       featuredImage: "/media/wp-assets/leogdion/2019/01/image-e1547230562842-1024x682.jpg"
     )
 

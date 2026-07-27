@@ -2,8 +2,11 @@ import Contribute
 import ContributeWordPress
 import Foundation
 
-internal final class FileDownloaderSpy: URLDownloader {
-  internal var downloadIsCalled = false
+/// `URLDownloader` is `Sendable`, so this spy has to be too. Downloading is
+/// `async`, so the recorded call flag lives in an actor rather than behind a
+/// lock — actor isolation provides the synchronization the `NSLock` used to.
+internal actor FileDownloaderSpy: URLDownloader {
+  internal private(set) var downloadIsCalled = false
 
   private let result: Result<Void, DownloadError>
 
@@ -14,17 +17,16 @@ internal final class FileDownloaderSpy: URLDownloader {
   internal func download(
     from _: URL,
     to toURL: URL,
-    allowOverwrite _: Bool,
-    _ completion: @escaping (Error?) -> Void
-  ) {
-    downloadIsCalled = true
+    allowOverwrite _: Bool
+  ) async throws {
+    self.downloadIsCalled = true
 
     switch result {
     case .success:
-      completion(nil)
+      break
 
-    case let .failure(failure):
-      completion(WordPressError.assetDownloadErrors([toURL: failure]))
+    case .failure(let failure):
+      throw WordPressError.assetDownloadErrors([toURL: failure])
     }
   }
 }

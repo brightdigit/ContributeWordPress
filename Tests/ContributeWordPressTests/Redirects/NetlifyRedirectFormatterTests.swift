@@ -1,5 +1,6 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class NetlifyRedirectFormatterTests: XCTestCase {
   private var sut: NetlifyRedirectFormatter = .init()
@@ -19,7 +20,7 @@ internal final class NetlifyRedirectFormatterTests: XCTestCase {
       .init(
         fromURLPath: "/blog/2018/10/11/new-apple-watch-4",
         redirectURLPath: "/articles/new-apple-watch-4"
-      )
+      ),
     ]
 
     let redirects = sut.formatRedirects(redirectItems)
@@ -41,6 +42,6 @@ internal final class NetlifyRedirectFormatterTests: XCTestCase {
     let firstLine = redirects.split(separator: "\n").first
     let lineParts = firstLine?.split(separator: "\t") ?? []
 
-    XCTAssertTrue(lineParts.count == 2)
+    XCTAssertEqual(lineParts.count, 2)
   }
 }

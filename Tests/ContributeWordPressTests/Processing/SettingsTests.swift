@@ -1,9 +1,10 @@
 import Contribute
-@testable import ContributeWordPress
 import XCTest
 
+@testable import ContributeWordPress
+
 internal final class SettingsTests: XCTestCase {
-  internal let projectDirURL: URL = .temporaryDirURL
+  internal let projectDirURL: URL = .temporaryDir
 
   internal var contentPathURL: URL {
     projectDirURL.appendingPathComponent(PublishDefaults.contentDirectoryName)
@@ -14,7 +15,7 @@ internal final class SettingsTests: XCTestCase {
   }
 
   internal var exportsDirectoryURL: URL {
-    .temporaryDirURL.appendingPathComponent("WordPress/exports")
+    .temporaryDir.appendingPathComponent("WordPress/exports")
   }
 
   internal var assetImportSetting: AssetImportSetting {

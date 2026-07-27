@@ -17,7 +17,7 @@ internal final class SitesExportDecoderSpy: SitesExportDecoder {
     case .success:
       return ["blogs": try .leogdion()]
 
-    case let .failure(failure):
+    case .failure(let failure):
       throw failure
     }
   }

@@ -22,7 +22,7 @@ internal final class MarkdownContentBuilderSpy: MarkdownContentBuilder {
     switch result {
     case .success:
       return "# markdown"
-    case let .failure(failure):
+    case .failure(let failure):
       throw failure
     }
   }

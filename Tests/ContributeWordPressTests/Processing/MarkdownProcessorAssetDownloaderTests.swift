@@ -1,10 +1,11 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class MarkdownProcessorAssetDownloaderTests: XCTestCase {
   private let settings = SettingsStub()
 
-  internal func testSuccessfulBeginAssetDownloaderStep() throws {
+  internal func testSuccessfulBeginAssetDownloaderStep() async throws {
     let assetDownloader = AssetDownloaderSpy(.success(()))
 
     let sut = MarkdownProcessor(
@@ -17,12 +18,13 @@ internal final class MarkdownProcessorAssetDownloaderTests: XCTestCase {
       assetImportFactory: AssetImportFactoryStub().extractAssetImports(from:using:)
     )
 
-    try sut.begin(withSettings: settings)
+    try await sut.begin(withSettings: settings)
 
-    XCTAssertTrue(assetDownloader.isCalled)
+    let isCalled = await assetDownloader.isCalled
+    XCTAssertTrue(isCalled)
   }
 
-  internal func testFailedBeginAssetDownloaderStep() throws {
+  internal func testFailedBeginAssetDownloaderStep() async throws {
     let expectedError = AssetDownloaderError.unreachableDestination
     let assetDownloader = AssetDownloaderSpy(.failure(expectedError))
 
@@ -36,9 +38,10 @@ internal final class MarkdownProcessorAssetDownloaderTests: XCTestCase {
       assetImportFactory: AssetImportFactoryStub().extractAssetImports(from:using:)
     )
 
-    assertThrowableBlock(
-      expectedError: expectedError,
-      try sut.begin(withSettings: settings)
-    )
+    await assertThrowableBlock(
+      expectedError: expectedError
+    ) {
+      try await sut.begin(withSettings: settings)
+    }
   }
 }

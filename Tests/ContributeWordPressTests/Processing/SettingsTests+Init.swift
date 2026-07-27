@@ -1,23 +1,9 @@
-@testable import ContributeWordPress
 import XCTest
 
+@testable import ContributeWordPress
+
 extension SettingsTests {
-  internal func test_contentPathURL_shellOut() {
-    let settings = Settings(
-      contentPathURL: contentPathURL,
-      resourcesPathURL: resourcesPathURL,
-      exportsDirectoryURL: exportsDirectoryURL,
-      assetImportSetting: assetImportSetting,
-      overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath
-    ) { _, _ in
-      self.htmlSample
-    }
-
-    assertSettings(settings)
-  }
-
-  internal func test_contentPathURL_markdownGenerator() {
+  internal func testContentPathURLMarkdownGenerator() {
     let settings = Settings(
       contentPathURL: contentPathURL,
       resourcesPathURL: resourcesPathURL,
@@ -31,7 +17,7 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  internal func test_rootPublishSiteURL_defaultMarkdownFromHTML() {
+  internal func testRootPublishSiteURLDefaultMarkdownFromHTML() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,
@@ -43,21 +29,7 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  internal func test_rootPublishSiteURL_shellOut() {
-    let settings = Settings(
-      rootPublishSiteURL: projectDirURL,
-      exportsDirectoryURL: exportsDirectoryURL,
-      assetImportSetting: assetImportSetting,
-      overwriteAssets: overwriteAssets,
-      assetRelativePath: assetRelativePath
-    ) { _, _ in
-      self.htmlSample
-    }
-
-    assertSettings(settings)
-  }
-
-  internal func test_rootPublishSiteURL_markdownFromHTML() {
+  internal func testRootPublishSiteURLMarkdownFromHTML() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,
@@ -70,7 +42,7 @@ extension SettingsTests {
     assertSettings(settings)
   }
 
-  internal func test_rootPublishSiteURL_markdownGenerator() {
+  internal func testRootPublishSiteURLMarkdownGenerator() {
     let settings = Settings(
       rootPublishSiteURL: projectDirURL,
       exportsDirectoryURL: exportsDirectoryURL,

@@ -1,5 +1,6 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class DynamicRedirectFileWriterTests: XCTestCase {
   internal func testSuccessfulWriteRedirectsCall() throws {
@@ -7,12 +8,12 @@ internal final class DynamicRedirectFileWriterTests: XCTestCase {
 
     let sut = DynamicRedirectFileWriter(
       postFilters: [],
-      redirectFromatter: formatter
+      redirectFormatter: formatter
     )
 
     try sut.writeRedirects(
       fromSites: [:],
-      inDirectory: .temporaryDirURL
+      inDirectory: .temporaryDir
     )
 
     XCTAssertTrue(formatter.formatRedirectsIsCalled)
@@ -23,12 +24,12 @@ internal final class DynamicRedirectFileWriterTests: XCTestCase {
     let formatter = RedirectFormatterSpy()
 
     let sut = DynamicRedirectFileWriter(
-      redirectFromatter: formatter
+      redirectFormatter: formatter
     )
 
     try sut.writeRedirects(
       fromSites: [:],
-      inDirectory: .temporaryDirURL
+      inDirectory: .temporaryDir
     )
 
     XCTAssertTrue(formatter.formatRedirectsIsCalled)
@@ -43,12 +44,12 @@ internal final class DynamicRedirectFileWriterTests: XCTestCase {
     let sut = DynamicRedirectFileWriter(
       postFilter: filter.include(_:),
       urlPathGenerate: urlGenerate.generate(sectionName:post:),
-      redirectFromatter: formatter
+      redirectFormatter: formatter
     )
 
     try sut.writeRedirects(
       fromSites: ["blogs": .leogdion()],
-      inDirectory: .temporaryDirURL
+      inDirectory: .temporaryDir
     )
 
     XCTAssertTrue(formatter.formatRedirectsIsCalled)

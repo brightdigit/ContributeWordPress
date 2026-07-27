@@ -6,14 +6,14 @@ extension WordPressSite {
   internal static func leogdion() throws -> WordPressSite {
     try .make(
       title: "Leo G Dion",
-      link: URL("https://leogdion.name"),
+      link: URL(staticString: "https://leogdion.name"),
       description: "Personal Blog",
       categories: [
-        .init(termID: 1, niceName: "uncategorized", parent: "", name: "Uncategorized")
+        .init(termID: 1, nicename: "uncategorized", parent: "", name: "Uncategorized")
       ],
       tags: leogdionTags(),
-      baseSiteURL: URL("https://leogdion.name"),
-      baseBlogURL: URL("https://leogdion.name"),
+      baseSiteURL: URL(staticString: "https://leogdion.name"),
+      baseBlogURL: URL(staticString: "https://leogdion.name"),
       posts: try leogdionPosts()
     )
   }
@@ -22,7 +22,7 @@ extension WordPressSite {
     [
       .init(termID: 4, slug: "podcasting", name: "podcasting"),
       .init(termID: 5, slug: "productivity", name: "productivity"),
-      .init(termID: 6, slug: "software", name: "software")
+      .init(termID: 6, slug: "software", name: "software"),
     ]
   }
 
@@ -35,7 +35,7 @@ extension WordPressSite {
       .productivityAppsPost(),
       .attachmentA(),
       .attachmentB(),
-      .attachmentC()
+      .attachmentC(),
     ]
   }
 }

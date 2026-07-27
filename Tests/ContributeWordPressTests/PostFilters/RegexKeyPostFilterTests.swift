@@ -1,6 +1,7 @@
-@testable import ContributeWordPress
 import SyndiKit
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class RegexKeyPostFilterTests: XCTestCase {
   internal func testNoFiltersShouldMatchEverything() throws {
@@ -9,7 +10,7 @@ internal final class RegexKeyPostFilterTests: XCTestCase {
     let posts: [WordPressPost] = [
       try .attachmentA(),
       try .attachmentB(),
-      try .attachmentC()
+      try .attachmentC(),
     ]
 
     let matched = posts.filter { post in
@@ -30,19 +31,19 @@ internal final class RegexKeyPostFilterTests: XCTestCase {
   internal func testMultipleFiltersShouldOnlyMatchPublishedPosts() throws {
     let sut: [RegexKeyPostFilter] = [
       try RegexKeyPostFilter(pattern: "post", keyPath: \.type),
-      try RegexKeyPostFilter(pattern: "publish", keyPath: \.status)
+      try RegexKeyPostFilter(pattern: "publish", keyPath: \.status),
     ]
 
     let posts: [WordPressPost] = [
       try .attachmentA(),
       try .areWeThereYetPost(),
-      try .productivityAppsPost()
+      try .productivityAppsPost(),
     ]
 
     let matched = posts.filter { post in
       sut.allSatisfy { $0.include(post) }
     }
 
-    XCTAssertTrue(matched.count == 2)
+    XCTAssertEqual(matched.count, 2)
   }
 }

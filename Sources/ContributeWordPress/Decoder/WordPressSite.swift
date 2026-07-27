@@ -1,8 +1,38 @@
+//
+//  WordPressSite.swift
+//  ContributeWordPress
+//
+//  Created by Leo Dion.
+//  Copyright © 2026 BrightDigit.
+//
+//  Permission is hereby granted, free of charge, to any person
+//  obtaining a copy of this software and associated documentation
+//  files (the "Software"), to deal in the Software without
+//  restriction, including without limitation the rights to use,
+//  copy, modify, merge, publish, distribute, sublicense, and/or
+//  sell copies of the Software, and to permit persons to whom the
+//  Software is furnished to do so, subject to the following
+//  conditions:
+//
+//  The above copyright notice and this permission notice shall be
+//  included in all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+//  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+//  OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+//  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+//  HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+//  WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+//  OTHER DEALINGS IN THE SOFTWARE.
+//
+
 import Foundation
 import SyndiKit
 
 /// A struct that represents a WordPress site.
 public struct WordPressSite: BaseURLSite {
+  /// The relative path of the WordPress content uploads directory.
   public static let contentUploadsRelativePath = "wp-content/uploads"
 
   /// The name of the channel.
@@ -39,14 +69,16 @@ public struct WordPressSite: BaseURLSite {
   /// - Parameters:
   ///   - title: The name of the channel.
   ///   - link: The URL to the HTML website corresponding to the channel.
+  ///   - posts: The posts associated with the site.
   ///   - description: Phrase or sentence describing the channel.
   ///   - pubDate: The publication date and time of the feed's content.
   ///   - categories: The categories associated with the site.
   ///   - tags: The tags associated with the site.
   ///   - baseSiteURL: The base site URL.
   ///   - baseBlogURL: The base blog URL.
-  ///   - posts: The posts associated with the site.
   ///   - assetURLRegex: The regular expression for matching asset urls.
+  /// - Throws: ``WordPressError/invalidAssetURLRegex(siteURL:underlying:)`` when the
+  ///   default asset URL regex cannot be built.
   public init(
     title: String,
     link: URL,
@@ -58,7 +90,7 @@ public struct WordPressSite: BaseURLSite {
     baseSiteURL: URL? = nil,
     baseBlogURL: URL? = nil,
     assetURLRegex: NSRegularExpression? = nil
-  ) {
+  ) throws {
     self.title = title
     self.link = link
     self.description = description
@@ -68,8 +100,14 @@ public struct WordPressSite: BaseURLSite {
     self.baseSiteURL = baseSiteURL
     self.baseBlogURL = baseBlogURL
     self.posts = posts
-    // swiftlint:disable:next force_try
-    self.assetURLRegex = try! assetURLRegex ??
-      Self.defaultAssetURLRegex(forAssetSiteURL: link)
+    if let assetURLRegex = assetURLRegex {
+      self.assetURLRegex = assetURLRegex
+    } else {
+      do {
+        self.assetURLRegex = try Self.defaultAssetURLRegex(forAssetSiteURL: link)
+      } catch {
+        throw WordPressError.invalidAssetURLRegex(siteURL: link, underlying: error)
+      }
+    }
   }
 }

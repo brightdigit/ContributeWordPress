@@ -1,10 +1,11 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class MarkdownProcessorExportDecoderTests: XCTestCase {
   private let settings = SettingsStub()
 
-  internal func testSuccessfulStep() throws {
+  internal func testSuccessfulStep() async throws {
     let exportDecoder = SitesExportDecoderSpy(.success(()))
 
     let sut = MarkdownProcessor(
@@ -16,12 +17,13 @@ internal final class MarkdownProcessorExportDecoderTests: XCTestCase {
       assetDownloader: AssetDownloaderStub()
     )
 
-    try sut.begin(withSettings: settings)
+    try await sut.begin(withSettings: settings)
 
-    XCTAssertTrue(exportDecoder.isCalled)
+    let isCalled = await exportDecoder.isCalled
+    XCTAssertTrue(isCalled)
   }
 
-  internal func testFailedStep() throws {
+  internal func testFailedStep() async throws {
     let expectedError = SitesExportDecoderError.exportDecode
     let exportDecoder = SitesExportDecoderSpy(.failure(expectedError))
 
@@ -34,9 +36,10 @@ internal final class MarkdownProcessorExportDecoderTests: XCTestCase {
       assetDownloader: AssetDownloaderStub()
     )
 
-    assertThrowableBlock(
-      expectedError: expectedError,
-      try sut.begin(withSettings: settings)
-    )
+    await assertThrowableBlock(
+      expectedError: expectedError
+    ) {
+      try await sut.begin(withSettings: settings)
+    }
   }
 }

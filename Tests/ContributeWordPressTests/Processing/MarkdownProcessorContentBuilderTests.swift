@@ -1,10 +1,11 @@
-@testable import ContributeWordPress
 import XCTest
+
+@testable import ContributeWordPress
 
 internal final class MarkdownProcessorContentBuilderTests: XCTestCase {
   private let settings = SettingsStub()
 
-  internal func testSuccessfulBeginContentBuilerStep() throws {
+  internal func testSuccessfulBeginContentBuilerStep() async throws {
     let contentBuilder = MarkdownContentBuilderSpy(.success(()))
 
     let sut = MarkdownProcessor(
@@ -17,12 +18,12 @@ internal final class MarkdownProcessorContentBuilderTests: XCTestCase {
       assetImportFactory: AssetImportFactoryStub().extractAssetImports(from:using:)
     )
 
-    try sut.begin(withSettings: settings)
+    try await sut.begin(withSettings: settings)
 
     XCTAssertTrue(contentBuilder.isContentCalled)
   }
 
-  internal func testFailedBeginContentBuilerStep() throws {
+  internal func testFailedBeginContentBuilerStep() async throws {
     let expectedError = MarkdownContentBuilderError.content
     let contentBuilder = MarkdownContentBuilderSpy(.failure(expectedError))
 
@@ -36,9 +37,10 @@ internal final class MarkdownProcessorContentBuilderTests: XCTestCase {
       assetImportFactory: AssetImportFactoryStub().extractAssetImports(from:using:)
     )
 
-    assertThrowableBlock(
-      expectedError: expectedError,
-      try sut.begin(withSettings: settings)
-    )
+    await assertThrowableBlock(
+      expectedError: expectedError
+    ) {
+      try await sut.begin(withSettings: settings)
+    }
   }
 }

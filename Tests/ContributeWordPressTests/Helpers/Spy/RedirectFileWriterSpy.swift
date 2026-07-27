@@ -21,7 +21,7 @@ internal final class RedirectFileWriterSpy: RedirectFileWriter {
       // doing nothing
       break
 
-    case let .failure(failure):
+    case .failure(let failure):
       throw failure
     }
   }
